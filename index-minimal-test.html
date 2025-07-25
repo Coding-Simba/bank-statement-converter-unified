@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal Test</title>
+</head>
+<body>
+    <h1>Bank Statement Converter - Minimal Test</h1>
+    
+    <button onclick="document.getElementById('fileInput').click()" style="padding:10px; background:#4CAF50; color:white; border:none; cursor:pointer;">
+        Choose PDF File
+    </button>
+    
+    <input type="file" id="fileInput" style="display:none" accept=".pdf" onchange="handleFile(event)">
+    
+    <div id="result"></div>
+    
+    <script>
+        function handleFile(event) {
+            const file = event.target.files[0];
+            const result = document.getElementById('result');
+            
+            if (file) {
+                if (file.type === 'application/pdf') {
+                    result.innerHTML = '<p style="color:green">✓ PDF Selected: ' + file.name + '</p>';
+                    
+                    setTimeout(() => {
+                        const csv = 'Date,Amount\n2024-01-01,100\n2024-01-02,200';
+                        const blob = new Blob([csv], {type: 'text/csv'});
+                        const url = URL.createObjectURL(blob);
+                        
+                        result.innerHTML += '<a href="' + url + '" download="data.csv" style="color:blue">Download CSV</a>';
+                    }, 1000);
+                } else {
+                    result.innerHTML = '<p style="color:red">Please select a PDF file</p>';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test JavaScript</title>
+</head>
+<body>
+    <h1>Testing File Upload Button</h1>
+    
+    <!-- Test 1: Basic onclick -->
+    <button onclick="alert('Button 1 works!')">Test Button 1</button>
+    
+    <!-- Test 2: File input with onclick -->
+    <button onclick="document.getElementById('test2').click()">Test Button 2 - Open File</button>
+    <input type="file" id="test2" style="display:none" onchange="alert('File selected: ' + this.files[0].name)">
+    
+    <!-- Test 3: Function call -->
+    <button onclick="testFunction()">Test Button 3 - Function</button>
+    
+    <script>
+        function testFunction() {
+            alert('Function works!');
+            document.getElementById('test2').click();
+        }
+        
+        // Test if JavaScript is running
+        console.log('JavaScript is loaded and running!');
+    </script>
+</body>
+</html>

@@ -34,142 +34,10 @@
             margin: 0 auto 2rem;
         }
         
-        /* Upload Box Styles */
-        .upload-container {
-            max-width: 600px;
-            margin: -50px auto 50px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            padding: 40px;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .upload-box {
-            border: 2px dashed #667eea;
-            border-radius: 8px;
-            padding: 40px;
-            text-align: center;
-            transition: all 0.3s ease;
-            background: #f8f9ff;
-        }
-        
-        .upload-box:hover {
-            border-color: #764ba2;
-            background: #f0f2ff;
-        }
-        
-        .upload-box.dragging {
-            background: #e8ebff;
-            border-color: #764ba2;
-        }
-        
-        .upload-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .upload-btn {
-            background: #667eea;
-            color: white;
-            padding: 12px 32px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .upload-btn:hover {
-            background: #764ba2;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        #fileInput {
-            display: none;
-        }
-        
-        .drop-text {
-            color: #666;
-            margin-top: 1rem;
-        }
-        
-        /* Processing State */
-        .processing {
-            display: none;
-            text-align: center;
-        }
-        
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Success State */
-        .success {
-            display: none;
-            text-align: center;
-        }
-        
-        .success-icon {
-            font-size: 3rem;
-            color: #4caf50;
-            margin-bottom: 1rem;
-        }
-        
-        .download-btn {
-            background: #4caf50;
-            color: white;
-            padding: 12px 32px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin: 10px;
-        }
-        
-        .download-btn:hover {
-            background: #45a049;
-        }
-        
-        .convert-another {
-            background: #f0f0f0;
-            color: #333;
-            padding: 10px 24px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            margin: 10px;
-        }
-        
-        .convert-another:hover {
-            background: #e0e0e0;
-        }
-        
-        /* Error Message */
-        .error-message {
-            background: #fee;
-            color: #c33;
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 20px;
-            display: none;
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
         
         /* Features */
@@ -214,6 +82,12 @@
             color: #666;
             line-height: 1.6;
         }
+        
+        /* Adjust upload area spacing */
+        .upload-area {
+            margin: 3rem auto;
+            max-width: 700px;
+        }
     </style>
 </head>
 <body>
@@ -248,38 +122,41 @@
         <p>Transform PDF bank statements from any bank into Excel-ready CSV files in seconds</p>
     </section>
     
-    <!-- Upload Container -->
-    <div class="upload-container">
-        <div class="upload-box" id="uploadArea">
-            <!-- Initial State -->
-            <div id="initialState">
-                <div class="upload-icon">📄</div>
-                <button class="upload-btn" onclick="openFileDialog()">
-                    Choose PDF File
-                </button>
-                <p class="drop-text">or drag and drop your bank statement here</p>
-            </div>
+    <main class="main-content">
+        <!-- Upload Section -->
+        <div class="upload-area" id="uploadBox">
+            <h2>Upload Your Statement</h2>
+            <button class="upload-btn" id="uploadBtn">
+                Convert PDF to CSV
+            </button>
+            <p>or drag and drop your PDF here</p>
+            <input type="file" id="fileInput" accept=".pdf" hidden>
             
-            <!-- Processing State -->
-            <div class="processing" id="processingState">
-                <div class="spinner"></div>
-                <h3>Converting your statement...</h3>
-                <p>This usually takes 5-10 seconds</p>
-            </div>
-            
-            <!-- Success State -->
-            <div class="success" id="successState">
-                <div class="success-icon">✓</div>
-                <h3>Conversion Complete!</h3>
-                <a href="#" class="download-btn" id="downloadBtn" download="bank_statement.csv">Download CSV</a>
-                <button class="convert-another" onclick="resetUpload()">Convert Another</button>
+            <div class="trust-signals">
+                <span>✓ Works with all accounts</span>
+                <span>✓ Preserves transaction categories</span>
+                <span>✓ QuickBooks compatible</span>
             </div>
         </div>
         
-        <input type="file" id="fileInput" accept=".pdf" onchange="handleFileSelect(event)">
+        <!-- Progress Container -->
+        <div class="upload-area" id="progressContainer" style="display: none;">
+            <div class="loading"></div>
+            <h3 id="progressText">Processing your statement...</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
         
-        <div class="error-message" id="errorMessage"></div>
-    </div>
+        <!-- Result Container -->
+        <div class="upload-area" id="resultContainer" style="display: none;">
+            <div class="success-check">✓</div>
+            <h3>Conversion Complete!</h3>
+            <p>Your statement has been successfully converted to CSV format.</p>
+            <button class="upload-btn" id="downloadBtn">Download CSV File</button>
+            <button class="secondary-btn" id="convertAnotherBtn">Convert Another Statement</button>
+        </div>
+    </main>
     
     <!-- Features Section -->
     <section class="features-section">
@@ -301,6 +178,66 @@
                 <h3>Lightning Fast</h3>
                 <p>Convert statements in seconds, not minutes. No waiting, no hassle</p>
             </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Excel & QuickBooks Ready</h3>
+                <p>Output formats compatible with Excel, QuickBooks, and other accounting software</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>99.9% Accuracy</h3>
+                <p>Advanced OCR technology ensures every transaction is captured correctly</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Bulk Processing</h3>
+                <p>Convert multiple statements at once. Perfect for year-end accounting</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Supported Banks Section -->
+    <section class="content-section" style="background: white; padding: 4rem 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Supported Banks</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+                <div>
+                    <h3 style="color: #667eea;">Major Banks</h3>
+                    <ul style="list-style: none; padding: 0; line-height: 2;">
+                        <li><a href="pages/bank-of-america-statement-converter.html" style="color: #666; text-decoration: none;">Bank of America</a></li>
+                        <li><a href="pages/chase-bank-statement-converter.html" style="color: #666; text-decoration: none;">Chase Bank</a></li>
+                        <li><a href="pages/wells-fargo-statement-converter.html" style="color: #666; text-decoration: none;">Wells Fargo</a></li>
+                        <li><a href="pages/citi-bank-statement-converter.html" style="color: #666; text-decoration: none;">Citibank</a></li>
+                        <li><a href="pages/us-bank-statement-converter.html" style="color: #666; text-decoration: none;">US Bank</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 style="color: #667eea;">Regional Banks</h3>
+                    <ul style="list-style: none; padding: 0; line-height: 2;">
+                        <li><a href="pages/pnc-bank-statement-converter.html" style="color: #666; text-decoration: none;">PNC Bank</a></li>
+                        <li><a href="pages/td-bank-statement-converter.html" style="color: #666; text-decoration: none;">TD Bank</a></li>
+                        <li><a href="pages/regions-bank-statement-converter.html" style="color: #666; text-decoration: none;">Regions Bank</a></li>
+                        <li><a href="pages/suntrust-bank-statement-converter.html" style="color: #666; text-decoration: none;">SunTrust</a></li>
+                        <li><a href="pages/fifth-third-bank-statement-converter.html" style="color: #666; text-decoration: none;">Fifth Third</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 style="color: #667eea;">Credit Unions</h3>
+                    <ul style="list-style: none; padding: 0; line-height: 2;">
+                        <li><a href="pages/navy-federal-statement-converter.html" style="color: #666; text-decoration: none;">Navy Federal</a></li>
+                        <li><a href="pages/ally-bank-statement-converter.html" style="color: #666; text-decoration: none;">Ally Bank</a></li>
+                        <li><a href="pages/capital-one-statement-converter.html" style="color: #666; text-decoration: none;">Capital One</a></li>
+                        <li><a href="pages/usaa-bank-statement-converter.html" style="color: #666; text-decoration: none;">USAA</a></li>
+                        <li><a href="all-pages.html" style="color: #667eea; text-decoration: none; font-weight: 600;">View All Banks →</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
     
@@ -316,18 +253,8 @@
         </div>
     </footer>
     
-    <!-- JavaScript -->
+    <!-- Mobile menu JavaScript -->
     <script>
-        // Elements
-        const uploadArea = document.getElementById('uploadArea');
-        const fileInput = document.getElementById('fileInput');
-        const initialState = document.getElementById('initialState');
-        const processingState = document.getElementById('processingState');
-        const successState = document.getElementById('successState');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const errorMessage = document.getElementById('errorMessage');
-        
-        // Mobile menu
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
         
@@ -336,94 +263,14 @@
             menuToggle.classList.toggle('active');
         });
         
-        // File dialog
-        function openFileDialog() {
-            fileInput.click();
-        }
-        
-        // Handle file selection
-        function handleFileSelect(event) {
-            const file = event.target.files[0];
-            if (file) {
-                if (file.type === 'application/pdf') {
-                    processFile(file);
-                } else {
-                    showError('Please select a PDF file');
-                }
-            }
-        }
-        
-        // Drag and drop
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.classList.add('dragging');
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
         });
-        
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.classList.remove('dragging');
-        });
-        
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.classList.remove('dragging');
-            
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                const file = files[0];
-                if (file.type === 'application/pdf') {
-                    processFile(file);
-                } else {
-                    showError('Please drop a PDF file');
-                }
-            }
-        });
-        
-        // Process file
-        function processFile(file) {
-            // Hide initial state
-            initialState.style.display = 'none';
-            processingState.style.display = 'block';
-            errorMessage.style.display = 'none';
-            
-            // Simulate processing
-            setTimeout(() => {
-                // Create sample CSV
-                const csvContent = `Date,Description,Amount,Balance
-2024-01-01,Beginning Balance,,5000.00
-2024-01-02,Amazon Purchase,-45.99,4954.01
-2024-01-03,Salary Deposit,3500.00,8454.01
-2024-01-05,Grocery Store,-125.50,8328.51
-2024-01-07,Utility Bill,-89.00,8239.51
-2024-01-10,ATM Withdrawal,-200.00,8039.51
-2024-01-12,Restaurant,-65.00,7974.51
-2024-01-15,Online Transfer,500.00,8474.51
-2024-01-18,Gas Station,-45.00,8429.51
-2024-01-20,Subscription,-12.99,8416.52`;
-                
-                const blob = new Blob([csvContent], { type: 'text/csv' });
-                const url = URL.createObjectURL(blob);
-                
-                // Show success
-                processingState.style.display = 'none';
-                successState.style.display = 'block';
-                downloadBtn.href = url;
-            }, 2000);
-        }
-        
-        // Reset upload
-        function resetUpload() {
-            fileInput.value = '';
-            initialState.style.display = 'block';
-            processingState.style.display = 'none';
-            successState.style.display = 'none';
-            errorMessage.style.display = 'none';
-        }
-        
-        // Show error
-        function showError(message) {
-            errorMessage.textContent = message;
-            errorMessage.style.display = 'block';
-        }
     </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
