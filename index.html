@@ -421,7 +421,7 @@
             <!-- Initial State -->
             <div id="initialState">
                 <div class="upload-icon">📄</div>
-                <button class="upload-btn" id="uploadBtn">
+                <button class="upload-btn" id="uploadBtn" onclick="document.getElementById('fileInput').click()">
                     Choose PDF File
                 </button>
                 <p class="drop-text">or drag and drop your bank statement here</p>
@@ -469,15 +469,28 @@
     
     <!-- Inline JavaScript for Fast Loading -->
     <script>
-        const uploadArea = document.getElementById('uploadArea');
-        const uploadBtn = document.getElementById('uploadBtn');
-        const fileInput = document.getElementById('fileInput');
-        const initialState = document.getElementById('initialState');
-        const processingState = document.getElementById('processingState');
-        const successState = document.getElementById('successState');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const convertAnother = document.getElementById('convertAnother');
-        const errorMessage = document.getElementById('errorMessage');
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing upload functionality');
+            
+            const uploadArea = document.getElementById('uploadArea');
+            const uploadBtn = document.getElementById('uploadBtn');
+            const fileInput = document.getElementById('fileInput');
+            const initialState = document.getElementById('initialState');
+            const processingState = document.getElementById('processingState');
+            const successState = document.getElementById('successState');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const convertAnother = document.getElementById('convertAnother');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Check if elements exist
+            if (!uploadBtn) {
+                console.error('Upload button not found!');
+                return;
+            }
+            if (!fileInput) {
+                console.error('File input not found!');
+                return;
+            }
         
         // Mobile menu toggle
         const menuToggle = document.querySelector('.menu-toggle');
@@ -652,6 +665,7 @@
                 menuToggle.classList.remove('active');
             });
         });
+        }); // End of DOMContentLoaded
     </script>
 </body>
 </html>
