@@ -1,0 +1,368 @@
+[
+  {
+    "path": "/all-pages.html",
+    "status": "ok",
+    "title": "All Pages - BankCSVConverter",
+    "h1": "BankCSVConverter - All Pages Directory",
+    "issues": []
+  },
+  {
+    "path": "/blog/analyze-bank-statements-excel-guide.html",
+    "status": "ok",
+    "title": "Complete Guide: How to Analyze Bank Statements in Excel | Bank Statement Converter",
+    "h1": "Complete Guide: How to Analyze Bank Statements in Excel",
+    "issues": []
+  },
+  {
+    "path": "/blog/bank-statements-tax-preparation-guide.html",
+    "status": "ok",
+    "title": "Complete Guide to Using Bank Statements for Tax Preparation | Tax Organization Tips",
+    "h1": "The Complete Guide to Using Bank Statements for Tax Preparation",
+    "issues": []
+  },
+  {
+    "path": "/blog/financial-data-privacy-guide.html",
+    "status": "ok",
+    "title": "Financial Data Privacy: Complete Guide to Secure Bank Statement Conversion",
+    "h1": "Financial Data Privacy: Complete Guide to Secure Bank Statement Conversion",
+    "issues": []
+  },
+  {
+    "path": "/blog/how-to-import-bank-statements-to-quickbooks.html",
+    "status": "ok",
+    "title": "How to Import Bank Statements to QuickBooks - Complete Guide | BankCSVConverter",
+    "h1": "How to Import Bank Statements to QuickBooks: Complete Guide (2024)",
+    "issues": []
+  },
+  {
+    "path": "/blog/import-bank-statements-excel-complete-guide.html",
+    "status": "ok",
+    "title": "How to Import Bank Statements to Excel: Complete Guide (2024) | BankCSVConverter.com",
+    "h1": "How to Import Bank Statements to Excel: Complete Guide (2024)",
+    "issues": []
+  },
+  {
+    "path": "/index-complex-backup.html",
+    "status": "warning",
+    "title": "BankCSVConverter - Convert PDF Bank Statements to CSV/Excel | Free Online Tool",
+    "h1": "Convert Bank Statements to CSV/Excel Online",
+    "issues": [
+      "Potential broken image: assets/logo.svg"
+    ]
+  },
+  {
+    "path": "/index-optimized.html",
+    "status": "warning",
+    "title": "Bank Statement Converter - PDF to CSV in Seconds | BankCSVConverter",
+    "h1": "Convert Bank Statements to CSV",
+    "issues": [
+      "Missing modern-style.css"
+    ]
+  },
+  {
+    "path": "/index-seo.html",
+    "status": "warning",
+    "title": "BankCSVConverter - Convert PDF Bank Statements to CSV/Excel | Free Online Tool",
+    "h1": "Convert Bank Statements to CSV/Excel Online",
+    "issues": [
+      "Missing modern-style.css",
+      "Potential broken image: /images/logo.svg"
+    ]
+  },
+  {
+    "path": "/index-simple.html",
+    "status": "warning",
+    "title": "Bank Statement Converter - PDF to CSV in Seconds | BankCSVConverter",
+    "h1": "Convert Bank Statements to CSV",
+    "issues": [
+      "Missing navigation",
+      "Missing modern-style.css"
+    ]
+  },
+  {
+    "path": "/index.html",
+    "status": "warning",
+    "title": "Bank Statement Converter - PDF to CSV in Seconds | BankCSVConverter",
+    "h1": "Convert Bank Statements to CSV",
+    "issues": [
+      "Missing modern-style.css"
+    ]
+  },
+  {
+    "path": "/mobile-test.html",
+    "status": "warning",
+    "title": "Mobile Responsiveness Test - BankCSVConverter",
+    "h1": "Mobile Responsiveness Test Report",
+    "issues": [
+      "Missing navigation",
+      "Missing modern-style.css"
+    ]
+  },
+  {
+    "path": "/pages/ally-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Ally Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "Ally Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/bank-of-america-statement-converter.html",
+    "status": "ok",
+    "title": "Bank of America Statement Converter - PDF to CSV | BankCSVConverter",
+    "h1": "Bank of America Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/bank-statement-converter-comparison.html",
+    "status": "warning",
+    "title": "Bank Statement Converter Comparison 2024: BankCSVConverter vs Alternatives",
+    "h1": "Bank Statement Converter Comparison 2024: BankCSVConverter vs Alternatives",
+    "issues": [
+      "Missing upload button"
+    ]
+  },
+  {
+    "path": "/pages/boston-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Boston Bank Statement Converter - Convert Massachusetts Bank PDFs to CSV | BankCSVConverter",
+    "h1": "Boston Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/capital-one-statement-converter.html",
+    "status": "ok",
+    "title": "Capital One Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "Capital One Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/chase-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Chase Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "Chase Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/chicago-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Chicago Bank Statement Converter - PDF to CSV, Excel | Free Online Tool",
+    "h1": "Chicago Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/citi-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Citi Bank Statement Converter - Convert Citibank PDF to CSV, Excel | Free Online Tool",
+    "h1": "Citi Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/citizens-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Citizens Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "Citizens Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/comerica-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Comerica Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "Comerica Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/dallas-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Dallas Bank Statement Converter - Convert Texas Bank PDFs to CSV | BankCSVConverter",
+    "h1": "Dallas Bank Statement Converter - Convert Texas Bank PDFs to CSV",
+    "issues": []
+  },
+  {
+    "path": "/pages/fifth-third-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Fifth Third Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "Fifth Third Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/houston-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Houston Bank Statement Converter - PDF to CSV/Excel | Energy Corridor & Downtown",
+    "h1": "Houston Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/huntington-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Huntington Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "Huntington Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/keybank-statement-converter.html",
+    "status": "ok",
+    "title": "KeyBank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "KeyBank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/los-angeles-bank-statement-converter.html",
+    "status": "warning",
+    "title": "Los Angeles Bank Statement Converter - LA PDF to CSV Converter | Free Online Tool",
+    "h1": "Los Angeles Bank Statement Converter",
+    "issues": [
+      "Missing modern-style.css"
+    ]
+  },
+  {
+    "path": "/pages/mt-bank-statement-converter.html",
+    "status": "ok",
+    "title": "M&T Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "M&T Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/navy-federal-statement-converter.html",
+    "status": "ok",
+    "title": "Navy Federal Credit Union Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "Navy Federal Credit Union Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/new-york-bank-statement-converter.html",
+    "status": "ok",
+    "title": "New York Bank Statement Converter - NYC PDF to CSV | BankCSVConverter",
+    "h1": "New York Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/philadelphia-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Philadelphia Bank Statement Converter - Convert PA Bank PDFs to CSV | BankCSVConverter",
+    "h1": "Philadelphia Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/phoenix-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Phoenix Bank Statement Converter - Convert Arizona Bank PDFs to CSV | BankCSVConverter",
+    "h1": "Phoenix Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/pnc-bank-statement-converter.html",
+    "status": "warning",
+    "title": "PNC Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "PNC Bank Statement Converter",
+    "issues": [
+      "Missing modern-style.css"
+    ]
+  },
+  {
+    "path": "/pages/regions-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Regions Bank Statement Converter - PDF to CSV | BankCSVConverter",
+    "h1": "Regions Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/san-antonio-bank-statement-converter.html",
+    "status": "ok",
+    "title": "San Antonio Bank Statement Converter - Convert Texas Bank PDFs to CSV | BankCSVConverter",
+    "h1": "San Antonio Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/san-diego-bank-statement-converter.html",
+    "status": "ok",
+    "title": "San Diego Bank Statement Converter - Convert California Bank PDFs to CSV | BankCSVConverter",
+    "h1": "San Diego Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/seattle-bank-statement-converter.html",
+    "status": "warning",
+    "title": "Seattle Bank Statement Converter - Convert Washington Bank PDFs to CSV | BankCSVConverter",
+    "h1": "No h1",
+    "issues": [
+      "Missing h1 tag"
+    ]
+  },
+  {
+    "path": "/pages/security.html",
+    "status": "warning",
+    "title": "Security & Privacy - BankCSVConverter | Bank-Level Encryption",
+    "h1": "Your Security is Our Top Priority",
+    "issues": [
+      "Missing modern-style.css"
+    ]
+  },
+  {
+    "path": "/pages/suntrust-bank-statement-converter.html",
+    "status": "ok",
+    "title": "SunTrust Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "SunTrust Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/td-bank-statement-converter.html",
+    "status": "ok",
+    "title": "TD Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "TD Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/truist-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Truist Bank Statement Converter - PDF to CSV | Convert BB&T & SunTrust Statements",
+    "h1": "Truist Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/us-bank-statement-converter.html",
+    "status": "ok",
+    "title": "US Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "US Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/usaa-bank-statement-converter.html",
+    "status": "ok",
+    "title": "USAA Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "USAA Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/wells-fargo-statement-converter.html",
+    "status": "ok",
+    "title": "Wells Fargo Statement Converter - PDF to CSV/Excel | Bank Statement Converter",
+    "h1": "Wells Fargo Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/pages/zions-bank-statement-converter.html",
+    "status": "ok",
+    "title": "Zions Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter",
+    "h1": "Zions Bank Statement Converter",
+    "issues": []
+  },
+  {
+    "path": "/test-design.html",
+    "status": "warning",
+    "title": "Bank Statement Converter - Design Test",
+    "h1": "Bank Statement Converter - Design Test",
+    "issues": [
+      "Missing navigation"
+    ]
+  },
+  {
+    "path": "/website-analysis.html",
+    "status": "warning",
+    "title": "Bank Statement Converter - Website Analysis & Comparison",
+    "h1": "\u00f0\u009f\u0094\u008d Website Analysis & Comparison Report",
+    "issues": [
+      "Missing navigation",
+      "Missing modern-style.css"
+    ]
+  }
+]

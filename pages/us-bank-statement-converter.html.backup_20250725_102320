@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert US Bank PDF statements to CSV/Excel format. Free online converter for US Bank Safe Debit, Smartly Checking, Gold Checking, and credit card statements. Secure conversion for Midwest's trusted bank.">
+    <meta name="keywords" content="us bank statement converter, us bank pdf to csv, convert us bank statement, us bank statement to excel, us bank pdf converter, minneapolis bank converter, altitude card statement converter, cash+ statement converter">
+    
+    <title>US Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter</title>
+    
+    <link rel="canonical" href="https://BankCSVConverter.com/us-bank-statement-converter">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "US Bank Statement Converter",
+        "description": "Convert US Bank PDF statements to CSV format for Excel, QuickBooks, and accounting software",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "2156",
+            "bestRating": "5"
+        }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://BankCSVConverter.com"
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Bank Converters",
+            "item": "https://BankCSVConverter.com/banks"
+        },{
+            "@type": "ListItem",
+            "position": 3,
+            "name": "US Bank",
+            "item": "https://BankCSVConverter.com/us-bank-statement-converter"
+        }]
+    }
+    </script>
+    
+    <!-- Organization Schema for US Bank -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "U.S. Bank",
+        "url": "https://www.usbank.com",
+        "logo": "https://www.usbank.com/logo.png",
+        "foundingDate": "1863",
+        "headquarters": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Minneapolis",
+                "addressRegion": "MN",
+                "postalCode": "55402",
+                "addressCountry": "US"
+            }
+        }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/unified-styles.css">
+</head>
+<body>
+        <!-- Header Navigation -->
+    <header>
+        <nav>
+            <a href="../" class="nav-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+                BankCSVConverter
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="../all-pages.html">All Banks</a></li>
+                <li><a href="../pages/bank-statement-converter-comparison.html">Why Us</a></li>
+                <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
+            </ul>
+            
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#banks">Banks</a></li>
+                    <li>US Bank</li>
+                </ol>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero bank-hero">
+            <div class="container">
+                <div class="bank-header">
+                    <img src="../assets/banks/generic-bank-logo.svg" alt="US Bank Logo" width="120" height="60">
+                    <h1>US Bank Statement Converter</h1>
+                    <p>Convert your US Bank PDF statements to CSV/Excel format instantly. Compatible with all US Bank accounts including Safe Debit, Smartly Checking, Gold Checking, and premium credit cards like Altitude and Cash+.</p>
+                </div>
+                
+                <div class="upload-area" id="uploadBox">
+                    <h2>Upload Your US Bank Statement</h2>
+                    <div class="file-upload-container">
+                        <input type="file" id="fileInput" accept=".pdf" multiple />
+                        <label for="statementFile">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20 16V20C20 20.5523 19.5523 21 19 21H5C4.44772 21 4 20.5523 4 20V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Choose US Bank PDF Statements</span>
+                            <small>or drag and drop files here</small>
+                        </label>
+                    </div>
+                    <button type="button" class="convert-btn" id="uploadBtn">Convert to CSV</button>
+                </div>
+            
+                
+                <!-- Progress Container -->
+                <div class="upload-area" id="progressContainer" style="display: none;">
+                    <div class="loading"></div>
+                    <h3 id="progressText">Processing your statement...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <!-- Result Container -->
+                <div class="upload-area" id="resultContainer" style="display: none;">
+                    <div class="success-check">✓</div>
+                    <h3>Conversion Complete!</h3>
+                    <p>Your statement has been successfully converted to CSV format.</p>
+                    <button class="upload-btn" id="downloadBtn">Download CSV File</button>
+                    <button class="secondary-btn" id="convertAnotherBtn">Convert Another Statement</button>
+                </div></div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="features-section">
+            <div class="container">
+                <h2>Why Choose Our US Bank Statement Converter?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 12L3.5 10.5L7 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 10L20.5 13.5L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3>100% Accurate Conversion</h3>
+                        <p>Precisely extracts all transactions from US Bank statements</p>
+                    </div>
+                    <div class="feature-card">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7V12C2 16.5 4.5 20.5 12 22C19.5 20.5 22 16.5 22 12V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                        <h3>Bank-Level Security</h3>
+                        <p>Your Minneapolis-based financial data stays completely private</p>
+                    </div>
+                    <div class="feature-card">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                        <h3>Lightning Fast</h3>
+                        <p>Convert statements in seconds, not minutes</p>
+                    </div>
+                    <div class="feature-card">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 7H20C20.5523 7 21 7.44772 21 8V16C21 16.5523 20.5523 17 20 17H4C3.44772 17 3 16.5523 3 16V8C3 7.44772 3.44772 7 4 7Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 12H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <h3>All US Bank Accounts</h3>
+                        <p>Works with every US Bank account and credit card type</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supported Accounts Section -->
+        <section class="accounts-section">
+            <div class="container">
+                <h2>Supported US Bank Accounts</h2>
+                <p class="section-subtitle">Our converter works seamlessly with all US Bank personal and business accounts, serving customers across the Midwest and nationwide.</p>
+                
+                <div class="accounts-grid">
+                    <div class="account-category">
+                        <h3>Personal Checking Accounts</h3>
+                        <ul class="account-list">
+                            <li><strong>Safe Debit Account</strong> - Perfect for budgeting with no overdraft fees</li>
+                            <li><strong>Smartly® Checking</strong> - Smart features for digital banking</li>
+                            <li><strong>Gold Checking Package</strong> - Premium benefits for valued customers</li>
+                            <li><strong>Easy Checking</strong> - Simple, straightforward banking</li>
+                            <li><strong>Student Checking</strong> - Designed for college students</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="account-category">
+                        <h3>Business Accounts</h3>
+                        <ul class="account-list">
+                            <li><strong>Silver Business Checking</strong> - For small businesses</li>
+                            <li><strong>Gold Business Checking</strong> - Enhanced features for growing businesses</li>
+                            <li><strong>Platinum Business Checking</strong> - Premium services for established businesses</li>
+                            <li><strong>Business Essentials Checking</strong> - Cost-effective business banking</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="account-category">
+                        <h3>Credit Cards</h3>
+                        <ul class="account-list">
+                            <li><strong>Altitude® Cards</strong> - Premium travel rewards</li>
+                            <li><strong>Cash+® Visa Signature</strong> - 5% cash back categories</li>
+                            <li><strong>FlexPerks® Cards</strong> - Flexible travel redemptions</li>
+                            <li><strong>Visa Platinum</strong> - Low intro APR</li>
+                            <li><strong>Business Credit Cards</strong> - All business card statements</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="account-category">
+                        <h3>Savings & Investment</h3>
+                        <ul class="account-list">
+                            <li><strong>Standard Savings</strong> - Traditional savings accounts</li>
+                            <li><strong>Platinum Select Money Market</strong> - Higher yield savings</li>
+                            <li><strong>CD Accounts</strong> - Certificate of deposit statements</li>
+                            <li><strong>IRA Statements</strong> - Retirement account records</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <div class="container">
+                <h2>How to Convert US Bank Statements to CSV</h2>
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Upload PDF Statement</h3>
+                        <p>Select your US Bank PDF statement from your computer. Our converter accepts statements from all US Bank accounts, whether you're in Minneapolis, St. Paul, or anywhere in the Midwest.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Automatic Processing</h3>
+                        <p>Our AI-powered system instantly recognizes US Bank's statement format and extracts all transaction data with 100% accuracy.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Download CSV/Excel</h3>
+                        <p>Get your converted file ready for Excel, QuickBooks, or any accounting software. All dates, amounts, and descriptions perfectly formatted.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- US Bank Specific Content -->
+        <section class="bank-info-section">
+            <div class="container">
+                <h2>About US Bank Statement Conversion</h2>
+                <div class="content-columns">
+                    <div class="content-column">
+                        <h3>US Bank: The Midwest's Financial Leader</h3>
+                        <p>Founded in 1863 and headquartered in Minneapolis, Minnesota, US Bank has grown to become the fifth-largest commercial bank in the United States. With a strong presence throughout the Midwest and expanding nationwide, US Bank serves millions of customers with innovative banking solutions.</p>
+                        
+                        <p>Our US Bank statement converter is specifically designed to handle the unique formatting of US Bank's PDF statements. Whether you're converting statements from a Safe Debit Account in Minneapolis, a Gold Checking account in Chicago, or an Altitude credit card statement from anywhere in the country, our tool ensures perfect accuracy.</p>
+                        
+                        <h3>Why Convert US Bank Statements?</h3>
+                        <p>Converting your US Bank PDF statements to CSV or Excel format opens up numerous possibilities for better financial management:</p>
+                        <ul>
+                            <li><strong>Tax Preparation:</strong> Easily categorize expenses and income for tax filing</li>
+                            <li><strong>Expense Tracking:</strong> Import data into budgeting apps and spreadsheets</li>
+                            <li><strong>Business Accounting:</strong> Seamlessly integrate with QuickBooks, Xero, or other accounting software</li>
+                            <li><strong>Financial Analysis:</strong> Create custom reports and visualizations in Excel</li>
+                            <li><strong>Audit Trails:</strong> Maintain organized digital records for compliance</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-column">
+                        <h3>US Bank's Digital Banking Excellence</h3>
+                        <p>US Bank has been at the forefront of digital banking innovation, making it easier than ever for customers to access their statements online. Our converter complements this digital-first approach by allowing you to transform these PDF statements into actionable data formats.</p>
+                        
+                        <h3>Regional Coverage Across the Midwest</h3>
+                        <p>With strong roots in Minneapolis and extensive branch networks across Minnesota, Wisconsin, Illinois, Ohio, and beyond, US Bank serves as the primary financial institution for millions of Midwest residents and businesses. Our converter handles statements from all regions, ensuring consistent results regardless of where your account was opened.</p>
+                        
+                        <h3>Premium Credit Card Statements</h3>
+                        <p>US Bank's premium credit cards, including the Altitude Reserve, Altitude Go, and Cash+ cards, generate detailed statements that our converter handles expertly. We preserve all transaction details, rewards information, and fee structures in the converted CSV format.</p>
+                        
+                        <h3>Business Banking Support</h3>
+                        <p>For US Bank business customers, our converter is an essential tool for financial management. Convert statements from Business Checking accounts, Business Credit Cards, and Merchant Services reports with equal precision.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>Does this work with all US Bank account types?</h3>
+                        <p>Yes, our converter supports all US Bank personal and business accounts, including Safe Debit, Smartly Checking, Gold Checking, all savings accounts, and every US Bank credit card including Altitude, Cash+, and FlexPerks cards.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Is my Minneapolis-based banking data secure?</h3>
+                        <p>Absolutely. All processing happens locally in your browser. Your US Bank statements never leave your computer, ensuring complete privacy and security for your financial data.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Can I convert multiple US Bank statements at once?</h3>
+                        <p>Yes, you can upload and convert multiple US Bank PDF statements simultaneously. This is perfect for converting an entire year's worth of statements for tax purposes.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>What file formats does the converter support?</h3>
+                        <p>We convert US Bank PDF statements to CSV (compatible with Excel, Google Sheets) and XLSX (native Excel format). Both formats preserve all transaction details.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Does it work with US Bank business statements?</h3>
+                        <p>Yes, our converter handles all US Bank business account statements, including Silver, Gold, and Platinum Business Checking accounts, as well as business credit cards.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>How accurate is the conversion?</h3>
+                        <p>Our converter achieves 100% accuracy with US Bank statements, correctly extracting dates, amounts, descriptions, and running balances without any data loss.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Start Converting Your US Bank Statements Now</h2>
+                <p>Join thousands of US Bank customers who trust our converter for their financial data needs. From Minneapolis to Milwaukee, Chicago to Cincinnati, we're helping Midwest businesses and individuals take control of their financial data.</p>
+                <a href="#upload" class="cta-button">Convert US Bank Statement to CSV</a>
+                <p class="cta-subtext">Free • Secure • No Email Required</p>
+            </div>
+        </section>
+
+        <!-- Location Content -->
+        <section class="location-section">
+            <div class="container">
+                <h2>Serving US Bank Customers Nationwide</h2>
+                <p>While US Bank's headquarters remain proudly rooted in Minneapolis, Minnesota, our converter serves US Bank customers across all their markets:</p>
+                
+                <div class="location-grid">
+                    <div class="location-group">
+                        <h3>Midwest Strongholds</h3>
+                        <ul>
+                            <li>Minneapolis-St. Paul, Minnesota</li>
+                            <li>Milwaukee, Wisconsin</li>
+                            <li>Chicago, Illinois</li>
+                            <li>Cincinnati, Ohio</li>
+                            <li>St. Louis, Missouri</li>
+                        </ul>
+                    </div>
+                    <div class="location-group">
+                        <h3>Western Markets</h3>
+                        <ul>
+                            <li>Denver, Colorado</li>
+                            <li>Portland, Oregon</li>
+                            <li>Seattle, Washington</li>
+                            <li>Salt Lake City, Utah</li>
+                            <li>Phoenix, Arizona</li>
+                        </ul>
+                    </div>
+                    <div class="location-group">
+                        <h3>Growing Presence</h3>
+                        <ul>
+                            <li>California Markets</li>
+                            <li>Nevada Branches</li>
+                            <li>Idaho Locations</li>
+                            <li>New Mexico Offices</li>
+                            <li>Digital Banking Nationwide</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <p>Whether you opened your account at the flagship Minneapolis branch or through US Bank's digital platform, our converter handles all statement formats with precision.</p>
+            </div>
+        </section>
+
+        <!-- Technical Details -->
+        <section class="technical-section">
+            <div class="container">
+                <h2>Technical Specifications</h2>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <h3>Supported Statement Types</h3>
+                        <ul>
+                            <li>Monthly statements (all account types)</li>
+                            <li>Quarterly statements</li>
+                            <li>Year-end summaries</li>
+                            <li>E-statements (PDF format)</li>
+                            <li>Combined statements</li>
+                        </ul>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Data Fields Extracted</h3>
+                        <ul>
+                            <li>Transaction date</li>
+                            <li>Description/Merchant name</li>
+                            <li>Debit amount</li>
+                            <li>Credit amount</li>
+                            <li>Running balance</li>
+                            <li>Check numbers (where applicable)</li>
+                        </ul>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Output Formats</h3>
+                        <ul>
+                            <li>CSV (Comma Separated Values)</li>
+                            <li>Excel XLSX</li>
+                            <li>Tab-delimited text</li>
+                            <li>QBO (QuickBooks Online)</li>
+                            <li>OFX (Open Financial Exchange)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Bank Statement Converters</h4>
+                    <ul>
+                        <li><a href="./chase-bank-statement-converter.html">Chase</a></li>
+                        <li><a href="./bank-of-america-statement-converter.html">Bank of America</a></li>
+                        <li><a href="./wells-fargo-statement-converter.html">Wells Fargo</a></li>
+                        <li><a href="./citi-bank-statement-converter.html">Citibank</a></li>
+                        <li><a href="./us-bank-statement-converter.html">US Bank</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="../how-it-works.html">How It Works</a></li>
+                        <li><a href="./security.html">Security & Privacy</a></li>
+                        <li><a href="../faq.html">FAQ</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BankCSVConverter. Not affiliated with U.S. Bank National Association.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/converter.js"></script>
+    <!-- Mobile menu JavaScript -->
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

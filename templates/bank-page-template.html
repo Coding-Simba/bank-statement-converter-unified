@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert [BANK_NAME] PDF statements to CSV/Excel format. Free online converter for [BANK_NAME] checking, savings, and credit card statements. Instant and secure.">
+    <meta name="keywords" content="[BANK_NAME_LOWER] bank statement converter, [BANK_NAME_LOWER] pdf to csv, [BANK_NAME_LOWER] statement to excel">
+    
+    <title>[BANK_NAME] Statement Converter - PDF to CSV/Excel | BankCSVConverter</title>
+    
+    <link rel="canonical" href="https://BankCSVConverter.com/[BANK_SLUG]-statement-converter">
+    
+    <!-- Unified Styles - Single Source of Truth -->
+    <link rel="stylesheet" href="../css/unified-styles.css">
+</head>
+<body>
+    <!-- Standardized Header -->
+    <header>
+        <nav>
+            <a href="../index.html" class="nav-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+                BankCSVConverter
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="../all-pages.html">All Banks</a></li>
+                <li><a href="./bank-statement-converter-comparison.html">Why Us</a></li>
+                <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
+            </ul>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb-nav">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../all-pages.html">Banks</a></li>
+                    <li>[BANK_NAME]</li>
+                </ol>
+            </div>
+        </nav>
+
+        <!-- Bank Hero Section -->
+        <section class="hero bank-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <img src="../assets/banks/generic-bank-logo.svg" alt="[BANK_NAME] Logo" class="bank-logo">
+                    <h1>[BANK_NAME] Statement Converter</h1>
+                    <p class="hero-subtitle">Convert your [BANK_NAME] PDF statements to CSV/Excel format in seconds. Works with all [BANK_NAME] accounts including checking, savings, and credit cards.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upload Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📄</div>
+                    <h2>Upload Your [BANK_NAME] Statement</h2>
+                    <button class="upload-btn" id="uploadBtn">
+                        Choose PDF File
+                    </button>
+                    <p class="upload-text">or drag and drop your [BANK_NAME] PDF here</p>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                </div>
+
+                <!-- Progress State (Hidden by default) -->
+                <div class="upload-area hidden" id="progressArea">
+                    <div class="loading"></div>
+                    <h3>Converting your statement...</h3>
+                    <p>This usually takes 5-10 seconds</p>
+                </div>
+
+                <!-- Success State (Hidden by default) -->
+                <div class="upload-area hidden" id="successArea">
+                    <div class="upload-icon">✓</div>
+                    <h3>Conversion Complete!</h3>
+                    <a href="#" class="upload-btn" id="downloadBtn">Download CSV</a>
+                    <button class="upload-btn" style="background: white; color: var(--primary); border: 2px solid var(--primary);" id="convertAnother">Convert Another</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How to Convert [BANK_NAME] Statements</h2>
+                    <p>Simple 3-step process to convert your bank statements</p>
+                </div>
+                
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Download Statement</h3>
+                        <p>Log into [BANK_NAME] online banking and download your statement as PDF</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Upload PDF</h3>
+                        <p>Upload your [BANK_NAME] PDF here. Our AI recognizes all formats automatically</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Download CSV</h3>
+                        <p>Get your organized CSV with dates, descriptions, and amounts preserved</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Choose Our [BANK_NAME] Converter</h2>
+                    <p>Powerful features designed for [BANK_NAME] customers</p>
+                </div>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">🏦</span>
+                        <h3>[BANK_NAME]-Specific</h3>
+                        <p>Optimized for [BANK_NAME]'s statement format with 99.9% accuracy</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">⚡</span>
+                        <h3>Instant Conversion</h3>
+                        <p>Convert statements in seconds, not hours of manual entry</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🔒</span>
+                        <h3>Bank-Level Security</h3>
+                        <p>Your data is encrypted and automatically deleted after conversion</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📊</span>
+                        <h3>Excel Compatible</h3>
+                        <p>Works perfectly with Excel, QuickBooks, and accounting software</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Common questions about converting [BANK_NAME] statements</p>
+                </div>
+                
+                <div class="faq-section">
+                    <div class="faq-item">
+                        <h3 class="faq-question">Does it work with [BANK_NAME] business accounts?</h3>
+                        <p class="faq-answer">Yes, our converter supports all [BANK_NAME] account types including personal checking, savings, business accounts, and credit cards.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3 class="faq-question">Is my banking data secure?</h3>
+                        <p class="faq-answer">Absolutely. We use bank-level encryption, never store your data, and automatically delete all files after conversion.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3 class="faq-question">What if my statement is password protected?</h3>
+                        <p class="faq-answer">You'll need to remove the password protection first. Open the PDF, enter your password, then save without protection.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3 class="faq-question">Can I convert multiple statements at once?</h3>
+                        <p class="faq-answer">Currently, you can convert one statement at a time. For batch processing, contact us for API access.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Convert Your [BANK_NAME] Statement?</h2>
+                <p>Join thousands of [BANK_NAME] customers who save hours on manual data entry</p>
+                <a href="#uploadArea" class="cta-button">Convert PDF Now</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Standardized Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Bank Converters</h4>
+                    <ul>
+                        <li><a href="./chase-bank-statement-converter.html">Chase Bank</a></li>
+                        <li><a href="./bank-of-america-statement-converter.html">Bank of America</a></li>
+                        <li><a href="./wells-fargo-statement-converter.html">Wells Fargo</a></li>
+                        <li><a href="./citi-bank-statement-converter.html">Citi Bank</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="../blog/how-to-import-bank-statements-to-quickbooks.html">QuickBooks Guide</a></li>
+                        <li><a href="../blog/analyze-bank-statements-excel-guide.html">Excel Guide</a></li>
+                        <li><a href="../blog/bank-statements-tax-preparation-guide.html">Tax Prep Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="./bank-statement-converter-comparison.html">Why Choose Us</a></li>
+                        <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
+                        <li><a href="../index.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BankCSVConverter. All rights reserved. Not affiliated with [BANK_NAME].</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Unified JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Upload Functionality
+        const uploadArea = document.getElementById('uploadArea');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const fileInput = document.getElementById('fileInput');
+        const progressArea = document.getElementById('progressArea');
+        const successArea = document.getElementById('successArea');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const convertAnother = document.getElementById('convertAnother');
+        
+        uploadBtn.addEventListener('click', () => fileInput.click());
+        
+        fileInput.addEventListener('change', handleFile);
+        
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.transform = 'scale(1.02)';
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.transform = 'scale(1)';
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.transform = 'scale(1)';
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].type === 'application/pdf') {
+                fileInput.files = files;
+                handleFile();
+            }
+        });
+        
+        function handleFile() {
+            const file = fileInput.files[0];
+            if (!file || file.type !== 'application/pdf') {
+                alert('Please select a PDF file');
+                return;
+            }
+            
+            // Show progress
+            uploadArea.classList.add('hidden');
+            progressArea.classList.remove('hidden');
+            
+            // Simulate conversion (replace with actual API call)
+            setTimeout(() => {
+                progressArea.classList.add('hidden');
+                successArea.classList.remove('hidden');
+                downloadBtn.href = '#'; // Set actual download URL
+            }, 3000);
+        }
+        
+        convertAnother.addEventListener('click', () => {
+            fileInput.value = '';
+            successArea.classList.add('hidden');
+            uploadArea.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

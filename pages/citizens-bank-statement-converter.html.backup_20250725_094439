@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizens Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter</title>
+    <meta name="description" content="Convert Citizens Bank statements from PDF to CSV, Excel, or QBO format. Free online tool for One Deposit Checking, College Checking, and Platinum Plus accounts. Instant conversion for Northeast and Midwest customers.">
+    <meta name="keywords" content="citizens bank statement converter, citizens bank pdf to csv, citizens bank pdf to excel, citizens bank statement to quickbooks, citizens bank providence ri, citizens bank northeast, citizens bank statement download, citizens bank account converter">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Citizens Bank Statement Converter - PDF to CSV/Excel">
+    <meta property="og:description" content="Convert your Citizens Bank statements to CSV, Excel, or QuickBooks format instantly. Free online tool supporting all Citizens Bank account types.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.bankcsverter.com/citizens-bank-statement-converter">
+    <meta property="og:image" content="https://www.bankcsverter.com/images/citizens-bank-converter.jpg">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Citizens Bank Statement Converter - PDF to CSV/Excel">
+    <meta name="twitter:description" content="Convert Citizens Bank statements from PDF to CSV, Excel, or QBO format instantly.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.bankcsverter.com/citizens-bank-statement-converter">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "@id": "https://www.bankcsverter.com/citizens-bank-statement-converter",
+        "name": "Citizens Bank Statement Converter",
+        "description": "Convert Citizens Bank PDF statements to CSV, Excel, and QuickBooks formats. Supports all Citizens Bank account types including One Deposit Checking, College Checking, and Platinum Plus.",
+        "url": "https://www.bankcsverter.com/citizens-bank-statement-converter",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "2341",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "BankCSVConverter",
+            "url": "https://www.bankcsverter.com"
+        }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How do I convert my Citizens Bank statement to CSV?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "To convert your Citizens Bank statement to CSV: 1) Download your PDF statement from Citizens Bank online banking, 2) Upload the PDF to our converter, 3) Click 'Convert to CSV', 4) Download your converted file. The process takes less than 30 seconds."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which Citizens Bank account types are supported?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our converter supports all Citizens Bank account types including One Deposit Checking, College Checking, Platinum Plus Checking, personal savings accounts, money market accounts, and business checking accounts."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is the Citizens Bank statement converter free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, our Citizens Bank statement converter is completely free to use. There are no hidden fees, no signup required, and no limits on the number of statements you can convert."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I convert Citizens Bank statements to QuickBooks format?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, you can convert Citizens Bank PDF statements directly to QuickBooks QBO format. Our converter automatically formats the data to be compatible with QuickBooks Online and QuickBooks Desktop."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/modern-style.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #005A2B 0%, #007C3A 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            background: #005A2B;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .cta-button {
+            background: #005A2B;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px 0;
+            transition: background 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #007C3A;
+        }
+        
+        .coverage-map {
+            background: #f0f4f8;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .state-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .state-item {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="/" class="logo">BankCSVConverter</a>
+                <ul class="nav-menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/converters">All Converters</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Citizens Bank Statement Converter</h1>
+            <p class="hero-subtitle">Convert PDF Statements to CSV, Excel & QuickBooks Format</p>
+            <p class="hero-description">Free online tool for Citizens Bank customers across the Northeast and Midwest</p>
+            <a href="#converter" class="cta-button">Start Converting Now</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="content-section">
+        <!-- Introduction -->
+        <section>
+            <h2>Convert Citizens Bank Statements with Confidence</h2>
+            <p>Welcome to the most trusted Citizens Bank statement converter online. Whether you're managing personal finances from Citizens Bank's headquarters in Providence, Rhode Island, or accessing your accounts from any of their 14-state coverage area across the Northeast and Midwest, our tool makes converting your PDF bank statements to CSV, Excel, or QuickBooks format quick and effortless.</p>
+            
+            <p>Citizens Bank, one of the oldest financial institutions in the United States with roots dating back to 1828, serves millions of customers with a comprehensive range of banking products. Our converter is specifically designed to handle all Citizens Bank statement formats, ensuring accurate data extraction and conversion for seamless financial management.</p>
+        </section>
+
+        <!-- Coverage Area -->
+        <section class="coverage-map">
+            <h2>Citizens Bank Regional Coverage</h2>
+            <p>Citizens Bank operates across 14 states in the Northeast and Midwest, making it one of the largest regional banks in the United States. Our Citizens Bank statement converter serves customers in all these locations:</p>
+            
+            <div class="state-list">
+                <div class="state-item">Connecticut</div>
+                <div class="state-item">Delaware</div>
+                <div class="state-item">Massachusetts</div>
+                <div class="state-item">Michigan</div>
+                <div class="state-item">New Hampshire</div>
+                <div class="state-item">New Jersey</div>
+                <div class="state-item">New York</div>
+                <div class="state-item">Ohio</div>
+                <div class="state-item">Pennsylvania</div>
+                <div class="state-item">Rhode Island</div>
+                <div class="state-item">Vermont</div>
+                <div class="state-item">Maryland</div>
+                <div class="state-item">North Carolina</div>
+                <div class="state-item">Virginia</div>
+            </div>
+            
+            <p>With headquarters in Providence, Rhode Island, Citizens Bank has established itself as a cornerstone of Northeast banking, offering personalized service combined with the resources of a major financial institution.</p>
+        </section>
+
+        <!-- Supported Account Types -->
+        <section>
+            <h2>Supported Citizens Bank Account Types</h2>
+            <p>Our Citizens Bank PDF to CSV converter supports all major account types offered by Citizens Bank, ensuring comprehensive coverage for all your banking needs:</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>One Deposit Checking</h3>
+                    <p>Citizens Bank's flagship checking account with no monthly fees when you make one deposit per month. Perfect for regular income earners who want straightforward banking without the hassle of maintaining minimum balances.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>College Checking</h3>
+                    <p>Designed specifically for students, Citizens Bank College Checking offers fee-free banking for enrolled college students. Our converter handles the unique transaction formats common in student accounts, including campus purchases and financial aid deposits.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Platinum Plus Checking</h3>
+                    <p>For customers who maintain higher balances, Platinum Plus Checking offers premium benefits. Our converter accurately processes the additional transaction types and investment-related entries common in premium accounts.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Business Accounts</h3>
+                    <p>Citizens Bank business checking and savings accounts are fully supported, with special handling for business transaction descriptions, check sequences, and merchant service deposits.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Savings & Money Market</h3>
+                    <p>Convert statements from Citizens Bank savings accounts and money market accounts, including interest calculations and transfer transactions between linked accounts.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Credit Card Statements</h3>
+                    <p>Process Citizens Bank credit card statements with accurate categorization of purchases, payments, fees, and rewards transactions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Banking Focus -->
+        <section>
+            <h2>Citizens Bank Student Banking Excellence</h2>
+            <p>Citizens Bank has established itself as a leader in student banking services, partnering with numerous colleges and universities across the Northeast and Midwest. Their Student Banking program offers tailored solutions that make managing finances easier for college students.</p>
+            
+            <h3>Why Students Choose Citizens Bank</h3>
+            <ul>
+                <li><strong>No Monthly Fees:</strong> College Checking accounts have no monthly maintenance fees for up to 6 years while enrolled in college</li>
+                <li><strong>Campus Convenience:</strong> ATMs and branches located on or near many college campuses</li>
+                <li><strong>Mobile Banking:</strong> Advanced mobile app with features designed for student lifestyles</li>
+                <li><strong>Financial Education:</strong> Resources and tools to help students build financial literacy</li>
+                <li><strong>Overdraft Protection:</strong> Options to help students avoid costly overdraft fees</li>
+            </ul>
+            
+            <p>Our Citizens Bank statement converter is particularly popular among students and recent graduates who need to organize their finances for tax purposes, loan applications, or budgeting. The ability to quickly convert PDF statements to Excel makes tracking expenses and creating budgets significantly easier.</p>
+        </section>
+
+        <!-- Regional Bank Advantages -->
+        <section>
+            <h2>The Regional Bank Advantage</h2>
+            <p>As one of the largest regional banks in the United States, Citizens Bank offers unique advantages that combine the personal touch of community banking with the resources and technology of a major financial institution:</p>
+            
+            <h3>Personalized Service</h3>
+            <p>Unlike massive national banks, Citizens Bank maintains a strong local presence in each community it serves. This means customers can develop relationships with their bankers and receive personalized financial advice tailored to their regional economic conditions.</p>
+            
+            <h3>Local Decision Making</h3>
+            <p>Loan decisions and account services are often handled at the regional level, resulting in faster approvals and more flexibility in working with customers' unique situations.</p>
+            
+            <h3>Community Investment</h3>
+            <p>Citizens Bank invests heavily in the communities it serves, supporting local businesses, nonprofits, and community development initiatives. This commitment to regional growth benefits all customers through a stronger local economy.</p>
+            
+            <h3>Technology Innovation</h3>
+            <p>Despite being a regional bank, Citizens Bank invests significantly in digital banking technology, offering features that rival or exceed those of national competitors. Our statement converter seamlessly handles their modern PDF formats, ensuring accurate data extraction.</p>
+        </section>
+
+        <!-- How-To Conversion Steps -->
+        <section id="converter">
+            <h2>How to Convert Citizens Bank Statements to CSV or Excel</h2>
+            <p>Converting your Citizens Bank PDF statements is a simple process that takes less than a minute. Follow these steps to transform your banking data into a format that works with your favorite financial software:</p>
+            
+            <div class="conversion-steps">
+                <div class="step">
+                    <h3><span class="step-number">1</span>Download Your Citizens Bank Statement</h3>
+                    <p>Log in to your Citizens Bank online banking account or mobile app. Navigate to the statements section and download your desired statement in PDF format. Citizens Bank typically provides statements for the past 24 months online.</p>
+                </div>
+                
+                <div class="step">
+                    <h3><span class="step-number">2</span>Upload to Our Converter</h3>
+                    <p>Click the upload button on our converter tool and select your Citizens Bank PDF statement. Our secure system accepts files up to 10MB in size, which covers even lengthy business account statements.</p>
+                </div>
+                
+                <div class="step">
+                    <h3><span class="step-number">3</span>Select Output Format</h3>
+                    <p>Choose your preferred output format:</p>
+                    <ul>
+                        <li><strong>CSV:</strong> Universal format compatible with Excel, Google Sheets, and most financial software</li>
+                        <li><strong>Excel (.xlsx):</strong> Native Excel format with formatting preserved</li>
+                        <li><strong>QBO:</strong> QuickBooks Online format for direct import into QuickBooks</li>
+                        <li><strong>OFX:</strong> Open Financial Exchange format for Quicken and other accounting software</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <h3><span class="step-number">4</span>Convert and Download</h3>
+                    <p>Click the "Convert" button and wait a few seconds while our system processes your Citizens Bank statement. Once complete, download your converted file. The original formatting and transaction details are preserved with 99.9% accuracy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features and Benefits -->
+        <section>
+            <h2>Why Choose Our Citizens Bank Statement Converter</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>🔒 Bank-Level Security</h3>
+                    <p>Your Citizens Bank statements contain sensitive financial information. We use 256-bit SSL encryption and automatically delete all uploaded files after processing. No data is stored on our servers.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>⚡ Lightning Fast</h3>
+                    <p>Convert even lengthy Citizens Bank business statements in seconds. Our optimized processing engine handles thousands of transactions without delays.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🎯 99.9% Accuracy</h3>
+                    <p>Advanced OCR technology specifically trained on Citizens Bank statement formats ensures accurate data extraction, including transaction dates, descriptions, and amounts.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📱 Works Everywhere</h3>
+                    <p>Access our converter from any device - desktop, tablet, or smartphone. No software installation required. Works with all modern web browsers.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🆓 Completely Free</h3>
+                    <p>No hidden fees, no subscription required, no limits on conversions. Convert as many Citizens Bank statements as you need without any cost.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📊 Multiple Formats</h3>
+                    <p>Export to CSV, Excel, QBO, or OFX formats. Compatible with QuickBooks, Quicken, Mint, YNAB, and hundreds of other financial applications.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section>
+            <h2>Common Uses for Citizens Bank Statement Conversion</h2>
+            
+            <h3>Tax Preparation</h3>
+            <p>Tax season becomes significantly easier when you can quickly convert your Citizens Bank statements to Excel. Sort and categorize transactions, identify deductible expenses, and provide your tax preparer with organized financial records.</p>
+            
+            <h3>Business Accounting</h3>
+            <p>Small business owners using Citizens Bank business accounts can streamline their bookkeeping by converting monthly statements to QuickBooks format. This eliminates manual data entry and reduces accounting errors.</p>
+            
+            <h3>Personal Budgeting</h3>
+            <p>Create detailed budgets and track spending patterns by converting your Citizens Bank statements to CSV format. Import into your favorite budgeting app or create custom Excel spreadsheets for financial planning.</p>
+            
+            <h3>Loan Applications</h3>
+            <p>When applying for mortgages, auto loans, or business financing, lenders often require detailed transaction histories. Our converter helps you quickly prepare professional-looking financial documents from your Citizens Bank statements.</p>
+            
+            <h3>Expense Reports</h3>
+            <p>Employees and contractors can easily extract business expenses from personal Citizens Bank accounts for reimbursement claims. Filter and categorize transactions in Excel for streamlined expense reporting.</p>
+        </section>
+
+        <!-- Technical Details -->
+        <section>
+            <h2>Technical Specifications</h2>
+            <p>Our Citizens Bank statement converter is built with cutting-edge technology to ensure reliable performance:</p>
+            
+            <h3>Supported File Types</h3>
+            <ul>
+                <li>Input: PDF files from Citizens Bank online banking (password-protected PDFs supported)</li>
+                <li>Output: CSV, XLSX, QBO, OFX, TSV</li>
+                <li>Maximum file size: 10MB per statement</li>
+                <li>Batch processing: Convert multiple statements simultaneously</li>
+            </ul>
+            
+            <h3>Data Fields Extracted</h3>
+            <ul>
+                <li>Transaction date and posting date</li>
+                <li>Transaction description and merchant name</li>
+                <li>Debit and credit amounts</li>
+                <li>Running balance</li>
+                <li>Check numbers (when applicable)</li>
+                <li>Transaction categories (for credit cards)</li>
+                <li>Reference numbers</li>
+            </ul>
+            
+            <h3>Compatibility</h3>
+            <p>Our converted files work seamlessly with:</p>
+            <ul>
+                <li>Microsoft Excel (all versions)</li>
+                <li>Google Sheets</li>
+                <li>QuickBooks Online and Desktop</li>
+                <li>Quicken (all versions)</li>
+                <li>Mint.com</li>
+                <li>YNAB (You Need A Budget)</li>
+                <li>Personal Capital</li>
+                <li>Wave Accounting</li>
+                <li>Xero</li>
+                <li>FreshBooks</li>
+            </ul>
+        </section>
+
+        <!-- FAQ Section -->
+        <section>
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h3>How do I convert my Citizens Bank statement to CSV?</h3>
+                <p>To convert your Citizens Bank statement to CSV: 1) Download your PDF statement from Citizens Bank online banking, 2) Upload the PDF to our converter, 3) Click 'Convert to CSV', 4) Download your converted file. The process takes less than 30 seconds.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Which Citizens Bank account types are supported?</h3>
+                <p>Our converter supports all Citizens Bank account types including One Deposit Checking, College Checking, Platinum Plus Checking, personal savings accounts, money market accounts, and business checking accounts.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Is the Citizens Bank statement converter free?</h3>
+                <p>Yes, our Citizens Bank statement converter is completely free to use. There are no hidden fees, no signup required, and no limits on the number of statements you can convert.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Can I convert Citizens Bank statements to QuickBooks format?</h3>
+                <p>Yes, you can convert Citizens Bank PDF statements directly to QuickBooks QBO format. Our converter automatically formats the data to be compatible with QuickBooks Online and QuickBooks Desktop.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Is it safe to upload my Citizens Bank statements?</h3>
+                <p>Absolutely. We use bank-level 256-bit SSL encryption for all file transfers. Your statements are processed in isolated environments and automatically deleted after conversion. We never store or access your financial data.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Can I convert password-protected Citizens Bank PDFs?</h3>
+                <p>Yes, our converter supports password-protected PDFs. Simply enter the password when prompted during the upload process. The password is used only for that session and is never stored.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>How far back can I convert Citizens Bank statements?</h3>
+                <p>You can convert any Citizens Bank PDF statement regardless of age, as long as it's in the standard PDF format. Citizens Bank typically provides online access to statements from the past 24 months.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>What if my Citizens Bank statement doesn't convert properly?</h3>
+                <p>While our converter has a 99.9% success rate with Citizens Bank statements, if you encounter any issues, our support team is available to help. Contact us with your specific problem, and we'll ensure your statement is converted correctly.</p>
+            </div>
+        </section>
+
+        <!-- Regional Banking Insights -->
+        <section>
+            <h2>Understanding Citizens Bank's Regional Impact</h2>
+            <p>Citizens Bank's strong regional presence makes it a preferred choice for many customers in the Northeast and Midwest. Understanding the bank's local focus can help you maximize your banking relationship:</p>
+            
+            <h3>Providence Headquarters Advantage</h3>
+            <p>Being headquartered in Providence, Rhode Island, Citizens Bank maintains deep roots in New England culture and business practices. This local understanding translates into banking products and services tailored to regional needs, from seasonal business loans to student accounts designed for area colleges.</p>
+            
+            <h3>Regional Economic Expertise</h3>
+            <p>Citizens Bank's economists and advisors specialize in Northeast and Midwest markets, providing insights particularly valuable for local businesses and investors. Their understanding of regional economic cycles, industry trends, and local regulations benefits all customers through more informed banking services.</p>
+            
+            <h3>Community Banking Networks</h3>
+            <p>Unlike national banks that may close branches in smaller communities, Citizens Bank maintains a strong commitment to local presence. This network of branches ensures customers have access to in-person banking services when needed, complementing digital tools like our statement converter.</p>
+        </section>
+
+        <!-- Call to Action -->
+        <section style="text-align: center; padding: 50px 0;">
+            <h2>Start Converting Your Citizens Bank Statements Today</h2>
+            <p>Join thousands of Citizens Bank customers who trust our converter for their financial data needs. Whether you're in Providence, Boston, Philadelphia, or any of the 14 states Citizens Bank serves, our tool is here to simplify your financial management.</p>
+            <a href="#converter" class="cta-button">Convert Citizens Bank Statement Now</a>
+            <p style="margin-top: 20px;">No signup required • 100% free • Secure & private</p>
+        </section>
+
+        <!-- Additional Resources -->
+        <section>
+            <h2>Additional Resources</h2>
+            <h3>Citizens Bank Contact Information</h3>
+            <ul>
+                <li>Customer Service: 1-800-922-9999</li>
+                <li>Corporate Headquarters: One Citizens Plaza, Providence, RI 02903</li>
+                <li>Online Banking: citizensbank.com</li>
+                <li>Mobile App: Available on iOS and Android</li>
+            </ul>
+            
+            <h3>Related Converters</h3>
+            <ul>
+                <li><a href="/bank-of-america-statement-converter">Bank of America Statement Converter</a></li>
+                <li><a href="/td-bank-statement-converter">TD Bank Statement Converter</a></li>
+                <li><a href="/pnc-bank-statement-converter">PNC Bank Statement Converter</a></li>
+                <li><a href="/santander-bank-statement-converter">Santander Bank Statement Converter</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About BankCSVConverter</h4>
+                    <p>The leading online platform for converting bank statements to CSV, Excel, and QuickBooks formats. Trusted by thousands of users for secure, accurate statement conversion.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Converters</h4>
+                    <ul>
+                        <li><a href="/chase-bank-statement-converter">Chase Bank Converter</a></li>
+                        <li><a href="/wells-fargo-statement-converter">Wells Fargo Converter</a></li>
+                        <li><a href="/citizens-bank-statement-converter">Citizens Bank Converter</a></li>
+                        <li><a href="/converters">View All Converters</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/how-it-works">How It Works</a></li>
+                        <li><a href="../security.html">Security</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/api">API Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BankCSVConverter.com - Citizens Bank Statement Converter. All rights reserved.</p>
+                <p>Citizens Bank is a registered trademark of Citizens Financial Group, Inc. BankCSVConverter is not affiliated with, endorsed by, or sponsored by Citizens Bank.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

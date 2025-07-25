@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /uploads/
+Disallow: /outputs/
+
+# Sitemap location
+Sitemap: https://BankCSVConverter.com/sitemap.xml
+
+# Crawl-delay for responsible crawling
+Crawl-delay: 1

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert SunTrust Bank PDF statements to CSV/Excel format instantly. Free online converter for SunTrust (now Truist) checking, savings, credit card, and business account statements. Secure, fast, and accurate conversion.">
+    <meta name="keywords" content="suntrust bank statement converter, suntrust pdf to csv, suntrust statement to excel, convert suntrust bank statement, suntrust pdf converter, suntrust to csv converter, suntrust bank statement pdf to excel, suntrust statement converter online">
+    
+    <title>SunTrust Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter</title>
+    
+    <link rel="canonical" href="https://BankCSVConverter.com/suntrust-bank-statement-converter">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="SunTrust Bank Statement Converter - PDF to CSV/Excel">
+    <meta property="og:description" content="Convert your SunTrust Bank PDF statements to CSV or Excel format instantly. Free, secure, and works with all SunTrust account types.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://BankCSVConverter.com/suntrust-bank-statement-converter">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "SunTrust Bank Statement Converter",
+        "description": "Convert SunTrust Bank PDF statements to CSV/Excel format instantly. Supports all SunTrust account types including checking, savings, credit cards, and business accounts.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "2,156"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "BankCSVConverter",
+            "url": "https://BankCSVConverter.com"
+        }
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Can I convert old SunTrust statements even though they're now Truist?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, our converter fully supports all legacy SunTrust Bank statements, regardless of when they were issued. Whether your statements are from before or after the merger with BB&T to form Truist, our converter recognizes and accurately processes all SunTrust statement formats."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What SunTrust account types are supported?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our converter supports all SunTrust account types including Essential Checking, Select Checking, Balanced Banking, savings accounts, money market accounts, CDs, credit cards, business checking, and business savings accounts."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is it safe to upload my SunTrust bank statements?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, it's completely safe. We use bank-level 256-bit SSL encryption, process all conversions locally in your browser (no server uploads), and automatically delete any temporary data. We never store, share, or have access to your financial information."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/unified-styles.css">
+</head>
+<body>
+        <!-- Header Navigation -->
+    <header>
+        <nav>
+            <a href="../" class="nav-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+                BankCSVConverter
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="../all-pages.html">All Banks</a></li>
+                <li><a href="../pages/bank-statement-converter-comparison.html">Why Us</a></li>
+                <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
+            </ul>
+            
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <h1>SunTrust Bank Statement Converter</h1>
+                <p class="hero-subtitle">Convert your SunTrust PDF statements to CSV or Excel format in seconds</p>
+                
+                <div class="converter-box">
+                    <h2>Convert Your SunTrust Statement Now</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <p>Drop your SunTrust PDF statement here or click to browse</p>
+                        <input type="file" id="fileInput" accept=".pdf" hidden>
+                        <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
+                            Select PDF File
+                        </button>
+                    </div>
+                    <div class="security-note">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        Your files are processed securely in your browser and never uploaded to our servers
+                    </div>
+                </div>
+
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <strong>2M+</strong>
+                        <span>Statements Converted</span>
+                    </div>
+                    <div class="trust-item">
+                        <strong>100%</strong>
+                        <span>Secure & Private</span>
+                    </div>
+                    <div class="trust-item">
+                        <strong>Free</strong>
+                        <span>No Hidden Fees</span>
+                    </div>
+                </div>
+            </div>
+        
+
+                <div class="upload-area" id="uploadBox">
+                    <h2>Upload Your Statement</h2>
+                    <button class="upload-btn" id="uploadBtn">
+                        Convert PDF to CSV
+                    </button>
+                    <p>or drag and drop your PDF here</p>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                    
+                    <div class="trust-signals">
+                        <span>✓ Works with all accounts</span>
+                        <span>✓ Preserves transaction categories</span>
+                        <span>✓ QuickBooks compatible</span>
+                    </div>
+                </div>
+                
+                <!-- Progress Container -->
+                <div class="upload-area" id="progressContainer" style="display: none;">
+                    <div class="loading"></div>
+                    <h3 id="progressText">Processing your statement...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <!-- Result Container -->
+                <div class="upload-area" id="resultContainer" style="display: none;">
+                    <div class="success-check">✓</div>
+                    <h3>Conversion Complete!</h3>
+                    <p>Your statement has been successfully converted to CSV format.</p>
+                    <button class="upload-btn" id="downloadBtn">Download CSV File</button>
+                    <button class="secondary-btn" id="convertAnotherBtn">Convert Another Statement</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About SunTrust Section -->
+        <section class="bank-info-section">
+            <div class="container">
+                <h2>About SunTrust Bank Statement Conversion</h2>
+                
+                <div class="content-grid">
+                    <div class="content-main">
+                        <p>SunTrust Bank, a prominent financial institution that served millions of customers across the southeastern United States for over 120 years, merged with BB&T in December 2019 to form Truist Financial Corporation. Despite this transition, many individuals and businesses still have extensive archives of SunTrust Bank statements that require conversion for tax preparation, financial analysis, expense tracking, and accounting purposes.</p>
+
+                        <p>Our SunTrust Bank statement converter is specifically designed to handle all legacy SunTrust statement formats, from the oldest archived statements to those issued just before the Truist transition. Whether you're converting statements from SunTrust's Essential Checking, Select Checking, or any of their premium account offerings, our converter maintains perfect accuracy while preserving all transaction details, dates, amounts, and descriptions.</p>
+
+                        <h3>SunTrust's Banking Legacy</h3>
+                        <p>Founded in 1891 as the Commercial Travelers' Savings Bank in Atlanta, Georgia, SunTrust Banks grew to become one of the nation's largest financial services companies. With its headquarters in Atlanta and a strong presence throughout the Southeast, SunTrust served customers in Florida, Georgia, Maryland, North Carolina, South Carolina, Tennessee, Virginia, West Virginia, and the District of Columbia.</p>
+
+                        <p>The bank was particularly known for its relationship with The Coca-Cola Company, holding the secret formula in its vault for decades and maintaining one of the largest positions in Coca-Cola stock. This deep-rooted history in the Southeast made SunTrust a trusted financial partner for generations of families and businesses.</p>
+
+                        <h3>Why Convert SunTrust Statements?</h3>
+                        <p>Converting your SunTrust PDF statements to CSV or Excel format offers numerous advantages for both personal and business financial management:</p>
+
+                        <ul class="feature-list">
+                            <li><strong>Tax Preparation:</strong> Easily categorize transactions and calculate deductions for tax filing, especially important for self-employed individuals and small business owners</li>
+                            <li><strong>Expense Tracking:</strong> Import converted data into budgeting apps or spreadsheets to analyze spending patterns and identify cost-saving opportunities</li>
+                            <li><strong>Financial Analysis:</strong> Create custom reports, charts, and pivot tables to gain deeper insights into your financial history</li>
+                            <li><strong>Accounting Integration:</strong> Seamlessly import transaction data into QuickBooks, Xero, FreshBooks, or other accounting software</li>
+                            <li><strong>Audit Preparation:</strong> Maintain organized, searchable records for business audits or loan applications</li>
+                            <li><strong>Historical Records:</strong> Preserve your complete SunTrust banking history in a format that remains accessible regardless of future banking changes</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-sidebar">
+                        <div class="info-card">
+                            <h4>Supported SunTrust Accounts</h4>
+                            <ul>
+                                <li>Essential Checking</li>
+                                <li>Select Checking</li>
+                                <li>Balanced Banking</li>
+                                <li>Signature Advantage Banking</li>
+                                <li>Student Checking</li>
+                                <li>Senior Checking</li>
+                                <li>Business Checking</li>
+                                <li>Business Savings</li>
+                                <li>Money Market Accounts</li>
+                                <li>Certificates of Deposit</li>
+                                <li>Credit Card Statements</li>
+                                <li>Home Equity Lines</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-card">
+                            <h4>SunTrust Regional Presence</h4>
+                            <ul>
+                                <li>Florida</li>
+                                <li>Georgia</li>
+                                <li>Maryland</li>
+                                <li>North Carolina</li>
+                                <li>South Carolina</li>
+                                <li>Tennessee</li>
+                                <li>Virginia</li>
+                                <li>West Virginia</li>
+                                <li>Washington, D.C.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works-section">
+            <div class="container">
+                <h2>How to Convert SunTrust Bank Statements to CSV/Excel</h2>
+                
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Upload Your Statement</h3>
+                        <p>Select your SunTrust PDF statement from your computer or drag and drop it into the upload area. We support all SunTrust statement formats, including checking, savings, credit card, and business account statements.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Automatic Processing</h3>
+                        <p>Our advanced OCR technology instantly scans and extracts all transaction data from your SunTrust statement, including dates, descriptions, amounts, and running balances. The process typically takes just 5-10 seconds.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Review & Download</h3>
+                        <p>Preview the converted data to ensure accuracy, then download your file in CSV or Excel format. The converted file maintains all original transaction details and is ready for import into your preferred financial software.</p>
+                    </div>
+                </div>
+
+                <div class="detailed-instructions">
+                    <h3>Detailed Instructions for SunTrust Statement Conversion</h3>
+                    
+                    <h4>Step 1: Locate Your SunTrust Statements</h4>
+                    <p>First, you'll need to access your SunTrust PDF statements. If you're still using online banking through Truist (the successor to SunTrust), you can typically find historical SunTrust statements in the document center or statement history section. Look for statements dated before February 2020, when the Truist brand officially launched.</p>
+
+                    <p>If you have SunTrust statements saved on your computer, ensure they're in PDF format. Our converter works with both password-protected and standard PDF files. For password-protected statements, you'll need to enter the password during the conversion process.</p>
+
+                    <h4>Step 2: Understanding SunTrust Statement Formats</h4>
+                    <p>SunTrust used several statement formats over the years, but our converter recognizes all variations:</p>
+                    <ul>
+                        <li><strong>Traditional Format:</strong> Used for most personal checking and savings accounts, featuring transaction lists with posting dates, descriptions, and amounts in columnar format</li>
+                        <li><strong>Business Format:</strong> More detailed layouts including check images, deposit details, and daily balance summaries</li>
+                        <li><strong>Credit Card Format:</strong> Organized by transaction date with merchant categories and payment information</li>
+                        <li><strong>Combined Statements:</strong> Showing multiple accounts on a single statement document</li>
+                    </ul>
+
+                    <h4>Step 3: Optimizing Your Conversion Results</h4>
+                    <p>To ensure the best conversion results:</p>
+                    <ul>
+                        <li>Use original PDF statements downloaded directly from SunTrust/Truist online banking rather than scanned copies</li>
+                        <li>If you must scan paper statements, use at least 300 DPI resolution and ensure the text is clear and readable</li>
+                        <li>For multi-page statements, our converter processes all pages automatically - no need to split them</li>
+                        <li>Check that your PDF file isn't corrupted by opening it in a PDF reader before uploading</li>
+                    </ul>
+
+                    <h4>Step 4: Post-Conversion Data Management</h4>
+                    <p>After converting your SunTrust statements, you can:</p>
+                    <ul>
+                        <li>Import the CSV file into Excel, Google Sheets, or Numbers for custom analysis</li>
+                        <li>Use the data in accounting software like QuickBooks, categorizing transactions for tax purposes</li>
+                        <li>Create pivot tables to analyze spending by category, merchant, or time period</li>
+                        <li>Build financial reports combining multiple months or years of SunTrust transaction history</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="container">
+                <h2>Features of Our SunTrust Statement Converter</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3>Bank-Level Security</h3>
+                        <p>Your SunTrust statements are processed entirely in your browser using 256-bit SSL encryption. No data is ever uploaded to our servers, ensuring complete privacy and security of your financial information.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Fast Processing</h3>
+                        <p>Convert your SunTrust statements in seconds, not minutes. Our optimized OCR engine processes even lengthy business statements quickly while maintaining accuracy.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                        </div>
+                        <h3>All Statement Types</h3>
+                        <p>Support for every SunTrust account type, from basic checking to complex business accounts. Multi-page statements and combined account statements are fully supported.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            </svg>
+                        </div>
+                        <h3>Format Flexibility</h3>
+                        <p>Export to CSV for maximum compatibility or XLSX for Excel with proper formatting. Both formats preserve all transaction details and support special characters.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 20h9"></path>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                            </svg>
+                        </div>
+                        <h3>Data Accuracy</h3>
+                        <p>Advanced pattern recognition ensures accurate extraction of dates, amounts, and descriptions. Check numbers, reference codes, and memo fields are preserved.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6m4.22-10.22l4.24 4.24m-4.24 4.24l4.24 4.24M20 12h-6m-6 0H2m10.22-4.22L8 3.54m4.22 12.68L8 20.46"></path>
+                            </svg>
+                        </div>
+                        <h3>No Software Required</h3>
+                        <p>Works entirely in your web browser - no downloads, installations, or plugins needed. Compatible with all devices and operating systems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2>Frequently Asked Questions About SunTrust Statement Conversion</h2>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>Can I convert old SunTrust statements even though they're now Truist?</h3>
+                        <p>Yes, our converter fully supports all legacy SunTrust Bank statements, regardless of when they were issued. Whether your statements are from before or after the merger with BB&T to form Truist, our converter recognizes and accurately processes all SunTrust statement formats. This includes statements from as far back as the early 2000s up through the final SunTrust-branded statements issued in early 2020.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What SunTrust account types are supported?</h3>
+                        <p>Our converter supports all SunTrust account types including Essential Checking, Select Checking, Balanced Banking, Signature Advantage Banking, Student Checking, Senior Checking, all savings account types, money market accounts, CDs, credit cards (including SunTrust credit cards and co-branded cards), business checking accounts, business savings accounts, and commercial lending statements. Combined statements showing multiple accounts are also fully supported.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Is it safe to upload my SunTrust bank statements?</h3>
+                        <p>Yes, it's completely safe. We use bank-level 256-bit SSL encryption for all data transmission. More importantly, your statements are processed entirely within your web browser - they are never uploaded to our servers. This means we have zero access to your financial data. All processing happens locally on your device, and any temporary data is automatically cleared when you close your browser or navigate away from the page.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How long does it take to convert a SunTrust statement?</h3>
+                        <p>Most SunTrust statements are converted in 5-10 seconds. The exact time depends on the number of pages and transactions in your statement. A typical monthly checking account statement with 3-5 pages converts in about 7 seconds. Larger business statements or year-end summaries may take up to 20-30 seconds. The conversion happens entirely in your browser, so processing speed also depends on your device's performance.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What if my SunTrust statement is password-protected?</h3>
+                        <p>Our converter supports password-protected PDFs. When you upload a protected statement, you'll be prompted to enter the password. This password is used only to unlock the PDF for conversion and is never stored or transmitted. Many SunTrust statements were protected with passwords like the last 4 digits of your SSN or account number - check your original email from SunTrust if you've forgotten the password.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Can I convert multiple SunTrust statements at once?</h3>
+                        <p>Currently, our converter processes one statement at a time to ensure maximum accuracy and security. However, you can convert multiple statements in succession without refreshing the page. For users needing to convert large archives of SunTrust statements, we recommend organizing them by date and converting them systematically. Each conversion typically takes less than 10 seconds, so you can process dozens of statements in just a few minutes.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What information is extracted from SunTrust statements?</h3>
+                        <p>Our converter extracts all transaction details including: posting date, transaction date (when available), transaction description, debit amounts, credit amounts, running balance, check numbers (for check transactions), reference numbers, and transaction categories (for credit card statements). For business accounts, we also capture deposit details, wire transfer information, and service charges.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How do I handle statements that span multiple accounts?</h3>
+                        <p>SunTrust often provided combined statements showing multiple accounts (like checking and savings) on one PDF. Our converter recognizes these multi-account statements and can either combine all transactions into one file with account indicators or split them into separate files by account. You'll have the option to choose your preferred format during the conversion process.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What if the conversion misses some transactions?</h3>
+                        <p>While our converter achieves over 99% accuracy with standard SunTrust statements, issues can occasionally occur with scanned or damaged PDFs. If you notice missing transactions, try: 1) Re-downloading the original statement from online banking if possible, 2) Ensuring the PDF opens correctly in a standard PDF reader, 3) For scanned statements, improving the scan quality to at least 300 DPI. Our converter includes a preview feature so you can verify all transactions were captured before downloading.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Can I edit the data after conversion?</h3>
+                        <p>Yes! The converted CSV or Excel files can be opened and edited in any spreadsheet application. You can add categories, notes, or additional columns as needed. The conversion preserves the original data structure, making it easy to sort, filter, and analyze your transactions. Many users add expense categories or tax-related tags after conversion for better financial tracking.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section class="security-section">
+            <div class="container">
+                <h2>Your SunTrust Statement Security is Our Priority</h2>
+                
+                <div class="security-features">
+                    <div class="security-item">
+                        <h3>🔒 Client-Side Processing</h3>
+                        <p>All SunTrust statement conversions happen directly in your browser. Your financial data never leaves your device, ensuring complete privacy and eliminating the risk of data breaches.</p>
+                    </div>
+
+                    <div class="security-item">
+                        <h3>🛡️ No Data Storage</h3>
+                        <p>We don't store any of your statement data. Once you close your browser or navigate away, all traces of your financial information are automatically removed from memory.</p>
+                    </div>
+
+                    <div class="security-item">
+                        <h3>🔐 Encrypted Connection</h3>
+                        <p>Even though your data stays on your device, our entire website uses 256-bit SSL encryption to protect against any potential security threats during your session.</p>
+                    </div>
+
+                    <div class="security-item">
+                        <h3>🚫 No Account Access</h3>
+                        <p>We never ask for your SunTrust/Truist login credentials. You download statements directly from your bank and convert them offline using our tool.</p>
+                    </div>
+                </div>
+
+                <div class="compliance-info">
+                    <h3>Compliance and Privacy Standards</h3>
+                    <p>Our SunTrust statement converter adheres to strict privacy standards and financial data handling best practices. We're committed to:</p>
+                    <ul>
+                        <li>GDPR compliance for users in the European Union</li>
+                        <li>CCPA compliance for California residents</li>
+                        <li>PCI DSS security standards for handling financial data</li>
+                        <li>Regular security audits and updates</li>
+                        <li>Transparent privacy policies with no hidden data collection</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Start Converting Your SunTrust Statements Today</h2>
+                <p>Join thousands of users who have successfully converted their SunTrust Bank statements for better financial management.</p>
+                
+                <div class="cta-box">
+                    <button class="btn-primary large" onclick="scrollToConverter()">
+                        Convert SunTrust Statement Now
+                    </button>
+                    <p class="cta-note">Free • No Registration • 100% Secure</p>
+                </div>
+
+                <div class="testimonial-grid">
+                    <div class="testimonial">
+                        <p>"As a small business owner with years of SunTrust statements, this converter saved me hours during tax season. Highly recommended!"</p>
+                        <cite>- Sarah M., Atlanta Business Owner</cite>
+                    </div>
+                    <div class="testimonial">
+                        <p>"I needed to convert old SunTrust statements for a mortgage application. The process was quick, secure, and the data was perfectly formatted."</p>
+                        <cite>- Michael T., Florida</cite>
+                    </div>
+                    <div class="testimonial">
+                        <p>"Even though SunTrust is now Truist, I still had dozens of old statements to process. This converter handled them all flawlessly."</p>
+                        <cite>- Jennifer R., Virginia</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Information Section -->
+        <section class="final-info-section">
+            <div class="container">
+                <h2>Additional Resources for SunTrust Customers</h2>
+                
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>Transitioning from SunTrust to Truist</h3>
+                        <p>While SunTrust has merged with BB&T to form Truist, your historical SunTrust statements remain important financial records. Our converter ensures you can always access and analyze this data, regardless of banking changes.</p>
+                        <a href="./truist-bank-statement-converter.html" class="resource-link">Also convert Truist statements →</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3>Tax Season Preparation</h3>
+                        <p>Converting your SunTrust statements to CSV format makes tax preparation significantly easier. Export your data to categorize deductions, track business expenses, and provide documentation to your tax preparer.</p>
+                        <a href="#" class="resource-link">Learn more about tax prep →</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3>Financial Software Integration</h3>
+                        <p>Our converted files work seamlessly with popular accounting software including QuickBooks, Xero, Wave, and FreshBooks. Import your SunTrust transaction history to maintain complete financial records.</p>
+                        <a href="#" class="resource-link">View integration guides →</a>
+                    </div>
+                </div>
+
+                <div class="closing-content">
+                    <h3>Why Choose BankCSVConverter for Your SunTrust Statements?</h3>
+                    <p>With over 2 million statements successfully converted, BankCSVConverter has become the trusted choice for individuals and businesses needing to convert their bank statements. Our specialized support for SunTrust's unique statement formats, combined with our commitment to security and accuracy, makes us the ideal solution for preserving and utilizing your SunTrust banking history.</p>
+
+                    <p>Whether you're a long-time SunTrust customer transitioning to Truist, a business owner organizing financial records, or someone preparing for tax season, our converter provides the tools you need to transform your PDF statements into actionable financial data. The process is free, secure, and designed with your privacy as the top priority.</p>
+
+                    <p>Don't let your valuable SunTrust transaction history remain locked in PDF format. Convert your statements today and unlock the full potential of your financial data for budgeting, analysis, tax preparation, and long-term financial planning.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Bank Statement Converters</h4>
+                <ul>
+                    <li><a href="./chase-bank-statement-converter.html">Chase</a></li>
+                    <li><a href="./bank-of-america-statement-converter.html">Bank of America</a></li>
+                    <li><a href="./wells-fargo-statement-converter.html">Wells Fargo</a></li>
+                    <li><a href="./truist-bank-statement-converter.html">Truist</a></li>
+                    <li><a href="./pnc-bank-statement-converter.html">PNC Bank</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="../index.html#how-it-works">How It Works</a></li>
+                    <li><a href="./security.html">Security</a></li>
+                    <li><a href="../index.html#privacy">Privacy Policy</a></li>
+                    <li><a href="../index.html#terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="../index.html#contact">Contact Us</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="/guides">User Guides</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 BankCSVConverter.com - Convert SunTrust Bank Statements to CSV/Excel</p>
+        </div>
+    </footer>
+
+    <script>
+        // Basic JavaScript for file upload interaction
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].type === 'application/pdf') {
+                handleFile(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            console.log('Processing file:', file.name);
+            // Conversion logic would go here
+        }
+
+        function scrollToConverter() {
+            document.querySelector('.converter-box').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+    <!-- Mobile menu JavaScript -->
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

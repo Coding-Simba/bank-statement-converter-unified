@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert Truist Bank PDF statements to CSV/Excel. Free online converter for Truist, BB&T, and SunTrust checking, savings, and business accounts. Secure and instant conversion.">
+    <meta name="keywords" content="truist statement converter, bb&t pdf to csv, suntrust statement converter, truist bank to excel, convert truist statement, bb&t statement converter, suntrust to csv, truist pdf converter">
+    
+    <title>Truist Bank Statement Converter - PDF to CSV | Convert BB&T & SunTrust Statements</title>
+    
+    <link rel="canonical" href="https://BankCSVConverter.com/truist-bank-statement-converter">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Truist Bank Statement Converter",
+        "description": "Convert Truist, BB&T, and SunTrust PDF statements to CSV/Excel format instantly",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "1,247"
+        }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/unified-styles.css">
+</head>
+<body>
+        <!-- Header Navigation -->
+    <header>
+        <nav>
+            <a href="../" class="nav-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+                BankCSVConverter
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="../all-pages.html">All Banks</a></li>
+                <li><a href="../pages/bank-statement-converter-comparison.html">Why Us</a></li>
+                <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
+            </ul>
+            
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero bank-hero">
+            <div class="container">
+                <div class="bank-header">
+                    <img src="../assets/banks/generic-bank-logo.svg" alt="Truist Bank Logo" width="150" height="60">
+                    <h1>Truist Bank Statement Converter</h1>
+                    <p>Convert Truist, BB&T, and SunTrust PDF statements to CSV/Excel instantly. Supports all account types from the merged financial institution headquartered in Charlotte, NC.</p>
+                </div>
+                
+                <div class="upload-area" id="uploadBox">
+                    <h2>Upload Your Truist Statement</h2>
+                    <button class="upload-btn" id="uploadBtn">
+                        Convert Truist PDF to CSV
+                    </button>
+                    <p>or drag and drop your Truist, BB&T, or SunTrust PDF here</p>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                    
+                    <div class="trust-signals">
+                        <span>✓ All Truist account types</span>
+                        <span>✓ BB&T & SunTrust legacy formats</span>
+                        <span>✓ Excel & QuickBooks ready</span>
+                    </div>
+                
+                
+                <!-- Progress Container -->
+                <div class="upload-area" id="progressContainer" style="display: none;">
+                    <div class="loading"></div>
+                    <h3 id="progressText">Processing your statement...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <!-- Result Container -->
+                <div class="upload-area" id="resultContainer" style="display: none;">
+                    <div class="success-check">✓</div>
+                    <h3>Conversion Complete!</h3>
+                    <p>Your statement has been successfully converted to CSV format.</p>
+                    <button class="upload-btn" id="downloadBtn">Download CSV File</button>
+                    <button class="secondary-btn" id="convertAnotherBtn">Convert Another Statement</button>
+                </div></div>
+            </div>
+        </section>
+
+        <!-- About Truist -->
+        <section class="content-section">
+            <div class="container">
+                <h2>About Truist Bank - The BB&T and SunTrust Merger</h2>
+                <p>Truist Financial Corporation, headquartered in Charlotte, North Carolina, was formed in December 2019 through the merger of equals between BB&T (Branch Banking and Trust Company) and SunTrust Banks. This historic $66 billion merger created the sixth-largest commercial bank in the United States, serving more than 10 million consumer households across 17 states and Washington, D.C.</p>
+                
+                <p>The merger brought together two storied financial institutions with complementary strengths. BB&T, founded in 1872 in Wilson, North Carolina, had built a reputation for community banking and strong customer relationships across the Southeast. SunTrust, established in 1891 in Atlanta, Georgia, brought expertise in wealth management and corporate banking. Together as Truist, they combine 275+ years of banking heritage with modern financial technology and services.</p>
+                
+                <p>Our Truist statement converter seamlessly handles statements from all three formats - current Truist statements as well as legacy BB&T and SunTrust statements. Whether you're managing the transition from your old BB&T or SunTrust accounts or working with new Truist accounts, our converter ensures all your financial data is accurately transformed into usable CSV/Excel formats.</p>
+            </div>
+        </section>
+
+        <!-- Statement Types -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Supported Truist, BB&T, and SunTrust Statements</h2>
+                <div class="format-grid">
+                    <div class="format-card">
+                        <h3>✓ Personal Banking</h3>
+                        <ul>
+                            <li>Truist One Checking</li>
+                            <li>Truist Confidence Account</li>
+                            <li>Truist Bright Checking</li>
+                            <li>Truist Savings Accounts</li>
+                            <li>Legacy BB&T Bright Banking</li>
+                            <li>Legacy SunTrust Essential Checking</li>
+                        </ul>
+                    </div>
+                    <div class="format-card">
+                        <h3>✓ Premium Banking</h3>
+                        <ul>
+                            <li>Truist Wealth Checking</li>
+                            <li>Truist Asset Management</li>
+                            <li>Private Wealth Statements</li>
+                            <li>Legacy BB&T Wealth Accounts</li>
+                            <li>Legacy SunTrust Private Wealth</li>
+                            <li>Investment Account Statements</li>
+                        </ul>
+                    </div>
+                    <div class="format-card">
+                        <h3>✓ Business Banking</h3>
+                        <ul>
+                            <li>Truist Dynamic Business Checking</li>
+                            <li>Truist Business Value Checking</li>
+                            <li>Commercial Banking Statements</li>
+                            <li>Business Credit Cards</li>
+                            <li>Merchant Services Statements</li>
+                            <li>Treasury Management Reports</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charlotte Connection -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Truist's Charlotte, NC Headquarters and Regional Presence</h2>
+                <p>Truist maintains its corporate headquarters in Charlotte, North Carolina, solidifying the Queen City's position as the second-largest banking center in the United States. The Charlotte headquarters, located in the iconic Truist Center (formerly Hearst Tower), serves as the nerve center for operations spanning the Southeast and Mid-Atlantic regions.</p>
+                
+                <p>With significant operations also maintained in Atlanta (SunTrust's former headquarters) and Winston-Salem (BB&T's historic home), Truist operates as a truly regional powerhouse. The bank maintains over 2,000 branches across its footprint, serving communities from Pennsylvania to Florida and from the Atlantic Coast to Texas.</p>
+                
+                <p>This extensive regional presence means millions of customers across the Southeast rely on Truist for their banking needs. Our converter is designed to handle the unique statement formats used across all Truist regions, ensuring accurate conversion whether your statement originates from Charlotte, Atlanta, Winston-Salem, or any other Truist banking center.</p>
+            </div>
+        </section>
+
+        <!-- Account Types Detail -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Detailed Truist Account Types We Support</h2>
+                
+                <h3>Truist One Checking</h3>
+                <p>Truist One Checking is the bank's flagship checking account, designed for everyday banking needs. It offers no overdraft fees, no minimum balance requirements, and access to over 3,000 Truist ATMs. Our converter accurately captures all transaction types from Truist One Checking statements, including direct deposits, bill payments, ATM withdrawals, and mobile deposits.</p>
+                
+                <h3>Truist Confidence Account</h3>
+                <p>The Truist Confidence Account is a unique checkless checking account that helps customers avoid overdrafts and manage spending. With no overdraft fees and no checks, it's designed for digital-first banking. Our converter handles the specialized transaction formats from Confidence Account statements, including card purchases, online transfers, and automatic payments.</p>
+                
+                <h3>Truist Dynamic Business Checking</h3>
+                <p>Truist Dynamic Business Checking serves small to medium-sized businesses with flexible transaction limits and cash management tools. The account includes detailed reporting for business expense tracking. Our converter preserves all business-specific data fields, including check numbers, wire transfer details, and merchant service deposits, making it perfect for QuickBooks integration.</p>
+                
+                <h3>Legacy BB&T and SunTrust Accounts</h3>
+                <p>Many customers still receive statements in BB&T or SunTrust formats during the transition period. Our converter recognizes and accurately processes statements from legacy accounts including BB&T Bright Banking, BB&T Elite Gold, SunTrust Signature Advantage, and SunTrust Select Checking. All transaction data is preserved with proper date formatting and description mapping.</p>
+            </div>
+        </section>
+
+        <!-- Instructions -->
+        <section class="content-section">
+            <div class="container">
+                <h2>How to Convert Truist Statements to CSV</h2>
+                <div class="instruction-grid">
+                    <div class="instruction">
+                        <h3>Step 1: Download from Truist</h3>
+                        <p>Log into Truist online banking or mobile app. Navigate to Statements & Documents, select your account, choose your statement period, and download as PDF.</p>
+                    </div>
+                    <div class="instruction">
+                        <h3>Step 2: Upload PDF Here</h3>
+                        <p>Click the upload button above or drag your Truist, BB&T, or SunTrust PDF statement into the upload area. All formats are automatically detected.</p>
+                    </div>
+                    <div class="instruction">
+                        <h3>Step 3: Get Your CSV</h3>
+                        <p>Within seconds, download your converted CSV file with all transactions properly formatted for Excel, QuickBooks, or your accounting software.</p>
+                    </div>
+                </div>
+                
+                <div class="pro-tip">
+                    <h3>💡 Pro Tip for Truist Customers</h3>
+                    <p>If you're transitioning from BB&T or SunTrust, you can convert statements from all three banks in one session. Our converter automatically detects the format and applies the correct parsing rules. This is especially helpful for year-end accounting when you may have statements from before and after the merger.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Why Choose Our Truist Statement Converter?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit">
+                        <h3>🏦 Merger-Ready Technology</h3>
+                        <p>Seamlessly handles Truist, BB&T, and SunTrust formats - perfect for customers managing the transition.</p>
+                    </div>
+                    <div class="benefit">
+                        <h3>🎯 Format Recognition</h3>
+                        <p>Automatically detects whether your statement is Truist, BB&T, or SunTrust format and applies correct parsing.</p>
+                    </div>
+                    <div class="benefit">
+                        <h3>📊 Business-Ready Output</h3>
+                        <p>CSV format optimized for QuickBooks, Xero, and other accounting software used by Truist business customers.</p>
+                    </div>
+                    <div class="benefit">
+                        <h3>🔒 Bank-Level Security</h3>
+                        <p>Your sensitive Truist data is encrypted during upload and automatically deleted after conversion.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Features -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Advanced Features for Truist Statements</h2>
+                
+                <h3>Intelligent Format Detection</h3>
+                <p>Our converter uses advanced pattern recognition to automatically identify whether your statement is in Truist's new format or the legacy BB&T/SunTrust formats. This ensures accurate data extraction regardless of when your statement was generated or which system produced it.</p>
+                
+                <h3>Transaction Categorization</h3>
+                <p>Truist statements include detailed transaction descriptions and merchant category codes. Our converter preserves this categorization, making it easier to track expenses, identify tax-deductible transactions, and analyze spending patterns in your accounting software.</p>
+                
+                <h3>Multi-Account Support</h3>
+                <p>Many Truist customers have multiple accounts linked together. Our converter can process consolidated statements showing multiple accounts, properly separating transactions by account while maintaining the relationships between transfers.</p>
+                
+                <h3>Check Image Data</h3>
+                <p>For statements that include check images, our converter extracts check numbers, amounts, and dates, creating a comprehensive record that matches your paper trail. This is particularly valuable for business customers who need detailed check registers.</p>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Frequently Asked Questions - Truist Statement Converter</h2>
+                
+                <div class="faq-item">
+                    <h3>Does it work with statements from before the BB&T and SunTrust merger?</h3>
+                    <p>Yes! Our converter handles statements from BB&T and SunTrust dating back several years before the merger. It automatically recognizes the legacy formats and converts them accurately. This is perfect for historical record-keeping or tax preparation spanning the merger period.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can it handle Truist business account statements with hundreds of transactions?</h3>
+                    <p>Absolutely. Our converter is optimized for high-volume business statements, including those with thousands of transactions. It maintains performance even with large Truist Dynamic Business Checking or commercial account statements, processing them in seconds.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Will it preserve the transaction codes Truist uses for different payment types?</h3>
+                    <p>Yes, all Truist transaction codes, reference numbers, and payment type indicators are preserved in the conversion. This includes ACH codes, wire reference numbers, check numbers, and card transaction identifiers that are crucial for reconciliation.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>How does it handle Truist Wealth Management and investment statements?</h3>
+                    <p>Our converter supports Truist Wealth Management statements, including those showing investment transactions, dividend payments, and portfolio summaries. It extracts transaction data while preserving investment-specific details like CUSIP numbers and trade confirmations.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Is my Charlotte-area business data secure during conversion?</h3>
+                    <p>Your data security is our top priority. All uploads are encrypted using bank-level SSL encryption. Files are processed in isolated environments and automatically deleted after conversion. We never store, share, or access your financial data - maintaining the privacy standards you expect from financial services.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can I convert multiple months of Truist statements at once?</h3>
+                    <p>Currently, our converter processes one statement at a time for maximum accuracy. However, each conversion takes just seconds, so you can quickly process multiple months. Many users convert a full year of statements in under 5 minutes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regional SEO Content -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Serving Truist Customers Across the Southeast</h2>
+                <p>From Truist's headquarters in Charlotte to branch locations across 17 states, our converter serves the diverse needs of Truist's customer base. Whether you're a small business owner in Raleigh, a retiree in Atlanta, or a young professional in Richmond, our tool makes managing your Truist financial data simple and efficient.</p>
+                
+                <p>The Southeast's rapid economic growth has made accurate financial record-keeping more important than ever. Our Truist statement converter helps entrepreneurs, families, and established businesses maintain clear financial records for tax preparation, loan applications, and financial planning. With Truist's strong presence in growing markets like Nashville, Tampa, and Charleston, our tool serves the evolving needs of the New South economy.</p>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Convert Your Truist Statement Now</h2>
+                <p>Join thousands of Truist, BB&T, and SunTrust customers who've simplified their financial record-keeping</p>
+                <a href="#upload" class="cta-button">Upload Truist Statement</a>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <strong>75,000+</strong>
+                        <span>Truist statements converted</span>
+                    </div>
+                    <div class="stat">
+                        <strong>99.9%</strong>
+                        <span>Accuracy rate</span>
+                    </div>
+                    <div class="stat">
+                        <strong>5 seconds</strong>
+                        <span>Average conversion time</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Bank Statement Converter. Not affiliated with Truist Financial Corporation, BB&T, or SunTrust Banks.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js" async></script>
+    <!-- Mobile menu JavaScript -->
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

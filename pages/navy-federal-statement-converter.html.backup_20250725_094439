@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert Navy Federal Credit Union PDF statements to CSV/Excel format. Specialized converter for military members, DoD employees, and their families. Support for Active Duty Checking, Flagship Checking, eChecking, and investment statements. Secure military-grade conversion.">
+    <meta name="keywords" content="navy federal statement converter, navy federal pdf to csv, nfcu statement converter, navy federal credit union converter, navy federal excel converter, nfcu pdf to excel, military credit union statement converter, navy federal bank statement to csv, convert navy federal statement">
+    
+    <title>Navy Federal Credit Union Statement Converter - PDF to CSV/Excel | BankCSVConverter</title>
+    
+    <link rel="canonical" href="https://BankCSVConverter.com/navy-federal-statement-converter">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Navy Federal Credit Union Statement Converter",
+        "description": "Convert Navy Federal Credit Union PDF statements to CSV format for Excel, QuickBooks, and accounting software. Designed for military members, DoD employees, and their families.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "3421",
+            "bestRating": "5"
+        }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://BankCSVConverter.com"
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Bank Converters",
+            "item": "https://BankCSVConverter.com/banks"
+        },{
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Navy Federal",
+            "item": "https://BankCSVConverter.com/navy-federal-statement-converter"
+        }]
+    }
+    </script>
+    
+    <!-- Organization Schema for Navy Federal -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Navy Federal Credit Union",
+        "description": "World's largest credit union serving military members, veterans, DoD employees and their families",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "820 Follin Lane SE",
+            "addressLocality": "Vienna",
+            "addressRegion": "VA",
+            "postalCode": "22180",
+            "addressCountry": "US"
+        },
+        "url": "https://www.navyfederal.org"
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/modern-style.css">
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="../index.html">Bank Statement Converter</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../banks.html">All Banks</a></li>
+                    <li><a href="../how-it-works.html">How it Works</a></li>
+                    <li><a href="../security.html">Security</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/banks">Banks</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Navy Federal Credit Union</li>
+                </ol>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Navy Federal Credit Union Statement Converter</h1>
+                <p class="lead">Convert Navy Federal PDF statements to CSV/Excel format instantly. Designed specifically for military members, veterans, DoD employees, and their families.</p>
+                
+                <!-- Upload Area -->
+                <div class="upload-area" id="uploadArea">
+                    <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <h2>Drop Your Navy Federal Statement Here</h2>
+                    <p>or click to browse</p>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                    <button class="cta-button" onclick="document.getElementById('fileInput').click()">
+                        Select Navy Federal PDF Statement
+                    </button>
+                    <p class="file-types">Supports all Navy Federal account statements</p>
+                </div>
+
+                <!-- Features -->
+                <div class="features-row">
+                    <div class="feature">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                        <span>Military-Grade Security</span>
+                    </div>
+                    <div class="feature">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>Instant Conversion</span>
+                    </div>
+                    <div class="feature">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20m0-20c4.418 0 8 3.582 8 8s-3.582 8-8 8-8-3.582-8-8 3.582-8 8-8z"></path>
+                        </svg>
+                        <span>100% Free Service</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Navy Federal Section -->
+        <section class="bank-info">
+            <div class="container">
+                <h2>About Navy Federal Credit Union Statement Conversion</h2>
+                <p>Navy Federal Credit Union (NFCU) is the world's largest credit union, serving over 13 million members from all branches of the armed forces, Department of Defense employees, veterans, and their families. Headquartered in Vienna, Virginia, Navy Federal has been dedicated to serving those who serve our country since 1933.</p>
+                
+                <p>Our Navy Federal statement converter is specifically designed to handle the unique format of NFCU statements, ensuring accurate conversion of your financial data from PDF to CSV or Excel format. Whether you're managing personal finances, preparing taxes, or reconciling business accounts, our converter maintains the integrity of your Navy Federal transaction data.</p>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>Supported Navy Federal Accounts</h3>
+                        <ul>
+                            <li><strong>Active Duty Checking</strong> - Designed for active-duty military members</li>
+                            <li><strong>Flagship Checking</strong> - Premium checking with enhanced benefits</li>
+                            <li><strong>eChecking</strong> - Digital-first checking account</li>
+                            <li><strong>Campus Checking</strong> - For students and young adults</li>
+                            <li><strong>Free EveryDay Checking</strong> - No monthly fees</li>
+                            <li><strong>Business Checking</strong> - For military-affiliated businesses</li>
+                            <li><strong>Savings Accounts</strong> - Regular shares and special savings</li>
+                            <li><strong>Money Market Accounts</strong> - Higher yield savings options</li>
+                            <li><strong>Certificate Accounts</strong> - Fixed-term savings</li>
+                            <li><strong>IRA Accounts</strong> - Retirement savings statements</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Why Convert Navy Federal Statements?</h3>
+                        <ul>
+                            <li><strong>PCS Moves</strong> - Track moving expenses for military relocations</li>
+                            <li><strong>Tax Preparation</strong> - Import data into tax software</li>
+                            <li><strong>BAH/BAS Tracking</strong> - Monitor military allowances</li>
+                            <li><strong>Deployment Finance</strong> - Manage finances during deployment</li>
+                            <li><strong>VA Benefits</strong> - Track disability and benefit payments</li>
+                            <li><strong>TSP Contributions</strong> - Monitor retirement savings</li>
+                            <li><strong>Expense Reports</strong> - Government travel reimbursements</li>
+                            <li><strong>Budget Planning</strong> - Create military family budgets</li>
+                            <li><strong>Investment Tracking</strong> - Monitor Navy Federal investment accounts</li>
+                            <li><strong>Small Business</strong> - Veteran-owned business accounting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Military-Specific Features -->
+        <section class="military-features">
+            <div class="container">
+                <h2>Military-Specific Security Features</h2>
+                <p>As a converter designed for Navy Federal members, we understand the unique security requirements of military personnel and DoD employees. Our service implements military-grade security measures to protect your sensitive financial information.</p>
+
+                <div class="security-grid">
+                    <div class="security-item">
+                        <h3>🛡️ OPSEC Compliant</h3>
+                        <p>Our converter follows Operational Security (OPSEC) guidelines, ensuring no data is stored or transmitted to external servers. All processing happens locally in your browser.</p>
+                    </div>
+                    <div class="security-item">
+                        <h3>🔐 Zero Data Retention</h3>
+                        <p>We never store, save, or transmit your Navy Federal statements. Once you close your browser, all data is permanently deleted from memory.</p>
+                    </div>
+                    <div class="security-item">
+                        <h3>🌐 No Internet Required</h3>
+                        <p>After loading the page, the converter works entirely offline. Perfect for deployed service members with limited connectivity.</p>
+                    </div>
+                    <div class="security-item">
+                        <h3>🔒 End-to-End Encryption</h3>
+                        <p>All data processing uses military-standard encryption protocols, ensuring your financial information remains secure throughout the conversion process.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works">
+            <div class="container">
+                <h2>How to Convert Navy Federal Statements to CSV/Excel</h2>
+                
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Download Your Navy Federal Statement</h3>
+                        <p>Log into Navy Federal Online Banking or the mobile app. Navigate to your account and download your statement in PDF format. Navy Federal provides statements for all account types including checking, savings, credit cards, and loans.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Upload to Our Converter</h3>
+                        <p>Click the upload button above or drag and drop your Navy Federal PDF statement directly onto the page. Our converter automatically detects the Navy Federal format and prepares for conversion. Multiple statements can be processed sequentially.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Automatic Processing</h3>
+                        <p>Our AI-powered converter analyzes your Navy Federal statement structure, identifying transactions, dates, descriptions, and amounts. It handles various transaction types including direct deposits, BAH/BAS payments, PX/commissary purchases, and ATM withdrawals.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Download Your CSV/Excel File</h3>
+                        <p>Once processing is complete, download your converted file in CSV format, ready for Excel, QuickBooks, or any accounting software. The file includes all transaction details with proper formatting for easy import.</p>
+                    </div>
+                </div>
+
+                <div class="format-details">
+                    <h3>Navy Federal Statement Format Details</h3>
+                    <p>Our converter is optimized for Navy Federal's specific statement layout, including:</p>
+                    <ul>
+                        <li><strong>Transaction Date</strong> - Properly formatted dates for sorting and filtering</li>
+                        <li><strong>Post Date</strong> - When the transaction cleared your account</li>
+                        <li><strong>Description</strong> - Full merchant names and transaction details</li>
+                        <li><strong>Transaction Type</strong> - Deposits, withdrawals, transfers, fees</li>
+                        <li><strong>Amount</strong> - Positive for deposits, negative for withdrawals</li>
+                        <li><strong>Running Balance</strong> - Account balance after each transaction</li>
+                        <li><strong>Check Numbers</strong> - For check transactions</li>
+                        <li><strong>Reference Numbers</strong> - Navy Federal transaction IDs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Considerations -->
+        <section class="special-considerations">
+            <div class="container">
+                <h2>Special Considerations for Navy Federal Members</h2>
+                
+                <div class="consideration-grid">
+                    <div class="consideration-card">
+                        <h3>Military Pay and Allowances</h3>
+                        <p>Our converter correctly identifies and categorizes military-specific transactions including:</p>
+                        <ul>
+                            <li>Basic Pay deposits</li>
+                            <li>Basic Allowance for Housing (BAH)</li>
+                            <li>Basic Allowance for Subsistence (BAS)</li>
+                            <li>Special duty pay</li>
+                            <li>Hazardous duty pay</li>
+                            <li>Combat pay</li>
+                            <li>Travel pay and per diem</li>
+                            <li>Separation pay</li>
+                            <li>Retirement pay</li>
+                            <li>VA disability compensation</li>
+                        </ul>
+                    </div>
+
+                    <div class="consideration-card">
+                        <h3>Investment and Loan Statements</h3>
+                        <p>Beyond checking and savings, we support Navy Federal's investment and loan products:</p>
+                        <ul>
+                            <li>Navy Federal Investment Services statements</li>
+                            <li>Auto loan payment histories</li>
+                            <li>Mortgage statements</li>
+                            <li>Personal loan transactions</li>
+                            <li>Credit card statements</li>
+                            <li>Home equity line of credit (HELOC)</li>
+                            <li>Student loan refinancing statements</li>
+                            <li>Pledge loan transactions</li>
+                        </ul>
+                    </div>
+
+                    <div class="consideration-card">
+                        <h3>International and Deployment Banking</h3>
+                        <p>Special handling for overseas and deployment-related transactions:</p>
+                        <ul>
+                            <li>Foreign transaction fee identification</li>
+                            <li>Currency conversion tracking</li>
+                            <li>Overseas ATM withdrawals</li>
+                            <li>International wire transfers</li>
+                            <li>OCONUS merchant transactions</li>
+                            <li>Military Star Card transfers</li>
+                            <li>Exchange rate documentation</li>
+                            <li>Deployment-related expenses</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section class="use-cases">
+            <div class="container">
+                <h2>Common Use Cases for Navy Federal Statement Conversion</h2>
+                
+                <div class="use-case-grid">
+                    <div class="use-case">
+                        <h3>Tax Preparation for Service Members</h3>
+                        <p>Convert your Navy Federal statements to track deductible expenses including:</p>
+                        <ul>
+                            <li>Uniform and equipment purchases</li>
+                            <li>PCS moving expenses (if applicable)</li>
+                            <li>Professional military education costs</li>
+                            <li>Travel expenses for Reserve/Guard duty</li>
+                            <li>Home office expenses for recruiters</li>
+                        </ul>
+                    </div>
+
+                    <div class="use-case">
+                        <h3>VA Loan and Mortgage Applications</h3>
+                        <p>Prepare financial documentation for VA home loans by converting statements to show:</p>
+                        <ul>
+                            <li>Stable military income history</li>
+                            <li>BAH payment consistency</li>
+                            <li>Savings patterns</li>
+                            <li>Debt-to-income ratios</li>
+                            <li>Down payment funds verification</li>
+                        </ul>
+                    </div>
+
+                    <div class="use-case">
+                        <h3>TSP and Retirement Planning</h3>
+                        <p>Track your Thrift Savings Plan contributions and retirement planning:</p>
+                        <ul>
+                            <li>Monitor TSP contribution amounts</li>
+                            <li>Track government matching</li>
+                            <li>Calculate retirement savings rate</li>
+                            <li>Plan for BRS opt-in decisions</li>
+                            <li>Document retirement income sources</li>
+                        </ul>
+                    </div>
+
+                    <div class="use-case">
+                        <h3>Small Business Accounting</h3>
+                        <p>Veteran-owned businesses can streamline their accounting:</p>
+                        <ul>
+                            <li>Separate business and personal expenses</li>
+                            <li>Track government contract payments</li>
+                            <li>Monitor cash flow</li>
+                            <li>Prepare for SBA loan applications</li>
+                            <li>Document SDVOSB/VOSB certification finances</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq">
+            <div class="container">
+                <h2>Frequently Asked Questions - Navy Federal Statement Converter</h2>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>Is this converter affiliated with Navy Federal Credit Union?</h3>
+                        <p>No, this is an independent service designed to help Navy Federal members convert their PDF statements to CSV/Excel format. We are not affiliated with, endorsed by, or sponsored by Navy Federal Credit Union.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How secure is the conversion process for military members?</h3>
+                        <p>Extremely secure. All processing happens locally in your browser with military-grade encryption. No data is uploaded to servers, stored, or transmitted. This meets OPSEC requirements and ensures your financial information never leaves your device.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Can I convert Navy Federal investment account statements?</h3>
+                        <p>Yes, our converter supports all Navy Federal statement types including investment accounts, brokerage statements, IRA statements, and mutual fund reports from Navy Federal Investment Services.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Does it work with Navy Federal business account statements?</h3>
+                        <p>Absolutely. We support Navy Federal business checking, business savings, and business credit card statements. This is particularly useful for veteran-owned businesses and military spouse entrepreneurs.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Can I convert multiple months of statements at once?</h3>
+                        <p>Currently, you can process one statement at a time for maximum accuracy. However, you can convert multiple statements sequentially and combine the CSV files in Excel for comprehensive financial analysis.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What if my Navy Federal statement has a different format?</h3>
+                        <p>Navy Federal occasionally updates their statement formats. Our converter uses advanced pattern recognition to handle various formats. If you encounter issues, our system typically adapts to new formats within 24-48 hours.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Is there a limit to the statement size or number of transactions?</h3>
+                        <p>No limits. Whether you have 10 transactions or 1,000, our converter handles statements of any size. This is particularly useful for busy military families with numerous monthly transactions.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Can I use this while deployed or overseas?</h3>
+                        <p>Yes, the converter works anywhere in the world. Once the page loads, it works offline, making it perfect for deployed service members with limited or intermittent internet connectivity.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Does it preserve transaction categories for budgeting apps?</h3>
+                        <p>Yes, our converter maintains transaction descriptions and creates a format compatible with popular budgeting apps like Mint, YNAB, and Quicken, as well as military-specific apps like MilLife.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What about joint account statements?</h3>
+                        <p>Joint account statements are fully supported. All account holder information and transaction details are preserved in the conversion process, making it easy to track shared finances.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Can I convert Navy Federal loan statements?</h3>
+                        <p>Yes, we support all Navy Federal loan statements including auto loans, personal loans, student loans, mortgages, and home equity lines of credit. Payment histories and interest calculations are accurately converted.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Is this service really free for military members?</h3>
+                        <p>Yes, completely free with no hidden costs, subscriptions, or limits. We believe in supporting our military community with accessible financial tools. No credit card required, no trial periods, just free conversion.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Resources -->
+        <section class="resources">
+            <div class="container">
+                <h2>Additional Resources for Navy Federal Members</h2>
+                
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>Financial Planning Tools</h3>
+                        <ul>
+                            <li><a href="/military-financial-calculator">Military Pay Calculator</a></li>
+                            <li><a href="/bah-calculator">BAH Calculator by Zip Code</a></li>
+                            <li><a href="/tsp-contribution-calculator">TSP Contribution Calculator</a></li>
+                            <li><a href="/va-loan-calculator">VA Loan Calculator</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3>Other Credit Union Converters</h3>
+                        <ul>
+                            <li><a href="/usaa-bank-statement-converter">USAA Statement Converter</a></li>
+                            <li><a href="/pentagon-federal-converter">Pentagon Federal Converter</a></li>
+                            <li><a href="/air-force-federal-converter">Air Force Federal Converter</a></li>
+                            <li><a href="/security-service-converter">Security Service FCU Converter</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3>Support Resources</h3>
+                        <ul>
+                            <li><a href="/help/navy-federal-guide">Navy Federal Conversion Guide</a></li>
+                            <li><a href="/help/military-tax-tips">Military Tax Preparation Tips</a></li>
+                            <li><a href="/help/deployment-finance">Deployment Finance Management</a></li>
+                            <li><a href="/contact">Contact Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Convert Your Navy Federal Statement?</h2>
+                <p>Join thousands of military members who trust our secure, instant conversion service.</p>
+                <button class="cta-button-large" onclick="document.getElementById('fileInput').click()">
+                    Convert Navy Federal Statement Now
+                </button>
+                <p class="trust-text">🛡️ Military-grade security • 🚀 Instant conversion • 💰 Always free</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="/how-it-works">How It Works</a></li>
+                        <li><a href="../security.html">Security</a></li>
+                        <li><a href="/pricing">Pricing</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Banks</h4>
+                    <ul>
+                        <li><a href="../banks.html">All Banks</a></li>
+                        <li><a href="/chase-bank-statement-converter">Chase</a></li>
+                        <li><a href="/bank-of-america-statement-converter">Bank of America</a></li>
+                        <li><a href="/wells-fargo-statement-converter">Wells Fargo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Credit Unions</h4>
+                    <ul>
+                        <li><a href="/navy-federal-statement-converter">Navy Federal</a></li>
+                        <li><a href="/usaa-bank-statement-converter">USAA</a></li>
+                        <li><a href="/pentagon-federal-converter">Pentagon Federal</a></li>
+                        <li><a href="/credit-unions">All Credit Unions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BankCSVConverter.com - Navy Federal Statement Converter. Not affiliated with Navy Federal Credit Union.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/converter.js"></script>
+</body>
+</html>

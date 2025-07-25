@@ -1,0 +1,49 @@
+::1 - - [24/Jul/2025 22:47:25] "GET / HTTP/1.1" 200 -
+::1 - - [24/Jul/2025 22:50:22] "GET / HTTP/1.1" 200 -
+::1 - - [24/Jul/2025 22:50:22] "GET /css/style.css HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 22:50:22] "GET /assets/logo.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 22:50:22] "GET /assets/secure-icon.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 22:50:22] "GET /assets/institutional-icon.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 22:50:22] "GET /assets/accurate-icon.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 22:50:22] "GET /js/main.js HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 22:50:22] code 404, message File not found
+::1 - - [24/Jul/2025 22:50:22] "GET /assets/favicon.png HTTP/1.1" 404 -
+::1 - - [24/Jul/2025 22:50:30] code 404, message File not found
+::1 - - [24/Jul/2025 22:50:30] "GET /api/download/5fa614af-788a-4a6d-8b1d-200525c37357.csv HTTP/1.1" 404 -
+::1 - - [24/Jul/2025 22:50:30] code 404, message File not found
+::1 - - [24/Jul/2025 22:50:30] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [24/Jul/2025 22:53:36] "GET / HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 22:53:36] "GET /css/style.css HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 22:53:36] "GET /assets/logo.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 22:53:36] "GET /assets/secure-icon.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 22:53:36] "GET /js/main.js HTTP/1.1" 200 -
+::1 - - [24/Jul/2025 22:53:36] "GET /assets/institutional-icon.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 22:53:36] "GET /assets/accurate-icon.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 22:53:36] code 404, message File not found
+::1 - - [24/Jul/2025 22:53:36] "GET /assets/favicon.png HTTP/1.1" 404 -
+::1 - - [24/Jul/2025 22:54:30] "GET / HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 22:54:30] "GET /js/main.js HTTP/1.1" 200 -
+::1 - - [24/Jul/2025 22:54:30] code 404, message File not found
+::1 - - [24/Jul/2025 22:54:30] "GET /assets/favicon.png HTTP/1.1" 404 -
+::1 - - [24/Jul/2025 23:02:51] "GET / HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:02:51] "GET /css/style.css HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:02:51] "GET /assets/secure-icon.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:02:51] "GET /assets/logo.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:02:51] "GET /assets/institutional-icon.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:02:51] "GET /assets/accurate-icon.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:02:51] "GET /js/main.js HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:02:51] code 404, message File not found
+::1 - - [24/Jul/2025 23:02:51] "GET /assets/favicon.png HTTP/1.1" 404 -
+::1 - - [24/Jul/2025 23:23:14] "GET / HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:23:14] "GET /css/style.css HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:23:14] "GET /assets/logo.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:23:14] "GET /assets/secure-icon.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:23:14] "GET /assets/institutional-icon.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:23:14] "GET /assets/accurate-icon.svg HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:23:14] "GET /js/main.js HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:23:14] code 404, message File not found
+::1 - - [24/Jul/2025 23:23:14] "GET /assets/favicon.png HTTP/1.1" 404 -
+::1 - - [24/Jul/2025 23:27:58] "GET / HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:27:59] "GET /js/main.js HTTP/1.1" 304 -
+::1 - - [24/Jul/2025 23:27:59] code 404, message File not found
+::1 - - [24/Jul/2025 23:27:59] "GET /assets/favicon.png HTTP/1.1" 404 -

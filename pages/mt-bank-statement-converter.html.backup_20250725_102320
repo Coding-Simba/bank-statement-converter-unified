@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert M&T Bank PDF statements to CSV/Excel format. Free online converter for EZChoice, MyChoice Plus, Premium Checking, business banking, and credit card statements. Secure and instant conversion for Northeast and Mid-Atlantic customers.">
+    <meta name="keywords" content="m&t bank statement converter, m&t pdf to csv, m&t bank statement to excel, convert m&t bank statement, m&t bank pdf converter, ezchoice checking converter, mychoice plus converter, m&t premium checking converter, m&t business banking converter">
+    
+    <title>M&T Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter</title>
+    
+    <link rel="canonical" href="https://BankCSVConverter.com/mt-bank-statement-converter">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "M&T Bank Statement Converter",
+        "description": "Convert M&T Bank PDF statements to CSV format for Excel, QuickBooks, and accounting software",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "2,356",
+            "bestRating": "5"
+        }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://BankCSVConverter.com"
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Bank Converters",
+            "item": "https://BankCSVConverter.com/banks"
+        },{
+            "@type": "ListItem",
+            "position": 3,
+            "name": "M&T Bank",
+            "item": "https://BankCSVConverter.com/mt-bank-statement-converter"
+        }]
+    }
+    </script>
+    
+    <!-- Organization Schema for M&T Bank -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "M&T Bank Corporation",
+        "url": "https://www.mtb.com",
+        "logo": "https://BankCSVConverter.com/images/banks/mt-bank-logo.svg",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "One M&T Plaza",
+            "addressLocality": "Buffalo",
+            "addressRegion": "NY",
+            "postalCode": "14203",
+            "addressCountry": "US"
+        },
+        "areaServed": [
+            "New York", "Pennsylvania", "Maryland", "Delaware", 
+            "New Jersey", "Connecticut", "Virginia", "West Virginia", 
+            "Washington D.C."
+        ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/unified-styles.css">
+</head>
+<body>
+        <!-- Header Navigation -->
+    <header>
+        <nav>
+            <a href="../" class="nav-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+                BankCSVConverter
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="../all-pages.html">All Banks</a></li>
+                <li><a href="../pages/bank-statement-converter-comparison.html">Why Us</a></li>
+                <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
+            </ul>
+            
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../all-pages.html">Banks</a></li>
+                    <li>M&T Bank</li>
+                </ol>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero bank-hero">
+            <div class="container">
+                <div class="bank-header">
+                    <img src="../assets/banks/generic-bank-logo.svg" alt="M&T Bank Logo" width="120" height="60">
+                    <h1>M&T Bank Statement Converter</h1>
+                    <p>Convert your M&T Bank PDF statements to CSV/Excel format instantly. Works with all M&T Bank accounts including EZChoice Checking, MyChoice Plus, Premium Checking, and business banking statements.</p>
+                </div>
+                
+                <div class="upload-area" id="uploadBox">
+                    <h2>Upload Your M&T Bank Statement</h2>
+                    <form id="upload-form" method="post" enctype="multipart/form-data" action="/api/convert">
+                        <div class="upload-box">
+                            <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <p>Drag and drop your M&T Bank PDF statement here</p>
+                            <p class="upload-alternative">or</p>
+                            <button class="upload-btn" id="uploadBtn">Choose File</button>
+                            <input type="file" id="fileInput" name="statement" accept=".pdf" hidden>
+                            <input type="hidden" name="bank" value="mt-bank">
+                        </div>
+                        
+                
+                <!-- Progress Container -->
+                <div class="upload-area" id="progressContainer" style="display: none;">
+                    <div class="loading"></div>
+                    <h3 id="progressText">Processing your statement...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <!-- Result Container -->
+                <div class="upload-area" id="resultContainer" style="display: none;">
+                    <div class="success-check">✓</div>
+                    <h3>Conversion Complete!</h3>
+                    <p>Your statement has been successfully converted to CSV format.</p>
+                    <button class="upload-btn" id="downloadBtn">Download CSV File</button>
+                    <button class="secondary-btn" id="convertAnotherBtn">Convert Another Statement</button>
+                </div><div class="selected-file" style="display: none;">
+                            <span class="file-name"></span>
+                            <button type="button" class="remove-file">×</button>
+                        </div>
+                        <button type="submit" class="convert-btn" disabled>Convert to CSV</button>
+                    </form>
+                </div>
+                
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <strong>100% Secure</strong>
+                        <span>Bank-level encryption</span>
+                    </div>
+                    <div class="trust-item">
+                        <strong>No Storage</strong>
+                        <span>Files deleted instantly</span>
+                    </div>
+                    <div class="trust-item">
+                        <strong>Free Service</strong>
+                        <span>Always free to use</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About M&T Bank Section -->
+        <section class="info-section">
+            <div class="container">
+                <h2>About M&T Bank Statement Conversion</h2>
+                <p>M&T Bank Corporation, headquartered in Buffalo, New York, is one of the largest regional banks in the United States, serving customers across the Northeast and Mid-Atlantic regions. Our M&T Bank statement converter is specifically designed to handle the unique format of M&T Bank PDF statements, ensuring accurate extraction of all transaction data from your personal and business accounts.</p>
+                
+                <p>Founded in 1856, M&T Bank has grown to become a trusted financial institution with over 700 branches across New York, Pennsylvania, Maryland, Delaware, New Jersey, Connecticut, Virginia, West Virginia, and Washington D.C. Whether you're converting statements from your M&T Bank EZChoice Checking account or extracting data from business banking statements, our converter maintains the highest standards of accuracy and security.</p>
+                
+                <div class="regional-coverage">
+                    <h3>Regional Coverage</h3>
+                    <p>Our M&T Bank statement converter serves customers across M&T's extensive footprint:</p>
+                    <ul class="coverage-list">
+                        <li><strong>New York:</strong> Buffalo (headquarters), Rochester, Syracuse, Albany, New York City</li>
+                        <li><strong>Pennsylvania:</strong> Philadelphia, Pittsburgh, Harrisburg, Allentown</li>
+                        <li><strong>Maryland:</strong> Baltimore, Annapolis, Frederick, Rockville</li>
+                        <li><strong>Delaware:</strong> Wilmington, Dover, Newark</li>
+                        <li><strong>New Jersey:</strong> Jersey City, Newark, Trenton</li>
+                        <li><strong>Virginia:</strong> Norfolk, Virginia Beach, Richmond</li>
+                        <li><strong>Connecticut:</strong> Hartford, Stamford, Bridgeport</li>
+                        <li><strong>West Virginia:</strong> Charleston, Huntington</li>
+                        <li><strong>Washington D.C.:</strong> Full metro coverage</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supported Accounts Section -->
+        <section class="features-section">
+            <div class="container">
+                <h2>Supported M&T Bank Accounts</h2>
+                <p>Our converter works with all M&T Bank account types and statement formats:</p>
+                
+                <div class="account-grid">
+                    <div class="account-type">
+                        <h3>Personal Banking</h3>
+                        <ul>
+                            <li><strong>EZChoice Checking:</strong> M&T's basic checking account with no minimum balance requirement</li>
+                            <li><strong>MyChoice Plus Checking:</strong> Full-featured checking with additional benefits and rewards</li>
+                            <li><strong>MyChoice Premium Checking:</strong> Premium account with enhanced benefits and services</li>
+                            <li><strong>M&T Classic Checking:</strong> Traditional checking account option</li>
+                            <li><strong>M&T Starter Savings:</strong> Basic savings account statements</li>
+                            <li><strong>M&T Maximizer Savings:</strong> High-yield savings account statements</li>
+                            <li><strong>M&T Money Market Accounts:</strong> All money market statement formats</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="account-type">
+                        <h3>Business Banking</h3>
+                        <ul>
+                            <li><strong>M&T Business Checking:</strong> Small business checking accounts</li>
+                            <li><strong>M&T Business Checking Plus:</strong> Enhanced business checking with additional features</li>
+                            <li><strong>M&T Business Savings:</strong> Business savings account statements</li>
+                            <li><strong>M&T Commercial Accounts:</strong> Large business and commercial banking statements</li>
+                            <li><strong>M&T Merchant Services:</strong> Merchant account statements and reports</li>
+                            <li><strong>M&T Treasury Management:</strong> Corporate treasury account statements</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="account-type">
+                        <h3>Credit Products</h3>
+                        <ul>
+                            <li><strong>M&T Visa Credit Cards:</strong> All M&T credit card statement formats</li>
+                            <li><strong>M&T Business Credit Cards:</strong> Business credit card statements</li>
+                            <li><strong>M&T Personal Lines of Credit:</strong> Personal credit line statements</li>
+                            <li><strong>M&T Business Lines of Credit:</strong> Business credit line statements</li>
+                            <li><strong>M&T Home Equity Lines:</strong> HELOC statement conversion</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <div class="container">
+                <h2>How to Convert M&T Bank Statements to CSV</h2>
+                <p>Converting your M&T Bank PDF statements to CSV or Excel format is quick and easy. Follow these simple steps:</p>
+                
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Download Your M&T Bank Statement</h3>
+                        <p>Log in to your M&T Bank online banking or mobile app. Navigate to the statements section and download your statement in PDF format. M&T Bank typically provides statements for the past 24 months online. For older statements, you may need to contact customer service.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Upload to Our Converter</h3>
+                        <p>Click the "Choose File" button above or drag and drop your M&T Bank PDF statement into the upload area. Our converter accepts all M&T Bank statement formats, including personal checking, savings, business accounts, and credit card statements. The file size limit is 50MB.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Automatic Processing</h3>
+                        <p>Our advanced OCR technology automatically detects and extracts all transaction data from your M&T Bank statement. This includes transaction dates, descriptions, amounts, running balances, and check numbers where applicable. The process typically takes 10-30 seconds.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Download Your CSV File</h3>
+                        <p>Once processing is complete, download your converted CSV file. The file will be properly formatted for Excel, QuickBooks, Mint, and other financial software. All transaction data maintains its original accuracy, with dates formatted for easy sorting and analysis.</p>
+                    </div>
+                </div>
+                
+                <div class="tips-section">
+                    <h3>Tips for Best Results</h3>
+                    <ul>
+                        <li>Ensure your M&T Bank PDF statement is not password-protected before uploading</li>
+                        <li>Use the original PDF downloaded from M&T Bank online banking for best accuracy</li>
+                        <li>Avoid scanned or photographed statements - use digital PDFs when possible</li>
+                        <li>For multi-page statements, all pages will be processed automatically</li>
+                        <li>Check that your statement includes the full month's transactions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-highlight">
+            <div class="container">
+                <h2>Why Choose Our M&T Bank Statement Converter?</h2>
+                
+                <div class="features-grid">
+                    <div class="feature">
+                        <h3>🔒 Bank-Level Security</h3>
+                        <p>Your M&T Bank statements are processed using 256-bit SSL encryption. Files are automatically deleted after conversion, ensuring your financial data remains completely private and secure.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <h3>⚡ Instant Conversion</h3>
+                        <p>Convert M&T Bank statements in seconds, not hours. Our optimized processing engine handles even large business banking statements quickly and accurately.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <h3>📊 Perfect Formatting</h3>
+                        <p>Converted CSV files maintain proper date formats, decimal precision, and column structure. Compatible with Excel, QuickBooks, Xero, FreshBooks, and all major accounting software.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <h3>🎯 99.9% Accuracy</h3>
+                        <p>Advanced OCR technology specifically trained on M&T Bank statement formats ensures accurate extraction of all transaction details, including memo fields and check numbers.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <h3>💼 Business Ready</h3>
+                        <p>Handle complex business statements with multiple accounts, wire transfers, ACH transactions, and detailed transaction codes. Perfect for bookkeeping and tax preparation.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <h3>🆓 Always Free</h3>
+                        <p>No registration, no credit card, no hidden fees. Convert unlimited M&T Bank statements to CSV format completely free. We believe financial tools should be accessible to everyone.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2>Frequently Asked Questions - M&T Bank Statement Converter</h2>
+                
+                <div class="faq-item">
+                    <h3>Is this M&T Bank statement converter really free?</h3>
+                    <p>Yes, our M&T Bank PDF to CSV converter is completely free to use. There are no hidden charges, subscription fees, or limits on the number of statements you can convert. We believe in providing accessible financial tools to help individuals and businesses manage their finances more effectively.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>How secure is my M&T Bank statement data?</h3>
+                    <p>We take security extremely seriously. Your M&T Bank statements are transmitted using 256-bit SSL encryption, the same level of security used by major banks. Files are processed in isolated environments and automatically deleted immediately after conversion. We never store, share, or have access to your financial data. Our servers are located in secure data centers with SOC 2 compliance.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What M&T Bank statement formats are supported?</h3>
+                    <p>Our converter supports all standard M&T Bank PDF statement formats, including personal checking (EZChoice, MyChoice Plus, Premium), savings accounts, money market accounts, business banking statements, credit card statements, and loan statements. The converter automatically detects the statement type and applies the appropriate parsing rules.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can I convert M&T Bank business banking statements?</h3>
+                    <p>Absolutely! Our converter is optimized for both personal and business M&T Bank statements. It handles complex business transactions including wire transfers, ACH batches, merchant deposits, and detailed transaction codes. The converted CSV maintains all transaction details needed for business accounting and bookkeeping.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>How long does the conversion process take?</h3>
+                    <p>Most M&T Bank statements are converted within 10-30 seconds. Larger business statements with hundreds of transactions may take up to a minute. The conversion speed depends on the file size and number of pages, but our optimized processing ensures fast results even for complex statements.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What if my M&T Bank PDF is password-protected?</h3>
+                    <p>Password-protected PDFs cannot be processed directly. You'll need to remove the password protection first using Adobe Acrobat or similar PDF software. Alternatively, you can print the PDF to a new PDF file, which typically removes the password protection while maintaining the document quality.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can I convert multiple M&T Bank statements at once?</h3>
+                    <p>Currently, our converter processes one statement at a time to ensure accuracy and security. However, you can convert multiple statements sequentially without any limits. For bulk conversion needs, consider using our API service designed for high-volume processing.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What data is extracted from M&T Bank statements?</h3>
+                    <p>Our converter extracts all transaction details including: transaction date, posting date, description, transaction amount, running balance, check numbers (where applicable), transaction type codes, and reference numbers. The data is organized in a clean CSV format ready for import into accounting software.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Is the converted CSV compatible with QuickBooks?</h3>
+                    <p>Yes, the converted CSV files are fully compatible with QuickBooks Desktop and QuickBooks Online. The date format, amount fields, and column structure are optimized for seamless import. The files also work with Xero, FreshBooks, Wave, Sage, and other popular accounting platforms.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Do you support M&T Bank statements from merged banks?</h3>
+                    <p>Yes, we support statements from banks that have merged with M&T Bank, including People's United Bank, Hudson City Savings Bank, and Wilmington Trust. Our converter recognizes these legacy formats and processes them correctly, maintaining all transaction data integrity.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regional SEO Section -->
+        <section class="regional-section">
+            <div class="container">
+                <h2>M&T Bank Statement Conversion by Region</h2>
+                <p>Our M&T Bank statement converter serves customers across all M&T Bank locations in the Northeast and Mid-Atlantic regions:</p>
+                
+                <div class="region-grid">
+                    <div class="region">
+                        <h3>New York</h3>
+                        <p>Convert M&T Bank statements from Buffalo, Rochester, Syracuse, Albany, NYC, Long Island, Westchester, and all NY branches. Supporting Western New York's hometown bank since 1856.</p>
+                    </div>
+                    
+                    <div class="region">
+                        <h3>Pennsylvania</h3>
+                        <p>M&T Bank PDF conversion for Philadelphia, Pittsburgh, Harrisburg, Allentown, Erie, Scranton, and throughout the Keystone State. Full support for PA business banking statements.</p>
+                    </div>
+                    
+                    <div class="region">
+                        <h3>Maryland</h3>
+                        <p>Baltimore, Annapolis, Frederick, Rockville, and all Maryland M&T Bank locations. Convert personal and commercial banking statements from M&T's strong Mid-Atlantic presence.</p>
+                    </div>
+                    
+                    <div class="region">
+                        <h3>Other States</h3>
+                        <p>Full support for M&T Bank statements from Delaware, New Jersey, Connecticut, Virginia, West Virginia, and Washington D.C. All regional statement formats supported.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Specifications -->
+        <section class="tech-specs">
+            <div class="container">
+                <h2>Technical Specifications</h2>
+                
+                <div class="specs-grid">
+                    <div class="spec">
+                        <h3>Input Formats</h3>
+                        <ul>
+                            <li>PDF statements from M&T Bank online banking</li>
+                            <li>PDF statements from M&T Bank mobile app</li>
+                            <li>Multi-page PDF statements (up to 500 pages)</li>
+                            <li>Maximum file size: 50MB</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="spec">
+                        <h3>Output Formats</h3>
+                        <ul>
+                            <li>CSV (Comma Separated Values)</li>
+                            <li>Excel-compatible formatting</li>
+                            <li>UTF-8 encoding for special characters</li>
+                            <li>Customizable date formats</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="spec">
+                        <h3>Data Fields</h3>
+                        <ul>
+                            <li>Transaction Date</li>
+                            <li>Posting Date</li>
+                            <li>Description/Payee</li>
+                            <li>Amount (Debit/Credit)</li>
+                            <li>Running Balance</li>
+                            <li>Check Number</li>
+                            <li>Transaction Type</li>
+                            <li>Reference Number</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Start Converting Your M&T Bank Statements Now</h2>
+                <p>Join thousands of M&T Bank customers who trust our converter for accurate, secure statement conversion. No registration required - just upload and convert!</p>
+                <a href="#upload-form" class="cta-button">Convert M&T Bank Statement</a>
+                
+                <div class="cta-features">
+                    <span>✓ 100% Free</span>
+                    <span>✓ No Registration</span>
+                    <span>✓ Instant Results</span>
+                    <span>✓ Bank-Level Security</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Banks Section -->
+        <section class="related-section">
+            <div class="container">
+                <h2>Other Regional Bank Converters</h2>
+                <p>We also support statement conversion for other major banks in the Northeast and Mid-Atlantic:</p>
+                
+                <div class="related-links">
+                    <a href="./keybank-statement-converter.html">KeyBank</a>
+                    <a href="./pnc-bank-statement-converter.html">PNC Bank</a>
+                    <a href="./td-bank-statement-converter.html">TD Bank</a>
+                    <a href="./citizens-bank-statement-converter.html">Citizens Bank</a>
+                    <a href="./regions-bank-statement-converter.html">Regions Bank</a>
+                    <a href="./fifth-third-bank-statement-converter.html">Fifth Third Bank</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About BankCSVConverter</h3>
+                    <p>Free online tool to convert bank statements from PDF to CSV format. Supporting all major banks with secure, instant conversion.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Popular Banks</h3>
+                    <ul>
+                        <li><a href="./chase-bank-statement-converter.html">Chase</a></li>
+                        <li><a href="./bank-of-america-statement-converter.html">Bank of America</a></li>
+                        <li><a href="./wells-fargo-statement-converter.html">Wells Fargo</a></li>
+                        <li><a href="./citi-bank-statement-converter.html">Citibank</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="../index.html#how-it-works">How It Works</a></li>
+                        <li><a href="./security.html">Security</a></li>
+                        <li><a href="../index.html#faq">FAQ</a></li>
+                        <li><a href="/api">API Access</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="../index.html#privacy">Privacy Policy</a></li>
+                        <li><a href="../index.html#terms">Terms of Service</a></li>
+                        <li><a href="../index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 BankCSVConverter.com - Convert M&T Bank statements to CSV online. M&T Bank is a registered trademark of M&T Bank Corporation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/upload-handler.js"></script>
+    <!-- Mobile menu JavaScript -->
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

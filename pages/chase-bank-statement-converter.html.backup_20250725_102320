@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert Chase Bank PDF statements to CSV/Excel format. Free online converter for Chase checking, savings, and credit card statements. Instant and secure.">
+    <meta name="keywords" content="chase bank statement converter, chase pdf to csv, chase statement to excel, convert chase bank statement, chase bank pdf converter">
+    
+    <title>Chase Bank Statement Converter - PDF to CSV/Excel | BankCSVConverter</title>
+    
+    <link rel="canonical" href="https://BankCSVConverter.com/chase-bank-statement-converter">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Chase Bank Statement Converter",
+        "description": "Convert Chase Bank PDF statements to CSV format for Excel, QuickBooks, and accounting software",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "1247",
+            "bestRating": "5"
+        }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://BankCSVConverter.com"
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Bank Converters",
+            "item": "https://BankCSVConverter.com/banks"
+        },{
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Chase Bank",
+            "item": "https://BankCSVConverter.com/chase-bank-statement-converter"
+        }]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/unified-styles.css">
+</head>
+<body>
+        <!-- Header Navigation -->
+    <header>
+        <nav>
+            <a href="../" class="nav-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+                BankCSVConverter
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="../all-pages.html">All Banks</a></li>
+                <li><a href="../pages/bank-statement-converter-comparison.html">Why Us</a></li>
+                <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
+            </ul>
+            
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../all-pages.html">Banks</a></li>
+                    <li>Chase Bank</li>
+                </ol>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero bank-hero">
+            <div class="container">
+                <div class="bank-header">
+                    <img src="../assets/banks/generic-bank-logo.svg" alt="Chase Bank Logo" width="120" height="60">
+                    <h1>Chase Bank Statement Converter</h1>
+                    <p>Convert your Chase PDF statements to CSV/Excel format in seconds. Works with all Chase accounts including checking, savings, and credit cards.</p>
+                </div>
+                
+                <div class="upload-area" id="uploadBox">
+                    <h2>Upload Your Chase Statement</h2>
+                    <button class="upload-btn" id="uploadBtn">
+                        Convert Chase PDF to CSV
+                    </button>
+                    <p>or drag and drop your Chase PDF here</p>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                    
+                    <div class="trust-signals">
+                        <span>✓ Works with all Chase accounts</span>
+                        <span>✓ Preserves transaction categories</span>
+                        <span>✓ QuickBooks compatible</span>
+                    </div>
+                
+                
+                <!-- Progress Container -->
+                <div class="upload-area" id="progressContainer" style="display: none;">
+                    <div class="loading"></div>
+                    <h3 id="progressText">Processing your statement...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <!-- Result Container -->
+                <div class="upload-area" id="resultContainer" style="display: none;">
+                    <div class="success-check">✓</div>
+                    <h3>Conversion Complete!</h3>
+                    <p>Your statement has been successfully converted to CSV format.</p>
+                    <button class="upload-btn" id="downloadBtn">Download CSV File</button>
+                    <button class="secondary-btn" id="convertAnotherBtn">Convert Another Statement</button>
+                </div></div>
+            </div>
+        </section>
+
+        <!-- Supported Formats -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Supported Chase Statement Types</h2>
+                <div class="format-grid">
+                    <div class="format-card">
+                        <h3>✓ Chase Checking Accounts</h3>
+                        <ul>
+                            <li>Chase Total Checking</li>
+                            <li>Chase Premier Plus Checking</li>
+                            <li>Chase Sapphire Checking</li>
+                            <li>Chase Private Client Checking</li>
+                        </ul>
+                    </div>
+                    <div class="format-card">
+                        <h3>✓ Chase Credit Cards</h3>
+                        <ul>
+                            <li>Chase Sapphire Preferred/Reserve</li>
+                            <li>Chase Freedom Cards</li>
+                            <li>Chase Ink Business Cards</li>
+                            <li>United/Southwest/Marriott Cards</li>
+                        </ul>
+                    </div>
+                    <div class="format-card">
+                        <h3>✓ Chase Savings & Investment</h3>
+                        <ul>
+                            <li>Chase Savings Accounts</li>
+                            <li>Chase You Invest Statements</li>
+                            <li>Chase Private Client Statements</li>
+                            <li>Business Account Statements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="content-section">
+            <div class="container">
+                <h2>How to Convert Chase Bank Statements</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Download from Chase</h3>
+                        <p>Log into chase.com and download your statement as PDF. Go to Statements & Documents → Download PDF.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Upload to Converter</h3>
+                        <p>Upload your Chase PDF here. Our AI recognizes all Chase statement formats automatically.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Download CSV/Excel</h3>
+                        <p>Get your organized CSV with dates, descriptions, amounts, and running balances preserved.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Chase Statement Conversion Features</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h3>🏦 Chase-Specific Parsing</h3>
+                        <p>Our converter is specifically optimized for Chase's statement format, ensuring 99.9% accuracy for all transaction types.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>📊 Category Preservation</h3>
+                        <p>Maintains Chase's transaction categories like "Groceries", "Gas", "Restaurants" for easy budgeting in Excel.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>💰 Balance Reconciliation</h3>
+                        <p>Preserves running balances and ensures your starting/ending balances match perfectly.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>📅 Date Format Options</h3>
+                        <p>Convert Chase's MM/DD/YYYY format to any date format needed for your accounting software.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Chase Statement Converter FAQ</h2>
+                
+                <div class="faq-item">
+                    <h3>Does it work with Chase business account statements?</h3>
+                    <p>Yes, our converter supports all Chase business accounts including Chase Business Complete Banking, Chase Performance Business Checking, and Chase Platinum Business Checking statements.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can I convert multiple Chase statements at once?</h3>
+                    <p>Currently, you can convert one statement at a time. For batch processing of multiple Chase statements, contact us for API access.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Does it preserve Chase credit card reward points?</h3>
+                    <p>The converter extracts transaction data only. For reward points tracking, you'll need to check your Chase Ultimate Rewards portal.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What if my Chase statement is password protected?</h3>
+                    <p>You'll need to remove the password protection first. Open the PDF in Adobe Reader, enter your password, then save without password protection.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Convert Your Chase Statement?</h2>
+                <p>Join thousands of Chase customers who save hours on manual data entry</p>
+                <a href="#upload" class="cta-button">Convert Chase PDF Now</a>
+                
+                <div class="testimonial">
+                    <p>"This tool saved me hours of manual entry for my Chase business statements. Works perfectly every time!"</p>
+                    <cite>- Sarah M., Small Business Owner</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Banks -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Other Bank Converters</h2>
+                <div class="bank-links">
+                    <a href="bank-of-america-statement-converter.html">Bank of America</a>
+                    <a href="wells-fargo-statement-converter.html">Wells Fargo</a>
+                    <a href="citi-bank-statement-converter.html">Citi Bank</a>
+                    <a href="capital-one-statement-converter.html">Capital One</a>
+                    <a href="us-bank-statement-converter.html">US Bank</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Bank Statement Converter. Not affiliated with JPMorgan Chase & Co.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js" async></script>
+    <!-- Mobile menu JavaScript -->
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

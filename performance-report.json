@@ -1,0 +1,58 @@
+{
+  "timestamp": "2025-07-25 09:53:29",
+  "optimizations": {
+    "css_minification": {
+      "modern-style.css": {
+        "original_size": 18973,
+        "minified_size": 13839,
+        "reduction_percent": 27.06
+      },
+      "style.css": {
+        "original_size": 7097,
+        "minified_size": 5028,
+        "reduction_percent": 29.15
+      },
+      "style-seo.css": {
+        "original_size": 5896,
+        "minified_size": 4116,
+        "reduction_percent": 30.19
+      }
+    },
+    "js_minification": {
+      "main.js": {
+        "original_size": 10881,
+        "minified_size": 7679,
+        "reduction_percent": 29.43
+      },
+      "main-seo.js": {
+        "original_size": 5781,
+        "minified_size": 3353,
+        "reduction_percent": 42.0
+      }
+    },
+    "images": {
+      "accurate-icon.svg": {
+        "size": 472,
+        "format": "svg"
+      },
+      "institutional-icon.svg": {
+        "size": 504,
+        "format": "svg"
+      },
+      "logo.svg": {
+        "size": 505,
+        "format": "svg"
+      },
+      "secure-icon.svg": {
+        "size": 373,
+        "format": "svg"
+      }
+    },
+    "recommendations": [
+      "\u2705 CSS and JavaScript files have been minified",
+      "\u2705 Critical CSS extracted for inline loading",
+      "\u2705 Resource hints added for DNS prefetching",
+      "\u2705 JavaScript loading deferred for better performance"
+    ]
+  }
+}

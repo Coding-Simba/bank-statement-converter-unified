@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert Capital One PDF statements to CSV/Excel format. Free online converter for Capital One 360 Checking, 360 Savings, credit cards (Venture, Savor, Quicksilver) and more. Instant and secure.">
+    <meta name="keywords" content="capital one statement converter, capital one pdf to csv, capital one statement to excel, convert capital one bank statement, capital one 360 pdf converter, capital one venture statement converter">
+    
+    <title>Capital One Statement Converter - PDF to CSV/Excel | BankCSVConverter</title>
+    
+    <link rel="canonical" href="https://BankCSVConverter.com/capital-one-statement-converter">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Capital One Statement Converter",
+        "description": "Convert Capital One PDF statements to CSV format for Excel, QuickBooks, and accounting software",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "1589",
+            "bestRating": "5"
+        }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://BankCSVConverter.com"
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Bank Converters",
+            "item": "https://BankCSVConverter.com/banks"
+        },{
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Capital One",
+            "item": "https://BankCSVConverter.com/capital-one-statement-converter"
+        }]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/modern-style.css">
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="../index.html">Bank Statement Converter</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../banks.html">All Banks</a></li>
+                    <li><a href="../how-it-works.html">How it Works</a></li>
+                    <li><a href="../security.html">Security</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../banks.html">Banks</a></li>
+                    <li>Capital One</li>
+                </ol>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero bank-hero">
+            <div class="container">
+                <div class="bank-header">
+                    <img src="../images/banks/capital-one-logo.svg" alt="Capital One Logo" width="120" height="60">
+                    <h1>Capital One Statement Converter</h1>
+                    <p>Convert your Capital One PDF statements to CSV/Excel format in seconds. Works seamlessly with all Capital One accounts including 360 Checking, 360 Savings, and all credit cards from McLean, Virginia's leading digital bank.</p>
+                </div>
+                
+                <div class="upload-area" id="uploadBox">
+                    <h2>Upload Your Capital One Statement</h2>
+                    <button class="upload-btn" id="uploadBtn">
+                        Convert Capital One PDF to CSV
+                    </button>
+                    <p>or drag and drop your Capital One PDF here</p>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                    
+                    <div class="trust-signals">
+                        <span>✓ Works with all Capital One accounts</span>
+                        <span>✓ Preserves transaction categories</span>
+                        <span>✓ QuickBooks & Excel compatible</span>
+                    </div>
+                </div>
+                
+                <!-- Progress Container -->
+                <div class="upload-area" id="progressContainer" style="display: none;">
+                    <div class="loading"></div>
+                    <h3 id="progressText">Processing your statement...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <!-- Result Container -->
+                <div class="upload-area" id="resultContainer" style="display: none;">
+                    <div class="success-check">✓</div>
+                    <h3>Conversion Complete!</h3>
+                    <p>Your Capital One statement has been successfully converted to CSV format.</p>
+                    <button class="upload-btn" id="downloadBtn">Download CSV File</button>
+                    <button class="secondary-btn" id="convertAnotherBtn">Convert Another Statement</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supported Formats -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Supported Capital One Statement Types</h2>
+                <div class="format-grid">
+                    <div class="format-card">
+                        <h3>✓ Capital One 360 Banking</h3>
+                        <ul>
+                            <li>360 Checking Account</li>
+                            <li>360 Savings Account</li>
+                            <li>360 Money Market Account</li>
+                            <li>Money Teen Checking Account</li>
+                            <li>360 Performance Savings</li>
+                            <li>Kids Savings Account</li>
+                        </ul>
+                    </div>
+                    <div class="format-card">
+                        <h3>✓ Capital One Credit Cards</h3>
+                        <ul>
+                            <li>Venture & Venture X Rewards</li>
+                            <li>Savor & SavorOne Rewards</li>
+                            <li>Quicksilver Cash Rewards</li>
+                            <li>Platinum Mastercard</li>
+                            <li>Spark Business Cards</li>
+                            <li>Journey Student Card</li>
+                        </ul>
+                    </div>
+                    <div class="format-card">
+                        <h3>✓ Capital One Business & Other</h3>
+                        <ul>
+                            <li>Business Checking Accounts</li>
+                            <li>Business Savings Accounts</li>
+                            <li>Auto Navigator Statements</li>
+                            <li>CD Account Statements</li>
+                            <li>IRA Account Statements</li>
+                            <li>Legacy ING Direct Accounts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="content-section">
+            <div class="container">
+                <h2>How to Convert Capital One Bank Statements</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Download from Capital One</h3>
+                        <p>Log into capitalone.com or the Capital One mobile app. Navigate to Statements & Documents → Download PDF statement.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Upload to Converter</h3>
+                        <p>Upload your Capital One PDF here. Our AI recognizes all Capital One statement formats automatically, from 360 accounts to credit cards.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Download CSV/Excel</h3>
+                        <p>Get your organized CSV with dates, descriptions, amounts, categories, and running balances perfectly preserved.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Why Use Our Capital One Statement Converter?</h2>
+                <p>Capital One, headquartered in McLean, Virginia, is one of America's largest digital-first banks, serving millions of customers with innovative banking solutions. Whether you're managing your 360 Checking account, tracking expenses on your Venture card, or reconciling your SavorOne rewards, our converter makes it easy to transform your Capital One PDF statements into workable CSV or Excel formats.</p>
+                
+                <h3>Perfect for Capital One 360 Account Holders</h3>
+                <p>Capital One's 360 banking platform revolutionized online banking when it launched (originally as ING Direct). Our converter fully supports all 360 account types, including the popular 360 Checking with no fees and the high-yield 360 Savings accounts. The converter preserves all transaction details, including mobile check deposits, Zelle transfers, and ATM transactions from Capital One's extensive fee-free network.</p>
+                
+                <h3>Optimized for Capital One Credit Cards</h3>
+                <p>Capital One's credit card portfolio, from the premium Venture X to the cash-back Quicksilver, generates detailed statements that our converter handles flawlessly. We maintain all transaction categories, reward points earned, and payment information. This is especially valuable for Venture cardholders tracking travel expenses or SavorOne users monitoring dining and entertainment spending.</p>
+                
+                <h3>Business Account Support</h3>
+                <p>For Capital One business customers using Spark Business cards or business checking accounts, our converter maintains the detailed transaction data needed for expense reports and tax preparation. We preserve merchant category codes, reference numbers, and all the details your accountant needs.</p>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Capital One Statement Conversion Features</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h3>🏦 Capital One-Specific Parsing</h3>
+                        <p>Our converter is specifically optimized for Capital One's unique statement formats, ensuring 99.9% accuracy across all account types from McLean's digital banking leader.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>📊 Category & Rewards Preservation</h3>
+                        <p>Maintains Capital One's detailed transaction categories and rewards data, perfect for tracking Venture miles or Savor cash back earnings.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>💰 360 Account Balance Tracking</h3>
+                        <p>Accurately preserves running balances for 360 Checking and Savings accounts, including pending transactions and mobile deposits.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>🔒 Secure Processing</h3>
+                        <p>Your Capital One statements are processed securely with bank-level encryption. Files are automatically deleted after conversion.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>📱 Mobile-Friendly</h3>
+                        <p>Works perfectly on any device - convert your Capital One statements from your phone, tablet, or computer.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>🚀 Instant Results</h3>
+                        <p>Get your converted Capital One statement in CSV format within seconds, ready for Excel, QuickBooks, or any accounting software.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capital One Specific Content -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Understanding Capital One Statement Formats</h2>
+                <p>Capital One provides different statement formats depending on your account type. Our converter recognizes and accurately processes all of them:</p>
+                
+                <h3>360 Banking Statements</h3>
+                <p>Capital One 360 statements include detailed transaction histories with merchant names, categories, and running balances. The 360 Checking statements show all debit card purchases, ATM withdrawals, direct deposits, and transfers. Our converter maintains the transaction order and preserves all memo fields and reference numbers.</p>
+                
+                <h3>Credit Card Statements</h3>
+                <p>Capital One credit card statements vary by card type but typically include purchase details, payment history, interest charges, and rewards earned. Venture card statements show miles earned per transaction, while Savor and SavorOne statements display cash back percentages. Our converter extracts all this data accurately.</p>
+                
+                <h3>Teen and Kids Account Statements</h3>
+                <p>For Money Teen Checking and Kids Savings accounts, Capital One provides simplified statements that still contain all necessary transaction data. Our converter handles these formats while preserving parental controls information and spending categories designed for financial education.</p>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Capital One Statement Converter FAQ</h2>
+                
+                <div class="faq-item">
+                    <h3>Does it work with Capital One 360 Money Market statements?</h3>
+                    <p>Yes, our converter fully supports Capital One 360 Money Market account statements, including interest payments, transfers, and all transaction types specific to money market accounts.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can I convert my Capital One Venture X reward statements?</h3>
+                    <p>Absolutely! The converter works with all Capital One credit cards including Venture, Venture X, Venture One, Savor, SavorOne, and Quicksilver. It preserves reward points, miles earned, and redemption history.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Does it handle Capital One auto loan statements?</h3>
+                    <p>Yes, Capital One Auto Navigator statements can be converted, showing payment history, principal/interest breakdown, and remaining balance information.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Will it work with old ING Direct statements?</h3>
+                    <p>Yes, we support legacy ING Direct statements that were converted to Capital One 360 accounts. The converter recognizes both old and new formats.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can I convert Capital One business account statements?</h3>
+                    <p>Yes, all Capital One business accounts are supported, including Spark Business cards, business checking, and business savings accounts.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>How do I remove password protection from Capital One PDFs?</h3>
+                    <p>Open the PDF in Adobe Reader or Preview (Mac), enter your password, then save a new copy without password protection using "Save As" or "Export."</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Does it preserve Zelle and wire transfer details?</h3>
+                    <p>Yes, all electronic transfer details including Zelle payments, wire transfers, and ACH transactions are preserved with full sender/recipient information.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What about Capital One Shopping rewards?</h3>
+                    <p>Transaction descriptions that include Capital One Shopping rewards are preserved, though the converter focuses on transaction data rather than shopping portal details.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional SEO Content -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Capital One Banking Excellence from McLean, Virginia</h2>
+                <p>Founded in 1994 and headquartered in McLean, Virginia, Capital One has grown from a credit card company to one of the nation's top 10 banks. Their innovative approach to digital banking, exemplified by the Capital One 360 suite of products, has made them a favorite among tech-savvy consumers who appreciate fee-free banking and high-yield savings options.</p>
+                
+                <h3>The Capital One 360 Advantage</h3>
+                <p>Capital One 360 Checking offers no monthly fees, no minimum balance requirements, and access to over 70,000 fee-free ATMs. The 360 Savings account consistently offers competitive interest rates, making it a popular choice for online savers. Our converter ensures all these transactions are accurately captured for your financial records.</p>
+                
+                <h3>Credit Card Innovation</h3>
+                <p>Capital One's credit card offerings, particularly the Venture series for travelers and the Savor series for food enthusiasts, have redefined rewards programs. The Venture X card competes directly with premium travel cards, while Quicksilver offers straightforward cash back. Our converter maintains all reward details from these statements.</p>
+                
+                <h3>Teen Financial Education</h3>
+                <p>The Money Teen Checking account represents Capital One's commitment to financial education, offering a fee-free checking account for teens with parental controls. Our converter handles these specialized statements, preserving spending categories and parental oversight features that make this account unique.</p>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Common Uses for Capital One Statement Conversion</h2>
+                <div class="use-case-grid">
+                    <div class="use-case">
+                        <h3>Tax Preparation</h3>
+                        <p>Convert your Capital One statements to CSV for easy import into tax software. Perfect for tracking business expenses on Spark cards or investment income from 360 Savings.</p>
+                    </div>
+                    <div class="use-case">
+                        <h3>Expense Tracking</h3>
+                        <p>Transform Venture or Savor card statements into Excel spreadsheets to analyze spending patterns and maximize rewards categories.</p>
+                    </div>
+                    <div class="use-case">
+                        <h3>Budget Analysis</h3>
+                        <p>Convert 360 Checking statements to track monthly spending, identify trends, and create detailed budgets in your favorite spreadsheet software.</p>
+                    </div>
+                    <div class="use-case">
+                        <h3>Business Accounting</h3>
+                        <p>Export Capital One business account data for QuickBooks or other accounting software, maintaining all necessary transaction details.</p>
+                    </div>
+                    <div class="use-case">
+                        <h3>Loan Applications</h3>
+                        <p>Quickly convert multiple months of statements to provide lenders with organized transaction histories from your Capital One accounts.</p>
+                    </div>
+                    <div class="use-case">
+                        <h3>Financial Planning</h3>
+                        <p>Analyze long-term trends by converting years of Capital One statements, perfect for retirement planning or investment strategies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Details -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Technical Specifications</h2>
+                <h3>Supported Capital One PDF Formats</h3>
+                <ul>
+                    <li>Standard monthly statements (all account types)</li>
+                    <li>Year-end summary statements</li>
+                    <li>E-statements downloaded from capitalone.com</li>
+                    <li>Mobile app generated statements</li>
+                    <li>Business account statements with extended details</li>
+                </ul>
+                
+                <h3>Output Format Options</h3>
+                <ul>
+                    <li>CSV (Comma Separated Values) - Universal compatibility</li>
+                    <li>Excel-ready formatting with proper date/number formats</li>
+                    <li>QuickBooks-compatible transaction layout</li>
+                    <li>Customizable date formats (MM/DD/YYYY, DD/MM/YYYY, etc.)</li>
+                </ul>
+                
+                <h3>Data Fields Preserved</h3>
+                <ul>
+                    <li>Transaction dates and posting dates</li>
+                    <li>Merchant names and transaction descriptions</li>
+                    <li>Transaction amounts (debits and credits separated)</li>
+                    <li>Running balance after each transaction</li>
+                    <li>Transaction categories and tags</li>
+                    <li>Reference numbers and confirmation codes</li>
+                    <li>Reward points or cash back earned (credit cards)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Convert Your Capital One Statement?</h2>
+                <p>Join thousands of Capital One customers who save hours on manual data entry</p>
+                <a href="#uploadBox" class="cta-button">Convert Capital One PDF Now</a>
+                
+                <div class="testimonial">
+                    <p>"This converter handles my Capital One 360 and Venture card statements perfectly. Saves me hours every month for expense reports!"</p>
+                    <cite>- Michael R., Business Consultant</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Banks -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Other Bank Converters</h2>
+                <div class="bank-links">
+                    <a href="chase-bank-statement-converter.html">Chase Bank</a>
+                    <a href="bank-of-america-statement-converter.html">Bank of America</a>
+                    <a href="wells-fargo-statement-converter.html">Wells Fargo</a>
+                    <a href="citi-bank-statement-converter.html">Citi Bank</a>
+                    <a href="us-bank-statement-converter.html">US Bank</a>
+                    <a href="pnc-bank-statement-converter.html">PNC Bank</a>
+                    <a href="td-bank-statement-converter.html">TD Bank</a>
+                    <a href="regions-bank-statement-converter.html">Regions Bank</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Bank Statement Converter. Not affiliated with Capital One Financial Corporation, McLean, VA.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js" async></script>
+</body>
+</html>

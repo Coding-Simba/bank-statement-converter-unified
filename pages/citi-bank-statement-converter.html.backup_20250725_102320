@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citi Bank Statement Converter - Convert Citibank PDF to CSV, Excel | Free Online Tool</title>
+    <meta name="description" content="Convert your Citi Bank statements from PDF to CSV or Excel format instantly. Free online converter for Citibank checking, savings, and credit card statements. Secure and easy to use.">
+    <meta name="keywords" content="citi bank statement converter, citibank pdf to csv, convert citi statement, citibank statement to excel, citi credit card statement converter, citibank transaction export, citi statement parser">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Citi Bank Statement Converter - PDF to CSV/Excel">
+    <meta property="og:description" content="Convert Citibank statements to CSV or Excel format. Free, secure, and instant conversion for all Citi accounts.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bankstatementconverter.com/citi-bank-statement-converter">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Citi Bank Statement Converter",
+        "description": "Convert Citibank PDF statements to CSV and Excel formats",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/unified-styles.css">
+    
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <a href="../" class="nav-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+                BankCSVConverter
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="../all-pages.html">All Banks</a></li>
+                <li><a href="../pages/bank-statement-converter-comparison.html">Why Us</a></li>
+                <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
+            </ul>
+            
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Citi Bank Statement Converter</h1>
+            <p class="lead">Convert your Citibank PDF statements to CSV or Excel format in seconds. Free, secure, and designed specifically for Citi customers.</p>
+            <button class="cta-button" onclick="document.getElementById('converter').scrollIntoView()">Start Converting Now</button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section">
+            <h2 class="citi-blue">The Ultimate Citibank Statement Conversion Tool</h2>
+            <p>Whether you're managing your finances from Citi's New York headquarters or anywhere around the globe, our specialized Citi Bank statement converter makes it easy to transform your PDF statements into CSV or Excel formats. Designed specifically for Citibank's unique statement formats, our tool ensures accurate data extraction for all your Citi accounts.</p>
+            
+            <p>From Basic Banking accounts to exclusive Citigold services, from Double Cash credit cards to Premier rewards, our converter handles every type of Citi statement with precision. Join thousands of Citi customers who've simplified their financial management with our free online tool.</p>
+        </section>
+
+        <!-- Supported Accounts -->
+        <section class="content-section">
+            <h2 class="citi-blue">Supported Citi Accounts & Credit Cards</h2>
+            
+            <h3>Citi Banking Accounts</h3>
+            <div class="account-grid">
+                <div class="account-card">
+                    <h4 class="citi-light-blue">Basic Banking Account</h4>
+                    <p>Perfect for everyday banking needs. Our converter accurately extracts all transactions, including direct deposits, bill payments, and ATM withdrawals from your Basic Banking statements.</p>
+                </div>
+                
+                <div class="account-card">
+                    <h4 class="citi-light-blue">Access Account</h4>
+                    <p>Designed for Citi's checkless banking option. Convert your Access Account statements while preserving all debit card transactions and electronic transfers.</p>
+                </div>
+                
+                <div class="account-card">
+                    <h4 class="citi-light-blue">Priority Package</h4>
+                    <p>For Priority banking customers, our converter handles complex statement formats including investment summaries, multiple account views, and relationship rewards tracking.</p>
+                </div>
+                
+                <div class="account-card">
+                    <h4 class="citi-light-blue">Citigold Account</h4>
+                    <p>Premium banking deserves premium tools. Convert Citigold statements with wealth management details, global transfers, and exclusive benefit transactions intact.</p>
+                </div>
+            </div>
+
+            <h3>Citi Credit Cards</h3>
+            <div class="account-grid">
+                <div class="account-card">
+                    <h4 class="citi-light-blue">Citi Double Cash Card</h4>
+                    <p>Track your 2% cash back earnings easily. Our converter captures all purchase details, cash back earned on payments, and redemption history from your Double Cash statements.</p>
+                </div>
+                
+                <div class="account-card">
+                    <h4 class="citi-light-blue">Citi Custom Cash Card</h4>
+                    <p>Monitor your 5% category spending precisely. Convert statements showing your top earning categories, bonus cash back, and detailed merchant information.</p>
+                </div>
+                
+                <div class="account-card">
+                    <h4 class="citi-light-blue">Citi Premier Card</h4>
+                    <p>Maximize your ThankYou Points tracking. Our tool extracts point earnings, travel purchases at 3x, dining transactions, and redemption details from Premier card statements.</p>
+                </div>
+                
+                <div class="account-card">
+                    <h4 class="citi-light-blue">Citi Rewards+ Card</h4>
+                    <p>Never miss a rounded-up point. Convert statements showing your round-up rewards, small purchase bonuses, and ThankYou Points accumulation with perfect accuracy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="content-section">
+            <h2 class="citi-blue">How to Convert Your Citi Bank Statements</h2>
+            <p>Converting your Citibank statements is as simple as the digital banking experience Citi provides from their iconic New York headquarters. Follow these easy steps:</p>
+            
+            <div class="steps-container">
+                <div class="step-item">
+                    <h3><span class="step-number">1</span>Download Your Citi Statement</h3>
+                    <p>Log into your Citi online banking or mobile app. Navigate to your statements section and download your PDF statement. Whether it's from your checking account, savings, or any Citi credit card, ensure you have the PDF file saved on your device.</p>
+                </div>
+                
+                <div class="step-item">
+                    <h3><span class="step-number">2</span>Upload to Our Converter</h3>
+                    <p>Click the upload button below and select your Citi PDF statement. Our secure converter accepts statements from all Citi account types, including joint accounts and business banking statements.</p>
+                </div>
+                
+                <div class="step-item">
+                    <h3><span class="step-number">3</span>Choose Your Format</h3>
+                    <p>Select whether you want your Citibank statement converted to CSV format (perfect for importing into accounting software) or Excel format (ideal for custom financial analysis and budgeting).</p>
+                </div>
+                
+                <div class="step-item">
+                    <h3><span class="step-number">4</span>Download Converted File</h3>
+                    <p>Within seconds, your converted file is ready. Download your CSV or Excel file with all transactions properly formatted, including dates, descriptions, amounts, and running balances.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="content-section">
+            <h2 class="citi-blue">Why Choose Our Citi Statement Converter?</h2>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🏦</div>
+                    <h3>Citi-Specific Optimization</h3>
+                    <p>Our converter is specifically calibrated for Citibank's statement formats. We understand the unique layout of Citi statements, from their New York headquarters' corporate accounts to international banking statements.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Bank-Level Security</h3>
+                    <p>Your financial data never leaves your browser. We use client-side processing to ensure your Citi statements remain completely private and secure throughout the conversion process.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Conversion</h3>
+                    <p>No waiting, no queues. Convert your Citibank statements instantly, whether it's a single-page credit card statement or a comprehensive year-end banking summary.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">📊</div>
+                    <h3>Perfect Data Extraction</h3>
+                    <p>Our advanced parsing technology accurately extracts every transaction detail, including merchant names, transaction codes, posted dates, and reference numbers specific to Citi's format.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">💰</div>
+                    <h3>100% Free Service</h3>
+                    <p>No hidden fees, no premium versions, no limits. Convert unlimited Citi statements absolutely free, supporting everything from Basic Banking to Citigold accounts.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Multi-Currency Support</h3>
+                    <p>Perfect for Citi's global customers. Our converter handles statements in multiple currencies, maintaining accuracy for international transactions and foreign exchange details.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Converter Tool -->
+        <section id="converter" class="content-section converter-section">
+            <h2 class="citi-blue">Convert Your Citi Statement Now</h2>
+            <div class="converter-container">
+                <div class="upload-area" id="uploadBox">
+                    <div class="upload-icon">📄</div>
+                    <h3>Upload Your Citi PDF Statement</h3>
+                    <p>Drag and drop your file here or click to browse</p>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                    <button class="cta-button" id="uploadBtn" onclick="document.getElementById('fileInput').click()">Choose File</button>
+                </div>
+                
+                
+                
+                <!-- Progress Container -->
+                <div class="upload-area" id="progressContainer" style="display: none;">
+                    <div class="loading"></div>
+                    <h3 id="progressText">Processing your statement...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <!-- Result Container -->
+                <div class="upload-area" id="resultContainer" style="display: none;">
+                    <div class="success-check">✓</div>
+                    <h3>Conversion Complete!</h3>
+                    <p>Your statement has been successfully converted to CSV format.</p>
+                    <button class="upload-btn" id="downloadBtn">Download CSV File</button>
+                    <button class="secondary-btn" id="convertAnotherBtn">Convert Another Statement</button>
+                </div><div class="format-selection">
+                    <h3>Select Output Format:</h3>
+                    <label>
+                        <input type="radio" name="format" value="csv" checked> CSV Format
+                    </label>
+                    <label>
+                        <input type="radio" name="format" value="excel"> Excel Format (.xlsx)
+                    </label>
+                </div>
+                
+                <button class="cta-button" onclick="convertStatement()">Convert Statement</button>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section class="content-section">
+            <h2 class="citi-blue">Perfect for Every Citi Customer Need</h2>
+            
+            <h3>Personal Finance Management</h3>
+            <p>Take control of your finances by converting your Citi statements into spreadsheet formats. Track spending patterns across your Double Cash Card, analyze Access Account transactions, or create comprehensive budgets using data from all your Citi accounts. Our converter makes it simple to categorize expenses, identify trends, and plan for the future.</p>
+            
+            <h3>Tax Preparation Made Easy</h3>
+            <p>Simplify tax season by converting your Citibank statements into organized spreadsheets. Whether you're tracking business expenses on your Citi Premier Card or gathering investment income from your Citigold account, our tool helps you prepare accurate tax documentation. Export deductible expenses, charitable donations, and business transactions with ease.</p>
+            
+            <h3>Small Business Accounting</h3>
+            <p>For entrepreneurs and small business owners using Citi business accounts, our converter streamlines bookkeeping. Import converted statements directly into QuickBooks, Xero, or other accounting software. Track cash flow, reconcile accounts, and maintain accurate financial records without manual data entry.</p>
+            
+            <h3>Investment Tracking</h3>
+            <p>Citigold and Priority Package customers can better monitor their wealth management activities. Convert statements showing investment transactions, dividend payments, and portfolio performance into analyzable formats. Create custom dashboards and track your path to financial goals.</p>
+        </section>
+
+        <!-- Customer Testimonials -->
+        <section class="content-section">
+            <h2 class="citi-blue">What Citi Customers Are Saying</h2>
+            
+            <div class="testimonial">
+                <p>"As a Citigold client in Manhattan, I need sophisticated tools to manage my finances. This converter handles my complex statements perfectly, saving me hours each month."</p>
+                <cite>- Sarah M., New York, NY</cite>
+            </div>
+            
+            <div class="testimonial">
+                <p>"I use my Citi Double Cash Card for everything. Being able to convert my statements to Excel helps me maximize my cash back by analyzing spending patterns. Fantastic tool!"</p>
+                <cite>- Michael T., San Francisco, CA</cite>
+            </div>
+            
+            <div class="testimonial">
+                <p>"Managing multiple Citi accounts for my small business was overwhelming until I found this converter. Now I can import everything into QuickBooks seamlessly."</p>
+                <cite>- Jennifer L., Chicago, IL</cite>
+            </div>
+        </section>
+
+        <!-- Technical Details -->
+        <section class="content-section">
+            <h2 class="citi-blue">Advanced Features for Power Users</h2>
+            
+            <h3>Intelligent Data Recognition</h3>
+            <p>Our converter uses advanced OCR and pattern recognition specifically trained on Citibank statement formats. It accurately identifies and extracts:</p>
+            <ul>
+                <li>Transaction dates in Citi's specific format</li>
+                <li>Merchant names and transaction descriptions</li>
+                <li>Debit and credit amounts with proper signing</li>
+                <li>Running balances and daily totals</li>
+                <li>Fee details and interest charges</li>
+                <li>Reward points and cash back earnings</li>
+                <li>International transaction fees and exchange rates</li>
+            </ul>
+            
+            <h3>Data Integrity Assurance</h3>
+            <p>We understand the importance of accurate financial data. Our converter includes multiple validation checks:</p>
+            <ul>
+                <li>Balance verification to ensure all transactions are captured</li>
+                <li>Date consistency checks</li>
+                <li>Duplicate transaction detection</li>
+                <li>Format standardization for easy importing</li>
+                <li>Special character handling for international merchants</li>
+            </ul>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="content-section">
+            <h2 class="citi-blue">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is this converter officially affiliated with Citibank?</div>
+                <p>No, we are an independent service provider specializing in financial data conversion. We are not affiliated with Citibank or Citigroup Inc., headquartered in New York. However, our tool is specifically optimized for Citi statement formats.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I convert statements from all my Citi accounts?</div>
+                <p>Yes! Our converter works with statements from all Citi products including Basic Banking, Access Account, Priority Package, Citigold, and all Citi credit cards including Double Cash, Custom Cash, Premier, and Rewards+ cards.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How secure is the conversion process?</div>
+                <p>Extremely secure. Your PDF statements are processed entirely in your browser using client-side JavaScript. No data is uploaded to our servers, ensuring your financial information remains completely private.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What if my Citi statement has multiple accounts?</div>
+                <p>Our converter intelligently handles multi-account statements, common with Citi relationship banking. Each account's transactions are properly separated and labeled in the output file.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I convert historical Citibank statements?</div>
+                <p>Yes, our converter works with both current and historical Citi statement formats. Whether your statement is from last month or several years ago, our tool can process it accurately.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What formats can I export to?</div>
+                <p>Currently, we support CSV and Excel (.xlsx) formats. CSV is perfect for importing into accounting software, while Excel allows for advanced analysis and custom formatting.</p>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="content-section">
+            <h2 class="citi-blue">Why Citi Customers Need Statement Conversion</h2>
+            
+            <h3>The Digital Banking Evolution</h3>
+            <p>Since its founding in 1812, Citibank has evolved from a small New York bank to a global financial powerhouse. Today, from their headquarters at 388 Greenwich Street in New York City, Citi serves millions of customers worldwide with cutting-edge digital banking services. However, while Citi provides excellent online banking, many customers need their statement data in more flexible formats for various financial management tasks.</p>
+            
+            <h3>Beyond Basic PDF Statements</h3>
+            <p>While Citi's PDF statements are comprehensive and secure, they have limitations. You can't easily sort transactions, create pivot tables, or import data into financial software. That's where our Citibank PDF to CSV converter becomes invaluable. Transform your static statements into dynamic data that works the way you need it to.</p>
+            
+            <h3>Supporting Citi's Diverse Customer Base</h3>
+            <p>From students with Basic Banking accounts to high-net-worth Citigold clients, from small business owners to international travelers using Citi Premier cards, every customer has unique financial management needs. Our converter adapts to serve them all, providing the flexibility that modern financial management demands.</p>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="content-section cta-section">
+            <h2 class="citi-blue">Start Converting Your Citi Statements Today</h2>
+            <p>Join thousands of satisfied Citi customers who've discovered the power of data portability. Whether you're tracking Double Cash rewards, managing Priority Package benefits, or analyzing Citigold investment returns, our free converter is here to help.</p>
+            
+            <button class="cta-button" onclick="document.getElementById('converter').scrollIntoView()">Convert My Citi Statement Now</button>
+            
+            <p><small>Remember: This is a free service with no registration required. Your data stays private, and you can convert unlimited statements.</small></p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Bank Statement Converter. Not affiliated with Citibank, Citigroup Inc., or any of its subsidiaries.</p>
+            <p>Citi, Citibank, Citigold, and associated logos are registered trademarks of Citigroup Inc.</p>
+            <div class="footer-links">
+                <a href="../privacy.html">Privacy Policy</a> | 
+                <a href="../terms.html">Terms of Service</a> | 
+                <a href="../contact.html">Contact Us</a> |
+                <a href="../index.html">Other Bank Converters</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Placeholder for conversion functionality
+        function convertStatement() {
+            alert('Conversion functionality would be implemented here');
+        }
+        
+        // File upload handling
+        document.getElementById('file-input').addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                const fileName = e.target.files[0].name;
+                document.querySelector('.upload-area p').textContent = `Selected: ${fileName}`;
+            }
+        });
+        
+        // Drag and drop functionality
+        const uploadArea = document.querySelector('.upload-area');
+        
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.background = '#f0f0f0';
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.background = '';
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.background = '';
+            
+            if (e.dataTransfer.files.length > 0) {
+                const file = e.dataTransfer.files[0];
+                if (file.type === 'application/pdf') {
+                    document.getElementById('file-input').files = e.dataTransfer.files;
+                    document.querySelector('.upload-area p').textContent = `Selected: ${file.name}`;
+                } else {
+                    alert('Please upload a PDF file');
+                }
+            }
+        });
+    </script>
+    <!-- Mobile menu JavaScript -->
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

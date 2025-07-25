@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert Bank of America PDF statements to CSV/Excel. Free online converter for BOA checking, savings, and credit card statements. Secure and instant.">
+    <meta name="keywords" content="bank of america statement converter, boa pdf to csv, bank of america to excel, convert boa statement, bank of america pdf converter">
+    
+    <title>Bank of America Statement Converter - PDF to CSV | BankCSVConverter</title>
+    
+    <link rel="canonical" href="https://BankCSVConverter.com/bank-of-america-statement-converter">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Bank of America Statement Converter",
+        "description": "Convert Bank of America PDF statements to CSV/Excel format instantly",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "892"
+        }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/unified-styles.css">
+</head>
+<body>
+        <!-- Header Navigation -->
+    <header>
+        <nav>
+            <a href="../" class="nav-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+                BankCSVConverter
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="../all-pages.html">All Banks</a></li>
+                <li><a href="../pages/bank-statement-converter-comparison.html">Why Us</a></li>
+                <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
+            </ul>
+            
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero bank-hero">
+            <div class="container">
+                <div class="bank-header">
+                    <img src="../assets/banks/generic-bank-logo.svg" alt="Bank of America Logo" width="150" height="60">
+                    <h1>Bank of America Statement Converter</h1>
+                    <p>Convert Bank of America PDF statements to CSV/Excel instantly. Supports all BOA accounts including Advantage Banking, credit cards, and business accounts.</p>
+                </div>
+                
+                <div class="upload-area" id="upload">
+                    <h2>Upload Your Bank of America Statement</h2>
+                    <button class="upload-btn" id="uploadBtn">
+                        Convert BOA PDF to CSV
+                    </button>
+                    <p>or drag and drop your Bank of America PDF here</p>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                    
+                    <div class="trust-signals">
+                        <span>✓ All BOA account types</span>
+                        <span>✓ Preserves all data</span>
+                        <span>✓ Excel & QuickBooks ready</span>
+                    </div>
+                </div>
+            </div>
+        
+
+                <div class="upload-area" id="uploadBox">
+                    <h2>Upload Your Statement</h2>
+                    <button class="upload-btn" id="uploadBtn">
+                        Convert PDF to CSV
+                    </button>
+                    <p>or drag and drop your PDF here</p>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                    
+                    <div class="trust-signals">
+                        <span>✓ Works with all accounts</span>
+                        <span>✓ Preserves transaction categories</span>
+                        <span>✓ QuickBooks compatible</span>
+                    </div>
+                </div>
+                
+                <!-- Progress Container -->
+                <div class="upload-area" id="progressContainer" style="display: none;">
+                    <div class="loading"></div>
+                    <h3 id="progressText">Processing your statement...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <!-- Result Container -->
+                <div class="upload-area" id="resultContainer" style="display: none;">
+                    <div class="success-check">✓</div>
+                    <h3>Conversion Complete!</h3>
+                    <p>Your statement has been successfully converted to CSV format.</p>
+                    <button class="upload-btn" id="downloadBtn">Download CSV File</button>
+                    <button class="secondary-btn" id="convertAnotherBtn">Convert Another Statement</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statement Types -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Supported Bank of America Statements</h2>
+                <div class="format-grid">
+                    <div class="format-card">
+                        <h3>✓ Personal Banking</h3>
+                        <ul>
+                            <li>Advantage SafeBalance Banking</li>
+                            <li>Advantage Plus Banking</li>
+                            <li>Advantage Relationship Banking</li>
+                            <li>BOA Savings Accounts</li>
+                        </ul>
+                    </div>
+                    <div class="format-card">
+                        <h3>✓ Credit Cards</h3>
+                        <ul>
+                            <li>BankAmericard Credit Cards</li>
+                            <li>Cash Rewards Credit Cards</li>
+                            <li>Travel Rewards Cards</li>
+                            <li>Premium Rewards Cards</li>
+                        </ul>
+                    </div>
+                    <div class="format-card">
+                        <h3>✓ Business Banking</h3>
+                        <ul>
+                            <li>Business Advantage Accounts</li>
+                            <li>Business Fundamentals</li>
+                            <li>Business Credit Cards</li>
+                            <li>Merchant Services Statements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructions -->
+        <section class="content-section">
+            <div class="container">
+                <h2>How to Convert Bank of America Statements to CSV</h2>
+                <div class="instruction-grid">
+                    <div class="instruction">
+                        <h3>Step 1: Download from BOA</h3>
+                        <p>Log into your Bank of America online banking, go to Statements & Documents, select your account and download as PDF.</p>
+                    </div>
+                    <div class="instruction">
+                        <h3>Step 2: Upload PDF Here</h3>
+                        <p>Click the upload button above or drag your BOA PDF statement into the upload area.</p>
+                    </div>
+                    <div class="instruction">
+                        <h3>Step 3: Get Your CSV</h3>
+                        <p>Within seconds, download your converted CSV file with all transactions organized and ready for Excel.</p>
+                    </div>
+                </div>
+                
+                <div class="pro-tip">
+                    <h3>💡 Pro Tip</h3>
+                    <p>Bank of America statements downloaded from online banking work best. If you have a scanned paper statement, our OCR technology will still convert it accurately.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Why Use Our Bank of America Converter?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit">
+                        <h3>🎯 BOA-Optimized</h3>
+                        <p>Specifically trained on Bank of America's statement formats for perfect accuracy.</p>
+                    </div>
+                    <div class="benefit">
+                        <h3>⚡ Instant Results</h3>
+                        <p>Convert months of BOA statements in seconds, not hours of manual entry.</p>
+                    </div>
+                    <div class="benefit">
+                        <h3>📊 Excel Ready</h3>
+                        <p>CSV output opens perfectly in Excel with proper columns and formatting.</p>
+                    </div>
+                    <div class="benefit">
+                        <h3>🔒 Secure Process</h3>
+                        <p>Your BOA data is encrypted and automatically deleted after conversion.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Bank of America Converter FAQ</h2>
+                
+                <div class="faq-item">
+                    <h3>Does it work with BOA e-statements?</h3>
+                    <p>Yes! Our converter works perfectly with Bank of America e-statements downloaded from online banking as well as paper statements you've scanned.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can it handle BOA business account statements?</h3>
+                    <p>Absolutely. We support all Bank of America business account types including Business Advantage Checking, Business Fundamentals, and analysis statements.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Will it preserve BOA's transaction descriptions?</h3>
+                    <p>Yes, all transaction descriptions, reference numbers, and posting dates are preserved exactly as shown on your Bank of America statement.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What about Bank of America credit card statements?</h3>
+                    <p>We support all BOA credit cards including Cash Rewards, Travel Rewards, Premium Rewards, and business credit cards. The converter preserves merchant names and categories.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Convert Your Bank of America Statement Now</h2>
+                <p>Save hours of manual data entry - convert your BOA statements instantly</p>
+                <a href="#upload" class="cta-button">Upload BOA Statement</a>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <strong>50,000+</strong>
+                        <span>BOA statements converted</span>
+                    </div>
+                    <div class="stat">
+                        <strong>99.9%</strong>
+                        <span>Accuracy rate</span>
+                    </div>
+                    <div class="stat">
+                        <strong>5 seconds</strong>
+                        <span>Average conversion time</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Bank Statement Converter. Not affiliated with Bank of America Corporation.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js" async></script>
+    <!-- Mobile menu JavaScript -->
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
