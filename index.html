@@ -376,6 +376,15 @@
         #fileInput {
             display: none;
         }
+        
+        /* Hide processing and success states initially */
+        #processingState {
+            display: none;
+        }
+        
+        #successState {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -488,10 +497,16 @@
         });
         
         // Upload button click
-        uploadBtn.addEventListener('click', () => fileInput.click());
+        uploadBtn.addEventListener('click', () => {
+            console.log('Upload button clicked');
+            fileInput.click();
+        });
         
         // File input change
-        fileInput.addEventListener('change', handleFile);
+        fileInput.addEventListener('change', (e) => {
+            console.log('File input changed', e.target.files);
+            handleFile(e);
+        });
         
         // Drag and drop
         uploadArea.addEventListener('dragover', (e) => {
@@ -508,8 +523,13 @@
             uploadArea.classList.remove('dragging');
             
             const files = e.dataTransfer.files;
-            if (files.length > 0 && files[0].type === 'application/pdf') {
-                handleFile({ target: { files: files } });
+            console.log('Files dropped:', files);
+            if (files.length > 0) {
+                if (files[0].type === 'application/pdf') {
+                    handleFile({ target: { files: files } });
+                } else {
+                    showError('Please drop a PDF file');
+                }
             }
         });
         
@@ -521,21 +541,32 @@
         
         // Handle file upload
         function handleFile(e) {
+            console.log('handleFile called', e);
             const file = e.target.files[0];
-            if (!file || file.type !== 'application/pdf') {
-                showError('Please select a PDF file');
+            console.log('Selected file:', file);
+            
+            if (!file) {
+                showError('No file selected');
                 return;
             }
             
+            if (file.type !== 'application/pdf') {
+                showError('Please select a PDF file. You selected: ' + file.type);
+                return;
+            }
+            
+            console.log('Uploading file:', file.name);
             uploadFile(file);
         }
         
         // Upload file to server
         async function uploadFile(file) {
+            console.log('uploadFile called with:', file.name);
             showProcessingState();
             
             // Simulate processing delay
             setTimeout(() => {
+                console.log('Processing complete');
                 // For demo purposes, create a sample CSV download
                 const sampleCSV = `Date,Description,Debit,Credit,Balance
 2024-01-01,"Beginning Balance",,,5000.00
