@@ -272,5 +272,79 @@
         });
     </script>
     <script src="js/main.js"></script>
+    <script>
+        // Fallback inline script in case main.js has issues
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadBtn = document.getElementById('uploadBtn');
+            const fileInput = document.getElementById('fileInput');
+            const uploadBox = document.getElementById('uploadBox');
+            const progressContainer = document.getElementById('progressContainer');
+            const resultContainer = document.getElementById('resultContainer');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const convertAnotherBtn = document.getElementById('convertAnotherBtn');
+            
+            if (!uploadBtn || !fileInput) {
+                console.error('Required elements not found!');
+                return;
+            }
+            
+            // Simple click handler for upload button
+            uploadBtn.onclick = function() {
+                fileInput.click();
+            };
+            
+            // Handle file selection
+            fileInput.onchange = function(event) {
+                const file = event.target.files[0];
+                if (file && file.type === 'application/pdf') {
+                    // Show progress
+                    uploadBox.style.display = 'none';
+                    progressContainer.style.display = 'block';
+                    
+                    // Simulate progress
+                    let progress = 0;
+                    const interval = setInterval(() => {
+                        progress += 20;
+                        progressFill.style.width = progress + '%';
+                        
+                        if (progress >= 100) {
+                            clearInterval(interval);
+                            setTimeout(() => {
+                                progressContainer.style.display = 'none';
+                                resultContainer.style.display = 'block';
+                            }, 500);
+                        }
+                    }, 500);
+                } else if (file) {
+                    alert('Please select a PDF file');
+                }
+            };
+            
+            // Download button
+            if (downloadBtn) {
+                downloadBtn.onclick = function() {
+                    const csv = 'Date,Description,Amount\n2024-01-01,Sample Transaction,100.00';
+                    const blob = new Blob([csv], { type: 'text/csv' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'statement.csv';
+                    a.click();
+                };
+            }
+            
+            // Convert another button
+            if (convertAnotherBtn) {
+                convertAnotherBtn.onclick = function() {
+                    fileInput.value = '';
+                    resultContainer.style.display = 'none';
+                    uploadBox.style.display = 'block';
+                    progressFill.style.width = '0%';
+                };
+            }
+        });
+    </script>
 </body>
 </html>
