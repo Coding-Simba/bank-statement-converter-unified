@@ -13,377 +13,206 @@
     <!-- Unified Design System -->
     <link rel="stylesheet" href="css/unified-styles.css">
     
-    <!-- Inline Critical CSS for Instant Loading -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            color: #1a1a1a;
-            line-height: 1.6;
-            background: #ffffff;
-        }
-        
-        /* Header Navigation */
-        header {
-            background: white;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
-        
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 60px;
-        }
-        
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: #667eea;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        
-        .nav-logo svg {
-            width: 32px;
-            height: 32px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-        
-        .nav-menu a {
-            color: #666;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-menu a:hover {
-            color: #667eea;
-        }
-        
-        /* Mobile Menu Button */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-        
-        .menu-toggle span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: #667eea;
-            margin: 5px 0;
-            transition: 0.3s;
-        }
-        
-        /* Mobile Menu Styles */
-        .nav-menu.active {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 60px;
-            left: 0;
-            right: 0;
-            background: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-        
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-        
-        .container {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 20px 20px;
+        /* Additional styles specific to homepage */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
             text-align: center;
         }
         
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 2rem;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
+        .hero-section h1 {
+            font-size: 3rem;
             margin-bottom: 1rem;
-            color: #1a1a1a;
         }
         
-        .subtitle {
+        .hero-section p {
             font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 3rem;
+            opacity: 0.9;
             max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Upload Box Styles */
+        .upload-container {
+            max-width: 600px;
+            margin: -50px auto 50px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            position: relative;
+            z-index: 10;
         }
         
         .upload-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            padding: 60px 40px;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            border: 2px dashed #667eea;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            background: #f8f9ff;
         }
         
         .upload-box:hover {
-            transform: translateY(-5px);
+            border-color: #764ba2;
+            background: #f0f2ff;
         }
         
         .upload-box.dragging {
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-            transform: scale(1.02);
+            background: #e8ebff;
+            border-color: #764ba2;
         }
         
         .upload-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
         
         .upload-btn {
-            background: white;
-            color: #667eea;
+            background: #667eea;
+            color: white;
+            padding: 12px 32px;
             border: none;
-            padding: 16px 40px;
+            border-radius: 6px;
             font-size: 1.1rem;
             font-weight: 600;
-            border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: inline-block;
-            text-decoration: none;
         }
         
         .upload-btn:hover {
+            background: #764ba2;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .upload-btn:active {
-            transform: translateY(0);
-        }
-        
-        .drop-text {
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 20px;
-            font-size: 0.95rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         #fileInput {
             display: none;
         }
         
-        .features {
-            display: flex;
-            gap: 40px;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .drop-text {
             color: #666;
-            font-size: 0.95rem;
-        }
-        
-        .feature-icon {
-            color: #22c55e;
-            font-size: 1.2rem;
+            margin-top: 1rem;
         }
         
         /* Processing State */
         .processing {
             display: none;
-            color: white;
+            text-align: center;
         }
         
         .spinner {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 20px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top-color: white;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
             border-radius: 50%;
+            width: 50px;
+            height: 50px;
             animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
         }
         
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         /* Success State */
         .success {
             display: none;
-            color: white;
+            text-align: center;
         }
         
         .success-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 3rem;
-            color: #22c55e;
-            animation: scaleIn 0.3s ease;
-        }
-        
-        @keyframes scaleIn {
-            from { transform: scale(0); }
-            to { transform: scale(1); }
+            color: #4caf50;
+            margin-bottom: 1rem;
         }
         
         .download-btn {
-            background: white;
-            color: #22c55e;
+            background: #4caf50;
+            color: white;
+            padding: 12px 32px;
             border: none;
-            padding: 16px 40px;
+            border-radius: 6px;
             font-size: 1.1rem;
             font-weight: 600;
-            border-radius: 50px;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            margin-top: 20px;
+            margin: 10px;
+        }
+        
+        .download-btn:hover {
+            background: #45a049;
         }
         
         .convert-another {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            padding: 12px 30px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 50px;
+            background: #f0f0f0;
+            color: #333;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 6px;
             cursor: pointer;
-            margin-top: 15px;
-            transition: all 0.3s ease;
+            margin: 10px;
         }
         
         .convert-another:hover {
-            background: white;
-            color: #667eea;
+            background: #e0e0e0;
         }
         
-        /* Footer */
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: #999;
-            font-size: 0.85rem;
-        }
-        
-        .footer a {
-            color: #667eea;
-            text-decoration: none;
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .upload-box {
-                padding: 40px 30px;
-            }
-            
-            .features {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .nav-menu {
-                display: none;
-            }
-            
-            .menu-toggle {
-                display: block;
-            }
-        }
-        
-        /* Error State */
+        /* Error Message */
         .error-message {
             background: #fee;
             color: #c33;
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 6px;
             margin-top: 20px;
             display: none;
         }
         
-        /* Hide file input */
-        #fileInput {
-            display: none;
+        /* Features */
+        .features-section {
+            padding: 80px 20px;
+            background: #f8f9fa;
         }
         
-        /* Hide processing and success states initially */
-        #processingState {
-            display: none;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
-        #successState {
-            display: none;
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -400,9 +229,9 @@
             </a>
             
             <ul class="nav-menu">
-                <li><a href="/all-pages.html">All Banks</a></li>
-                <li><a href="/pages/bank-statement-converter-comparison.html">Why Us</a></li>
-                <li><a href="/blog/financial-data-privacy-guide.html">Security</a></li>
+                <li><a href="all-pages.html">All Banks</a></li>
+                <li><a href="pages/bank-statement-converter-comparison.html">Why Us</a></li>
+                <li><a href="blog/financial-data-privacy-guide.html">Security</a></li>
             </ul>
             
             <button class="menu-toggle">
@@ -413,15 +242,19 @@
         </nav>
     </header>
     
-    <div class="container">
+    <!-- Hero Section -->
+    <section class="hero-section">
         <h1>Convert Bank Statements to CSV</h1>
-        <p class="subtitle">Transform PDF bank statements from any bank into Excel-ready CSV files in seconds</p>
-        
+        <p>Transform PDF bank statements from any bank into Excel-ready CSV files in seconds</p>
+    </section>
+    
+    <!-- Upload Container -->
+    <div class="upload-container">
         <div class="upload-box" id="uploadArea">
             <!-- Initial State -->
             <div id="initialState">
                 <div class="upload-icon">📄</div>
-                <button class="upload-btn" id="uploadBtn" onclick="document.getElementById('fileInput').click()">
+                <button class="upload-btn" onclick="openFileDialog()">
                     Choose PDF File
                 </button>
                 <p class="drop-text">or drag and drop your bank statement here</p>
@@ -438,199 +271,159 @@
             <div class="success" id="successState">
                 <div class="success-icon">✓</div>
                 <h3>Conversion Complete!</h3>
-                <a href="#" class="download-btn" id="downloadBtn">Download CSV</a>
-                <button class="convert-another" id="convertAnother">Convert Another</button>
+                <a href="#" class="download-btn" id="downloadBtn" download="bank_statement.csv">Download CSV</a>
+                <button class="convert-another" onclick="resetUpload()">Convert Another</button>
             </div>
         </div>
         
-        <input type="file" id="fileInput" accept=".pdf">
-        
-        <div class="features">
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span>Works with 1000+ banks</span>
-            </div>
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span>100% secure & private</span>
-            </div>
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span>No signup required</span>
-            </div>
-        </div>
+        <input type="file" id="fileInput" accept=".pdf" onchange="handleFileSelect(event)">
         
         <div class="error-message" id="errorMessage"></div>
     </div>
     
-    <footer class="footer">
-        <p>© 2024 BankCSVConverter | <a href="/pages/bank-statement-converter-comparison.html">Why Choose Us</a> | <a href="/blog/financial-data-privacy-guide.html">Privacy Guide</a></p>
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏦</div>
+                <h3>1000+ Banks Supported</h3>
+                <p>Works with all major banks including Chase, Bank of America, Wells Fargo, and more</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>100% Secure & Private</h3>
+                <p>Your files are processed locally and never stored on our servers</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Lightning Fast</h3>
+                <p>Convert statements in seconds, not minutes. No waiting, no hassle</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer style="background-color: #1a1a2e; color: #fff; padding: 3rem 0;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: center;">
+            <p>&copy; 2024 BankCSVConverter.com. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="pages/bank-statement-converter-comparison.html" style="color: #667eea; text-decoration: none; margin: 0 1rem;">Why Choose Us</a>
+                <a href="blog/financial-data-privacy-guide.html" style="color: #667eea; text-decoration: none; margin: 0 1rem;">Privacy Guide</a>
+                <a href="pages/security.html" style="color: #667eea; text-decoration: none; margin: 0 1rem;">Security</a>
+            </p>
+        </div>
     </footer>
     
-    <!-- Inline JavaScript for Fast Loading -->
+    <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, initializing upload functionality');
-            
-            const uploadArea = document.getElementById('uploadArea');
-            const uploadBtn = document.getElementById('uploadBtn');
-            const fileInput = document.getElementById('fileInput');
-            const initialState = document.getElementById('initialState');
-            const processingState = document.getElementById('processingState');
-            const successState = document.getElementById('successState');
-            const downloadBtn = document.getElementById('downloadBtn');
-            const convertAnother = document.getElementById('convertAnother');
-            const errorMessage = document.getElementById('errorMessage');
-            
-            // Check if elements exist
-            if (!uploadBtn) {
-                console.error('Upload button not found!');
-                return;
-            }
-            if (!fileInput) {
-                console.error('File input not found!');
-                return;
-            }
-            
-            // Mobile menu toggle
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            if (menuToggle && navMenu) {
-                menuToggle.addEventListener('click', () => {
-                    navMenu.classList.toggle('active');
-                    menuToggle.classList.toggle('active');
-                });
-                
-                // Close menu when clicking on a link
-                document.querySelectorAll('.nav-menu a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navMenu.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                    });
-                });
-            }
-            
-            // Upload button click
-            uploadBtn.addEventListener('click', () => {
-                console.log('Upload button clicked');
-                fileInput.click();
-            });
-            
-            // File input change
-            fileInput.addEventListener('change', (e) => {
-                console.log('File input changed', e.target.files);
-                handleFile(e);
-            });
-            
-            // Drag and drop
-            uploadArea.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                uploadArea.classList.add('dragging');
-            });
-            
-            uploadArea.addEventListener('dragleave', () => {
-                uploadArea.classList.remove('dragging');
-            });
-            
-            uploadArea.addEventListener('drop', (e) => {
-                e.preventDefault();
-                uploadArea.classList.remove('dragging');
-                
-                const files = e.dataTransfer.files;
-                console.log('Files dropped:', files);
-                if (files.length > 0) {
-                    if (files[0].type === 'application/pdf') {
-                        handleFile({ target: { files: files } });
-                    } else {
-                        showError('Please drop a PDF file');
-                    }
+        // Elements
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const initialState = document.getElementById('initialState');
+        const processingState = document.getElementById('processingState');
+        const successState = document.getElementById('successState');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        // Mobile menu
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // File dialog
+        function openFileDialog() {
+            fileInput.click();
+        }
+        
+        // Handle file selection
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                if (file.type === 'application/pdf') {
+                    processFile(file);
+                } else {
+                    showError('Please select a PDF file');
                 }
-            });
-            
-            // Convert another button
-            if (convertAnother) {
-                convertAnother.addEventListener('click', () => {
-                    fileInput.value = '';
-                    showInitialState();
-                });
             }
+        }
+        
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragging');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragging');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragging');
             
-            // Handle file upload
-            function handleFile(e) {
-                console.log('handleFile called', e);
-                const file = e.target.files[0];
-                console.log('Selected file:', file);
-                
-                if (!file) {
-                    showError('No file selected');
-                    return;
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                const file = files[0];
+                if (file.type === 'application/pdf') {
+                    processFile(file);
+                } else {
+                    showError('Please drop a PDF file');
                 }
+            }
+        });
+        
+        // Process file
+        function processFile(file) {
+            // Hide initial state
+            initialState.style.display = 'none';
+            processingState.style.display = 'block';
+            errorMessage.style.display = 'none';
+            
+            // Simulate processing
+            setTimeout(() => {
+                // Create sample CSV
+                const csvContent = `Date,Description,Amount,Balance
+2024-01-01,Beginning Balance,,5000.00
+2024-01-02,Amazon Purchase,-45.99,4954.01
+2024-01-03,Salary Deposit,3500.00,8454.01
+2024-01-05,Grocery Store,-125.50,8328.51
+2024-01-07,Utility Bill,-89.00,8239.51
+2024-01-10,ATM Withdrawal,-200.00,8039.51
+2024-01-12,Restaurant,-65.00,7974.51
+2024-01-15,Online Transfer,500.00,8474.51
+2024-01-18,Gas Station,-45.00,8429.51
+2024-01-20,Subscription,-12.99,8416.52`;
                 
-                if (file.type !== 'application/pdf') {
-                    showError('Please select a PDF file. You selected: ' + file.type);
-                    return;
-                }
+                const blob = new Blob([csvContent], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
                 
-                console.log('Uploading file:', file.name);
-                uploadFile(file);
-            }
-            
-            // Upload file to server
-            async function uploadFile(file) {
-                console.log('uploadFile called with:', file.name);
-                showProcessingState();
-                
-                // Simulate processing delay
-                setTimeout(() => {
-                    console.log('Processing complete');
-                    // For demo purposes, create a sample CSV download
-                    const sampleCSV = `Date,Description,Debit,Credit,Balance
-2024-01-01,"Beginning Balance",,,5000.00
-2024-01-02,"Amazon Purchase",45.99,,4954.01
-2024-01-03,"Salary Deposit",,3500.00,8454.01
-2024-01-05,"Grocery Store",125.50,,8328.51
-2024-01-07,"Utility Bill",89.00,,8239.51
-2024-01-10,"ATM Withdrawal",200.00,,8039.51
-2024-01-12,"Restaurant",65.00,,7974.51
-2024-01-15,"Online Transfer",,500.00,8474.51
-2024-01-18,"Gas Station",45.00,,8429.51
-2024-01-20,"Subscription Service",12.99,,8416.52`;
-                    
-                    const blob = new Blob([sampleCSV], { type: 'text/csv' });
-                    const url = window.URL.createObjectURL(blob);
-                    showSuccessState(url);
-                }, 2000);
-            }
-            
-            // State management
-            function showInitialState() {
-                initialState.style.display = 'block';
-                processingState.style.display = 'none';
-                successState.style.display = 'none';
-                errorMessage.style.display = 'none';
-            }
-            
-            function showProcessingState() {
-                initialState.style.display = 'none';
-                processingState.style.display = 'block';
-                successState.style.display = 'none';
-                errorMessage.style.display = 'none';
-            }
-            
-            function showSuccessState(downloadUrl) {
-                initialState.style.display = 'none';
+                // Show success
                 processingState.style.display = 'none';
                 successState.style.display = 'block';
-                downloadBtn.href = downloadUrl;
-                downloadBtn.download = 'bank_statement_converted.csv';
-            }
-            
-            function showError(message) {
-                errorMessage.textContent = message;
-                errorMessage.style.display = 'block';
-            }
-        }); // End of DOMContentLoaded
+                downloadBtn.href = url;
+            }, 2000);
+        }
+        
+        // Reset upload
+        function resetUpload() {
+            fileInput.value = '';
+            initialState.style.display = 'block';
+            processingState.style.display = 'none';
+            successState.style.display = 'none';
+            errorMessage.style.display = 'none';
+        }
+        
+        // Show error
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+        }
     </script>
 </body>
 </html>
