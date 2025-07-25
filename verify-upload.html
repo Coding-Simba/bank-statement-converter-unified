@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify Upload Works</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 40px; }
+        button { padding: 15px 30px; font-size: 18px; background: #4CAF50; color: white; border: none; cursor: pointer; margin: 10px; }
+        button:hover { background: #45a049; }
+        .result { margin-top: 20px; padding: 20px; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>Simple Upload Test</h1>
+    
+    <button onclick="testSimpleUpload()">Test Simple Upload</button>
+    
+    <input type="file" id="simpleFile" accept=".pdf" style="display: none;">
+    
+    <div class="result">
+        <h3>Result:</h3>
+        <div id="output">Click the button to test...</div>
+    </div>
+    
+    <script>
+        function testSimpleUpload() {
+            const output = document.getElementById('output');
+            output.innerHTML = 'Opening file dialog...';
+            
+            const fileInput = document.getElementById('simpleFile');
+            
+            fileInput.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    output.innerHTML = `✅ Success! Selected file: ${file.name}<br>Type: ${file.type}<br>Size: ${(file.size/1024).toFixed(2)} KB`;
+                } else {
+                    output.innerHTML = '❌ No file selected';
+                }
+            };
+            
+            fileInput.click();
+        }
+    </script>
+</body>
+</html>
