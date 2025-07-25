@@ -216,9 +216,6 @@
             font-size: 0.95rem;
         }
         
-        #fileInput {
-            display: none;
-        }
         
         .features {
             display: flex;
@@ -372,9 +369,11 @@
             display: none;
         }
         
-        /* Hide file input */
+        /* Hide file input but keep it accessible */
         #fileInput {
-            display: none;
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
         }
         
         /* Hide processing and success states initially */
@@ -421,9 +420,9 @@
             <!-- Initial State -->
             <div id="initialState">
                 <div class="upload-icon">📄</div>
-                <button class="upload-btn" id="uploadBtn">
+                <label for="fileInput" class="upload-btn" style="display: inline-block; cursor: pointer;">
                     Choose PDF File
-                </button>
+                </label>
                 <p class="drop-text">or drag and drop your bank statement here</p>
             </div>
             
@@ -473,7 +472,7 @@
             console.log('DOM loaded, initializing upload functionality');
             
             const uploadArea = document.getElementById('uploadArea');
-            const uploadBtn = document.getElementById('uploadBtn');
+            const uploadBtn = document.querySelector('label[for="fileInput"]');
             const fileInput = document.getElementById('fileInput');
             const initialState = document.getElementById('initialState');
             const processingState = document.getElementById('processingState');
@@ -511,11 +510,8 @@
                 });
             }
             
-            // Upload button click
-            uploadBtn.addEventListener('click', () => {
-                console.log('Upload button clicked');
-                fileInput.click();
-            });
+            // The label will automatically trigger the file input, no click handler needed
+            console.log('Upload button is now a label that will trigger file input directly');
             
             // File input change
             fileInput.addEventListener('change', (e) => {
