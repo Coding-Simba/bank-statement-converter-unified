@@ -115,38 +115,17 @@ async function processFile() {
     uploadBox.style.display = 'none';
     progressContainer.style.display = 'block';
     
-    // Create FormData
-    const formData = new FormData();
-    formData.append('file', selectedFile);
+    // For demo purposes, simulate the conversion process
+    simulateProgress();
     
-    try {
-        // Simulate progress (in real app, use XMLHttpRequest for progress)
-        simulateProgress();
-        
-        // Upload file
-        const response = await fetch(`${API_BASE_URL}/convert`, {
-            method: 'POST',
-            body: formData
-        });
-        
-        if (!response.ok) {
-            throw new Error('Conversion failed');
-        }
-        
-        const result = await response.json();
-        
-        // Show success
+    // Simulate conversion completion after 3 seconds
+    setTimeout(() => {
         progressContainer.style.display = 'none';
         resultContainer.style.display = 'block';
         
-        // Store download URL
-        convertedFileUrl = result.downloadUrl;
-        
-    } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred during conversion. Please try again.');
-        resetUpload();
-    }
+        // Set a flag to use demo CSV
+        convertedFileUrl = 'demo';
+    }, 3000);
 }
 
 // Simulate progress bar
@@ -155,17 +134,20 @@ function simulateProgress() {
     const interval = setInterval(() => {
         progress += Math.random() * 30;
         if (progress > 90) {
-            progress = 90;
+            progress = 100;
+            progressFill.style.width = progress + '%';
+            progressText.textContent = 'Finalizing conversion...';
             clearInterval(interval);
-        }
-        progressFill.style.width = progress + '%';
-        
-        if (progress < 30) {
-            progressText.textContent = 'Uploading file...';
-        } else if (progress < 60) {
-            progressText.textContent = 'Analyzing bank statement...';
         } else {
-            progressText.textContent = 'Converting to CSV...';
+            progressFill.style.width = progress + '%';
+            
+            if (progress < 30) {
+                progressText.textContent = 'Uploading file...';
+            } else if (progress < 60) {
+                progressText.textContent = 'Analyzing bank statement...';
+            } else {
+                progressText.textContent = 'Converting to CSV...';
+            }
         }
     }, 500);
 }
