@@ -5,8 +5,8 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
 
 ## Progress Tracking
 - [ ] Total PDFs to test: 17
-- [ ] PDFs completed: 3
-- [ ] PDFs with issues fixed: 3
+- [ ] PDFs completed: 4
+- [ ] PDFs with issues fixed: 4
 
 ## Testing Methodology for Each PDF
 1. Run parser on the PDF
@@ -40,11 +40,11 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
   - Fix applied: Created westpac_parser.py that correctly handles negative Out values. Successfully extracts 15 transactions (7 deposits, 8 withdrawals)
 
 ### Canada (1 PDF)
-- [ ] **Canada RBC.pdf**
+- [x] **Canada RBC.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/Canada RBC.pdf`
-  - Status: Not tested
-  - Issues found: 
-  - Fix applied: 
+  - Status: ✅ Fixed and tested
+  - Issues found: Multi-line transactions where date appears once for multiple transactions. Initial parser only found 6 transactions.
+  - Fix applied: Created rbc_parser_v2.py that handles multi-line format. Successfully extracts 50 transactions (8 deposits, 42 withdrawals)
 
 ### UK (3 PDFs)
 - [ ] **Monzo Bank st. word.pdf**
