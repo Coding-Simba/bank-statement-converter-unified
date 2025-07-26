@@ -1,399 +1,289 @@
-"""Bank statement parser using Camelot for better table extraction"""
+"""Camelot parser for extracting tables from PDFs with debugging"""
 
-import re
-import logging
-from typing import List, Dict, Optional
+import camelot
+import pandas as pd
 from datetime import datetime
+import re
 
-logger = logging.getLogger(__name__)
+def debug_print(message):
+    """Print debug messages with timestamp"""
+    print(f"[CAMELOT DEBUG {datetime.now().strftime('%H:%M:%S')}] {message}")
 
-# Check if Camelot is available
-try:
-    import camelot
-    CAMELOT_AVAILABLE = True
-except ImportError:
-    CAMELOT_AVAILABLE = False
-    logger.warning("Camelot not installed. Install with: pip install camelot-py[cv]")
-
-# Check if pdfplumber is available as fallback
-try:
-    import pdfplumber
-    PDFPLUMBER_AVAILABLE = True
-except ImportError:
-    PDFPLUMBER_AVAILABLE = False
-    logger.warning("pdfplumber not installed. Install with: pip install pdfplumber")
-
-def parse_with_camelot(pdf_path: str) -> List[Dict]:
-    """Parse PDF using Camelot which is specifically designed for table extraction"""
+def is_valid_transaction(row_data):
+    """
+    Validate if a row contains actual transaction data.
+    Filters out headers, addresses, and other non-transaction content.
+    """
+    # Convert row to string for analysis
+    row_text = ' '.join(str(cell) for cell in row_data if cell)
     
-    if not CAMELOT_AVAILABLE:
-        raise ImportError("Camelot not installed. Install with: pip install camelot-py[cv]")
+    # List of header/non-transaction patterns to exclude
+    exclude_patterns = [
+        # Bank names and headers
+        r'bank\s*of\s*america',
+        r'wells\s*fargo',
+        r'chase',
+        r'citibank',
+        r'capital\s*one',
+        
+        # Address patterns
+        r'p\.?o\.?\s*box',
+        r'customer\s*service',
+        r'member\s*fdic',
+        r'your\s*account\s*statement',
+        r'statement\s*of\s*account',
+        r'issue\s*date',
+        r'period:',
+        r'account\s*number',
+        r'routing\s*number',
+        
+        # Page headers/footers
+        r'page\s*\d+\s*of',
+        r'continued\s*on\s*next',
+        r'subtotal',
+        r'total',
+        r'balance\s*forward',
+        
+        # Column headers
+        r'date\s*description\s*amount',
+        r'transaction\s*date',
+        r'posting\s*date',
+        r'reference\s*number',
+        
+        # Empty or minimal content
+        r'^\s*$',  # Empty rows
+        r'^[-\s]+$',  # Separator lines
+    ]
     
+    # Check if row matches any exclude pattern
+    for pattern in exclude_patterns:
+        if re.search(pattern, row_text, re.IGNORECASE):
+            debug_print(f"Filtered out: {row_text[:100]}...")
+            return False
+    
+    # Check if row has minimum required data
+    # Should have at least 2 non-empty cells
+    non_empty_cells = [cell for cell in row_data if cell and str(cell).strip()]
+    if len(non_empty_cells) < 2:
+        debug_print(f"Too few cells: {row_data}")
+        return False
+    
+    # Check if there's at least one potential amount
+    has_amount = False
+    for cell in row_data:
+        if cell and re.search(r'\d+\.?\d*', str(cell)):
+            has_amount = True
+            break
+    
+    if not has_amount:
+        debug_print(f"No amount found: {row_data}")
+        return False
+    
+    return True
+
+def parse_date(date_string):
+    """Try multiple date formats to parse dates from statements"""
+    date_formats = [
+        '%m/%d/%Y',
+        '%m-%d-%Y', 
+        '%Y-%m-%d',
+        '%d/%m/%Y',
+        '%d-%m-%Y',
+        '%b %d, %Y',
+        '%B %d, %Y',
+        '%m/%d/%y',
+        '%d-%b-%Y'
+    ]
+    
+    for fmt in date_formats:
+        try:
+            return datetime.strptime(date_string.strip(), fmt)
+        except ValueError:
+            continue
+    return None
+
+def extract_amount(amount_str):
+    """Extract numeric amount from string"""
+    try:
+        if not amount_str:
+            return None
+            
+        # Clean the string
+        cleaned = str(amount_str).strip()
+        
+        # Remove currency symbols
+        cleaned = re.sub(r'[€$£¥₹]', '', cleaned)
+        
+        # Remove commas (thousand separators)
+        cleaned = cleaned.replace(',', '')
+        
+        # Handle parentheses for negative amounts
+        if '(' in cleaned and ')' in cleaned:
+            cleaned = '-' + re.sub(r'[()]', '', cleaned)
+        
+        # Convert to float
+        return float(cleaned)
+        
+    except Exception as e:
+        return None
+
+def parse_with_camelot(pdf_path):
+    """Extract transactions using Camelot with debugging"""
     transactions = []
     
     try:
-        # Read all tables from the PDF
-        # Use both methods to maximize extraction
-        methods = ['stream', 'lattice']
+        debug_print(f"Starting Camelot extraction for: {pdf_path}")
+        
+        # Try different Camelot extraction methods
+        methods = ['lattice', 'stream']
         
         for method in methods:
+            debug_print(f"Trying Camelot with method: {method}")
+            
             try:
-                logger.info(f"Trying Camelot with {method} method")
-                tables = camelot.read_pdf(pdf_path, pages='all', flavor=method, suppress_stdout=True)
+                # Extract tables using Camelot
+                tables = camelot.read_pdf(pdf_path, pages='all', flavor=method)
+                debug_print(f"Found {len(tables)} tables with {method} method")
                 
-                if tables.n > 0:
-                    logger.info(f"Found {tables.n} tables using {method} method")
+                for i, table in enumerate(tables):
+                    debug_print(f"Processing table {i+1}/{len(tables)}")
                     
-                    for i, table in enumerate(tables):
-                        # Convert to pandas DataFrame
-                        df = table.df
+                    # Convert to pandas DataFrame
+                    df = table.df
+                    debug_print(f"Table shape: {df.shape}")
+                    
+                    if df.empty:
+                        continue
+                    
+                    # Process each row
+                    for idx, row in df.iterrows():
+                        row_data = row.tolist()
                         
-                        # Try to extract transactions from the DataFrame
-                        table_transactions = extract_transactions_from_dataframe(df)
-                        if table_transactions:
-                            transactions.extend(table_transactions)
-                            logger.info(f"Extracted {len(table_transactions)} transactions from table {i+1}")
+                        # Skip invalid rows
+                        if not is_valid_transaction(row_data):
+                            continue
+                        
+                        transaction = {}
+                        
+                        # Try to extract date, description, and amount
+                        for j, cell in enumerate(row_data):
+                            if not cell:
+                                continue
+                            
+                            cell_str = str(cell).strip()
+                            
+                            # Try to parse as date
+                            if 'date' not in transaction:
+                                date = parse_date(cell_str)
+                                if date:
+                                    transaction['date'] = date
+                                    transaction['date_string'] = cell_str
+                                    continue
+                            
+                            # Try to parse as amount
+                            if 'amount' not in transaction:
+                                amount = extract_amount(cell_str)
+                                if amount is not None and amount != 0:
+                                    transaction['amount'] = amount
+                                    transaction['amount_string'] = cell_str
+                                    continue
+                            
+                            # Use as description if we don't have one
+                            if 'description' not in transaction and len(cell_str) > 3:
+                                transaction['description'] = cell_str
+                        
+                        # Only add if we have required fields
+                        if 'date' in transaction and 'amount' in transaction:
+                            if 'description' not in transaction:
+                                transaction['description'] = "Transaction"
+                            
+                            debug_print(f"Valid transaction: {transaction}")
+                            transactions.append(transaction)
                 
-                # If we found transactions, don't try the other method
+                # If we found transactions, stop trying other methods
                 if transactions:
+                    debug_print(f"Found {len(transactions)} transactions with {method} method")
                     break
                     
             except Exception as e:
-                logger.warning(f"Camelot {method} method failed: {e}")
+                debug_print(f"Error with {method} method: {str(e)}")
                 continue
         
+        debug_print(f"Total transactions extracted: {len(transactions)}")
+        
     except Exception as e:
-        logger.error(f"Camelot parsing failed: {e}")
+        debug_print(f"Camelot extraction failed: {str(e)}")
         raise
     
     return transactions
 
-def parse_with_pdfplumber(pdf_path: str) -> List[Dict]:
-    """Parse PDF using pdfplumber as a fallback option"""
-    
-    if not PDFPLUMBER_AVAILABLE:
-        raise ImportError("pdfplumber not installed. Install with: pip install pdfplumber")
+def parse_with_pdfplumber(pdf_path):
+    """Fallback parser using pdfplumber with debugging"""
+    import pdfplumber
     
     transactions = []
     
     try:
+        debug_print(f"Starting pdfplumber extraction for: {pdf_path}")
+        
         with pdfplumber.open(pdf_path) as pdf:
             for page_num, page in enumerate(pdf.pages):
+                debug_print(f"Processing page {page_num + 1}/{len(pdf.pages)}")
+                
                 # Extract tables
                 tables = page.extract_tables()
                 
-                for table_num, table in enumerate(tables):
-                    if table:
-                        logger.info(f"Found table on page {page_num + 1}")
-                        # Process table rows
-                        table_transactions = extract_transactions_from_table_data(table)
-                        if table_transactions:
-                            transactions.extend(table_transactions)
-                
-                # Also try text extraction for non-table transactions
-                text = page.extract_text()
-                if text:
-                    text_transactions = extract_transactions_from_text(text)
-                    if text_transactions:
-                        transactions.extend(text_transactions)
+                for table_idx, table in enumerate(tables):
+                    if not table:
+                        continue
+                    
+                    debug_print(f"Found table {table_idx + 1} with {len(table)} rows")
+                    
+                    for row in table:
+                        if not is_valid_transaction(row):
+                            continue
+                        
+                        transaction = {}
+                        
+                        # Process each cell in the row
+                        for cell in row:
+                            if not cell:
+                                continue
+                            
+                            cell_str = str(cell).strip()
+                            
+                            # Try to parse as date
+                            if 'date' not in transaction:
+                                date = parse_date(cell_str)
+                                if date:
+                                    transaction['date'] = date
+                                    transaction['date_string'] = cell_str
+                                    continue
+                            
+                            # Try to parse as amount
+                            if 'amount' not in transaction:
+                                amount = extract_amount(cell_str)
+                                if amount is not None and amount != 0:
+                                    transaction['amount'] = amount
+                                    transaction['amount_string'] = cell_str
+                                    continue
+                            
+                            # Use as description
+                            if 'description' not in transaction and len(cell_str) > 3:
+                                transaction['description'] = cell_str
+                        
+                        # Only add if we have required fields
+                        if 'date' in transaction and 'amount' in transaction:
+                            if 'description' not in transaction:
+                                transaction['description'] = "Transaction"
+                            
+                            debug_print(f"Valid transaction: {transaction}")
+                            transactions.append(transaction)
+        
+        debug_print(f"Total transactions extracted with pdfplumber: {len(transactions)}")
         
     except Exception as e:
-        logger.error(f"pdfplumber parsing failed: {e}")
+        debug_print(f"pdfplumber extraction failed: {str(e)}")
         raise
     
     return transactions
-
-def extract_transactions_from_dataframe(df) -> List[Dict]:
-    """Extract transactions from a pandas DataFrame"""
-    transactions = []
-    
-    # Clean column names
-    df.columns = [str(col).strip().lower() for col in df.columns]
-    
-    # Common column patterns
-    date_cols = ['date', 'transaction date', 'posting date', 'date paid', 'trans date']
-    desc_cols = ['description', 'transaction', 'details', 'memo', 'check number']
-    amount_cols = ['amount', 'debit', 'credit', 'withdrawal', 'deposit', 'payment']
-    
-    # Find relevant columns
-    date_col = None
-    desc_col = None
-    amount_cols_found = []
-    
-    for col in df.columns:
-        col_lower = str(col).lower()
-        
-        if any(pattern in col_lower for pattern in date_cols):
-            date_col = col
-        elif any(pattern in col_lower for pattern in desc_cols):
-            desc_col = col
-        elif any(pattern in col_lower for pattern in amount_cols):
-            amount_cols_found.append(col)
-    
-    # Process rows
-    for _, row in df.iterrows():
-        transaction = {}
-        
-        # Extract date
-        if date_col and pd.notna(row[date_col]):
-            date = parse_date_string(str(row[date_col]))
-            if date:
-                transaction['date'] = date
-                transaction['date_string'] = str(row[date_col])
-        
-        # Extract description
-        if desc_col and pd.notna(row[desc_col]):
-            transaction['description'] = str(row[desc_col]).strip()
-        else:
-            # Try to find description in any non-numeric column
-            for col in df.columns:
-                if col not in amount_cols_found and pd.notna(row[col]):
-                    val = str(row[col]).strip()
-                    if val and not is_numeric(val):
-                        transaction['description'] = val
-                        break
-        
-        # Extract amount
-        for col in amount_cols_found:
-            if pd.notna(row[col]):
-                amount = parse_amount(str(row[col]))
-                if amount is not None:
-                    transaction['amount'] = amount
-                    break
-        
-        # Only add if we have meaningful data
-        if transaction.get('description') or transaction.get('amount') is not None:
-            transactions.append(transaction)
-    
-    return transactions
-
-def extract_transactions_from_table_data(table: List[List]) -> List[Dict]:
-    """Extract transactions from raw table data (list of lists)"""
-    transactions = []
-    
-    if not table or len(table) < 2:
-        return transactions
-    
-    # First row might be headers
-    headers = [str(cell).strip().lower() if cell else '' for cell in table[0]]
-    
-    # Find column indices
-    date_idx = None
-    desc_idx = None
-    amount_idx = None
-    
-    for i, header in enumerate(headers):
-        if any(pattern in header for pattern in ['date', 'trans', 'paid']):
-            date_idx = i
-        elif any(pattern in header for pattern in ['description', 'memo', 'details']):
-            desc_idx = i
-        elif any(pattern in header for pattern in ['amount', 'debit', 'credit', 'payment']):
-            amount_idx = i
-    
-    # Process rows
-    for row in table[1:]:  # Skip header row
-        if not row or all(not cell for cell in row):
-            continue
-            
-        transaction = {}
-        
-        # Extract date
-        if date_idx is not None and date_idx < len(row) and row[date_idx]:
-            date = parse_date_string(str(row[date_idx]))
-            if date:
-                transaction['date'] = date
-                transaction['date_string'] = str(row[date_idx])
-        
-        # Extract description
-        if desc_idx is not None and desc_idx < len(row) and row[desc_idx]:
-            transaction['description'] = str(row[desc_idx]).strip()
-        
-        # Extract amount
-        if amount_idx is not None and amount_idx < len(row) and row[amount_idx]:
-            amount = parse_amount(str(row[amount_idx]))
-            if amount is not None:
-                transaction['amount'] = amount
-        
-        # If no specific columns found, try to parse the whole row
-        if not transaction:
-            transaction = parse_transaction_row(row)
-        
-        if transaction and (transaction.get('description') or transaction.get('amount') is not None):
-            transactions.append(transaction)
-    
-    return transactions
-
-def parse_transaction_row(row: List) -> Optional[Dict]:
-    """Try to parse a transaction from a row of data"""
-    if not row:
-        return None
-    
-    transaction = {}
-    
-    # Convert all cells to strings
-    row_strs = [str(cell).strip() if cell else '' for cell in row]
-    
-    # Look for date
-    for cell in row_strs:
-        date = parse_date_string(cell)
-        if date:
-            transaction['date'] = date
-            transaction['date_string'] = cell
-            break
-    
-    # Look for amount
-    for cell in row_strs:
-        amount = parse_amount(cell)
-        if amount is not None:
-            transaction['amount'] = amount
-            break
-    
-    # Look for description (non-date, non-amount text)
-    for cell in row_strs:
-        if cell and not is_numeric(cell) and len(cell) > 3:
-            # Skip if it's the date we already found
-            if transaction.get('date_string') != cell:
-                transaction['description'] = cell
-                break
-    
-    return transaction if transaction else None
-
-def extract_transactions_from_text(text: str) -> List[Dict]:
-    """Extract transactions from plain text using patterns"""
-    transactions = []
-    lines = text.split('\n')
-    
-    # Common patterns for transactions
-    patterns = [
-        # Date, description, amount
-        r'(\d{1,2}[-/]\d{1,2}(?:[-/]\d{2,4})?)\s+(.+?)\s+([-+]?\$?[\d,]+\.?\d*)',
-        # Check entries
-        r'(\d{1,2}[-/]\d{1,2})\s+(\d{3,4})\s+([\d,]+\.?\d*)',
-        # Description with amount
-        r'^(.+?)\s+([-+]?\$?[\d,]+\.?\d*)$',
-    ]
-    
-    for line in lines:
-        line = line.strip()
-        if not line:
-            continue
-            
-        for pattern in patterns:
-            match = re.match(pattern, line)
-            if match:
-                groups = match.groups()
-                
-                if len(groups) == 3:
-                    # Check if it's a check entry
-                    if re.match(r'^\d{3,4}$', groups[1]):
-                        # Check format
-                        transaction = {
-                            'date': parse_date_string(groups[0]),
-                            'date_string': groups[0],
-                            'description': f'CHECK {groups[1]}',
-                            'amount': -abs(parse_amount(groups[2]) or 0)
-                        }
-                    else:
-                        # Regular transaction
-                        transaction = {
-                            'date': parse_date_string(groups[0]),
-                            'date_string': groups[0],
-                            'description': groups[1].strip(),
-                            'amount': parse_amount(groups[2])
-                        }
-                elif len(groups) == 2:
-                    # Description and amount
-                    transaction = {
-                        'description': groups[0].strip(),
-                        'amount': parse_amount(groups[1])
-                    }
-                else:
-                    continue
-                
-                if transaction.get('description') or transaction.get('amount') is not None:
-                    transactions.append(transaction)
-                    break
-    
-    return transactions
-
-def parse_date_string(date_str: str) -> Optional[datetime]:
-    """Parse various date formats"""
-    if not date_str:
-        return None
-    
-    date_str = date_str.strip()
-    
-    # Common date formats
-    formats = [
-        '%m/%d/%Y', '%m-%d-%Y', '%Y-%m-%d',
-        '%m/%d/%y', '%m-%d-%y',
-        '%m/%d', '%m-%d',
-        '%d/%m/%Y', '%d-%m-%Y',
-        '%b %d, %Y', '%B %d, %Y',
-    ]
-    
-    for fmt in formats:
-        try:
-            parsed = datetime.strptime(date_str, fmt)
-            
-            # If no year, use current year
-            if parsed.year == 1900:
-                current_year = datetime.now().year
-                parsed = parsed.replace(year=current_year)
-                
-            return parsed
-        except ValueError:
-            continue
-    
-    return None
-
-def parse_amount(amount_str: str) -> Optional[float]:
-    """Parse amount string to float"""
-    if not amount_str:
-        return None
-    
-    try:
-        # Clean the string
-        amount_str = amount_str.strip()
-        
-        # Remove currency symbols
-        amount_str = re.sub(r'[$€£¥₹]', '', amount_str)
-        
-        # Check for negative indicators
-        is_negative = amount_str.startswith('-') or amount_str.startswith('(')
-        
-        # Remove signs and parentheses
-        amount_str = re.sub(r'[()-+]', '', amount_str)
-        
-        # Remove commas
-        amount_str = amount_str.replace(',', '')
-        
-        # Skip if not numeric
-        if not re.search(r'\d', amount_str):
-            return None
-        
-        # Convert to float
-        amount = float(amount_str)
-        
-        # Apply sign
-        if is_negative:
-            amount = -amount
-            
-        return amount
-    except ValueError:
-        return None
-
-def is_numeric(s: str) -> bool:
-    """Check if string is numeric"""
-    try:
-        s = s.replace(',', '').replace('$', '').replace('-', '').replace('+', '')
-        float(s)
-        return True
-    except:
-        return False
-
-# Import pandas if available
-try:
-    import pandas as pd
-except ImportError:
-    pd = None
