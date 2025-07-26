@@ -450,39 +450,34 @@ def parse_universal_pdf(pdf_path):
             print(f"PyPDF2 extraction failed: {e}")
     
     # Method 6: OCR for scanned PDFs or complex layouts (last resort)
-    if not transactions:
+    # Always try OCR if we have very few transactions
+    if len(transactions) <= 1:
         # Check if OCR is available
         ocr_ready, message = check_ocr_requirements()
         if ocr_ready:
-            # Try OCR if it's a scanned PDF OR if other methods failed
-            try_ocr = is_scanned_pdf(pdf_path)
-            if not try_ocr:
-                # Also try OCR if we haven't found any transactions yet
-                print("No transactions found with standard methods, attempting OCR...")
-                try_ocr = True
-            else:
-                print("Detected possible scanned PDF, attempting OCR...")
+            print(f"Only {len(transactions)} transactions found, attempting OCR for better extraction...")
             
-            if try_ocr:
-                # Try advanced OCR parser first for complex layouts
-                if ADVANCED_OCR_AVAILABLE:
-                    try:
-                        print("Trying advanced OCR parser for complex layouts...")
-                        transactions = parse_scanned_pdf_advanced(pdf_path)
-                        if transactions:
-                            print(f"Successfully extracted {len(transactions)} transactions using advanced OCR")
-                    except Exception as e:
-                        print(f"Advanced OCR extraction failed: {e}")
-                
-                # Fall back to standard OCR parser
-                if not transactions:
-                    try:
-                        print("Trying standard OCR parser...")
-                        transactions = parse_scanned_pdf(pdf_path)
-                        if transactions:
-                            print(f"Successfully extracted {len(transactions)} transactions using standard OCR")
-                    except Exception as e:
-                        print(f"Standard OCR extraction failed: {e}")
+            # Try advanced OCR parser first for complex layouts
+            if ADVANCED_OCR_AVAILABLE:
+                try:
+                    print("Trying advanced OCR parser for complex layouts...")
+                    ocr_transactions = parse_scanned_pdf_advanced(pdf_path)
+                    if ocr_transactions and len(ocr_transactions) > len(transactions):
+                        print(f"Successfully extracted {len(ocr_transactions)} transactions using advanced OCR")
+                        transactions = ocr_transactions
+                except Exception as e:
+                    print(f"Advanced OCR extraction failed: {e}")
+            
+            # Fall back to standard OCR parser if advanced didn't work
+            if len(transactions) <= 1:
+                try:
+                    print("Trying standard OCR parser...")
+                    ocr_transactions = parse_scanned_pdf(pdf_path)
+                    if ocr_transactions and len(ocr_transactions) > len(transactions):
+                        print(f"Successfully extracted {len(ocr_transactions)} transactions using standard OCR")
+                        transactions = ocr_transactions
+                except Exception as e:
+                    print(f"Standard OCR extraction failed: {e}")
         else:
             print(f"OCR not available: {message}")
     
