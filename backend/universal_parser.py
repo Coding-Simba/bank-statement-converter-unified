@@ -23,6 +23,7 @@ try:
     CAMELOT_PARSER_AVAILABLE = True
 except ImportError:
     CAMELOT_PARSER_AVAILABLE = False
+    print("Camelot parser not available")
 try:
     from .failed_pdf_manager import FailedPDFManager
     FAILED_PDF_MANAGER_AVAILABLE = True
