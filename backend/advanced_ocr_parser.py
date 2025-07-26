@@ -59,9 +59,11 @@ def parse_multiline_transactions(text):
         
         # Check for section headers
         if 'deposits and other additions' in line.lower():
+            # Only reset if we're not already in deposits section
+            if not in_deposits_section:
+                current_transactions = []
             in_deposits_section = True
             in_withdrawals_section = False
-            current_transactions = []
             i += 1
             continue
             
