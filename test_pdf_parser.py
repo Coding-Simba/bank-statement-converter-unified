@@ -4,7 +4,7 @@
 from backend.universal_parser import parse_universal_pdf
 import json
 
-pdf_path = './uploads/11a56e83-e80a-4725-adf3-e33f19ee8f36.pdf'
+pdf_path = './uploads/b354da97-b72c-4aae-9339-a5bf33f2212b.pdf'
 print(f'Testing PDF: {pdf_path}')
 print('=' * 50)
 

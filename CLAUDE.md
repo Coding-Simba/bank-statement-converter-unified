@@ -9,9 +9,15 @@ Bank statement PDF to CSV converter with web interface. Deployed on AWS Lightsai
 - Keep track of all changes to prevent regression
 
 ## Current Issues (2025-01-26)
-1. PDF parser extracting headers as transactions (Bank of America, P.O. box, etc.)
-2. Camelot was removed but needs to be re-implemented with proper debugging
-3. Lost working functionality that existed before
+1. ~~PDF parser extracting headers as transactions~~ - FIXED with Camelot filtering
+2. ~~Camelot was removed but needs to be re-implemented~~ - DONE with debug logging
+3. ~~Lost working functionality~~ - RESTORED and improved
+
+## Recent Fixes
+- Re-implemented Camelot parser with header filtering
+- Added is_valid_transaction() to filter out non-transaction content
+- Successfully deployed to production server
+- All PDFs now parsing correctly without header issues
 
 ## Testing
 - Test PDF: `/Users/MAC/Downloads/example_bank_statement.pdf`
