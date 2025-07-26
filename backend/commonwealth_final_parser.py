@@ -116,27 +116,50 @@ def parse_commonwealth_final(pdf_path):
                         # This line likely contains the amount
                         # Try to extract amounts based on column positions
                         
-                        if debit_col and credit_col:
-                            # Extract text from debit column area
-                            debit_area = next_line[max(0, debit_col-10):credit_col-5].strip()
-                            credit_area = next_line[credit_col-5:balance_col-5] if balance_col else next_line[credit_col-5:]
+                        if debit_col and credit_col and balance_col:
+                            # For Commonwealth Bank, amounts can appear anywhere between description and balance
+                            # Look for all amounts in the line, excluding the balance at the end
                             
-                            # Look for amounts in each area
-                            debit_match = re.search(r'([\d,]+\.?\d*)\s*$', debit_area)
-                            credit_match = re.search(r'([\d,]+\.?\d*)', credit_area)
+                            # Find all numeric values in the line
+                            all_amounts = re.findall(r'([\d,]+\.?\d+)', next_line)
                             
-                            if debit_match:
-                                amount = extract_amount(debit_match.group(1))
-                                if amount:
-                                    current_transaction['amount'] = -abs(amount)  # Debits are negative
-                                    current_transaction['amount_string'] = debit_match.group(1)
-                                    break
-                            elif credit_match:
-                                amount = extract_amount(credit_match.group(1))
-                                if amount:
-                                    current_transaction['amount'] = abs(amount)  # Credits are positive
-                                    current_transaction['amount_string'] = credit_match.group(1)
-                                    break
+                            if all_amounts:
+                                # The last amount is typically the balance (has CR/DR suffix)
+                                # The second-to-last is typically the transaction amount
+                                if len(all_amounts) >= 2:
+                                    # Check if this line has a balance indicator (CR/DR at end)
+                                    has_balance = re.search(r'[\d,]+\.?\d+\s+(?:CR|DR)\s*$', next_line)
+                                    
+                                    if has_balance:
+                                        # Second-to-last amount is the transaction
+                                        transaction_amount_str = all_amounts[-2]
+                                        amount = extract_amount(transaction_amount_str)
+                                        
+                                        if amount:
+                                            # Determine if it's debit or credit by position
+                                            amount_pos = next_line.rfind(transaction_amount_str)
+                                            
+                                            # If amount appears closer to credit column position, it's a credit
+                                            # Otherwise it's a debit
+                                            if amount_pos > debit_col + 20:  # Likely in credit area
+                                                current_transaction['amount'] = abs(amount)  # Credits are positive
+                                            else:
+                                                current_transaction['amount'] = -abs(amount)  # Debits are negative
+                                            
+                                            current_transaction['amount_string'] = transaction_amount_str
+                                            break
+                                elif len(all_amounts) == 1:
+                                    # Only one amount, likely a transaction amount
+                                    amount = extract_amount(all_amounts[0])
+                                    if amount:
+                                        # Check position to determine debit/credit
+                                        amount_pos = next_line.find(all_amounts[0])
+                                        if amount_pos > debit_col + 20:
+                                            current_transaction['amount'] = abs(amount)
+                                        else:
+                                            current_transaction['amount'] = -abs(amount)
+                                        current_transaction['amount_string'] = all_amounts[0]
+                                        break
                         else:
                             # Fallback: look for pattern with two amounts (transaction amount and balance)
                             # Pattern: some text, amount1, amount2 CR/DR

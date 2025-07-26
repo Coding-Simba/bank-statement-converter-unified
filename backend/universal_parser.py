@@ -24,7 +24,7 @@ try:
 except ImportError:
     SUMMARY_PARSER_AVAILABLE = False
 try:
-    from .commonwealth_final_parser import parse_commonwealth_final as parse_commonwealth_bank
+    from .commonwealth_simple_parser import parse_commonwealth_simple as parse_commonwealth_bank
     COMMONWEALTH_PARSER_AVAILABLE = True
 except ImportError:
     COMMONWEALTH_PARSER_AVAILABLE = False
