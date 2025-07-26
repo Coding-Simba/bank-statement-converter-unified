@@ -24,6 +24,11 @@ try:
 except ImportError:
     SUMMARY_PARSER_AVAILABLE = False
 try:
+    from .commonwealth_final_parser import parse_commonwealth_final as parse_commonwealth_bank
+    COMMONWEALTH_PARSER_AVAILABLE = True
+except ImportError:
+    COMMONWEALTH_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -356,6 +361,13 @@ def parse_universal_pdf(pdf_path):
                 if 'Rabobank' in first_page and 'Rekeningafschrift' in first_page:
                     print("Detected Rabobank PDF, using dedicated parser")
                     transactions = parse_rabobank_pdf(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Commonwealth Bank format
+                if COMMONWEALTH_PARSER_AVAILABLE and 'commonwealth' in first_page.lower() and 'smart access' in first_page.lower():
+                    print("Detected Commonwealth Bank PDF, using dedicated parser")
+                    transactions = parse_commonwealth_bank(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:

@@ -5,8 +5,8 @@ from backend.universal_parser import parse_universal_pdf
 import sys
 import os
 
-# Test first PDF
-pdf_path = '/Users/MAC/Desktop/pdfs/1/Australia ANZ.pdf'
+# Test second PDF - Australia Commonwealth
+pdf_path = '/Users/MAC/Desktop/pdfs/1/Australia Commonwealth J C.pdf'
 
 print(f"Testing: {os.path.basename(pdf_path)}")
 print("=" * 60)
