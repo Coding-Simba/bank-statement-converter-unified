@@ -92,8 +92,8 @@ def parse_multiline_transactions(text):
             date_str = date_match.group(1)
             description = date_match.group(2).strip()
             
-            # Check if amount is on the same line
-            amount_match = re.search(r'([-]?\$?[\d,]+\.?\d*)$', description)
+            # Check if amount is on the same line - look for number at end
+            amount_match = re.search(r'([-]?\$?[\d,]+\.?\d+)\s*$', description)
             if amount_match:
                 amount_str = amount_match.group(1)
                 description = description[:amount_match.start()].strip()
@@ -114,7 +114,7 @@ def parse_multiline_transactions(text):
                 current_transactions.append(transaction)
         
         # Look for standalone amounts
-        elif re.match(r'^[-]?\$?[\d,]+\.?\d*$', line) and current_transactions:
+        elif re.match(r'^[-]?\$?[\d,]+\.?\d+$', line) and current_transactions:
             # This is likely an amount for a previous transaction
             for trans in reversed(current_transactions):
                 if trans['amount_string'] is None:
