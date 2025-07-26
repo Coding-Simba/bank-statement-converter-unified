@@ -5,8 +5,8 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
 
 ## Progress Tracking
 - [ ] Total PDFs to test: 17
-- [ ] PDFs completed: 1
-- [ ] PDFs with issues fixed: 1
+- [ ] PDFs completed: 2
+- [ ] PDFs with issues fixed: 2
 
 ## Testing Methodology for Each PDF
 1. Run parser on the PDF
@@ -27,11 +27,11 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
   - Issues found: Home loan statement with only summary totals, no individual transactions
   - Fix applied: Created summary_statement_parser.py to extract summary lines as transactions 
 
-- [ ] **Australia Commonwealth J C.pdf**
+- [x] **Australia Commonwealth J C.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/Australia Commonwealth J C.pdf`
-  - Status: Not tested
-  - Issues found: 
-  - Fix applied: 
+  - Status: ✅ Fixed and tested
+  - Issues found: Complex multi-line format with debit/credit columns. Initial parsers were extracting balance amounts instead of transaction amounts.
+  - Fix applied: Created commonwealth_simple_parser.py that correctly identifies 461 transactions (90 deposits, 371 withdrawals) by parsing the specific column layout
 
 - [ ] **Australia Westpac bank statement.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/Australia Westpac bank statement.pdf`
@@ -130,7 +130,8 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
 Document each parser update here with timestamp and what was changed:
 
 1. **2025-01-27**: Initial TODO list created
-2. **2025-01-27 01:33**: Created summary_statement_parser.py for ANZ home loan statement (summary-only format) 
+2. **2025-01-27 01:33**: Created summary_statement_parser.py for ANZ home loan statement (summary-only format)
+3. **2025-01-27 02:45**: Created commonwealth_simple_parser.py for Commonwealth Bank multi-line format with proper debit/credit detection 
 
 ## Common Issues Found
 List recurring issues across multiple PDFs:
