@@ -29,6 +29,11 @@ try:
 except ImportError:
     COMMONWEALTH_PARSER_AVAILABLE = False
 try:
+    from .westpac_parser import parse_westpac
+    WESTPAC_PARSER_AVAILABLE = True
+except ImportError:
+    WESTPAC_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -368,6 +373,13 @@ def parse_universal_pdf(pdf_path):
                 if COMMONWEALTH_PARSER_AVAILABLE and 'commonwealth' in first_page.lower() and 'smart access' in first_page.lower():
                     print("Detected Commonwealth Bank PDF, using dedicated parser")
                     transactions = parse_commonwealth_bank(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Westpac format
+                if WESTPAC_PARSER_AVAILABLE and 'westpac' in first_page.lower():
+                    print("Detected Westpac PDF, using dedicated parser")
+                    transactions = parse_westpac(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
