@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Affordable pricing plans for bank statement conversion. Free tier available, Pro at $9.99/mo, and Business at $29.99/mo. Convert PDF statements to CSV/Excel." name="description"/>
+  <!-- Reset and Base Styles -->
+  <style>
+    /* CSS Reset */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      font-size: 62.5%;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      font-size: 1.6rem;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background-color: #ffffff;
+      overflow-x: hidden;
+    }
+    
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* Main content wrapper */
+    main {
+      margin-top: 64px;
+      min-height: calc(100vh - 64px);
+    }
+    
+    .content-wrapper {
+      padding: 0;
+    }
+    
+    /* Base link styles */
+    a {
+      color: #667eea;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <link href="/css/production.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+  <title>
+   Pricing Plans - BankCSVConverter | PDF to CSV/Excel
+  </title>
+  <link href="https://BankCSVConverter.com/pricing" rel="canonical"/>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Unified Design System -->
+  <!-- Skip Link for Accessibility -->
+  <style>
+   .skip-link {
+            position: absolute;
+            left: -9999px;
+        }
+        .skip-link:focus {
+            position: absolute;
+            left: 6px;
+            top: 7px;
+            z-index: 999999;
+            padding: 8px 16px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Fix for nav logo SVG */
+        .nav-logo svg {
+            width: 32px;
+            height: 32px;
+            margin-right: 8px;
+        }
+        
+        /* Additional layout fixes */
+        .content-section {
+            padding: 4rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.25rem;
+            color: #6b7280;
+        }
+        
+        /* Footer fixes */
+        footer {
+            background: #f9fafb;
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-section a {
+            color: #6b7280;
+            font-size: 1.4rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-section a:hover {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+            font-size: 1.4rem;
+        }
+        
+        /* Hero Section Styles */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Modern Pricing Page Styles */
+        .pricing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0 3rem;
+            font-size: 1.1rem;
+        }
+
+        .pricing-toggle span {
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .pricing-toggle span.active {
+            color: #1a73e8;
+            font-weight: 600;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 32px;
+            background: #e0e0e0;
+            border-radius: 32px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background: #1a73e8;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 26px;
+            height: 26px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(28px);
+        }
+
+        .save-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 0 1rem;
+        }
+
+        .pricing-card {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .pricing-card:hover::before {
+            opacity: 1;
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: scale(1.05);
+            z-index: 1;
+        }
+
+        .pricing-card.featured .pricing-tier,
+        .pricing-card.featured .pricing-price,
+        .pricing-card.featured p,
+        .pricing-card.featured .pricing-features li {
+            color: white;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ffd700;
+            color: #333;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            animation: slideInRight 0.5s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .pricing-tier {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .pricing-price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 1.5rem 0;
+            color: #1a73e8;
+            display: flex;
+            align-items: baseline;
+            gap: 0.2rem;
+        }
+
+        .pricing-price sup {
+            font-size: 1.5rem;
+            top: -0.5em;
+        }
+
+        .pricing-price span {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #555;
+            font-size: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            color: white;
+            border-radius: 50%;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .pricing-card.featured .check-icon {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+        }
+
+        .pricing-cta {
+            display: block;
+            width: 100%;
+            padding: 1rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .pricing-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .pricing-cta.secondary {
+            background: #f0f0f0;
+            color: #333;
+            box-shadow: none;
+        }
+
+        .pricing-cta.secondary:hover {
+            background: #e0e0e0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.featured .pricing-cta {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Feature Comparison Table */
+        .comparison-section {
+            margin: 5rem 0;
+            padding: 3rem 0;
+            background: #f8f9fa;
+            border-radius: 20px;
+        }
+
+        .comparison-table {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .comparison-table th:not(:first-child) {
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table td:not(:first-child) {
+            text-align: center;
+        }
+
+        .comparison-table .feature-name {
+            font-weight: 500;
+            color: #555;
+        }
+
+        .comparison-table .check {
+            color: #22c55e;
+            font-size: 1.5rem;
+        }
+
+        .comparison-table .cross {
+            color: #ef4444;
+            font-size: 1.5rem;
+        }
+
+        /* Trust Badges */
+        .trust-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .trust-badge:hover {
+            opacity: 1;
+        }
+
+        .trust-badge-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+
+        .trust-badge-text {
+            font-size: 0.9rem;
+            color: #666;
+            max-width: 120px;
+            text-align: center;
+        }
+
+        /* FAQ Enhancements */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            margin: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            background: white;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        /* CTA Section Enhancement */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-price {
+                font-size: 2.5rem;
+            }
+
+            .trust-badges {
+                gap: 2rem;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+            .comparison-table table {
+                min-width: 600px;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Animations on scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .scroll-to-top:active {
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .scroll-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+  <!-- Standardized Header -->
+  <header>
+   <nav>
+    <div class="container nav-container">
+     <a class="nav-logo" href="/">
+     <svg style="width: 24px; height: 24px; flex-shrink: 0;" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="32" height="32">
+       <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+       </rect>
+       <line x1="3" x2="21" y1="9" y2="9">
+       </line>
+       <line x1="9" x2="9" y1="21" y2="9">
+       </line>
+      </svg>
+      BankCSVConverter
+     </a>
+     <ul class="nav-menu">
+      <li class="nav-item">
+       <a href="/features.html" class="nav-link">
+        Features
+       </a>
+      </li>
+      <li class="nav-item">
+       <a href="/how-it-works.html" class="nav-link">
+        How It Works
+       </a>
+      </li>
+      <li class="nav-item">
+       <a href="/pricing.html" class="nav-link active">
+        Pricing
+       </a>
+      </li>
+      <li class="nav-item">
+       <a href="/api.html" class="nav-link">
+        API
+       </a>
+      </li>
+      <li class="nav-item">
+       <a href="/blog.html" class="nav-link">
+        Blog
+       </a>
+      </li>
+     </ul>
+     <button class="menu-toggle" id="menuToggle">
+      <span>
+      </span>
+      <span>
+      </span>
+      <span>
+      </span>
+     </button>
+    </div>
+   </nav>
+   <div class="nav-overlay">
+   </div>
+  </header>
+  <main id="main">
+   <div class="content-wrapper">
+    <div class="container">
+     <!-- Hero Section -->
+     <section class="hero">
+      <div class="hero-content animate-on-scroll">
+       <h1>
+        Simple, Transparent Pricing
+       </h1>
+       <p class="hero-subtitle">
+        Choose the plan that works best for you. Start free, upgrade when you need more.
+       </p>
+      </div>
+     </section>
+     <!-- Pricing Toggle -->
+     <div class="pricing-toggle animate-on-scroll">
+      <span class="monthly-label active">
+       Monthly
+      </span>
+      <div class="toggle-switch" id="pricingToggle">
+       <div class="toggle-slider">
+       </div>
+      </div>
+      <span class="annual-label">
+       Annual
+       <span class="save-badge">
+        Save 20%
+       </span>
+      </span>
+     </div>
+     <!-- Pricing Section -->
+     <section class="content-section">
+      <div class="container">
+       <div class="pricing-grid animate-on-scroll">
+        <!-- Free Plan -->
+        <div class="pricing-card">
+         <h2 class="pricing-tier">
+          Free
+         </h2>
+         <div class="pricing-price" data-annual="0" data-monthly="0">
+          <sup>
+           $
+          </sup>
+          <span class="price-value">
+           0
+          </span>
+          <span class="price-period">
+           /month
+          </span>
+         </div>
+         <p>
+          Perfect for personal use
+         </p>
+         <ul class="pricing-features">
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           5 conversions per month
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Support for 50+ banks
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Basic CSV export
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Secure processing
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Email support
+          </li>
+         </ul>
+         <a class="pricing-cta secondary" href="/">
+          Get Started
+         </a>
+        </div>
+        <!-- Pro Plan -->
+        <div class="pricing-card featured">
+         <span class="pricing-badge">
+          Most Popular
+         </span>
+         <h2 class="pricing-tier">
+          Pro
+         </h2>
+         <div class="pricing-price" data-annual="7.99" data-monthly="9.99">
+          <sup>
+           $
+          </sup>
+          <span class="price-value">
+           9.99
+          </span>
+          <span class="price-period">
+           /month
+          </span>
+         </div>
+         <p>
+          For freelancers &amp; small businesses
+         </p>
+         <ul class="pricing-features">
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Unlimited conversions
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Support for 1000+ banks
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           CSV &amp; Excel export
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Batch processing
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Priority support
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Custom date formats
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Transaction categorization
+          </li>
+         </ul>
+         <a class="pricing-cta" href="/">
+          Create Free Account
+         </a>
+        </div>
+        <!-- Business Plan -->
+        <div class="pricing-card">
+         <h2 class="pricing-tier">
+          Business
+         </h2>
+         <div class="pricing-price" data-annual="23.99" data-monthly="29.99">
+          <sup>
+           $
+          </sup>
+          <span class="price-value">
+           29.99
+          </span>
+          <span class="price-period">
+           /month
+          </span>
+         </div>
+         <p>
+          For teams &amp; enterprises
+         </p>
+         <ul class="pricing-features">
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Everything in Pro
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Team collaboration
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Custom integrations
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Dedicated support
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           SLA guarantee
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           White-label option
+          </li>
+          <li>
+           <span class="check-icon">
+            ✓
+           </span>
+           Advanced analytics
+          </li>
+         </ul>
+         <a class="pricing-cta" href="/">
+          Contact Sales
+         </a>
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- Feature Comparison Table -->
+     <section class="comparison-section animate-on-scroll">
+      <div class="container">
+       <div class="section-header">
+        <h2>
+         Compare All Features
+        </h2>
+        <p>
+         See what's included in each plan
+        </p>
+       </div>
+       <div class="comparison-table">
+        <table>
+         <thead>
+          <tr>
+           <th>
+            Features
+           </th>
+           <th>
+            Free
+           </th>
+           <th>
+            Pro
+           </th>
+           <th>
+            Business
+           </th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr>
+           <td class="feature-name">
+            Monthly Conversions
+           </td>
+           <td>
+            5
+           </td>
+           <td>
+            Unlimited
+           </td>
+           <td>
+            Unlimited
+           </td>
+          </tr>
+          <tr>
+           <td class="feature-name">
+            Supported Banks
+           </td>
+           <td>
+            50+
+           </td>
+           <td>
+            1000+
+           </td>
+           <td>
+            1000+
+           </td>
+          </tr>
+          <tr>
+           <td class="feature-name">
+            Export Formats
+           </td>
+           <td>
+            CSV only
+           </td>
+           <td>
+            CSV, Excel
+           </td>
+           <td>
+            CSV, Excel, JSON
+           </td>
+          </tr>
+          <tr>
+           <td class="feature-name">
+            Batch Processing
+           </td>
+           <td>
+            <span class="cross">
+             ✗
+            </span>
+           </td>
+           <td>
+            <span class="check">
+             ✓
+            </span>
+           </td>
+           <td>
+            <span class="check">
+             ✓
+            </span>
+           </td>
+          </tr>
+          <tr>
+           <td class="feature-name">
+            Team Collaboration
+           </td>
+           <td>
+            <span class="cross">
+             ✗
+            </span>
+           </td>
+           <td>
+            <span class="cross">
+             ✗
+            </span>
+           </td>
+           <td>
+            <span class="check">
+             ✓
+            </span>
+           </td>
+          </tr>
+          <tr>
+           <td class="feature-name">
+            Team Collaboration
+           </td>
+           <td>
+            <span class="cross">
+             ✗
+            </span>
+           </td>
+           <td>
+            <span class="cross">
+             ✗
+            </span>
+           </td>
+           <td>
+            <span class="check">
+             ✓
+            </span>
+           </td>
+          </tr>
+          <tr>
+           <td class="feature-name">
+            Custom Date Formats
+           </td>
+           <td>
+            <span class="cross">
+             ✗
+            </span>
+           </td>
+           <td>
+            <span class="check">
+             ✓
+            </span>
+           </td>
+           <td>
+            <span class="check">
+             ✓
+            </span>
+           </td>
+          </tr>
+          <tr>
+           <td class="feature-name">
+            Transaction Categorization
+           </td>
+           <td>
+            <span class="cross">
+             ✗
+            </span>
+           </td>
+           <td>
+            <span class="check">
+             ✓
+            </span>
+           </td>
+           <td>
+            <span class="check">
+             ✓
+            </span>
+           </td>
+          </tr>
+          <tr>
+           <td class="feature-name">
+            Support Level
+           </td>
+           <td>
+            Email
+           </td>
+           <td>
+            Priority
+           </td>
+           <td>
+            Dedicated
+           </td>
+          </tr>
+          <tr>
+           <td class="feature-name">
+            SLA Guarantee
+           </td>
+           <td>
+            <span class="cross">
+             ✗
+            </span>
+           </td>
+           <td>
+            <span class="cross">
+             ✗
+            </span>
+           </td>
+           <td>
+            <span class="check">
+             ✓
+            </span>
+           </td>
+          </tr>
+          <tr>
+           <td class="feature-name">
+            White-label Option
+           </td>
+           <td>
+            <span class="cross">
+             ✗
+            </span>
+           </td>
+           <td>
+            <span class="cross">
+             ✗
+            </span>
+           </td>
+           <td>
+            <span class="check">
+             ✓
+            </span>
+           </td>
+          </tr>
+          <tr>
+           <td class="feature-name">
+            Advanced Analytics
+           </td>
+           <td>
+            <span class="cross">
+             ✗
+            </span>
+           </td>
+           <td>
+            <span class="cross">
+             ✗
+            </span>
+           </td>
+           <td>
+            <span class="check">
+             ✓
+            </span>
+           </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+      </div>
+     </section>
+     <!-- Trust Badges -->
+     <section class="trust-section animate-on-scroll">
+      <div class="container">
+       <h3>
+        Trusted by Thousands of Users Worldwide
+       </h3>
+       <div class="trust-badges">
+        <div class="trust-badge">
+         <div class="trust-badge-icon">
+          🔒
+         </div>
+         <div class="trust-badge-text">
+          Bank-level Security
+         </div>
+        </div>
+        <div class="trust-badge">
+         <div class="trust-badge-icon">
+          ⚡
+         </div>
+         <div class="trust-badge-text">
+          99.9% Uptime
+         </div>
+        </div>
+        <div class="trust-badge">
+         <div class="trust-badge-icon">
+          🌍
+         </div>
+         <div class="trust-badge-text">
+          50k+ Users
+         </div>
+        </div>
+        <div class="trust-badge">
+         <div class="trust-badge-icon">
+          💳
+         </div>
+         <div class="trust-badge-text">
+          PCI Compliant
+         </div>
+        </div>
+        <div class="trust-badge">
+         <div class="trust-badge-icon">
+          🛡️
+         </div>
+         <div class="trust-badge-text">
+          GDPR Compliant
+         </div>
+        </div>
+        <div class="trust-badge">
+         <div class="trust-badge-icon">
+          ⭐
+         </div>
+         <div class="trust-badge-text">
+          4.9/5 Rating
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- FAQ Section -->
+     <section class="content-section">
+      <div class="container">
+       <div class="section-header">
+        <h2>
+         Frequently Asked Questions
+        </h2>
+        <p>
+         Everything you need to know about our pricing
+        </p>
+       </div>
+       <div class="faq-section">
+        <div class="faq-item">
+         <h3 class="faq-question">
+          Can I change plans anytime?
+         </h3>
+         <p class="faq-answer">
+          Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any charges or credits.
+         </p>
+        </div>
+        <div class="faq-item">
+         <h3 class="faq-question">
+          Is there a free account for Pro and Business plans?
+         </h3>
+         <p class="faq-answer">
+          Yes! You can convert up to 2 bank statements per day without an account, or 5 per day with a free account. For higher volume needs, check out our paid plans starting at $30/month.
+         </p>
+        </div>
+        <div class="faq-item">
+         <h3 class="faq-question">
+          What payment methods do you accept?
+         </h3>
+         <p class="faq-answer">
+          We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for annual plans.
+         </p>
+        </div>
+        <div class="faq-item">
+         <h3 class="faq-question">
+          Do you offer discounts for annual billing?
+         </h3>
+         <p class="faq-answer">
+          Yes! Save 20% when you pay annually. That's 2 months free compared to monthly billing.
+         </p>
+        </div>
+        <div class="faq-item">
+         <h3 class="faq-question">
+          What happens when I reach my conversion limit?
+         </h3>
+         <p class="faq-answer">
+          For Free plan users, you'll need to wait until the next month or upgrade to continue converting. Pro and Business plans have unlimited conversions.
+         </p>
+        </div>
+        <div class="faq-item">
+         <h3 class="faq-question">
+          Can I cancel my subscription anytime?
+         </h3>
+         <p class="faq-answer">
+          Absolutely! You can cancel your subscription at any time with no hidden fees or cancellation charges. Your access continues until the end of your billing period.
+         </p>
+        </div>
+        <div class="faq-item">
+         <h3 class="faq-question">
+          Do you offer refunds?
+         </h3>
+         <p class="faq-answer">
+          We offer a 30-day money-back guarantee for all paid plans. If you're not satisfied, contact us within 30 days for a full refund.
+         </p>
+        </div>
+        <div class="faq-item">
+         <h3 class="faq-question">
+          Is my data secure?
+         </h3>
+         <p class="faq-answer">
+          Yes! We use bank-level encryption and never store your bank statements. All processing happens in memory and files are immediately deleted after conversion.
+         </p>
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- CTA Section -->
+     <section class="cta-section">
+      <div class="container">
+       <h2>
+        Ready to Get Started?
+       </h2>
+       <p>
+        Join thousands of users who save time with our bank statement converter
+       </p>
+       <a class="cta-button" href="/">
+        Start Converting Now
+       </a>
+      </div>
+     </section>
+    </div>
+   </div>
+  </main>
+  <!-- Standardized Footer -->
+  <footer>
+   <div class="container">
+    <div class="footer-content">
+     <div class="footer-section">
+      <h4>
+       Product
+      </h4>
+      <ul>
+       <li>
+        <a href="/features.html">
+         Features
+        </a>
+       </li>
+       <li>
+        <a href="/how-it-works.html">
+         How It Works
+        </a>
+       </li>
+       <li>
+        <a href="/pricing.html">
+         Pricing
+        </a>
+       </li>
+       <li>
+        <a href="/api.html">
+         API
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Company
+      </h4>
+      <ul>
+       <li>
+        <a href="/about.html">
+         About
+        </a>
+       </li>
+       <li>
+        <a href="/blog.html">
+         Blog
+        </a>
+       </li>
+       <li>
+        <a href="/contact.html">
+         Contact
+        </a>
+       </li>
+       <li>
+        <a href="/careers.html">
+         Careers
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Support
+      </h4>
+      <ul>
+       <li>
+        <a href="/help.html">
+         Help Center
+        </a>
+       </li>
+       <li>
+        <a href="/faq.html">
+         FAQ
+        </a>
+       </li>
+       <li>
+        <a href="/security.html">
+         Security
+        </a>
+       </li>
+       <li>
+        <a href="/status.html">
+         Status
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Legal
+      </h4>
+      <ul>
+       <li>
+        <a href="/privacy.html">
+         Privacy Policy
+        </a>
+       </li>
+       <li>
+        <a href="/terms.html">
+         Terms of Service
+        </a>
+       </li>
+       <li>
+        <a href="/gdpr.html">
+         GDPR
+        </a>
+       </li>
+       <li>
+        <a href="/ccpa.html">
+         CCPA
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>
+      © 2025 BankCSVConverter. All rights reserved.
+     </p>
+    </div>
+   </div>
+  </footer>
+  <!-- Standardized Scripts -->
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // Pricing Toggle Functionality
+    const pricingToggle = document.getElementById('pricingToggle');
+    const monthlyLabel = document.querySelector('.monthly-label');
+    const annualLabel = document.querySelector('.annual-label');
+    const priceElements = document.querySelectorAll('.pricing-price');
+    
+    if (pricingToggle) {
+        pricingToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const isAnnual = this.classList.contains('active');
+            
+            // Update labels
+            monthlyLabel.classList.toggle('active', !isAnnual);
+            annualLabel.classList.toggle('active', isAnnual);
+            
+            // Update prices
+            priceElements.forEach(priceEl => {
+                const monthlyPrice = priceEl.getAttribute('data-monthly');
+                const annualPrice = priceEl.getAttribute('data-annual');
+                const priceValue = priceEl.querySelector('.price-value');
+                const pricePeriod = priceEl.querySelector('.price-period');
+                
+                if (priceValue) {
+                    priceValue.textContent = isAnnual ? annualPrice : monthlyPrice;
+                    pricePeriod.textContent = isAnnual ? '/month (billed annually)' : '/month';
+                }
+            });
+        });
+    }
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        if (question) {
+            question.addEventListener('click', function() {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        }
+    });
+
+    // Scroll Animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all elements with animate-on-scroll class
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Add stagger animation to pricing cards
+    const pricingCards = document.querySelectorAll('.pricing-card');
+    pricingCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+    });
+
+    // Add hover effect to trust badges
+    const trustBadges = document.querySelectorAll('.trust-badge');
+    trustBadges.forEach(badge => {
+        badge.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+        });
+        badge.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    if (scrollToTopBtn) {
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.display = 'flex';
+                scrollToTopBtn.style.opacity = '1';
+            } else {
+                scrollToTopBtn.style.opacity = '0';
+                setTimeout(() => {
+                    scrollToTopBtn.style.display = 'none';
+                }, 300);
+            }
+        });
+        
+        // Scroll to top when clicked
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+});
+  </script>
+  <!-- Removed production.js to avoid conflicts with inline script -->
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
+</html>

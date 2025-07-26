@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversion Limit Modal Demo - BankCSVConverter</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      background: #f9fafb;
+    }
+    h1 {
+      color: #111827;
+      margin-bottom: 20px;
+    }
+    .demo-section {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+    }
+    .demo-button {
+      background: #0066ff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      margin-right: 15px;
+      margin-bottom: 15px;
+      transition: all 0.2s;
+    }
+    .demo-button:hover {
+      background: #0052cc;
+      transform: translateY(-1px);
+    }
+    .demo-button.secondary {
+      background: #00d26a;
+    }
+    .demo-button.secondary:hover {
+      background: #00b359;
+    }
+    .code-example {
+      background: #f3f4f6;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      overflow-x: auto;
+    }
+    .info-box {
+      background: #e6f0ff;
+      border: 1px solid #0066ff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      color: #0052cc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Conversion Limit Modal Demo</h1>
+  
+  <div class="demo-section">
+    <h2>Modal Preview</h2>
+    <p>Click the buttons below to see how the modal appears for different user states:</p>
+    
+    <div style="margin-top: 20px;">
+      <button class="demo-button" onclick="showConversionLimitModal(false)">
+        Show Modal (Non-Logged In User)
+      </button>
+      <button class="demo-button secondary" onclick="showConversionLimitModal(true)">
+        Show Modal (Logged In User)
+      </button>
+    </div>
+    
+    <div class="info-box">
+      <strong>Note:</strong> This modal should be triggered when users reach their daily conversion limit.
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>Integration Guide</h2>
+    <p>To integrate this modal into your conversion process:</p>
+    
+    <h3>1. Include the modal script in your page:</h3>
+    <div class="code-example">
+&lt;script src="/js/conversion-limit-modal.js"&gt;&lt;/script&gt;
+    </div>
+    
+    <h3>2. Call the modal when conversion limit is reached:</h3>
+    <div class="code-example">
+// For non-logged in users (after 2 conversions)
+showConversionLimitModal(false);
+
+// For logged in users (after 5 conversions)
+showConversionLimitModal(true);
+    </div>
+    
+    <h3>3. Example implementation in your conversion handler:</h3>
+    <div class="code-example">
+function handleConversion() {
+  const conversionsToday = getConversionsToday();
+  const isLoggedIn = checkUserLoginStatus();
+  const limit = isLoggedIn ? 5 : 2;
+  
+  if (conversionsToday >= limit) {
+    showConversionLimitModal(isLoggedIn);
+    return false; // Prevent conversion
+  }
+  
+  // Continue with conversion...
+  performConversion();
+}
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>Modal Features</h2>
+    <ul>
+      <li>✅ Responsive design - works on all devices</li>
+      <li>✅ Smooth animations and transitions</li>
+      <li>✅ Clear pricing display with all three tiers</li>
+      <li>✅ Different messages for logged in vs non-logged in users</li>
+      <li>✅ Direct links to pricing page anchors</li>
+      <li>✅ Escape key and overlay click to close</li>
+      <li>✅ Matches the modern design of your pricing page</li>
+    </ul>
+  </div>
+  
+  <!-- Load the modal script -->
+  <script src="/js/conversion-limit-modal.js"></script>
+</body>
+</html>

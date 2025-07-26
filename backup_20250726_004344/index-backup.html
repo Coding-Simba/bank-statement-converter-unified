@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Convert PDF bank statements to CSV/Excel instantly. Free online converter for 1000+ banks. Secure and fast." name="description"/>
+<meta content="bank statement converter, pdf to csv, bank statement to excel, convert bank statement" name="keywords"/>
+<title>
+   Bank Statement Converter - PDF to CSV in Seconds | BankCSVConverter
+  </title>
+<link href="https://BankCSVConverter.com" rel="canonical"/>
+<!-- Unified Design System -->
+<link href="css/main.css" rel="stylesheet"/>
+<!-- Inline Critical CSS for Instant Loading -->
+<style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+            background: #ffffff;
+        }
+        
+        /* Header Navigation */
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .nav-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-menu a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+        
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #667eea;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        
+        /* Mobile Menu Styles */
+        .nav-menu.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+        
+        .upload-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .upload-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .upload-box.dragging {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transform: scale(1.02);
+        }
+        
+        .upload-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .upload-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .upload-btn:active {
+            transform: translateY(0);
+        }
+        
+        .drop-text {
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+        
+        #fileInput {
+            display: none;
+        }
+        
+        .features {
+            display: flex;
+            gap: 40px;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .feature-icon {
+            color: #22c55e;
+            font-size: 1.2rem;
+        }
+        
+        /* Processing State */
+        .processing {
+            display: none;
+            color: white;
+        }
+        
+        .spinner {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Success State */
+        .success {
+            display: none;
+            color: white;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #22c55e;
+            animation: scaleIn 0.3s ease;
+        }
+        
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+        
+        .download-btn {
+            background: white;
+            color: #22c55e;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        .convert-another {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .convert-another:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .upload-box {
+                padding: 40px 30px;
+            }
+            
+            .features {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+        }
+        
+        /* Error State */
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        /* Hide file input */
+        #fileInput {
+            display: none;
+        }
+        
+        /* Hide processing and success states initially */
+        #processingState {
+            display: none;
+        }
+        
+        #successState {
+            display: none;
+        }
+    
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  position: absolute;
+  left: 6px;
+  top: 7px;
+  z-index: 999999;
+  padding: 8px 16px;
+  background: #000;
+  color: white;
+  text-decoration: none;
+}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+<!-- Header Navigation -->
+<header>
+<nav>
+<a class="nav-logo" href="/">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z">
+</path>
+<path d="M9 12l2 2 4-4">
+</path>
+</svg>
+     BankCSVConverter
+    </a>
+<ul class="nav-menu">
+<li>
+<a href="/all-pages.html">
+       All Banks
+      </a>
+</li>
+<li>
+<a href="/pages/bank-statement-converter-comparison.html">
+       Why Us
+      </a>
+</li>
+<li>
+<a href="/blog/financial-data-privacy-guide.html">
+       Security
+      </a>
+</li>
+</ul>
+<button class="menu-toggle">
+<span>
+</span>
+<span>
+</span>
+<span>
+</span>
+</button>
+</nav>
+</header>
+<div class="container" id="main">
+<h1>
+    Convert Bank Statements to CSV
+   </h1>
+<p class="subtitle">
+    Transform PDF bank statements from any bank into Excel-ready CSV files in seconds
+   </p>
+<div class="upload-box" id="uploadArea">
+<!-- Initial State -->
+<div id="initialState">
+<div class="upload-icon">
+      📄
+     </div>
+<button class="upload-btn" id="uploadBtn" onclick="document.getElementById('fileInput').click()">
+      Choose PDF File
+     </button>
+<p class="drop-text">
+      or drag and drop your bank statement here
+     </p>
+</div>
+<!-- Processing State -->
+<div class="processing" id="processingState">
+<div class="spinner">
+</div>
+<h2>
+      Converting your statement...
+     </h2>
+<p>
+      This usually takes 5-10 seconds
+     </p>
+</div>
+<!-- Success State -->
+<div class="success" id="successState">
+<div class="success-icon">
+      ✓
+     </div>
+<h3>
+      Conversion Complete!
+     </h3>
+<a class="download-btn" href="#" id="downloadBtn">
+      Download CSV
+     </a>
+<button class="convert-another" id="convertAnother">
+      Convert Another
+     </button>
+</div>
+</div>
+<input accept=".pdf" aria-label="Upload PDF bank statement" id="fileInput" type="file"/>
+<div class="features">
+<div class="feature">
+<span class="feature-icon">
+      ✓
+     </span>
+<span>
+      Works with 1000+ banks
+     </span>
+</div>
+<div class="feature">
+<span class="feature-icon">
+      ✓
+     </span>
+<span>
+      100% secure &amp; private
+     </span>
+</div>
+<div class="feature">
+<span class="feature-icon">
+      ✓
+     </span>
+<span>
+      No signup required
+     </span>
+</div>
+</div>
+<div class="error-message" id="errorMessage">
+</div>
+</div>
+<footer class="footer">
+<p>
+    © 2025 BankCSVConverter |
+    <a href="/pages/bank-statement-converter-comparison.html">
+     Why Choose Us
+    </a>
+    |
+    <a href="/blog/financial-data-privacy-guide.html">
+     Privacy Guide
+    </a>
+</p>
+</footer>
+<!-- Inline JavaScript for Fast Loading -->
+<script>document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});</script>
+</body>
+</html>

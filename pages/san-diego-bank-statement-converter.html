@@ -1,497 +1,882 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>San Diego Bank Statement Converter - Convert California Bank PDFs to CSV | BankCSVConverter</title>
-    <meta name="description" content="Convert bank statements from San Diego banks to Excel/CSV instantly. Supporting Wells Fargo, Bank of America, Chase, Union Bank, California Bank & Trust. Perfect for biotech, defense contractors, and tourism businesses in Downtown, La Jolla, Mission Valley.">
-    <meta name="keywords" content="san diego bank statement converter, convert bank statements san diego ca, san diego pdf to csv converter, california bank statement converter, bank statement to excel san diego, la jolla bank converter, mission valley financial tools">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="San Diego Bank Statement Converter - Free California PDF to CSV Tool">
-    <meta property="og:description" content="Convert bank statements from major San Diego banks to Excel/CSV format. Supporting biotech companies, defense contractors, and tourism businesses across America's Finest City.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bankCSVconverter.com/san-diego-bank-statement-converter">
-    <meta property="og:image" content="https://bankCSVconverter.com/assets/san-diego-converter.jpg">
-    
-    <!-- Local Business Schema Markup -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "San Diego Bank Statement Converter - BankCSVConverter",
-        "description": "Professional bank statement conversion service for San Diego businesses and individuals. Convert PDF bank statements to CSV/Excel format.",
-        "url": "https://bankCSVconverter.com/san-diego-bank-statement-converter",
-        "telephone": "+1-858-555-0100",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "350 10th Ave",
-            "addressLocality": "San Diego",
-            "addressRegion": "CA",
-            "postalCode": "92101",
-            "addressCountry": "US"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "32.7157",
-            "longitude": "-117.1611"
-        },
-        "areaServed": [
-            {
-                "@type": "City",
-                "name": "San Diego",
-                "@id": "https://en.wikipedia.org/wiki/San_Diego"
-            },
-            {
-                "@type": "Place",
-                "name": "La Jolla"
-            },
-            {
-                "@type": "Place",
-                "name": "Mission Valley"
-            },
-            {
-                "@type": "Place",
-                "name": "Sorrento Valley"
-            },
-            {
-                "@type": "Place",
-                "name": "Downtown San Diego"
-            },
-            {
-                "@type": "Place",
-                "name": "Carlsbad"
-            },
-            {
-                "@type": "Place",
-                "name": "Chula Vista"
-            }
-        ],
-        "serviceArea": {
-            "@type": "GeoCircle",
-            "geoMidpoint": {
-                "@type": "GeoCoordinates",
-                "latitude": "32.7157",
-                "longitude": "-117.1611"
-            },
-            "geoRadius": "50000"
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Convert bank statements from San Diego banks to Excel/CSV instantly. Supporting Wells Fargo, Bank of America, Chase, Union Bank, California Bank &amp; Trust. Perfect for biotech, defense contractors, and tourism businesses in Downtown, La Jolla, Mission Valley." name="description"/>
+  <link href="/css/production.css" rel="stylesheet"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+  <title>
+   San Diego Bank Statement Converter - Convert California Bank PDFs to CSV | BankCSVConverter
+  </title>
+  <link href="https://BankCSVConverter.compages/san-diego-bank-statement-converter" rel="canonical"/>
+  <!-- Unified Design System -->
+  <!-- Skip Link for Accessibility -->
+  <style>
+   .skip-link {
+            position: absolute;
+            left: -9999px;
         }
-    }
-    </script>
-    
-    <link rel="stylesheet" href="../css/unified-styles.css">
-    <link rel="canonical" href="https://bankCSVconverter.com/san-diego-bank-statement-converter">
-</head>
-<body>
-    <!-- Header Navigation -->
-    <header>
-        <nav>
-            <a href="../" class="nav-logo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                    <path d="M9 12l2 2 4-4"/>
-                </svg>
-                BankCSVConverter
-            </a>
-            
-            <ul class="nav-menu">
-                <li><a href="../all-pages.html">All Banks</a></li>
-                <li><a href="../pages/bank-statement-converter-comparison.html">Why Us</a></li>
-                <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
-            </ul>
-            
-            <button class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
-    </header>
-    <main>
-        <section class="hero-section">
-            <div class="container">
-                <h1>San Diego Bank Statement Converter</h1>
-                <p class="hero-subtitle">Convert Your California Bank Statements from PDF to CSV/Excel in Seconds</p>
-                <p class="hero-description">Trusted by biotech companies in Sorrento Valley, defense contractors in Kearny Mesa, tourism businesses in Downtown, and tech startups across America's Finest City. Our San Diego bank statement converter handles all major California banks with military-grade security.</p>
-                <a href="#converter-tool" class="cta-button">Convert Bank Statement Now</a>
-            </div>
-        </section>
-
-        <section class="local-intro">
-            <div class="container">
-                <h2>San Diego's Premier Bank Statement Conversion Solution</h2>
-                <p>San Diego stands as Southern California's second-largest city and a major financial hub, home to innovative biotech companies, defense contractors, world-class universities, and a thriving tourism industry. With over 1.4 million residents and thousands of businesses spanning from the Mexican border to North County, San Diego's diverse economy demands efficient financial management tools.</p>
-                
-                <p>Our San Diego bank statement converter is specifically designed to meet the needs of America's Finest City, whether you're a biotech startup in Sorrento Valley tracking research grants, a defense contractor in Kearny Mesa managing government contracts, a hotel in the Gaslamp Quarter reconciling tourist transactions, or a craft brewery in North Park monitoring sales across multiple locations.</p>
-                
-                <p>From the financial district in Downtown San Diego to the tech corridors of UTC and Carmel Valley, businesses rely on accurate financial data conversion. Our tool seamlessly converts PDF bank statements from all major San Diego banks into organized CSV and Excel formats, making tax preparation, expense tracking, and financial analysis effortless for San Diego's dynamic business community.</p>
-            </div>
-        </section>
-
-        <section class="supported-banks">
-            <h2>Supported San Diego Banks</h2>
-            <p>We support all major banks serving the San Diego metropolitan area, from local community banks to national institutions:</p>
-            
-            <h3>San Diego-Based Banks</h3>
-            <div class="bank-grid">
-                <div class="bank-card">
-                    <h3>California Bank & Trust</h3>
-                    <p>A cornerstone of San Diego's banking community since 1974, California Bank & Trust serves businesses throughout the region with specialized services for biotech, healthcare, and professional services. Our converter perfectly handles CB&T's detailed transaction formats and business banking statements.</p>
-                </div>
-                
-                <div class="bank-card">
-                    <h3>Axos Bank (formerly BofI Federal Bank)</h3>
-                    <p>San Diego's digital banking pioneer, Axos Bank revolutionized online banking from its headquarters in San Diego. We support all Axos Bank digital statement formats, including their innovative business banking platforms used by tech companies and startups.</p>
-                </div>
-                
-                <div class="bank-card">
-                    <h3>Silvergate Bank</h3>
-                    <p>Known for serving innovative businesses and real estate investors, Silvergate Bank's specialized statements are fully supported. Our converter maintains all commercial real estate transaction details and wire transfer information critical for San Diego's property market.</p>
-                </div>
-            </div>
-
-            <h3>Major National Banks in San Diego</h3>
-            <p>San Diego's economy is well-served by major national banks with extensive local presence:</p>
-            <ul class="feature-list">
-                <li><strong>Wells Fargo:</strong> With over 70 branches from Chula Vista to Oceanside, Wells Fargo is deeply integrated into San Diego's financial landscape</li>
-                <li><strong>Bank of America:</strong> Major presence in Downtown's financial district and throughout San Diego County, serving both consumers and businesses</li>
-                <li><strong>Chase Bank:</strong> Extensive network covering all major San Diego neighborhoods and business districts</li>
-                <li><strong>Union Bank (now U.S. Bank):</strong> Strong historical presence in San Diego with specialized services for cross-border trade with Mexico</li>
-                <li><strong>US Bank:</strong> Significant footprint in commercial districts, particularly serving government contractors and military families</li>
-                <li><strong>Comerica Bank:</strong> Focused on business banking with branches in key commercial areas</li>
-                <li><strong>City National Bank:</strong> "The bank to the stars" serves San Diego's entertainment and high-net-worth community</li>
-            </ul>
-
-            <h3>Credit Unions and Community Banks</h3>
-            <p>San Diego's strong military presence and community focus supports numerous credit unions:</p>
-            <ul class="feature-list">
-                <li><strong>Navy Federal Credit Union:</strong> Serving military families throughout San Diego</li>
-                <li><strong>SDCCU (San Diego County Credit Union):</strong> Local favorite with branches across the county</li>
-                <li><strong>California Coast Credit Union:</strong> Community-focused with strong local presence</li>
-                <li><strong>Mission Federal Credit Union:</strong> Serving San Diego since 1961</li>
-            </ul>
-        </section>
-
-        <section class="neighborhood-section">
-            <h2>Serving All San Diego Communities</h2>
-            <p>Our San Diego bank statement converter serves businesses and individuals across all neighborhoods, each with distinct economic characteristics:</p>
-            
-            <h3>Downtown San Diego & Gaslamp Quarter</h3>
-            <p>The heart of San Diego's business district, Downtown and the historic Gaslamp Quarter host corporate headquarters, law firms, hotels, and restaurants. Financial professionals in Downtown use our converter for:</p>
-            <ul>
-                <li>Hotel and hospitality revenue tracking</li>
-                <li>Restaurant point-of-sale reconciliation</li>
-                <li>Law firm trust account management</li>
-                <li>Convention center vendor payment tracking</li>
-                <li>Retail business daily cash reconciliation</li>
-            </ul>
-            
-            <h3>La Jolla</h3>
-            <p>Known as "The Jewel" of San Diego, La Jolla combines luxury retail, world-class research institutions, and high-end real estate. La Jolla users rely on our converter for:</p>
-            <ul>
-                <li>Research grant management for UCSD and Scripps Institution</li>
-                <li>Biotech startup financial tracking</li>
-                <li>High-net-worth individual tax preparation</li>
-                <li>Medical practice revenue cycle management</li>
-                <li>Luxury real estate transaction tracking</li>
-            </ul>
-            
-            <h3>Sorrento Valley</h3>
-            <p>San Diego's biotech hub houses hundreds of life science companies. Sorrento Valley companies use our bank statement converter for:</p>
-            <ul>
-                <li>Research and development expense tracking</li>
-                <li>Clinical trial payment management</li>
-                <li>Venture capital funding reconciliation</li>
-                <li>International wire transfer tracking</li>
-                <li>FDA submission expense documentation</li>
-            </ul>
-            
-            <h3>Mission Valley</h3>
-            <p>A major commercial and retail center, Mission Valley businesses utilize our tool for:</p>
-            <ul>
-                <li>Multi-location retail reconciliation</li>
-                <li>Shopping center tenant payment tracking</li>
-                <li>Auto dealership transaction management</li>
-                <li>Healthcare facility billing reconciliation</li>
-            </ul>
-            
-            <h3>Kearny Mesa</h3>
-            <p>Home to defense contractors and manufacturing companies, Kearny Mesa businesses convert statements for:</p>
-            <ul>
-                <li>Government contract payment tracking</li>
-                <li>DCAA compliance documentation</li>
-                <li>Manufacturing cost accounting</li>
-                <li>International supplier payment management</li>
-            </ul>
-
-            <h3>North Park & Hillcrest</h3>
-            <p>San Diego's creative and cultural hubs use our converter for:</p>
-            <ul>
-                <li>Craft brewery sales tracking</li>
-                <li>Restaurant and bar cash flow management</li>
-                <li>Art gallery and boutique accounting</li>
-                <li>Small business expense management</li>
-            </ul>
-        </section>
-
-        <section class="industry-section">
-            <h2>Tailored for San Diego Industries</h2>
-            
-            <h3>Biotech and Life Sciences</h3>
-            <p>San Diego ranks as one of the top three biotech hubs in the United States, with over 1,200 life science companies. Our San Diego bank statement converter addresses the unique needs of biotech firms:</p>
-            <ul class="feature-list">
-                <li>Track research grant disbursements and milestone payments</li>
-                <li>Manage clinical trial participant payments and reimbursements</li>
-                <li>Monitor international wire transfers for global research collaborations</li>
-                <li>Reconcile venture capital funding rounds and investor payments</li>
-                <li>Document R&D expenses for tax credit applications</li>
-                <li>Organize vendor payments for lab equipment and supplies</li>
-                <li>Track patent filing and intellectual property expenses</li>
-            </ul>
-            
-            <h3>Defense and Aerospace</h3>
-            <p>With major defense contractors like General Atomics, Northrop Grumman, and BAE Systems, San Diego's defense industry requires precise financial tracking:</p>
-            <ul class="feature-list">
-                <li>Government contract payment reconciliation</li>
-                <li>DCAA audit preparation and documentation</li>
-                <li>Subcontractor payment tracking</li>
-                <li>Cost-plus contract expense documentation</li>
-                <li>Security clearance investigation expense tracking</li>
-                <li>International defense sales payment management</li>
-            </ul>
-            
-            <h3>Tourism and Hospitality</h3>
-            <p>As a premier tourist destination, San Diego's hospitality industry processes millions of transactions annually:</p>
-            <ul class="feature-list">
-                <li>Hotel revenue management across multiple properties</li>
-                <li>Restaurant group consolidated reporting</li>
-                <li>Tourism tax collection and remittance tracking</li>
-                <li>Event venue booking reconciliation</li>
-                <li>Vacation rental income tracking</li>
-                <li>Marina and yacht charter payment processing</li>
-            </ul>
-
-            <h3>Tech and Software</h3>
-            <p>San Diego's growing tech sector, anchored by Qualcomm and hundreds of startups, benefits from our converter:</p>
-            <ul class="feature-list">
-                <li>SaaS subscription revenue recognition</li>
-                <li>Stock option exercise tracking</li>
-                <li>International contractor payments</li>
-                <li>Cloud infrastructure expense management</li>
-                <li>Startup runway and burn rate analysis</li>
-            </ul>
-
-            <h3>Healthcare and Medical Devices</h3>
-            <p>Home to major health systems and medical device manufacturers:</p>
-            <ul class="feature-list">
-                <li>Patient payment reconciliation</li>
-                <li>Insurance reimbursement tracking</li>
-                <li>Medical device sales commission calculations</li>
-                <li>Healthcare practice expense management</li>
-                <li>Clinical research billing</li>
-            </ul>
-        </section>
-
-        <section class="converter-tool" id="converter-tool">
-            <div class="container">
-                <h2>Convert Your San Diego Bank Statement Now</h2>
-                <div class="converter-wrapper">
-                    <div class="converter-box">
-                        <h3>Quick & Secure Conversion</h3>
-                        <p>Upload your PDF bank statement and get an organized CSV/Excel file in seconds. All processing happens in your browser - your data never leaves your device.</p>
-                        <div class="upload-area" id="uploadBox">
-                            <input type="file" id="file-input" accept=".pdf" hidden>
-                            <label for="file-input" class="upload-label">
-                                <svg class="upload-icon" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                    <polyline points="7 10 12 15 17 10"></polyline>
-                                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                                </svg>
-                                <span>Drop your PDF here or click to browse</span>
-                                <span class="file-types">Supports all San Diego bank PDF statements</span>
-                            </label>
-                        
-                    <button class="upload-btn" id="uploadBtn">Convert PDF to CSV</button>
-                    <p>or drag and drop your PDF here</p>
-                    <input type="file" id="fileInput" accept=".pdf" hidden></div>
-                        
-                
-                <!-- Progress Container -->
-                <div class="upload-area" id="progressContainer" style="display: none;">
-                    <div class="loading"></div>
-                    <h3 id="progressText">Processing your statement...</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                </div>
-                
-                <!-- Result Container -->
-                <div class="upload-area" id="resultContainer" style="display: none;">
-                    <div class="success-check">✓</div>
-                    <h3>Conversion Complete!</h3>
-                    <p>Your statement has been successfully converted to CSV format.</p>
-                    <button class="upload-btn" id="downloadBtn">Download CSV File</button>
-                    <button class="secondary-btn" id="convertAnotherBtn">Convert Another Statement</button>
-                </div><div id="conversion-status" class="conversion-status" style="display: none;">
-                            <div class="status-message"></div>
-                            <div class="progress-bar"><div class="progress-fill"></div></div>
-                        </div>
-                        <div id="download-section" class="download-section" style="display: none;">
-                            <button id="download-csv" class="download-button">Download CSV</button>
-                            <button id="download-excel" class="download-button">Download Excel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="testimonials-section">
-            <h2>Trusted by San Diego Businesses</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p>"As a biotech CFO in Sorrento Valley, I need accurate financial data fast. This converter saves me hours every month reconciling our multiple bank accounts and research grants."</p>
-                    <cite>- Sarah Chen, CFO at La Jolla Biotech Innovations</cite>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p>"Managing finances for three restaurants in Gaslamp, Little Italy, and North Park was a nightmare until we found this tool. Now our daily reconciliations take minutes instead of hours."</p>
-                    <cite>- Miguel Rodriguez, Baja Coast Restaurant Group</cite>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p>"Our defense contracting business requires meticulous record-keeping for DCAA audits. This converter helps us maintain perfect documentation of all our transactions."</p>
-                    <cite>- James Thompson, Kearny Mesa Defense Solutions</cite>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p>"As a vacation rental manager in Mission Beach and Pacific Beach, I handle dozens of property accounts. This tool makes owner distributions and tax prep so much easier."</p>
-                    <cite>- Amanda Foster, Coastal Property Management</cite>
-                </div>
-            </div>
-        </section>
-
-        <section class="features-section">
-            <h2>Features Designed for San Diego Businesses</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Military-Grade Security</h3>
-                    <p>Your financial data never leaves your device. With San Diego's large military presence, we understand the importance of security. All processing happens locally in your browser.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Multi-Currency Support</h3>
-                    <p>Perfect for San Diego businesses trading with Mexico and Pacific Rim countries. Accurately converts statements with international transactions and multiple currencies.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Instant Processing</h3>
-                    <p>Convert statements in seconds, not hours. Our advanced algorithms handle even the most complex statements from San Diego's diverse banking institutions.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Tax-Ready Exports</h3>
-                    <p>Generate QuickBooks-compatible files perfect for California tax preparation. Categorize transactions automatically for federal and state tax filing.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="faq-section">
-            <h2>Frequently Asked Questions - San Diego Users</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h3>Which San Diego banks are supported?</h3>
-                    <p>We support all major banks in San Diego including Wells Fargo, Bank of America, Chase, Union Bank, California Bank & Trust, Axos Bank, and all local credit unions. Our converter handles PDF statements from any financial institution.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3>Is this suitable for biotech grant tracking?</h3>
-                    <p>Absolutely! Many Sorrento Valley and La Jolla biotech companies use our converter to track NIH grants, SBIR funding, and venture capital investments. The CSV output integrates perfectly with research financial management systems.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3>Can it handle high-volume restaurant transactions?</h3>
-                    <p>Yes, our converter efficiently processes thousands of transactions. Gaslamp Quarter restaurants and Little Italy establishments use it for daily reconciliation of credit card deposits and vendor payments.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3>Does it work with military bank accounts?</h3>
-                    <p>Yes, we support Navy Federal, USAA, and all military-affiliated banks. Many military families in Coronado, Miramar, and Camp Pendleton areas use our tool for budget tracking.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <div class="container">
-                <h2>Start Converting Your San Diego Bank Statements Today</h2>
-                <p>Join thousands of San Diego businesses and individuals who trust BankCSVConverter for accurate, secure bank statement conversion. From biotech startups in Torrey Pines to hotels in Mission Bay, we're here to simplify your financial data management.</p>
-                <a href="#converter-tool" class="cta-button">Convert Your Statement Now</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>BankCSVConverter</h3>
-                    <p>Professional bank statement conversion for San Diego businesses and individuals. Secure, fast, and accurate.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>San Diego Service Areas</h3>
-                    <ul>
-                        <li>Downtown & Gaslamp Quarter</li>
-                        <li>La Jolla & UTC</li>
-                        <li>Mission Valley & Mission Bay</li>
-                        <li>Sorrento Valley & Mira Mesa</li>
-                        <li>North Park & Hillcrest</li>
-                        <li>Coronado & Point Loma</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Supported Banks</h3>
-                    <ul>
-                        <li>Wells Fargo</li>
-                        <li>Bank of America</li>
-                        <li>Chase Bank</li>
-                        <li>California Bank & Trust</li>
-                        <li>Union Bank / U.S. Bank</li>
-                        <li>Navy Federal Credit Union</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="./security.html">Security</a></li>
-                        <li><a href="../index.html#blog">Blog</a></li>
-                        <li><a href="/contact/">Contact</a></li>
-                        <li><a href="/privacy/">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 BankCSVConverter.com - San Diego Bank Statement Converter. All rights reserved.</p>
-            </div>
+        .skip-link:focus {
+            position: absolute;
+            left: 6px;
+            top: 7px;
+            z-index: 999999;
+            padding: 8px 16px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+        }
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+  <!-- Standardized Header -->
+  <header>
+   <nav>
+    <a class="nav-logo" href="../">
+     <svg style="width: 24px; height: 24px; flex-shrink: 0;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+      </rect>
+      <line x1="3" x2="21" y1="9" y2="9">
+      </line>
+      <line x1="9" x2="9" y1="21" y2="9">
+      </line>
+     </svg>
+     BankCSVConverter
+    </a>
+    <ul class="nav-menu">
+     <li>
+      <a href="../features.html">
+       Features
+      </a>
+     </li>
+     <li>
+      <a href="../how-it-works.html">
+       How It Works
+      </a>
+     </li>
+     <li>
+      <a href="../pricing.html">
+       Pricing
+      </a>
+     </li>
+     <li>
+      <a href="../blog.html">
+       Blog
+      </a>
+     </li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle">
+     <span>
+     </span>
+     <span>
+     </span>
+     <span>
+     </span>
+    </button>
+   </nav>
+   <div class="nav-overlay">
+   </div>
+  </header>
+  <main id="main">
+   <div class="content-wrapper">
+    <div class="container">
+     <section class="hero-section">
+      <div class="container">
+       <h1>
+        San Diego Bank Statement Converter
+       </h1>
+       <p class="hero-subtitle">
+        Convert Your California Bank Statements from PDF to CSV/Excel in Seconds
+       </p>
+       <p class="hero-description">
+        Trusted by biotech companies in Sorrento Valley, defense contractors in Kearny Mesa, tourism businesses in Downtown, and tech startups across America's Finest City. Our San Diego bank statement converter handles all major California banks with military-grade security.
+       </p>
+       <a class="cta-button" href="#converter-tool">
+        Convert Bank Statement Now
+       </a>
+      </div>
+     </section>
+     <section class="local-intro">
+      <div class="container">
+       <h2>
+        San Diego's Premier Bank Statement Conversion Solution
+       </h2>
+       <p>
+        San Diego stands as Southern California's second-largest city and a major financial hub, home to innovative biotech companies, defense contractors, world-class universities, and a thriving tourism industry. With over 1.4 million residents and thousands of businesses spanning from the Mexican border to North County, San Diego's diverse economy demands efficient financial management tools.
+       </p>
+       <p>
+        Our San Diego bank statement converter is specifically designed to meet the needs of America's Finest City, whether you're a biotech startup in Sorrento Valley tracking research grants, a defense contractor in Kearny Mesa managing government contracts, a hotel in the Gaslamp Quarter reconciling tourist transactions, or a craft brewery in North Park monitoring sales across multiple locations.
+       </p>
+       <p>
+        From the financial district in Downtown San Diego to the tech corridors of UTC and Carmel Valley, businesses rely on accurate financial data conversion. Our tool seamlessly converts PDF bank statements from all major San Diego banks into organized CSV and Excel formats, making tax preparation, expense tracking, and financial analysis effortless for San Diego's dynamic business community.
+       </p>
+      </div>
+     </section>
+     <section class="supported-banks">
+      <h2>
+       Supported San Diego Banks
+      </h2>
+      <p>
+       We support all major banks serving the San Diego metropolitan area, from local community banks to national institutions:
+      </p>
+      <h3>
+       San Diego-Based Banks
+      </h3>
+      <div class="bank-grid">
+       <div class="bank-card">
+        <h3>
+         California Bank &amp; Trust
+        </h3>
+        <p>
+         A cornerstone of San Diego's banking community since 1974, California Bank &amp; Trust serves businesses throughout the region with specialized services for biotech, healthcare, and professional services. Our converter perfectly handles CB&amp;T's detailed transaction formats and business banking statements.
+        </p>
+       </div>
+       <div class="bank-card">
+        <h3>
+         Axos Bank (formerly BofI Federal Bank)
+        </h3>
+        <p>
+         San Diego's digital banking pioneer, Axos Bank revolutionized online banking from its headquarters in San Diego. We support all Axos Bank digital statement formats, including their innovative business banking platforms used by tech companies and startups.
+        </p>
+       </div>
+       <div class="bank-card">
+        <h3>
+         Silvergate Bank
+        </h3>
+        <p>
+         Known for serving innovative businesses and real estate investors, Silvergate Bank's specialized statements are fully supported. Our converter maintains all commercial real estate transaction details and wire transfer information critical for San Diego's property market.
+        </p>
+       </div>
+      </div>
+      <h3>
+       Major National Banks in San Diego
+      </h3>
+      <p>
+       San Diego's economy is well-served by major national banks with extensive local presence:
+      </p>
+      <ul class="feature-list">
+       <li>
+        <strong>
+         Wells Fargo:
+        </strong>
+        With over 70 branches from Chula Vista to Oceanside, Wells Fargo is deeply integrated into San Diego's financial landscape
+       </li>
+       <li>
+        <strong>
+         Bank of America:
+        </strong>
+        Major presence in Downtown's financial district and throughout San Diego County, serving both consumers and businesses
+       </li>
+       <li>
+        <strong>
+         Chase Bank:
+        </strong>
+        Extensive network covering all major San Diego neighborhoods and business districts
+       </li>
+       <li>
+        <strong>
+         Union Bank (now U.S. Bank):
+        </strong>
+        Strong historical presence in San Diego with specialized services for cross-border trade with Mexico
+       </li>
+       <li>
+        <strong>
+         US Bank:
+        </strong>
+        Significant footprint in commercial districts, particularly serving government contractors and military families
+       </li>
+       <li>
+        <strong>
+         Comerica Bank:
+        </strong>
+        Focused on business banking with branches in key commercial areas
+       </li>
+       <li>
+        <strong>
+         City National Bank:
+        </strong>
+        "The bank to the stars" serves San Diego's entertainment and high-net-worth community
+       </li>
+      </ul>
+      <h3>
+       Credit Unions and Community Banks
+      </h3>
+      <p>
+       San Diego's strong military presence and community focus supports numerous credit unions:
+      </p>
+      <ul class="feature-list">
+       <li>
+        <strong>
+         Navy Federal Credit Union:
+        </strong>
+        Serving military families throughout San Diego
+       </li>
+       <li>
+        <strong>
+         SDCCU (San Diego County Credit Union):
+        </strong>
+        Local favorite with branches across the county
+       </li>
+       <li>
+        <strong>
+         California Coast Credit Union:
+        </strong>
+        Community-focused with strong local presence
+       </li>
+       <li>
+        <strong>
+         Mission Federal Credit Union:
+        </strong>
+        Serving San Diego since 1961
+       </li>
+      </ul>
+     </section>
+     <section class="neighborhood-section">
+      <h2>
+       Serving All San Diego Communities
+      </h2>
+      <p>
+       Our San Diego bank statement converter serves businesses and individuals across all neighborhoods, each with distinct economic characteristics:
+      </p>
+      <h3>
+       Downtown San Diego &amp; Gaslamp Quarter
+      </h3>
+      <p>
+       The heart of San Diego's business district, Downtown and the historic Gaslamp Quarter host corporate headquarters, law firms, hotels, and restaurants. Financial professionals in Downtown use our converter for:
+      </p>
+      <ul>
+       <li>
+        Hotel and hospitality revenue tracking
+       </li>
+       <li>
+        Restaurant point-of-sale reconciliation
+       </li>
+       <li>
+        Law firm trust account management
+       </li>
+       <li>
+        Convention center vendor payment tracking
+       </li>
+       <li>
+        Retail business daily cash reconciliation
+       </li>
+      </ul>
+      <h3>
+       La Jolla
+      </h3>
+      <p>
+       Known as "The Jewel" of San Diego, La Jolla combines luxury retail, world-class research institutions, and high-end real estate. La Jolla users rely on our converter for:
+      </p>
+      <ul>
+       <li>
+        Research grant management for UCSD and Scripps Institution
+       </li>
+       <li>
+        Biotech startup financial tracking
+       </li>
+       <li>
+        High-net-worth individual tax preparation
+       </li>
+       <li>
+        Medical practice revenue cycle management
+       </li>
+       <li>
+        Luxury real estate transaction tracking
+       </li>
+      </ul>
+      <h3>
+       Sorrento Valley
+      </h3>
+      <p>
+       San Diego's biotech hub houses hundreds of life science companies. Sorrento Valley companies use our bank statement converter for:
+      </p>
+      <ul>
+       <li>
+        Research and development expense tracking
+       </li>
+       <li>
+        Clinical trial payment management
+       </li>
+       <li>
+        Venture capital funding reconciliation
+       </li>
+       <li>
+        International wire transfer tracking
+       </li>
+       <li>
+        FDA submission expense documentation
+       </li>
+      </ul>
+      <h3>
+       Mission Valley
+      </h3>
+      <p>
+       A major commercial and retail center, Mission Valley businesses utilize our tool for:
+      </p>
+      <ul>
+       <li>
+        Multi-location retail reconciliation
+       </li>
+       <li>
+        Shopping center tenant payment tracking
+       </li>
+       <li>
+        Auto dealership transaction management
+       </li>
+       <li>
+        Healthcare facility billing reconciliation
+       </li>
+      </ul>
+      <h3>
+       Kearny Mesa
+      </h3>
+      <p>
+       Home to defense contractors and manufacturing companies, Kearny Mesa businesses convert statements for:
+      </p>
+      <ul>
+       <li>
+        Government contract payment tracking
+       </li>
+       <li>
+        DCAA compliance documentation
+       </li>
+       <li>
+        Manufacturing cost accounting
+       </li>
+       <li>
+        International supplier payment management
+       </li>
+      </ul>
+      <h3>
+       North Park &amp; Hillcrest
+      </h3>
+      <p>
+       San Diego's creative and cultural hubs use our converter for:
+      </p>
+      <ul>
+       <li>
+        Craft brewery sales tracking
+       </li>
+       <li>
+        Restaurant and bar cash flow management
+       </li>
+       <li>
+        Art gallery and boutique accounting
+       </li>
+       <li>
+        Small business expense management
+       </li>
+      </ul>
+     </section>
+     <section class="industry-section">
+      <h2>
+       Tailored for San Diego Industries
+      </h2>
+      <h3>
+       Biotech and Life Sciences
+      </h3>
+      <p>
+       San Diego ranks as one of the top three biotech hubs in the United States, with over 1,200 life science companies. Our San Diego bank statement converter addresses the unique needs of biotech firms:
+      </p>
+      <ul class="feature-list">
+       <li>
+        Track research grant disbursements and milestone payments
+       </li>
+       <li>
+        Manage clinical trial participant payments and reimbursements
+       </li>
+       <li>
+        Monitor international wire transfers for global research collaborations
+       </li>
+       <li>
+        Reconcile venture capital funding rounds and investor payments
+       </li>
+       <li>
+        Document R&amp;D expenses for tax credit applications
+       </li>
+       <li>
+        Organize vendor payments for lab equipment and supplies
+       </li>
+       <li>
+        Track patent filing and intellectual property expenses
+       </li>
+      </ul>
+      <h3>
+       Defense and Aerospace
+      </h3>
+      <p>
+       With major defense contractors like General Atomics, Northrop Grumman, and BAE Systems, San Diego's defense industry requires precise financial tracking:
+      </p>
+      <ul class="feature-list">
+       <li>
+        Government contract payment reconciliation
+       </li>
+       <li>
+        DCAA audit preparation and documentation
+       </li>
+       <li>
+        Subcontractor payment tracking
+       </li>
+       <li>
+        Cost-plus contract expense documentation
+       </li>
+       <li>
+        Security clearance investigation expense tracking
+       </li>
+       <li>
+        International defense sales payment management
+       </li>
+      </ul>
+      <h3>
+       Tourism and Hospitality
+      </h3>
+      <p>
+       As a premier tourist destination, San Diego's hospitality industry processes millions of transactions annually:
+      </p>
+      <ul class="feature-list">
+       <li>
+        Hotel revenue management across multiple properties
+       </li>
+       <li>
+        Restaurant group consolidated reporting
+       </li>
+       <li>
+        Tourism tax collection and remittance tracking
+       </li>
+       <li>
+        Event venue booking reconciliation
+       </li>
+       <li>
+        Vacation rental income tracking
+       </li>
+       <li>
+        Marina and yacht charter payment processing
+       </li>
+      </ul>
+      <h3>
+       Tech and Software
+      </h3>
+      <p>
+       San Diego's growing tech sector, anchored by Qualcomm and hundreds of startups, benefits from our converter:
+      </p>
+      <ul class="feature-list">
+       <li>
+        SaaS subscription revenue recognition
+       </li>
+       <li>
+        Stock option exercise tracking
+       </li>
+       <li>
+        International contractor payments
+       </li>
+       <li>
+        Cloud infrastructure expense management
+       </li>
+       <li>
+        Startup runway and burn rate analysis
+       </li>
+      </ul>
+      <h3>
+       Healthcare and Medical Devices
+      </h3>
+      <p>
+       Home to major health systems and medical device manufacturers:
+      </p>
+      <ul class="feature-list">
+       <li>
+        Patient payment reconciliation
+       </li>
+       <li>
+        Insurance reimbursement tracking
+       </li>
+       <li>
+        Medical device sales commission calculations
+       </li>
+       <li>
+        Healthcare practice expense management
+       </li>
+       <li>
+        Clinical research billing
+       </li>
+      </ul>
+     </section>
+     <section class="converter-tool" id="converter-tool">
+      <div class="container">
+       <h2>
+        Convert Your San Diego Bank Statement Now
+       </h2>
+       <div class="converter-wrapper">
+        <div class="converter-box">
+         <h3>
+          Quick &amp; Secure Conversion
+         </h3>
+         <p>
+          Upload your PDF bank statement and get an organized CSV/Excel file in seconds. All processing happens in your browser - your data never leaves your device.
+         </p>
+         <div class="upload-area" id="uploadBox">
+          <input accept=".pdf" aria-label="Upload PDF bank statement" hidden="" id="file-input" type="file"/>
+          <label class="upload-label" for="file-input">
+           <svg class="upload-icon" fill="none" height="50" stroke="currentColor" viewbox="0 0 24 24" width="50">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4">
+            </path>
+            <polyline points="7 10 12 15 17 10">
+            </polyline>
+            <line x1="12" x2="12" y1="15" y2="3">
+            </line>
+           </svg>
+           <span>
+            Drop your PDF here or click to browse
+           </span>
+           <span class="file-types">
+            Supports all San Diego bank PDF statements
+           </span>
+          </label>
+          <button class="upload-btn" id="uploadBtn">
+           Convert PDF to CSV
+          </button>
+          <p>
+           or drag and drop your PDF here
+          </p>
+          <input accept=".pdf" aria-label="Upload PDF bank statement" hidden="" id="fileInput" type="file"/>
+         </div>
+         <!-- Progress Container -->
+         <div class="upload-area" id="progressContainer" style="display: none;">
+          <div class="loading">
+          </div>
+          <h3 id="progressText">
+           Processing your statement...
+          </h3>
+          <div class="progress-bar">
+           <div class="progress-fill" id="progressFill">
+           </div>
+          </div>
+         </div>
+         <!-- Result Container -->
+         <div class="upload-area" id="resultContainer" style="display: none;">
+          <div class="success-check">
+           ✓
+          </div>
+          <h3>
+           Conversion Complete!
+          </h3>
+          <p>
+           Your statement has been successfully converted to CSV format.
+          </p>
+          <button class="upload-btn" id="downloadBtn">
+           Download CSV File
+          </button>
+          <button class="secondary-btn" id="convertAnotherBtn">
+           Convert Another Statement
+          </button>
+         </div>
+         <div class="conversion-status" id="conversion-status" style="display: none;">
+          <div class="status-message">
+          </div>
+          <div class="progress-bar">
+           <div class="progress-fill">
+           </div>
+          </div>
+         </div>
+         <div class="download-section" id="download-section" style="display: none;">
+          <button class="download-button" id="download-csv">
+           Download CSV
+          </button>
+          <button class="download-button" id="download-excel">
+           Download Excel
+          </button>
+         </div>
         </div>
-    </footer>
-
-    <script src="../js/main.js"></script>
-    <!-- Mobile menu JavaScript -->
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        menuToggle.addEventListener('click', () => {
+       </div>
+      </div>
+     </section>
+     <section class="testimonials-section">
+      <h2>
+       Trusted by San Diego Businesses
+      </h2>
+      <div class="testimonials-grid">
+       <div class="testimonial-card">
+        <p>
+         "As a biotech CFO in Sorrento Valley, I need accurate financial data fast. This converter saves me hours every month reconciling our multiple bank accounts and research grants."
+        </p>
+        <cite>
+         - Sarah Chen, CFO at La Jolla Biotech Innovations
+        </cite>
+       </div>
+       <div class="testimonial-card">
+        <p>
+         "Managing finances for three restaurants in Gaslamp, Little Italy, and North Park was a nightmare until we found this tool. Now our daily reconciliations take minutes instead of hours."
+        </p>
+        <cite>
+         - Miguel Rodriguez, Baja Coast Restaurant Group
+        </cite>
+       </div>
+       <div class="testimonial-card">
+        <p>
+         "Our defense contracting business requires meticulous record-keeping for DCAA audits. This converter helps us maintain perfect documentation of all our transactions."
+        </p>
+        <cite>
+         - James Thompson, Kearny Mesa Defense Solutions
+        </cite>
+       </div>
+       <div class="testimonial-card">
+        <p>
+         "As a vacation rental manager in Mission Beach and Pacific Beach, I handle dozens of property accounts. This tool makes owner distributions and tax prep so much easier."
+        </p>
+        <cite>
+         - Amanda Foster, Coastal Property Management
+        </cite>
+       </div>
+      </div>
+     </section>
+     <section class="features-section">
+      <h2>
+       Features Designed for San Diego Businesses
+      </h2>
+      <div class="features-grid">
+       <div class="feature-card">
+        <h3>
+         Military-Grade Security
+        </h3>
+        <p>
+         Your financial data never leaves your device. With San Diego's large military presence, we understand the importance of security. All processing happens locally in your browser.
+        </p>
+       </div>
+       <div class="feature-card">
+        <h3>
+         Multi-Currency Support
+        </h3>
+        <p>
+         Perfect for San Diego businesses trading with Mexico and Pacific Rim countries. Accurately converts statements with international transactions and multiple currencies.
+        </p>
+       </div>
+       <div class="feature-card">
+        <h3>
+         Instant Processing
+        </h3>
+        <p>
+         Convert statements in seconds, not hours. Our advanced algorithms handle even the most complex statements from San Diego's diverse banking institutions.
+        </p>
+       </div>
+       <div class="feature-card">
+        <h3>
+         Tax-Ready Exports
+        </h3>
+        <p>
+         Generate QuickBooks-compatible files perfect for California tax preparation. Categorize transactions automatically for federal and state tax filing.
+        </p>
+       </div>
+      </div>
+     </section>
+     <section class="faq-section">
+      <h2>
+       Frequently Asked Questions - San Diego Users
+      </h2>
+      <div class="faq-grid">
+       <div class="faq-item">
+        <h3>
+         Which San Diego banks are supported?
+        </h3>
+        <p>
+         We support all major banks in San Diego including Wells Fargo, Bank of America, Chase, Union Bank, California Bank &amp; Trust, Axos Bank, and all local credit unions. Our converter handles PDF statements from any financial institution.
+        </p>
+       </div>
+       <div class="faq-item">
+        <h3>
+         Is this suitable for biotech grant tracking?
+        </h3>
+        </div>
+       <div class="faq-item">
+        <h3>
+         Can it handle high-volume restaurant transactions?
+        </h3>
+        <p>
+         Yes, our converter efficiently processes thousands of transactions. Gaslamp Quarter restaurants and Little Italy establishments use it for daily reconciliation of credit card deposits and vendor payments.
+        </p>
+       </div>
+       <div class="faq-item">
+        <h3>
+         Does it work with military bank accounts?
+        </h3>
+        <p>
+         Yes, we support Navy Federal, USAA, and all military-affiliated banks. Many military families in Coronado, Miramar, and Camp Pendleton areas use our tool for budget tracking.
+        </p>
+       </div>
+      </div>
+     </section>
+     <section class="cta-section">
+      <div class="container">
+       <h2>
+        Start Converting Your San Diego Bank Statements Today
+       </h2>
+       <p>
+        Join thousands of San Diego businesses and individuals who trust BankCSVConverter for accurate, secure bank statement conversion. From biotech startups in Torrey Pines to hotels in Mission Bay, we're here to simplify your financial data management.
+       </p>
+       <a class="cta-button" href="#converter-tool">
+        Convert Your Statement Now
+       </a>
+      </div>
+     </section>
+    </div>
+   </div>
+  </main>
+  <!-- Standardized Footer -->
+  <footer>
+   <div class="container">
+    <div class="footer-content">
+     <div class="footer-section">
+      <h4>
+       Product
+      </h4>
+      <ul>
+       <li>
+        <a href="../features.html">
+         Features
+        </a>
+       </li>
+       <li>
+        <a href="../how-it-works.html">
+         How It Works
+        </a>
+       </li>
+       <li>
+        <a href="../pricing.html">
+         Pricing
+        </a>
+       </li>
+       </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Company
+      </h4>
+      <ul>
+       <li>
+        <a href="../about.html">
+         About
+        </a>
+       </li>
+       <li>
+        <a href="../blog.html">
+         Blog
+        </a>
+       </li>
+       <li>
+        <a href="../contact.html">
+         Contact
+        </a>
+       </li>
+       <li>
+        <a href="../careers.html">
+         Careers
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Support
+      </h4>
+      <ul>
+       <li>
+        <a href="../help.html">
+         Help Center
+        </a>
+       </li>
+       <li>
+        <a href="../faq.html">
+         FAQ
+        </a>
+       </li>
+       <li>
+        <a href="../security.html">
+         Security
+        </a>
+       </li>
+       <li>
+        <a href="../status.html">
+         Status
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Legal
+      </h4>
+      <ul>
+       <li>
+        <a href="../privacy.html">
+         Privacy Policy
+        </a>
+       </li>
+       <li>
+        <a href="../terms.html">
+         Terms of Service
+        </a>
+       </li>
+       <li>
+        <a href="../gdpr.html">
+         GDPR
+        </a>
+       </li>
+       <li>
+        <a href="../ccpa.html">
+         CCPA
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>
+      © 2025 BankCSVConverter. All rights reserved.
+     </p>
+    </div>
+   </div>
+  </footer>
+  <!-- Standardized Scripts -->
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             menuToggle.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
         
         // Close menu when clicking on a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function() {
                 navMenu.classList.remove('active');
                 menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
-    </script>
-</body>
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+  </script>
+  <script src="/js/production.js">
+  </script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
 </html>

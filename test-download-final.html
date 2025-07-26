@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Download Test - BankCSV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #f8f9fa;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+        
+        .test-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .test-section h2 {
+            color: #00bfa5;
+            margin-bottom: 20px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .btn-primary {
+            background: #00bfa5;
+        }
+        
+        .btn-primary:hover {
+            background: #00a693;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 191, 165, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .console-output {
+            background: #1a1a1a;
+            color: #4ade80;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            height: 200px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        
+        .log-entry {
+            margin-bottom: 8px;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .warning-box h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .success-demo {
+            background: linear-gradient(135deg, #00bfa5 0%, #00d4aa 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin: 24px 0;
+        }
+        
+        .download-btn {
+            background: white;
+            color: #00bfa5;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .troubleshooting {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .troubleshooting h3 {
+            color: #1976d2;
+            margin-bottom: 15px;
+        }
+        
+        .troubleshooting ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+    </style>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Final Download Fix Test</h1>
+        <p class="subtitle">Multiple download methods to ensure compatibility</p>
+        
+        <div class="warning-box">
+            <h3>⚠️ Browser Download Settings</h3>
+            <p>Make sure your browser is set to download files and not just open them. Check your browser's download settings if files aren't downloading.</p>
+        </div>
+        
+        <!-- Test 1: Direct Function Calls -->
+        <div class="test-section">
+            <h2>Test 1: Direct JavaScript Functions</h2>
+            <p>Click these buttons to test the download functions directly:</p>
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="testDirectDownloadCSV()">
+                    <i class="fas fa-file-csv"></i> Test CSV Download
+                </button>
+                <button class="btn btn-primary" onclick="testDirectDownloadExcel()">
+                    <i class="fas fa-file-excel"></i> Test Excel Download
+                </button>
+            </div>
+        </div>
+        
+        <!-- Test 2: Simulated Success State -->
+        <div class="success-demo">
+            <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <h3>Conversion Complete!</h3>
+            <p>Bank-Statement-Template.pdf has been converted successfully.</p>
+            <div class="download-buttons">
+                <button class="download-btn" onclick="downloadConvertedCSV(event)">
+                    <i class="fas fa-file-csv"></i> Download CSV
+                </button>
+                <button class="download-btn" onclick="downloadConvertedExcel(event)">
+                    <i class="fas fa-file-excel"></i> Download Excel
+                </button>
+            </div>
+        </div>
+        
+        <!-- Test 3: Alternative Download Methods -->
+        <div class="test-section">
+            <h2>Test 3: Alternative Download Methods</h2>
+            <div class="button-group">
+                <a href="data:text/csv;charset=utf-8,Date%2CDescription%2CAmount%2CBalance%0A2024-01-15%2COpening%20Balance%2C0.00%2C5000.00%0A2024-01-16%2CGrocery%20Store%2C-45.32%2C4954.68" 
+                   download="direct_link.csv" 
+                   class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Direct Link CSV
+                </a>
+                <button class="btn btn-secondary" onclick="downloadUsingForm()">
+                    <i class="fas fa-file-download"></i> Form Submit Method
+                </button>
+                <button class="btn btn-secondary" onclick="openInNewTab()">
+                    <i class="fas fa-external-link-alt"></i> Open in New Tab
+                </button>
+            </div>
+        </div>
+        
+        <!-- Console Output -->
+        <div class="console-output" id="console">
+            <div class="log-entry">Console output will appear here...</div>
+        </div>
+        
+        <!-- Troubleshooting -->
+        <div class="troubleshooting">
+            <h3>🔍 Troubleshooting</h3>
+            <ul>
+                <li><strong>Chrome:</strong> Check Settings → Downloads → Ask where to save each file</li>
+                <li><strong>Safari:</strong> Check Preferences → General → File download location</li>
+                <li><strong>Firefox:</strong> Check Settings → General → Downloads</li>
+                <li><strong>Popup Blocker:</strong> Make sure popup blockers aren't preventing downloads</li>
+                <li><strong>Console:</strong> Check browser console (F12) for any error messages</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Load the download fix script -->
+    <script src="/js/download-fix-final.js"></script>
+    
+    <script>
+        // Console logging
+        function log(message) {
+            const console = document.getElementById('console');
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            console.appendChild(entry);
+            console.scrollTop = console.scrollHeight;
+        }
+        
+        // Override console.log to show in our output
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            log(args.join(' '));
+        };
+        
+        // Test functions
+        function downloadConvertedCSV(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            log('Attempting CSV download...');
+            forceDownloadCSV('Bank-Statement-Template_converted.csv');
+        }
+        
+        function downloadConvertedExcel(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            log('Attempting Excel download...');
+            forceDownloadExcel('Bank-Statement-Template_converted.xls');
+        }
+        
+        // Alternative method using form
+        function downloadUsingForm() {
+            log('Trying form submit method...');
+            
+            const csvContent = 'Date,Description,Amount,Balance\n2024-01-15,Opening Balance,0.00,5000.00';
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            
+            const form = document.createElement('form');
+            form.method = 'GET';
+            form.action = url;
+            form.style.display = 'none';
+            
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+            
+            setTimeout(() => URL.revokeObjectURL(url), 100);
+        }
+        
+        // Open in new tab method
+        function openInNewTab() {
+            log('Opening CSV in new tab...');
+            
+            const csvContent = 'Date,Description,Amount,Balance\n2024-01-15,Opening Balance,0.00,5000.00\n2024-01-16,Grocery Store,-45.32,4954.68';
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            
+            const newWindow = window.open(url, '_blank');
+            
+            setTimeout(() => {
+                URL.revokeObjectURL(url);
+                if (newWindow) {
+                    log('Opened in new tab/window');
+                } else {
+                    log('Popup blocked - please allow popups');
+                }
+            }, 100);
+        }
+        
+        // Log page load
+        log('Download test page loaded');
+        log('Browser: ' + navigator.userAgent.split(' ').slice(-2).join(' '));
+    </script>
+</body>
+</html>

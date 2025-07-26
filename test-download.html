@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Test - BankCSV</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+            padding: 40px 20px;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        h1 {
+            color: #1a1a1a;
+            margin-bottom: 30px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .info-box p {
+            margin: 0;
+            color: #1976d2;
+        }
+        
+        .test-upload-box {
+            background: linear-gradient(135deg, #00bfa5 0%, #00d4aa 100%);
+            border: 3px dashed rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            padding: 60px 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .test-upload-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .direct-test {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .direct-test h3 {
+            margin-bottom: 20px;
+        }
+        
+        .download-test-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .test-btn {
+            background: #00bfa5;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .test-btn:hover {
+            background: #00a693;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .log-output {
+            background: #1a1a1a;
+            color: #4ade80;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .log-entry {
+            margin-bottom: 8px;
+        }
+    </style>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Download Functionality Test</h1>
+        
+        <div class="info-box">
+            <p><strong>Test the download buttons to ensure they work correctly.</strong></p>
+            <p>This page demonstrates that the download buttons actually download files instead of opening a new file selection.</p>
+        </div>
+        
+        <!-- Normal upload flow -->
+        <h2>Option 1: Normal Upload Flow</h2>
+        <div id="uploadBox" class="test-upload-box">
+            <div class="upload-icon">
+                <img src="/assets/pdf-icon.svg" alt="PDF icon" style="width: 80px; height: 80px; margin-bottom: 20px;">
+            </div>
+            <button class="choose-files-btn" id="chooseFilesBtn" style="background: white; color: #00bfa5; padding: 16px 32px; border-radius: 8px; font-weight: 700; font-size: 18px; border: none; cursor: pointer;">
+                <i class="fas fa-file-pdf"></i> CHOOSE FILES
+            </button>
+            <p style="color: white; margin-top: 16px; font-size: 18px;">or drop files here</p>
+            <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" multiple hidden>
+        </div>
+        
+        <!-- Direct test buttons -->
+        <div class="direct-test">
+            <h3>Option 2: Direct Download Test</h3>
+            <p style="margin-bottom: 20px;">Click these buttons to test the download functionality directly:</p>
+            <div class="download-test-buttons">
+                <button class="test-btn" onclick="testDownloadCSV()">
+                    <i class="fas fa-file-csv"></i> Test CSV Download
+                </button>
+                <button class="test-btn" onclick="testDownloadExcel()">
+                    <i class="fas fa-file-excel"></i> Test Excel Download
+                </button>
+            </div>
+        </div>
+        
+        <!-- Log output -->
+        <div class="log-output" id="logOutput">
+            <div class="log-entry">⚡ Download test page ready...</div>
+        </div>
+    </div>
+
+    <script src="/js/modern-homepage.js"></script>
+    <script>
+        // Log function
+        function log(message) {
+            const logOutput = document.getElementById('logOutput');
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logOutput.appendChild(entry);
+            logOutput.scrollTop = logOutput.scrollHeight;
+        }
+        
+        // Direct test functions
+        function testDownloadCSV() {
+            log('📥 Testing CSV download...');
+            
+            const csvContent = `Date,Description,Amount,Balance
+2024-01-15,Opening Balance,0.00,5000.00
+2024-01-16,Grocery Store,-45.32,4954.68
+2024-01-17,Salary Deposit,3500.00,8454.68
+2024-01-18,Electric Bill,-125.00,8329.68
+2024-01-19,Gas Station,-65.45,8264.23
+2024-01-20,Restaurant,-82.50,8181.73
+2024-01-21,ATM Withdrawal,-200.00,7981.73
+2024-01-22,Online Transfer,-500.00,7481.73
+2024-01-23,Coffee Shop,-12.75,7468.98
+2024-01-24,Pharmacy,-28.90,7440.08`;
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'test_statement.csv');
+            link.style.visibility = 'hidden';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            URL.revokeObjectURL(url);
+            
+            log('✅ CSV download triggered successfully!');
+            log('📄 File: test_statement.csv');
+        }
+        
+        function testDownloadExcel() {
+            log('📥 Testing Excel download...');
+            
+            const excelContent = `
+                <html xmlns:x="urn:schemas-microsoft-com:office:excel">
+                <head>
+                    <meta charset="UTF-8">
+                    <style>
+                        table { border-collapse: collapse; }
+                        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                        th { background-color: #4CAF50; color: white; font-weight: bold; }
+                    </style>
+                  <link href="/css/blog-fix.css" rel="stylesheet"/>
+</head>
+                <body>
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Balance</th>
+                        </tr>
+                        <tr><td>2024-01-15</td><td>Opening Balance</td><td>0.00</td><td>5000.00</td></tr>
+                        <tr><td>2024-01-16</td><td>Grocery Store</td><td>-45.32</td><td>4954.68</td></tr>
+                        <tr><td>2024-01-17</td><td>Salary Deposit</td><td>3500.00</td><td>8454.68</td></tr>
+                        <tr><td>2024-01-18</td><td>Electric Bill</td><td>-125.00</td><td>8329.68</td></tr>
+                        <tr><td>2024-01-19</td><td>Gas Station</td><td>-65.45</td><td>8264.23</td></tr>
+                        <tr><td>2024-01-20</td><td>Restaurant</td><td>-82.50</td><td>8181.73</td></tr>
+                        <tr><td>2024-01-21</td><td>ATM Withdrawal</td><td>-200.00</td><td>7981.73</td></tr>
+                        <tr><td>2024-01-22</td><td>Online Transfer</td><td>-500.00</td><td>7481.73</td></tr>
+                        <tr><td>2024-01-23</td><td>Coffee Shop</td><td>-12.75</td><td>7468.98</td></tr>
+                        <tr><td>2024-01-24</td><td>Pharmacy</td><td>-28.90</td><td>7440.08</td></tr>
+                    </table>
+                </body>
+                </html>
+            `;
+
+            const blob = new Blob([excelContent], { 
+                type: 'application/vnd.ms-excel;charset=utf-8;' 
+            });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'test_statement.xlsx');
+            link.style.visibility = 'hidden';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            URL.revokeObjectURL(url);
+            
+            log('✅ Excel download triggered successfully!');
+            log('📄 File: test_statement.xlsx');
+        }
+        
+        // Monitor file upload
+        const fileInput = document.getElementById('fileInput');
+        if (fileInput) {
+            const originalHandler = fileInput.onchange;
+            fileInput.addEventListener('change', function(e) {
+                log(`📁 File selected: ${e.target.files[0]?.name || 'none'}`);
+            });
+        }
+    </script>
+</body>
+</html>

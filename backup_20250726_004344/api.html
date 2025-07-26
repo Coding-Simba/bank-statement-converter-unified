@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Bank Statement Converter API documentation. Integrate bank statement conversion into your application with our RESTful API. Convert PDF to CSV/Excel programmatically." name="description"/>
+<meta content="bank statement API, PDF conversion API, bank statement converter API documentation" name="keywords"/>
+<title>
+   API Documentation - Bank Statement Converter | BankCSVConverter
+  </title>
+<link href="https://BankCSVConverter.com/api" rel="canonical"/>
+<!-- Open Graph Tags -->
+<meta content="API Documentation - Bank Statement Converter" property="og:title"/>
+<meta content="Integrate bank statement conversion into your application. RESTful API for converting PDF statements to CSV/Excel." property="og:description"/>
+<meta content="https://BankCSVConverter.com/api" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="BankCSVConverter" property="og:site_name"/>
+<!-- Schema.org Markup -->
+<script type="application/ld+json">
+   {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Bank Statement Converter API Documentation",
+        "description": "Complete API documentation for integrating bank statement conversion into your application",
+        "author": {
+            "@type": "Organization",
+            "name": "BankCSVConverter"
+        },
+        "datePublished": "2025-01-01",
+        "dateModified": "2025-01-25"
+    }
+  </script>
+<!-- Unified Design System -->
+<link href="css/main.css" rel="stylesheet"/>
+<style>
+   /* API Documentation specific styles */
+        .api-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+        
+        .api-sidebar {
+            position: sticky;
+            top: 80px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+        
+        .api-nav {
+            list-style: none;
+            border-left: 2px solid #e5e7eb;
+        }
+        
+        .api-nav li {
+            margin: 0;
+        }
+        
+        .api-nav a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #666;
+            text-decoration: none;
+            border-left: 2px solid transparent;
+            margin-left: -2px;
+            transition: all 0.2s ease;
+        }
+        
+        .api-nav a:hover {
+            color: #667eea;
+            background: #f8f9fa;
+            border-left-color: #667eea;
+        }
+        
+        .api-nav a.active {
+            color: #667eea;
+            font-weight: 600;
+            border-left-color: #667eea;
+        }
+        
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .code-block .comment {
+            color: #6a9955;
+        }
+        
+        .code-block .string {
+            color: #ce9178;
+        }
+        
+        .code-block .keyword {
+            color: #569cd6;
+        }
+        
+        .code-block .number {
+            color: #b5cea8;
+        }
+        
+        .endpoint-section {
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .endpoint-section:last-child {
+            border-bottom: none;
+        }
+        
+        .method-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+        }
+        
+        .method-badge.get {
+            background: #22c55e;
+            color: white;
+        }
+        
+        .method-badge.post {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .method-badge.put {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .method-badge.delete {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .endpoint-url {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            background: #f3f4f6;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+        
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .param-table th,
+        .param-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .param-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .param-table .param-name {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .param-table .param-type {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: #666;
+        }
+        
+        .required-badge {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.125rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .response-example {
+            background: #f8f9fa;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .response-example h4 {
+            margin-top: 0;
+            color: #1a1a1a;
+        }
+        
+        .tab-container {
+            margin: 1rem 0;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: -1px;
+        }
+        
+        .tab-button {
+            padding: 0.5rem 1rem;
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .tab-button.active {
+            background: #1e1e1e;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .api-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .api-sidebar {
+                display: none;
+            }
+        }
+  </style>
+</head>
+<body>
+<!-- Skip Navigation Link -->
+<a class="skip-link" href="#main" style="position: absolute; left: -9999px; top: 0; z-index: 999;">
+   Skip to main content
+  </a>
+<!-- Header Navigation -->
+<header>
+<nav>
+<a class="nav-logo" href="/">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+</rect>
+<line x1="3" x2="21" y1="9" y2="9">
+</line>
+<line x1="9" x2="9" y1="21" y2="9">
+</line>
+</svg>
+     BankCSVConverter
+    </a>
+<ul class="nav-menu">
+<li>
+<a href="/features.html">
+       Features
+      </a>
+</li>
+<li>
+<a href="/how-it-works.html">
+       How It Works
+      </a>
+</li>
+<li>
+<a href="/#supported-banks">
+       Banks
+      </a>
+</li>
+<li>
+<a href="/pricing.html">
+       Pricing
+      </a>
+</li>
+<li>
+<a href="/blog.html">
+       Blog
+      </a>
+</li>
+<li>
+<a href="/api.html">
+       API
+      </a>
+</li>
+</ul>
+<button class="menu-toggle" id="menuToggle">
+<span>
+</span>
+<span>
+</span>
+<span>
+</span>
+</button>
+</nav>
+</header>
+<main id="main">
+<!-- Hero Section -->
+<section class="hero">
+<div class="container">
+<div class="hero-content">
+<h1>
+       API Documentation
+      </h1>
+<p class="hero-subtitle">
+       Integrate bank statement conversion into your application with our powerful RESTful API
+      </p>
+</div>
+</div>
+</section>
+<!-- API Content -->
+<section class="content-section">
+<div class="container">
+<div class="api-content">
+<!-- Sidebar Navigation -->
+<aside class="api-sidebar">
+<ul class="api-nav">
+<li>
+<a class="active" href="#getting-started">
+          Getting Started
+         </a>
+</li>
+<li>
+<a href="#authentication">
+          Authentication
+         </a>
+</li>
+<li>
+<a href="#convert-statement">
+          Convert Statement
+         </a>
+</li>
+<li>
+<a href="#check-status">
+          Check Status
+         </a>
+</li>
+<li>
+<a href="#download-result">
+          Download Result
+         </a>
+</li>
+<li>
+<a href="#list-banks">
+          List Banks
+         </a>
+</li>
+<li>
+<a href="#rate-limits">
+          Rate Limits
+         </a>
+</li>
+<li>
+<a href="#errors">
+          Error Handling
+         </a>
+</li>
+<li>
+<a href="#sdks">
+          SDKs &amp; Libraries
+         </a>
+</li>
+</ul>
+</aside>
+<!-- Main Content -->
+<div class="api-main">
+<!-- Getting Started -->
+<section class="endpoint-section" id="getting-started">
+<h2>
+         Getting Started
+        </h2>
+<p>
+         The BankCSVConverter API allows you to programmatically convert bank statements from PDF format to CSV or Excel. Our API is RESTful and returns JSON responses.
+        </p>
+<h3>
+         Base URL
+        </h3>
+<div class="code-block">
+         https://api.bankcsvconverter.com/v1
+        </div>
+<h3>
+         Quick Start
+        </h3>
+<p>
+         Here's a simple example to convert a bank statement:
+        </p>
+<div class="tab-container">
+<div class="tab-buttons">
+<button class="tab-button active" onclick="showTab(event, 'curl-tab')">
+           cURL
+          </button>
+<button class="tab-button" onclick="showTab(event, 'python-tab')">
+           Python
+          </button>
+<button class="tab-button" onclick="showTab(event, 'js-tab')">
+           JavaScript
+          </button>
+</div>
+<div class="tab-content active" id="curl-tab">
+<div class="code-block">
+<span class="comment">
+            # Upload a PDF for conversion
+           </span>
+           curl -X POST https://api.bankcsvconverter.com/v1/convert \
+  -H
+           <span class="string">
+            "Authorization: Bearer YOUR_API_KEY"
+           </span>
+           \
+  -F
+           <span class="string">
+            "file=@statement.pdf"
+           </span>
+           \
+  -F
+           <span class="string">
+            "output_format=csv"
+           </span>
+</div>
+</div>
+<div class="tab-content" id="python-tab">
+<div class="code-block">
+<span class="keyword">
+            import
+           </span>
+           requests
+           <span class="comment">
+            # Upload a PDF for conversion
+           </span>
+           response = requests.post(
+           <span class="string">
+            'https://api.bankcsvconverter.com/v1/convert'
+           </span>
+           ,
+    headers={
+           <span class="string">
+            'Authorization'
+           </span>
+           :
+           <span class="string">
+            'Bearer YOUR_API_KEY'
+           </span>
+           },
+    files={
+           <span class="string">
+            'file'
+           </span>
+           : open(
+           <span class="string">
+            'statement.pdf'
+           </span>
+           ,
+           <span class="string">
+            'rb'
+           </span>
+           )},
+    data={
+           <span class="string">
+            'output_format'
+           </span>
+           :
+           <span class="string">
+            'csv'
+           </span>
+           }
+)
+
+result = response.json()
+           <span class="keyword">
+            print
+           </span>
+           (result)
+          </div>
+</div>
+<div class="tab-content" id="js-tab">
+<div class="code-block">
+<span class="comment">
+            // Upload a PDF for conversion
+           </span>
+<span class="keyword">
+            const
+           </span>
+           formData =
+           <span class="keyword">
+            new
+           </span>
+           FormData();
+formData.append(
+           <span class="string">
+            'file'
+           </span>
+           , fileInput.files[
+           <span class="number">
+            0
+           </span>
+           ]);
+formData.append(
+           <span class="string">
+            'output_format'
+           </span>
+           ,
+           <span class="string">
+            'csv'
+           </span>
+           );
+           <span class="keyword">
+            const
+           </span>
+           response =
+           <span class="keyword">
+            await
+           </span>
+           fetch(
+           <span class="string">
+            'https://api.bankcsvconverter.com/v1/convert'
+           </span>
+           , {
+    method:
+           <span class="string">
+            'POST'
+           </span>
+           ,
+    headers: {
+           <span class="string">
+            'Authorization'
+           </span>
+           :
+           <span class="string">
+            'Bearer YOUR_API_KEY'
+           </span>
+           },
+    body: formData
+});
+           <span class="keyword">
+            const
+           </span>
+           result =
+           <span class="keyword">
+            await
+           </span>
+           response.json();
+console.log(result);
+          </div>
+</div>
+</div>
+</section>
+<!-- Authentication -->
+<section class="endpoint-section" id="authentication">
+<h2>
+         Authentication
+        </h2>
+<p>
+         All API requests require authentication using an API key. You can obtain your API key from your dashboard after signing up for a Business plan.
+        </p>
+<h3>
+         Using Your API Key
+        </h3>
+<p>
+         Include your API key in the Authorization header of every request:
+        </p>
+<div class="code-block">
+         Authorization: Bearer YOUR_API_KEY
+        </div>
+<div class="response-example">
+<h4>
+          ⚠️ Security Notice
+         </h4>
+<p>
+          Keep your API key secure and never expose it in client-side code. Always make API calls from your backend server.
+         </p>
+</div>
+</section>
+<!-- Convert Statement Endpoint -->
+<section class="endpoint-section" id="convert-statement">
+<h2>
+         Convert Statement
+        </h2>
+<p>
+         Upload a PDF bank statement for conversion to CSV or Excel format.
+        </p>
+<div style="margin: 1rem 0;">
+<span class="method-badge post">
+          POST
+         </span>
+<span class="endpoint-url">
+          /convert
+         </span>
+</div>
+<h3>
+         Request Parameters
+        </h3>
+<table class="param-table">
+<thead>
+<tr>
+<th>
+            Parameter
+           </th>
+<th>
+            Type
+           </th>
+<th>
+            Required
+           </th>
+<th>
+            Description
+           </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<span class="param-name">
+             file
+            </span>
+</td>
+<td>
+<span class="param-type">
+             file
+            </span>
+</td>
+<td>
+<span class="required-badge">
+             Required
+            </span>
+</td>
+<td>
+            The PDF bank statement file to convert
+           </td>
+</tr>
+<tr>
+<td>
+<span class="param-name">
+             output_format
+            </span>
+</td>
+<td>
+<span class="param-type">
+             string
+            </span>
+</td>
+<td>
+<span class="required-badge">
+             Required
+            </span>
+</td>
+<td>
+            Output format: "csv" or "excel"
+           </td>
+</tr>
+<tr>
+<td>
+<span class="param-name">
+             bank
+            </span>
+</td>
+<td>
+<span class="param-type">
+             string
+            </span>
+</td>
+<td>
+            Optional
+           </td>
+<td>
+            Bank identifier for optimized parsing
+           </td>
+</tr>
+<tr>
+<td>
+<span class="param-name">
+             date_format
+            </span>
+</td>
+<td>
+<span class="param-type">
+             string
+            </span>
+</td>
+<td>
+            Optional
+           </td>
+<td>
+            Custom date format (default: "YYYY-MM-DD")
+           </td>
+</tr>
+<tr>
+<td>
+<span class="param-name">
+             categorize
+            </span>
+</td>
+<td>
+<span class="param-type">
+             boolean
+            </span>
+</td>
+<td>
+            Optional
+           </td>
+<td>
+            Auto-categorize transactions (Pro/Business only)
+           </td>
+</tr>
+</tbody>
+</table>
+<h3>
+         Response
+        </h3>
+<div class="code-block">
+         {
+         <span class="string">
+          "job_id"
+         </span>
+         :
+         <span class="string">
+          "550e8400-e29b-41d4-a716-446655440000"
+         </span>
+         ,
+         <span class="string">
+          "status"
+         </span>
+         :
+         <span class="string">
+          "processing"
+         </span>
+         ,
+         <span class="string">
+          "bank_detected"
+         </span>
+         :
+         <span class="string">
+          "chase"
+         </span>
+         ,
+         <span class="string">
+          "created_at"
+         </span>
+         :
+         <span class="string">
+          "2025-01-25T10:30:00Z"
+         </span>
+         ,
+         <span class="string">
+          "estimated_completion"
+         </span>
+         :
+         <span class="string">
+          "2025-01-25T10:30:10Z"
+         </span>
+         }
+        </div>
+</section>
+<!-- Check Status Endpoint -->
+<section class="endpoint-section" id="check-status">
+<h2>
+         Check Status
+        </h2>
+<p>
+         Check the status of a conversion job.
+        </p>
+<div style="margin: 1rem 0;">
+<span class="method-badge get">
+          GET
+         </span>
+<span class="endpoint-url">
+          /jobs/{job_id}
+         </span>
+</div>
+<h3>
+         Response
+        </h3>
+<div class="code-block">
+         {
+         <span class="string">
+          "job_id"
+         </span>
+         :
+         <span class="string">
+          "550e8400-e29b-41d4-a716-446655440000"
+         </span>
+         ,
+         <span class="string">
+          "status"
+         </span>
+         :
+         <span class="string">
+          "completed"
+         </span>
+         ,
+         <span class="string">
+          "bank_detected"
+         </span>
+         :
+         <span class="string">
+          "chase"
+         </span>
+         ,
+         <span class="string">
+          "transactions_found"
+         </span>
+         :
+         <span class="number">
+          142
+         </span>
+         ,
+         <span class="string">
+          "download_url"
+         </span>
+         :
+         <span class="string">
+          "https://api.bankcsvconverter.com/v1/download/..."
+         </span>
+         ,
+         <span class="string">
+          "expires_at"
+         </span>
+         :
+         <span class="string">
+          "2025-01-26T10:30:00Z"
+         </span>
+         }
+        </div>
+</section>
+<!-- Download Result -->
+<section class="endpoint-section" id="download-result">
+<h2>
+         Download Result
+        </h2>
+<p>
+         Download the converted file once processing is complete.
+        </p>
+<div style="margin: 1rem 0;">
+<span class="method-badge get">
+          GET
+         </span>
+<span class="endpoint-url">
+          /download/{download_id}
+         </span>
+</div>
+<p>
+         The download URL is provided in the job status response. Files are available for 24 hours after conversion.
+        </p>
+</section>
+<!-- List Banks -->
+<section class="endpoint-section" id="list-banks">
+<h2>
+         List Supported Banks
+        </h2>
+<p>
+         Get a list of all supported banks and their identifiers.
+        </p>
+<div style="margin: 1rem 0;">
+<span class="method-badge get">
+          GET
+         </span>
+<span class="endpoint-url">
+          /banks
+         </span>
+</div>
+<h3>
+         Response
+        </h3>
+<div class="code-block">
+         {
+         <span class="string">
+          "banks"
+         </span>
+         : [
+        {
+         <span class="string">
+          "id"
+         </span>
+         :
+         <span class="string">
+          "chase"
+         </span>
+         ,
+         <span class="string">
+          "name"
+         </span>
+         :
+         <span class="string">
+          "Chase Bank"
+         </span>
+         ,
+         <span class="string">
+          "country"
+         </span>
+         :
+         <span class="string">
+          "US"
+         </span>
+         ,
+         <span class="string">
+          "formats_supported"
+         </span>
+         : [
+         <span class="string">
+          "pdf"
+         </span>
+         ]
+        },
+        {
+         <span class="string">
+          "id"
+         </span>
+         :
+         <span class="string">
+          "bofa"
+         </span>
+         ,
+         <span class="string">
+          "name"
+         </span>
+         :
+         <span class="string">
+          "Bank of America"
+         </span>
+         ,
+         <span class="string">
+          "country"
+         </span>
+         :
+         <span class="string">
+          "US"
+         </span>
+         ,
+         <span class="string">
+          "formats_supported"
+         </span>
+         : [
+         <span class="string">
+          "pdf"
+         </span>
+         ]
+        }
+         <span class="comment">
+          // ... more banks
+         </span>
+         ],
+         <span class="string">
+          "total"
+         </span>
+         :
+         <span class="number">
+          1000
+         </span>
+         }
+        </div>
+</section>
+<!-- Rate Limits -->
+<section class="endpoint-section" id="rate-limits">
+<h2>
+         Rate Limits
+        </h2>
+<p>
+         API rate limits vary by plan:
+        </p>
+<table class="param-table">
+<thead>
+<tr>
+<th>
+            Plan
+           </th>
+<th>
+            Requests per minute
+           </th>
+<th>
+            Requests per day
+           </th>
+<th>
+            Concurrent jobs
+           </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+            Pro
+           </td>
+<td>
+            60
+           </td>
+<td>
+            1,000
+           </td>
+<td>
+            5
+           </td>
+</tr>
+<tr>
+<td>
+            Business
+           </td>
+<td>
+            300
+           </td>
+<td>
+            10,000
+           </td>
+<td>
+            20
+           </td>
+</tr>
+<tr>
+<td>
+            Enterprise
+           </td>
+<td>
+            Custom
+           </td>
+<td>
+            Custom
+           </td>
+<td>
+            Custom
+           </td>
+</tr>
+</tbody>
+</table>
+<p>
+         Rate limit information is included in response headers:
+        </p>
+<div class="code-block">
+         X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 58
+X-RateLimit-Reset: 1706180400
+        </div>
+</section>
+<!-- Error Handling -->
+<section class="endpoint-section" id="errors">
+<h2>
+         Error Handling
+        </h2>
+<p>
+         The API uses standard HTTP status codes to indicate success or failure.
+        </p>
+<h3>
+         Error Response Format
+        </h3>
+<div class="code-block">
+         {
+         <span class="string">
+          "error"
+         </span>
+         : {
+         <span class="string">
+          "code"
+         </span>
+         :
+         <span class="string">
+          "invalid_file_format"
+         </span>
+         ,
+         <span class="string">
+          "message"
+         </span>
+         :
+         <span class="string">
+          "The uploaded file must be a PDF"
+         </span>
+         ,
+         <span class="string">
+          "details"
+         </span>
+         : {
+         <span class="string">
+          "file_type"
+         </span>
+         :
+         <span class="string">
+          "image/jpeg"
+         </span>
+         }
+    }
+}
+        </div>
+<h3>
+         Common Error Codes
+        </h3>
+<table class="param-table">
+<thead>
+<tr>
+<th>
+            Status Code
+           </th>
+<th>
+            Error Code
+           </th>
+<th>
+            Description
+           </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+            400
+           </td>
+<td>
+            invalid_file_format
+           </td>
+<td>
+            File is not a valid PDF
+           </td>
+</tr>
+<tr>
+<td>
+            401
+           </td>
+<td>
+            invalid_api_key
+           </td>
+<td>
+            API key is missing or invalid
+           </td>
+</tr>
+<tr>
+<td>
+            403
+           </td>
+<td>
+            plan_limit_exceeded
+           </td>
+<td>
+            Monthly conversion limit reached
+           </td>
+</tr>
+<tr>
+<td>
+            404
+           </td>
+<td>
+            job_not_found
+           </td>
+<td>
+            Job ID does not exist
+           </td>
+</tr>
+<tr>
+<td>
+            429
+           </td>
+<td>
+            rate_limit_exceeded
+           </td>
+<td>
+            Too many requests
+           </td>
+</tr>
+<tr>
+<td>
+            500
+           </td>
+<td>
+            internal_error
+           </td>
+<td>
+            Server error, please retry
+           </td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- SDKs -->
+<section class="endpoint-section" id="sdks">
+<h2>
+         SDKs &amp; Libraries
+        </h2>
+<p>
+         We provide official SDKs to make integration easier:
+        </p>
+<div class="feature-grid">
+<div class="feature-card">
+<span class="feature-icon">
+           🐍
+          </span>
+<h3>
+           Python SDK
+          </h3>
+<p>
+           Install with pip:
+          </p>
+<div class="code-block">
+           pip install bankcsvconverter
+          </div>
+<a href="https://github.com/bankcsvconverter/python-sdk">
+           View on GitHub →
+          </a>
+</div>
+<div class="feature-card">
+<span class="feature-icon">
+           📦
+          </span>
+<h3>
+           Node.js SDK
+          </h3>
+<p>
+           Install with npm:
+          </p>
+<div class="code-block">
+           npm install bankcsvconverter
+          </div>
+<a href="https://github.com/bankcsvconverter/node-sdk">
+           View on GitHub →
+          </a>
+</div>
+<div class="feature-card">
+<span class="feature-icon">
+           💎
+          </span>
+<h3>
+           Ruby SDK
+          </h3>
+<p>
+           Install with gem:
+          </p>
+<div class="code-block">
+           gem install bankcsvconverter
+          </div>
+<a href="https://github.com/bankcsvconverter/ruby-sdk">
+           View on GitHub →
+          </a>
+</div>
+<div class="feature-card">
+<span class="feature-icon">
+           ☕
+          </span>
+<h3>
+           Java SDK
+          </h3>
+<p>
+           Add to your pom.xml:
+          </p>
+<div class="code-block" style="font-size: 0.8rem;">
+           com.bankcsvconverter:sdk:1.0.0
+          </div>
+<a href="https://github.com/bankcsvconverter/java-sdk">
+           View on GitHub →
+          </a>
+</div>
+</div>
+<div class="response-example" style="margin-top: 2rem;">
+<h4>
+          💡 Need Help?
+         </h4>
+<p>
+          Check out our
+          <a href="/api-examples">
+           API examples
+          </a>
+          or
+          <a href="/contact">
+           contact our support team
+          </a>
+          for assistance with integration.
+         </p>
+</div>
+</section>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="cta-section">
+<div class="container">
+<h2>
+      Ready to Start Building?
+     </h2>
+<p>
+      Get your API key and start converting bank statements programmatically
+     </p>
+<a class="cta-button" href="/pricing.html">
+      Get API Access
+     </a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer>
+<div class="container">
+<div class="footer-content">
+<div class="footer-section">
+<h3>
+       Product
+      </h3>
+<ul>
+<li>
+<a href="/features.html">
+         Features
+        </a>
+</li>
+<li>
+<a href="/pricing.html">
+         Pricing
+        </a>
+</li>
+<li>
+<a href="/api.html">
+         API
+        </a>
+</li>
+<li>
+<a href="/how-it-works.html">
+         How It Works
+        </a>
+</li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>
+       Resources
+      </h4>
+<ul>
+<li>
+<a href="/blog.html">
+         Blog
+        </a>
+</li>
+<li>
+<a href="/#supported-banks">
+         Supported Banks
+        </a>
+</li>
+<li>
+<a href="/#faq">
+         FAQ
+        </a>
+</li>
+<li>
+<a href="/support">
+         Support
+        </a>
+</li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>
+       Company
+      </h4>
+<ul>
+<li>
+<a href="/about">
+         About Us
+        </a>
+</li>
+<li>
+<a href="/contact">
+         Contact
+        </a>
+</li>
+<li>
+<a href="/privacy.html">
+         Privacy Policy
+        </a>
+</li>
+<li>
+<a href="/terms.html">
+         Terms of Service
+        </a>
+</li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>
+       Connect
+      </h4>
+<ul>
+<li>
+<a href="#">
+         Twitter
+        </a>
+</li>
+<li>
+<a href="#">
+         LinkedIn
+        </a>
+</li>
+<li>
+<a href="#">
+         GitHub
+        </a>
+</li>
+<li>
+<a href="/contact">
+         Contact Us
+        </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>
+      © 2025 BankCSVConverter. All rights reserved.
+     </p>
+</div>
+</div>
+</footer>
+<script>document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});</script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+/* Header Component Styles */
+
+.page-header {
+    background: white;
+    padding: 3rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 3rem;
+}
+
+.page-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+}
+
+/* PDF Logo Section */
+.pdf-logo-section {
+    flex-shrink: 0;
+}
+
+.pdf-logo-box {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #00bfa5 0%, #00d4aa 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 191, 165, 0.25);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.pdf-logo-box::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00bfa5, #00d4aa, #00bfa5);
+    border-radius: 20px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.pdf-logo-box:hover::before {
+    opacity: 1;
+}
+
+.pdf-logo-box i {
+    font-size: 60px;
+    color: white;
+    z-index: 1;
+}
+
+.brand-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.brand-icon {
+    width: 36px;
+    height: 36px;
+    background: #00bfa5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+}
+
+.brand-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+}
+
+/* Quick Links Section */
+.quick-links-section {
+    flex: 1;
+}
+
+.quick-links-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+}
+
+.quick-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.quick-links-list li {
+    display: flex;
+    align-items: center;
+}
+
+.quick-links-list a {
+    color: #4a5568;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+}
+
+.quick-links-list a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #00bfa5;
+    transition: width 0.3s ease;
+}
+
+.quick-links-list a:hover {
+    color: #00bfa5;
+}
+
+.quick-links-list a:hover::before {
+    width: 100%;
+}
+
+.quick-links-list i {
+    font-size: 16px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.quick-links-list a:hover i {
+    opacity: 1;
+}
+
+/* Alternative Inline Layout */
+.header-inline {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+}
+
+.header-inline-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-inline {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-inline-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #00bfa5 0%, #00d4aa 100%);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 28px;
+    box-shadow: 0 4px 12px rgba(0, 191, 165, 0.2);
+}
+
+.logo-inline-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.links-inline {
+    display: flex;
+    gap: 2rem;
+    flex: 1;
+    justify-content: center;
+}
+
+.links-inline a {
+    color: #4a5568;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.links-inline a:hover {
+    background: white;
+    color: #00bfa5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-header-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .pdf-logo-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .quick-links-list {
+        align-items: center;
+    }
+
+    .header-inline-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .links-inline {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .links-inline a {
+        justify-content: center;
+        width: 100%;
+    }
+}

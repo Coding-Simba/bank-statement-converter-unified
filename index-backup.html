@@ -1,21 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html itemscope="" itemtype="http://schema.org/SoftwareApplication" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Convert PDF bank statements to CSV/Excel instantly. Free online converter for 1000+ banks. Secure and fast.">
-    <meta name="keywords" content="bank statement converter, pdf to csv, bank statement to excel, convert bank statement">
-    
-    <title>Bank Statement Converter - PDF to CSV in Seconds | BankCSVConverter</title>
-    
-    <link rel="canonical" href="https://BankCSVConverter.com">
-    
-    <!-- Unified Design System -->
-    <link rel="stylesheet" href="css/unified-styles.css">
-    
-    <!-- Inline Critical CSS for Instant Loading -->
-    <style>
-        * {
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Convert PDF bank statements to CSV/Excel instantly. Free online converter for 1000+ banks including Chase, Wells Fargo, Bank of America. Secure, fast &amp; accurate." name="description"/>
+<meta content="bank statement converter, pdf to csv, bank statement to excel, convert bank statement" name="keywords"/>
+<title>
+   Bank Statement Converter - PDF to CSV/Excel Free
+  </title>
+<!-- Open Graph Tags -->
+<meta content="Bank Statement Converter - PDF to CSV/Excel Instantly" property="og:title"/>
+<meta content="Free online tool to convert PDF bank statements to CSV/Excel. Supports 1000+ banks. No signup required. 100% secure processing." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://BankCSVConverter.com" property="og:url"/>
+<meta content="https://BankCSVConverter.com/assets/og-image.png" property="og:image"/>
+<meta content="BankCSVConverter" property="og:site_name"/>
+<meta content="en_US" property="og:locale"/>
+<!-- Twitter Card Tags -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Bank Statement Converter - PDF to CSV/Excel" name="twitter:title"/>
+<meta content="Convert PDF bank statements to CSV/Excel instantly. Free tool for 1000+ banks. Secure &amp; fast." name="twitter:description"/>
+<meta content="https://BankCSVConverter.com/assets/twitter-card.png" name="twitter:image"/>
+<meta content="@BankCSVConverter" name="twitter:site"/>
+<!-- Schema.org Markup -->
+<meta content="Bank Statement Converter" itemprop="name"/>
+<meta content="Convert PDF bank statements to CSV and Excel formats instantly" itemprop="description"/>
+<meta content="FinanceApplication" itemprop="applicationCategory"/>
+<meta content="Web Browser" itemprop="operatingSystem"/>
+<meta itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"/>
+<meta content="0" itemprop="price"/>
+<meta content="USD" itemprop="priceCurrency"/>
+<link href="https://BankCSVConverter.com" rel="canonical"/>
+<!-- Unified Design System -->
+<link href="css/main.css" rel="stylesheet"/>
+<link href="css/mobile-navigation.css" rel="stylesheet"/>
+<!-- Inline Critical CSS for Instant Loading -->
+<style>
+   * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -31,7 +53,7 @@
         /* Header Navigation */
         header {
             background: white;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             top: 0;
             left: 0;
@@ -46,27 +68,27 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 60px;
+            height: 70px;
         }
         
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
             color: #667eea;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
         
         .nav-logo svg {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
         }
         
         .nav-menu {
             display: flex;
-            gap: 30px;
+            gap: 35px;
             list-style: none;
         }
         
@@ -74,7 +96,7 @@
             color: #666;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 1rem;
             transition: color 0.3s ease;
         }
         
@@ -100,46 +122,14 @@
             transition: 0.3s;
         }
         
-        /* Mobile Menu Styles */
-        .nav-menu.active {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 60px;
-            left: 0;
-            right: 0;
-            background: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-        
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-        
         .container {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 80px 20px 20px;
+            padding: 120px 20px 20px;
             text-align: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 2rem;
         }
         
         h1 {
@@ -156,7 +146,7 @@
             max-width: 600px;
         }
         
-        .upload-box {
+        .upload-area {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 20px;
             padding: 60px 40px;
@@ -164,15 +154,27 @@
             max-width: 500px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            color: white;
+            text-align: center;
         }
         
-        .upload-box:hover {
+        .upload-area:hover {
             transform: translateY(-5px);
         }
         
-        .upload-box.dragging {
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-            transform: scale(1.02);
+        .upload-area h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .upload-area h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .upload-area p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 10px;
         }
         
         .upload-icon {
@@ -206,20 +208,64 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .upload-btn:active {
-            transform: translateY(0);
+        .loading {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
         
-        .drop-text {
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 20px;
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .success-check {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #22c55e;
+        }
+        
+        .secondary-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 30px;
             font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
         }
         
-        #fileInput {
-            display: none;
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            margin-top: 20px;
+            overflow: hidden;
         }
         
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* Features Section */
         .features {
             display: flex;
             gap: 40px;
@@ -241,92 +287,14 @@
             font-size: 1.2rem;
         }
         
-        /* Processing State */
-        .processing {
-            display: none;
-            color: white;
-        }
-        
-        .spinner {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 20px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top-color: white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Success State */
-        .success {
-            display: none;
-            color: white;
-        }
-        
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #22c55e;
-            animation: scaleIn 0.3s ease;
-        }
-        
-        @keyframes scaleIn {
-            from { transform: scale(0); }
-            to { transform: scale(1); }
-        }
-        
-        .download-btn {
-            background: white;
-            color: #22c55e;
-            border: none;
-            padding: 16px 40px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-        }
-        
-        .convert-another {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            padding: 12px 30px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .convert-another:hover {
-            background: white;
-            color: #667eea;
-        }
-        
         /* Footer */
         .footer {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
+            position: relative;
+            margin-top: 80px;
             text-align: center;
             color: #999;
             font-size: 0.85rem;
+            padding: 20px;
         }
         
         .footer a {
@@ -344,7 +312,7 @@
                 font-size: 1.1rem;
             }
             
-            .upload-box {
+            .upload-area {
                 padding: 40px 30px;
             }
             
@@ -360,277 +328,1057 @@
             .menu-toggle {
                 display: block;
             }
+            
+            .nav-menu.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
         }
-        
-        /* Error State */
-        .error-message {
-            background: #fee;
-            color: #c33;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            display: none;
-        }
-        
-        /* Hide file input */
-        #fileInput {
-            display: none;
-        }
-        
-        /* Hide processing and success states initially */
-        #processingState {
-            display: none;
-        }
-        
-        #successState {
-            display: none;
-        }
-    </style>
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  position: absolute;
+  left: 6px;
+  top: 7px;
+  z-index: 999999;
+  padding: 8px 16px;
+  background: #000;
+  color: white;
+  text-decoration: none;
+}
+  </style>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
 </head>
 <body>
-    <!-- Header Navigation -->
-    <header>
-        <nav>
-            <a href="/" class="nav-logo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                    <path d="M9 12l2 2 4-4"/>
-                </svg>
-                BankCSVConverter
-            </a>
-            
-            <ul class="nav-menu">
-                <li><a href="/all-pages.html">All Banks</a></li>
-                <li><a href="/pages/bank-statement-converter-comparison.html">Why Us</a></li>
-                <li><a href="/blog/financial-data-privacy-guide.html">Security</a></li>
-            </ul>
-            
-            <button class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
-    </header>
-    
-    <div class="container">
-        <h1>Convert Bank Statements to CSV</h1>
-        <p class="subtitle">Transform PDF bank statements from any bank into Excel-ready CSV files in seconds</p>
-        
-        <div class="upload-box" id="uploadArea">
-            <!-- Initial State -->
-            <div id="initialState">
-                <div class="upload-icon">📄</div>
-                <button class="upload-btn" id="uploadBtn" onclick="document.getElementById('fileInput').click()">
-                    Choose PDF File
-                </button>
-                <p class="drop-text">or drag and drop your bank statement here</p>
-            </div>
-            
-            <!-- Processing State -->
-            <div class="processing" id="processingState">
-                <div class="spinner"></div>
-                <h3>Converting your statement...</h3>
-                <p>This usually takes 5-10 seconds</p>
-            </div>
-            
-            <!-- Success State -->
-            <div class="success" id="successState">
-                <div class="success-icon">✓</div>
-                <h3>Conversion Complete!</h3>
-                <a href="#" class="download-btn" id="downloadBtn">Download CSV</a>
-                <button class="convert-another" id="convertAnother">Convert Another</button>
-            </div>
-        </div>
-        
-        <input type="file" id="fileInput" accept=".pdf">
-        
-        <div class="features">
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span>Works with 1000+ banks</span>
-            </div>
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span>100% secure & private</span>
-            </div>
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span>No signup required</span>
-            </div>
-        </div>
-        
-        <div class="error-message" id="errorMessage"></div>
+<a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+<!-- Header Navigation -->
+<header>
+<nav>
+<a class="nav-logo" href="/">
+     <svg style="width: 24px; height: 24px; flex-shrink: 0;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+</rect>
+<line x1="3" x2="21" y1="9" y2="9">
+</line>
+<line x1="9" x2="9" y1="21" y2="9">
+</line>
+</svg>
+     BankCSVConverter
+    </a>
+<ul class="nav-menu">
+<li>
+<a href="/features.html">
+       Features
+      </a>
+</li>
+<li>
+<a href="/how-it-works.html">
+       How It Works
+      </a>
+</li>
+<li>
+<a href="#supported-banks">
+       Banks
+      </a>
+</li>
+<li>
+<a href="#pricing">
+       Pricing
+      </a>
+</li>
+</ul>
+<button class="menu-toggle" id="menuToggle">
+<span>
+</span>
+<span>
+</span>
+<span>
+</span>
+</button>
+</nav>
+</header>
+<div class="container" id="main">
+<h1>
+    Convert Bank Statements to CSV
+   </h1>
+<p class="subtitle">
+    Transform PDF bank statements from any bank into Excel-ready CSV files in seconds
+   </p>
+<!-- Upload Section -->
+<div class="upload-area" id="uploadBox">
+<div class="upload-icon">
+     📄
     </div>
+<h2>
+     Upload Your Statement
+    </h2>
+<button class="upload-btn" id="uploadBtn">
+     Choose PDF File
+    </button>
+<p>
+     or drag and drop your bank statement here
+    </p>
+<input accept=".pdf" aria-label="Upload PDF bank statement" hidden="" id="fileInput" type="file"/>
+</div>
+<!-- Progress Container -->
+<div class="upload-area" id="progressContainer" style="display: none;">
+<div class="loading">
+</div>
+<h3 id="progressText">
+     Processing your statement...
+    </h3>
+<p>
+     This usually takes 5-10 seconds
+    </p>
+<div class="progress-bar">
+<div class="progress-fill" id="progressFill">
+</div>
+</div>
+</div>
+<!-- Result Container -->
+<div class="upload-area" id="resultContainer" style="display: none;">
+<div class="success-check">
+     ✓
+    </div>
+<h3>
+     Conversion Complete!
+    </h3>
+<p>
+     Your statement has been successfully converted to CSV format.
+    </p>
+<button class="upload-btn" id="downloadBtn">
+     Download CSV File
+    </button>
+<button class="secondary-btn" id="convertAnotherBtn">
+     Convert Another Statement
+    </button>
+</div>
+<div class="features">
+<div class="feature">
+<span class="feature-icon">
+      ✓
+     </span>
+<span>
+      Works with 1000+ banks
+     </span>
+</div>
+<div class="feature">
+<span class="feature-icon">
+      ✓
+     </span>
+<span>
+      100% secure &amp; private
+     </span>
+</div>
+<div class="feature">
+<span class="feature-icon">
+      ✓
+     </span>
+<span>
+      No signup required
+     </span>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<!-- Supported Banks Section -->
+<!-- Supported Banks Section -->
+<section class="content-section" id="supported-banks">
+<div class="container">
+<div class="section-header">
+<h2>
+      Trusted by Users of 1000+ Banks
+     </h2>
+<p>
+      Our AI-powered converter works seamlessly with statements from major banks worldwide
+     </p>
+</div>
+<!-- Bank Search Bar -->
+<div class="bank-search-container">
+<div class="search-box">
+<svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="11" cy="11" r="8">
+</circle>
+<path d="m21 21-4.35-4.35">
+</path>
+</svg>
+<input aria-label="Search banks" class="bank-search-input" id="bankSearch" placeholder="Search for your bank..." type="text"/>
+</div>
+<div class="bank-filters">
+<button class="filter-btn active" data-filter="all">
+       All Banks
+      </button>
+<button class="filter-btn" data-filter="major">
+       Major Banks
+      </button>
+<button class="filter-btn" data-filter="regional">
+       Regional Banks
+      </button>
+<button class="filter-btn" data-filter="online">
+       Online &amp; Credit Unions
+      </button>
+<button class="filter-btn" data-filter="city">
+       By City
+      </button>
+</div>
+</div>
+<!-- All Banks Grid -->
+<div class="banks-grid" id="banksGrid">
+<!-- Major US Banks -->
+<a class="bank-item" data-bank-name="Chase JPMorgan Chase Bank" data-category="major" href="/pages/chase-bank-statement-converter.html">
+<div class="bank-icon">
+       🏦
+      </div>
+<h4>
+       Chase
+      </h4>
+<p>
+       JPMorgan Chase Bank
+      </p>
+<span class="bank-category">
+       Major Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Bank of America BoA" data-category="major" href="/pages/bank-of-america-statement-converter.html">
+<div class="bank-icon">
+       🏛️
+      </div>
+<h4>
+       Bank of America
+      </h4>
+<p>
+       BoA Statement Converter
+      </p>
+<span class="bank-category">
+       Major Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Wells Fargo" data-category="major" href="/pages/wells-fargo-statement-converter.html">
+<div class="bank-icon">
+       🏪
+      </div>
+<h4>
+       Wells Fargo
+      </h4>
+<p>
+       Wells Fargo &amp; Company
+      </p>
+<span class="bank-category">
+       Major Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Citi Citibank" data-category="major" href="/pages/citi-bank-statement-converter.html">
+<div class="bank-icon">
+       🌆
+      </div>
+<h4>
+       Citi
+      </h4>
+<p>
+       Citibank Statements
+      </p>
+<span class="bank-category">
+       Major Bank
+      </span>
+</a>
+<!-- Regional Banks -->
+<a class="bank-item" data-bank-name="US Bank" data-category="regional" href="/pages/us-bank-statement-converter.html">
+<div class="bank-icon">
+       🏢
+      </div>
+<h4>
+       US Bank
+      </h4>
+<p>
+       U.S. Bank National Association
+      </p>
+<span class="bank-category">
+       Regional Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="PNC Bank" data-category="regional" href="/pages/pnc-bank-statement-converter.html">
+<div class="bank-icon">
+       🏛️
+      </div>
+<h4>
+       PNC Bank
+      </h4>
+<p>
+       PNC Financial Services
+      </p>
+<span class="bank-category">
+       Regional Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Capital One" data-category="regional" href="/pages/capital-one-statement-converter.html">
+<div class="bank-icon">
+       💳
+      </div>
+<h4>
+       Capital One
+      </h4>
+<span class="bank-category">
+       Regional Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="TD Bank" data-category="regional" href="/pages/td-bank-statement-converter.html">
+<div class="bank-icon">
+       🍁
+      </div>
+<h4>
+       TD Bank
+      </h4>
+<p>
+       TD Bank, N.A.
+      </p>
+<span class="bank-category">
+       Regional Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Truist" data-category="regional" href="/pages/truist-bank-statement-converter.html">
+<div class="bank-icon">
+       🤝
+      </div>
+<h4>
+       Truist
+      </h4>
+<p>
+       Truist Financial Corporation
+      </p>
+<span class="bank-category">
+       Regional Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Regions" data-category="regional" href="/pages/regions-bank-statement-converter.html">
+<div class="bank-icon">
+       🌿
+      </div>
+<h4>
+       Regions
+      </h4>
+<p>
+       Regions Financial Corporation
+      </p>
+<span class="bank-category">
+       Regional Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Fifth Third 5/3" data-category="regional" href="/pages/fifth-third-bank-statement-converter.html">
+<div class="bank-icon">
+       5️⃣
+      </div>
+<h4>
+       Fifth Third
+      </h4>
+<p>
+       Fifth Third Bank
+      </p>
+<span class="bank-category">
+       Regional Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="KeyBank Key Bank" data-category="regional" href="/pages/keybank-statement-converter.html">
+<div class="bank-icon">
+       🔑
+      </div>
+<h4>
+       KeyBank
+      </h4>
+<p>
+       KeyBank National Association
+      </p>
+<span class="bank-category">
+       Regional Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="SunTrust Bank" data-category="regional" href="/pages/suntrust-bank-statement-converter.html">
+<div class="bank-icon">
+       ☀️
+      </div>
+<h4>
+       SunTrust
+      </h4>
+<p>
+       SunTrust Banks, Inc.
+      </p>
+<span class="bank-category">
+       Regional Bank
+      </span>
+</a>
+<!-- Online Banks & Credit Unions -->
+<a class="bank-item" data-bank-name="Ally Bank" data-category="online" href="/pages/ally-bank-statement-converter.html">
+<div class="bank-icon">
+       🚗
+      </div>
+<h4>
+       Ally Bank
+      </h4>
+<p>
+       Ally Financial Inc.
+      </p>
+<span class="bank-category">
+       Online Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Navy Federal NFCU" data-category="online" href="/pages/navy-federal-statement-converter.html">
+<div class="bank-icon">
+       ⚓
+      </div>
+<h4>
+       Navy Federal
+      </h4>
+<p>
+       Navy Federal Credit Union
+      </p>
+<span class="bank-category">
+       Credit Union
+      </span>
+</a>
+<a class="bank-item" data-bank-name="USAA" data-category="online" href="/pages/usaa-bank-statement-converter.html">
+<div class="bank-icon">
+       🎖️
+      </div>
+<h4>
+       USAA
+      </h4>
+<p>
+       USAA Federal Savings Bank
+      </p>
+<span class="bank-category">
+       Online Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Citizens Bank" data-category="online" href="/pages/citizens-bank-statement-converter.html">
+<div class="bank-icon">
+       🏙️
+      </div>
+<h4>
+       Citizens Bank
+      </h4>
+<p>
+       Citizens Financial Group
+      </p>
+<span class="bank-category">
+       Online Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Huntington" data-category="online" href="/pages/huntington-bank-statement-converter.html">
+<div class="bank-icon">
+       🦌
+      </div>
+<h4>
+       Huntington
+      </h4>
+<p>
+       Huntington National Bank
+      </p>
+<span class="bank-category">
+       Online Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="M&amp;T Bank MT" data-category="online" href="/pages/mt-bank-statement-converter.html">
+<div class="bank-icon">
+       🏔️
+      </div>
+<h4>
+       M&amp;T Bank
+      </h4>
+<p>
+       Manufacturers and Traders Bank
+      </p>
+<span class="bank-category">
+       Online Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Comerica" data-category="online" href="/pages/comerica-bank-statement-converter.html">
+<div class="bank-icon">
+       ⭐
+      </div>
+<h4>
+       Comerica
+      </h4>
+<p>
+       Comerica Bank
+      </p>
+<span class="bank-category">
+       Online Bank
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Zions Bank" data-category="online" href="/pages/zions-bank-statement-converter.html">
+<div class="bank-icon">
+       🏜️
+      </div>
+<h4>
+       Zions Bank
+      </h4>
+<p>
+       Zions Bancorporation
+      </p>
+<span class="bank-category">
+       Online Bank
+      </span>
+</a>
+<!-- City-Specific Converters -->
+<a class="bank-item" data-bank-name="New York Banks NYC" data-category="city" href="/pages/new-york-bank-statement-converter.html">
+<div class="bank-icon">
+       🗽
+      </div>
+<h4>
+       New York Banks
+      </h4>
+<p>
+       NYC Financial Institutions
+      </p>
+<span class="bank-category">
+       By City
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Los Angeles Banks LA" data-category="city" href="/pages/los-angeles-bank-statement-converter.html">
+<div class="bank-icon">
+       🌴
+      </div>
+<h4>
+       Los Angeles Banks
+      </h4>
+<p>
+       LA Financial Institutions
+      </p>
+<span class="bank-category">
+       By City
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Chicago Banks" data-category="city" href="/pages/chicago-bank-statement-converter.html">
+<div class="bank-icon">
+       🌃
+      </div>
+<h4>
+       Chicago Banks
+      </h4>
+<p>
+       Chicago Financial Institutions
+      </p>
+<span class="bank-category">
+       By City
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Houston Banks" data-category="city" href="/pages/houston-bank-statement-converter.html">
+<div class="bank-icon">
+       🚀
+      </div>
+<h4>
+       Houston Banks
+      </h4>
+<p>
+       Houston Financial Institutions
+      </p>
+<span class="bank-category">
+       By City
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Phoenix Banks" data-category="city" href="/pages/phoenix-bank-statement-converter.html">
+<div class="bank-icon">
+       🌵
+      </div>
+<h4>
+       Phoenix Banks
+      </h4>
+<p>
+       Phoenix Financial Institutions
+      </p>
+<span class="bank-category">
+       By City
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Philadelphia Banks Philly" data-category="city" href="/pages/philadelphia-bank-statement-converter.html">
+<div class="bank-icon">
+       🔔
+      </div>
+<h4>
+       Philadelphia Banks
+      </h4>
+<p>
+       Philly Financial Institutions
+      </p>
+<span class="bank-category">
+       By City
+      </span>
+</a>
+<a class="bank-item" data-bank-name="San Antonio Banks" data-category="city" href="/pages/san-antonio-bank-statement-converter.html">
+<div class="bank-icon">
+       ⭐
+      </div>
+<h4>
+       San Antonio Banks
+      </h4>
+<p>
+       San Antonio Financial
+      </p>
+<span class="bank-category">
+       By City
+      </span>
+</a>
+<a class="bank-item" data-bank-name="San Diego Banks" data-category="city" href="/pages/san-diego-bank-statement-converter.html">
+<div class="bank-icon">
+       🏖️
+      </div>
+<h4>
+       San Diego Banks
+      </h4>
+<p>
+       San Diego Financial
+      </p>
+<span class="bank-category">
+       By City
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Dallas Banks" data-category="city" href="/pages/dallas-bank-statement-converter.html">
+<div class="bank-icon">
+       🤠
+      </div>
+<h4>
+       Dallas Banks
+      </h4>
+<p>
+       Dallas Financial Institutions
+      </p>
+<span class="bank-category">
+       By City
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Boston Banks" data-category="city" href="/pages/boston-bank-statement-converter.html">
+<div class="bank-icon">
+       🏛️
+      </div>
+<h4>
+       Boston Banks
+      </h4>
+<p>
+       Boston Financial Institutions
+      </p>
+<span class="bank-category">
+       By City
+      </span>
+</a>
+<a class="bank-item" data-bank-name="Seattle Banks" data-category="city" href="/pages/seattle-bank-statement-converter.html">
+<div class="bank-icon">
+       ☕
+      </div>
+<h4>
+       Seattle Banks
+      </h4>
+<p>
+       Seattle Financial Institutions
+      </p>
+<span class="bank-category">
+       By City
+      </span>
+</a>
+</div>
+<!-- No Results Message -->
+<div class="no-results" id="noResults" style="display: none;">
+<p>
+      No banks found matching your search. Try a different search term.
+     </p>
+</div>
+<!-- CTA -->
+<div class="bank-cta-section">
+<p>
+      Can't find your bank? Don't worry!
+     </p>
+<h3>
+      Our AI works with ANY bank statement
+     </h3>
+<a class="cta-button" href="#uploadBox">
+      Try Your Bank Now
+     </a>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="content-section" id="pricing" style="background: var(--bg-secondary);">
+<div class="container">
+<div class="section-header">
+<h2>
+      Simple, Transparent Pricing
+     </h2>
+<p>
+      Choose the plan that fits your needs
+     </p>
+</div>
+<div class="feature-grid" style="max-width: 1000px; margin: 0 auto;">
+<div class="feature-card" style="text-align: center;">
+<h3>
+       Free
+      </h3>
+<div style="font-size: 2rem; color: var(--primary); margin: 1rem 0;">
+       $0
+      </div>
+<p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+       Perfect for individuals
+      </p>
+<ul style="list-style: none; text-align: left; margin-bottom: 2rem;">
+<li style="padding: 0.5rem 0;">
+        ✓ 5 conversions per month
+       </li>
+<li style="padding: 0.5rem 0;">
+        ✓ 50+ banks supported
+       </li>
+<li style="padding: 0.5rem 0;">
+        ✓ CSV export
+       </li>
+<li style="padding: 0.5rem 0;">
+        ✓ Basic support
+       </li>
+</ul>
+<a class="btn" href="/pricing.html" style="display: block;">
+       Get Started
+      </a>
+</div>
+<div class="feature-card" style="text-align: center; border: 2px solid var(--primary);">
+<h3>
+       Pro
+      </h3>
+<div style="font-size: 2rem; color: var(--primary); margin: 1rem 0;">
+       $19
+       <span style="font-size: 1rem;">
+        /month
+       </span>
+</div>
+<p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+       For professionals
+      </p>
+<ul style="list-style: none; text-align: left; margin-bottom: 2rem;">
+<li style="padding: 0.5rem 0;">
+        ✓ Unlimited conversions
+       </li>
+<li style="padding: 0.5rem 0;">
+        ✓ 1000+ banks supported
+       </li>
+<li style="padding: 0.5rem 0;">
+        ✓ CSV &amp; Excel export
+       </li>
+<li style="padding: 0.5rem 0;">
+        ✓ Batch processing
+       </li>
+<li style="padding: 0.5rem 0;">
+        ✓ Priority support
+       </li>
+</ul>
+<a class="btn" href="/pricing.html" style="display: block;">
+       Create Free Account
+      </a>
+</div>
+<div class="feature-card" style="text-align: center;">
+<h3>
+       Business
+      </h3>
+<div style="font-size: 2rem; color: var(--primary); margin: 1rem 0;">
+       $49
+       <span style="font-size: 1rem;">
+        /month
+       </span>
+</div>
+<p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+       For teams &amp; businesses
+      </p>
+<ul style="list-style: none; text-align: left; margin-bottom: 2rem;">
+<li style="padding: 0.5rem 0;">
+        ✓ Everything in Pro
+       </li>
+<li style="padding: 0.5rem 0;">
+        ✓ Team collaboration
+       </li>
+<li style="padding: 0.5rem 0;">
+        ✓ Custom formats
+       </li>
+<li style="padding: 0.5rem 0;">
+        ✓ Dedicated support
+       </li>
+</ul>
+<a class="btn" href="/pricing.html" style="display: block;">
+       Contact Sales
+      </a>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="content-section" id="faq">
+<div class="container">
+<div class="section-header">
+<h2>
+      Frequently Asked Questions
+     </h2>
+<p>
+      Everything you need to know about our bank statement converter
+     </p>
+</div>
+<div class="faq-section">
+<div class="faq-item">
+<h3 class="faq-question">
+       What file formats can I upload?
+      </h3>
+<p class="faq-answer">
+       Currently, we support PDF bank statements. This covers 99% of digital bank statements. If your bank provides statements in a different format, please contact us.
+      </p>
+</div>
+<div class="faq-item">
+<h3 class="faq-question">
+       How accurate is the conversion?
+      </h3>
+<p class="faq-answer">
+       Our AI achieves 99.9% accuracy for digital PDF statements. For scanned statements, accuracy depends on scan quality but typically exceeds 98%.
+      </p>
+</div>
+<div class="faq-item">
+<h3 class="faq-question">
+       Is my data secure?
+      </h3>
+<p class="faq-answer">
+       Yes! We use 256-bit SSL encryption for all transfers. Your files are automatically deleted immediately after conversion. We never store your financial data.
+      </p>
+</div>
+<div class="faq-item">
+<h3 class="faq-question">
+       Can I convert multiple statements at once?
+      </h3>
+<p class="faq-answer">
+       Yes! Pro and Business plans support batch processing. You can upload multiple PDFs and receive a single consolidated CSV or separate files for each statement.
+      </p>
+</div>
+<div class="faq-item">
+<h3 class="faq-question">
+       What accounting software is supported?
+      </h3>
+<p class="faq-answer">
+       Our CSV format works with all major accounting software including QuickBooks, Xero, FreshBooks, Wave, and Excel. We also offer custom formatting for specific software needs.
+      </p>
+</div>
+</div>
+</div>
+</section>
+<footer class="footer">
+<p>
+    © 2025 BankCSVConverter |
+    <a href="/privacy.html">
+     Privacy Policy
+    </a>
+    |
+    <a href="/terms.html">
+     Terms of Service
+    </a>
+</p>
+</footer>
+<!-- Single consolidated script -->
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
     
-    <footer class="footer">
-        <p>© 2025 BankCSVConverter | <a href="/pages/bank-statement-converter-comparison.html">Why Choose Us</a> | <a href="/blog/financial-data-privacy-guide.html">Privacy Guide</a></p>
-    </footer>
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
     
-    <!-- Inline JavaScript for Fast Loading -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, initializing upload functionality');
+    // Bank search and filter functionality
+    const bankSearch = document.getElementById('bankSearch');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const bankItems = document.querySelectorAll('.bank-item');
+    const noResults = document.getElementById('noResults');
+    const banksGrid = document.getElementById('banksGrid');
+    
+    // Search functionality
+    if (bankSearch) {
+        bankSearch.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            let hasResults = false;
             
-            const uploadArea = document.getElementById('uploadArea');
-            const uploadBtn = document.getElementById('uploadBtn');
-            const fileInput = document.getElementById('fileInput');
-            const initialState = document.getElementById('initialState');
-            const processingState = document.getElementById('processingState');
-            const successState = document.getElementById('successState');
-            const downloadBtn = document.getElementById('downloadBtn');
-            const convertAnother = document.getElementById('convertAnother');
-            const errorMessage = document.getElementById('errorMessage');
-            
-            // Check if elements exist
-            if (!uploadBtn) {
-                console.error('Upload button not found!');
-                return;
-            }
-            if (!fileInput) {
-                console.error('File input not found!');
-                return;
-            }
-            
-            // Mobile menu toggle
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            if (menuToggle && navMenu) {
-                menuToggle.addEventListener('click', () => {
-                    navMenu.classList.toggle('active');
-                    menuToggle.classList.toggle('active');
-                });
-                
-                // Close menu when clicking on a link
-                document.querySelectorAll('.nav-menu a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navMenu.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                    });
-                });
-            }
-            
-            // Upload button click
-            uploadBtn.addEventListener('click', () => {
-                console.log('Upload button clicked');
-                fileInput.click();
+            bankItems.forEach(item => {
+                const bankName = item.getAttribute('data-bank-name').toLowerCase();
+                if (bankName.includes(searchTerm)) {
+                    item.classList.remove('hidden');
+                    hasResults = true;
+                } else {
+                    item.classList.add('hidden');
+                }
             });
             
-            // File input change
-            fileInput.addEventListener('change', (e) => {
-                console.log('File input changed', e.target.files);
-                handleFile(e);
+            // Show/hide no results message
+            if (noResults) {
+                noResults.style.display = hasResults ? 'none' : 'block';
+            }
+        });
+    }
+    
+    // Filter functionality
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Update active state
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            let hasResults = false;
+            
+            bankItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                if (filter === 'all' || category === filter) {
+                    item.classList.remove('hidden');
+                    hasResults = true;
+                } else {
+                    item.classList.add('hidden');
+                }
             });
             
-            // Drag and drop
-            uploadArea.addEventListener('dragover', (e) => {
+            // Clear search when filtering
+            if (bankSearch) {
+                bankSearch.value = '';
+            }
+            
+            // Show/hide no results message
+            if (noResults) {
+                noResults.style.display = hasResults ? 'none' : 'block';
+            }
+        });
+    });
+    
+    // File upload functionality
+    const uploadBtn = document.getElementById('uploadBtn');
+    const fileInput = document.getElementById('fileInput');
+    const uploadBox = document.getElementById('uploadBox');
+    const progressContainer = document.getElementById('progressContainer');
+    const resultContainer = document.getElementById('resultContainer');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const convertAnotherBtn = document.getElementById('convertAnotherBtn');
+    
+    if (uploadBtn && fileInput) {
+        uploadBtn.addEventListener('click', () => fileInput.click());
+        
+        fileInput.addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                processFile(e.target.files[0]);
+            }
+        });
+        
+        // Drag and drop functionality
+        if (uploadBox) {
+            uploadBox.addEventListener('dragover', (e) => {
                 e.preventDefault();
-                uploadArea.classList.add('dragging');
+                uploadBox.style.transform = 'translateY(-10px)';
             });
             
-            uploadArea.addEventListener('dragleave', () => {
-                uploadArea.classList.remove('dragging');
+            uploadBox.addEventListener('dragleave', () => {
+                uploadBox.style.transform = 'translateY(0)';
             });
             
-            uploadArea.addEventListener('drop', (e) => {
+            uploadBox.addEventListener('drop', (e) => {
                 e.preventDefault();
-                uploadArea.classList.remove('dragging');
+                uploadBox.style.transform = 'translateY(0)';
                 
-                const files = e.dataTransfer.files;
-                console.log('Files dropped:', files);
-                if (files.length > 0) {
-                    if (files[0].type === 'application/pdf') {
-                        handleFile({ target: { files: files } });
-                    } else {
-                        showError('Please drop a PDF file');
-                    }
+                if (e.dataTransfer.files.length > 0) {
+                    processFile(e.dataTransfer.files[0]);
                 }
             });
+        }
+    }
+    
+    function processFile(file) {
+        if (!file.type.includes('pdf')) {
+            alert('Please upload a PDF file');
+            return;
+        }
+        
+        // Show progress container
+        uploadBox.style.display = 'none';
+        progressContainer.style.display = 'block';
+        
+        // Simulate processing
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 20;
+            if (progress > 100) progress = 100;
             
-            // Convert another button
-            if (convertAnother) {
-                convertAnother.addEventListener('click', () => {
-                    fileInput.value = '';
-                    showInitialState();
-                });
-            }
+            progressFill.style.width = progress + '%';
             
-            // Handle file upload
-            function handleFile(e) {
-                console.log('handleFile called', e);
-                const file = e.target.files[0];
-                console.log('Selected file:', file);
-                
-                if (!file) {
-                    showError('No file selected');
-                    return;
-                }
-                
-                if (file.type !== 'application/pdf') {
-                    showError('Please select a PDF file. You selected: ' + file.type);
-                    return;
-                }
-                
-                console.log('Uploading file:', file.name);
-                uploadFile(file);
-            }
-            
-            // Upload file to server
-            async function uploadFile(file) {
-                console.log('uploadFile called with:', file.name);
-                showProcessingState();
-                
-                // Simulate processing delay
+            if (progress === 100) {
+                clearInterval(interval);
                 setTimeout(() => {
-                    console.log('Processing complete');
-                    // For demo purposes, create a sample CSV download
-                    const sampleCSV = `Date,Description,Debit,Credit,Balance
-2024-01-01,"Beginning Balance",,,5000.00
-2024-01-02,"Amazon Purchase",45.99,,4954.01
-2024-01-03,"Salary Deposit",,3500.00,8454.01
-2024-01-05,"Grocery Store",125.50,,8328.51
-2024-01-07,"Utility Bill",89.00,,8239.51
-2024-01-10,"ATM Withdrawal",200.00,,8039.51
-2024-01-12,"Restaurant",65.00,,7974.51
-2024-01-15,"Online Transfer",,500.00,8474.51
-2024-01-18,"Gas Station",45.00,,8429.51
-2024-01-20,"Subscription Service",12.99,,8416.52`;
-                    
-                    const blob = new Blob([sampleCSV], { type: 'text/csv' });
-                    const url = window.URL.createObjectURL(blob);
-                    showSuccessState(url);
-                }, 2000);
+                    progressContainer.style.display = 'none';
+                    resultContainer.style.display = 'block';
+                }, 500);
             }
-            
-            // State management
-            function showInitialState() {
-                initialState.style.display = 'block';
-                processingState.style.display = 'none';
-                successState.style.display = 'none';
-                errorMessage.style.display = 'none';
-            }
-            
-            function showProcessingState() {
-                initialState.style.display = 'none';
-                processingState.style.display = 'block';
-                successState.style.display = 'none';
-                errorMessage.style.display = 'none';
-            }
-            
-            function showSuccessState(downloadUrl) {
-                initialState.style.display = 'none';
-                processingState.style.display = 'none';
-                successState.style.display = 'block';
-                downloadBtn.href = downloadUrl;
-                downloadBtn.download = 'bank_statement_converted.csv';
-            }
-            
-            function showError(message) {
-                errorMessage.textContent = message;
-                errorMessage.style.display = 'block';
-            }
-        }); // End of DOMContentLoaded
-    </script>
+        }, 300);
+    }
+    
+    if (convertAnotherBtn) {
+        convertAnotherBtn.addEventListener('click', () => {
+            resultContainer.style.display = 'none';
+            uploadBox.style.display = 'block';
+            fileInput.value = '';
+            progressFill.style.width = '0%';
+        });
+    }
+});
+  </script>
+<script src="js/mobile-navigation.js">
+</script><script src="js/mobile-nav.js"></script>
 </body>
 </html>

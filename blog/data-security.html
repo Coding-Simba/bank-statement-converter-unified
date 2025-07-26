@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about the security measures, encryption protocols, and compliance standards we implement to protect your financial data during document processing.">
+    <title>Understanding Data Security in Financial Document Processing - BankCSVConverter</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="/css/nav-fix.css">
+    <link rel="stylesheet" href="/css/dropdown-fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="/css/blog-fix.css" rel="stylesheet"/>
+    <link href="/css/blog-text-size-fix.css" rel="stylesheet"/>
+    <link href="https://BankCSVConverter.com/blog/data-security" rel="canonical"/>
+    <style>
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+        }
+        .skip-link:focus {
+            position: absolute;
+            left: 6px;
+            top: 7px;
+            z-index: 999999;
+            padding: 8px 16px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Article-specific styles */
+        .article-hero {
+            background: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
+            padding: 8rem 0 4rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E') repeat;
+            opacity: 0.1;
+        }
+        
+        .article-hero h1 {
+            font-size: 4.2rem;
+            margin-bottom: 2.4rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .article-meta {
+            display: flex;
+            gap: 2.4rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+            font-size: 1.6rem;
+            opacity: 0.95;
+        }
+        
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        
+        .breadcrumb {
+            padding: 2rem 0;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .breadcrumb-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .breadcrumb-nav a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color var(--transition-base);
+        }
+        
+        .breadcrumb-nav a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        .breadcrumb-separator {
+            color: #6c757d;
+        }
+        
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .article-content {
+            font-size: 1.8rem;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .article-content h2 {
+            font-size: 3.2rem;
+            margin: 4rem 0 2rem;
+            color: #1a1a1a;
+        }
+        
+        .article-content h3 {
+            font-size: 2.4rem;
+            margin: 3rem 0 1.5rem;
+            color: #2a2a2a;
+        }
+        
+        .article-content p {
+            margin-bottom: 2rem;
+        }
+        
+        .article-content ul,
+        .article-content ol {
+            margin: 2rem 0;
+            padding-left: 3rem;
+        }
+        
+        .article-content li {
+            margin-bottom: 1rem;
+        }
+        
+        .security-feature {
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .security-feature h4 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .compliance-badges {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .compliance-badge {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .compliance-badge i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .compliance-badge h5 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .compliance-badge p {
+            font-size: 1.4rem;
+            color: #6c757d;
+            margin: 0;
+        }
+        
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 3rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin: 4rem 0;
+        }
+        
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .author-info h4 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .author-info p {
+            font-size: 1.6rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+        
+        .author-bio {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--primary);
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 4rem;
+            transition: all var(--transition-base);
+        }
+        
+        .back-to-blog:hover {
+            transform: translateX(-4px);
+        }
+        
+        .article-share {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 3rem 0;
+            border-top: 1px solid #e9ecef;
+            margin-top: 4rem;
+        }
+        
+        .share-label {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .share-button {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            border: 2px solid #e9ecef;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+        
+        .share-button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .article-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .article-meta {
+                font-size: 1.4rem;
+            }
+            
+            .article-content {
+                font-size: 1.6rem;
+            }
+            
+            .article-content h2 {
+                font-size: 2.4rem;
+            }
+            
+            .article-content h3 {
+                font-size: 2rem;
+            }
+            
+            .author-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .compliance-badges {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <span class="logo-text">BankCSV</span>
+                </a>
+                <div class="nav-links desktop-only">
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            <i class="fas fa-th"></i> Tools
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="/convert-pdf.html" class="dropdown-item">
+                                <i class="fas fa-file-pdf"></i>
+                                Convert PDF
+                            </a>
+                            <a href="/merge-statements.html" class="dropdown-item">
+                                <i class="fas fa-object-group"></i>
+                                Merge Statements
+                            </a>
+                            <a href="/split-by-date.html" class="dropdown-item">
+                                <i class="fas fa-cut"></i>
+                                Split by Date
+                            </a>
+                            <a href="/analyze-transactions.html" class="dropdown-item">
+                                <i class="fas fa-chart-line"></i>
+                                Analyze Transactions
+                            </a>
+                        </div>
+                    </div>
+                    <a href="/#features" class="nav-link">Features</a>
+                    <a href="/#banks" class="nav-link">Supported Banks</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                    </div>
+            </div>
+            <div class="nav-right">
+                <a href="/pricing.html" class="nav-link desktop-only">Pricing</a>
+                <a href="/business.html" class="nav-link desktop-only">Business</a>
+                <a href="/login.html" class="nav-link">Log In</a>
+                <a href="/signup.html" class="btn-primary">Sign Up Free</a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="/#features" class="mobile-link">Features</a>
+            <a href="/#banks" class="mobile-link">Supported Banks</a>
+            <a href="/blog.html" class="mobile-link">Blog</a>
+            <a href="/pricing.html" class="mobile-link">Pricing</a>
+            <a href="/business.html" class="mobile-link">Business</a>
+        </div>
+    </div>
+
+    <main id="main">
+        <!-- Article Hero -->
+        <section class="article-hero">
+            <div class="container">
+                <h1>Understanding Data Security in Financial Document Processing</h1>
+                <div class="article-meta">
+                    <span class="article-author">
+                        <i class="fas fa-user"></i>
+                        David Lee, Security Engineer
+                    </span>
+                    <span class="article-date">
+                        <i class="far fa-calendar"></i>
+                        January 5, 2025
+                    </span>
+                    <span class="read-time">
+                        <i class="far fa-clock"></i>
+                        8 min read
+                    </span>
+                    <span class="article-category">
+                        <i class="far fa-folder"></i>
+                        Security
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <div class="container">
+                <div class="breadcrumb-nav">
+                    <a href="/">Home</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <a href="/blog.html">Blog</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span>Understanding Data Security in Financial Document Processing</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Article Content -->
+        <article class="article-container">
+            <a href="/blog.html" class="back-to-blog">
+                <i class="fas fa-arrow-left"></i>
+                Back to Blog
+            </a>
+
+            <div class="article-content">
+                <p>In today's digital landscape, the security of financial data is paramount. When processing sensitive bank statements and financial documents, implementing robust security measures isn't just good practice—it's essential for protecting your business and your customers. Let's explore the comprehensive security framework that modern financial document processing requires.</p>
+
+                <h2>The Foundation of Financial Data Security</h2>
+
+                <p>Financial document processing involves handling some of the most sensitive information in the digital world. Bank statements contain transaction histories, account numbers, balances, and personal information that could be devastating if compromised. This is why security must be built into every layer of the processing system.</p>
+
+                <div class="security-feature">
+                    <h4><i class="fas fa-shield-alt"></i> Defense in Depth</h4>
+                    <p>Security isn't about a single protective measure—it's about multiple layers working together. From encryption at rest and in transit to access controls and audit logs, each layer adds protection against different types of threats.</p>
+                </div>
+
+                <h2>Encryption: The First Line of Defense</h2>
+
+                <p>Encryption is the cornerstone of data security in financial document processing. But not all encryption is created equal. Here's what you need to know:</p>
+
+                <h3>Data in Transit</h3>
+                <p>Every connection should use TLS 1.3 or higher, ensuring that data moving between your browser and servers is protected from interception. This includes:</p>
+                <ul>
+                    <li>File uploads and downloads</li>
+                    <li>API communications</li>
+                    <li>Authentication requests</li>
+                    <li>All web traffic</li>
+                </ul>
+
+                <h3>Data at Rest</h3>
+                <p>Files stored on servers require AES-256 encryption, the same standard used by financial institutions and government agencies. This ensures that even if physical security is breached, the data remains unreadable without the encryption keys.</p>
+
+                <div class="security-feature">
+                    <h4><i class="fas fa-key"></i> Key Management</h4>
+                    <p>Encryption is only as strong as key management. Keys should be rotated regularly, stored separately from data, and managed through hardware security modules (HSMs) when possible.</p>
+                </div>
+
+                <h2>Access Control and Authentication</h2>
+
+                <p>Controlling who can access financial data is crucial. Modern access control systems implement:</p>
+
+                <h3>Multi-Factor Authentication (MFA)</h3>
+                <p>Password alone isn't enough. MFA adds additional verification layers through:</p>
+                <ul>
+                    <li>Time-based one-time passwords (TOTP)</li>
+                    <li>SMS verification (though less secure)</li>
+                    <li>Biometric authentication</li>
+                    <li>Hardware security keys</li>
+                </ul>
+
+                <h3>Role-Based Access Control (RBAC)</h3>
+                <p>Not everyone needs access to everything. RBAC ensures users only access data necessary for their role, implementing the principle of least privilege.</p>
+
+                <h2>Compliance and Regulatory Standards</h2>
+
+                <p>Financial data processing must comply with numerous regulations. Understanding and implementing these standards is crucial for legal operation and customer trust.</p>
+
+                <div class="compliance-badges">
+                    <div class="compliance-badge">
+                        <i class="fas fa-certificate"></i>
+                        <h5>PCI DSS</h5>
+                        <p>Payment Card Industry Data Security Standard</p>
+                    </div>
+                    <div class="compliance-badge">
+                        <i class="fas fa-balance-scale"></i>
+                        <h5>GDPR</h5>
+                        <p>General Data Protection Regulation</p>
+                    </div>
+                    <div class="compliance-badge">
+                        <i class="fas fa-flag-usa"></i>
+                        <h5>CCPA</h5>
+                        <p>California Consumer Privacy Act</p>
+                    </div>
+                    <div class="compliance-badge">
+                        <i class="fas fa-building"></i>
+                        <h5>SOC 2</h5>
+                        <p>Service Organization Control 2</p>
+                    </div>
+                </div>
+
+                <h3>GDPR Compliance</h3>
+                <p>The General Data Protection Regulation requires:</p>
+                <ul>
+                    <li><strong>Data Minimization:</strong> Only collect and process necessary data</li>
+                    <li><strong>Right to Erasure:</strong> Users can request complete data deletion</li>
+                    <li><strong>Data Portability:</strong> Users can export their data in standard formats</li>
+                    <li><strong>Privacy by Design:</strong> Security built into systems from the ground up</li>
+                </ul>
+
+                <h3>Industry-Specific Regulations</h3>
+                <p>Different industries have additional requirements:</p>
+                <ul>
+                    <li><strong>Healthcare:</strong> HIPAA compliance for medical billing statements</li>
+                    <li><strong>Financial Services:</strong> SOX compliance for public companies</li>
+                    <li><strong>Government:</strong> FedRAMP authorization for federal agencies</li>
+                </ul>
+
+                <h2>Data Retention and Deletion</h2>
+
+                <p>One of the most overlooked aspects of security is proper data lifecycle management. Keeping data longer than necessary increases risk without providing value.</p>
+
+                <div class="security-feature">
+                    <h4><i class="fas fa-clock"></i> Automatic Data Deletion</h4>
+                    <p>Implementing automatic deletion policies ensures data doesn't persist longer than needed. For financial document processing, this typically means:</p>
+                    <ul>
+                        <li>Immediate deletion after successful processing</li>
+                        <li>24-hour retention for user convenience</li>
+                        <li>Secure overwriting to prevent recovery</li>
+                    </ul>
+                </div>
+
+                <h2>Security Monitoring and Incident Response</h2>
+
+                <p>Even with strong preventive measures, monitoring for threats and having response plans is essential.</p>
+
+                <h3>Real-Time Monitoring</h3>
+                <p>Security information and event management (SIEM) systems should monitor:</p>
+                <ul>
+                    <li>Unusual access patterns</li>
+                    <li>Failed authentication attempts</li>
+                    <li>Data export volumes</li>
+                    <li>System anomalies</li>
+                </ul>
+
+                <h3>Incident Response Plan</h3>
+                <p>When incidents occur, having a clear response plan minimizes damage:</p>
+                <ol>
+                    <li><strong>Detection:</strong> Identify the incident quickly</li>
+                    <li><strong>Containment:</strong> Prevent spread of the breach</li>
+                    <li><strong>Eradication:</strong> Remove the threat</li>
+                    <li><strong>Recovery:</strong> Restore normal operations</li>
+                    <li><strong>Lessons Learned:</strong> Improve defenses</li>
+                </ol>
+
+                <h2>Best Practices for Users</h2>
+
+                <p>Security is a shared responsibility. Users processing financial documents should:</p>
+
+                <h3>Before Processing</h3>
+                <ul>
+                    <li>Verify the website's SSL certificate</li>
+                    <li>Use strong, unique passwords</li>
+                    <li>Enable multi-factor authentication</li>
+                    <li>Check privacy policies and security certifications</li>
+                </ul>
+
+                <h3>During Processing</h3>
+                <ul>
+                    <li>Use secure networks (avoid public WiFi)</li>
+                    <li>Process only necessary documents</li>
+                    <li>Download converted files immediately</li>
+                    <li>Log out when finished</li>
+                </ul>
+
+                <h3>After Processing</h3>
+                <ul>
+                    <li>Delete local copies of sensitive files</li>
+                    <li>Clear browser cache and history</li>
+                    <li>Monitor accounts for unusual activity</li>
+                    <li>Report any suspicious behavior</li>
+                </ul>
+
+                <h2>The Future of Financial Data Security</h2>
+
+                <p>As technology evolves, so do security measures. Emerging technologies promise even stronger protection:</p>
+
+                <h3>Zero-Knowledge Architecture</h3>
+                <p>Future systems may implement zero-knowledge proofs, allowing document processing without the service provider ever seeing the actual data.</p>
+
+                <h3>Homomorphic Encryption</h3>
+                <p>This allows computation on encrypted data without decrypting it first, providing unprecedented security for cloud-based processing.</p>
+
+                <h3>Blockchain Audit Trails</h3>
+                <p>Immutable audit logs on blockchain can provide tamper-proof records of all data access and processing activities.</p>
+
+                <h2>Conclusion</h2>
+
+                <p>Security in financial document processing isn't optional—it's fundamental. By implementing comprehensive security measures including encryption, access control, compliance frameworks, and proper data handling, we can protect sensitive financial information while enabling the efficiency benefits of digital processing.</p>
+
+                <p>Remember, security is an ongoing process, not a destination. Regular audits, updates, and improvements ensure protection against evolving threats. When choosing a financial document processing service, prioritize those that transparently communicate their security measures and maintain industry certifications.</p>
+
+                <p>Your financial data deserves the highest level of protection. By understanding these security principles and choosing services that implement them properly, you can confidently digitize your financial workflows without compromising security.</p>
+            </div>
+
+            <!-- Author Box -->
+            <div class="author-box">
+                <div class="author-avatar">DL</div>
+                <div class="author-info">
+                    <h4>David Lee</h4>
+                    <p>Security Engineer</p>
+                    <p class="author-bio">David is a security engineer with over 10 years of experience in financial technology. He specializes in implementing secure document processing systems and ensuring compliance with international data protection regulations.</p>
+                </div>
+            </div>
+
+            <!-- Article Share -->
+            <div class="article-share">
+                <span class="share-label">Share this article:</span>
+                <div class="share-buttons">
+                    <button aria-label="Share on Twitter" class="share-button">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                    <button aria-label="Share on LinkedIn" class="share-button">
+                        <i class="fab fa-linkedin-in"></i>
+                    </button>
+                    <button aria-label="Share on Facebook" class="share-button">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button aria-label="Copy link" class="share-button">
+                        <i class="fas fa-link"></i>
+                    </button>
+                </div>
+            </div>
+        </article>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Experience Secure Document Processing</h2>
+                <p>Convert your bank statements with confidence using our secure platform</p>
+                <a class="cta-button" href="/">Try It Free</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Standardized Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="/features.html">Features</a></li>
+                        <li><a href="/how-it-works.html">How It Works</a></li>
+                        <li><a href="/pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/security.html">Security</a></li>
+                        <li><a href="/status.html">Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/gdpr.html">GDPR</a></li>
+                        <li><a href="/ccpa.html">CCPA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 BankCSVConverter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Standardized Scripts -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                this.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+            
+            // Close menu when clicking on a link
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.navbar') && !event.target.closest('.mobile-menu') && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+        
+        // Dropdown functionality
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        
+        if (dropdownToggle && dropdownMenu) {
+            dropdownToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdownMenu.classList.toggle('show');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.dropdown')) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        }
+        
+        // Social share buttons
+        const shareButtons = document.querySelectorAll('.share-button');
+        shareButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const url = window.location.href;
+                const title = document.title;
+                let shareUrl;
+                
+                if (this.querySelector('i').classList.contains('fa-twitter')) {
+                    shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+                } else if (this.querySelector('i').classList.contains('fa-linkedin-in')) {
+                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+                } else if (this.querySelector('i').classList.contains('fa-facebook-f')) {
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                } else if (this.querySelector('i').classList.contains('fa-link')) {
+                    navigator.clipboard.writeText(url).then(() => {
+                        alert('Link copied to clipboard!');
+                    });
+                    return;
+                }
+                
+                if (shareUrl) {
+                    window.open(shareUrl, '_blank', 'width=600,height=400');
+                }
+            });
+        });
+    });
+    </script>
+    <script src="/js/modern-homepage-fixed.js"></script>
+    <script src="/js/dropdown-handler.js"></script>
+    <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</body>
+</html>

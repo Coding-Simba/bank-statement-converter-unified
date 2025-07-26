@@ -1,355 +1,655 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bank statement converter for New York businesses and residents. Convert PDF statements from NYC banks to CSV/Excel. Works with Chase, Citi, Bank of America, and all NY banks.">
-    <meta name="keywords" content="new york bank statement converter, nyc pdf to csv, manhattan bank converter, brooklyn bank statement tool, ny bank statement to excel">
-    
-    <title>New York Bank Statement Converter - NYC PDF to CSV | BankCSVConverter</title>
-    
-    <link rel="canonical" href="https://BankCSVConverter.com/new-york-bank-statement-converter">
-    
-    <!-- Local Business Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Bank Statement Converter - New York",
-        "description": "Online bank statement conversion service for New York businesses and residents",
-        "url": "https://BankCSVConverter.com/new-york-bank-statement-converter",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "New York",
-            "addressRegion": "NY",
-            "addressCountry": "US"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 40.7128,
-            "longitude": -74.0060
-        },
-        "areaServed": [
-            {
-                "@type": "City",
-                "name": "New York City"
-            },
-            {
-                "@type": "City",
-                "name": "Manhattan"
-            },
-            {
-                "@type": "City",
-                "name": "Brooklyn"
-            },
-            {
-                "@type": "City",
-                "name": "Queens"
-            },
-            {
-                "@type": "City",
-                "name": "Bronx"
-            },
-            {
-                "@type": "City",
-                "name": "Staten Island"
-            }
-        ]
-    }
-    </script>
-    
-    <link rel="stylesheet" href="../css/unified-styles.css">
-</head>
-<body>
-        <!-- Header Navigation -->
-    <header>
-        <nav>
-            <a href="../" class="nav-logo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                    <path d="M9 12l2 2 4-4"/>
-                </svg>
-                BankCSVConverter
-            </a>
-            
-            <ul class="nav-menu">
-                <li><a href="../all-pages.html">All Banks</a></li>
-                <li><a href="../pages/bank-statement-converter-comparison.html">Why Us</a></li>
-                <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
-            </ul>
-            
-            <button class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-                    <p>or drag and drop your PDF here</p>
-        </nav>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="hero location-hero">
-            <div class="container">
-                <h1>New York Bank Statement Converter</h1>
-                <p class="hero-subtitle">Convert PDF bank statements to CSV/Excel for NYC businesses and residents. Works with all New York banks and credit unions.</p>
-                
-                <div class="upload-area" id="uploadBox">
-                    <h2>Convert Your NY Bank Statement</h2>
-                    <button class="upload-btn" id="uploadBtn">
-                        Upload PDF Statement
-                    </button>
-                    <p>Works with Chase, Citi, Bank of America, TD Bank, and all NYC banks</p>
-                    <input type="file" id="fileInput" accept=".pdf" hidden>
-                </div>
-            
-                
-                <!-- Progress Container -->
-                <div class="upload-area" id="progressContainer" style="display: none;">
-                    <div class="loading"></div>
-                    <h3 id="progressText">Processing your statement...</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                </div>
-                
-                <!-- Result Container -->
-                <div class="upload-area" id="resultContainer" style="display: none;">
-                    <div class="success-check">✓</div>
-                    <h3>Conversion Complete!</h3>
-                    <p>Your statement has been successfully converted to CSV format.</p>
-                    <button class="upload-btn" id="downloadBtn">Download CSV File</button>
-                    <button class="secondary-btn" id="convertAnotherBtn">Convert Another Statement</button>
-                </div></div>
-        </section>
-
-        <!-- NYC Banks Section -->
-        <section class="content-section">
-            <div class="container">
-                <h2>Supported New York Banks & Credit Unions</h2>
-                <p>Our converter works with all major banks operating in New York City and the tri-state area:</p>
-                
-                <div class="banks-grid">
-                    <div class="bank-group">
-                        <h3>Major NYC Banks</h3>
-                        <ul>
-                            <li>✓ Chase Bank (largest in NYC)</li>
-                            <li>✓ Citibank (NYC headquarters)</li>
-                            <li>✓ Bank of America</li>
-                            <li>✓ TD Bank</li>
-                            <li>✓ Capital One</li>
-                            <li>✓ Wells Fargo</li>
-                            <li>✓ HSBC Bank USA</li>
-                            <li>✓ Santander Bank</li>
-                        </ul>
-                    </div>
-                    <div class="bank-group">
-                        <h3>NY Regional Banks</h3>
-                        <ul>
-                            <li>✓ M&T Bank</li>
-                            <li>✓ Signature Bank</li>
-                            <li>✓ New York Community Bank</li>
-                            <li>✓ Dime Community Bank</li>
-                            <li>✓ Apple Bank</li>
-                            <li>✓ Sterling National Bank</li>
-                            <li>✓ Amalgamated Bank</li>
-                            <li>✓ Valley National Bank</li>
-                        </ul>
-                    </div>
-                    <div class="bank-group">
-                        <h3>NYC Credit Unions</h3>
-                        <ul>
-                            <li>✓ Municipal Credit Union (MCU)</li>
-                            <li>✓ Teachers Federal Credit Union</li>
-                            <li>✓ Bethpage Federal Credit Union</li>
-                            <li>✓ NYPD Federal Credit Union</li>
-                            <li>✓ Melrose Credit Union</li>
-                            <li>✓ Progressive Credit Union</li>
-                            <li>✓ Brooklyn Cooperative FCU</li>
-                            <li>✓ Lower East Side People's FCU</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- NYC Business Section -->
-        <section class="content-section">
-            <div class="container">
-                <h2>Perfect for New York Businesses</h2>
-                <p>Whether you're a Wall Street firm, Brooklyn startup, or Queens small business, our converter helps NYC businesses:</p>
-                
-                <div class="benefits-grid">
-                    <div class="benefit">
-                        <h3>📊 Tax Preparation</h3>
-                        <p>Prepare for NY state and city taxes. Export transactions for your NYC accountant or CPA.</p>
-                    </div>
-                    <div class="benefit">
-                        <h3>💼 Business Accounting</h3>
-                        <p>Import into QuickBooks, Xero, or FreshBooks. Perfect for NYC startups and SMBs.</p>
-                    </div>
-                    <div class="benefit">
-                        <h3>🏦 Multi-Bank Support</h3>
-                        <p>Many NYC businesses use multiple banks. Convert statements from all your banks in one place.</p>
-                    </div>
-                    <div class="benefit">
-                        <h3>⚡ Save Time</h3>
-                        <p>In the city that never sleeps, save hours on manual data entry. Convert in seconds.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- NYC Neighborhoods -->
-        <section class="content-section">
-            <div class="container">
-                <h2>Serving All NYC Boroughs & Neighborhoods</h2>
-                
-                <div class="neighborhoods-grid">
-                    <div class="borough">
-                        <h3>Manhattan</h3>
-                        <p>Financial District, Midtown, Upper East Side, Upper West Side, Harlem, Chelsea, SoHo, TriBeCa, East Village, West Village</p>
-                    </div>
-                    <div class="borough">
-                        <h3>Brooklyn</h3>
-                        <p>Downtown Brooklyn, Williamsburg, Park Slope, Brooklyn Heights, DUMBO, Bushwick, Bed-Stuy, Crown Heights, Bay Ridge</p>
-                    </div>
-                    <div class="borough">
-                        <h3>Queens</h3>
-                        <p>Long Island City, Astoria, Flushing, Jackson Heights, Forest Hills, Bayside, Jamaica, Corona, Elmhurst</p>
-                    </div>
-                    <div class="borough">
-                        <h3>The Bronx</h3>
-                        <p>Fordham, Riverdale, Pelham Bay, Morris Park, Hunts Point, Tremont, Soundview, Wakefield</p>
-                    </div>
-                    <div class="borough">
-                        <h3>Staten Island</h3>
-                        <p>St. George, Stapleton, New Dorp, Great Kills, Tottenville, Port Richmond, West Brighton</p>
-                    </div>
-                    <div class="borough">
-                        <h3>Greater NYC Area</h3>
-                        <p>Westchester, Long Island, New Jersey, Connecticut</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Use Cases -->
-        <section class="content-section">
-            <div class="container">
-                <h2>How New Yorkers Use Our Converter</h2>
-                
-                <div class="use-cases">
-                    <div class="use-case">
-                        <h3>🏙️ NYC Real Estate</h3>
-                        <p>Real estate agents and property managers convert rent roll statements and expense reports for property accounting.</p>
-                    </div>
-                    <div class="use-case">
-                        <h3>🍕 Restaurant Owners</h3>
-                        <p>NYC restaurant owners convert daily merchant statements to track sales and expenses in Excel.</p>
-                    </div>
-                    <div class="use-case">
-                        <h3>🚕 Gig Workers</h3>
-                        <p>Uber, Lyft, and delivery drivers convert statements to track income for NYC TLC requirements.</p>
-                    </div>
-                    <div class="use-case">
-                        <h3>👔 Finance Professionals</h3>
-                        <p>Wall Street professionals convert personal investment statements for tax and portfolio tracking.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ -->
-        <section class="content-section">
-            <div class="container">
-                <h2>New York Bank Statement Converter FAQ</h2>
-                
-                <div class="faq-item">
-                    <h3>Do you support NYC-specific banks like Signature Bank or Dime?</h3>
-                    <p>Yes! We support all New York regional banks including Signature Bank, Dime Community Bank, New York Community Bank, and all NYC credit unions.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3>Can I convert statements for NYC business taxes?</h3>
-                    <p>Absolutely. Our CSV export is perfect for NYC business tax preparation. The format works with all major accounting software used by NYC CPAs.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3>Is this service available 24/7 for NYC users?</h3>
-                    <p>Yes! Like New York City itself, our converter never sleeps. Convert your bank statements anytime, day or night.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3>Do you store my NYC banking data?</h3>
-                    <p>No. We take New Yorkers' privacy seriously. All files are automatically deleted after conversion. Your financial data never leaves our secure servers.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="cta-section">
-            <div class="container">
-                <h2>Start Converting Your NY Bank Statements</h2>
-                <p>Join thousands of New York businesses and residents saving time on financial data entry</p>
-                <a href="#uploadBtn" class="cta-button">Convert PDF to CSV Now</a>
-                
-                <div class="trust-indicators">
-                    <div class="indicator">
-                        <strong>50,000+</strong>
-                        <span>NYC users</span>
-                    </div>
-                    <div class="indicator">
-                        <strong>All 5</strong>
-                        <span>Boroughs served</span>
-                    </div>
-                    <div class="indicator">
-                        <strong>24/7</strong>
-                        <span>Available</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Related Cities -->
-        <section class="content-section">
-            <div class="container">
-                <h3>Also Serving Nearby Cities</h3>
-                <div class="city-links">
-                    <a href="./newark-bank-statement-converter.html">Newark, NJ</a>
-                    <a href="./jersey-city-bank-statement-converter.html">Jersey City</a>
-                    <a href="./white-plains-bank-statement-converter.html">White Plains</a>
-                    <a href="./stamford-bank-statement-converter.html">Stamford, CT</a>
-                    <a href="./long-island-bank-statement-converter.html">Long Island</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Bank Statement Converter - Proudly serving New York City 🗽</p>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Bank statement converter for New York businesses and residents. Convert PDF statements from NYC banks to CSV/Excel. Works with Chase, Citi, Bank of America, and all NY banks." name="description"/>
+  <link href="/css/production.css" rel="stylesheet"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+  <title>
+   New York Bank Statement Converter - NYC PDF to CSV
+  </title>
+  <link href="https://BankCSVConverter.compages/new-york-bank-statement-converter" rel="canonical"/>
+  <!-- Unified Design System -->
+  <!-- Skip Link for Accessibility -->
+  <style>
+   .skip-link {
+            position: absolute;
+            left: -9999px;
+        }
+        .skip-link:focus {
+            position: absolute;
+            left: 6px;
+            top: 7px;
+            z-index: 999999;
+            padding: 8px 16px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+        }
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+  <!-- Standardized Header -->
+  <header>
+   <nav>
+    <a class="nav-logo" href="../">
+     <svg style="width: 24px; height: 24px; flex-shrink: 0;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+      </rect>
+      <line x1="3" x2="21" y1="9" y2="9">
+      </line>
+      <line x1="9" x2="9" y1="21" y2="9">
+      </line>
+     </svg>
+     BankCSVConverter
+    </a>
+    <ul class="nav-menu">
+     <li>
+      <a href="../features.html">
+       Features
+      </a>
+     </li>
+     <li>
+      <a href="../how-it-works.html">
+       How It Works
+      </a>
+     </li>
+     <li>
+      <a href="../pricing.html">
+       Pricing
+      </a>
+     </li>
+     <li>
+      <a href="../blog.html">
+       Blog
+      </a>
+     </li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle">
+     <span>
+     </span>
+     <span>
+     </span>
+     <span>
+     </span>
+    </button>
+   </nav>
+   <div class="nav-overlay">
+   </div>
+  </header>
+  <main id="main">
+   <div class="content-wrapper">
+    <div class="container">
+     <!-- Hero Section -->
+     <section class="hero location-hero">
+      <div class="container">
+       <h1>
+        New York Bank Statement Converter
+       </h1>
+       <p class="hero-subtitle">
+        Convert PDF bank statements to CSV/Excel for NYC businesses and residents. Works with all New York banks and credit unions.
+       </p>
+       <div class="upload-area" id="uploadBox">
+        <h2>
+         Convert Your NY Bank Statement
+        </h2>
+        <button class="upload-btn" id="uploadBtn">
+         Upload PDF Statement
+        </button>
+        <p>
+         Works with Chase, Citi, Bank of America, TD Bank, and all NYC banks
+        </p>
+        <input accept=".pdf" aria-label="Upload PDF bank statement" hidden="" id="fileInput" type="file"/>
+       </div>
+       <!-- Progress Container -->
+       <div class="upload-area" id="progressContainer" style="display: none;">
+        <div class="loading">
         </div>
-    </footer>
-
-    <script src="../js/main.js" async></script>
-    <!-- Mobile menu JavaScript -->
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        menuToggle.addEventListener('click', () => {
+        <h3 id="progressText">
+         Processing your statement...
+        </h3>
+        <div class="progress-bar">
+         <div class="progress-fill" id="progressFill">
+         </div>
+        </div>
+       </div>
+       <!-- Result Container -->
+       <div class="upload-area" id="resultContainer" style="display: none;">
+        <div class="success-check">
+         ✓
+        </div>
+        <h3>
+         Conversion Complete!
+        </h3>
+        <p>
+         Your statement has been successfully converted to CSV format.
+        </p>
+        <button class="upload-btn" id="downloadBtn">
+         Download CSV File
+        </button>
+        <button class="secondary-btn" id="convertAnotherBtn">
+         Convert Another Statement
+        </button>
+       </div>
+      </div>
+     </section>
+     <!-- NYC Banks Section -->
+     <section class="content-section">
+      <div class="container">
+       <h2>
+        Supported New York Banks &amp; Credit Unions
+       </h2>
+       <p>
+        Our converter works with all major banks operating in New York City and the tri-state area:
+       </p>
+       <div class="banks-grid">
+        <div class="bank-group">
+         <h3>
+          Major NYC Banks
+         </h3>
+         <ul>
+          <li>
+           ✓ Chase Bank (largest in NYC)
+          </li>
+          <li>
+           ✓ Citibank (NYC headquarters)
+          </li>
+          <li>
+           ✓ Bank of America
+          </li>
+          <li>
+           ✓ TD Bank
+          </li>
+          <li>
+           ✓ Capital One
+          </li>
+          <li>
+           ✓ Wells Fargo
+          </li>
+          <li>
+           ✓ HSBC Bank USA
+          </li>
+          <li>
+           ✓ Santander Bank
+          </li>
+         </ul>
+        </div>
+        <div class="bank-group">
+         <h3>
+          NY Regional Banks
+         </h3>
+         <ul>
+          <li>
+           ✓ M&amp;T Bank
+          </li>
+          <li>
+           ✓ Signature Bank
+          </li>
+          <li>
+           ✓ New York Community Bank
+          </li>
+          <li>
+           ✓ Dime Community Bank
+          </li>
+          <li>
+           ✓ Apple Bank
+          </li>
+          <li>
+           ✓ Sterling National Bank
+          </li>
+          <li>
+           ✓ Amalgamated Bank
+          </li>
+          <li>
+           ✓ Valley National Bank
+          </li>
+         </ul>
+        </div>
+        <div class="bank-group">
+         <h3>
+          NYC Credit Unions
+         </h3>
+         <ul>
+          <li>
+           ✓ Municipal Credit Union (MCU)
+          </li>
+          <li>
+           ✓ Teachers Federal Credit Union
+          </li>
+          <li>
+           ✓ Bethpage Federal Credit Union
+          </li>
+          <li>
+           ✓ NYPD Federal Credit Union
+          </li>
+          <li>
+           ✓ Melrose Credit Union
+          </li>
+          <li>
+           ✓ Progressive Credit Union
+          </li>
+          <li>
+           ✓ Brooklyn Cooperative FCU
+          </li>
+          <li>
+           ✓ Lower East Side People's FCU
+          </li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- NYC Business Section -->
+     <section class="content-section">
+      <div class="container">
+       <h2>
+        Perfect for New York Businesses
+       </h2>
+       <p>
+        Whether you're a Wall Street firm, Brooklyn startup, or Queens small business, our converter helps NYC businesses:
+       </p>
+       <div class="benefits-grid">
+        <div class="benefit">
+         <h3>
+          📊 Tax Preparation
+         </h3>
+         <p>
+          Prepare for NY state and city taxes. Export transactions for your NYC accountant or CPA.
+         </p>
+        </div>
+        <div class="benefit">
+         <h3>
+          💼 Business Accounting
+         </h3>
+         <p>
+          Import into QuickBooks, Xero, or FreshBooks. Perfect for NYC startups and SMBs.
+         </p>
+        </div>
+        <div class="benefit">
+         <h3>
+          🏦 Multi-Bank Support
+         </h3>
+         <p>
+          Many NYC businesses use multiple banks. Convert statements from all your banks in one place.
+         </p>
+        </div>
+        <div class="benefit">
+         <h3>
+          ⚡ Save Time
+         </h3>
+         <p>
+          In the city that never sleeps, save hours on manual data entry. Convert in seconds.
+         </p>
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- NYC Neighborhoods -->
+     <section class="content-section">
+      <div class="container">
+       <h2>
+        Serving All NYC Boroughs &amp; Neighborhoods
+       </h2>
+       <div class="neighborhoods-grid">
+        <div class="borough">
+         <h3>
+          Manhattan
+         </h3>
+         <p>
+          Financial District, Midtown, Upper East Side, Upper West Side, Harlem, Chelsea, SoHo, TriBeCa, East Village, West Village
+         </p>
+        </div>
+        <div class="borough">
+         <h3>
+          Brooklyn
+         </h3>
+         <p>
+          Downtown Brooklyn, Williamsburg, Park Slope, Brooklyn Heights, DUMBO, Bushwick, Bed-Stuy, Crown Heights, Bay Ridge
+         </p>
+        </div>
+        <div class="borough">
+         <h3>
+          Queens
+         </h3>
+         <p>
+          Long Island City, Astoria, Flushing, Jackson Heights, Forest Hills, Bayside, Jamaica, Corona, Elmhurst
+         </p>
+        </div>
+        <div class="borough">
+         <h3>
+          The Bronx
+         </h3>
+         <p>
+          Fordham, Riverdale, Pelham Bay, Morris Park, Hunts Point, Tremont, Soundview, Wakefield
+         </p>
+        </div>
+        <div class="borough">
+         <h3>
+          Staten Island
+         </h3>
+         <p>
+          St. George, Stapleton, New Dorp, Great Kills, Tottenville, Port Richmond, West Brighton
+         </p>
+        </div>
+        <div class="borough">
+         <h3>
+          Greater NYC Area
+         </h3>
+         <p>
+          Westchester, Long Island, New Jersey, Connecticut
+         </p>
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- Use Cases -->
+     <section class="content-section">
+      <div class="container">
+       <h2>
+        How New Yorkers Use Our Converter
+       </h2>
+       <div class="use-cases">
+        <div class="use-case">
+         <h3>
+          🏙️ NYC Real Estate
+         </h3>
+         <p>
+          Real estate agents and property managers convert rent roll statements and expense reports for property accounting.
+         </p>
+        </div>
+        <div class="use-case">
+         <h3>
+          🍕 Restaurant Owners
+         </h3>
+         <p>
+          NYC restaurant owners convert daily merchant statements to track sales and expenses in Excel.
+         </p>
+        </div>
+        <div class="use-case">
+         <h3>
+          🚕 Gig Workers
+         </h3>
+         <p>
+          Uber, Lyft, and delivery drivers convert statements to track income for NYC TLC requirements.
+         </p>
+        </div>
+        <div class="use-case">
+         <h3>
+          👔 Finance Professionals
+         </h3>
+         <p>
+          Wall Street professionals convert personal investment statements for tax and portfolio tracking.
+         </p>
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- FAQ -->
+     <section class="content-section">
+      <div class="container">
+       <h2>
+        New York Bank Statement Converter FAQ
+       </h2>
+       <div class="faq-item">
+        <h3>
+         Do you support NYC-specific banks like Signature Bank or Dime?
+        </h3>
+        <p>
+         Yes! We support all New York regional banks including Signature Bank, Dime Community Bank, New York Community Bank, and all NYC credit unions.
+        </p>
+       </div>
+       <div class="faq-item">
+        <h3>
+         Can I convert statements for NYC business taxes?
+        </h3>
+        <p>
+         Absolutely. Our CSV export is perfect for NYC business tax preparation. The format works with all major accounting software used by NYC CPAs.
+        </p>
+       </div>
+       <div class="faq-item">
+        <h3>
+         Is this service available 24/7 for NYC users?
+        </h3>
+        <p>
+         Yes! Like New York City itself, our converter never sleeps. Convert your bank statements anytime, day or night.
+        </p>
+       </div>
+       <div class="faq-item">
+        <h3>
+         Do you store my NYC banking data?
+        </h3>
+        <p>
+         No. We take New Yorkers' privacy seriously. All files are automatically deleted after conversion. Your financial data never leaves our secure servers.
+        </p>
+       </div>
+      </div>
+     </section>
+     <!-- CTA -->
+     <section class="cta-section">
+      <div class="container">
+       <h2>
+        Start Converting Your NY Bank Statements
+       </h2>
+       <p>
+        Join thousands of New York businesses and residents saving time on financial data entry
+       </p>
+       <a class="cta-button" href="#uploadBtn">
+        Convert PDF to CSV Now
+       </a>
+       <div class="trust-indicators">
+        <div class="indicator">
+         <strong>
+          50,000+
+         </strong>
+         <span>
+          NYC users
+         </span>
+        </div>
+        <div class="indicator">
+         <strong>
+          All 5
+         </strong>
+         <span>
+          Boroughs served
+         </span>
+        </div>
+        <div class="indicator">
+         <strong>
+          24/7
+         </strong>
+         <span>
+          Available
+         </span>
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- Related Cities -->
+     <section class="content-section">
+      <div class="container">
+       <h3>
+        Also Serving Nearby Cities
+       </h3>
+       <div class="city-links">
+        <a href="./newark-bank-statement-converter.html">
+         Newark, NJ
+        </a>
+        <a href="./jersey-city-bank-statement-converter.html">
+         Jersey City
+        </a>
+        <a href="./white-plains-bank-statement-converter.html">
+         White Plains
+        </a>
+        <a href="./stamford-bank-statement-converter.html">
+         Stamford, CT
+        </a>
+        <a href="./long-island-bank-statement-converter.html">
+         Long Island
+        </a>
+       </div>
+      </div>
+     </section>
+    </div>
+   </div>
+  </main>
+  <!-- Standardized Footer -->
+  <footer>
+   <div class="container">
+    <div class="footer-content">
+     <div class="footer-section">
+      <h4>
+       Product
+      </h4>
+      <ul>
+       <li>
+        <a href="../features.html">
+         Features
+        </a>
+       </li>
+       <li>
+        <a href="../how-it-works.html">
+         How It Works
+        </a>
+       </li>
+       <li>
+        <a href="../pricing.html">
+         Pricing
+        </a>
+       </li>
+       </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Company
+      </h4>
+      <ul>
+       <li>
+        <a href="../about.html">
+         About
+        </a>
+       </li>
+       <li>
+        <a href="../blog.html">
+         Blog
+        </a>
+       </li>
+       <li>
+        <a href="../contact.html">
+         Contact
+        </a>
+       </li>
+       <li>
+        <a href="../careers.html">
+         Careers
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Support
+      </h4>
+      <ul>
+       <li>
+        <a href="../help.html">
+         Help Center
+        </a>
+       </li>
+       <li>
+        <a href="../faq.html">
+         FAQ
+        </a>
+       </li>
+       <li>
+        <a href="../security.html">
+         Security
+        </a>
+       </li>
+       <li>
+        <a href="../status.html">
+         Status
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Legal
+      </h4>
+      <ul>
+       <li>
+        <a href="../privacy.html">
+         Privacy Policy
+        </a>
+       </li>
+       <li>
+        <a href="../terms.html">
+         Terms of Service
+        </a>
+       </li>
+       <li>
+        <a href="../gdpr.html">
+         GDPR
+        </a>
+       </li>
+       <li>
+        <a href="../ccpa.html">
+         CCPA
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>
+      © 2025 BankCSVConverter. All rights reserved.
+     </p>
+    </div>
+   </div>
+  </footer>
+  <!-- Standardized Scripts -->
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             menuToggle.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
         
         // Close menu when clicking on a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function() {
                 navMenu.classList.remove('active');
                 menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
-    </script>
-</body>
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+  </script>
+  <script src="/js/production.js">
+  </script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
 </html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>
+   Upload Test
+  </title>
+  <style>
+   body { 
+            font-family: Arial, sans-serif; 
+            max-width: 600px; 
+            margin: 50px auto; 
+            padding: 20px;
+        }
+        .test-area {
+            border: 2px dashed #ccc;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .success { color: green; }
+        .error { color: red; }
+    
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  position: absolute;
+  left: 6px;
+  top: 7px;
+  z-index: 999999;
+  padding: 8px 16px;
+  background: #000;
+  color: white;
+  text-decoration: none;
+}
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+  <h1>
+   Test Upload Functionality
+  </h1>
+  <div class="test-area">
+   <button id="testBtn" style="padding: 10px 20px; font-size: 16px;">
+    Click to Select PDF
+   </button>
+   <input accept=".pdf" aria-label="Upload PDF bank statement" id="testInput" style="display: none;" type="file"/>
+   <div id="result" style="margin-top: 20px;">
+   </div>
+  </div>
+  <p>
+   Or drag and drop a PDF file into the box above
+  </p>
+  <script>
+   const btn = document.getElementById('testBtn');
+        const input = document.getElementById('testInput');
+        const result = document.getElementById('result');
+        const testArea = document.querySelector('.test-area');
+        
+        // Click handler
+        btn.onclick = () => {
+            console.log('Button clicked');
+            input.click();
+        };
+        
+        // File selection
+        input.onchange = (e) => {
+            const file = e.target.files[0];
+            console.log('File selected:', file);
+            if (file) {
+                result.innerHTML = `<p class="success">✓ Selected: ${file.name}</p>`;
+            }
+        };
+        
+        // Drag and drop
+        testArea.ondragover = (e) => {
+            e.preventDefault();
+            testArea.style.backgroundColor = '#f0f0f0';
+        };
+        
+        testArea.ondragleave = (e) => {
+            e.preventDefault();
+            testArea.style.backgroundColor = '';
+        };
+        
+        testArea.ondrop = (e) => {
+            e.preventDefault();
+            testArea.style.backgroundColor = '';
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                result.innerHTML = `<p class="success">✓ Dropped: ${file.name}</p>`;
+            }
+        };
+        
+        console.log('Test page loaded successfully');
+  </script>
+ </body>
+</html>

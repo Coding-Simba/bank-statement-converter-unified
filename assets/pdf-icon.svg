@@ -1,0 +1,14 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none">
+    <!-- Document shape -->
+    <path d="M50 10H20C17.79 10 16 11.79 16 14V66C16 68.21 17.79 70 20 70H60C62.21 70 64 68.21 64 66V24L50 10Z" fill="#FF5252"/>
+    <!-- Folded corner -->
+    <path d="M50 10V24H64L50 10Z" fill="#D32F2F"/>
+    <!-- PDF text -->
+    <text x="40" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">PDF</text>
+    <!-- Document lines -->
+    <rect x="24" y="46" width="32" height="2" rx="1" fill="white" opacity="0.8"/>
+    <rect x="24" y="52" width="32" height="2" rx="1" fill="white" opacity="0.8"/>
+    <rect x="24" y="58" width="20" height="2" rx="1" fill="white" opacity="0.8"/>
+  </g>
+</svg>

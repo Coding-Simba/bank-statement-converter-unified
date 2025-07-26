@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>
+   Test JavaScript
+  </title>
+  <style>
+   .skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  position: absolute;
+  left: 6px;
+  top: 7px;
+  z-index: 999999;
+  padding: 8px 16px;
+  background: #000;
+  color: white;
+  text-decoration: none;
+}
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+  <h1>
+   Testing File Upload Button
+  </h1>
+  <!-- Test 1: Basic onclick -->
+  <button onclick="alert('Button 1 works!')">
+   Test Button 1
+  </button>
+  <!-- Test 2: File input with onclick -->
+  <button onclick="document.getElementById('test2').click()">
+   Test Button 2 - Open File
+  </button>
+  <input aria-label="Upload PDF bank statement" id="test2" onchange="alert('File selected: ' + this.files[0].name)" style="display:none" type="file"/>
+  <!-- Test 3: Function call -->
+  <button onclick="testFunction()">
+   Test Button 3 - Function
+  </button>
+  <script>
+   function testFunction() {
+            alert('Function works!');
+            document.getElementById('test2').click();
+        }
+        
+        // Test if JavaScript is running
+        console.log('JavaScript is loaded and running!');
+  </script>
+ </body>
+</html>

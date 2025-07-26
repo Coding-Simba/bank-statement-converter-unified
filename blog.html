@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BankCSVConverter Blog - Tips, tutorials, and insights on bank statement conversion, financial data management, and accounting automation.">
+    <title>Blog - Bank Statement Converter | BankCSVConverter</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="/css/nav-fix.css">
+    <link rel="stylesheet" href="/css/dropdown-fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="/css/blog-fix.css" rel="stylesheet"/>
+    <link href="https://BankCSVConverter.com/blog" rel="canonical"/>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <span class="logo-text">BankCSV</span>
+                </a>
+                <div class="nav-links desktop-only">
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            <i class="fas fa-th"></i> Tools
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="/convert-pdf.html" class="dropdown-item">
+                                <i class="fas fa-file-pdf"></i>
+                                Convert PDF
+                            </a>
+                            <a href="/merge-statements.html" class="dropdown-item">
+                                <i class="fas fa-object-group"></i>
+                                Merge Statements
+                            </a>
+                            <a href="/split-by-date.html" class="dropdown-item">
+                                <i class="fas fa-cut"></i>
+                                Split by Date
+                            </a>
+                            <a href="/analyze-transactions.html" class="dropdown-item">
+                                <i class="fas fa-chart-line"></i>
+                                Analyze Transactions
+                            </a>
+                        </div>
+                    </div>
+                    <a href="/#features" class="nav-link">Features</a>
+                    <a href="/#banks" class="nav-link">Supported Banks</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                    </div>
+            </div>
+            <div class="nav-right">
+                <a href="/pricing.html" class="nav-link desktop-only">Pricing</a>
+                <a href="/business.html" class="nav-link desktop-only">Business</a>
+                <a href="/login.html" class="nav-link">Log In</a>
+                <a href="/signup.html" class="btn-primary">Sign Up Free</a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="/#features" class="mobile-link">Features</a>
+            <a href="/#banks" class="mobile-link">Supported Banks</a>
+            <a href="/blog.html" class="mobile-link">Blog</a>
+            <a href="/pricing.html" class="mobile-link">Pricing</a>
+            <a href="/business.html" class="mobile-link">Business</a>
+        </div>
+    </div>
+    
+  <style>
+   .skip-link {
+            position: absolute;
+            left: -9999px;
+        }
+        .skip-link:focus {
+            position: absolute;
+            left: 6px;
+            top: 7px;
+            z-index: 999999;
+            padding: 8px 16px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Blog-specific styles */
+        .blog-hero {
+            background: #f8f9fa;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            color: var(--gray-900);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%236366f1" fill-opacity="0.03"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E') repeat;
+            opacity: 0.5;
+        }
+        
+        .blog-hero h1 {
+            font-size: 5.6rem;
+            margin-bottom: 1.6rem;
+            color: var(--gray-900);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-subtitle {
+            font-size: 2.2rem;
+            margin-bottom: 3.2rem;
+            color: var(--gray-600);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Search Bar */
+        .blog-search {
+            max-width: 60rem;
+            margin: 0 auto 3.2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .search-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1.6rem 5.6rem 1.6rem 2.4rem;
+            font-size: 1.6rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-full);
+            background: white;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-base);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 0.8rem;
+            background: var(--primary);
+            border: none;
+            border-radius: var(--radius-full);
+            padding: 1.2rem 2.4rem;
+            color: white;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+        
+        .search-button:hover {
+            background: var(--primary-dark);
+            transform: translateX(-2px);
+        }
+        
+        /* Category filters */
+        .blog-categories {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .category-tag {
+            padding: 0.8rem 2rem;
+            background: white;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-full);
+            color: var(--gray-700);
+            font-size: 1.4rem;
+            font-weight: 500;
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+        
+        .category-tag:hover,
+        .category-tag.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Featured Post */
+        .featured-post {
+            background: white;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            margin-bottom: 6rem;
+            transition: all var(--transition-base);
+        }
+        
+        .featured-post:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .featured-image {
+            background: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            min-height: 35rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .featured-content {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.6rem;
+            border-radius: var(--radius-full);
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.6rem;
+            width: fit-content;
+        }
+        
+        .featured-title {
+            font-size: 3.2rem;
+            margin-bottom: 1.6rem;
+            line-height: 1.3;
+        }
+        
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
+            gap: 3.2rem;
+            margin-bottom: 6rem;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .blog-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 20rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .blog-content {
+            padding: 2.4rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-meta {
+            display: flex;
+            gap: 1.6rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+            color: var(--gray-500);
+        }
+        
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .blog-title {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.4;
+        }
+        
+        .blog-excerpt {
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 1.6rem;
+            flex: 1;
+        }
+        
+        .blog-link {
+            color: var(--primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all var(--transition-base);
+        }
+        
+        .blog-link:hover {
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+        
+        /* Author info */
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid var(--gray-200);
+            margin-top: auto;
+        }
+        
+        .author-avatar {
+            width: 4rem;
+            height: 4rem;
+            border-radius: var(--radius-full);
+            background: var(--gray-300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--gray-600);
+        }
+        
+        .author-details {
+            flex: 1;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            font-size: 1.4rem;
+            color: var(--gray-800);
+        }
+        
+        .author-role {
+            font-size: 1.2rem;
+            color: var(--gray-500);
+        }
+        
+        /* Social sharing */
+        .social-share {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .share-button {
+            width: 3.2rem;
+            height: 3.2rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--gray-300);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+        
+        .share-button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        /* Newsletter section */
+        .newsletter-section {
+            background: var(--primary);
+            border-radius: var(--radius-xl);
+            padding: 4rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 6rem;
+        }
+        
+        .newsletter-section h2 {
+            color: white;
+            margin-bottom: 1.2rem;
+        }
+        
+        .newsletter-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.4rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 1.6rem;
+            max-width: 50rem;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-size: 1.6rem;
+        }
+        
+        .newsletter-button {
+            padding: 1.2rem 3.2rem;
+            background: white;
+            color: var(--primary);
+            border: none;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+        
+        .newsletter-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .page-link {
+            min-width: 4rem;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-lg);
+            color: var(--gray-700);
+            font-weight: 500;
+            transition: all var(--transition-base);
+        }
+        
+        .page-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .page-link.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 3.6rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.8rem;
+            }
+            
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-image {
+                min-height: 20rem;
+            }
+            
+            .featured-content {
+                padding: 2.4rem;
+            }
+            
+            .featured-title {
+                font-size: 2.4rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 2.4rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .blog-categories {
+                padding: 0 1.6rem;
+            }
+        }
+  </style>
+  <main id="main">
+   <div class="content-wrapper">
+    <div class="container">
+     <!-- Blog Hero -->
+     <section class="blog-hero">
+      <div class="container">
+       <h1>
+        Blog &amp; Resources
+       </h1>
+       <p class="hero-subtitle">
+        Tips, tutorials, and insights to help you manage financial data more efficiently
+       </p>
+       <!-- Search Bar -->
+       <div class="blog-search">
+        <form class="search-wrapper">
+         <input aria-label="Search blog posts" class="search-input" placeholder="Search articles, tutorials, and more..." type="text"/>
+         <button class="search-button" type="submit">
+          <i class="fas fa-search">
+          </i>
+         </button>
+        </form>
+       </div>
+       <div class="blog-categories">
+        <a class="category-tag active" data-category="all" href="#">
+         All Posts
+        </a>
+        <a class="category-tag" data-category="tutorials" href="#">
+         Tutorials
+        </a>
+        <a class="category-tag" data-category="tips" href="#">
+         Tips &amp; Tricks
+        </a>
+        <a class="category-tag" data-category="updates" href="#">
+         Product Updates
+        </a>
+        <a class="category-tag" data-category="news" href="#">
+         Industry News
+        </a>
+       </div>
+      </div>
+     </section>
+     <!-- Blog Content -->
+     <section class="content-section">
+      <div class="container">
+       <!-- Featured Post -->
+       <article class="featured-post">
+        <div class="featured-image">
+         <img alt="PDF to CSV conversion guide" src="https://images.unsplash.com/photo-1568667256549-094345857637?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2340&amp;q=80"/>
+        </div>
+        <div class="featured-content">
+         <span class="featured-badge">
+          Featured Post
+         </span>
+         <h2 class="featured-title">
+          How to Convert Bank Statements from PDF to CSV: The Complete Guide
+         </h2>
+         <div class="blog-meta">
+          <span class="blog-date">
+           <i class="far fa-calendar">
+           </i>
+           January 26, 2025
+          </span>
+          <span class="blog-category">
+           <i class="far fa-folder">
+           </i>
+           Tutorial
+          </span>
+          <span class="read-time">
+           <i class="far fa-clock">
+           </i>
+           10 min read
+          </span>
+         </div>
+         <p class="blog-excerpt">
+          Converting PDF bank statements to CSV format doesn't have to be complicated. In this comprehensive guide, we'll show you exactly how to transform your PDF bank statements into clean, organized CSV files that work perfectly with Excel, QuickBooks, and other accounting software.
+         </p>
+         <div class="author-info">
+          <div class="author-avatar">
+           TG
+          </div>
+          <div class="author-details">
+           <div class="author-name">
+            Tom Garcia
+           </div>
+           <div class="author-role">
+            Senior Product Developer
+           </div>
+          </div>
+          <div class="social-share">
+           <button aria-label="Share on Twitter" class="share-button">
+            <i class="fab fa-twitter">
+            </i>
+           </button>
+           <button aria-label="Share on LinkedIn" class="share-button">
+            <i class="fab fa-linkedin-in">
+            </i>
+           </button>
+           <button aria-label="Share on Facebook" class="share-button">
+            <i class="fab fa-facebook-f">
+            </i>
+           </button>
+          </div>
+         </div>
+         <a class="blog-link" href="/blog/pdf-to-csv-guide.html">
+          Read Full Article →
+         </a>
+        </div>
+       </article>
+       <!-- Blog Grid -->
+       <div class="blog-grid">
+        <article class="blog-card" data-category="tutorials">
+         <div class="blog-image">
+          <img alt="Tax preparation guide" src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2340&amp;q=80"/>
+         </div>
+         <div class="blog-content">
+          <div class="blog-meta">
+           <span class="blog-date">
+            <i class="far fa-calendar">
+            </i>
+            January 15, 2025
+           </span>
+           <span class="blog-category">
+            <i class="far fa-folder">
+            </i>
+            Tutorials
+           </span>
+           <span class="read-time">
+            <i class="far fa-clock">
+            </i>
+            12 min read
+           </span>
+          </div>
+          <h3 class="blog-title">
+           The Complete Guide to Converting Bank Statements for Tax Season
+          </h3>
+          <p class="blog-excerpt">
+           Tax season is here! Learn how to efficiently convert and organize all your bank statements for seamless tax preparation with best practices and time-saving tips.
+          </p>
+          <div class="author-info">
+           <div class="author-avatar">
+            MK
+           </div>
+           <div class="author-details">
+            <div class="author-name">
+             Michael Kim
+            </div>
+            <div class="author-role">
+             Financial Tech Expert
+            </div>
+           </div>
+          </div>
+          <a class="blog-link" href="/blog/tax-season-guide.html">
+           Read More →
+          </a>
+         </div>
+        </article>
+        <article class="blog-card" data-category="tips">
+         <div class="blog-image">
+          <img alt="Automated bookkeeping" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2426&amp;q=80"/>
+         </div>
+         <div class="blog-content">
+          <div class="blog-meta">
+           <span class="blog-date">
+            <i class="far fa-calendar">
+            </i>
+            January 10, 2025
+           </span>
+           <span class="blog-category">
+            <i class="far fa-folder">
+            </i>
+            Tips &amp; Tricks
+           </span>
+           <span class="read-time">
+            <i class="far fa-clock">
+            </i>
+            5 min read
+           </span>
+          </div>
+          <h3 class="blog-title">
+           5 Ways to Speed Up Your Bookkeeping with Automated Conversion
+          </h3>
+          <p class="blog-excerpt">
+           Discover how automated bank statement conversion can save you hours each month and reduce errors in your bookkeeping process. From batch processing to smart categorization.
+          </p>
+          <div class="author-info">
+           <div class="author-avatar">
+            SJ
+           </div>
+           <div class="author-details">
+            <div class="author-name">
+             Sarah Johnson
+            </div>
+            <div class="author-role">
+             Accounting Specialist
+            </div>
+           </div>
+          </div>
+          <a class="blog-link" href="/blog/speed-up-bookkeeping.html">
+           Read More →
+          </a>
+         </div>
+        </article>
+        <article class="blog-card" data-category="security">
+         <div class="blog-image">
+          <img alt="Data security" src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2340&amp;q=80"/>
+         </div>
+         <div class="blog-content">
+          <div class="blog-meta">
+           <span class="blog-date">
+            <i class="far fa-calendar">
+            </i>
+            January 5, 2025
+           </span>
+           <span class="blog-category">
+            <i class="far fa-folder">
+            </i>
+            Security
+           </span>
+           <span class="read-time">
+            <i class="far fa-clock">
+            </i>
+            8 min read
+           </span>
+          </div>
+          <h3 class="blog-title">
+           Understanding Data Security in Financial Document Processing
+          </h3>
+          <p class="blog-excerpt">
+           Learn about the security measures we implement to protect your financial data and why automatic deletion matters for your privacy and compliance.
+          </p>
+          <div class="author-info">
+           <div class="author-avatar">
+            DL
+           </div>
+           <div class="author-details">
+            <div class="author-name">
+             David Lee
+            </div>
+            <div class="author-role">
+             Security Engineer
+            </div>
+           </div>
+          </div>
+          <a class="blog-link" href="/blog/data-security.html">
+           Read More →
+          </a>
+         </div>
+        </article>
+        <article class="blog-card" data-category="updates">
+         <div class="blog-image">
+          <img alt="Product update" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2340&amp;q=80"/>
+         </div>
+         <div class="blog-content">
+          <div class="blog-meta">
+           <span class="blog-date">
+            <i class="far fa-calendar">
+            </i>
+            December 28, 2024
+           </span>
+           <span class="blog-category">
+            <i class="far fa-folder">
+            </i>
+            Product Updates
+           </span>
+           <span class="read-time">
+            <i class="far fa-clock">
+            </i>
+            3 min read
+           </span>
+          </div>
+          <h3 class="blog-title">
+           New Feature: Batch Processing for Multiple Statements
+          </h3>
+          <p class="blog-excerpt">
+           We're excited to announce batch processing capabilities! Convert an entire year of statements in one go with our new bulk upload feature.
+          </p>
+          <div class="author-info">
+           <div class="author-avatar">
+            EP
+           </div>
+           <div class="author-details">
+            <div class="author-name">
+             Emily Park
+            </div>
+            <div class="author-role">
+             Product Manager
+            </div>
+           </div>
+          </div>
+          <a class="blog-link" href="/blog/batch-processing-launch.html">
+           Read More →
+          </a>
+         </div>
+        </article>
+        <article class="blog-card" data-category="tutorials">
+         <div class="blog-image">
+          <img alt="QuickBooks integration" src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2340&amp;q=80"/>
+         </div>
+         <div class="blog-content">
+          <div class="blog-meta">
+           <span class="blog-date">
+            <i class="far fa-calendar">
+            </i>
+            December 20, 2024
+           </span>
+           <span class="blog-category">
+            <i class="far fa-folder">
+            </i>
+            Tutorials
+           </span>
+           <span class="read-time">
+            <i class="far fa-clock">
+            </i>
+            10 min read
+           </span>
+          </div>
+          <h3 class="blog-title">
+           QuickBooks Integration: Import CSV Files Like a Pro
+          </h3>
+          <p class="blog-excerpt">
+           Step-by-step guide on importing converted bank statements into QuickBooks Online and Desktop versions without errors.
+          </p>
+          <div class="author-info">
+           <div class="author-avatar">
+            MK
+           </div>
+           <div class="author-details">
+            <div class="author-name">
+             Michael Kim
+            </div>
+            <div class="author-role">
+             Financial Tech Expert
+            </div>
+           </div>
+          </div>
+          <a class="blog-link" href="/blog/quickbooks-integration.html">
+           Read More →
+          </a>
+         </div>
+        </article>
+        <article class="blog-card" data-category="news">
+         <div class="blog-image">
+          <img alt="Global banking" src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2340&amp;q=80"/>
+         </div>
+         <div class="blog-content">
+          <div class="blog-meta">
+           <span class="blog-date">
+            <i class="far fa-calendar">
+            </i>
+            December 15, 2024
+           </span>
+           <span class="blog-category">
+            <i class="far fa-folder">
+            </i>
+            Industry News
+           </span>
+           <span class="read-time">
+            <i class="far fa-clock">
+            </i>
+            4 min read
+           </span>
+          </div>
+          <h3 class="blog-title">
+           International Bank Support: Now Supporting 1000+ Banks
+          </h3>
+          <p class="blog-excerpt">
+           We've expanded our support to include major banks from 50+ countries. Check if your bank is supported in our growing list.
+          </p>
+          <div class="author-info">
+           <div class="author-avatar">
+            AC
+           </div>
+           <div class="author-details">
+            <div class="author-name">
+             Alex Chen
+            </div>
+            <div class="author-role">
+             Head of Operations
+            </div>
+           </div>
+          </div>
+          <a class="blog-link" href="/blog/international-banks.html">
+           Read More →
+          </a>
+         </div>
+        </article>
+        <article class="blog-card" data-category="tips">
+         <div class="blog-image">
+          <img alt="CSV formatting" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2340&amp;q=80"/>
+         </div>
+         <div class="blog-content">
+          <div class="blog-meta">
+           <span class="blog-date">
+            <i class="far fa-calendar">
+            </i>
+            December 10, 2024
+           </span>
+           <span class="blog-category">
+            <i class="far fa-folder">
+            </i>
+            Tips &amp; Tricks
+           </span>
+           <span class="read-time">
+            <i class="far fa-clock">
+            </i>
+            6 min read
+           </span>
+          </div>
+          <h3 class="blog-title">
+           Common CSV Formatting Issues and How to Fix Them
+          </h3>
+          <p class="blog-excerpt">
+           Troubleshooting guide for the most common CSV formatting problems when working with bank statements and financial data.
+          </p>
+          <div class="author-info">
+           <div class="author-avatar">
+            SJ
+           </div>
+           <div class="author-details">
+            <div class="author-name">
+             Sarah Johnson
+            </div>
+            <div class="author-role">
+             Accounting Specialist
+            </div>
+           </div>
+          </div>
+          <a class="blog-link" href="/blog/csv-formatting-fixes.html">
+           Read More →
+          </a>
+         </div>
+        </article>
+       </div>
+       <!-- Newsletter Section -->
+       <div class="newsletter-section">
+        <h2>
+         Stay Updated
+        </h2>
+        <p>
+         Get the latest tips and updates delivered to your inbox
+        </p>
+        <form class="newsletter-form">
+         <input class="newsletter-input" placeholder="Enter your email" required="" type="email"/>
+         <button class="newsletter-button" type="submit">
+          Subscribe
+         </button>
+        </form>
+       </div>
+       <!-- Pagination -->
+       <div class="pagination">
+        <a class="page-link active" href="#">
+         1
+        </a>
+        <a class="page-link" href="#">
+         2
+        </a>
+        <a class="page-link" href="#">
+         3
+        </a>
+        <a class="page-link" href="#">
+         Next →
+        </a>
+       </div>
+      </div>
+     </section>
+     <!-- CTA Section -->
+     <section class="cta-section">
+      <div class="container">
+       <h2>
+        Ready to Simplify Your Workflow?
+       </h2>
+       <p>
+        Start converting your bank statements today
+       </p>
+       <a class="cta-button" href="/">
+        Try It Free
+       </a>
+      </div>
+     </section>
+    </div>
+   </div>
+  </main>
+  <!-- Standardized Footer -->
+  <footer>
+   <div class="container">
+    <div class="footer-content">
+     <div class="footer-section">
+      <h4>
+       Product
+      </h4>
+      <ul>
+       <li>
+        <a href="/features.html">
+         Features
+        </a>
+       </li>
+       <li>
+        <a href="/how-it-works.html">
+         How It Works
+        </a>
+       </li>
+       <li>
+        <a href="/pricing.html">
+         Pricing
+        </a>
+       </li>
+       </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Company
+      </h4>
+      <ul>
+       <li>
+        <a href="/about.html">
+         About
+        </a>
+       </li>
+       <li>
+        <a href="/blog.html">
+         Blog
+        </a>
+       </li>
+       <li>
+        <a href="/contact.html">
+         Contact
+        </a>
+       </li>
+       <li>
+        <a href="/careers.html">
+         Careers
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Support
+      </h4>
+      <ul>
+       <li>
+        <a href="/help.html">
+         Help Center
+        </a>
+       </li>
+       <li>
+        <a href="/faq.html">
+         FAQ
+        </a>
+       </li>
+       <li>
+        <a href="/security.html">
+         Security
+        </a>
+       </li>
+       <li>
+        <a href="/status.html">
+         Status
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Legal
+      </h4>
+      <ul>
+       <li>
+        <a href="/privacy.html">
+         Privacy Policy
+        </a>
+       </li>
+       <li>
+        <a href="/terms.html">
+         Terms of Service
+        </a>
+       </li>
+       <li>
+        <a href="/gdpr.html">
+         GDPR
+        </a>
+       </li>
+       <li>
+        <a href="/ccpa.html">
+         CCPA
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>
+      © 2025 BankCSVConverter. All rights reserved.
+     </p>
+    </div>
+   </div>
+  </footer>
+  <!-- Standardized Scripts -->
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            this.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.navbar') && !event.target.closest('.mobile-menu') && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+    
+    // Dropdown functionality
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    
+    if (dropdownToggle && dropdownMenu) {
+        dropdownToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdownMenu.classList.toggle('show');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+    }
+    
+    // Category filtering
+    const categoryTags = document.querySelectorAll('.category-tag');
+    const blogCards = document.querySelectorAll('.blog-card');
+    
+    categoryTags.forEach(tag => {
+        tag.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all tags
+            categoryTags.forEach(t => t.classList.remove('active'));
+            
+            // Add active class to clicked tag
+            this.classList.add('active');
+            
+            // Get category
+            const category = this.getAttribute('data-category');
+            
+            // Filter blog cards
+            blogCards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Search functionality
+    const searchInput = document.querySelector('.search-input');
+    const searchForm = document.querySelector('.search-wrapper');
+    
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            performSearch();
+        });
+    }
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', debounce(performSearch, 300));
+    }
+    
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        blogCards.forEach(card => {
+            const title = card.querySelector('.blog-title').textContent.toLowerCase();
+            const excerpt = card.querySelector('.blog-excerpt').textContent.toLowerCase();
+            const category = card.querySelector('.blog-category').textContent.toLowerCase();
+            
+            if (title.includes(searchTerm) || excerpt.includes(searchTerm) || category.includes(searchTerm)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+    
+    // Newsletter form
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter-input').value;
+            // Here you would normally send the email to your backend
+            alert('Thank you for subscribing! You will receive our newsletter at ' + email);
+            this.reset();
+        });
+    }
+    
+    // Social share buttons
+    const shareButtons = document.querySelectorAll('.share-button');
+    shareButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const platform = this.querySelector('i').classList.contains('fa-twitter') ? 'twitter' :
+                           this.querySelector('i').classList.contains('fa-linkedin-in') ? 'linkedin' :
+                           'facebook';
+            
+            const url = window.location.href;
+            const title = document.title;
+            let shareUrl;
+            
+            switch(platform) {
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+                    break;
+                case 'linkedin':
+                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+                    break;
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                    break;
+            }
+            
+            window.open(shareUrl, '_blank', 'width=600,height=400');
+        });
+    });
+    
+    // Debounce function for search
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+});
+  </script>
+  <script src="/js/modern-homepage-fixed.js"></script>
+  <script src="/js/dropdown-handler.js"></script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
+</html>

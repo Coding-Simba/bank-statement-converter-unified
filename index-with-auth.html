@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/SoftwareApplication" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Convert PDF bank statements to CSV/Excel instantly. Free online converter for 1000+ banks including Chase, Wells Fargo, Bank of America. Secure, fast &amp; accurate." name="description"/>
+  <meta content="bank statement converter, pdf to csv, bank statement to excel, convert bank statement" name="keywords"/>
+  <title>
+   Bank Statement Converter - PDF to CSV/Excel Free
+  </title>
+  <!-- Open Graph Tags -->
+  <meta content="Bank Statement Converter - PDF to CSV/Excel Instantly" property="og:title"/>
+  <meta content="Free online tool to convert PDF bank statements to CSV/Excel. Supports 1000+ banks. No signup required. 100% secure processing." property="og:description"/>
+  <meta content="website" property="og:type"/>
+  <meta content="https://BankCSVConverter.com" property="og:url"/>
+  <meta content="https://BankCSVConverter.com/assets/og-image.png" property="og:image"/>
+  <meta content="BankCSVConverter" property="og:site_name"/>
+  <meta content="en_US" property="og:locale"/>
+  <!-- Twitter Card Tags -->
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="Bank Statement Converter - PDF to CSV/Excel" name="twitter:title"/>
+  <meta content="Convert PDF bank statements to CSV/Excel instantly. Free tool for 1000+ banks. Secure &amp; fast." name="twitter:description"/>
+  <meta content="https://BankCSVConverter.com/assets/twitter-card.png" name="twitter:image"/>
+  <meta content="@BankCSVConverter" name="twitter:site"/>
+  <!-- Schema.org Markup -->
+  <meta content="Bank Statement Converter" itemprop="name"/>
+  <meta content="Convert PDF bank statements to CSV and Excel formats instantly" itemprop="description"/>
+  <meta content="FinanceApplication" itemprop="applicationCategory"/>
+  <meta content="Web Browser" itemprop="operatingSystem"/>
+  <meta itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"/>
+  <meta content="0" itemprop="price"/>
+  <meta content="USD" itemprop="priceCurrency"/>
+  <link href="/css/production.css" rel="stylesheet"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+  <link href="https://BankCSVConverter.com" rel="canonical"/>
+  <!-- CSS -->
+  <!-- Font Awesome for icons -->
+  <!-- Inline Critical CSS for Instant Loading -->
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+            background: #ffffff;
+        }
+        
+        /* Navbar styles already in main.css */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 20px;
+            text-align: center;
+        }
+        
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+        }
+        
+        .skip-link:focus {
+            position: absolute;
+            left: 6px;
+            top: 7px;
+            z-index: 999999;
+            padding: 8px 16px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+        }
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+  <!-- Header Navigation -->
+  <nav class="navbar">
+   <div class="nav-container">
+    <a class="nav-logo" href="/">
+     <i class="fas fa-file-csv">
+     </i>
+     BankCSVConverter
+    </a>
+    <div class="nav-menu">
+     <a class="nav-link" href="#features">
+      Features
+     </a>
+     <a class="nav-link" href="#how-it-works">
+      How It Works
+     </a>
+     <a class="nav-link" href="#supported-banks">
+      Banks
+     </a>
+     <a class="nav-link" href="#pricing">
+      Pricing
+     </a>
+    </div>
+    <div class="nav-auth">
+     <!-- Will be populated by JavaScript -->
+    </div>
+    <button class="menu-toggle" id="menuToggle">
+     <span>
+     </span>
+     <span>
+     </span>
+     <span>
+     </span>
+    </button>
+   </div>
+  </nav>
+  <div class="nav-overlay">
+  </div>
+  <div class="container" id="main">
+   <h1>
+    Convert Bank Statements to CSV
+   </h1>
+   <p class="subtitle">
+    Transform PDF bank statements from any bank into Excel-ready CSV files in seconds
+   </p>
+   <!-- Conversion Limit Display -->
+   <div id="conversionLimit">
+   </div>
+   <!-- Upload Section -->
+   <div class="upload-area" id="uploadBox">
+    <div class="upload-icon">
+     <i class="fas fa-file-pdf">
+     </i>
+    </div>
+    <h2>
+     Upload Your Statement
+    </h2>
+    <button class="upload-btn" id="uploadBtn">
+     <i class="fas fa-cloud-upload-alt">
+     </i>
+     Choose PDF File
+    </button>
+    <p>
+     or drag and drop your bank statement here
+    </p>
+    <input accept=".pdf" aria-label="Upload PDF bank statement" hidden="" id="fileInput" type="file"/>
+   </div>
+   <!-- Progress Container -->
+   <div class="upload-area" id="progressContainer" style="display: none;">
+    <div class="loading">
+     <i class="fas fa-spinner fa-spin">
+     </i>
+    </div>
+    <h3 id="progressText">
+     Processing your statement...
+    </h3>
+    <p>
+     This usually takes 5-10 seconds
+    </p>
+    <div class="progress-bar">
+     <div class="progress-fill" id="progressFill">
+     </div>
+    </div>
+   </div>
+   <!-- Result Container -->
+   <div class="upload-area" id="resultContainer" style="display: none;">
+    <div class="success-check">
+     <i class="fas fa-check-circle">
+     </i>
+    </div>
+    <h3>
+     Conversion Complete!
+    </h3>
+    <p>
+     Your statement has been successfully converted to CSV format.
+    </p>
+    <button class="upload-btn" id="downloadBtn">
+     <i class="fas fa-download">
+     </i>
+     Download CSV File
+    </button>
+    <button class="secondary-btn" id="convertAnotherBtn">
+     <i class="fas fa-redo">
+     </i>
+     Convert Another Statement
+    </button>
+   </div>
+   <div class="features">
+    <div class="feature">
+     <span class="feature-icon">
+      <i class="fas fa-check">
+      </i>
+     </span>
+     <span>
+      Works with 1000+ banks
+     </span>
+    </div>
+    <div class="feature">
+     <span class="feature-icon">
+      <i class="fas fa-lock">
+      </i>
+     </span>
+     <span>
+      100% secure &amp; private
+     </span>
+    </div>
+    <div class="feature">
+     <span class="feature-icon">
+      <i class="fas fa-bolt">
+      </i>
+     </span>
+     <span>
+      Lightning fast
+     </span>
+    </div>
+   </div>
+  </div>
+  <!-- Features Section -->
+  <section class="features-section" id="features">
+   <div class="container">
+    <h2>
+     Why Choose Our Bank Statement Converter?
+    </h2>
+    <div class="features-grid">
+     <div class="feature-card">
+      <div class="feature-icon">
+       <i class="fas fa-university">
+       </i>
+      </div>
+      <h3>
+       1000+ Banks Supported
+      </h3>
+      <p>
+       Works with all major banks including Chase, Wells Fargo, Bank of America, and more
+      </p>
+     </div>
+     <div class="feature-card">
+      <div class="feature-icon">
+       <i class="fas fa-shield-alt">
+       </i>
+      </div>
+      <h3>
+       Bank-Level Security
+      </h3>
+      <p>
+       Your files are encrypted and automatically deleted after processing
+      </p>
+     </div>
+     <div class="feature-card">
+      <div class="feature-icon">
+       <i class="fas fa-magic">
+       </i>
+      </div>
+      <h3>
+       AI-Powered Accuracy
+      </h3>
+      <p>
+       Advanced AI ensures 99.9% accurate data extraction
+      </p>
+     </div>
+     <div class="feature-card">
+      <div class="feature-icon">
+       <i class="fas fa-clock">
+       </i>
+      </div>
+      <h3>
+       Instant Results
+      </h3>
+      <p>
+       Convert your statements in seconds, not hours
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- How It Works Section -->
+  <section class="how-it-works" id="how-it-works">
+   <div class="container">
+    <h2>
+     How It Works
+    </h2>
+    <div class="steps">
+     <div class="step">
+      <div class="step-number">
+       1
+      </div>
+      <h3>
+       Upload Statement
+      </h3>
+      <p>
+       Select your PDF bank statement file
+      </p>
+     </div>
+     <div class="step">
+      <div class="step-number">
+       2
+      </div>
+      <h3>
+       AI Processing
+      </h3>
+      <p>
+       Our AI extracts and structures your data
+      </p>
+     </div>
+     <div class="step">
+      <div class="step-number">
+       3
+      </div>
+      <h3>
+       Download CSV
+      </h3>
+      <p>
+       Get your Excel-ready CSV file instantly
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Pricing Section -->
+  <section class="pricing-section" id="pricing">
+   <div class="container">
+    <h2>
+     Simple, Transparent Pricing
+    </h2>
+    <div class="pricing-cards">
+     <div class="pricing-card">
+      <h3>
+       Free
+      </h3>
+      <div class="price">
+       $0
+      </div>
+      <ul class="pricing-features">
+       <li>
+        <i class="fas fa-check">
+        </i>
+        3 conversions per day
+       </li>
+       <li>
+        <i class="fas fa-check">
+        </i>
+        All bank support
+       </li>
+       <li>
+        <i class="fas fa-check">
+        </i>
+        Basic support
+       </li>
+      </ul>
+      <p class="pricing-note">
+       No signup required
+      </p>
+     </div>
+     <div class="pricing-card featured">
+      <div class="badge">
+       Recommended
+      </div>
+      <h3>
+       Registered
+      </h3>
+      <div class="price">
+       $0
+      </div>
+      <ul class="pricing-features">
+       <li>
+        <i class="fas fa-check">
+        </i>
+        5 conversions per day
+       </li>
+       <li>
+        <i class="fas fa-check">
+        </i>
+        Save statements for 1 hour
+       </li>
+       <li>
+        <i class="fas fa-check">
+        </i>
+        Priority support
+       </li>
+       <li>
+        <i class="fas fa-check">
+        </i>
+        Earn extra conversions
+       </li>
+      </ul>
+      <button class="btn btn-primary" onclick="AuthModal.showModal('register')">
+       Sign Up Free
+      </button>
+     </div>
+     <div class="pricing-card">
+      <h3>
+       Premium
+      </h3>
+      <div class="price">
+       Coming Soon
+      </div>
+      <ul class="pricing-features">
+       <li>
+        <i class="fas fa-check">
+        </i>
+        Unlimited conversions
+       </li>
+       <li>
+        <i class="fas fa-check">
+        </i>
+        Batch processing
+       </li>
+       <li>
+        <i class="fas fa-check">
+        </i>
+        </li>
+       <li>
+        <i class="fas fa-check">
+        </i>
+        Premium support
+       </li>
+      </ul>
+      <button class="btn btn-secondary" disabled="">
+       Coming Soon
+      </button>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Footer -->
+  <footer class="footer">
+   <div class="container">
+    <div class="footer-content">
+     <div class="footer-section">
+      <h3>
+       BankCSVConverter
+      </h3>
+      <p>
+       The fastest way to convert PDF bank statements to CSV/Excel format.
+      </p>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Quick Links
+      </h4>
+      <ul>
+       <li>
+        <a href="/">
+         Home
+        </a>
+       </li>
+       <li>
+        <a href="#features">
+         Features
+        </a>
+       </li>
+       <li>
+        <a href="#pricing">
+         Pricing
+        </a>
+       </li>
+       <li>
+        <a href="/dashboard">
+         Dashboard
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Support
+      </h4>
+      <ul>
+       <li>
+        <a href="#faq">
+         FAQ
+        </a>
+       </li>
+       <li>
+        <a href="mailto:support@bankcsvconverter.com">
+         Contact Us
+        </a>
+       </li>
+       <li>
+        <a href="#privacy">
+         Privacy Policy
+        </a>
+       </li>
+       <li>
+        <a href="#terms">
+         Terms of Service
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>
+      © 2024 BankCSVConverter. All rights reserved.
+     </p>
+    </div>
+   </div>
+  </footer>
+  <!-- Scripts -->
+  <script>
+   // Initialize upload limit display
+        document.addEventListener('DOMContentLoaded', () => {
+            UploadLimitUI.checkAndShow();
+        });
+        
+        // Update the upload handler to check limits and auth
+        const originalProcessFile = window.processFile;
+        window.processFile = async function() {
+            const canUpload = await UploadLimitUI.checkAndShow();
+            if (!canUpload) {
+                return;
+            }
+            
+            // Continue with original upload process
+            if (originalProcessFile) {
+                originalProcessFile.apply(this, arguments);
+            }
+        };
+        
+        // Show feedback after successful conversion
+        const originalShowResult = window.showResult;
+        window.showResult = function(statementId) {
+            if (originalShowResult) {
+                originalShowResult.apply(this, arguments);
+            }
+            
+            // Show feedback prompt after 2 seconds
+            setTimeout(() => {
+                FeedbackComponent.show(statementId);
+            }, 2000);
+        };
+        
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+  </script>
+  <script src="/js/production.js">
+  </script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
+</html>

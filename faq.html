@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="/css/production.css" rel="stylesheet"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+  <title>
+   FAQ - Bank Statement Converter
+  </title>
+  <style>
+   :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .print-btn {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .print-btn:hover {
+            background-color: var(--bg-color);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Search Section */
+        .search-section {
+            background-color: var(--card-bg);
+            padding: 2rem 0;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            font-size: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+            box-shadow: var(--shadow-lg);
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            z-index: 50;
+        }
+
+        .search-results.show {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 1rem;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+
+        .search-result-item:hover {
+            background-color: var(--bg-color);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-highlight {
+            background-color: #fef3c7;
+            font-weight: 600;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .category-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.875rem;
+        }
+
+        .category-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .category-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            gap: 1rem;
+        }
+
+        .faq-question h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .faq-toggle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .faq-item.expanded .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.expanded .faq-answer {
+            max-height: 1000px;
+        }
+
+        .faq-answer-content {
+            padding-top: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .faq-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .vote-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .vote-btn {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 0.375rem;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .vote-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .vote-btn.voted {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .vote-count {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-section {
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar-section h2 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .recent-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .recent-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .recent-badge {
+            background-color: var(--success-color);
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        .recent-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        .recent-item a:hover {
+            text-decoration: underline;
+        }
+
+        .related-articles {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .related-article {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.25rem 0;
+        }
+
+        .related-article:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Support */
+        .contact-section {
+            background-color: #f0f9ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .contact-section h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .contact-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .no-results h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+
+            .faq-section {
+                padding: 1rem;
+            }
+
+            .categories {
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 0.5rem;
+            }
+
+            .category-btn {
+                flex-shrink: 0;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .header,
+            .search-section,
+            .categories,
+            .sidebar,
+            .faq-actions,
+            .contact-section {
+                display: none !important;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr !important;
+            }
+
+            .faq-item {
+                page-break-inside: avoid;
+            }
+
+            .faq-item.expanded .faq-answer {
+                max-height: none !important;
+            }
+
+            .faq-answer {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            body {
+                background-color: white;
+            }
+
+            .faq-section {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+  </style>
+ </head>
+ <body>
+  <!-- Header -->
+  <header class="header">
+   <div class="container">
+    <div class="header-content">
+     <div class="logo">
+      Bank Statement Converter
+     </div>
+     <div class="header-actions">
+      <button class="print-btn" onclick="window.print()">
+       <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20">
+        <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z">
+        </path>
+       </svg>
+       Print FAQ
+      </button>
+     </div>
+    </div>
+   </div>
+  </header>
+  <!-- Hero Section -->
+  <section class="hero">
+   <div class="container">
+    <h1>
+     Frequently Asked Questions
+    </h1>
+    <p>
+     Find quick answers to common questions about Bank Statement Converter
+    </p>
+   </div>
+  </section>
+  <!-- Search Section -->
+  <section class="search-section">
+   <div class="container">
+    <div class="search-container">
+     <svg class="search-icon" fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20">
+      <circle cx="11" cy="11" r="8">
+      </circle>
+      <path d="m21 21-4.35-4.35">
+      </path>
+     </svg>
+     <input class="search-input" id="searchInput" placeholder="Search for answers..." type="text"/>
+     <div class="search-results" id="searchResults">
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Categories -->
+  <div class="container">
+   <div class="categories">
+    <button class="category-btn active" data-category="all">
+     All Categories
+    </button>
+    <button class="category-btn" data-category="getting-started">
+     Getting Started
+    </button>
+    <button class="category-btn" data-category="features">
+     Features
+    </button>
+    <button class="category-btn" data-category="file-formats">
+     File Formats
+    </button>
+    <button class="category-btn" data-category="troubleshooting">
+     Troubleshooting
+    </button>
+    <button class="category-btn" data-category="security">
+     Security &amp; Privacy
+    </button>
+    <button class="category-btn" data-category="billing">
+     Billing
+    </button>
+   </div>
+  </div>
+  <!-- Main Content -->
+  <div class="container">
+   <div class="main-content">
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faqSection">
+     <!-- FAQs will be dynamically inserted here -->
+    </section>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+     <!-- Recently Updated -->
+     <div class="sidebar-section">
+      <h2>
+       Recently Updated
+      </h2>
+      <div class="recent-list">
+       <div class="recent-item">
+        <span class="recent-badge">
+         NEW
+        </span>
+        <a href="#" onclick="scrollToFAQ('batch-processing')">
+         How do I process multiple files at once?
+        </a>
+       </div>
+       <div class="recent-item">
+        <span class="recent-badge">
+         NEW
+        </span>
+        <a href="#" onclick="scrollToFAQ('api-integration')">
+         Is there an API available?
+        </a>
+       </div>
+       <div class="recent-item">
+        <span class="recent-badge">
+         NEW
+        </span>
+        <a href="#" onclick="scrollToFAQ('custom-templates')">
+         Can I create custom export templates?
+        </a>
+       </div>
+      </div>
+     </div>
+     <!-- Related Articles -->
+     <div class="sidebar-section">
+      <h2>
+       Related Articles
+      </h2>
+      <div class="related-articles">
+       <a class="related-article" href="#">
+        Quick Start Guide
+       </a>
+       <a class="related-article" href="#">
+        Video Tutorials
+       </a>
+       <a class="related-article" href="#">
+        Best Practices
+       </a>
+       <a class="related-article" href="#">
+        Integration Guide
+       </a>
+       <a class="related-article" href="#">
+        Release Notes
+       </a>
+      </div>
+     </div>
+     <!-- Contact Support -->
+     <div class="sidebar-section contact-section">
+      <h3>
+       Can't find what you're looking for?
+      </h3>
+      <p>
+       Our support team is here to help you
+      </p>
+      <button class="contact-btn" onclick="showContactForm()">
+       Contact Support
+      </button>
+     </div>
+    </aside>
+   </div>
+  </div>
+  <script>
+   // FAQ Data
+        const faqData = [
+            {
+                id: 'what-is-bsc',
+                category: 'getting-started',
+                question: 'What is Bank Statement Converter?',
+                answer: 'Bank Statement Converter is a powerful tool that helps you convert bank statements from various formats (PDF, CSV, Excel) into standardized, easy-to-use formats. It automatically extracts transaction data, categorizes expenses, and provides detailed analytics.',
+                votes: 156,
+                userVoted: false,
+                related: ['supported-banks', 'file-formats', 'getting-started-guide']
+            },
+            {
+                id: 'supported-banks',
+                category: 'getting-started',
+                question: 'Which banks are supported?',
+                answer: 'We support statements from over 500+ banks worldwide, including all major banks in the US, UK, Canada, Australia, and Europe. The system automatically detects your bank format and applies the appropriate parsing rules. If your bank isn\'t supported, contact us and we\'ll add it within 48 hours.',
+                votes: 134,
+                userVoted: false,
+                related: ['what-is-bsc', 'file-formats', 'custom-bank-format']
+            },
+            {
+                id: 'file-formats',
+                category: 'file-formats',
+                question: 'What file formats can I upload?',
+                answer: 'You can upload bank statements in the following formats:\n• PDF files (both text-based and scanned)\n• CSV files\n• Excel files (.xlsx, .xls)\n• OFX/QFX files\n• MT940 files\n• HTML statements\n\nThe system automatically detects the format and processes it accordingly.',
+                votes: 98,
+                userVoted: false,
+                related: ['supported-banks', 'upload-size-limit', 'batch-processing']
+            },
+            {
+                id: 'security-measures',
+                category: 'security',
+                question: 'How secure is my financial data?',
+                answer: 'Your security is our top priority. We use:\n• 256-bit SSL encryption for all data transfers\n• AES-256 encryption for data at rest\n• SOC 2 Type II certified infrastructure\n• GDPR and PCI DSS compliant processes\n• Automatic data deletion after processing (unless you choose to save)\n• No storage of login credentials\n• Regular security audits by third-party firms',
+                votes: 187,
+                userVoted: false,
+                related: ['data-retention', 'gdpr-compliance', 'encryption-details']
+            },
+            {
+                id: 'export-formats',
+                category: 'features',
+                question: 'What export formats are available?',
+                answer: 'You can export your converted data in multiple formats:\n• Excel (.xlsx) with customizable templates\n• CSV for easy import into other software\n• QuickBooks (QBO) format\n• Xero format\n• PDF reports with charts and analytics\n• Custom formats via our template builder',
+                votes: 76,
+                userVoted: false,
+                related: ['custom-templates', 'quickbooks-export', 'api-integration']
+            },
+            {
+                id: 'batch-processing',
+                category: 'features',
+                question: 'How do I process multiple files at once?',
+                answer: 'Batch processing allows you to convert multiple statements simultaneously:\n1. Click "Batch Upload" on the dashboard\n2. Drag and drop up to 50 files or select them\n3. The system will process them in parallel\n4. Download all results in a single ZIP file\n\nPro tip: You can mix different banks and formats in the same batch!',
+                votes: 92,
+                userVoted: false,
+                related: ['upload-size-limit', 'processing-time', 'bulk-operations']
+            },
+            {
+                id: 'categorization',
+                category: 'features',
+                question: 'How does automatic categorization work?',
+                answer: 'Our AI-powered categorization system:\n• Learns from millions of transactions\n• Assigns categories with 95%+ accuracy\n• Allows custom category rules\n• Supports multi-level categories\n• Remembers your corrections for future use\n• Integrates with accounting standards\n\nYou can also create custom rules based on merchant names, amounts, or descriptions.',
+                votes: 143,
+                userVoted: false,
+                related: ['custom-categories', 'category-rules', 'ai-learning']
+            },
+            {
+                id: 'pricing-plans',
+                category: 'billing',
+                question: 'What pricing plans are available?',
+                answer: 'We offer flexible pricing to suit your needs:\n\n**Free Plan**: 5 conversions/month, basic features\n**Starter**: $9.99/month - 50 conversions, all features\n**Professional**: $29.99/month - Unlimited conversions\n**Enterprise**: Custom pricing - White label, dedicated support\n\nAll paid plans include: batch processing, all export formats, priority support, and no watermarks.',
+                votes: 124,
+                userVoted: false,
+                related: ['free-trial', 'payment-methods', 'enterprise-features']
+            },
+            {
+                id: 'troubleshooting-upload',
+                category: 'troubleshooting',
+                question: 'Why is my file not uploading?',
+                answer: 'Common upload issues and solutions:\n\n• **File too large**: Maximum size is 50MB. Try splitting large statements\n• **Corrupted file**: Try opening it in another application first\n• **Password protected**: Remove password protection before uploading\n• **Unsupported format**: Ensure it\'s PDF, CSV, Excel, or other supported format\n• **Network issues**: Check your internet connection\n\nIf problems persist, use our diagnostic tool or contact support.',
+                votes: 89,
+                userVoted: false,
+                related: ['upload-size-limit', 'file-formats', 'password-protected']
+            },
+            {
+                id: 'custom-templates',
+                category: 'features',
+                question: 'Can I create custom export templates?',
+                answer: 'Yes! Our template builder allows you to:\n• Design custom Excel layouts\n• Add your company branding\n• Include specific calculations\n• Create department-specific formats\n• Save templates for reuse\n• Share templates with team members\n\nAccess the template builder from Settings > Export Templates.',
+                votes: 71,
+                userVoted: false,
+                related: ['export-formats', 'team-collaboration', 'branding-options']
+            },
+            {
+                id: 'data-retention',
+                category: 'security',
+                question: 'How long do you keep my data?',
+                answer: 'Data retention policies:\n• **Temporary processing**: Deleted immediately after download\n• **Saved projects**: Kept for 90 days (customizable)\n• **Account data**: Retained while account is active\n• **Audit logs**: 1 year for security purposes\n\nYou can manually delete any data at any time from your account settings. We never share your data with third parties.',
+                votes: 95,
+                userVoted: false,
+                related: ['security-measures', 'gdpr-compliance', 'data-deletion']
+            }
+        ];
+
+        // Initialize
+        let currentCategory = 'all';
+        let searchTerm = '';
+
+        // Render FAQs
+        function renderFAQs(category = 'all', search = '') {
+            const faqSection = document.getElementById('faqSection');
+            let filteredFAQs = faqData;
+
+            // Filter by category
+            if (category !== 'all') {
+                filteredFAQs = filteredFAQs.filter(faq => faq.category === category);
+            }
+
+            // Filter by search
+            if (search) {
+                const searchLower = search.toLowerCase();
+                filteredFAQs = filteredFAQs.filter(faq => 
+                    faq.question.toLowerCase().includes(searchLower) ||
+                    faq.answer.toLowerCase().includes(searchLower)
+                );
+            }
+
+            // Sort by votes
+            filteredFAQs.sort((a, b) => b.votes - a.votes);
+
+            if (filteredFAQs.length === 0) {
+                faqSection.innerHTML = `
+                    <div class="no-results">
+                        <h3>No results found</h3>
+                        <p>Try different keywords or browse all categories</p>
+                    </div>
+                `;
+                return;
+            }
+
+            faqSection.innerHTML = filteredFAQs.map(faq => `
+                <div class="faq-item" id="${faq.id}">
+                    <div class="faq-question" onclick="toggleFAQ('${faq.id}')">
+                        <h3>${highlightSearch(faq.question, search)}</h3>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            ${formatAnswer(highlightSearch(faq.answer, search))}
+                        </div>
+                        <div class="faq-actions">
+                            <div class="vote-container">
+                                <span class="vote-count">${faq.votes} found this helpful</span>
+                                <button class="vote-btn ${faq.userVoted ? 'voted' : ''}" 
+                                        onclick="toggleVote('${faq.id}')" 
+                                        id="vote-${faq.id}">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    ${faq.userVoted ? 'Helpful' : 'Was this helpful?'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Format answer (convert line breaks to HTML)
+        function formatAnswer(answer) {
+            return answer
+                .replace(/\n/g, '<br>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/• /g, '• ');
+        }
+
+        // Highlight search terms
+        function highlightSearch(text, search) {
+            if (!search) return text;
+            const regex = new RegExp(`(${search})`, 'gi');
+            return text.replace(regex, '<span class="search-highlight">$1</span>');
+        }
+
+        // Toggle FAQ
+        function toggleFAQ(id) {
+            const faqItem = document.getElementById(id);
+            faqItem.classList.toggle('expanded');
+        }
+
+        // Toggle vote
+        function toggleVote(id) {
+            const faq = faqData.find(f => f.id === id);
+            if (faq) {
+                faq.userVoted = !faq.userVoted;
+                faq.votes += faq.userVoted ? 1 : -1;
+                renderFAQs(currentCategory, searchTerm);
+            }
+        }
+
+        // Category buttons
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentCategory = this.dataset.category;
+                renderFAQs(currentCategory, searchTerm);
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        let searchTimeout;
+
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTerm = this.value;
+            
+            searchTimeout = setTimeout(() => {
+                if (searchTerm.length > 0) {
+                    showSearchResults(searchTerm);
+                    renderFAQs(currentCategory, searchTerm);
+                } else {
+                    searchResults.classList.remove('show');
+                    renderFAQs(currentCategory);
+                }
+            }, 300);
+        });
+
+        // Show search results dropdown
+        function showSearchResults(search) {
+            const results = faqData.filter(faq => 
+                faq.question.toLowerCase().includes(search.toLowerCase()) ||
+                faq.answer.toLowerCase().includes(search.toLowerCase())
+            );
+
+            if (results.length > 0) {
+                searchResults.innerHTML = results.slice(0, 5).map(faq => `
+                    <div class="search-result-item" onclick="selectSearchResult('${faq.id}')">
+                        <strong>${highlightSearch(faq.question, search)}</strong>
+                        <div style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                            ${highlightSearch(faq.answer.substring(0, 100) + '...', search)}
+                        </div>
+                    </div>
+                `).join('');
+                searchResults.classList.add('show');
+            } else {
+                searchResults.classList.remove('show');
+            }
+        }
+
+        // Select search result
+        function selectSearchResult(id) {
+            searchResults.classList.remove('show');
+            scrollToFAQ(id);
+            const faqItem = document.getElementById(id);
+            if (!faqItem.classList.contains('expanded')) {
+                faqItem.classList.add('expanded');
+            }
+        }
+
+        // Scroll to FAQ
+        function scrollToFAQ(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Flash highlight
+                element.style.backgroundColor = '#fef3c7';
+                setTimeout(() => {
+                    element.style.backgroundColor = '';
+                    element.style.transition = 'background-color 0.5s';
+                }, 1000);
+            }
+        }
+
+        // Click outside to close search results
+        document.addEventListener('click', function(e) {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.classList.remove('show');
+            }
+        });
+
+        // Show contact form (placeholder)
+        function showContactForm() {
+            alert('Contact form would open here. For demo purposes, email: support@bankstatementconverter.com');
+        }
+
+        // Initial render
+        renderFAQs();
+
+        // Auto-expand from URL hash
+        if (window.location.hash) {
+            const id = window.location.hash.substring(1);
+            setTimeout(() => {
+                scrollToFAQ(id);
+                const faqItem = document.getElementById(id);
+                if (faqItem && !faqItem.classList.contains('expanded')) {
+                    faqItem.classList.add('expanded');
+                }
+            }, 100);
+        }
+  </script>
+  <script src="/js/production.js">
+  </script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
+</html>

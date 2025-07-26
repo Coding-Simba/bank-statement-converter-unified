@@ -734,3 +734,165 @@ footer {
 .breadcrumb a:hover {
     color: var(--primary);
 }
+
+/* ============================================
+   RESPONSIVE TABLES
+   ============================================ */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: var(--spacing-md) 0;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+}
+
+/* Base table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-primary);
+    font-size: 0.95rem;
+    min-width: 600px; /* Ensures readability on mobile */
+}
+
+/* Table headers */
+table th {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+}
+
+/* Table cells */
+table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+/* Striped rows */
+table tbody tr:nth-child(even) {
+    background: var(--bg-tertiary);
+}
+
+/* Hover effect */
+table tbody tr:hover {
+    background: rgba(102, 126, 234, 0.05);
+    transition: var(--transition-fast);
+}
+
+/* Special table styles */
+.comparison-table table,
+.audit-table table,
+.example-table {
+    min-width: 100%;
+}
+
+/* Feature check/cross icons in tables */
+.feature-check {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.feature-cross {
+    color: var(--danger);
+    font-weight: bold;
+}
+
+/* Price tags in tables */
+.price-tag {
+    background: var(--accent);
+    color: white;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Winner badge */
+.winner-badge {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 2px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    margin-left: 8px;
+    display: inline-block;
+}
+
+/* Mobile-specific table adjustments */
+@media (max-width: 768px) {
+    .table-responsive {
+        margin: var(--spacing-sm) -20px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    table {
+        font-size: 0.875rem;
+    }
+    
+    table th,
+    table td {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    /* Make first column sticky on mobile for comparison tables */
+    .comparison-table table th:first-child,
+    .comparison-table table td:first-child {
+        position: sticky;
+        left: 0;
+        background: inherit;
+        z-index: 10;
+        box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Ensure sticky column has proper background */
+    .comparison-table table tbody tr:nth-child(even) td:first-child {
+        background: var(--bg-tertiary);
+    }
+    
+    .comparison-table table tbody tr:hover td:first-child {
+        background: rgba(102, 126, 234, 0.05);
+    }
+    
+    /* Add visual indicator for scrollable tables */
+    .table-responsive::after {
+        content: '→';
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        color: var(--primary);
+        opacity: 0.5;
+        pointer-events: none;
+        animation: scroll-indicator 2s ease-in-out infinite;
+    }
+    
+    @keyframes scroll-indicator {
+        0%, 100% { transform: translateY(-50%) translateX(0); }
+        50% { transform: translateY(-50%) translateX(5px); }
+    }
+    
+    /* Hide indicator when table is fully visible */
+    .table-responsive.scrolled::after {
+        display: none;
+    }
+}
+
+/* Print styles for tables */
+@media print {
+    .table-responsive {
+        overflow: visible;
+        box-shadow: none;
+    }
+    
+    table {
+        page-break-inside: avoid;
+    }
+}

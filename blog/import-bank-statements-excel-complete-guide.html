@@ -1,522 +1,551 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Import Bank Statements to Excel: Complete Guide (2024) | BankCSVConverter.com</title>
-    <meta name="description" content="Learn how to import bank statements to Excel with our complete guide. Discover manual and automated methods, Excel templates, data cleaning tips, and financial analysis techniques for 2024.">
-    <meta name="keywords" content="import bank statements to excel, bank statement excel template, convert pdf to excel, bank statement converter, excel financial analysis, bank transaction import, automated bank statement processing">
-    <meta name="author" content="BankCSVConverter.com">
-    <link rel="canonical" href="https://bankcsvconverter.com/blog/import-bank-statements-excel-complete-guide.html">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="How to Import Bank Statements to Excel: Complete Guide (2024)">
-    <meta property="og:description" content="Master the art of importing bank statements to Excel. Learn automated conversion methods, data cleaning techniques, and advanced financial analysis tips.">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://bankcsvconverter.com/blog/import-bank-statements-excel-complete-guide.html">
-    <meta property="og:image" content="https://bankcsvconverter.com/images/excel-import-guide.jpg">
-    
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="How to Import Bank Statements to Excel: Complete Guide (2024)">
-    <meta name="twitter:description" content="Complete guide to importing bank statements to Excel. Learn manual and automated methods, templates, and analysis techniques.">
-    
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "How to Import Bank Statements to Excel: Complete Guide (2024)",
-        "description": "Comprehensive guide on importing bank statements to Excel, including manual and automated methods, data cleaning, and financial analysis techniques.",
-        "author": {
-            "@type": "Organization",
-            "name": "BankCSVConverter.com"
-        },
-        "datePublished": "2024-01-25",
-        "dateModified": "2024-01-25",
-        "publisher": {
-            "@type": "Organization",
-            "name": "BankCSVConverter.com",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://bankcsvconverter.com/logo.png"
-            }
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://bankcsvconverter.com/blog/import-bank-statements-excel-complete-guide.html"
-        },
-        "image": "https://bankcsvconverter.com/images/excel-import-guide.jpg"
-    }
-    </script>
-    
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "HowTo",
-        "name": "How to Import Bank Statements to Excel",
-        "description": "Step-by-step guide to importing bank statements to Excel using various methods",
-        "totalTime": "PT15M",
-        "supply": [
-            {
-                "@type": "HowToSupply",
-                "name": "Bank statement (PDF, CSV, or paper format)"
-            },
-            {
-                "@type": "HowToSupply",
-                "name": "Microsoft Excel or compatible spreadsheet software"
-            },
-            {
-                "@type": "HowToSupply",
-                "name": "BankCSVConverter.com account (for automated conversion)"
-            }
-        ],
-        "tool": [
-            {
-                "@type": "HowToTool",
-                "name": "Computer with internet connection"
-            },
-            {
-                "@type": "HowToTool",
-                "name": "PDF reader software"
-            }
-        ],
-        "step": [
-            {
-                "@type": "HowToStep",
-                "name": "Download bank statement",
-                "text": "Log into your online banking and download your statement in PDF or CSV format"
-            },
-            {
-                "@type": "HowToStep",
-                "name": "Choose conversion method",
-                "text": "Select between manual entry, Excel import wizard, or automated conversion tools"
-            },
-            {
-                "@type": "HowToStep",
-                "name": "Import or convert data",
-                "text": "Use your chosen method to get the data into Excel format"
-            },
-            {
-                "@type": "HowToStep",
-                "name": "Clean and format data",
-                "text": "Apply formatting, remove duplicates, and standardize the data structure"
-            },
-            {
-                "@type": "HowToStep",
-                "name": "Analyze transactions",
-                "text": "Use Excel formulas, pivot tables, and charts to analyze your financial data"
-            }
-        ]
-    }
-    </script>
-    
-    <link rel="stylesheet" href="../css/unified-styles.css">
-    <style>
-        .table-of-contents {
-            background-color: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        .table-of-contents h2 {
-            margin-top: 0;
-        }
-        .table-of-contents ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .table-of-contents li {
-            margin: 10px 0;
-        }
-        .table-of-contents a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .table-of-contents a:hover {
-            text-decoration: underline;
-        }
-        .code-block {
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 15px;
-            margin: 15px 0;
-            overflow-x: auto;
-        }
-        .tip-box {
-            background-color: #e8f4f8;
-            border-left: 4px solid #007bff;
-            padding: 15px;
-            margin: 20px 0;
-        }
-        .warning-box {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            margin: 20px 0;
-        }
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-        .feature-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-        }
-        .excel-template {
-            background-color: #f0f8ff;
-            border: 2px solid #4169e1;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-    
-        /* Header Navigation - matching index.html */
-        header {
-            background: white;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
-        
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 60px;
-        }
-        
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: #667eea;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        
-        .nav-logo svg {
-            width: 32px;
-            height: 32px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-        
-        .nav-menu a {
-            color: #666;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-menu a:hover {
-            color: #667eea;
-        }
-        
-        /* Mobile Menu Button */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-        
-        .menu-toggle span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: #667eea;
-            margin: 5px 0;
-            transition: 0.3s;
-        }
-        
-        /* Mobile Menu Styles */
-        .nav-menu.active {
-            display: flex;
-            flex-direction: column;
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Learn how to import bank statements to Excel with our complete guide. Discover manual and automated methods, Excel templates, data cleaning tips, and financial analysis techniques." name="description"/>
+  <link href="/css/production.css" rel="stylesheet"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+    <link href="/css/blog-text-size-fix.css" rel="stylesheet"/>
+  <title>
+   Import Bank Statements to Excel - Complete 2024 Guide
+  </title>
+  <link href="https://BankCSVConverter.comblog/import-bank-statements-excel-complete-guide" rel="canonical"/>
+  <!-- Unified Design System -->
+  <!-- Skip Link for Accessibility -->
+  <style>
+   .skip-link {
             position: absolute;
-            top: 60px;
-            left: 0;
-            right: 0;
-            background: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            left: -9999px;
         }
-        
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
+        .skip-link:focus {
+            position: absolute;
+            left: 6px;
+            top: 7px;
+            z-index: 999999;
+            padding: 8px 16px;
+            background: #000;
+            color: white;
+            text-decoration: none;
         }
-        
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-        
-        /* Adjust body for fixed header */
-        body {
-            padding-top: 60px;
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .menu-toggle {
-                display: block;
-            }
-        }
-</style>
-</head>
-<body>
-    <!-- Header Navigation -->
-    <header>
-        <nav>
-            <a href="../" class="nav-logo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                    <path d="M9 12l2 2 4-4"/>
-                </svg>
-                BankCSVConverter
-            </a>
-            
-            <ul class="nav-menu">
-                <li><a href="../all-pages.html">All Banks</a></li>
-                <li><a href="../pages/bank-statement-converter-comparison.html">Why Us</a></li>
-                <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
-            </ul>
-            
-            <button class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
-    
-
-    <main>
-        <article class="container blog-post">
-            <header class="blog-header">
-                <h1>How to Import Bank Statements to Excel: Complete Guide (2024)</h1>
-                <div class="blog-meta">
-                    <span>Published: January 25, 2024</span>
-                    <span>Reading Time: 12 minutes</span>
-                    <span>Category: Financial Management</span>
-                </div>
-            </header>
-
-            <div class="table-of-contents">
-                <h2>Table of Contents</h2>
-                <ul>
-                    <li><a href="#introduction">Introduction</a></li>
-                    <li><a href="#why-import">Why Import Bank Statements to Excel?</a></li>
-                    <li><a href="#methods-overview">Methods Overview: Manual vs Automated</a></li>
-                    <li><a href="#manual-import">Manual Import Methods</a></li>
-                    <li><a href="#automated-conversion">Automated Conversion Tools</a></li>
-                    <li><a href="#excel-import-wizard">Using Excel's Import Wizard</a></li>
-                    <li><a href="#data-cleaning">Data Cleaning and Formatting</a></li>
-                    <li><a href="#common-issues">Common Issues and Solutions</a></li>
-                    <li><a href="#excel-formulas">Essential Excel Formulas for Financial Analysis</a></li>
-                    <li><a href="#pivot-tables">Creating Pivot Tables for Transaction Analysis</a></li>
-                    <li><a href="#charts-visualization">Charts and Data Visualization</a></li>
-                    <li><a href="#templates">Bank Statement Excel Templates</a></li>
-                    <li><a href="#accounting-integration">Integration with Accounting Software</a></li>
-                    <li><a href="#best-practices">Best Practices and Tips</a></li>
-                    <li><a href="#conclusion">Conclusion</a></li>
-                </ul>
-            </div>
-
-            <section id="introduction">
-                <p>Managing your finances effectively starts with having your bank transaction data in a format you can analyze. While banks provide statements in various formats, Excel remains the gold standard for financial analysis due to its powerful calculation and visualization capabilities. This comprehensive guide will walk you through every method to import bank statements to Excel, from basic manual entry to advanced automated solutions.</p>
-                
-                <p>Whether you're a small business owner tracking expenses, an accountant preparing financial reports, or an individual managing personal finances, mastering the art of importing bank statements to Excel will save you hours of manual work and reduce errors significantly.</p>
-            </section>
-
-            <section id="why-import">
-                <h2>Why Import Bank Statements to Excel?</h2>
-                
-                <p>Before diving into the how-to, let's understand why converting your bank statements to Excel format is crucial for effective financial management:</p>
-                
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <h3>Enhanced Analysis</h3>
-                        <p>Excel's powerful formulas and functions allow you to categorize transactions, calculate totals, and identify spending patterns that aren't visible in standard bank statements.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <h3>Custom Reports</h3>
-                        <p>Create personalized financial reports tailored to your specific needs, whether for tax preparation, budgeting, or business analytics.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <h3>Data Integration</h3>
-                        <p>Combine data from multiple bank accounts and credit cards into a single, comprehensive financial overview.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <h3>Long-term Storage</h3>
-                        <p>Archive your financial data in a universally accessible format that won't become obsolete or require specific banking software to view.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="methods-overview">
-                <h2>Methods Overview: Manual vs Automated</h2>
-                
-                <p>There are two primary approaches to getting your bank statement data into Excel:</p>
-                
-                <h3>Manual Methods</h3>
-                <ul>
-                    <li><strong>Copy and Paste:</strong> Best for small datasets or one-time imports</li>
-                    <li><strong>Manual Data Entry:</strong> Time-consuming but gives complete control</li>
-                    <li><strong>Excel Import Wizard:</strong> Built-in tool for CSV and text files</li>
-                </ul>
-                
-                <h3>Automated Methods</h3>
-                <ul>
-                    <li><strong>Bank CSV Downloads:</strong> Many banks offer direct CSV exports</li>
-                    <li><strong>PDF Conversion Tools:</strong> Convert PDF statements to Excel format</li>
-                    <li><strong>Specialized Software:</strong> Tools like BankCSVConverter.com for complex conversions</li>
-                    <li><strong>API Integration:</strong> For businesses needing real-time data sync</li>
-                </ul>
-                
-                <div class="tip-box">
-                    <strong>Pro Tip:</strong> For regular imports or large volumes of data, automated methods will save significant time and reduce errors. Manual methods are suitable for occasional use or when dealing with unique formats.
-                </div>
-            </section>
-
-            <section id="manual-import">
-                <h2>Manual Import Methods</h2>
-                
-                <h3>Method 1: Copy and Paste from PDF</h3>
-                
-                <p>This is the most straightforward method for small amounts of data:</p>
-                
-                <ol>
-                    <li><strong>Open your PDF statement</strong> in Adobe Reader or your browser</li>
-                    <li><strong>Select the transaction data</strong> using your mouse (click and drag)</li>
-                    <li><strong>Copy the selection</strong> (Ctrl+C or Cmd+C)</li>
-                    <li><strong>Open Excel</strong> and select cell A1</li>
-                    <li><strong>Paste the data</strong> (Ctrl+V or Cmd+V)</li>
-                    <li><strong>Use Text to Columns</strong> feature to separate data into proper columns</li>
-                </ol>
-                
-                <div class="warning-box">
-                    <strong>Warning:</strong> Copy-paste from PDFs often results in formatting issues. Data may paste into a single column or lose its structure. Be prepared to spend time cleaning the data.
-                </div>
-                
-                <h3>Method 2: Manual Data Entry</h3>
-                
-                <p>While tedious, manual entry ensures accuracy for critical financial data:</p>
-                
-                <ol>
-                    <li>Create column headers: Date, Description, Debit, Credit, Balance</li>
-                    <li>Enter each transaction row by row</li>
-                    <li>Use Excel's AutoFill feature for recurring entries</li>
-                    <li>Double-check totals against your statement</li>
-                </ol>
-                
-                <h3>Method 3: Using Text Import Wizard</h3>
-                
-                <p>If your bank provides text or CSV files, Excel's import wizard streamlines the process:</p>
-                
-                <ol>
-                    <li>In Excel, go to <strong>Data → Get Data → From Text/CSV</strong></li>
-                    <li>Select your bank statement file</li>
-                    <li>Choose the appropriate delimiter (usually comma or tab)</li>
-                    <li>Set data types for each column (date, text, currency)</li>
-                    <li>Click <strong>Load</strong> to import the data</li>
-                </ol>
-            </section>
-
-            <section id="automated-conversion">
-                <h2>Automated Conversion Tools</h2>
-                
-                <p>For efficient and accurate conversion of bank statements to Excel, automated tools are the way to go. Here's how to use them effectively:</p>
-                
-                <h3>Using BankCSVConverter.com</h3>
-                
-                <p>BankCSVConverter.com specializes in converting complex bank statement formats to clean Excel files:</p>
-                
-                <ol>
-                    <li><strong>Upload your statement:</strong> Support for PDF, CSV, OFX, QFX, and more</li>
-                    <li><strong>Select your bank:</strong> Pre-configured templates for major banks</li>
-                    <li><strong>Choose output format:</strong> Excel, CSV, or accounting software formats</li>
-                    <li><strong>Download converted file:</strong> Clean, formatted data ready for analysis</li>
-                </ol>
-                
-                <div class="excel-template">
-                    <h4>Benefits of Automated Conversion:</h4>
-                    <ul>
-                        <li>✓ 99.9% accuracy rate</li>
-                        <li>✓ Handles multiple statement formats</li>
-                        <li>✓ Preserves transaction categories</li>
-                        <li>✓ Batch processing for multiple statements</li>
-                        <li>✓ Automatic duplicate detection</li>
-                        <li>✓ Consistent date formatting</li>
-                    </ul>
-                </div>
-                
-                <h3>Bank-Specific CSV Downloads</h3>
-                
-                <p>Many banks now offer direct CSV downloads. Here's how to access them for major banks:</p>
-                
-                <ul>
-                    <li><strong>Chase:</strong> Login → Account Activity → Download Activity → CSV format</li>
-                    <li><strong>Bank of America:</strong> Accounts → Download → Microsoft Excel format</li>
-                    <li><strong>Wells Fargo:</strong> Account Activity → Download → Spreadsheet</li>
-                    <li><strong>Citi:</strong> Account Details → Download Transactions → CSV</li>
-                </ul>
-            </section>
-
-            <section id="excel-import-wizard">
-                <h2>Using Excel's Import Wizard</h2>
-                
-                <p>Excel's built-in import features have evolved significantly. Here's how to use them effectively:</p>
-                
-                <h3>Power Query Method (Recommended for Excel 2016+)</h3>
-                
-                <ol>
-                    <li>Go to <strong>Data → Get Data → From File → From CSV</strong></li>
-                    <li>Navigate to your bank statement CSV file</li>
-                    <li>In the preview window, verify the data looks correct</li>
-                    <li>Click <strong>Transform Data</strong> to open Power Query Editor</li>
-                    <li>Apply transformations:
-                        <ul>
-                            <li>Remove unnecessary columns</li>
-                            <li>Change data types (dates, currency)</li>
-                            <li>Filter out non-transaction rows</li>
-                            <li>Split columns if needed</li>
-                        </ul>
-                    </li>
-                    <li>Click <strong>Close & Load</strong> to import the cleaned data</li>
-                </ol>
-                
-                <div class="code-block">
-                    <h4>Power Query M Code Example:</h4>
-                    <pre>
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+  <!-- Standardized Header -->
+  <header>
+   <nav>
+    <a class="nav-logo" href="../">
+     <svg style="width: 24px; height: 24px; flex-shrink: 0;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+      </rect>
+      <line x1="3" x2="21" y1="9" y2="9">
+      </line>
+      <line x1="9" x2="9" y1="21" y2="9">
+      </line>
+     </svg>
+     BankCSVConverter
+    </a>
+    <ul class="nav-menu">
+     <li>
+      <a href="../features.html">
+       Features
+      </a>
+     </li>
+     <li>
+      <a href="../how-it-works.html">
+       How It Works
+      </a>
+     </li>
+     <li>
+      <a href="../pricing.html">
+       Pricing
+      </a>
+     </li>
+     <li>
+      <a href="../blog.html">
+       Blog
+      </a>
+     </li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle">
+     <span>
+     </span>
+     <span>
+     </span>
+     <span>
+     </span>
+    </button>
+   </nav>
+   <div class="nav-overlay">
+   </div>
+  </header>
+  <main id="main">
+   <div class="content-wrapper">
+    <div class="container">
+     <article class="container blog-post">
+      <div class="table-of-contents">
+       <h2>
+        Table of Contents
+       </h2>
+       <ul>
+        <li>
+         <a href="#introduction">
+          Introduction
+         </a>
+        </li>
+        <li>
+         <a href="#why-import">
+          Why Import Bank Statements to Excel?
+         </a>
+        </li>
+        <li>
+         <a href="#methods-overview">
+          Methods Overview: Manual vs Automated
+         </a>
+        </li>
+        <li>
+         <a href="#manual-import">
+          Manual Import Methods
+         </a>
+        </li>
+        <li>
+         <a href="#automated-conversion">
+          Automated Conversion Tools
+         </a>
+        </li>
+        <li>
+         <a href="#excel-import-wizard">
+          Using Excel's Import Wizard
+         </a>
+        </li>
+        <li>
+         <a href="#data-cleaning">
+          Data Cleaning and Formatting
+         </a>
+        </li>
+        <li>
+         <a href="#common-issues">
+          Common Issues and Solutions
+         </a>
+        </li>
+        <li>
+         <a href="#excel-formulas">
+          Essential Excel Formulas for Financial Analysis
+         </a>
+        </li>
+        <li>
+         <a href="#pivot-tables">
+          Creating Pivot Tables for Transaction Analysis
+         </a>
+        </li>
+        <li>
+         <a href="#charts-visualization">
+          Charts and Data Visualization
+         </a>
+        </li>
+        <li>
+         <a href="#templates">
+          Bank Statement Excel Templates
+         </a>
+        </li>
+        <li>
+         <a href="#accounting-integration">
+          Integration with Accounting Software
+         </a>
+        </li>
+        <li>
+         <a href="#best-practices">
+          Best Practices and Tips
+         </a>
+        </li>
+        <li>
+         <a href="#conclusion">
+          Conclusion
+         </a>
+        </li>
+       </ul>
+      </div>
+      <section id="introduction">
+       <p>
+        Managing your finances effectively starts with having your bank transaction data in a format you can analyze. While banks provide statements in various formats, Excel remains the gold standard for financial analysis due to its powerful calculation and visualization capabilities. This comprehensive guide will walk you through every method to import bank statements to Excel, from basic manual entry to advanced automated solutions.
+       </p>
+       <p>
+        Whether you're a small business owner tracking expenses, an accountant preparing financial reports, or an individual managing personal finances, mastering the art of importing bank statements to Excel will save you hours of manual work and reduce errors significantly.
+       </p>
+      </section>
+      <section id="why-import">
+       <h2>
+        Why Import Bank Statements to Excel?
+       </h2>
+       <p>
+        Before diving into the how-to, let's understand why converting your bank statements to Excel format is crucial for effective financial management:
+       </p>
+       <div class="feature-grid">
+        <div class="feature-card">
+         <h3>
+          Enhanced Analysis
+         </h3>
+         <p>
+          Excel's powerful formulas and functions allow you to categorize transactions, calculate totals, and identify spending patterns that aren't visible in standard bank statements.
+         </p>
+        </div>
+        <div class="feature-card">
+         <h3>
+          Custom Reports
+         </h3>
+         <p>
+          Create personalized financial reports tailored to your specific needs, whether for tax preparation, budgeting, or business analytics.
+         </p>
+        </div>
+        <div class="feature-card">
+         <h3>
+          Data Integration
+         </h3>
+         <p>
+          Combine data from multiple bank accounts and credit cards into a single, comprehensive financial overview.
+         </p>
+        </div>
+        <div class="feature-card">
+         <h3>
+          Long-term Storage
+         </h3>
+         <p>
+          Archive your financial data in a universally accessible format that won't become obsolete or require specific banking software to view.
+         </p>
+        </div>
+       </div>
+      </section>
+      <section id="methods-overview">
+       <h2>
+        Methods Overview: Manual vs Automated
+       </h2>
+       <p>
+        There are two primary approaches to getting your bank statement data into Excel:
+       </p>
+       <h3>
+        Manual Methods
+       </h3>
+       <ul>
+        <li>
+         <strong>
+          Copy and Paste:
+         </strong>
+         Best for small datasets or one-time imports
+        </li>
+        <li>
+         <strong>
+          Manual Data Entry:
+         </strong>
+         Time-consuming but gives complete control
+        </li>
+        <li>
+         <strong>
+          Excel Import Wizard:
+         </strong>
+         Built-in tool for CSV and text files
+        </li>
+       </ul>
+       <h3>
+        Automated Methods
+       </h3>
+       <ul>
+        <li>
+         <strong>
+          Bank CSV Downloads:
+         </strong>
+         Many banks offer direct CSV exports
+        </li>
+        <li>
+         <strong>
+          PDF Conversion Tools:
+         </strong>
+         Convert PDF statements to Excel format
+        </li>
+        <li>
+         <strong>
+          Specialized Software:
+         </strong>
+         Tools like BankCSVConverter.com for complex conversions
+        </li>
+        <li>
+         <strong>
+          API Integration:
+         </strong>
+         For businesses needing real-time data sync
+        </li>
+       </ul>
+       <div class="tip-box">
+        <strong>
+         Pro Tip:
+        </strong>
+        For regular imports or large volumes of data, automated methods will save significant time and reduce errors. Manual methods are suitable for occasional use or when dealing with unique formats.
+       </div>
+      </section>
+      <section id="manual-import">
+       <h2>
+        Manual Import Methods
+       </h2>
+       <h3>
+        Method 1: Copy and Paste from PDF
+       </h3>
+       <p>
+        This is the most straightforward method for small amounts of data:
+       </p>
+       <ol>
+        <li>
+         <strong>
+          Open your PDF statement
+         </strong>
+         in Adobe Reader or your browser
+        </li>
+        <li>
+         <strong>
+          Select the transaction data
+         </strong>
+         using your mouse (click and drag)
+        </li>
+        <li>
+         <strong>
+          Copy the selection
+         </strong>
+         (Ctrl+C or Cmd+C)
+        </li>
+        <li>
+         <strong>
+          Open Excel
+         </strong>
+         and select cell A1
+        </li>
+        <li>
+         <strong>
+          Paste the data
+         </strong>
+         (Ctrl+V or Cmd+V)
+        </li>
+        <li>
+         <strong>
+          Use Text to Columns
+         </strong>
+         feature to separate data into proper columns
+        </li>
+       </ol>
+       <div class="warning-box">
+        <strong>
+         Warning:
+        </strong>
+        Copy-paste from PDFs often results in formatting issues. Data may paste into a single column or lose its structure. Be prepared to spend time cleaning the data.
+       </div>
+       <h3>
+        Method 2: Manual Data Entry
+       </h3>
+       <p>
+        While tedious, manual entry ensures accuracy for critical financial data:
+       </p>
+       <ol>
+        <li>
+         Create column headers: Date, Description, Debit, Credit, Balance
+        </li>
+        <li>
+         Enter each transaction row by row
+        </li>
+        <li>
+         Use Excel's AutoFill feature for recurring entries
+        </li>
+        <li>
+         Double-check totals against your statement
+        </li>
+       </ol>
+       <h3>
+        Method 3: Using Text Import Wizard
+       </h3>
+       <p>
+        If your bank provides text or CSV files, Excel's import wizard streamlines the process:
+       </p>
+       <ol>
+        <li>
+         In Excel, go to
+         <strong>
+          Data → Get Data → From Text/CSV
+         </strong>
+        </li>
+        <li>
+         Select your bank statement file
+        </li>
+        <li>
+         Choose the appropriate delimiter (usually comma or tab)
+        </li>
+        <li>
+         Set data types for each column (date, text, currency)
+        </li>
+        <li>
+         Click
+         <strong>
+          Load
+         </strong>
+         to import the data
+        </li>
+       </ol>
+      </section>
+      <section id="automated-conversion">
+       <h2>
+        Automated Conversion Tools
+       </h2>
+       <p>
+        For efficient and accurate conversion of bank statements to Excel, automated tools are the way to go. Here's how to use them effectively:
+       </p>
+       <h3>
+        Using BankCSVConverter.com
+       </h3>
+       <p>
+        BankCSVConverter.com specializes in converting complex bank statement formats to clean Excel files:
+       </p>
+       <ol>
+        <li>
+         <strong>
+          Upload your statement:
+         </strong>
+         Support for PDF, CSV, OFX, QFX, and more
+        </li>
+        <li>
+         <strong>
+          Select your bank:
+         </strong>
+         Pre-configured templates for major banks
+        </li>
+        <li>
+         <strong>
+          Choose output format:
+         </strong>
+         Excel, CSV, or accounting software formats
+        </li>
+        <li>
+         <strong>
+          Download converted file:
+         </strong>
+         Clean, formatted data ready for analysis
+        </li>
+       </ol>
+       <div class="excel-template">
+        <h4>
+         Benefits of Automated Conversion:
+        </h4>
+        <ul>
+         <li>
+          ✓ 99.9% accuracy rate
+         </li>
+         <li>
+          ✓ Handles multiple statement formats
+         </li>
+         <li>
+          ✓ Preserves transaction categories
+         </li>
+         <li>
+          ✓ Batch processing for multiple statements
+         </li>
+         <li>
+          ✓ Automatic duplicate detection
+         </li>
+         <li>
+          ✓ Consistent date formatting
+         </li>
+        </ul>
+       </div>
+       <h3>
+        Bank-Specific CSV Downloads
+       </h3>
+       <p>
+        Many banks now offer direct CSV downloads. Here's how to access them for major banks:
+       </p>
+       <ul>
+        <li>
+         <strong>
+          Chase:
+         </strong>
+         Login → Account Activity → Download Activity → CSV format
+        </li>
+        <li>
+         <strong>
+          Bank of America:
+         </strong>
+         Accounts → Download → Microsoft Excel format
+        </li>
+        <li>
+         <strong>
+          Wells Fargo:
+         </strong>
+         Account Activity → Download → Spreadsheet
+        </li>
+        <li>
+         <strong>
+          Citi:
+         </strong>
+         Account Details → Download Transactions → CSV
+        </li>
+       </ul>
+      </section>
+      <section id="excel-import-wizard">
+       <h2>
+        Using Excel's Import Wizard
+       </h2>
+       <p>
+        Excel's built-in import features have evolved significantly. Here's how to use them effectively:
+       </p>
+       <h3>
+        Power Query Method (Recommended for Excel 2016+)
+       </h3>
+       <ol>
+        <li>
+         Go to
+         <strong>
+          Data → Get Data → From File → From CSV
+         </strong>
+        </li>
+        <li>
+         Navigate to your bank statement CSV file
+        </li>
+        <li>
+         In the preview window, verify the data looks correct
+        </li>
+        <li>
+         Click
+         <strong>
+          Transform Data
+         </strong>
+         to open Power Query Editor
+        </li>
+        <li>
+         Apply transformations:
+         <ul>
+          <li>
+           Remove unnecessary columns
+          </li>
+          <li>
+           Change data types (dates, currency)
+          </li>
+          <li>
+           Filter out non-transaction rows
+          </li>
+          <li>
+           Split columns if needed
+          </li>
+         </ul>
+        </li>
+        <li>
+         Click
+         <strong>
+          Close &amp; Load
+         </strong>
+         to import the cleaned data
+        </li>
+       </ol>
+       <div class="code-block">
+        <h4>
+         Power Query M Code Example:
+        </h4>
+        <pre>
 let
     Source = Csv.Document(File.Contents("C:\statements\bank_statement.csv")),
     PromotedHeaders = Table.PromoteHeaders(Source),
@@ -526,505 +555,976 @@ let
         {"Amount", Currency.Type}, 
         {"Balance", Currency.Type}
     }),
-    FilteredRows = Table.SelectRows(ChangedTypes, each [Amount] <> null)
+    FilteredRows = Table.SelectRows(ChangedTypes, each [Amount] &lt;&gt; null)
 in
     FilteredRows
                     </pre>
-                </div>
-            </section>
-
-            <section id="data-cleaning">
-                <h2>Data Cleaning and Formatting</h2>
-                
-                <p>Once your data is in Excel, proper cleaning and formatting ensure accurate analysis:</p>
-                
-                <h3>Essential Cleaning Steps</h3>
-                
-                <ol>
-                    <li><strong>Standardize Date Formats:</strong>
-                        <ul>
-                            <li>Select date column</li>
-                            <li>Right-click → Format Cells → Date</li>
-                            <li>Choose consistent format (MM/DD/YYYY)</li>
-                        </ul>
-                    </li>
-                    
-                    <li><strong>Clean Transaction Descriptions:</strong>
-                        <ul>
-                            <li>Remove extra spaces: <code>=TRIM(A2)</code></li>
-                            <li>Standardize case: <code>=PROPER(A2)</code></li>
-                            <li>Extract merchant names: <code>=LEFT(A2,FIND(" ",A2)-1)</code></li>
-                        </ul>
-                    </li>
-                    
-                    <li><strong>Separate Debits and Credits:</strong>
-                        <div class="code-block">
-                            <pre>
-=IF(C2<0,ABS(C2),"")  // For Debit column
-=IF(C2>0,C2,"")       // For Credit column
+       </div>
+      </section>
+      <section id="data-cleaning">
+       <h2>
+        Data Cleaning and Formatting
+       </h2>
+       <p>
+        Once your data is in Excel, proper cleaning and formatting ensure accurate analysis:
+       </p>
+       <h3>
+        Essential Cleaning Steps
+       </h3>
+       <ol>
+        <li>
+         <strong>
+          Standardize Date Formats:
+         </strong>
+         <ul>
+          <li>
+           Select date column
+          </li>
+          <li>
+           Right-click → Format Cells → Date
+          </li>
+          <li>
+           Choose consistent format (MM/DD/YYYY)
+          </li>
+         </ul>
+        </li>
+        <li>
+         <strong>
+          Clean Transaction Descriptions:
+         </strong>
+         <ul>
+          <li>
+           Remove extra spaces:
+           <code>
+            =TRIM(A2)
+           </code>
+          </li>
+          <li>
+           Standardize case:
+           <code>
+            =PROPER(A2)
+           </code>
+          </li>
+          <li>
+           Extract merchant names:
+           <code>
+            =LEFT(A2,FIND(" ",A2)-1)
+           </code>
+          </li>
+         </ul>
+        </li>
+        <li>
+         <strong>
+          Separate Debits and Credits:
+         </strong>
+         <div class="code-block">
+          <pre>
+=IF(C2&lt;0,ABS(C2),"")  // For Debit column
+=IF(C2&gt;0,C2,"")       // For Credit column
                             </pre>
-                        </div>
-                    </li>
-                    
-                    <li><strong>Remove Duplicates:</strong>
-                        <ul>
-                            <li>Select all data</li>
-                            <li>Data → Remove Duplicates</li>
-                            <li>Check all columns to ensure true duplicates</li>
-                        </ul>
-                    </li>
-                </ol>
-                
-                <h3>Advanced Formatting Techniques</h3>
-                
-                <h4>Creating a Running Balance</h4>
-                <div class="code-block">
-                    <pre>
+         </div>
+        </li>
+        <li>
+         <strong>
+          Remove Duplicates:
+         </strong>
+         <ul>
+          <li>
+           Select all data
+          </li>
+          <li>
+           Data → Remove Duplicates
+          </li>
+          <li>
+           Check all columns to ensure true duplicates
+          </li>
+         </ul>
+        </li>
+       </ol>
+       <h3>
+        Advanced Formatting Techniques
+       </h3>
+       <h4>
+        Creating a Running Balance
+       </h4>
+       <div class="code-block">
+        <pre>
 =E1+C2-D2  // Where E1 is previous balance, C2 is credit, D2 is debit
                     </pre>
-                </div>
-                
-                <h4>Categorizing Transactions</h4>
-                <div class="code-block">
-                    <pre>
+       </div>
+       <h4>
+        Categorizing Transactions
+       </h4>
+       <div class="code-block">
+        <pre>
 =IF(ISNUMBER(SEARCH("grocery",B2)),"Food",
   IF(ISNUMBER(SEARCH("gas",B2)),"Transportation",
     IF(ISNUMBER(SEARCH("electric",B2)),"Utilities","Other")))
                     </pre>
-                </div>
-            </section>
-
-            <section id="common-issues">
-                <h2>Common Issues and Solutions</h2>
-                
-                <p>When importing bank statements to Excel, you'll likely encounter these common problems:</p>
-                
-                <h3>Issue 1: Dates Import as Text</h3>
-                <p><strong>Solution:</strong> Use DATEVALUE function or Text to Columns:</p>
-                <div class="code-block">
-                    <pre>=DATEVALUE(A2)  // Converts text date to Excel date</pre>
-                </div>
-                
-                <h3>Issue 2: Numbers Stored as Text</h3>
-                <p><strong>Solution:</strong> Multiply by 1 or use VALUE function:</p>
-                <div class="code-block">
-                    <pre>=VALUE(B2)  // Converts text to number
+       </div>
+      </section>
+      <section id="common-issues">
+       <h2>
+        Common Issues and Solutions
+       </h2>
+       <p>
+        When importing bank statements to Excel, you'll likely encounter these common problems:
+       </p>
+       <h3>
+        Issue 1: Dates Import as Text
+       </h3>
+       <p>
+        <strong>
+         Solution:
+        </strong>
+        Use DATEVALUE function or Text to Columns:
+       </p>
+       <div class="code-block">
+        <pre>=DATEVALUE(A2)  // Converts text date to Excel date</pre>
+       </div>
+       <h3>
+        Issue 2: Numbers Stored as Text
+       </h3>
+       <p>
+        <strong>
+         Solution:
+        </strong>
+        Multiply by 1 or use VALUE function:
+       </p>
+       <div class="code-block">
+        <pre>=VALUE(B2)  // Converts text to number
 =B2*1       // Quick conversion trick</pre>
-                </div>
-                
-                <h3>Issue 3: Merged Cells from PDF Import</h3>
-                <p><strong>Solution:</strong></p>
-                <ol>
-                    <li>Select affected range</li>
-                    <li>Home → Format → Unmerge Cells</li>
-                    <li>Use Fill Down to populate empty cells</li>
-                </ol>
-                
-                <h3>Issue 4: Special Characters in Currency</h3>
-                <p><strong>Solution:</strong> Clean with SUBSTITUTE function:</p>
-                <div class="code-block">
-                    <pre>=VALUE(SUBSTITUTE(SUBSTITUTE(A2,"$",""),",",""))</pre>
-                </div>
-                
-                <h3>Issue 5: Multiple Headers or Footers</h3>
-                <p><strong>Solution:</strong> Use filtering to remove non-transaction rows:</p>
-                <ol>
-                    <li>Add helper column with formula: <code>=ISNUMBER(A2)</code></li>
-                    <li>Filter for TRUE values only</li>
-                    <li>Copy visible cells to new sheet</li>
-                </ol>
-            </section>
-
-            <section id="excel-formulas">
-                <h2>Essential Excel Formulas for Financial Analysis</h2>
-                
-                <p>Once your bank data is in Excel, these formulas will help you analyze your finances:</p>
-                
-                <h3>Basic Financial Formulas</h3>
-                
-                <h4>1. Monthly Spending Total</h4>
-                <div class="code-block">
-                    <pre>=SUMIFS(D:D,A:A,">="&DATE(2024,1,1),A:A,"<"&DATE(2024,2,1))</pre>
-                </div>
-                
-                <h4>2. Average Transaction Amount</h4>
-                <div class="code-block">
-                    <pre>=AVERAGE(D2:D1000)</pre>
-                </div>
-                
-                <h4>3. Count Transactions by Category</h4>
-                <div class="code-block">
-                    <pre>=COUNTIF(E:E,"Food")</pre>
-                </div>
-                
-                <h4>4. Largest Expense</h4>
-                <div class="code-block">
-                    <pre>=MAX(D:D)</pre>
-                </div>
-                
-                <h3>Advanced Analysis Formulas</h3>
-                
-                <h4>1. Year-over-Year Comparison</h4>
-                <div class="code-block">
-                    <pre>=SUMIFS(D:D,A:A,">="&DATE(2024,1,1),A:A,"<="&DATE(2024,12,31))/
- SUMIFS(D:D,A:A,">="&DATE(2023,1,1),A:A,"<="&DATE(2023,12,31))-1</pre>
-                </div>
-                
-                <h4>2. Running Average (30-day)</h4>
-                <div class="code-block">
-                    <pre>=AVERAGEIFS(D:D,A:A,">="&A2-30,A:A,"<="&A2)</pre>
-                </div>
-                
-                <h4>3. Conditional Formatting for Unusual Spending</h4>
-                <div class="code-block">
-                    <pre>=D2>AVERAGE(D:D)*2  // Highlights transactions 2x above average</pre>
-                </div>
-                
-                <h4>4. Category Budget Tracking</h4>
-                <div class="code-block">
-                    <pre>=SUMIFS(D:D,E:E,"Food",A:A,">="&EOMONTH(TODAY(),-1)+1)</pre>
-                </div>
-            </section>
-
-            <section id="pivot-tables">
-                <h2>Creating Pivot Tables for Transaction Analysis</h2>
-                
-                <p>Pivot tables transform your bank statement data into powerful insights:</p>
-                
-                <h3>Setting Up Your First Pivot Table</h3>
-                
-                <ol>
-                    <li>Select your transaction data (including headers)</li>
-                    <li>Insert → PivotTable → OK</li>
-                    <li>Drag fields to areas:
-                        <ul>
-                            <li><strong>Rows:</strong> Category or Description</li>
-                            <li><strong>Columns:</strong> Month/Year</li>
-                            <li><strong>Values:</strong> Transaction amounts</li>
-                            <li><strong>Filters:</strong> Account type or date range</li>
-                        </ul>
-                    </li>
-                </ol>
-                
-                <h3>Useful Pivot Table Configurations</h3>
-                
-                <h4>1. Monthly Spending by Category</h4>
-                <ul>
-                    <li>Rows: Category</li>
-                    <li>Columns: Month</li>
-                    <li>Values: Sum of Amount</li>
-                </ul>
-                
-                <h4>2. Vendor Analysis</h4>
-                <ul>
-                    <li>Rows: Vendor/Description</li>
-                    <li>Values: Count and Sum of transactions</li>
-                    <li>Sort by sum descending</li>
-                </ul>
-                
-                <h4>3. Cash Flow Analysis</h4>
-                <ul>
-                    <li>Rows: Date (grouped by month)</li>
-                    <li>Values: Sum of Credits, Sum of Debits</li>
-                    <li>Add calculated field for net flow</li>
-                </ul>
-                
-                <div class="tip-box">
-                    <strong>Pro Tip:</strong> Use slicers (Insert → Slicer) to create interactive dashboards that allow quick filtering by date, category, or amount ranges.
-                </div>
-            </section>
-
-            <section id="charts-visualization">
-                <h2>Charts and Data Visualization</h2>
-                
-                <p>Visual representations make financial patterns immediately apparent:</p>
-                
-                <h3>Essential Charts for Bank Statement Analysis</h3>
-                
-                <h4>1. Monthly Spending Trend (Line Chart)</h4>
-                <ol>
-                    <li>Create pivot table with months and total spending</li>
-                    <li>Select data → Insert → Line Chart</li>
-                    <li>Add trendline to show spending direction</li>
-                </ol>
-                
-                <h4>2. Category Breakdown (Pie Chart)</h4>
-                <ol>
-                    <li>Sum spending by category</li>
-                    <li>Insert → Pie Chart → 3D Pie</li>
-                    <li>Add data labels showing percentages</li>
-                </ol>
-                
-                <h4>3. Income vs Expenses (Column Chart)</h4>
-                <ol>
-                    <li>Group transactions by month</li>
-                    <li>Separate income and expenses</li>
-                    <li>Create clustered column chart</li>
-                    <li>Add net income line on secondary axis</li>
-                </ol>
-                
-                <h4>4. Daily Balance (Area Chart)</h4>
-                <ol>
-                    <li>Calculate running balance by date</li>
-                    <li>Insert → Area Chart</li>
-                    <li>Format to highlight low balance periods</li>
-                </ol>
-                
-                <h3>Creating a Financial Dashboard</h3>
-                
-                <p>Combine multiple visualizations for a comprehensive view:</p>
-                
-                <ol>
-                    <li>Create separate sheets for each analysis</li>
-                    <li>Build a dashboard sheet with:
-                        <ul>
-                            <li>Key metrics (total income, expenses, savings rate)</li>
-                            <li>Monthly trend chart</li>
-                            <li>Category breakdown</li>
-                            <li>Top 10 expenses table</li>
-                        </ul>
-                    </li>
-                    <li>Use cell references to make it dynamic</li>
-                    <li>Add dropdown for date range selection</li>
-                </ol>
-            </section>
-
-            <section id="templates">
-                <h2>Bank Statement Excel Templates</h2>
-                
-                <p>Save time with pre-built templates designed for financial analysis:</p>
-                
-                <div class="excel-template">
-                    <h3>Essential Template Components</h3>
-                    <ul>
-                        <li><strong>Data Import Sheet:</strong> Standardized columns for easy paste</li>
-                        <li><strong>Category Mapping:</strong> Automatic transaction categorization</li>
-                        <li><strong>Dashboard:</strong> Pre-built charts and metrics</li>
-                        <li><strong>Budget Comparison:</strong> Actual vs planned spending</li>
-                        <li><strong>Tax Summary:</strong> Deductible expense tracking</li>
-                    </ul>
-                </div>
-                
-                <h3>Creating Your Own Template</h3>
-                
-                <ol>
-                    <li><strong>Set up standard columns:</strong>
-                        <ul>
-                            <li>Date</li>
-                            <li>Description</li>
-                            <li>Category</li>
-                            <li>Debit</li>
-                            <li>Credit</li>
-                            <li>Balance</li>
-                            <li>Notes</li>
-                        </ul>
-                    </li>
-                    
-                    <li><strong>Add validation rules:</strong>
-                        <ul>
-                            <li>Date must be valid date format</li>
-                            <li>Category from predefined list</li>
-                            <li>Amounts must be positive numbers</li>
-                        </ul>
-                    </li>
-                    
-                    <li><strong>Include helper columns:</strong>
-                        <ul>
-                            <li>Month/Year extraction</li>
-                            <li>Transaction type (income/expense)</li>
-                            <li>Running balance calculation</li>
-                        </ul>
-                    </li>
-                    
-                    <li><strong>Build summary tables:</strong>
-                        <ul>
-                            <li>Monthly totals by category</li>
-                            <li>Year-to-date summaries</li>
-                            <li>Budget variance analysis</li>
-                        </ul>
-                    </li>
-                </ol>
-            </section>
-
-            <section id="accounting-integration">
-                <h2>Integration with Accounting Software</h2>
-                
-                <p>Excel can serve as a bridge between your bank statements and accounting software:</p>
-                
-                <h3>QuickBooks Integration</h3>
-                
-                <ol>
-                    <li>Format Excel data to match QuickBooks import template:
-                        <ul>
-                            <li>Date (MM/DD/YYYY)</li>
-                            <li>Description</li>
-                            <li>Amount (negative for expenses)</li>
-                        </ul>
-                    </li>
-                    <li>Save as CSV file</li>
-                    <li>In QuickBooks: Banking → Upload transactions</li>
-                    <li>Map columns and import</li>
-                </ol>
-                
-                <h3>Xero Integration</h3>
-                
-                <p>Xero accepts CSV files with specific formatting:</p>
-                <div class="code-block">
-                    <pre>
+       </div>
+       <h3>
+        Issue 3: Merged Cells from PDF Import
+       </h3>
+       <p>
+        <strong>
+         Solution:
+        </strong>
+       </p>
+       <ol>
+        <li>
+         Select affected range
+        </li>
+        <li>
+         Home → Format → Unmerge Cells
+        </li>
+        <li>
+         Use Fill Down to populate empty cells
+        </li>
+       </ol>
+       <h3>
+        Issue 4: Special Characters in Currency
+       </h3>
+       <p>
+        <strong>
+         Solution:
+        </strong>
+        Clean with SUBSTITUTE function:
+       </p>
+       <div class="code-block">
+        <pre>=VALUE(SUBSTITUTE(SUBSTITUTE(A2,"$",""),",",""))</pre>
+       </div>
+       <h3>
+        Issue 5: Multiple Headers or Footers
+       </h3>
+       <p>
+        <strong>
+         Solution:
+        </strong>
+        Use filtering to remove non-transaction rows:
+       </p>
+       <ol>
+        <li>
+         Add helper column with formula:
+         <code>
+          =ISNUMBER(A2)
+         </code>
+        </li>
+        <li>
+         Filter for TRUE values only
+        </li>
+        <li>
+         Copy visible cells to new sheet
+        </li>
+       </ol>
+      </section>
+      <section id="excel-formulas">
+       <h2>
+        Essential Excel Formulas for Financial Analysis
+       </h2>
+       <p>
+        Once your bank data is in Excel, these formulas will help you analyze your finances:
+       </p>
+       <h3>
+        Basic Financial Formulas
+       </h3>
+       <h4>
+        1. Monthly Spending Total
+       </h4>
+       <div class="code-block">
+        <pre>=SUMIFS(D:D,A:A,"&gt;="&amp;DATE(2024,1,1),A:A,"&lt;"&amp;DATE(2024,2,1))</pre>
+       </div>
+       <h4>
+        2. Average Transaction Amount
+       </h4>
+       <div class="code-block">
+        <pre>=AVERAGE(D2:D1000)</pre>
+       </div>
+       <h4>
+        3. Count Transactions by Category
+       </h4>
+       <div class="code-block">
+        <pre>=COUNTIF(E:E,"Food")</pre>
+       </div>
+       <h4>
+        4. Largest Expense
+       </h4>
+       <div class="code-block">
+        <pre>=MAX(D:D)</pre>
+       </div>
+       <h3>
+        Advanced Analysis Formulas
+       </h3>
+       <h4>
+        1. Year-over-Year Comparison
+       </h4>
+       <div class="code-block">
+        <pre>=SUMIFS(D:D,A:A,"&gt;="&amp;DATE(2024,1,1),A:A,"&lt;="&amp;DATE(2024,12,31))/
+ SUMIFS(D:D,A:A,"&gt;="&amp;DATE(2023,1,1),A:A,"&lt;="&amp;DATE(2023,12,31))-1</pre>
+       </div>
+       <h4>
+        2. Running Average (30-day)
+       </h4>
+       <div class="code-block">
+        <pre>=AVERAGEIFS(D:D,A:A,"&gt;="&amp;A2-30,A:A,"&lt;="&amp;A2)</pre>
+       </div>
+       <h4>
+        3. Conditional Formatting for Unusual Spending
+       </h4>
+       <div class="code-block">
+        <pre>=D2&gt;AVERAGE(D:D)*2  // Highlights transactions 2x above average</pre>
+       </div>
+       <h4>
+        4. Category Budget Tracking
+       </h4>
+       <div class="code-block">
+        <pre>=SUMIFS(D:D,E:E,"Food",A:A,"&gt;="&amp;EOMONTH(TODAY(),-1)+1)</pre>
+       </div>
+      </section>
+      <section id="pivot-tables">
+       <h2>
+        Creating Pivot Tables for Transaction Analysis
+       </h2>
+       <p>
+        Pivot tables transform your bank statement data into powerful insights:
+       </p>
+       <h3>
+        Setting Up Your First Pivot Table
+       </h3>
+       <ol>
+        <li>
+         Select your transaction data (including headers)
+        </li>
+        <li>
+         Insert → PivotTable → OK
+        </li>
+        <li>
+         Drag fields to areas:
+         <ul>
+          <li>
+           <strong>
+            Rows:
+           </strong>
+           Category or Description
+          </li>
+          <li>
+           <strong>
+            Columns:
+           </strong>
+           Month/Year
+          </li>
+          <li>
+           <strong>
+            Values:
+           </strong>
+           Transaction amounts
+          </li>
+          <li>
+           <strong>
+            Filters:
+           </strong>
+           Account type or date range
+          </li>
+         </ul>
+        </li>
+       </ol>
+       <h3>
+        Useful Pivot Table Configurations
+       </h3>
+       <h4>
+        1. Monthly Spending by Category
+       </h4>
+       <ul>
+        <li>
+         Rows: Category
+        </li>
+        <li>
+         Columns: Month
+        </li>
+        <li>
+         Values: Sum of Amount
+        </li>
+       </ul>
+       <h4>
+        2. Vendor Analysis
+       </h4>
+       <ul>
+        <li>
+         Rows: Vendor/Description
+        </li>
+        <li>
+         Values: Count and Sum of transactions
+        </li>
+        <li>
+         Sort by sum descending
+        </li>
+       </ul>
+       <h4>
+        3. Cash Flow Analysis
+       </h4>
+       <ul>
+        <li>
+         Rows: Date (grouped by month)
+        </li>
+        <li>
+         Values: Sum of Credits, Sum of Debits
+        </li>
+        <li>
+         Add calculated field for net flow
+        </li>
+       </ul>
+       <div class="tip-box">
+        <strong>
+         Pro Tip:
+        </strong>
+        Use slicers (Insert → Slicer) to create interactive dashboards that allow quick filtering by date, category, or amount ranges.
+       </div>
+      </section>
+      <section id="charts-visualization">
+       <h2>
+        Charts and Data Visualization
+       </h2>
+       <p>
+        Visual representations make financial patterns immediately apparent:
+       </p>
+       <h3>
+        Essential Charts for Bank Statement Analysis
+       </h3>
+       <h4>
+        1. Monthly Spending Trend (Line Chart)
+       </h4>
+       <ol>
+        <li>
+         Create pivot table with months and total spending
+        </li>
+        <li>
+         Select data → Insert → Line Chart
+        </li>
+        <li>
+         Add trendline to show spending direction
+        </li>
+       </ol>
+       <h4>
+        2. Category Breakdown (Pie Chart)
+       </h4>
+       <ol>
+        <li>
+         Sum spending by category
+        </li>
+        <li>
+         Insert → Pie Chart → 3D Pie
+        </li>
+        <li>
+         Add data labels showing percentages
+        </li>
+       </ol>
+       <h4>
+        3. Income vs Expenses (Column Chart)
+       </h4>
+       <ol>
+        <li>
+         Group transactions by month
+        </li>
+        <li>
+         Separate income and expenses
+        </li>
+        <li>
+         Create clustered column chart
+        </li>
+        <li>
+         Add net income line on secondary axis
+        </li>
+       </ol>
+       <h4>
+        4. Daily Balance (Area Chart)
+       </h4>
+       <ol>
+        <li>
+         Calculate running balance by date
+        </li>
+        <li>
+         Insert → Area Chart
+        </li>
+        <li>
+         Format to highlight low balance periods
+        </li>
+       </ol>
+       <h3>
+        Creating a Financial Dashboard
+       </h3>
+       <p>
+        Combine multiple visualizations for a comprehensive view:
+       </p>
+       <ol>
+        <li>
+         Create separate sheets for each analysis
+        </li>
+        <li>
+         Build a dashboard sheet with:
+         <ul>
+          <li>
+           Key metrics (total income, expenses, savings rate)
+          </li>
+          <li>
+           Monthly trend chart
+          </li>
+          <li>
+           Category breakdown
+          </li>
+          <li>
+           Top 10 expenses table
+          </li>
+         </ul>
+        </li>
+        <li>
+         Use cell references to make it dynamic
+        </li>
+        <li>
+         Add dropdown for date range selection
+        </li>
+       </ol>
+      </section>
+      <section id="templates">
+       <h2>
+        Bank Statement Excel Templates
+       </h2>
+       <p>
+        Save time with pre-built templates designed for financial analysis:
+       </p>
+       <div class="excel-template">
+        <h3>
+         Essential Template Components
+        </h3>
+        <ul>
+         <li>
+          <strong>
+           Data Import Sheet:
+          </strong>
+          Standardized columns for easy paste
+         </li>
+         <li>
+          <strong>
+           Category Mapping:
+          </strong>
+          Automatic transaction categorization
+         </li>
+         <li>
+          <strong>
+           Dashboard:
+          </strong>
+          Pre-built charts and metrics
+         </li>
+         <li>
+          <strong>
+           Budget Comparison:
+          </strong>
+          Actual vs planned spending
+         </li>
+         <li>
+          <strong>
+           Tax Summary:
+          </strong>
+          Deductible expense tracking
+         </li>
+        </ul>
+       </div>
+       <h3>
+        Creating Your Own Template
+       </h3>
+       <ol>
+        <li>
+         <strong>
+          Set up standard columns:
+         </strong>
+         <ul>
+          <li>
+           Date
+          </li>
+          <li>
+           Description
+          </li>
+          <li>
+           Category
+          </li>
+          <li>
+           Debit
+          </li>
+          <li>
+           Credit
+          </li>
+          <li>
+           Balance
+          </li>
+          <li>
+           Notes
+          </li>
+         </ul>
+        </li>
+        <li>
+         <strong>
+          Add validation rules:
+         </strong>
+         <ul>
+          <li>
+           Date must be valid date format
+          </li>
+          <li>
+           Category from predefined list
+          </li>
+          <li>
+           Amounts must be positive numbers
+          </li>
+         </ul>
+        </li>
+        <li>
+         <strong>
+          Include helper columns:
+         </strong>
+         <ul>
+          <li>
+           Month/Year extraction
+          </li>
+          <li>
+           Transaction type (income/expense)
+          </li>
+          <li>
+           Running balance calculation
+          </li>
+         </ul>
+        </li>
+        <li>
+         <strong>
+          Build summary tables:
+         </strong>
+         <ul>
+          <li>
+           Monthly totals by category
+          </li>
+          <li>
+           Year-to-date summaries
+          </li>
+          <li>
+           Budget variance analysis
+          </li>
+         </ul>
+        </li>
+       </ol>
+      </section>
+      <section id="accounting-integration">
+       <h2>
+        Integration with Accounting Software
+       </h2>
+       <p>
+        Excel can serve as a bridge between your bank statements and accounting software:
+       </p>
+       <h3>
+        QuickBooks Integration
+       </h3>
+       <ol>
+        <li>
+         Format Excel data to match QuickBooks import template:
+         <ul>
+          <li>
+           Date (MM/DD/YYYY)
+          </li>
+          <li>
+           Description
+          </li>
+          <li>
+           Amount (negative for expenses)
+          </li>
+         </ul>
+        </li>
+        <li>
+         Save as CSV file
+        </li>
+        <li>
+         In QuickBooks: Banking → Upload transactions
+        </li>
+        <li>
+         Map columns and import
+        </li>
+       </ol>
+       <h3>
+        Xero Integration
+       </h3>
+       <p>
+        Xero accepts CSV files with specific formatting:
+       </p>
+       <div class="code-block">
+        <pre>
 Date,Amount,Payee,Description,Reference,Check Number
 01/15/2024,-45.99,Amazon,Office Supplies,INV-1234,
 01/16/2024,1500.00,Client ABC,Consulting Fee,DEP-5678,
                     </pre>
-                </div>
-                
-                <h3>Creating Universal Import Files</h3>
-                
-                <p>Build Excel templates that can export to multiple formats:</p>
-                
-                <ol>
-                    <li>Maintain master data in Excel with all fields</li>
-                    <li>Create separate sheets for each software format</li>
-                    <li>Use formulas to map data to required columns</li>
-                    <li>Export individual sheets as CSV when needed</li>
-                </ol>
-                
-                <div class="tip-box">
-                    <strong>Integration Tip:</strong> Always maintain a master Excel file with complete transaction details. This serves as your source of truth and can be formatted for any accounting software as needed.
-                </div>
-            </section>
-
-            <section id="best-practices">
-                <h2>Best Practices and Tips</h2>
-                
-                <h3>Data Security</h3>
-                <ul>
-                    <li>Password-protect sensitive Excel files</li>
-                    <li>Store files in encrypted folders</li>
-                    <li>Remove account numbers before sharing</li>
-                    <li>Use Excel's built-in encryption features</li>
-                </ul>
-                
-                <h3>File Organization</h3>
-                <ul>
-                    <li>Use consistent naming: "BankName_AccountType_YYYY-MM.xlsx"</li>
-                    <li>Create monthly or quarterly files rather than annual</li>
-                    <li>Maintain a master summary file linking to individual statements</li>
-                    <li>Regular backups to cloud storage</li>
-                </ul>
-                
-                <h3>Efficiency Tips</h3>
-                <ul>
-                    <li>Create keyboard shortcuts for frequent tasks</li>
-                    <li>Use Excel tables (Ctrl+T) for automatic formula expansion</li>
-                    <li>Record macros for repetitive cleaning tasks</li>
-                    <li>Set up data validation to prevent entry errors</li>
-                </ul>
-                
-                <h3>Regular Maintenance</h3>
-                <ul>
-                    <li>Reconcile imported data with bank statements monthly</li>
-                    <li>Update category mappings as new vendors appear</li>
-                    <li>Archive old data to keep files manageable</li>
-                    <li>Review and update formulas quarterly</li>
-                </ul>
-                
-                <div class="warning-box">
-                    <strong>Important:</strong> Always verify imported totals match your actual bank statement. Even automated tools can occasionally miss transactions or misinterpret data.
-                </div>
-            </section>
-
-            <section id="conclusion">
-                <h2>Conclusion</h2>
-                
-                <p>Importing bank statements to Excel opens up a world of financial analysis possibilities. Whether you choose manual methods for occasional imports or automated solutions like BankCSVConverter.com for regular processing, the key is finding a workflow that balances accuracy with efficiency.</p>
-                
-                <p>By following this guide, you've learned:</p>
-                <ul>
-                    <li>Multiple methods to import bank data into Excel</li>
-                    <li>How to clean and format financial data properly</li>
-                    <li>Essential formulas for financial analysis</li>
-                    <li>Creating powerful visualizations with pivot tables and charts</li>
-                    <li>Best practices for maintaining accurate financial records</li>
-                </ul>
-                
-                <p>Remember, the goal isn't just to get data into Excel—it's to transform that data into actionable insights that help you make better financial decisions. Start with the basics, gradually incorporate more advanced techniques, and soon you'll have a robust financial analysis system that provides clear visibility into your financial health.</p>
-                
-                <div class="tip-box">
-                    <h3>Ready to Get Started?</h3>
-                    <p>Try BankCSVConverter.com free for your first 10 statements. Our automated conversion saves hours of manual work and ensures your data is perfectly formatted for Excel analysis. No credit card required.</p>
-                    <p><a href="../index.html" class="cta-button">Start Converting Now →</a></p>
-                </div>
-            </section>
-
-            <section class="related-articles">
-                <h2>Related Articles</h2>
-                <ul>
-                    <li><a href="./analyze-bank-statements-excel-guide.html">Advanced Bank Statement Analysis in Excel</a></li>
-                    <li><a href="./bank-statements-tax-preparation-guide.html">Preparing Bank Statements for Tax Season</a></li>
-                    <li><a href="./how-to-import-bank-statements-to-quickbooks.html">QuickBooks Import Guide</a></li>
-                    <li><a href="./financial-data-privacy-guide.html">Protecting Your Financial Data</a></li>
-                </ul>
-            </section>
-        </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>BankCSVConverter.com</h3>
-                    <p>Professional bank statement conversion tools for individuals and businesses.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="../index.html#features">Features</a></li>
-                        <li><a href="../index.html#pricing">Pricing</a></li>
-                        <li><a href="../pages/security.html">Security</a></li>
-                        <li><a href="../index.html">API</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="../index.html#faq">Help Center</a></li>
-                        <li><a href="../index.html#contact">Contact Us</a></li>
-                        <li><a href="../index.html#blog">Blog</a></li>
-                        <li><a href="../index.html#blog">Tutorials</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="../index.html#privacy">Privacy Policy</a></li>
-                        <li><a href="../index.html#terms">Terms of Service</a></li>
-                        <li><a href="../pages/security.html">Security</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 BankCSVConverter.com. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-    <!-- Mobile menu JavaScript -->
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        menuToggle.addEventListener('click', () => {
+       </div>
+       <h3>
+        Creating Universal Import Files
+       </h3>
+       <p>
+        Build Excel templates that can export to multiple formats:
+       </p>
+       <ol>
+        <li>
+         Maintain master data in Excel with all fields
+        </li>
+        <li>
+         Create separate sheets for each software format
+        </li>
+        <li>
+         Use formulas to map data to required columns
+        </li>
+        <li>
+         Export individual sheets as CSV when needed
+        </li>
+       </ol>
+       <div class="tip-box">
+        <strong>
+         Integration Tip:
+        </strong>
+        Always maintain a master Excel file with complete transaction details. This serves as your source of truth and can be formatted for any accounting software as needed.
+       </div>
+      </section>
+      <section id="best-practices">
+       <h2>
+        Best Practices and Tips
+       </h2>
+       <h3>
+        Data Security
+       </h3>
+       <ul>
+        <li>
+         Password-protect sensitive Excel files
+        </li>
+        <li>
+         Store files in encrypted folders
+        </li>
+        <li>
+         Remove account numbers before sharing
+        </li>
+        <li>
+         Use Excel's built-in encryption features
+        </li>
+       </ul>
+       <h3>
+        File Organization
+       </h3>
+       <ul>
+        <li>
+         Use consistent naming: "BankName_AccountType_YYYY-MM.xlsx"
+        </li>
+        <li>
+         Create monthly or quarterly files rather than annual
+        </li>
+        <li>
+         Maintain a master summary file linking to individual statements
+        </li>
+        <li>
+         Regular backups to cloud storage
+        </li>
+       </ul>
+       <h3>
+        Efficiency Tips
+       </h3>
+       <ul>
+        <li>
+         Create keyboard shortcuts for frequent tasks
+        </li>
+        <li>
+         Use Excel tables (Ctrl+T) for automatic formula expansion
+        </li>
+        <li>
+         Record macros for repetitive cleaning tasks
+        </li>
+        <li>
+         Set up data validation to prevent entry errors
+        </li>
+       </ul>
+       <h3>
+        Regular Maintenance
+       </h3>
+       <ul>
+        <li>
+         Reconcile imported data with bank statements monthly
+        </li>
+        <li>
+         Update category mappings as new vendors appear
+        </li>
+        <li>
+         Archive old data to keep files manageable
+        </li>
+        <li>
+         Review and update formulas quarterly
+        </li>
+       </ul>
+       <div class="warning-box">
+        <strong>
+         Important:
+        </strong>
+        Always verify imported totals match your actual bank statement. Even automated tools can occasionally miss transactions or misinterpret data.
+       </div>
+      </section>
+      <section id="conclusion">
+       <h2>
+        Conclusion
+       </h2>
+       <p>
+        Importing bank statements to Excel opens up a world of financial analysis possibilities. Whether you choose manual methods for occasional imports or automated solutions like BankCSVConverter.com for regular processing, the key is finding a workflow that balances accuracy with efficiency.
+       </p>
+       <p>
+        By following this guide, you've learned:
+       </p>
+       <ul>
+        <li>
+         Multiple methods to import bank data into Excel
+        </li>
+        <li>
+         How to clean and format financial data properly
+        </li>
+        <li>
+         Essential formulas for financial analysis
+        </li>
+        <li>
+         Creating powerful visualizations with pivot tables and charts
+        </li>
+        <li>
+         Best practices for maintaining accurate financial records
+        </li>
+       </ul>
+       <p>
+        Remember, the goal isn't just to get data into Excel—it's to transform that data into actionable insights that help you make better financial decisions. Start with the basics, gradually incorporate more advanced techniques, and soon you'll have a robust financial analysis system that provides clear visibility into your financial health.
+       </p>
+       <div class="tip-box">
+        <h3>
+         Ready to Get Started?
+        </h3>
+        <p>
+         Try BankCSVConverter.com free for your first 10 statements. Our automated conversion saves hours of manual work and ensures your data is perfectly formatted for Excel analysis. No credit card required.
+        </p>
+        <p>
+         <a class="cta-button" href="../index.html">
+          Start Converting Now →
+         </a>
+        </p>
+       </div>
+      </section>
+      <section class="related-articles">
+       <h2>
+        Related Articles
+       </h2>
+       <ul>
+        <li>
+         <a href="./analyze-bank-statements-excel-guide.html">
+          Advanced Bank Statement Analysis in Excel
+         </a>
+        </li>
+        <li>
+         <a href="./bank-statements-tax-preparation-guide.html">
+          Preparing Bank Statements for Tax Season
+         </a>
+        </li>
+        <li>
+         <a href="./how-to-import-bank-statements-to-quickbooks.html">
+          QuickBooks Import Guide
+         </a>
+        </li>
+        <li>
+         <a href="./financial-data-privacy-guide.html">
+          Protecting Your Financial Data
+         </a>
+        </li>
+       </ul>
+      </section>
+     </article>
+    </div>
+   </div>
+  </main>
+  <!-- Standardized Footer -->
+  <footer>
+   <div class="container">
+    <div class="footer-content">
+     <div class="footer-section">
+      <h4>
+       Product
+      </h4>
+      <ul>
+       <li>
+        <a href="../features.html">
+         Features
+        </a>
+       </li>
+       <li>
+        <a href="../how-it-works.html">
+         How It Works
+        </a>
+       </li>
+       <li>
+        <a href="../pricing.html">
+         Pricing
+        </a>
+       </li>
+       </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Company
+      </h4>
+      <ul>
+       <li>
+        <a href="../about.html">
+         About
+        </a>
+       </li>
+       <li>
+        <a href="../blog.html">
+         Blog
+        </a>
+       </li>
+       <li>
+        <a href="../contact.html">
+         Contact
+        </a>
+       </li>
+       <li>
+        <a href="../careers.html">
+         Careers
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Support
+      </h4>
+      <ul>
+       <li>
+        <a href="../help.html">
+         Help Center
+        </a>
+       </li>
+       <li>
+        <a href="../faq.html">
+         FAQ
+        </a>
+       </li>
+       <li>
+        <a href="../security.html">
+         Security
+        </a>
+       </li>
+       <li>
+        <a href="../status.html">
+         Status
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Legal
+      </h4>
+      <ul>
+       <li>
+        <a href="../privacy.html">
+         Privacy Policy
+        </a>
+       </li>
+       <li>
+        <a href="../terms.html">
+         Terms of Service
+        </a>
+       </li>
+       <li>
+        <a href="../gdpr.html">
+         GDPR
+        </a>
+       </li>
+       <li>
+        <a href="../ccpa.html">
+         CCPA
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>
+      © 2025 BankCSVConverter. All rights reserved.
+     </p>
+    </div>
+   </div>
+  </footer>
+  <!-- Standardized Scripts -->
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             menuToggle.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
         
         // Close menu when clicking on a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function() {
                 navMenu.classList.remove('active');
                 menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
-    </script>
-    <script src="../js/main.js" async></script>
-</body>
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+  </script>
+  <script src="/js/production.js">
+  </script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
 </html>

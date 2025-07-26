@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   My Dashboard - Bank Statement Converter
+  </title>
+  <meta content="View your saved bank statement conversions and manage your account" name="description"/>
+  <link href="/css/production.css" rel="stylesheet"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+  <!-- CSS -->
+  <!-- Favicons -->
+  <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+ </head>
+ <body>
+  <!-- Navigation -->
+  <nav class="navbar">
+   <div class="container nav-container">
+    <a class="nav-logo" href="/">
+     <i class="fas fa-file-csv">
+     </i>
+     BankCSVConverter
+    </a>
+    <button aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+     <span>
+     </span>
+     <span>
+     </span>
+     <span>
+     </span>
+    </button>
+    <div class="nav-menu">
+     <a class="nav-link" href="/">
+      Home
+     </a>
+     <a class="nav-link" href="#features">
+      Features
+     </a>
+     <a class="nav-link" href="#how-it-works">
+      How It Works
+     </a>
+     <a class="nav-link" href="#faq">
+      FAQ
+     </a>
+    </div>
+    <div class="nav-auth">
+     <!-- Will be populated by JS -->
+    </div>
+   </div>
+  </nav>
+  <div class="nav-overlay">
+  </div>
+  <!-- Dashboard Header -->
+  <section class="dashboard-header">
+   <div class="container">
+    <h1 class="dashboard-title">
+     My Dashboard
+    </h1>
+    <p class="dashboard-subtitle">
+     Manage your conversions and account
+    </p>
+   </div>
+  </section>
+  <!-- Dashboard Content -->
+  <section class="dashboard-content">
+   <div class="container">
+    <div class="dashboard-grid">
+     <!-- Account Overview -->
+     <div class="dashboard-card account-overview">
+      <div class="card-header">
+       <h2>
+        <i class="fas fa-user-circle">
+        </i>
+        Account Overview
+       </h2>
+      </div>
+      <div class="card-body">
+       <div class="account-info">
+        <div class="info-row">
+         <span class="label">
+          Email:
+         </span>
+         <span class="value" id="userEmail">
+          Loading...
+         </span>
+        </div>
+        <div class="info-row">
+         <span class="label">
+          Account Type:
+         </span>
+         <span class="value">
+          <span class="account-badge" id="accountType">
+           Free
+          </span>
+         </span>
+        </div>
+        <div class="info-row">
+         <span class="label">
+          Member Since:
+         </span>
+         <span class="value" id="memberSince">
+          Loading...
+         </span>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- Usage Statistics -->
+     <div class="dashboard-card usage-stats">
+      <div class="card-header">
+       <h2>
+        <i class="fas fa-chart-line">
+        </i>
+        Usage Statistics
+       </h2>
+      </div>
+      <div class="card-body">
+       <div class="stats-grid">
+        <div class="stat-item">
+         <div class="stat-value" id="todayConversions">
+          0
+         </div>
+         <div class="stat-label">
+          Today's Conversions
+         </div>
+        </div>
+        <div class="stat-item">
+         <div class="stat-value" id="remainingConversions">
+          5
+         </div>
+         <div class="stat-label">
+          Remaining Today
+         </div>
+        </div>
+        <div class="stat-item">
+         <div class="stat-value" id="totalConversions">
+          0
+         </div>
+         <div class="stat-label">
+          Total Conversions
+         </div>
+        </div>
+       </div>
+       <div class="usage-progress">
+        <div class="progress-header">
+         <span>
+          Daily Usage
+         </span>
+         <span id="usagePercentage">
+          0%
+         </span>
+        </div>
+        <div class="progress-bar">
+         <div class="progress-fill" id="usageProgressFill">
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- Quick Actions -->
+     <div class="dashboard-card quick-actions">
+      <div class="card-header">
+       <h2>
+        <i class="fas fa-bolt">
+        </i>
+        Quick Actions
+       </h2>
+      </div>
+      <div class="card-body">
+       <a class="action-button" href="/">
+        <i class="fas fa-file-upload">
+        </i>
+        <span>
+         Convert New Statement
+        </span>
+       </a>
+       <button class="action-button" id="upgradeButton">
+        <i class="fas fa-crown">
+        </i>
+        <span>
+         Upgrade to Premium
+        </span>
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Recent Conversions -->
+    <div class="dashboard-card recent-conversions">
+     <div class="card-header">
+      <h2>
+       <i class="fas fa-history">
+       </i>
+       Recent Conversions
+      </h2>
+      <span class="subtitle">
+       Saved for 1 hour after conversion
+      </span>
+     </div>
+     <div class="card-body">
+      <div id="conversionsContainer">
+       <!-- Will be populated by JavaScript -->
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Footer -->
+  <footer class="footer">
+   <div class="container">
+    <div class="footer-content">
+     <div class="footer-section">
+      <h3>
+       BankCSVConverter
+      </h3>
+      <p>
+       Convert PDF bank statements to CSV/Excel instantly.
+      </p>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Quick Links
+      </h4>
+      <ul>
+       <li>
+        <a href="/">
+         Home
+        </a>
+       </li>
+       <li>
+        <a href="/dashboard">
+         Dashboard
+        </a>
+       </li>
+       <li>
+        <a href="#faq">
+         FAQ
+        </a>
+       </li>
+       <li>
+        <a href="#privacy">
+         Privacy Policy
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Support
+      </h4>
+      <ul>
+       <li>
+        <a href="mailto:support@bankcsvconverter.com">
+         Contact Us
+        </a>
+       </li>
+       <li>
+        <a href="#terms">
+         Terms of Service
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>
+      © 2024 BankCSVConverter. All rights reserved.
+     </p>
+    </div>
+   </div>
+  </footer>
+  <!-- Scripts -->
+  <script src="/js/production.js">
+  </script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
+</html>

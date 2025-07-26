@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Learn how BankCSVConverter works. Simple 3-step process to convert PDF bank statements to CSV or Excel format. Secure, fast, and accurate." name="description"/>
+<meta content="how bank statement converter works, pdf to csv process, bank statement conversion steps" name="keywords"/>
+<title>
+   How It Works - BankCSVConverter | 3 Simple Steps
+  </title>
+<link href="https://BankCSVConverter.com/how-it-works" rel="canonical"/>
+<!-- Open Graph Tags -->
+<meta content="How It Works - Bank Statement Converter" property="og:title"/>
+<meta content="Simple 3-step process to convert PDF bank statements to CSV or Excel. Upload, convert, and download in seconds." property="og:description"/>
+<meta content="https://BankCSVConverter.com/how-it-works" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="BankCSVConverter" property="og:site_name"/>
+<meta content="https://BankCSVConverter.com/assets/how-it-works-og.png" property="og:image"/>
+<!-- Twitter Card Tags -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="How Bank Statement Converter Works" name="twitter:title"/>
+<meta content="Convert PDF to CSV/Excel in 3 steps. Upload, convert, download. Fast, secure, accurate." name="twitter:description"/>
+<meta content="https://BankCSVConverter.com/assets/how-it-works-twitter.png" name="twitter:image"/>
+<!-- Schema.org Markup -->
+<script type="application/ld+json">
+   {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Convert Bank Statements to CSV",
+        "description": "Convert PDF bank statements to CSV or Excel format in 3 simple steps",
+        "step": [{
+            "@type": "HowToStep",
+            "name": "Upload Your Statement",
+            "text": "Select or drag and drop your PDF bank statement file"
+        }, {
+            "@type": "HowToStep",
+            "name": "Automatic Processing",
+            "text": "Our AI analyzes and extracts transaction data from your statement"
+        }, {
+            "@type": "HowToStep",
+            "name": "Download Results",
+            "text": "Get your converted CSV or Excel file ready for use"
+        }]
+    }
+  </script>
+<!-- Unified Design System -->
+<link href="css/main.css" rel="stylesheet"/>
+<style>
+   /* How It Works specific styles */
+        .process-visual {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 2rem;
+            border-radius: 24px;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .process-visual::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .process-step {
+            flex: 1;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+        }
+        
+        .step-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 3rem;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover .step-icon {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .step-arrow {
+            flex: 0 0 60px;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .process-step h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .process-step p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+        
+        .tech-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+            margin: 3rem 0;
+            border-radius: 24px;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tech-card {
+            text-align: center;
+        }
+        
+        .tech-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .demo-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .demo-video {
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .demo-placeholder {
+            background: #e5e7eb;
+            padding: 8rem 2rem;
+            text-align: center;
+            color: #666;
+        }
+        
+        .security-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .security-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #22c55e;
+        }
+        
+        .security-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+        
+        .security-icon {
+            color: #22c55e;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .process-steps {
+                flex-direction: column;
+            }
+            
+            .step-arrow {
+                transform: rotate(90deg);
+                margin: 1rem 0;
+            }
+            
+            .process-visual {
+                padding: 3rem 1rem;
+            }
+        }
+  </style>
+</head>
+<body>
+<!-- Skip Navigation Link -->
+<a class="skip-link" href="#main" style="position: absolute; left: -9999px; top: 0; z-index: 999;">
+   Skip to main content
+  </a>
+<!-- Header Navigation -->
+<header>
+<nav>
+<a class="nav-logo" href="/">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+</rect>
+<line x1="3" x2="21" y1="9" y2="9">
+</line>
+<line x1="9" x2="9" y1="21" y2="9">
+</line>
+</svg>
+     BankCSVConverter
+    </a>
+<ul class="nav-menu">
+<li>
+<a href="/features.html">
+       Features
+      </a>
+</li>
+<li>
+<a href="/how-it-works.html">
+       How It Works
+      </a>
+</li>
+<li>
+<a href="/#supported-banks">
+       Banks
+      </a>
+</li>
+<li>
+<a href="/pricing.html">
+       Pricing
+      </a>
+</li>
+<li>
+<a href="/blog.html">
+       Blog
+      </a>
+</li>
+<li>
+<a href="/api.html">
+       API
+      </a>
+</li>
+</ul>
+<button class="menu-toggle" id="menuToggle">
+<span>
+</span>
+<span>
+</span>
+<span>
+</span>
+</button>
+</nav>
+</header>
+<main id="main">
+<!-- Hero Section -->
+<section class="hero">
+<div class="container">
+<div class="hero-content">
+<h1>
+       How It Works
+      </h1>
+<p class="hero-subtitle">
+       Convert your bank statements in 3 simple steps. No technical knowledge required.
+      </p>
+</div>
+</div>
+</section>
+<!-- Process Visual -->
+<section class="content-section">
+<div class="container">
+<div class="process-visual">
+<div class="process-steps">
+<div class="process-step">
+<div class="step-icon">
+         📤
+        </div>
+<h2>
+         1. Upload
+        </h2>
+<p>
+         Select your PDF bank statement or drag &amp; drop it into our secure uploader
+        </p>
+</div>
+<div class="step-arrow">
+        →
+       </div>
+<div class="process-step">
+<div class="step-icon">
+         ⚡
+        </div>
+<h3>
+         2. Process
+        </h3>
+<p>
+         Our AI instantly analyzes and extracts all transaction data
+        </p>
+</div>
+<div class="step-arrow">
+        →
+       </div>
+<div class="process-step">
+<div class="step-icon">
+         📥
+        </div>
+<h3>
+         3. Download
+        </h3>
+<p>
+         Get your organized CSV or Excel file ready for accounting software
+        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Demo Section -->
+<section class="content-section">
+<div class="container">
+<div class="demo-section">
+<h2>
+       See It In Action
+      </h2>
+<p>
+       Watch how easy it is to convert your bank statements
+      </p>
+<div class="demo-video">
+<div class="demo-placeholder">
+<p>
+         🎥 Video Demo Coming Soon
+        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technology Section -->
+<section class="content-section">
+<div class="container">
+<div class="tech-section">
+<div class="section-header">
+<h2>
+        Powered by Advanced Technology
+       </h2>
+<p>
+        Our intelligent system ensures accurate data extraction from any bank statement
+       </p>
+</div>
+<div class="tech-grid">
+<div class="tech-card">
+<div class="tech-icon">
+         🧠
+        </div>
+<h3>
+         AI-Powered OCR
+        </h3>
+<p>
+         Advanced optical character recognition accurately reads even scanned statements
+        </p>
+</div>
+<div class="tech-card">
+<div class="tech-icon">
+         🏦
+        </div>
+<h3>
+         Bank Detection
+        </h3>
+<p>
+         Automatically identifies your bank and applies custom parsing rules
+        </p>
+</div>
+<div class="tech-card">
+<div class="tech-icon">
+         ✨
+        </div>
+<h3>
+         Smart Formatting
+        </h3>
+<p>
+         Intelligently formats dates, amounts, and descriptions for consistency
+        </p>
+</div>
+<div class="tech-card">
+<div class="tech-icon">
+         🔍
+        </div>
+<h3>
+         Data Validation
+        </h3>
+<p>
+         Cross-checks balances and transactions to ensure accuracy
+        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Steps -->
+<section class="content-section">
+<div class="container">
+<div class="section-header">
+<h2>
+       Step-by-Step Guide
+      </h2>
+<p>
+       Everything you need to know about the conversion process
+      </p>
+</div>
+<div class="steps-grid">
+<div class="step-card">
+<div class="step-number">
+        1
+       </div>
+<h3>
+        Choose Your File
+       </h3>
+<p>
+        Click the upload button or drag your PDF bank statement directly onto the page. We support statements from over 1000 banks worldwide.
+       </p>
+</div>
+<div class="step-card">
+<div class="step-number">
+        2
+       </div>
+<h3>
+        Automatic Processing
+       </h3>
+<p>
+        Our system immediately begins analyzing your statement. It identifies your bank, extracts transaction data, and formats everything correctly.
+       </p>
+</div>
+<div class="step-card">
+<div class="step-number">
+        3
+       </div>
+<h3>
+        Review &amp; Download
+       </h3>
+<p>
+        In seconds, your converted file is ready. Download it as CSV for Excel or accounting software, or choose Excel format for immediate use.
+       </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Security Section -->
+<section class="content-section">
+<div class="container">
+<div class="section-header">
+<h2>
+       Your Security Is Our Priority
+      </h2>
+<p>
+       We use bank-level security to protect your financial data
+      </p>
+</div>
+<div class="security-features">
+<div class="security-card">
+<h3>
+<span class="security-icon">
+         🔒
+        </span>
+        256-bit SSL Encryption
+       </h3>
+<p>
+        All file uploads and downloads are encrypted using the same security standards as major banks.
+       </p>
+</div>
+<div class="security-card">
+<h3>
+<span class="security-icon">
+         🗑️
+        </span>
+        Automatic Deletion
+       </h3>
+<p>
+        Your files are automatically deleted from our servers immediately after conversion.
+       </p>
+</div>
+<div class="security-card">
+<h3>
+<span class="security-icon">
+         🚫
+        </span>
+        No Data Storage
+       </h3>
+<p>
+        We never store your financial data. Everything is processed in memory and immediately discarded.
+       </p>
+</div>
+<div class="security-card">
+<h3>
+<span class="security-icon">
+         🔐
+        </span>
+        GDPR Compliant
+       </h3>
+<p>
+        We comply with all major data protection regulations including GDPR and CCPA.
+       </p>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="content-section">
+<div class="container">
+<div class="section-header">
+<h2>
+       Common Questions
+      </h2>
+<p>
+       Quick answers about how our converter works
+      </p>
+</div>
+<div class="faq-section">
+<div class="faq-item">
+<h3 class="faq-question">
+        What file formats can I upload?
+       </h3>
+<p class="faq-answer">
+        Currently, we support PDF bank statements. This covers 99% of digital bank statements. If your bank provides statements in a different format, please contact us.
+       </p>
+</div>
+<div class="faq-item">
+<h3 class="faq-question">
+        How accurate is the conversion?
+       </h3>
+<p class="faq-answer">
+        Our AI achieves 99.9% accuracy for digital PDF statements. For scanned statements, accuracy depends on scan quality but typically exceeds 98%.
+       </p>
+</div>
+<div class="faq-item">
+<h3 class="faq-question">
+        What if my bank isn't recognized?
+       </h3>
+<p class="faq-answer">
+        Our system can process statements from any bank using intelligent pattern recognition. If your specific bank isn't optimized yet, the conversion will still work, and we'll add custom support within 24 hours.
+       </p>
+</div>
+<div class="faq-item">
+<h3 class="faq-question">
+        Can I convert multiple statements at once?
+       </h3>
+<p class="faq-answer">
+        Yes! Pro and Business plans support batch processing. You can upload multiple PDFs and receive a single consolidated CSV or separate files for each statement.
+       </p>
+</div>
+<div class="faq-item">
+<h3 class="faq-question">
+        What accounting software is supported?
+       </h3>
+<p class="faq-answer">
+        Our CSV format works with all major accounting software including QuickBooks, Xero, FreshBooks, Wave, and Excel. We also offer custom formatting for specific software needs.
+       </p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="cta-section">
+<div class="container">
+<h2>
+      Ready to Convert Your Statements?
+     </h2>
+<p>
+      Join thousands of users who save hours every month
+     </p>
+<a class="cta-button" href="/">
+      Start Converting Now
+     </a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer>
+<div class="container">
+<div class="footer-content">
+<div class="footer-section">
+<h3>
+       Product
+      </h3>
+<ul>
+<li>
+<a href="/features.html">
+         Features
+        </a>
+</li>
+<li>
+<a href="/pricing.html">
+         Pricing
+        </a>
+</li>
+<li>
+<a href="/api.html">
+         API
+        </a>
+</li>
+<li>
+<a href="/how-it-works.html">
+         How It Works
+        </a>
+</li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>
+       Resources
+      </h4>
+<ul>
+<li>
+<a href="/blog.html">
+         Blog
+        </a>
+</li>
+<li>
+<a href="/#supported-banks">
+         Supported Banks
+        </a>
+</li>
+<li>
+<a href="/#faq">
+         FAQ
+        </a>
+</li>
+<li>
+<a href="/support">
+         Support
+        </a>
+</li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>
+       Company
+      </h4>
+<ul>
+<li>
+<a href="/about">
+         About Us
+        </a>
+</li>
+<li>
+<a href="/contact">
+         Contact
+        </a>
+</li>
+<li>
+<a href="/privacy.html">
+         Privacy Policy
+        </a>
+</li>
+<li>
+<a href="/terms.html">
+         Terms of Service
+        </a>
+</li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>
+       Connect
+      </h4>
+<ul>
+<li>
+<a href="#">
+         Twitter
+        </a>
+</li>
+<li>
+<a href="#">
+         LinkedIn
+        </a>
+</li>
+<li>
+<a href="#">
+         GitHub
+        </a>
+</li>
+<li>
+<a href="/contact">
+         Contact Us
+        </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>
+      © 2025 BankCSVConverter. All rights reserved.
+     </p>
+</div>
+</div>
+</footer>
+<!-- Mobile Menu Script -->
+<script>document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});</script>
+</body>
+</html>

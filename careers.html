@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Join the BankCSVConverter team. Explore career opportunities in fintech, software engineering, data science, and customer success. Remote-first company culture." name="description"/>
+  <meta content="BankCSVConverter careers, fintech jobs, remote work, software engineering jobs, data science careers" name="keywords"/>
+  <title>
+   Careers - BankCSVConverter | Join Our Team
+  </title>
+  <link href="https://BankCSVConverter.com/careers" rel="canonical"/>
+  <!-- Open Graph Tags -->
+  <meta content="Careers at BankCSVConverter - Join Our Mission" property="og:title"/>
+  <meta content="Build the future of financial data management. We're hiring talented individuals who are passionate about making finance accessible to everyone." property="og:description"/>
+  <meta content="website" property="og:type"/>
+  <meta content="https://BankCSVConverter.com/careers" property="og:url"/>
+  <link href="/css/production.css" rel="stylesheet"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+  <!-- Unified Design System -->
+  <!-- Font Awesome for icons -->
+  <!-- Skip Link for Accessibility -->
+  <style>
+   .skip-link {
+            position: absolute;
+            left: -9999px;
+        }
+        .skip-link:focus {
+            position: absolute;
+            left: 6px;
+            top: 7px;
+            z-index: 999999;
+            padding: 8px 16px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Page Specific Styles */
+        .careers-hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+        }
+        
+        .careers-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .culture-section {
+            background: var(--gray-50);
+            padding: 80px 20px;
+            margin: 60px -20px;
+        }
+        
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+        
+        .culture-item {
+            text-align: center;
+        }
+        
+        .culture-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--primary);
+            margin: 0 auto 20px;
+        }
+        
+        .benefits-section {
+            margin: 80px 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            transition: all var(--transition-base);
+        }
+        
+        .benefit-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        
+        .benefit-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: var(--gray-800);
+        }
+        
+        .benefit-card i {
+            color: var(--primary);
+        }
+        
+        .positions-section {
+            margin: 80px 0;
+        }
+        
+        .position-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin-bottom: 24px;
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+        
+        .position-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+        
+        .position-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 16px;
+        }
+        
+        .position-title h3 {
+            margin-bottom: 8px;
+            color: var(--gray-800);
+        }
+        
+        .position-meta {
+            display: flex;
+            gap: 16px;
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+        
+        .position-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .position-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        
+        .tag {
+            background: var(--gray-100);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 14px;
+            color: var(--gray-700);
+        }
+        
+        .apply-btn {
+            background: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform var(--transition-base);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .apply-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .process-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            padding: 80px 20px;
+            margin: 80px -20px;
+            text-align: center;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-around;
+            max-width: 800px;
+            margin: 40px auto 0;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0 auto 16px;
+        }
+        
+        .no-positions {
+            text-align: center;
+            padding: 60px;
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+        }
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+  <!-- Standardized Header -->
+  <header>
+   <nav>
+    <a class="nav-logo" href="/">
+     <svg style="width: 24px; height: 24px; flex-shrink: 0;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+      </rect>
+      <line x1="3" x2="21" y1="9" y2="9">
+      </line>
+      <line x1="9" x2="9" y1="21" y2="9">
+      </line>
+     </svg>
+     BankCSVConverter
+    </a>
+    <ul class="nav-menu">
+     <li>
+      <a href="/features.html">
+       Features
+      </a>
+     </li>
+     <li>
+      <a href="/how-it-works.html">
+       How It Works
+      </a>
+     </li>
+     <li>
+      <a href="/pricing.html">
+       Pricing
+      </a>
+     </li>
+     <li>
+      <a href="/blog.html">
+       Blog
+      </a>
+     </li>
+    </ul>
+    <button aria-label="Toggle menu" class="mobile-menu-toggle">
+     <span>
+     </span>
+     <span>
+     </span>
+     <span>
+     </span>
+    </button>
+   </nav>
+   <div class="nav-overlay">
+   </div>
+  </header>
+  <!-- Main Content -->
+  <main id="main">
+   <!-- Hero Section -->
+   <section class="careers-hero">
+    <div class="container">
+     <h1>
+      Join Our Mission
+     </h1>
+     <p class="lead">
+      Help us make financial data accessible to everyone
+     </p>
+    </div>
+   </section>
+   <!-- Careers Content -->
+   <div class="careers-content">
+    <!-- Introduction -->
+    <section style="text-align: center; margin-bottom: 60px;">
+     <h2>
+      Build the Future of Financial Technology
+     </h2>
+     <p style="font-size: 18px; max-width: 800px; margin: 20px auto;">
+      At BankCSVConverter, we're on a mission to simplify financial data management for millions of people worldwide. 
+                    Join our team of passionate innovators working to make finance more accessible, transparent, and efficient.
+     </p>
+    </section>
+    <!-- Culture Section -->
+    <section class="culture-section">
+     <h2 style="text-align: center;">
+      Our Culture &amp; Values
+     </h2>
+     <div class="culture-grid">
+      <div class="culture-item">
+       <div class="culture-icon">
+        <i class="fas fa-globe">
+        </i>
+       </div>
+       <h3>
+        Remote-First
+       </h3>
+       <p>
+        Work from anywhere in the world. We believe great talent isn't limited by geography.
+       </p>
+      </div>
+      <div class="culture-item">
+       <div class="culture-icon">
+        <i class="fas fa-balance-scale">
+        </i>
+       </div>
+       <h3>
+        Work-Life Balance
+       </h3>
+       <p>
+        Flexible hours and unlimited PTO. We trust you to manage your time effectively.
+       </p>
+      </div>
+      <div class="culture-item">
+       <div class="culture-icon">
+        <i class="fas fa-lightbulb">
+        </i>
+       </div>
+       <h3>
+        Innovation
+       </h3>
+       <p>
+        Your ideas matter. We encourage experimentation and creative problem-solving.
+       </p>
+      </div>
+      <div class="culture-item">
+       <div class="culture-icon">
+        <i class="fas fa-users">
+        </i>
+       </div>
+       <h3>
+        Inclusive Team
+       </h3>
+       <p>
+        Diversity makes us stronger. We welcome people from all backgrounds and perspectives.
+       </p>
+      </div>
+     </div>
+    </section>
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+     <h2>
+      Why Work at BankCSVConverter?
+     </h2>
+     <div class="benefits-grid">
+      <div class="benefit-card">
+       <h3>
+        <i class="fas fa-heart">
+        </i>
+        Health &amp; Wellness
+       </h3>
+       <ul>
+        <li>
+         100% covered health, dental, and vision insurance
+        </li>
+        <li>
+         Mental health support and counseling
+        </li>
+        <li>
+         Annual wellness stipend ($1,000)
+        </li>
+        <li>
+         Gym membership reimbursement
+        </li>
+       </ul>
+      </div>
+      <div class="benefit-card">
+       <h3>
+        <i class="fas fa-graduation-cap">
+        </i>
+        Growth &amp; Learning
+       </h3>
+       <ul>
+        <li>
+         $2,500 annual learning budget
+        </li>
+        <li>
+         Conference attendance support
+        </li>
+        <li>
+         Internal mentorship program
+        </li>
+        <li>
+         Time for open-source contributions
+        </li>
+       </ul>
+      </div>
+      <div class="benefit-card">
+       <h3>
+        <i class="fas fa-laptop">
+        </i>
+        Equipment &amp; Setup
+       </h3>
+       <ul>
+        <li>
+         Top-of-the-line MacBook Pro or PC
+        </li>
+        <li>
+         $1,500 home office setup budget
+        </li>
+        <li>
+         Co-working space allowance
+        </li>
+        <li>
+         All necessary software licenses
+        </li>
+       </ul>
+      </div>
+      <div class="benefit-card">
+       <h3>
+        <i class="fas fa-chart-line">
+        </i>
+        Compensation
+       </h3>
+       <ul>
+        <li>
+         Competitive salary (top 25% of market)
+        </li>
+        <li>
+         Equity options for all employees
+        </li>
+        <li>
+         Annual performance bonuses
+        </li>
+        <li>
+         401(k) with 6% matching
+        </li>
+       </ul>
+      </div>
+      <div class="benefit-card">
+       <h3>
+        <i class="fas fa-plane">
+        </i>
+        Time Off
+       </h3>
+       <ul>
+        <li>
+         Unlimited PTO policy
+        </li>
+        <li>
+         Minimum 3 weeks encouraged
+        </li>
+        <li>
+         Company-wide holidays
+        </li>
+        <li>
+         Sabbatical after 5 years
+        </li>
+       </ul>
+      </div>
+      <div class="benefit-card">
+       <h3>
+        <i class="fas fa-baby">
+        </i>
+        Family Support
+       </h3>
+       <ul>
+        <li>
+         16 weeks paid parental leave
+        </li>
+        <li>
+         Flexible return-to-work options
+        </li>
+        <li>
+         Childcare assistance
+        </li>
+        <li>
+         Family planning support
+        </li>
+       </ul>
+      </div>
+     </div>
+    </section>
+    <!-- Open Positions -->
+    <section class="positions-section">
+     <h2>
+      Open Positions
+     </h2>
+     <div class="position-card">
+      <div class="position-header">
+       <div class="position-title">
+        <h3>
+         Senior Backend Engineer
+        </h3>
+        <div class="position-meta">
+         <span>
+          <i class="fas fa-map-marker-alt">
+          </i>
+          Remote
+         </span>
+         <span>
+          <i class="fas fa-briefcase">
+          </i>
+          Engineering
+         </span>
+         <span>
+          <i class="fas fa-clock">
+          </i>
+          Full-time
+         </span>
+        </div>
+       </div>
+       <a class="apply-btn" href="#">
+        Apply Now
+       </a>
+      </div>
+      <p>
+       We're looking for an experienced backend engineer to help scale our conversion infrastructure. You'll work on distributed systems processing millions of documents daily.
+      </p>
+      <div class="position-tags">
+       <span class="tag">
+        Python
+       </span>
+       <span class="tag">
+        AWS
+       </span>
+       <span class="tag">
+        PostgreSQL
+       </span>
+       <span class="tag">
+        Docker
+       </span>
+       <span class="tag">
+        5+ years experience
+       </span>
+      </div>
+     </div>
+     <div class="position-card">
+      <div class="position-header">
+       <div class="position-title">
+        <h3>
+         Machine Learning Engineer
+        </h3>
+        <div class="position-meta">
+         <span>
+          <i class="fas fa-map-marker-alt">
+          </i>
+          Remote
+         </span>
+         <span>
+          <i class="fas fa-briefcase">
+          </i>
+          Engineering
+         </span>
+         <span>
+          <i class="fas fa-clock">
+          </i>
+          Full-time
+         </span>
+        </div>
+       </div>
+       <a class="apply-btn" href="#">
+        Apply Now
+       </a>
+      </div>
+      <p>
+       Join our ML team to improve document parsing accuracy. You'll develop and deploy models that understand complex financial document structures.
+      </p>
+      <div class="position-tags">
+       <span class="tag">
+        TensorFlow/PyTorch
+       </span>
+       <span class="tag">
+        Computer Vision
+       </span>
+       <span class="tag">
+        NLP
+       </span>
+       <span class="tag">
+        Python
+       </span>
+       <span class="tag">
+        3+ years ML experience
+       </span>
+      </div>
+     </div>
+     <div class="position-card">
+      <div class="position-header">
+       <div class="position-title">
+        <h3>
+         Product Designer
+        </h3>
+        <div class="position-meta">
+         <span>
+          <i class="fas fa-map-marker-alt">
+          </i>
+          Remote
+         </span>
+         <span>
+          <i class="fas fa-briefcase">
+          </i>
+          Design
+         </span>
+         <span>
+          <i class="fas fa-clock">
+          </i>
+          Full-time
+         </span>
+        </div>
+       </div>
+       <a class="apply-btn" href="#">
+        Apply Now
+       </a>
+      </div>
+      <p>
+       Help us create intuitive experiences for financial data management. You'll own the end-to-end design process from research to implementation.
+      </p>
+      <div class="position-tags">
+       <span class="tag">
+        Figma
+       </span>
+       <span class="tag">
+        User Research
+       </span>
+       <span class="tag">
+        Prototyping
+       </span>
+       <span class="tag">
+        Design Systems
+       </span>
+       <span class="tag">
+        3+ years experience
+       </span>
+      </div>
+     </div>
+     <div class="position-card">
+      <div class="position-header">
+       <div class="position-title">
+        <h3>
+         Customer Success Manager
+        </h3>
+        <div class="position-meta">
+         <span>
+          <i class="fas fa-map-marker-alt">
+          </i>
+          Remote (US timezone)
+         </span>
+         <span>
+          <i class="fas fa-briefcase">
+          </i>
+          Customer Success
+         </span>
+         <span>
+          <i class="fas fa-clock">
+          </i>
+          Full-time
+         </span>
+        </div>
+       </div>
+       <a class="apply-btn" href="#">
+        Apply Now
+       </a>
+      </div>
+      <p>
+       Be the voice of our customers and help them succeed. You'll manage enterprise accounts and drive product adoption across organizations.
+      </p>
+      <div class="position-tags">
+       <span class="tag">
+        SaaS Experience
+       </span>
+       <span class="tag">
+        Account Management
+       </span>
+       <span class="tag">
+        Financial Services
+       </span>
+       <span class="tag">
+        2+ years experience
+       </span>
+      </div>
+     </div>
+    </section>
+    <!-- Hiring Process -->
+    <section class="process-section">
+     <h2>
+      Our Hiring Process
+     </h2>
+     <p style="max-width: 600px; margin: 0 auto 40px;">
+      We respect your time and aim to make our process efficient and transparent
+     </p>
+     <div class="process-steps">
+      <div class="process-step">
+       <div class="step-number">
+        1
+       </div>
+       <h4>
+        Application Review
+       </h4>
+       <p>
+        We review every application and respond within 3 days
+       </p>
+      </div>
+      <div class="process-step">
+       <div class="step-number">
+        2
+       </div>
+       <h4>
+        Initial Call
+       </h4>
+       <p>
+        30-minute conversation with our team to discuss your background
+       </p>
+      </div>
+      <div class="process-step">
+       <div class="step-number">
+        3
+       </div>
+       <h4>
+        Technical Assessment
+       </h4>
+       <p>
+        Role-specific evaluation (take-home or live, your choice)
+       </p>
+      </div>
+      <div class="process-step">
+       <div class="step-number">
+        4
+       </div>
+       <h4>
+        Team Interviews
+       </h4>
+       <p>
+        Meet your future colleagues and learn about our culture
+       </p>
+      </div>
+     </div>
+    </section>
+    <!-- Don't See a Fit -->
+    <section style="text-align: center; margin-top: 80px;">
+     <h2>
+      Don't See the Perfect Role?
+     </h2>
+     <p style="font-size: 18px; margin: 20px auto; max-width: 600px;">
+      We're always looking for exceptional people. Send us your resume and tell us how you'd contribute to our mission.
+     </p>
+     <a class="btn btn-primary" href="mailto:careers@bankCSVconverter.com" style="margin-top: 20px;">
+      Send Your Resume
+     </a>
+    </section>
+   </div>
+  </main>
+  <!-- Standardized Footer -->
+  <footer>
+   <div class="footer-content">
+    <div class="footer-grid">
+     <div class="footer-section">
+      <h4>
+       Product
+      </h4>
+      <ul>
+       <li>
+        <a href="/features.html">
+         Features
+        </a>
+       </li>
+       <li>
+        <a href="/how-it-works.html">
+         How It Works
+        </a>
+       </li>
+       <li>
+        <a href="/pricing.html">
+         Pricing
+        </a>
+       </li>
+       </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Company
+      </h4>
+      <ul>
+       <li>
+        <a href="/about.html">
+         About
+        </a>
+       </li>
+       <li>
+        <a href="/blog.html">
+         Blog
+        </a>
+       </li>
+       <li>
+        <a href="/contact.html">
+         Contact
+        </a>
+       </li>
+       <li>
+        <a href="/careers.html">
+         Careers
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Support
+      </h4>
+      <ul>
+       <li>
+        <a href="/help.html">
+         Help Center
+        </a>
+       </li>
+       <li>
+        <a href="/faq.html">
+         FAQ
+        </a>
+       </li>
+       <li>
+        <a href="/security.html">
+         Security
+        </a>
+       </li>
+       <li>
+        <a href="/status.html">
+         Status
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Legal
+      </h4>
+      <ul>
+       <li>
+        <a href="/privacy.html">
+         Privacy Policy
+        </a>
+       </li>
+       <li>
+        <a href="/terms.html">
+         Terms of Service
+        </a>
+       </li>
+       <li>
+        <a href="/gdpr.html">
+         GDPR
+        </a>
+       </li>
+       <li>
+        <a href="/ccpa.html">
+         CCPA
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>
+      © 2025 BankCSVConverter. All rights reserved.
+     </p>
+    </div>
+   </div>
+  </footer>
+  <!-- Scripts -->
+  <script src="/js/production.js">
+  </script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
+</html>

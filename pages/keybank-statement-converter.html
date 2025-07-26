@@ -3,42 +3,53 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="Convert KeyBank PDF statements to CSV/Excel format. Free online converter for KeyBank checking, savings, and credit card statements. Instant and secure." name="description"/>
-  <meta content="keybank bank statement converter, keybank pdf to csv, keybank statement to excel" name="keywords"/>
+  <meta content="Convert KeyBank PDF statements to CSV/Excel format. Free online converter for KeyBank checking, savings, and credit card statements. Instant and secure processing." name="description"/>
+  <link href="/css/production.css" rel="stylesheet"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
   <title>
    KeyBank Statement Converter - PDF to CSV/Excel | BankCSVConverter
   </title>
-  <link href="https://BankCSVConverter.com/keybank-statement-converter" rel="canonical"/>
-  <!-- Unified Styles - Single Source of Truth -->
-  <link href="../css/unified-styles.css" rel="stylesheet"/>
+  <link href="https://BankCSVConverter.com/pages/keybank-statement-converter" rel="canonical"/>
+  <!-- Unified Design System -->
  </head>
  <body>
+  <!-- Skip Link for Accessibility -->
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
   <!-- Standardized Header -->
   <header>
    <nav>
-    <a class="nav-logo" href="../index.html">
-     <svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
-      <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z">
-      </path>
-      <path d="M9 12l2 2 4-4">
-      </path>
+    <a class="nav-logo" href="../">
+     <svg style="width: 24px; height: 24px; flex-shrink: 0;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+      </rect>
+      <line x1="3" x2="21" y1="9" y2="9">
+      </line>
+      <line x1="9" x2="9" y1="21" y2="9">
+      </line>
      </svg>
      BankCSVConverter
     </a>
     <ul class="nav-menu">
      <li>
-      <a href="../all-pages.html">
-       All Banks
+      <a href="../features.html">
+       Features
       </a>
      </li>
      <li>
-      <a href="./bank-statement-converter-comparison.html">
-       Why Us
+      <a href="../how-it-works.html">
+       How It Works
       </a>
      </li>
      <li>
-      <a href="../blog/financial-data-privacy-guide.html">
-       Security
+      <a href="../pricing.html">
+       Pricing
+      </a>
+     </li>
+     <li>
+      <a href="../blog.html">
+       Blog
       </a>
      </li>
     </ul>
@@ -51,14 +62,16 @@
      </span>
     </button>
    </nav>
+   <div class="nav-overlay">
+   </div>
   </header>
-  <main>
-   <!-- Breadcrumb -->
-   <nav class="breadcrumb-nav">
+  <main id="main">
+   <!-- Breadcrumb Navigation -->
+   <nav aria-label="Breadcrumb" class="breadcrumb-nav">
     <div class="container">
      <ol class="breadcrumb">
       <li>
-       <a href="../index.html">
+       <a href="../">
         Home
        </a>
       </li>
@@ -67,80 +80,135 @@
         Banks
        </a>
       </li>
-      <li>
+      <li aria-current="page">
        KeyBank
       </li>
      </ol>
     </div>
    </nav>
    <!-- Bank Hero Section -->
-   <section class="hero bank-hero">
+   <section class="bank-hero">
     <div class="container">
-     <div class="hero-content">
-      <img alt="KeyBank Logo" class="bank-logo" src="../assets/banks/generic-bank-logo.svg"/>
-      <h1>
+     <div class="bank-hero-content">
+      <div class="bank-logo-wrapper">
+       <img alt="KeyBank Logo" class="bank-logo" src="/../assets/banks/generic-bank-logo.svg"/>
+      </div>
+      <h1 class="bank-hero-title">
        KeyBank Statement Converter
       </h1>
-      <p class="hero-subtitle">
-       Convert your KeyBank PDF statements to CSV/Excel format in seconds. Works with all KeyBank accounts including checking, savings, and credit cards.
+      <p class="bank-hero-subtitle">
+       Convert your KeyBank PDF statements to CSV/Excel format in seconds. 
+                        Works with all KeyBank accounts including checking, savings, and credit cards.
       </p>
+      <div class="trust-indicators">
+       <span class="trust-badge">
+        <svg class="icon" fill="currentColor" viewbox="0 0 20 20">
+         <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd">
+         </path>
+        </svg>
+        99.9% Accuracy
+       </span>
+       <span class="trust-badge">
+        <svg class="icon" fill="currentColor" viewbox="0 0 20 20">
+         <path clip-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd">
+         </path>
+        </svg>
+        Bank-Level Security
+       </span>
+       <span class="trust-badge">
+        <svg class="icon" fill="currentColor" viewbox="0 0 20 20">
+         <path clip-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" fill-rule="evenodd">
+         </path>
+        </svg>
+        Instant Processing
+       </span>
+      </div>
      </div>
     </div>
    </section>
    <!-- Upload Section -->
-   <section class="content-section">
+   <section class="upload-section">
     <div class="container">
-     <div class="upload-area" id="uploadArea">
-      <div class="upload-icon">
-       📄
+     <div class="upload-wrapper">
+      <!-- Default Upload State -->
+      <div class="upload-area" id="uploadArea">
+       <div class="upload-icon-wrapper">
+        <svg class="upload-icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+         <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3-3m0 0l3 3m-3-3v8">
+         </path>
+        </svg>
+       </div>
+       <h2 class="upload-title">
+        Upload Your KeyBank Statement
+       </h2>
+       <p class="upload-description">
+        Drag and drop your PDF here or click to browse
+       </p>
+       <button class="btn btn-primary btn-lg" id="uploadBtn">
+        <svg class="btn-icon" fill="currentColor" viewbox="0 0 20 20">
+         <path clip-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" fill-rule="evenodd">
+         </path>
+        </svg>
+        Choose PDF File
+       </button>
+       <p class="upload-hint">
+        Maximum file size: 25MB • PDF format only
+       </p>
+       <input accept=".pdf" aria-label="Upload PDF bank statement" hidden="" id="fileInput" type="file"/>
       </div>
-      <h2>
-       Upload Your KeyBank Statement
-      </h2>
-      <button class="upload-btn" id="uploadBtn">
-       Choose PDF File
-      </button>
-      <p class="upload-text">
-       or drag and drop your KeyBank PDF here
-      </p>
-      <input accept=".pdf" hidden="" id="fileInput" type="file"/>
-     </div>
-     <!-- Progress State (Hidden by default) -->
-     <div class="upload-area hidden" id="progressArea">
-      <div class="loading">
+      <!-- Progress State -->
+      <div class="upload-area upload-progress hidden" id="progressArea">
+       <div class="progress-spinner">
+       </div>
+       <h3 class="upload-title">
+        Converting your statement...
+       </h3>
+       <p class="upload-description">
+        This usually takes 5-10 seconds
+       </p>
+       <div class="progress-bar">
+        <div class="progress-fill">
+        </div>
+       </div>
       </div>
-      <h3>
-       Converting your statement...
-      </h3>
-      <p>
-       This usually takes 5-10 seconds
-      </p>
-     </div>
-     <!-- Success State (Hidden by default) -->
-     <div class="upload-area hidden" id="successArea">
-      <div class="upload-icon">
-       ✓
+      <!-- Success State -->
+      <div class="upload-area upload-success hidden" id="successArea">
+       <div class="success-icon-wrapper">
+        <svg class="success-icon" fill="currentColor" viewbox="0 0 20 20">
+         <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd">
+         </path>
+        </svg>
+       </div>
+       <h3 class="upload-title">
+        Conversion Complete!
+       </h3>
+       <p class="upload-description">
+        Your KeyBank statement has been converted successfully
+       </p>
+       <div class="success-actions">
+        <a class="btn btn-primary btn-lg" href="#" id="downloadBtn">
+         <svg class="btn-icon" fill="currentColor" viewbox="0 0 20 20">
+          <path clip-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 012 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" fill-rule="evenodd">
+          </path>
+         </svg>
+         Download CSV
+        </a>
+        <button class="btn btn-outline" id="convertAnother">
+         Convert Another Statement
+        </button>
+       </div>
       </div>
-      <h3>
-       Conversion Complete!
-      </h3>
-      <a class="upload-btn" href="#" id="downloadBtn">
-       Download CSV
-      </a>
-      <button class="upload-btn" id="convertAnother" style="background: white; color: var(--primary); border: 2px solid var(--primary);">
-       Convert Another
-      </button>
      </div>
     </div>
    </section>
    <!-- How It Works -->
-   <section class="content-section">
+   <section class="section-how-it-works">
     <div class="container">
      <div class="section-header">
-      <h2>
+      <h2 class="section-title">
        How to Convert KeyBank Statements
       </h2>
-      <p>
+      <p class="section-subtitle">
        Simple 3-step process to convert your bank statements
       </p>
      </div>
@@ -149,198 +217,352 @@
        <div class="step-number">
         1
        </div>
-       <h3>
-        Download Statement
-       </h3>
-       <p>
-        Log into KeyBank online banking and download your statement as PDF
-       </p>
+       <div class="step-content">
+        <h3 class="step-title">
+         Download Statement
+        </h3>
+        <p class="step-description">
+         Log into KeyBank online banking and download your statement as PDF
+        </p>
+       </div>
       </div>
       <div class="step-card">
        <div class="step-number">
         2
        </div>
-       <h3>
-        Upload PDF
-       </h3>
-       <p>
-        Upload your KeyBank PDF here. Our AI recognizes all formats automatically
-       </p>
+       <div class="step-content">
+        <h3 class="step-title">
+         Upload PDF
+        </h3>
+        <p class="step-description">
+         Upload your KeyBank PDF here. Our AI recognizes all formats automatically
+        </p>
+       </div>
       </div>
       <div class="step-card">
        <div class="step-number">
         3
        </div>
-       <h3>
-        Download CSV
-       </h3>
-       <p>
-        Get your organized CSV with dates, descriptions, and amounts preserved
-       </p>
+       <div class="step-content">
+        <h3 class="step-title">
+         Download CSV
+        </h3>
+        <p class="step-description">
+         Get your organized CSV with dates, descriptions, and amounts preserved
+        </p>
+       </div>
       </div>
      </div>
     </div>
    </section>
    <!-- Features -->
-   <section class="content-section">
+   <section class="section-features">
     <div class="container">
      <div class="section-header">
-      <h2>
+      <h2 class="section-title">
        Why Choose Our KeyBank Converter
       </h2>
-      <p>
-       Powerful features designed for KeyBank customers
+      <p class="section-subtitle">
+       Powerful features designed specifically for KeyBank customers
       </p>
      </div>
-     <div class="feature-grid">
+     <div class="features-grid">
       <div class="feature-card">
-       <span class="feature-icon">
-        🏦
-       </span>
-       <h3>
+       <div class="feature-icon-wrapper">
+        <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+         <path d="M3 21h18M3 10h18M5 6l7-3 7 3M12 3v18">
+         </path>
+        </svg>
+       </div>
+       <h3 class="feature-title">
         KeyBank-Specific
        </h3>
-       <p>
+       <p class="feature-description">
         Optimized for KeyBank's statement format with 99.9% accuracy
        </p>
       </div>
       <div class="feature-card">
-       <span class="feature-icon">
-        ⚡
-       </span>
-       <h3>
+       <div class="feature-icon-wrapper">
+        <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z">
+         </path>
+        </svg>
+       </div>
+       <h3 class="feature-title">
         Instant Conversion
        </h3>
-       <p>
+       <p class="feature-description">
         Convert statements in seconds, not hours of manual entry
        </p>
       </div>
       <div class="feature-card">
-       <span class="feature-icon">
-        🔒
-       </span>
-       <h3>
+       <div class="feature-icon-wrapper">
+        <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+         <rect height="10" rx="2" ry="2" width="18" x="3" y="11">
+         </rect>
+         <path d="M7 11V7a5 5 0 0110 0v4">
+         </path>
+        </svg>
+       </div>
+       <h3 class="feature-title">
         Bank-Level Security
        </h3>
-       <p>
+       <p class="feature-description">
         Your data is encrypted and automatically deleted after conversion
        </p>
       </div>
       <div class="feature-card">
-       <span class="feature-icon">
-        📊
-       </span>
-       <h3>
+       <div class="feature-icon-wrapper">
+        <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+         <path d="M9 17H7a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2h-2m-6 0l4 4m-4-4v12">
+         </path>
+        </svg>
+       </div>
+       <h3 class="feature-title">
         Excel Compatible
        </h3>
-       <p>
+       <p class="feature-description">
         Works perfectly with Excel, QuickBooks, and accounting software
        </p>
       </div>
      </div>
     </div>
    </section>
+   <!-- Bank-Specific Information -->
+   <section class="section-bank-info">
+    <div class="container">
+     <div class="bank-info-grid">
+      <div class="bank-info-card">
+       <h3 class="bank-info-title">
+        Supported KeyBank Account Types
+       </h3>
+       <ul class="bank-info-list">
+        <li>
+         Personal Checking Accounts
+        </li>
+        <li>
+         Business Checking Accounts
+        </li>
+        <li>
+         Savings &amp; Money Market Accounts
+        </li>
+        <li>
+         Credit Card Statements
+        </li>
+        <li>
+         Investment Account Statements
+        </li>
+       </ul>
+      </div>
+      <div class="bank-info-card">
+       <h3 class="bank-info-title">
+        Statement Formats We Support
+       </h3>
+       <ul class="bank-info-list">
+        <li>
+         Monthly Statements (PDF)
+        </li>
+        <li>
+         Quarterly Statements (PDF)
+        </li>
+        <li>
+         Year-End Statements (PDF)
+        </li>
+        <li>
+         Custom Date Range Exports
+        </li>
+        <li>
+         E-Statements &amp; Paper Statements
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </section>
    <!-- FAQ Section -->
-   <section class="content-section">
+   <section class="section-faq">
     <div class="container">
      <div class="section-header">
-      <h2>
+      <h2 class="section-title">
        Frequently Asked Questions
       </h2>
-      <p>
+      <p class="section-subtitle">
        Common questions about converting KeyBank statements
       </p>
      </div>
-     <div class="faq-section">
+     <div class="faq-grid">
+      <div class="faq-item">
+       <h3 class="faq-question">
+        Does it work with KeyBank business accounts?
+       </h3>
+       <p class="faq-answer">
+        Yes, our converter supports all KeyBank account types including personal checking, savings, business accounts, and credit cards.
+       </p>
+      </div>
+      <div class="faq-item">
+       <h3 class="faq-question">
+        Is my banking data secure?
+       </h3>
+       <p class="faq-answer">
+        Absolutely. We use bank-level encryption, never store your data, and automatically delete all files after conversion. Your data never leaves our secure servers.
+       </p>
+      </div>
+      <div class="faq-item">
+       <h3 class="faq-question">
+        What if my statement is password protected?
+       </h3>
+       <p class="faq-answer">
+        You'll need to remove the password protection first. Open the PDF in your PDF reader, enter your password, then save a copy without password protection.
+       </p>
+      </div>
+      <div class="faq-item">
+       <h3 class="faq-question">
+        Can I convert multiple statements at once?
+       </h3>
+       </div>
+      <div class="faq-item">
+       <h3 class="faq-question">
+        What formats can I export to?
+       </h3>
+       <p class="faq-answer">
+        You can export to CSV (compatible with all spreadsheet software), Excel (.xlsx), and QBO format for QuickBooks.
+       </p>
+      </div>
+      <div class="faq-item">
+       <h3 class="faq-question">
+        How accurate is the conversion?
+       </h3>
+       <p class="faq-answer">
+        Our AI achieves 99.9% accuracy on KeyBank statements. We continuously improve our algorithms based on the latest statement formats.
+       </p>
+      </div>
      </div>
     </div>
    </section>
    <!-- CTA Section -->
-   <section class="cta-section">
+   <section class="section-cta">
     <div class="container">
-     <h2>
-      Ready to Convert Your KeyBank Statement?
-     </h2>
-     <p>
-      Join thousands of KeyBank customers who save hours on manual data entry
-     </p>
-     <a class="cta-button" href="#uploadArea">
-      Convert PDF Now
-     </a>
+     <div class="cta-content">
+      <h2 class="cta-title">
+       Ready to Convert Your KeyBank Statement?
+      </h2>
+      <p class="cta-subtitle">
+       Join thousands of KeyBank customers who save hours on manual data entry
+      </p>
+      <a class="btn btn-white btn-lg" href="#uploadArea">
+       Convert PDF Now
+       <svg class="btn-icon-right" fill="currentColor" viewbox="0 0 20 20">
+        <path clip-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" fill-rule="evenodd">
+        </path>
+       </svg>
+      </a>
+     </div>
     </div>
    </section>
   </main>
   <!-- Standardized Footer -->
-  <footer>
+  <footer class="footer">
    <div class="container">
-    <div class="footer-content">
+    <div class="footer-grid">
      <div class="footer-section">
-      <h4>
-       Bank Converters
+      <h4 class="footer-title">
+       Product
       </h4>
-      <ul>
+      <ul class="footer-links">
        <li>
-        <a href="./chase-bank-statement-converter.html">
-         Chase Bank
+        <a href="../features.html">
+         Features
         </a>
        </li>
        <li>
-        <a href="./bank-of-america-statement-converter.html">
-         Bank of America
+        <a href="../how-it-works.html">
+         How It Works
         </a>
        </li>
        <li>
-        <a href="./wells-fargo-statement-converter.html">
-         Wells Fargo
+        <a href="../pricing.html">
+         Pricing
         </a>
        </li>
-       <li>
-        <a href="./citi-bank-statement-converter.html">
-         Citi Bank
-        </a>
-       </li>
-      </ul>
+       </ul>
      </div>
      <div class="footer-section">
-      <h4>
-       Resources
-      </h4>
-      <ul>
-       <li>
-        <a href="../blog/how-to-import-bank-statements-to-quickbooks.html">
-         QuickBooks Guide
-        </a>
-       </li>
-       <li>
-        <a href="../blog/analyze-bank-statements-excel-guide.html">
-         Excel Guide
-        </a>
-       </li>
-       <li>
-        <a href="../blog/bank-statements-tax-preparation-guide.html">
-         Tax Prep Guide
-        </a>
-       </li>
-      </ul>
-     </div>
-     <div class="footer-section">
-      <h4>
+      <h4 class="footer-title">
        Company
       </h4>
-      <ul>
+      <ul class="footer-links">
        <li>
-        <a href="./bank-statement-converter-comparison.html">
-         Why Choose Us
+        <a href="../about.html">
+         About
         </a>
        </li>
        <li>
-        <a href="../blog/financial-data-privacy-guide.html">
+        <a href="../blog.html">
+         Blog
+        </a>
+       </li>
+       <li>
+        <a href="../contact.html">
+         Contact
+        </a>
+       </li>
+       <li>
+        <a href="../careers.html">
+         Careers
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4 class="footer-title">
+       Support
+      </h4>
+      <ul class="footer-links">
+       <li>
+        <a href="../help.html">
+         Help Center
+        </a>
+       </li>
+       <li>
+        <a href="../faq.html">
+         FAQ
+        </a>
+       </li>
+       <li>
+        <a href="../security.html">
          Security
         </a>
        </li>
        <li>
-        <a href="../index.html#faq">
-         FAQ
+        <a href="../status.html">
+         Status
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4 class="footer-title">
+       Legal
+      </h4>
+      <ul class="footer-links">
+       <li>
+        <a href="../privacy.html">
+         Privacy Policy
+        </a>
+       </li>
+       <li>
+        <a href="../terms.html">
+         Terms of Service
+        </a>
+       </li>
+       <li>
+        <a href="../gdpr.html">
+         GDPR
+        </a>
+       </li>
+       <li>
+        <a href="../ccpa.html">
+         CCPA
         </a>
        </li>
       </ul>
@@ -348,79 +570,17 @@
     </div>
     <div class="footer-bottom">
      <p>
-      © 2025 BankCSVConverter. All rights reserved. Not affiliated with KeyBank.
+      © 2025 BankCSVConverter. All rights reserved.
      </p>
     </div>
    </div>
   </footer>
-  <!-- Unified JavaScript -->
-  <script>
-   // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
-        
-        // Upload Functionality
-        const uploadArea = document.getElementById('uploadArea');
-        const uploadBtn = document.getElementById('uploadBtn');
-        const fileInput = document.getElementById('fileInput');
-        const progressArea = document.getElementById('progressArea');
-        const successArea = document.getElementById('successArea');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const convertAnother = document.getElementById('convertAnother');
-        
-        uploadBtn.addEventListener('click', () => fileInput.click());
-        
-        fileInput.addEventListener('change', handleFile);
-        
-        // Drag and drop
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.style.transform = 'scale(1.02)';
-        });
-        
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.style.transform = 'scale(1)';
-        });
-        
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.style.transform = 'scale(1)';
-            const files = e.dataTransfer.files;
-            if (files.length > 0 && files[0].type === 'application/pdf') {
-                fileInput.files = files;
-                handleFile();
-            }
-        });
-        
-        function handleFile() {
-            const file = fileInput.files[0];
-            if (!file || file.type !== 'application/pdf') {
-                alert('Please select a PDF file');
-                return;
-            }
-            
-            // Show progress
-            uploadArea.classList.add('hidden');
-            progressArea.classList.remove('hidden');
-            
-            // Simulate conversion (replace with actual API call)
-            setTimeout(() => {
-                progressArea.classList.add('hidden');
-                successArea.classList.remove('hidden');
-                downloadBtn.href = '#'; // Set actual download URL
-            }, 3000);
-        }
-        
-        convertAnother.addEventListener('click', () => {
-            fileInput.value = '';
-            successArea.classList.add('hidden');
-            uploadArea.classList.remove('hidden');
-        });
+  <!-- Scripts -->
+  <script src="/js/production.js">
   </script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
  </body>
 </html>

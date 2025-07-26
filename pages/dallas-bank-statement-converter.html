@@ -1,499 +1,652 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dallas Bank Statement Converter - Convert Texas Bank PDFs to CSV | BankCSVConverter</title>
-    <meta name="description" content="Professional bank statement converter in Dallas, TX. Convert PDFs from Bank of America, Chase, Wells Fargo, Comerica, Texas Capital Bank to CSV/Excel. Serving Uptown, Downtown, North Dallas & Plano businesses.">
-    <meta name="keywords" content="dallas bank statement converter, convert bank statements dallas tx, dallas pdf to csv converter, dallas bank statement to excel, bank of america dallas converter, chase bank dallas statement converter, wells fargo dallas pdf converter, comerica bank statement converter dallas, texas capital bank converter, dallas financial district converter">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Dallas Bank Statement Converter - Convert Texas Bank PDFs to CSV">
-    <meta property="og:description" content="Convert bank statements from Dallas banks to CSV/Excel. Serving Uptown, Downtown, North Dallas, Plano & Richardson businesses.">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:url" content="https://bankCSVconverter.com/dallas-bank-statement-converter">
-    <meta property="og:image" content="https://bankCSVconverter.com/images/dallas-converter.jpg">
-    
-    <!-- Schema.org Local Business Markup -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Dallas Bank Statement Converter - BankCSVConverter",
-        "description": "Professional bank statement conversion service specializing in Dallas banks including Bank of America, Chase, Wells Fargo, Comerica Bank, and Texas Capital Bank",
-        "url": "https://bankCSVconverter.com/dallas-bank-statement-converter",
-        "telephone": "+1-214-555-0100",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "2100 Ross Avenue",
-            "addressLocality": "Dallas",
-            "addressRegion": "TX",
-            "postalCode": "75201",
-            "addressCountry": "US"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 32.7767,
-            "longitude": -96.7970
-        },
-        "areaServed": [
-            {
-                "@type": "City",
-                "name": "Dallas",
-                "@id": "https://en.wikipedia.org/wiki/Dallas"
-            },
-            {
-                "@type": "Place",
-                "name": "Uptown Dallas"
-            },
-            {
-                "@type": "Place",
-                "name": "Downtown Dallas"
-            },
-            {
-                "@type": "Place",
-                "name": "North Dallas"
-            },
-            {
-                "@type": "Place",
-                "name": "Plano, TX"
-            },
-            {
-                "@type": "Place",
-                "name": "Richardson, TX"
-            },
-            {
-                "@type": "Place",
-                "name": "Irving, TX"
-            },
-            {
-                "@type": "Place",
-                "name": "Frisco, TX"
-            }
-        ],
-        "priceRange": "$$",
-        "openingHours": "Mo-Fr 08:00-18:00",
-        "sameAs": [
-            "https://www.linkedin.com/company/dallas-bank-converter",
-            "https://twitter.com/dallasbankconv"
-        ]
-    }
-    </script>
-    
-    <!-- Service Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "serviceType": "Bank Statement Conversion",
-        "provider": {
-            "@type": "LocalBusiness",
-            "name": "Dallas Bank Statement Converter - BankCSVConverter"
-        },
-        "areaServed": {
-            "@type": "City",
-            "name": "Dallas",
-            "containedInPlace": {
-                "@type": "State",
-                "name": "Texas"
-            }
-        },
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Dallas Bank Statement Conversion Services",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Bank of America Dallas Statement Conversion",
-                        "description": "Convert Bank of America PDF statements to CSV/Excel for Dallas businesses"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Chase Bank Dallas Statement Conversion",
-                        "description": "Convert Chase PDF statements to CSV/Excel format"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Wells Fargo Dallas Statement Conversion",
-                        "description": "Convert Wells Fargo bank statements to spreadsheet format"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Comerica Bank Statement Conversion",
-                        "description": "Convert Comerica Bank PDF statements to CSV/Excel"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Texas Capital Bank Statement Conversion",
-                        "description": "Convert Texas Capital Bank statements to digital format"
-                    }
-                }
-            ]
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Professional bank statement converter in Dallas, TX. Convert PDFs from Bank of America, Chase, Wells Fargo, Comerica, Texas Capital Bank to CSV/Excel. Serving Uptown, Downtown, North Dallas &amp; Plano businesses." name="description"/>
+  <link href="/css/production.css" rel="stylesheet"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+  <title>
+   Dallas Bank Statement Converter - Convert Texas Bank PDFs to CSV | BankCSVConverter
+  </title>
+  <link href="https://BankCSVConverter.compages/dallas-bank-statement-converter" rel="canonical"/>
+  <!-- Unified Design System -->
+  <!-- Skip Link for Accessibility -->
+  <style>
+   .skip-link {
+            position: absolute;
+            left: -9999px;
         }
-    }
-    </script>
-    
-    <!-- FAQ Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "Which Dallas banks are supported for statement conversion?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We support all major Dallas banks including Bank of America, Chase, Wells Fargo, Comerica Bank, Texas Capital Bank, Frost Bank, PlainsCapital Bank, and regional credit unions."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How quickly can I convert my Dallas bank statements?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Our Dallas bank statement converter processes most statements in under 60 seconds. Simply upload your PDF and receive your CSV/Excel file immediately."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Is my Dallas banking data secure?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, we use bank-level 256-bit SSL encryption and process all data locally. Your Dallas bank statements are never stored on our servers."
-                }
-            }
-        ]
-    }
-    </script>
-    
-    <link rel="stylesheet" href="../css/unified-styles.css">
-    <link rel="canonical" href="https://bankCSVconverter.com/dallas-bank-statement-converter">
-</head>
-<body>
-        <!-- Header Navigation -->
-    <header>
-        <nav>
-            <a href="../" class="nav-logo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                    <path d="M9 12l2 2 4-4"/>
-                </svg>
-                BankCSVConverter
-            </a>
-            
-            <ul class="nav-menu">
-                <li><a href="../all-pages.html">All Banks</a></li>
-                <li><a href="../pages/bank-statement-converter-comparison.html">Why Us</a></li>
-                <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
-            </ul>
-            
-            <button class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Dallas Bank Statement Converter - Convert Texas Bank PDFs to CSV</h1>
-                <p class="lead">Professional bank statement conversion service for Dallas businesses. Convert PDFs from Bank of America, Chase, Wells Fargo, Comerica, and Texas Capital Bank to CSV or Excel format in seconds.</p>
-                <div class="cta-buttons">
-                    <a href="#converter" class="btn btn-primary">Start Converting Now</a>
-                    <a href="#dallas-banks" class="btn btn-secondary">View Supported Banks</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="content">
-            <div class="container">
-                <h2>Dallas: A Major Financial Center Requiring Advanced Banking Solutions</h2>
-                <p>Dallas, Texas stands as one of the most significant financial centers in the United States, home to the Federal Reserve Bank of Dallas and headquarters for numerous Fortune 500 companies. As the economic heart of North Texas and the Dallas-Fort Worth metroplex, the city's diverse economy spans oil and gas, technology, telecommunications, banking, and real estate sectors.</p>
-                
-                <p>The Dallas financial district, centered around Downtown and extending through Uptown, North Dallas, and into suburban areas like Plano and Frisco, hosts regional headquarters for major banks and financial institutions. This concentration of financial activity creates unique demands for efficient bank statement processing and conversion services.</p>
-
-                <h3>Why Dallas Businesses Need Professional Bank Statement Conversion</h3>
-                <p>Dallas's dynamic business environment, from the energy companies along the North Central Expressway to the tech startups in Deep Ellum and the financial firms in Uptown, requires sophisticated financial management tools. Our Dallas bank statement converter addresses specific local needs:</p>
-                
-                <ul>
-                    <li><strong>Oil & Gas Industry:</strong> Energy companies headquartered in Dallas require precise financial tracking for complex transactions, royalty payments, and international dealings</li>
-                    <li><strong>Technology Sector:</strong> Dallas's growing tech hub, including companies in Richardson's Telecom Corridor and Plano's Legacy West, needs streamlined financial data for investor reporting</li>
-                    <li><strong>Real Estate Development:</strong> With Dallas's booming real estate market, developers need efficient ways to process multiple bank accounts and construction loans</li>
-                    <li><strong>Healthcare Systems:</strong> Major healthcare networks like UT Southwestern and Baylor Scott & White require accurate financial reconciliation</li>
-                    <li><strong>Professional Services:</strong> Law firms, accounting practices, and consulting firms in the Dallas CBD need reliable statement conversion for client billing and trust accounting</li>
-                </ul>
-
-                <h2 id="dallas-banks">Major Banks in Dallas Supporting Our Converter</h2>
-                <p>Our Dallas bank statement converter supports all major financial institutions operating in the Dallas-Fort Worth metroplex:</p>
-
-                <div class="bank-grid">
-                    <div class="bank-card">
-                        <h4>Bank of America Dallas</h4>
-                        <p>With multiple branches throughout Dallas County, Bank of America serves thousands of local businesses. Our converter handles all Bank of America statement formats, including business and commercial accounts.</p>
-                    </div>
-                    
-                    <div class="bank-card">
-                        <h4>JPMorgan Chase Bank</h4>
-                        <p>Chase maintains a significant presence in Dallas with branches from Highland Park to Oak Cliff. We convert all Chase statement types, including Chase Business Complete Banking.</p>
-                    </div>
-                    
-                    <div class="bank-card">
-                        <h4>Wells Fargo Dallas</h4>
-                        <p>Wells Fargo's Dallas operations include commercial banking centers in Downtown and North Dallas. Our converter processes all Wells Fargo business statement formats.</p>
-                    </div>
-                    
-                    <div class="bank-card">
-                        <h4>Comerica Bank</h4>
-                        <p>With its Texas headquarters in Dallas, Comerica is deeply integrated into the local business community. We specialize in converting Comerica's unique statement formats.</p>
-                    </div>
-                    
-                    <div class="bank-card">
-                        <h4>Texas Capital Bank</h4>
-                        <p>As a Dallas-based institution, Texas Capital Bank serves many local businesses. Our converter is optimized for Texas Capital's statement structure.</p>
-                    </div>
-                    
-                    <div class="bank-card">
-                        <h4>Frost Bank</h4>
-                        <p>Frost Bank's expansion into Dallas brings their Texas-friendly banking. We support all Frost Bank statement conversions for Dallas businesses.</p>
-                    </div>
-                    
-                    <div class="bank-card">
-                        <h4>PlainsCapital Bank</h4>
-                        <p>With headquarters in Dallas, PlainsCapital serves many local enterprises. Our converter handles their specialized business banking statements.</p>
-                    </div>
-                    
-                    <div class="bank-card">
-                        <h4>Regional & Community Banks</h4>
-                        <p>We also support statements from Veritex Community Bank, Independent Bank, LegacyTexas Bank, and numerous credit unions serving the Dallas area.</p>
-                    </div>
-                </div>
-
-                <h2>Dallas Neighborhoods and Business Districts We Serve</h2>
-                <p>Our Dallas bank statement converter serves businesses throughout the Dallas metropolitan area:</p>
-
-                <h3>Downtown Dallas Financial District</h3>
-                <p>The heart of Dallas banking, home to Comerica Bank Tower, Renaissance Tower, and numerous financial institutions. Law firms, investment companies, and corporate headquarters in this area rely on our converter for accurate financial reporting.</p>
-
-                <h3>Uptown Dallas</h3>
-                <p>This vibrant business district along McKinney Avenue hosts many professional services firms, startups, and regional offices. The mix of modern businesses here frequently needs bank statement conversion for various accounting platforms.</p>
-
-                <h3>North Dallas Business Corridor</h3>
-                <p>Stretching along the Dallas North Tollway through Preston Center to Far North Dallas, this area includes major corporate campuses and business parks. Companies here use our service for multi-account reconciliation.</p>
-
-                <h3>Plano/Legacy West</h3>
-                <p>The explosive growth in Plano, particularly around Legacy West and the Legacy business corridor, has created a hub for corporate relocations. These businesses often need to convert statements from multiple banks as they establish Texas operations.</p>
-
-                <h3>Richardson/Telecom Corridor</h3>
-                <p>Richardson's technology sector, anchored by the Telecom Corridor, requires precise financial data management. Tech companies here use our converter for investor reporting and financial analysis.</p>
-
-                <h3>Las Colinas/Irving</h3>
-                <p>This master-planned business community houses numerous corporate headquarters. The international business presence here creates demand for statement conversion that handles multiple currencies and formats.</p>
-
-                <h2>Features Designed for Dallas Businesses</h2>
-                <div class="features-grid">
-                    <div class="feature">
-                        <img src="../assets/secure-icon.svg" alt="Secure Processing">
-                        <h3>Bank-Level Security</h3>
-                        <p>Your Dallas business banking data is protected with 256-bit SSL encryption. All processing happens locally - we never store your statements.</p>
-                    </div>
-                    
-                    <div class="feature">
-                        <img src="../assets/accurate-icon.svg" alt="Accurate Conversion">
-                        <h3>99.9% Accuracy</h3>
-                        <p>Advanced OCR technology ensures precise data extraction from all Dallas bank formats, including handwritten deposits and complex commercial statements.</p>
-                    </div>
-                    
-                    <div class="feature">
-                        <img src="../assets/institutional-icon.svg" alt="Multiple Formats">
-                        <h3>Universal Format Support</h3>
-                        <p>Export to CSV, Excel, QBO, OFX, and QIF formats. Compatible with QuickBooks, Xero, SAP, and other accounting software used by Dallas businesses.</p>
-                    </div>
-                </div>
-
-                <h2 id="testimonials">What Dallas Businesses Say About Our Service</h2>
-                <div class="testimonials">
-                    <div class="testimonial">
-                        <p>"As a CPA firm in Uptown Dallas serving oil and gas clients, we process hundreds of bank statements monthly. This converter saves us hours of manual data entry while maintaining perfect accuracy."</p>
-                        <cite>- Sarah Martinez, CPA, Uptown Dallas</cite>
-                    </div>
-                    
-                    <div class="testimonial">
-                        <p>"Our real estate development company manages multiple projects across DFW. Being able to quickly convert statements from different banks into Excel for analysis has transformed our financial reporting."</p>
-                        <cite>- Michael Chen, CFO, North Dallas Real Estate Development</cite>
-                    </div>
-                    
-                    <div class="testimonial">
-                        <p>"We switched from manual entry to this converter for our restaurant group's five Dallas locations. It's cut our bookkeeping time by 75% and eliminated errors in our cash reconciliation."</p>
-                        <cite>- Jennifer Williams, Dallas Restaurant Group</cite>
-                    </div>
-                    
-                    <div class="testimonial">
-                        <p>"Managing trust accounts for our Downtown Dallas law firm requires absolute precision. This tool handles our Comerica and Texas Capital Bank statements flawlessly."</p>
-                        <cite>- Robert Thompson, Managing Partner, Dallas Law Firm</cite>
-                    </div>
-                </div>
-
-                <h2>Dallas-Specific Financial Challenges We Solve</h2>
-                
-                <h3>Multi-State Business Operations</h3>
-                <p>Many Dallas companies operate across Texas and neighboring states. Our converter handles statements from banks in Oklahoma, Louisiana, Arkansas, and New Mexico, making regional financial consolidation simple.</p>
-
-                <h3>Energy Sector Complexity</h3>
-                <p>Dallas's oil and gas companies deal with royalty payments, joint ventures, and international transactions. Our converter accurately processes these complex statement entries, maintaining transaction descriptions and reference numbers.</p>
-
-                <h3>High-Volume Real Estate Transactions</h3>
-                <p>The Dallas real estate boom means processing numerous earnest money deposits, construction draws, and closing statements. Our bulk conversion feature handles multiple statements simultaneously.</p>
-
-                <h3>Technology Company Growth</h3>
-                <p>Fast-growing tech companies in Dallas often have multiple bank relationships and need to consolidate financial data for investors. We support batch processing and automated folder monitoring for continuous conversion.</p>
-
-                <h2>How to Convert Your Dallas Bank Statements</h2>
-                <ol>
-                    <li><strong>Upload Your PDF:</strong> Drag and drop your bank statement PDF or select from your computer</li>
-                    <li><strong>Select Output Format:</strong> Choose CSV, Excel, or accounting software format</li>
-                    <li><strong>Convert Instantly:</strong> Our Dallas-optimized system processes your statement in seconds</li>
-                    <li><strong>Download Results:</strong> Get your converted file with all transactions accurately formatted</li>
-                </ol>
-
-                <h2>Pricing Tailored for Dallas Businesses</h2>
-                <p>We offer flexible pricing options designed for Dallas companies of all sizes:</p>
-                <ul>
-                    <li><strong>Pay-Per-Conversion:</strong> Perfect for small businesses and startups in Deep Ellum or Bishop Arts</li>
-                    <li><strong>Monthly Subscriptions:</strong> Ideal for growing companies in Plano and Frisco</li>
-                    <li><strong>Enterprise Solutions:</strong> Custom pricing for large corporations in Downtown and North Dallas</li>
-                    <li><strong>Volume Discounts:</strong> Special rates for accounting firms and financial services companies</li>
-                </ul>
-
-                <h2>Local Support for Dallas Businesses</h2>
-                <p>Our Dallas bank statement converter comes with dedicated support for local businesses:</p>
-                <ul>
-                    <li>Phone support during Central Time business hours</li>
-                    <li>Priority assistance for Dallas-based enterprise clients</li>
-                    <li>Custom integration support for local accounting systems</li>
-                    <li>Training sessions for Dallas accounting firms and bookkeepers</li>
-                </ul>
-
-                <div class="cta-section">
-                    <h2>Start Converting Your Dallas Bank Statements Today</h2>
-                    <p>Join thousands of Dallas businesses saving time and eliminating errors with our bank statement converter. No software installation required - convert your Bank of America, Chase, Wells Fargo, Comerica, or Texas Capital Bank statements instantly.</p>
-                    <a href="#converter" class="btn btn-primary">Try Free Conversion Now</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="converter" class="converter-section">
-            <div class="container">
-                <h2>Convert Your Dallas Bank Statement</h2>
-                <div class="converter-interface">
-                    <div class="upload-area" id="uploadBox">
-                        <p>Drag and drop your bank statement PDF here or click to browse</p>
-                        <input type="file" id="fileInput" accept=".pdf" hidden>
-                        <button class="btn btn-primary" id="uploadBtn" onclick="document.getElementById('fileInput').click()">Select PDF File</button>
-                    </div>
-                    
-                
-                <!-- Progress Container -->
-                <div class="upload-area" id="progressContainer" style="display: none;">
-                    <div class="loading"></div>
-                    <h3 id="progressText">Processing your statement...</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                </div>
-                
-                <!-- Result Container -->
-                <div class="upload-area" id="resultContainer" style="display: none;">
-                    <div class="success-check">✓</div>
-                    <h3>Conversion Complete!</h3>
-                    <p>Your statement has been successfully converted to CSV format.</p>
-                    <button class="upload-btn" id="downloadBtn">Download CSV File</button>
-                    <button class="secondary-btn" id="convertAnotherBtn">Convert Another Statement</button>
-                </div><div class="supported-banks">
-                        <p>Supports all Dallas banks including: Bank of America • Chase • Wells Fargo • Comerica • Texas Capital Bank • Frost Bank • PlainsCapital • And more...</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>BankCSVConverter Dallas</h3>
-                    <p>Professional bank statement conversion service for Dallas businesses. Fast, accurate, and secure.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Dallas Service Areas</h3>
-                    <ul>
-                        <li>Downtown Dallas</li>
-                        <li>Uptown Dallas</li>
-                        <li>North Dallas</li>
-                        <li>Plano</li>
-                        <li>Richardson</li>
-                        <li>Irving/Las Colinas</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Supported Banks</h3>
-                    <ul>
-                        <li>Bank of America</li>
-                        <li>Chase Bank</li>
-                        <li>Wells Fargo</li>
-                        <li>Comerica Bank</li>
-                        <li>Texas Capital Bank</li>
-                        <li>All Regional Banks</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>Email: dallas@bankCSVconverter.com</p>
-                    <p>Phone: 214-555-0100</p>
-                    <p>Hours: Mon-Fri 8AM-6PM CST</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 BankCSVConverter.com - Dallas Bank Statement Converter. All rights reserved.</p>
-            </div>
+        .skip-link:focus {
+            position: absolute;
+            left: 6px;
+            top: 7px;
+            z-index: 999999;
+            padding: 8px 16px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+        }
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+  <!-- Standardized Header -->
+  <header>
+   <nav>
+    <a class="nav-logo" href="../">
+     <svg style="width: 24px; height: 24px; flex-shrink: 0;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+      </rect>
+      <line x1="3" x2="21" y1="9" y2="9">
+      </line>
+      <line x1="9" x2="9" y1="21" y2="9">
+      </line>
+     </svg>
+     BankCSVConverter
+    </a>
+    <ul class="nav-menu">
+     <li>
+      <a href="../features.html">
+       Features
+      </a>
+     </li>
+     <li>
+      <a href="../how-it-works.html">
+       How It Works
+      </a>
+     </li>
+     <li>
+      <a href="../pricing.html">
+       Pricing
+      </a>
+     </li>
+     <li>
+      <a href="../blog.html">
+       Blog
+      </a>
+     </li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle">
+     <span>
+     </span>
+     <span>
+     </span>
+     <span>
+     </span>
+    </button>
+   </nav>
+   <div class="nav-overlay">
+   </div>
+  </header>
+  <main id="main">
+   <div class="content-wrapper">
+    <div class="container">
+     <section class="hero">
+      <div class="container">
+       <h1>
+        Dallas Bank Statement Converter - Convert Texas Bank PDFs to CSV
+       </h1>
+       <div class="cta-buttons">
+        <a class="btn btn-primary" href="#converter">
+         Start Converting Now
+        </a>
+        <a class="btn btn-secondary" href="#dallas-banks">
+         View Supported Banks
+        </a>
+       </div>
+      </div>
+     </section>
+     <section class="content">
+      <div class="container">
+       <h2>
+        Dallas: A Major Financial Center Requiring Advanced Banking Solutions
+       </h2>
+       <p>
+        Dallas, Texas stands as one of the most significant financial centers in the United States, home to the Federal Reserve Bank of Dallas and headquarters for numerous Fortune 500 companies. As the economic heart of North Texas and the Dallas-Fort Worth metroplex, the city's diverse economy spans oil and gas, technology, telecommunications, banking, and real estate sectors.
+       </p>
+       <p>
+        The Dallas financial district, centered around Downtown and extending through Uptown, North Dallas, and into suburban areas like Plano and Frisco, hosts regional headquarters for major banks and financial institutions. This concentration of financial activity creates unique demands for efficient bank statement processing and conversion services.
+       </p>
+       <h3>
+        Why Dallas Businesses Need Professional Bank Statement Conversion
+       </h3>
+       <p>
+        Dallas's dynamic business environment, from the energy companies along the North Central Expressway to the tech startups in Deep Ellum and the financial firms in Uptown, requires sophisticated financial management tools. Our Dallas bank statement converter addresses specific local needs:
+       </p>
+       <ul>
+        <li>
+         <strong>
+          Oil &amp; Gas Industry:
+         </strong>
+         Energy companies headquartered in Dallas require precise financial tracking for complex transactions, royalty payments, and international dealings
+        </li>
+        <li>
+         <strong>
+          Technology Sector:
+         </strong>
+         Dallas's growing tech hub, including companies in Richardson's Telecom Corridor and Plano's Legacy West, needs streamlined financial data for investor reporting
+        </li>
+        <li>
+         <strong>
+          Real Estate Development:
+         </strong>
+         With Dallas's booming real estate market, developers need efficient ways to process multiple bank accounts and construction loans
+        </li>
+        <li>
+         <strong>
+          Healthcare Systems:
+         </strong>
+         Major healthcare networks like UT Southwestern and Baylor Scott &amp; White require accurate financial reconciliation
+        </li>
+        <li>
+         <strong>
+          Professional Services:
+         </strong>
+         Law firms, accounting practices, and consulting firms in the Dallas CBD need reliable statement conversion for client billing and trust accounting
+        </li>
+       </ul>
+       <h2 id="dallas-banks">
+        Major Banks in Dallas Supporting Our Converter
+       </h2>
+       <p>
+        Our Dallas bank statement converter supports all major financial institutions operating in the Dallas-Fort Worth metroplex:
+       </p>
+       <div class="bank-grid">
+        <div class="bank-card">
+         <h3>
+          Bank of America Dallas
+         </h3>
+         <p>
+          With multiple branches throughout Dallas County, Bank of America serves thousands of local businesses. Our converter handles all Bank of America statement formats, including business and commercial accounts.
+         </p>
         </div>
-    </footer>
-
-    <script src="../js/main.js"></script>
-    <!-- Mobile menu JavaScript -->
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        menuToggle.addEventListener('click', () => {
+        <div class="bank-card">
+         <h4>
+          JPMorgan Chase Bank
+         </h4>
+         <p>
+          Chase maintains a significant presence in Dallas with branches from Highland Park to Oak Cliff. We convert all Chase statement types, including Chase Business Complete Banking.
+         </p>
+        </div>
+        <div class="bank-card">
+         <h4>
+          Wells Fargo Dallas
+         </h4>
+         <p>
+          Wells Fargo's Dallas operations include commercial banking centers in Downtown and North Dallas. Our converter processes all Wells Fargo business statement formats.
+         </p>
+        </div>
+        <div class="bank-card">
+         <h4>
+          Comerica Bank
+         </h4>
+         <p>
+          With its Texas headquarters in Dallas, Comerica is deeply integrated into the local business community. We specialize in converting Comerica's unique statement formats.
+         </p>
+        </div>
+        <div class="bank-card">
+         <h4>
+          Texas Capital Bank
+         </h4>
+         </div>
+        <div class="bank-card">
+         <h4>
+          Frost Bank
+         </h4>
+         <p>
+          Frost Bank's expansion into Dallas brings their Texas-friendly banking. We support all Frost Bank statement conversions for Dallas businesses.
+         </p>
+        </div>
+        <div class="bank-card">
+         <h4>
+          PlainsCapital Bank
+         </h4>
+         </div>
+        <div class="bank-card">
+         <h4>
+          Regional &amp; Community Banks
+         </h4>
+         <p>
+          We also support statements from Veritex Community Bank, Independent Bank, LegacyTexas Bank, and numerous credit unions serving the Dallas area.
+         </p>
+        </div>
+       </div>
+       <h2>
+        Dallas Neighborhoods and Business Districts We Serve
+       </h2>
+       <p>
+        Our Dallas bank statement converter serves businesses throughout the Dallas metropolitan area:
+       </p>
+       <h3>
+        Downtown Dallas Financial District
+       </h3>
+       <p>
+        The heart of Dallas banking, home to Comerica Bank Tower, Renaissance Tower, and numerous financial institutions. Law firms, investment companies, and corporate headquarters in this area rely on our converter for accurate financial reporting.
+       </p>
+       <h3>
+        Uptown Dallas
+       </h3>
+       <p>
+        This vibrant business district along McKinney Avenue hosts many professional services firms, startups, and regional offices. The mix of modern businesses here frequently needs bank statement conversion for various accounting platforms.
+       </p>
+       <h3>
+        North Dallas Business Corridor
+       </h3>
+       <p>
+        Stretching along the Dallas North Tollway through Preston Center to Far North Dallas, this area includes major corporate campuses and business parks. Companies here use our service for multi-account reconciliation.
+       </p>
+       <h3>
+        Plano/Legacy West
+       </h3>
+       <p>
+        The explosive growth in Plano, particularly around Legacy West and the Legacy business corridor, has created a hub for corporate relocations. These businesses often need to convert statements from multiple banks as they establish Texas operations.
+       </p>
+       <h3>
+        Richardson/Telecom Corridor
+       </h3>
+       <p>
+        Richardson's technology sector, anchored by the Telecom Corridor, requires precise financial data management. Tech companies here use our converter for investor reporting and financial analysis.
+       </p>
+       <h3>
+        Las Colinas/Irving
+       </h3>
+       <p>
+        This master-planned business community houses numerous corporate headquarters. The international business presence here creates demand for statement conversion that handles multiple currencies and formats.
+       </p>
+       <h2>
+        Features Designed for Dallas Businesses
+       </h2>
+       <div class="features-grid">
+        <div class="feature">
+         <img alt="Secure Processing" src="/../assets/secure-icon.svg"/>
+         <h3>
+          Bank-Level Security
+         </h3>
+         <p>
+          Your Dallas business banking data is protected with 256-bit SSL encryption. All processing happens locally - we never store your statements.
+         </p>
+        </div>
+        <div class="feature">
+         <img alt="Accurate Conversion" src="/../assets/accurate-icon.svg"/>
+         <h3>
+          99.9% Accuracy
+         </h3>
+         <p>
+          Advanced OCR technology ensures precise data extraction from all Dallas bank formats, including handwritten deposits and complex commercial statements.
+         </p>
+        </div>
+        <div class="feature">
+         <img alt="Multiple Formats" src="/../assets/institutional-icon.svg"/>
+         <h3>
+          Universal Format Support
+         </h3>
+         <p>
+          Export to CSV, Excel, QBO, OFX, and QIF formats. Compatible with QuickBooks, Xero, SAP, and other accounting software used by Dallas businesses.
+         </p>
+        </div>
+       </div>
+       <h2 id="testimonials">
+        What Dallas Businesses Say About Our Service
+       </h2>
+       <div class="testimonials">
+        <div class="testimonial">
+         <p>
+          "As a CPA firm in Uptown Dallas serving oil and gas clients, we process hundreds of bank statements monthly. This converter saves us hours of manual data entry while maintaining perfect accuracy."
+         </p>
+         <cite>
+          - Sarah Martinez, CPA, Uptown Dallas
+         </cite>
+        </div>
+        <div class="testimonial">
+         <p>
+          "Our real estate development company manages multiple projects across DFW. Being able to quickly convert statements from different banks into Excel for analysis has transformed our financial reporting."
+         </p>
+         <cite>
+          - Michael Chen, CFO, North Dallas Real Estate Development
+         </cite>
+        </div>
+        <div class="testimonial">
+         <p>
+          "We switched from manual entry to this converter for our restaurant group's five Dallas locations. It's cut our bookkeeping time by 75% and eliminated errors in our cash reconciliation."
+         </p>
+         <cite>
+          - Jennifer Williams, Dallas Restaurant Group
+         </cite>
+        </div>
+        <div class="testimonial">
+         <cite>
+          - Robert Thompson, Managing Partner, Dallas Law Firm
+         </cite>
+        </div>
+       </div>
+       <h2>
+        Dallas-Specific Financial Challenges We Solve
+       </h2>
+       <h3>
+        Multi-State Business Operations
+       </h3>
+       <p>
+        Many Dallas companies operate across Texas and neighboring states. Our converter handles statements from banks in Oklahoma, Louisiana, Arkansas, and New Mexico, making regional financial consolidation simple.
+       </p>
+       <h3>
+        Energy Sector Complexity
+       </h3>
+       <p>
+        Dallas's oil and gas companies deal with royalty payments, joint ventures, and international transactions. Our converter accurately processes these complex statement entries, maintaining transaction descriptions and reference numbers.
+       </p>
+       <h3>
+        High-Volume Real Estate Transactions
+       </h3>
+       <p>
+        The Dallas real estate boom means processing numerous earnest money deposits, construction draws, and closing statements. Our bulk conversion feature handles multiple statements simultaneously.
+       </p>
+       <h3>
+        Technology Company Growth
+       </h3>
+       <p>
+        Fast-growing tech companies in Dallas often have multiple bank relationships and need to consolidate financial data for investors. We support batch processing and automated folder monitoring for continuous conversion.
+       </p>
+       <h2>
+        How to Convert Your Dallas Bank Statements
+       </h2>
+       <ol>
+        <li>
+         <strong>
+          Upload Your PDF:
+         </strong>
+         Drag and drop your bank statement PDF or select from your computer
+        </li>
+        <li>
+         <strong>
+          Select Output Format:
+         </strong>
+         Choose CSV, Excel, or accounting software format
+        </li>
+        <li>
+         <strong>
+          Convert Instantly:
+         </strong>
+         Our Dallas-optimized system processes your statement in seconds
+        </li>
+        <li>
+         <strong>
+          Download Results:
+         </strong>
+         Get your converted file with all transactions accurately formatted
+        </li>
+       </ol>
+       <h2>
+        Pricing Tailored for Dallas Businesses
+       </h2>
+       <p>
+        We offer flexible pricing options designed for Dallas companies of all sizes:
+       </p>
+       <ul>
+        <li>
+         <strong>
+          Pay-Per-Conversion:
+         </strong>
+         Perfect for small businesses and startups in Deep Ellum or Bishop Arts
+        </li>
+        <li>
+         <strong>
+          Monthly Subscriptions:
+         </strong>
+         Ideal for growing companies in Plano and Frisco
+        </li>
+        <li>
+         <strong>
+          Enterprise Solutions:
+         </strong>
+         Custom pricing for large corporations in Downtown and North Dallas
+        </li>
+        <li>
+         <strong>
+          Volume Discounts:
+         </strong>
+         Special rates for accounting firms and financial services companies
+        </li>
+       </ul>
+       <h2>
+        Local Support for Dallas Businesses
+       </h2>
+       <p>
+        Our Dallas bank statement converter comes with dedicated support for local businesses:
+       </p>
+       <ul>
+        <li>
+         Phone support during Central Time business hours
+        </li>
+        <li>
+         Priority assistance for Dallas-based enterprise clients
+        </li>
+        <li>
+         Custom integration support for local accounting systems
+        </li>
+        <li>
+         Training sessions for Dallas accounting firms and bookkeepers
+        </li>
+       </ul>
+       <div class="cta-section">
+        <h2>
+         Start Converting Your Dallas Bank Statements Today
+        </h2>
+        <a class="btn btn-primary" href="#converter">
+         Try Free Conversion Now
+        </a>
+       </div>
+      </div>
+     </section>
+     <section class="converter-section" id="converter">
+      <div class="container">
+       <h2>
+        Convert Your Dallas Bank Statement
+       </h2>
+       <div class="converter-interface">
+        <div class="upload-area" id="uploadBox">
+         <p>
+          Drag and drop your bank statement PDF here or click to browse
+         </p>
+         <input accept=".pdf" aria-label="Upload PDF bank statement" hidden="" id="fileInput" type="file"/>
+         <button class="btn btn-primary" id="uploadBtn" onclick="document.getElementById('fileInput').click()">
+          Select PDF File
+         </button>
+        </div>
+        <!-- Progress Container -->
+        <div class="upload-area" id="progressContainer" style="display: none;">
+         <div class="loading">
+         </div>
+         <h3 id="progressText">
+          Processing your statement...
+         </h3>
+         <div class="progress-bar">
+          <div class="progress-fill" id="progressFill">
+          </div>
+         </div>
+        </div>
+        <!-- Result Container -->
+        <div class="upload-area" id="resultContainer" style="display: none;">
+         <div class="success-check">
+          ✓
+         </div>
+         <h3>
+          Conversion Complete!
+         </h3>
+         <p>
+          Your statement has been successfully converted to CSV format.
+         </p>
+         <button class="upload-btn" id="downloadBtn">
+          Download CSV File
+         </button>
+         <button class="secondary-btn" id="convertAnotherBtn">
+          Convert Another Statement
+         </button>
+        </div>
+        <div class="supported-banks">
+         </div>
+       </div>
+      </div>
+     </section>
+    </div>
+   </div>
+  </main>
+  <!-- Standardized Footer -->
+  <footer>
+   <div class="container">
+    <div class="footer-content">
+     <div class="footer-section">
+      <h4>
+       Product
+      </h4>
+      <ul>
+       <li>
+        <a href="../features.html">
+         Features
+        </a>
+       </li>
+       <li>
+        <a href="../how-it-works.html">
+         How It Works
+        </a>
+       </li>
+       <li>
+        <a href="../pricing.html">
+         Pricing
+        </a>
+       </li>
+       </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Company
+      </h4>
+      <ul>
+       <li>
+        <a href="../about.html">
+         About
+        </a>
+       </li>
+       <li>
+        <a href="../blog.html">
+         Blog
+        </a>
+       </li>
+       <li>
+        <a href="../contact.html">
+         Contact
+        </a>
+       </li>
+       <li>
+        <a href="../careers.html">
+         Careers
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Support
+      </h4>
+      <ul>
+       <li>
+        <a href="../help.html">
+         Help Center
+        </a>
+       </li>
+       <li>
+        <a href="../faq.html">
+         FAQ
+        </a>
+       </li>
+       <li>
+        <a href="../security.html">
+         Security
+        </a>
+       </li>
+       <li>
+        <a href="../status.html">
+         Status
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Legal
+      </h4>
+      <ul>
+       <li>
+        <a href="../privacy.html">
+         Privacy Policy
+        </a>
+       </li>
+       <li>
+        <a href="../terms.html">
+         Terms of Service
+        </a>
+       </li>
+       <li>
+        <a href="../gdpr.html">
+         GDPR
+        </a>
+       </li>
+       <li>
+        <a href="../ccpa.html">
+         CCPA
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>
+      © 2025 BankCSVConverter. All rights reserved.
+     </p>
+    </div>
+   </div>
+  </footer>
+  <!-- Standardized Scripts -->
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             menuToggle.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
         
         // Close menu when clicking on a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function() {
                 navMenu.classList.remove('active');
                 menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
-    </script>
-</body>
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+  </script>
+  <script src="/js/production.js">
+  </script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
 </html>

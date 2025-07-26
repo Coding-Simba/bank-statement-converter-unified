@@ -1,0 +1,350 @@
+/* Mobile Navigation Styles */
+
+/* Hamburger Menu Button */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10001;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #333;
+    margin: 6px auto;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+}
+
+/* Mobile Menu Container */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 280px;
+    height: 100%;
+    background: #ffffff;
+    z-index: 9999;
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu.active {
+    transform: translateX(-300px);
+}
+
+/* Mobile Menu Header */
+.mobile-menu-header {
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    position: relative;
+}
+
+.mobile-menu-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Mobile Menu Navigation */
+.mobile-nav {
+    padding: 20px 0;
+}
+
+.mobile-nav-item {
+    display: block;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+
+.mobile-nav-item:hover {
+    background: #f8f9fa;
+    color: #667eea;
+    padding-left: 30px;
+}
+
+.mobile-nav-item.active {
+    color: #667eea;
+    background: #f0f4ff;
+}
+
+.mobile-nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Mobile Nav Separator */
+.mobile-nav-separator {
+    height: 1px;
+    background: #e9ecef;
+    margin: 10px 20px;
+}
+
+/* Mobile Nav Section Title */
+.mobile-nav-section {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Submenu Styles */
+.mobile-nav-submenu {
+    padding-left: 20px;
+    display: none;
+}
+
+.mobile-nav-submenu.active {
+    display: block;
+}
+
+.mobile-nav-item.has-submenu::after {
+    content: '▼';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav-item.has-submenu.expanded::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Mobile CTA Buttons */
+.mobile-menu-cta {
+    padding: 20px;
+    border-top: 1px solid #e9ecef;
+    margin-top: auto;
+}
+
+.mobile-cta-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.mobile-cta-btn.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.mobile-cta-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.mobile-cta-btn.secondary {
+    background: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.mobile-cta-btn.secondary:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    /* Show mobile menu toggle */
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    /* Hide desktop navigation */
+    .nav-menu,
+    .navbar .nav-menu,
+    nav ul.nav-menu,
+    header nav ul {
+        display: none !important;
+    }
+    
+    /* Show mobile menu overlay when active */
+    .mobile-menu-overlay {
+        display: block;
+    }
+    
+    /* Adjust navbar for mobile */
+    .navbar,
+    nav {
+        padding-right: 60px; /* Space for hamburger menu */
+    }
+    
+    /* Fix for fixed navbars */
+    .navbar.fixed,
+    nav.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+    
+    /* Body scroll lock when menu is open */
+    body.mobile-menu-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Optionally show mobile menu on tablets too */
+    .mobile-menu-toggle {
+        display: none; /* Change to block if you want mobile menu on tablets */
+    }
+}
+
+/* Accessibility improvements */
+.mobile-menu-toggle:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+.mobile-nav-item:focus {
+    outline: 2px solid #667eea;
+    outline-offset: -2px;
+}
+
+/* Smooth animations */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-300px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+    .mobile-menu {
+        background: #1a1a1a;
+        color: #fff;
+    }
+    
+    .mobile-menu-toggle span {
+        background: #fff;
+    }
+    
+    .mobile-nav-item {
+        color: #fff;
+    }
+    
+    .mobile-nav-item:hover {
+        background: #2a2a2a;
+    }
+    
+    .mobile-nav-separator {
+        background: #333;
+    }
+}
+
+/* Touch-friendly sizing */
+.mobile-nav-item {
+    min-height: 48px; /* Recommended touch target size */
+    display: flex;
+    align-items: center;
+}
+
+/* Prevent text selection while swiping */
+.mobile-menu {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Fix for iOS rubber band scrolling */
+.mobile-menu {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .mobile-menu-header {
+        padding: 10px 20px;
+    }
+    
+    .mobile-nav-item {
+        padding: 10px 20px;
+        min-height: 40px;
+    }
+}

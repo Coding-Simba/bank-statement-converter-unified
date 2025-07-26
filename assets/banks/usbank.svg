@@ -1,0 +1,6 @@
+<svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="40" fill="white"/>
+  <rect x="10" y="15" width="25" height="10" fill="#E11E3C"/>
+  <rect x="10" y="15" width="12.5" height="10" fill="#0033A0"/>
+  <text x="60" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#0033A0">U.S. Bank</text>
+</svg>

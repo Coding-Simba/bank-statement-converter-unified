@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign up for Bank Statement Converter - Start your free account and convert bank statements to CSV/Excel instantly.">
+    <title>Sign Up - Bank Statement Converter</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .signup-container {
+            min-height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            padding: 2rem;
+        }
+        .signup-box {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 480px;
+            padding: 3rem;
+        }
+        .signup-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .signup-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .signup-header p {
+            color: #6c757d;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #212529;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #00bfa5;
+            box-shadow: 0 0 0 3px rgba(0, 191, 165, 0.1);
+        }
+        .signup-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #00bfa5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .signup-btn:hover {
+            background: #00a693;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 191, 165, 0.3);
+        }
+        .divider {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e5e7eb;
+        }
+        .divider span {
+            background: white;
+            padding: 0 1rem;
+            position: relative;
+            color: #6c757d;
+        }
+        .social-signup {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .social-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+        .social-btn:hover {
+            border-color: #d1d5db;
+            background: #f8f9fa;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 2rem;
+            color: #6c757d;
+        }
+        .login-link a {
+            color: #00bfa5;
+            font-weight: 600;
+        }
+    </style>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+</head>
+<body>
+    <!-- Simplified Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <span class="logo-text">BankCSV</span>
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="/login.html" class="nav-link">Already have an account? Log In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Signup Form -->
+    <div class="signup-container">
+        <div class="signup-box">
+            <div class="signup-header">
+                <h1>Create Your Free Account</h1>
+                <p>Get 5 free conversions per day</p>
+            </div>
+
+            <form id="signupForm">
+                <div class="social-signup">
+                    <button type="button" class="social-btn">
+                        <i class="fab fa-google" style="color: #4285f4;"></i>
+                        Google
+                    </button>
+                    <button type="button" class="social-btn">
+                        <i class="fab fa-microsoft" style="color: #00a4ef;"></i>
+                        Microsoft
+                    </button>
+                </div>
+
+                <div class="divider">
+                    <span>or sign up with email</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Work Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" class="form-input" required>
+                    <small style="color: #6c757d; display: block; margin-top: 0.25rem;">
+                        At least 8 characters
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="company" class="form-label">Company Name (Optional)</label>
+                    <input type="text" id="company" name="company" class="form-input">
+                </div>
+
+                <div class="form-group" style="display: flex; align-items: start; gap: 0.5rem;">
+                    <input type="checkbox" id="terms" name="terms" required style="margin-top: 0.25rem;">
+                    <label for="terms" style="font-size: 0.875rem; color: #6c757d;">
+                        I agree to the <a href="/terms.html" style="color: #00bfa5;">Terms of Service</a> 
+                        and <a href="/privacy.html" style="color: #00bfa5;">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="signup-btn">
+                    Create Free Account
+                </button>
+            </form>
+
+            <div class="login-link">
+                Already have an account? <a href="/login.html">Log in</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const btn = e.target.querySelector('.signup-btn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Creating account...';
+            btn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // In production, this would redirect to dashboard after successful signup
+                alert('Account created successfully! You would be redirected to your dashboard.');
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 1500);
+        });
+
+        // Handle social signup
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const provider = this.textContent.trim();
+                alert(`Social signup with ${provider} would be implemented here`);
+            });
+        });
+    </script>
+</body>
+</html>

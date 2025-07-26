@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="/css/production.css" rel="stylesheet"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+  <title>
+   Contact Us - Bank Statement Converter
+  </title>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #1a73e8;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .contact-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .contact-section h2 {
+            color: #1a73e8;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .contact-form {
+            grid-column: 1 / -1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #1a73e8;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            background-color: #1a73e8;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #1557b0;
+        }
+
+        .error-message {
+            color: #d93025;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-method i {
+            font-size: 20px;
+            color: #1a73e8;
+            margin-right: 15px;
+            width: 30px;
+        }
+
+        .office-hours {
+            list-style: none;
+        }
+
+        .office-hours li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .office-hours li:last-child {
+            border-bottom: none;
+        }
+
+        .map-container {
+            grid-column: 1 / -1;
+            height: 400px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .map-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #666;
+            font-size: 18px;
+        }
+
+        .faq-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .faq-link {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-link:hover {
+            background: #e8eaed;
+        }
+
+        .faq-link i {
+            color: #1a73e8;
+            margin-right: 10px;
+        }
+
+        .response-time {
+            background: #e8f0fe;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .response-time h3 {
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #1a73e8;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #1557b0;
+        }
+
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1a73e8;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s;
+        }
+
+        .chat-button:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+        }
+
+        /* Font Awesome icons simulation */
+        .icon::before {
+            display: inline-block;
+            width: 20px;
+            text-align: center;
+        }
+
+        .icon-email::before { content: "✉"; }
+        .icon-phone::before { content: "☎"; }
+        .icon-location::before { content: "📍"; }
+        .icon-clock::before { content: "🕐"; }
+        .icon-chat::before { content: "💬"; }
+        .icon-question::before { content: "❓"; }
+        .icon-facebook::before { content: "f"; font-weight: bold; }
+        .icon-twitter::before { content: "X"; font-weight: bold; }
+        .icon-linkedin::before { content: "in"; font-weight: bold; font-size: 14px; }
+        .icon-instagram::before { content: "📷"; }
+  </style>
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <h1>
+     Contact Us
+    </h1>
+    <p>
+     We're here to help. Reach out to us through any of the channels below.
+    </p>
+   </div>
+  </header>
+  <main class="container">
+   <div class="contact-grid">
+    <!-- Contact Form -->
+    <section class="contact-section contact-form">
+     <h2>
+      Send Us a Message
+     </h2>
+     <form id="contactForm" novalidate="">
+      <div class="form-row">
+       <div class="form-group">
+        <label for="firstName">
+         First Name *
+        </label>
+        <input id="firstName" name="firstName" required="" type="text"/>
+        <span class="error-message">
+         Please enter your first name
+        </span>
+       </div>
+       <div class="form-group">
+        <label for="lastName">
+         Last Name *
+        </label>
+        <input id="lastName" name="lastName" required="" type="text"/>
+        <span class="error-message">
+         Please enter your last name
+        </span>
+       </div>
+      </div>
+      <div class="form-row">
+       <div class="form-group">
+        <label for="email">
+         Email Address *
+        </label>
+        <input id="email" name="email" required="" type="email"/>
+        <span class="error-message">
+         Please enter a valid email address
+        </span>
+       </div>
+       <div class="form-group">
+        <label for="phone">
+         Phone Number
+        </label>
+        <input id="phone" name="phone" type="tel"/>
+        <span class="error-message">
+         Please enter a valid phone number
+        </span>
+       </div>
+      </div>
+      <div class="form-group">
+       <label for="subject">
+        Subject *
+       </label>
+       <select id="subject" name="subject" required="">
+        <option value="">
+         Select a topic
+        </option>
+        <option value="support">
+         Technical Support
+        </option>
+        <option value="billing">
+         Billing Question
+        </option>
+        <option value="feature">
+         Feature Request
+        </option>
+        <option value="partnership">
+         Partnership Inquiry
+        </option>
+        <option value="other">
+         Other
+        </option>
+       </select>
+       <span class="error-message">
+        Please select a subject
+       </span>
+      </div>
+      <div class="form-group">
+       <label for="message">
+        Message *
+       </label>
+       <textarea id="message" name="message" required=""></textarea>
+       <span class="error-message">
+        Please enter your message
+       </span>
+      </div>
+      <button class="submit-btn" type="submit">
+       Send Message
+      </button>
+     </form>
+     <div class="response-time">
+      <h3>
+       Response Time Expectations
+      </h3>
+      <p>
+       <strong>
+        Email:
+       </strong>
+       Within 24 business hours
+      </p>
+      <p>
+       <strong>
+        Phone:
+       </strong>
+       Immediate during business hours
+      </p>
+      <p>
+       <strong>
+        Live Chat:
+       </strong>
+       Average wait time 2-5 minutes
+      </p>
+     </div>
+    </section>
+    <!-- Contact Methods -->
+    <section class="contact-section">
+     <h2>
+      Contact Methods
+     </h2>
+     <div class="contact-method">
+      <i class="icon icon-email">
+      </i>
+      <div>
+       <strong>
+        Email
+       </strong>
+       <br/>
+       support@bankstatementconverter.com
+      </div>
+     </div>
+     <div class="contact-method">
+      <i class="icon icon-phone">
+      </i>
+      <div>
+       <strong>
+        Phone
+       </strong>
+       <br/>
+       +1 (555) 123-4567
+      </div>
+     </div>
+     <div class="contact-method">
+      <i class="icon icon-phone">
+      </i>
+      <div>
+       <strong>
+        Toll-Free
+       </strong>
+       <br/>
+       1-800-CONVERT
+      </div>
+     </div>
+     <div class="contact-method">
+      <i class="icon icon-chat">
+      </i>
+      <div>
+       <strong>
+        Live Chat
+       </strong>
+       <br/>
+       Available 24/7
+      </div>
+     </div>
+    </section>
+    <!-- Business Hours -->
+    <section class="contact-section">
+     <h2>
+      Business Hours
+     </h2>
+     <ul class="office-hours">
+      <li>
+       <span>
+        Monday - Friday
+       </span>
+       <span>
+        9:00 AM - 6:00 PM EST
+       </span>
+      </li>
+      <li>
+       <span>
+        Saturday
+       </span>
+       <span>
+        10:00 AM - 4:00 PM EST
+       </span>
+      </li>
+      <li>
+       <span>
+        Sunday
+       </span>
+       <span>
+        Closed
+       </span>
+      </li>
+      <li>
+       <span>
+        Holidays
+       </span>
+       <span>
+        Limited Support
+       </span>
+      </li>
+     </ul>
+     <p style="margin-top: 15px; font-size: 14px; color: #666;">
+      <i class="icon icon-clock">
+      </i>
+      24/7 support available for premium customers
+     </p>
+    </section>
+    <!-- Office Addresses -->
+    <section class="contact-section">
+     <h2>
+      Office Locations
+     </h2>
+     <div style="margin-bottom: 20px;">
+      <h3 style="color: #1a73e8; font-size: 1.1em; margin-bottom: 10px;">
+       Headquarters
+      </h3>
+      <p>
+       123 Financial District
+       <br/>
+       New York, NY 10004
+       <br/>
+       United States
+      </p>
+     </div>
+     <div style="margin-bottom: 20px;">
+      <h3 style="color: #1a73e8; font-size: 1.1em; margin-bottom: 10px;">
+       European Office
+      </h3>
+      <p>
+       456 Banking Street
+       <br/>
+       London, EC2N 4AG
+       <br/>
+       United Kingdom
+      </p>
+     </div>
+     <div>
+      <h3 style="color: #1a73e8; font-size: 1.1em; margin-bottom: 10px;">
+       Asia-Pacific Office
+      </h3>
+      <p>
+       789 Finance Tower
+       <br/>
+       Singapore 048623
+       <br/>
+       Singapore
+      </p>
+     </div>
+    </section>
+    <!-- Interactive Map -->
+    <section class="contact-section map-container">
+     <div class="map-placeholder">
+      <div style="text-align: center;">
+       <i class="icon icon-location" style="font-size: 48px; color: #1a73e8;">
+       </i>
+       <p>
+        Interactive map would be embedded here
+       </p>
+       </div>
+     </div>
+    </section>
+    <!-- FAQ Quick Links -->
+    <section class="contact-section" style="grid-column: 1 / -1;">
+     <h2>
+      Frequently Asked Questions
+     </h2>
+     <div class="faq-links">
+      <a class="faq-link" href="#">
+       <i class="icon icon-question">
+       </i>
+       How to convert statements?
+      </a>
+      <a class="faq-link" href="#">
+       <i class="icon icon-question">
+       </i>
+       Supported file formats
+      </a>
+      <a class="faq-link" href="#">
+       <i class="icon icon-question">
+       </i>
+       Security &amp; Privacy
+      </a>
+      <a class="faq-link" href="#">
+       <i class="icon icon-question">
+       </i>
+       Pricing &amp; Plans
+      </a>
+      <a class="faq-link" href="#">
+       <i class="icon icon-question">
+       </i>
+       API Documentation
+      </a>
+      <a class="faq-link" href="#">
+       <i class="icon icon-question">
+       </i>
+       Troubleshooting Guide
+      </a>
+     </div>
+    </section>
+   </div>
+   <!-- Social Media Links -->
+   <div style="text-align: center; margin: 40px 0;">
+    <h2 style="color: #1a73e8; margin-bottom: 20px;">
+     Connect With Us
+    </h2>
+    <div class="social-links">
+     <a href="#" title="Facebook">
+      <span class="icon icon-facebook">
+      </span>
+     </a>
+     <a href="#" title="Twitter">
+      <span class="icon icon-twitter">
+      </span>
+     </a>
+     <a href="#" title="LinkedIn">
+      <span class="icon icon-linkedin">
+      </span>
+     </a>
+     <a href="#" title="Instagram">
+      <span class="icon icon-instagram">
+      </span>
+     </a>
+    </div>
+   </div>
+  </main>
+  <!-- Live Chat Button -->
+  <a class="chat-button" href="#">
+   <span class="icon icon-chat">
+   </span>
+   <span>
+    Live Chat
+   </span>
+  </a>
+  <script>
+   // Form validation
+        const form = document.getElementById('contactForm');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset all error messages
+            const errorMessages = form.querySelectorAll('.error-message');
+            errorMessages.forEach(msg => msg.style.display = 'none');
+            
+            let isValid = true;
+            
+            // Validate required fields
+            const requiredFields = form.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.parentElement.querySelector('.error-message').style.display = 'block';
+                    isValid = false;
+                }
+            });
+            
+            // Validate email
+            const emailField = form.querySelector('#email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailField.value && !emailRegex.test(emailField.value)) {
+                emailField.parentElement.querySelector('.error-message').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate phone if provided
+            const phoneField = form.querySelector('#phone');
+            const phoneRegex = /^[\d\s\-\+\(\)]+$/;
+            if (phoneField.value && !phoneRegex.test(phoneField.value)) {
+                phoneField.parentElement.querySelector('.error-message').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // In a real implementation, this would submit to a server
+                alert('Thank you for your message! We will get back to you within 24 hours.');
+                form.reset();
+            }
+        });
+
+        // Clear error messages on input
+        form.addEventListener('input', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
+                const errorMessage = e.target.parentElement.querySelector('.error-message');
+                if (errorMessage) {
+                    errorMessage.style.display = 'none';
+                }
+            }
+        });
+
+        // Live chat simulation
+        document.querySelector('.chat-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Live chat would open here. This feature requires integration with a chat service.');
+        });
+
+        // FAQ links simulation
+        document.querySelectorAll('.faq-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('This would navigate to the FAQ section: ' + this.textContent.trim());
+            });
+        });
+  </script>
+  <script src="/js/production.js">
+  </script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
+</html>

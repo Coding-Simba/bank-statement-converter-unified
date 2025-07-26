@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+   Bank Statement Converter - Design Test
+  </title>
+<link href="css/main.css" rel="stylesheet"/>
+<style>
+   .test-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-section {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .status-list {
+            list-style: none;
+            padding: 0;
+        }
+        .status-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .success-icon {
+            color: #34C759;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .error-icon {
+            color: #FF3B30;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        iframe {
+            width: 100%;
+            height: 800px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  position: absolute;
+  left: 6px;
+  top: 7px;
+  z-index: 999999;
+  padding: 8px 16px;
+  background: #000;
+  color: white;
+  text-decoration: none;
+}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+<div class="test-container">
+<h1>
+    Bank Statement Converter - Design Test
+   </h1>
+<div class="test-section">
+<h2>
+     CSS and JavaScript Status Check
+    </h2>
+<ul class="status-list">
+<li id="css-status">
+<span class="error-icon">
+       ✗
+      </span>
+      CSS Loading...
+     </li>
+<li id="js-status">
+<span class="error-icon">
+       ✗
+      </span>
+      JavaScript Loading...
+     </li>
+<li id="assets-status">
+<span class="error-icon">
+       ✗
+      </span>
+      Assets Loading...
+     </li>
+</ul>
+</div>
+<div class="test-section">
+<h2>
+     Live Preview
+    </h2>
+<p>
+     Below is the actual website loaded in an iframe:
+    </p>
+<iframe src="index.html" title="Bank Statement Converter Preview">
+</iframe>
+</div>
+<div class="test-section">
+<h2>
+     Issues Found and Fixed:
+    </h2>
+<ol>
+<li>
+<strong>
+       CSS Path:
+      </strong>
+      Changed from
+      <code>
+       /css/modern-style.css
+      </code>
+      to
+      <code>
+       css/modern-style.css
+      </code>
+</li>
+<li>
+<strong>
+       JS Path:
+      </strong>
+      Changed from
+      <code>
+       /js/main-seo.js
+      </code>
+      to
+      <code>
+       js/main-seo.js
+      </code>
+</li>
+<li>
+<strong>
+       Logo Path:
+      </strong>
+      Changed from
+      <code>
+       /images/logo.svg
+      </code>
+      to
+      <code>
+       assets/logo.svg
+      </code>
+</li>
+<li>
+<strong>
+       Missing UI States:
+      </strong>
+      Added initialState, processingState, and successState divs
+     </li>
+<li>
+<strong>
+       Missing Styles:
+      </strong>
+      Added styles for processing state, success state, and secondary button
+     </li>
+<li>
+<strong>
+       Accessibility:
+      </strong>
+      Added skip-link and breadcrumb styles
+     </li>
+</ol>
+</div>
+<div class="test-section">
+<h2>
+     Test Results:
+    </h2>
+<p>
+     The modern, beautiful design should now be working properly with:
+    </p>
+<ul>
+<li>
+      Gradient hero section with animation
+     </li>
+<li>
+      Modern upload area with hover effects
+     </li>
+<li>
+      Smooth transitions and animations
+     </li>
+<li>
+      Responsive grid layouts
+     </li>
+<li>
+      Professional typography and spacing
+     </li>
+<li>
+      Interactive elements with proper states
+     </li>
+</ul>
+</div>
+</div>
+<footer style="background-color: #f8f9fa; padding: 2rem 0; margin-top: 3rem;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: center;">
+<p>
+     © 2025 BankCSVConverter.com. All rights reserved.
+    </p>
+<p style="margin-top: 1rem;">
+<a href="/pages/bank-statement-converter-comparison.html" style="color: #667eea; text-decoration: none; margin: 0 1rem;">
+      Why Choose Us
+     </a>
+<a href="/blog/financial-data-privacy-guide.html" style="color: #667eea; text-decoration: none; margin: 0 1rem;">
+      Privacy Guide
+     </a>
+<a href="/pages/security.html" style="color: #667eea; text-decoration: none; margin: 0 1rem;">
+      Security
+     </a>
+</p>
+</div>
+</footer>
+<script>
+   // Check if CSS loaded
+        const testElement = document.createElement('div');
+        testElement.className = 'upload-btn';
+        document.body.appendChild(testElement);
+        const styles = window.getComputedStyle(testElement);
+        
+        if (styles.background.includes('gradient') || styles.backgroundImage.includes('gradient')) {
+            document.getElementById('css-status').innerHTML = '<span class="success-icon">✓</span> CSS Loaded Successfully';
+        } else {
+            document.getElementById('css-status').innerHTML = '<span class="error-icon">✗</span> CSS Failed to Load';
+        }
+        document.body.removeChild(testElement);
+
+        // Check if JS will load
+        const script = document.createElement('script');
+        script.src = 'js/main-seo.js';
+        script.onload = function() {
+            document.getElementById('js-status').innerHTML = '<span class="success-icon">✓</span> JavaScript Loaded Successfully';
+        };
+        script.onerror = function() {
+            document.getElementById('js-status').innerHTML = '<span class="error-icon">✗</span> JavaScript Failed to Load';
+        };
+        document.head.appendChild(script);
+
+        // Check if assets load
+        const img = new Image();
+        img.src = 'assets/logo.svg';
+        img.onload = function() {
+            document.getElementById('assets-status').innerHTML = '<span class="success-icon">✓</span> Assets Loaded Successfully';
+        };
+        img.onerror = function() {
+            document.getElementById('assets-status').innerHTML = '<span class="error-icon">✗</span> Assets Failed to Load (logo.svg not found)';
+        };
+  </script>
+</body>
+</html>

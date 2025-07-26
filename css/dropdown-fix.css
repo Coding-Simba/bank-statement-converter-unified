@@ -1,0 +1,138 @@
+/* Dropdown Menu Fix - Prevents menu from closing too quickly */
+
+/* Main dropdown container */
+.dropdown {
+    position: relative;
+}
+
+/* Dropdown toggle button */
+.dropdown-toggle {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    color: #4a5568;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dropdown-toggle:hover {
+    background: #f7fafc;
+    color: #1a1a1a;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+    /* Remove the default display: none to use visibility instead */
+    display: block !important;
+}
+
+/* Add invisible bridge to prevent gap between button and menu */
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: transparent;
+}
+
+/* Show dropdown on hover - using visibility instead of display */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Keep button highlighted when menu is open */
+.dropdown:hover .dropdown-toggle {
+    background: #f7fafc;
+    color: #1a1a1a;
+}
+
+/* Dropdown items */
+.dropdown-item {
+    display: block;
+    padding: 10px 16px;
+    color: #4a5568;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.dropdown-item:hover {
+    background: #f7fafc;
+    color: #1a1a1a;
+    transform: translateX(4px);
+}
+
+.dropdown-item i {
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.dropdown-item:hover i {
+    opacity: 1;
+}
+
+/* Alternative: JavaScript-controlled dropdown */
+.dropdown.is-open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: fixed;
+        top: auto;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        transform: translateY(100%);
+        border-radius: 16px;
+        padding: 16px;
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dropdown.is-open .dropdown-menu,
+    .dropdown:hover .dropdown-menu {
+        transform: translateY(0);
+    }
+    
+    .dropdown-menu::before {
+        display: none;
+    }
+    
+    .dropdown-item {
+        padding: 12px 16px;
+        font-size: 16px;
+    }
+}

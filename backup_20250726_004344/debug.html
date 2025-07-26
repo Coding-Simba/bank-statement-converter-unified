@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>
+   Debug Upload Issue
+  </title>
+  <style>
+   body { font-family: Arial, sans-serif; padding: 20px; }
+        .debug { background: #f0f0f0; padding: 20px; margin: 20px 0; }
+        button { padding: 10px 20px; font-size: 16px; margin: 5px; }
+        .log { background: #e0e0e0; padding: 10px; margin: 5px 0; font-family: monospace; }
+    
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  position: absolute;
+  left: 6px;
+  top: 7px;
+  z-index: 999999;
+  padding: 8px 16px;
+  background: #000;
+  color: white;
+  text-decoration: none;
+}
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+  <h1>
+   Debug Upload Issue
+  </h1>
+  <div class="debug">
+   <h2>
+    Test Basic Click
+   </h2>
+   <button onclick="alert('Inline onclick works!')">
+    Test Inline OnClick
+   </button>
+   <button id="testBtn">
+    Test addEventListener
+   </button>
+   <button id="fileTestBtn">
+    Test File Input
+   </button>
+   <input aria-label="Upload PDF bank statement" id="testFileInput" style="display: none;" type="file"/>
+  </div>
+  <div class="debug">
+   <h2>
+    Console Output:
+   </h2>
+   <div id="console">
+   </div>
+  </div>
+  <div class="debug">
+   <h2>
+    Check Main Page Elements:
+   </h2>
+   <iframe height="400" id="mainFrame" src="/" width="100%">
+   </iframe>
+  </div>
+  <script>
+   // Override console.log to display on page
+        const consoleDiv = document.getElementById('console');
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            const div = document.createElement('div');
+            div.className = 'log';
+            div.textContent = args.join(' ');
+            consoleDiv.appendChild(div);
+        };
+        
+        console.log('Debug page loaded');
+        
+        // Test addEventListener
+        document.getElementById('testBtn').addEventListener('click', function() {
+            console.log('addEventListener works!');
+            alert('addEventListener works!');
+        });
+        
+        // Test file input
+        document.getElementById('fileTestBtn').addEventListener('click', function() {
+            console.log('File test button clicked');
+            document.getElementById('testFileInput').click();
+        });
+        
+        document.getElementById('testFileInput').addEventListener('change', function(e) {
+            console.log('File selected:', e.target.files[0]?.name || 'No file');
+        });
+        
+        // Check main page after iframe loads
+        document.getElementById('mainFrame').onload = function() {
+            console.log('Main page loaded in iframe');
+            try {
+                const iframeDoc = this.contentDocument || this.contentWindow.document;
+                const uploadBtn = iframeDoc.getElementById('uploadBtn');
+                const fileInput = iframeDoc.getElementById('fileInput');
+                
+                console.log('uploadBtn found:', !!uploadBtn);
+                console.log('fileInput found:', !!fileInput);
+                
+                if (uploadBtn) {
+                    console.log('uploadBtn id:', uploadBtn.id);
+                    console.log('uploadBtn onclick:', uploadBtn.onclick);
+                    console.log('uploadBtn listeners:', uploadBtn.hasAttribute('onclick'));
+                }
+                
+                if (fileInput) {
+                    console.log('fileInput type:', fileInput.type);
+                    console.log('fileInput accept:', fileInput.accept);
+                    console.log('fileInput display:', window.getComputedStyle(fileInput).display);
+                }
+            } catch (e) {
+                console.log('Error accessing iframe:', e.message);
+            }
+        };
+  </script>
+ </body>
+</html>

@@ -1,91 +1,281 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Debug Upload Issue</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        .debug { background: #f0f0f0; padding: 20px; margin: 20px 0; }
-        button { padding: 10px 20px; font-size: 16px; margin: 5px; }
-        .log { background: #e0e0e0; padding: 10px; margin: 5px 0; font-family: monospace; }
-    </style>
-</head>
-<body>
-    <h1>Debug Upload Issue</h1>
-    
-    <div class="debug">
-        <h2>Test Basic Click</h2>
-        <button onclick="alert('Inline onclick works!')">Test Inline OnClick</button>
-        <button id="testBtn">Test addEventListener</button>
-        <button id="fileTestBtn">Test File Input</button>
-        <input type="file" id="testFileInput" style="display: none;">
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="" name="description"/>
+  <link href="/css/production.css" rel="stylesheet"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+  <title>
+   Debug Upload Issue
+  </title>
+  <link href="https://BankCSVConverter.comdebug" rel="canonical"/>
+  <!-- Unified Design System -->
+  <!-- Skip Link for Accessibility -->
+  <style>
+   .skip-link {
+            position: absolute;
+            left: -9999px;
+        }
+        .skip-link:focus {
+            position: absolute;
+            left: 6px;
+            top: 7px;
+            z-index: 999999;
+            padding: 8px 16px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+        }
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+  <!-- Standardized Header -->
+  <header>
+   <nav>
+    <a class="nav-logo" href="/">
+     <svg style="width: 24px; height: 24px; flex-shrink: 0;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+      </rect>
+      <line x1="3" x2="21" y1="9" y2="9">
+      </line>
+      <line x1="9" x2="9" y1="21" y2="9">
+      </line>
+     </svg>
+     BankCSVConverter
+    </a>
+    <ul class="nav-menu">
+     <li>
+      <a href="/features.html">
+       Features
+      </a>
+     </li>
+     <li>
+      <a href="/how-it-works.html">
+       How It Works
+      </a>
+     </li>
+     <li>
+      <a href="/pricing.html">
+       Pricing
+      </a>
+     </li>
+     <li>
+      <a href="/blog.html">
+       Blog
+      </a>
+     </li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle">
+     <span>
+     </span>
+     <span>
+     </span>
+     <span>
+     </span>
+    </button>
+   </nav>
+   <div class="nav-overlay">
+   </div>
+  </header>
+  <main id="main">
+   <div class="content-wrapper">
+    <div class="container">
+     <a class="skip-link" href="#main">
+      Skip to main content
+     </a>
+     <h1>
+      Debug Upload Issue
+     </h1>
+     <div class="debug">
+      <h2>
+       Test Basic Click
+      </h2>
+      <button onclick="alert('Inline onclick works!')">
+       Test Inline OnClick
+      </button>
+      <button id="testBtn">
+       Test addEventListener
+      </button>
+      <button id="fileTestBtn">
+       Test File Input
+      </button>
+      <input aria-label="Upload PDF bank statement" id="testFileInput" style="display: none;" type="file"/>
+     </div>
+     <div class="debug">
+      <h2>
+       Console Output:
+      </h2>
+      <div id="console">
+      </div>
+     </div>
+     <div class="debug">
+      <h2>
+       Check Main Page Elements:
+      </h2>
+      <iframe height="400" id="mainFrame" src="/" width="100%">
+      </iframe>
+     </div>
     </div>
-    
-    <div class="debug">
-        <h2>Console Output:</h2>
-        <div id="console"></div>
+   </div>
+  </main>
+  <!-- Standardized Footer -->
+  <footer>
+   <div class="container">
+    <div class="footer-content">
+     <div class="footer-section">
+      <h4>
+       Product
+      </h4>
+      <ul>
+       <li>
+        <a href="/features.html">
+         Features
+        </a>
+       </li>
+       <li>
+        <a href="/how-it-works.html">
+         How It Works
+        </a>
+       </li>
+       <li>
+        <a href="/pricing.html">
+         Pricing
+        </a>
+       </li>
+       </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Company
+      </h4>
+      <ul>
+       <li>
+        <a href="/about.html">
+         About
+        </a>
+       </li>
+       <li>
+        <a href="/blog.html">
+         Blog
+        </a>
+       </li>
+       <li>
+        <a href="/contact.html">
+         Contact
+        </a>
+       </li>
+       <li>
+        <a href="/careers.html">
+         Careers
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Support
+      </h4>
+      <ul>
+       <li>
+        <a href="/help.html">
+         Help Center
+        </a>
+       </li>
+       <li>
+        <a href="/faq.html">
+         FAQ
+        </a>
+       </li>
+       <li>
+        <a href="/security.html">
+         Security
+        </a>
+       </li>
+       <li>
+        <a href="/status.html">
+         Status
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Legal
+      </h4>
+      <ul>
+       <li>
+        <a href="/privacy.html">
+         Privacy Policy
+        </a>
+       </li>
+       <li>
+        <a href="/terms.html">
+         Terms of Service
+        </a>
+       </li>
+       <li>
+        <a href="/gdpr.html">
+         GDPR
+        </a>
+       </li>
+       <li>
+        <a href="/ccpa.html">
+         CCPA
+        </a>
+       </li>
+      </ul>
+     </div>
     </div>
-    
-    <div class="debug">
-        <h2>Check Main Page Elements:</h2>
-        <iframe src="/" width="100%" height="400" id="mainFrame"></iframe>
+    <div class="footer-bottom">
+     <p>
+      © 2025 BankCSVConverter. All rights reserved.
+     </p>
     </div>
+   </div>
+  </footer>
+  <!-- Standardized Scripts -->
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
     
-    <script>
-        // Override console.log to display on page
-        const consoleDiv = document.getElementById('console');
-        const originalLog = console.log;
-        console.log = function(...args) {
-            originalLog.apply(console, args);
-            const div = document.createElement('div');
-            div.className = 'log';
-            div.textContent = args.join(' ');
-            consoleDiv.appendChild(div);
-        };
-        
-        console.log('Debug page loaded');
-        
-        // Test addEventListener
-        document.getElementById('testBtn').addEventListener('click', function() {
-            console.log('addEventListener works!');
-            alert('addEventListener works!');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
         
-        // Test file input
-        document.getElementById('fileTestBtn').addEventListener('click', function() {
-            console.log('File test button clicked');
-            document.getElementById('testFileInput').click();
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
         });
         
-        document.getElementById('testFileInput').addEventListener('change', function(e) {
-            console.log('File selected:', e.target.files[0]?.name || 'No file');
-        });
-        
-        // Check main page after iframe loads
-        document.getElementById('mainFrame').onload = function() {
-            console.log('Main page loaded in iframe');
-            try {
-                const iframeDoc = this.contentDocument || this.contentWindow.document;
-                const uploadBtn = iframeDoc.getElementById('uploadBtn');
-                const fileInput = iframeDoc.getElementById('fileInput');
-                
-                console.log('uploadBtn found:', !!uploadBtn);
-                console.log('fileInput found:', !!fileInput);
-                
-                if (uploadBtn) {
-                    console.log('uploadBtn id:', uploadBtn.id);
-                    console.log('uploadBtn onclick:', uploadBtn.onclick);
-                    console.log('uploadBtn listeners:', uploadBtn.hasAttribute('onclick'));
-                }
-                
-                if (fileInput) {
-                    console.log('fileInput type:', fileInput.type);
-                    console.log('fileInput accept:', fileInput.accept);
-                    console.log('fileInput display:', window.getComputedStyle(fileInput).display);
-                }
-            } catch (e) {
-                console.log('Error accessing iframe:', e.message);
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
             }
-        };
-    </script>
-</body>
+        });
+    }
+});
+  </script>
+  <script src="/js/production.js">
+  </script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
 </html>

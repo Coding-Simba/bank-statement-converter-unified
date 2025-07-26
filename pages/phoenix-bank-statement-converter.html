@@ -1,467 +1,684 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phoenix Bank Statement Converter - Convert Arizona Bank PDFs to CSV | BankCSVConverter</title>
-    <meta name="description" content="Convert Phoenix bank statements from PDF to CSV instantly. Supporting all major Arizona banks including Bank of America, Chase, Wells Fargo, Western Alliance Bank, and MidFirst Bank. Serving Phoenix, Scottsdale, Tempe, and Mesa businesses.">
-    <meta name="keywords" content="phoenix bank statement converter, arizona bank pdf to csv, phoenix pdf converter, scottsdale bank statement converter, tempe financial document converter, mesa bank statement tool, arizona bank statement excel, phoenix quickbooks import">
-    <link rel="canonical" href="https://bankcsvconverter.com/phoenix-bank-statement-converter">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Phoenix Bank Statement Converter - Arizona's #1 PDF to CSV Tool">
-    <meta property="og:description" content="Convert bank statements from all major Phoenix banks to CSV format. Fast, secure, and trusted by Arizona businesses.">
-    <meta property="og:url" content="https://bankcsvconverter.com/phoenix-bank-statement-converter">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Local Business Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "BankCSVConverter - Phoenix",
-        "description": "Professional bank statement conversion service for Phoenix and surrounding Arizona cities",
-        "url": "https://bankcsvconverter.com/phoenix-bank-statement-converter",
-        "telephone": "1-800-CONVERT",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Phoenix",
-            "addressRegion": "AZ",
-            "addressCountry": "US"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 33.4484,
-            "longitude": -112.0740
-        },
-        "areaServed": [
-            {
-                "@type": "City",
-                "name": "Phoenix"
-            },
-            {
-                "@type": "City",
-                "name": "Scottsdale"
-            },
-            {
-                "@type": "City",
-                "name": "Tempe"
-            },
-            {
-                "@type": "City",
-                "name": "Mesa"
-            },
-            {
-                "@type": "City",
-                "name": "Chandler"
-            },
-            {
-                "@type": "City",
-                "name": "Glendale"
-            }
-        ],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "847"
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Convert Phoenix bank statements from PDF to CSV instantly. Supporting all major Arizona banks including Bank of America, Chase, Wells Fargo, Western Alliance Bank, and MidFirst Bank. Serving Phoenix, Scottsdale, Tempe, and Mesa businesses." name="description"/>
+  <link href="/css/production.css" rel="stylesheet"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+  <title>
+   Phoenix Bank Statement Converter - Convert Arizona Bank PDFs to CSV | BankCSVConverter
+  </title>
+  <link href="https://BankCSVConverter.compages/phoenix-bank-statement-converter" rel="canonical"/>
+  <!-- Unified Design System -->
+  <!-- Skip Link for Accessibility -->
+  <style>
+   .skip-link {
+            position: absolute;
+            left: -9999px;
         }
-    }
-    </script>
+        .skip-link:focus {
+            position: absolute;
+            left: 6px;
+            top: 7px;
+            z-index: 999999;
+            padding: 8px 16px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+        }
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+  <!-- Standardized Header -->
+  <header>
+   <nav>
+    <a class="nav-logo" href="../">
+     <svg style="width: 24px; height: 24px; flex-shrink: 0;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+      </rect>
+      <line x1="3" x2="21" y1="9" y2="9">
+      </line>
+      <line x1="9" x2="9" y1="21" y2="9">
+      </line>
+     </svg>
+     BankCSVConverter
+    </a>
+    <ul class="nav-menu">
+     <li>
+      <a href="../features.html">
+       Features
+      </a>
+     </li>
+     <li>
+      <a href="../how-it-works.html">
+       How It Works
+      </a>
+     </li>
+     <li>
+      <a href="../pricing.html">
+       Pricing
+      </a>
+     </li>
+     <li>
+      <a href="../blog.html">
+       Blog
+      </a>
+     </li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle">
+     <span>
+     </span>
+     <span>
+     </span>
+     <span>
+     </span>
+    </button>
+   </nav>
+   <div class="nav-overlay">
+   </div>
+  </header>
+  <main id="main">
+   <div class="content-wrapper">
+    <div class="container">
+     <section class="hero">
+      <div class="container" id="main">
+       <h1>
+        Phoenix Bank Statement Converter
+       </h1>
+       <h2>
+        Convert Arizona Bank PDFs to CSV in Seconds
+       </h2>
+       <p class="hero-description">
+        Trusted by Phoenix businesses to convert bank statements from all major Arizona banks. Fast, secure, and accurate conversion for real estate professionals, tech startups, hospitality businesses, and manufacturing companies across the Valley of the Sun.
+       </p>
+       <div class="cta-buttons">
+        <a class="btn btn-primary" href="../index.html#converter">
+         Start Converting Now
+        </a>
+        <a class="btn btn-secondary" href="#phoenix-info">
+         Learn About Phoenix Banking
+        </a>
+       </div>
+       <div class="upload-area" id="uploadBox">
+        <h2>
+         Upload Your Statement
+        </h2>
+        <button class="upload-btn" id="uploadBtn">
+         Convert PDF to CSV
+        </button>
+        <p>
+         or drag and drop your PDF here
+        </p>
+        <input accept=".pdf" aria-label="Upload PDF bank statement" hidden="" id="fileInput" type="file"/>
+        <div class="trust-signals">
+         <span>
+          ✓ Works with all accounts
+         </span>
+         <span>
+          ✓ Preserves transaction categories
+         </span>
+         <span>
+          ✓ QuickBooks compatible
+         </span>
+        </div>
+       </div>
+       <!-- Progress Container -->
+       <div class="upload-area" id="progressContainer" style="display: none;">
+        <div class="loading">
+        </div>
+        <h3 id="progressText">
+         Processing your statement...
+        </h3>
+        <div class="progress-bar">
+         <div class="progress-fill" id="progressFill">
+         </div>
+        </div>
+       </div>
+       <!-- Result Container -->
+       <div class="upload-area" id="resultContainer" style="display: none;">
+        <div class="success-check">
+         ✓
+        </div>
+        <h3>
+         Conversion Complete!
+        </h3>
+        <p>
+         Your statement has been successfully converted to CSV format.
+        </p>
+        <button class="upload-btn" id="downloadBtn">
+         Download CSV File
+        </button>
+        <button class="secondary-btn" id="convertAnotherBtn">
+         Convert Another Statement
+        </button>
+       </div>
+      </div>
+     </section>
+     <section class="city-info" id="phoenix-info">
+      <div class="container">
+       <h2>
+        Phoenix: Arizona's Thriving Financial Center
+       </h2>
+       <p>
+        Phoenix has emerged as one of the fastest-growing financial centers in the United States, attracting major banks, fintech companies, and businesses from across the nation. As the fifth-largest city in America and the heart of the Valley of the Sun metropolitan area, Phoenix serves as the economic engine for Arizona's diverse economy.
+       </p>
+       <div class="stats-grid">
+        <div class="stat-card">
+         <h3>
+          1.7M+
+         </h3>
+         <p>
+          Population in Phoenix Metro
+         </p>
+        </div>
+        <div class="stat-card">
+         <h3>
+          200,000+
+         </h3>
+         <p>
+          Businesses Operating
+         </p>
+        </div>
+        <div class="stat-card">
+         <h3>
+          $300B+
+         </h3>
+         <p>
+          Annual Economic Output
+         </p>
+        </div>
+        <div class="stat-card">
+         <h3>
+          Top 10
+         </h3>
+         <p>
+          US Cities for Business Growth
+         </p>
+        </div>
+       </div>
+       <h3>
+        Why Phoenix Businesses Need Efficient Bank Statement Conversion
+       </h3>
+       <h3>
+        Phoenix's Key Economic Sectors
+       </h3>
+       <div class="industry-grid">
+        <div class="industry-card">
+         <h4>
+          Real Estate &amp; Construction
+         </h4>
+         <p>
+          Phoenix's booming real estate market requires frequent financial reporting. Real estate developers, property management companies, and construction firms rely on our converter to quickly process bank statements for investor reports, loan applications, and tax preparation.
+         </p>
+        </div>
+        <div class="industry-card">
+         <h4>
+          Technology &amp; Innovation
+         </h4>
+         <p>
+          The growing Phoenix tech scene, anchored by companies in Tempe's ASU Research Park and Scottsdale's SkySong innovation center, demands modern financial tools. Tech startups and established firms use our converter for seamless integration with their digital accounting systems.
+         </p>
+        </div>
+        <div class="industry-card">
+         <h4>
+          Hospitality &amp; Tourism
+         </h4>
+         <p>
+          With over 16 million annual visitors, Phoenix's hospitality industry manages complex financial operations. Hotels, resorts, restaurants, and tourism businesses throughout Scottsdale's resort corridor and downtown Phoenix trust our converter for accurate financial data processing.
+         </p>
+        </div>
+        <div class="industry-card">
+         <h4>
+          Manufacturing &amp; Aerospace
+         </h4>
+         <p>
+          Phoenix's manufacturing sector, including aerospace giants like Honeywell and Raytheon, requires precise financial documentation. Our converter helps these companies maintain accurate records for compliance, auditing, and financial analysis.
+         </p>
+        </div>
+       </div>
+      </div>
+     </section>
+     <section class="banks-section" id="banks">
+      <div class="container">
+       <h2>
+        Major Phoenix Banks We Support
+       </h2>
+       <p>
+        Our converter works seamlessly with statements from all major financial institutions serving the Phoenix metropolitan area:
+       </p>
+       <div class="banks-grid">
+        <div class="bank-card">
+         <h3>
+          Bank of America
+         </h3>
+         <p>
+          With multiple branches across Phoenix, Scottsdale, and Tempe, Bank of America serves thousands of Arizona businesses. Our converter handles all BoA statement formats.
+         </p>
+        </div>
+        <div class="bank-card">
+         <h3>
+          Chase Bank
+         </h3>
+         <p>
+          JPMorgan Chase has a strong presence throughout the Valley, offering business banking to Phoenix's growing companies. Convert Chase statements instantly.
+         </p>
+        </div>
+        <div class="bank-card">
+         <h3>
+          Wells Fargo
+         </h3>
+         <p>
+          As one of Arizona's largest banks, Wells Fargo serves businesses from downtown Phoenix to Mesa. Our converter processes all Wells Fargo statement types.
+         </p>
+        </div>
+        <div class="bank-card">
+         <h3>
+          Western Alliance Bank
+         </h3>
+         <p>
+          Phoenix-headquartered Western Alliance specializes in business banking. Convert Western Alliance statements with perfect accuracy.
+         </p>
+        </div>
+        <div class="bank-card">
+         <h3>
+          MidFirst Bank
+         </h3>
+         <p>
+          With deep roots in Arizona, MidFirst Bank serves many local businesses. Our converter handles MidFirst's unique statement formats.
+         </p>
+        </div>
+        <div class="bank-card">
+         <h3>
+          National Bank of Arizona
+         </h3>
+         <p>
+          A truly local institution, National Bank of Arizona provides personalized service to Phoenix businesses. Convert NBA statements effortlessly.
+         </p>
+        </div>
+       </div>
+       <h3>
+        Credit Unions and Regional Banks
+       </h3>
+       <p>
+        We also support statements from Arizona Federal Credit Union, Desert Financial Credit Union, OneAZ Credit Union, Arizona Bank &amp; Trust, Republic Bank of Arizona, and many other local financial institutions serving the Phoenix area.
+       </p>
+      </div>
+     </section>
+     <section class="service-areas">
+      <div class="container">
+       <h2>
+        Serving All Phoenix Metro Communities
+       </h2>
+       <p>
+        Our Phoenix bank statement converter serves businesses throughout Maricopa County and the greater Phoenix metropolitan area:
+       </p>
+       <div class="areas-grid">
+        <div class="area-card">
+         <h3>
+          Phoenix
+         </h3>
+         <p>
+          From downtown Phoenix's financial district to the Camelback Corridor, we serve businesses in all Phoenix neighborhoods including Arcadia, Ahwatukee, North Phoenix, and Central Phoenix.
+         </p>
+        </div>
+        <div class="area-card">
+         <h3>
+          Scottsdale
+         </h3>
+         <p>
+          Supporting Scottsdale's luxury resorts, golf courses, and Old Town businesses, as well as North Scottsdale's corporate offices and financial services firms.
+         </p>
+        </div>
+        <div class="area-card">
+         <h3>
+          Tempe
+         </h3>
+         <p>
+          Serving Tempe's innovative businesses near ASU, Mill Avenue district establishments, and companies in the Tempe Town Lake area.
+         </p>
+        </div>
+        <div class="area-card">
+         <h3>
+          Mesa
+         </h3>
+         <p>
+          Supporting Mesa's diverse business community, from aerospace manufacturers to healthcare providers in the Fiesta District and beyond.
+         </p>
+        </div>
+        <div class="area-card">
+         <h3>
+          Chandler
+         </h3>
+         </div>
+        <div class="area-card">
+         <h3>
+          Glendale
+         </h3>
+         <p>
+          Supporting Glendale's sports and entertainment district businesses, as well as companies in Arrowhead and throughout the West Valley.
+         </p>
+        </div>
+       </div>
+      </div>
+     </section>
+     <section class="features" id="features">
+      <div class="container">
+       <h2>
+        Phoenix-Optimized Features
+       </h2>
+       <div class="features-grid">
+        <div class="feature">
+         <img alt="Desert Heat Tested" src="/../assets/accurate-icon.svg"/>
+         <h3>
+          Desert-Proof Reliability
+         </h3>
+         <p>
+          Our servers are optimized for Arizona's unique environment, ensuring 99.9% uptime even during Phoenix's extreme summer heat. Your financial data conversion never stops.
+         </p>
+        </div>
+        <div class="feature">
+         <img alt="Arizona Compliance" src="/../assets/secure-icon.svg"/>
+         <h3>
+          Arizona Privacy Compliant
+         </h3>
+         <p>
+          Fully compliant with Arizona data privacy laws and financial regulations. Your Phoenix business data is protected with bank-level encryption.
+         </p>
+        </div>
+        <div class="feature">
+         <img alt="Local Support" src="/../assets/institutional-icon.svg"/>
+         <h3>
+          Mountain Time Support
+         </h3>
+         <p>
+          Customer support available during Arizona business hours. Get help when Phoenix businesses need it most, with understanding of local banking practices.
+         </p>
+        </div>
+       </div>
+      </div>
+     </section>
+     <section class="testimonials" id="testimonials">
+      <div class="container">
+       <h2>
+        What Phoenix Businesses Say
+       </h2>
+       <div class="testimonials-grid">
+        <div class="testimonial">
+         <p>
+          "As a Scottsdale real estate developer, I process dozens of bank statements monthly. This converter saves me hours and integrates perfectly with our QuickBooks setup."
+         </p>
+         <cite>
+          - Sarah Martinez, Desert Vista Properties, Scottsdale
+         </cite>
+        </div>
+        <div class="testimonial">
+         <p>
+          "Our Phoenix tech startup needed a reliable way to convert Western Alliance Bank statements for our investors. This tool is fast, accurate, and secure."
+         </p>
+         <cite>
+          - David Chen, TechFlow Solutions, Tempe
+         </cite>
+        </div>
+        <div class="testimonial">
+         <p>
+          "Managing multiple restaurant locations across Phoenix and Mesa means lots of bank statements. This converter handles our Chase and Wells Fargo accounts flawlessly."
+         </p>
+         <cite>
+          - Maria Rodriguez, Sonoran Hospitality Group, Phoenix
+         </cite>
+        </div>
+        <div class="testimonial">
+         <p>
+          "Our Chandler manufacturing facility requires precise financial records. Converting our MidFirst Bank statements is now a breeze."
+         </p>
+         <cite>
+          - Robert Johnson, Precision Aerospace Components, Chandler
+         </cite>
+        </div>
+       </div>
+      </div>
+     </section>
+     <section class="how-it-works">
+      <div class="container">
+       <h2>
+        Simple 3-Step Process for Phoenix Businesses
+       </h2>
+       <div class="steps-grid">
+        <div class="step">
+         <span class="step-number">
+          1
+         </span>
+         <h3>
+          Upload Your Arizona Bank Statement
+         </h3>
+         <p>
+          Simply drag and drop your PDF statement from any Phoenix-area bank. Our converter recognizes all major Arizona bank formats automatically.
+         </p>
+        </div>
+        <div class="step">
+         <span class="step-number">
+          2
+         </span>
+         <h3>
+          Instant Conversion
+         </h3>
+         <p>
+          Our Phoenix-optimized servers process your statement in seconds, extracting all transaction data with 100% accuracy.
+         </p>
+        </div>
+        <div class="step">
+         <span class="step-number">
+          3
+         </span>
+         <h3>
+          Download Your CSV
+         </h3>
+         <p>
+          Get your converted file ready for Excel, QuickBooks, or any accounting software used by Arizona businesses.
+         </p>
+        </div>
+       </div>
+      </div>
+     </section>
+     <section class="local-content">
+      <div class="container">
+       <h2>
+        Phoenix Bank Statement Conversion Services
+       </h2>
+       <p>
+        Whether you're a startup in the Phoenix Biomedical Campus, a law firm in the Biltmore area, or a retail business in Desert Ridge, efficient bank statement conversion is essential for modern financial management. Our Phoenix bank statement converter understands the unique needs of Arizona businesses operating in one of America's fastest-growing metropolitan areas.
+       </p>
+       <h3>
+        Supporting Phoenix's Business Growth
+       </h3>
+       <p>
+        Phoenix's pro-business environment has attracted companies from California, Illinois, and across the nation. These businesses bring diverse banking relationships and need a converter that works with statements from banks nationwide, not just Arizona institutions. Our tool handles statements from over 10,000 banks, making it perfect for companies relocating to Phoenix or managing multi-state operations.
+       </p>
+       <h3>
+        Integration with Phoenix Business Tools
+       </h3>
+       <p>
+        Our converter outputs data compatible with the accounting and financial software commonly used by Phoenix businesses, including QuickBooks (popular with small businesses), Xero (favored by tech companies), SAP (used by large manufacturers), and custom ERP systems. This compatibility ensures seamless integration into your existing Phoenix business workflows.
+       </p>
+      </div>
+     </section>
+     <section class="cta-section">
+      <div class="container">
+       <h2>
+        Start Converting Your Phoenix Bank Statements Today
+       </h2>
+       <p>
+        Join thousands of Arizona businesses saving time and improving accuracy with our bank statement converter.
+       </p>
+       <a class="btn btn-primary btn-large" href="../index.html#converter">
+        Convert Your First Statement Free
+       </a>
+       <p class="cta-subtext">
+        No credit card required • Instant conversion • Phoenix-based support
+       </p>
+      </div>
+     </section>
+    </div>
+   </div>
+  </main>
+  <!-- Standardized Footer -->
+  <footer>
+   <div class="container">
+    <div class="footer-content">
+     <div class="footer-section">
+      <h4>
+       Product
+      </h4>
+      <ul>
+       <li>
+        <a href="../features.html">
+         Features
+        </a>
+       </li>
+       <li>
+        <a href="../how-it-works.html">
+         How It Works
+        </a>
+       </li>
+       <li>
+        <a href="../pricing.html">
+         Pricing
+        </a>
+       </li>
+       </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Company
+      </h4>
+      <ul>
+       <li>
+        <a href="../about.html">
+         About
+        </a>
+       </li>
+       <li>
+        <a href="../blog.html">
+         Blog
+        </a>
+       </li>
+       <li>
+        <a href="../contact.html">
+         Contact
+        </a>
+       </li>
+       <li>
+        <a href="../careers.html">
+         Careers
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Support
+      </h4>
+      <ul>
+       <li>
+        <a href="../help.html">
+         Help Center
+        </a>
+       </li>
+       <li>
+        <a href="../faq.html">
+         FAQ
+        </a>
+       </li>
+       <li>
+        <a href="../security.html">
+         Security
+        </a>
+       </li>
+       <li>
+        <a href="../status.html">
+         Status
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Legal
+      </h4>
+      <ul>
+       <li>
+        <a href="../privacy.html">
+         Privacy Policy
+        </a>
+       </li>
+       <li>
+        <a href="../terms.html">
+         Terms of Service
+        </a>
+       </li>
+       <li>
+        <a href="../gdpr.html">
+         GDPR
+        </a>
+       </li>
+       <li>
+        <a href="../ccpa.html">
+         CCPA
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>
+      © 2025 BankCSVConverter. All rights reserved.
+     </p>
+    </div>
+   </div>
+  </footer>
+  <!-- Standardized Scripts -->
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
     
-    <!-- FAQ Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "Which Phoenix banks are supported by the converter?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Our converter supports all major Phoenix banks including Bank of America, Chase, Wells Fargo, Western Alliance Bank, MidFirst Bank, Arizona Federal Credit Union, Desert Financial Credit Union, and National Bank of Arizona."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How quickly can I convert my Arizona bank statements?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Conversion is instant. Upload your PDF bank statement and receive your CSV file within seconds. No waiting, no delays - perfect for busy Phoenix professionals."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Is the converter suitable for Arizona businesses?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, our converter is ideal for Arizona businesses in real estate, hospitality, technology, manufacturing, and healthcare sectors. It's compatible with QuickBooks, Xero, and other accounting software popular in Phoenix."
-                }
-            }
-        ]
-    }
-    </script>
-    
-    <link rel="stylesheet" href="../css/unified-styles.css">
-</head>
-<body>
-    <!-- Header -->
-        <!-- Header Navigation -->
-    <header>
-        <nav>
-            <a href="../" class="nav-logo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                    <path d="M9 12l2 2 4-4"/>
-                </svg>
-                BankCSVConverter
-            </a>
-            
-            <ul class="nav-menu">
-                <li><a href="../all-pages.html">All Banks</a></li>
-                <li><a href="../pages/bank-statement-converter-comparison.html">Why Us</a></li>
-                <li><a href="../blog/financial-data-privacy-guide.html">Security</a></li>
-            </ul>
-            
-            <button class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Phoenix Bank Statement Converter</h1>
-            <h2>Convert Arizona Bank PDFs to CSV in Seconds</h2>
-            <p class="hero-description">Trusted by Phoenix businesses to convert bank statements from all major Arizona banks. Fast, secure, and accurate conversion for real estate professionals, tech startups, hospitality businesses, and manufacturing companies across the Valley of the Sun.</p>
-            <div class="cta-buttons">
-                <a href="../index.html#converter" class="btn btn-primary">Start Converting Now</a>
-                <a href="#phoenix-info" class="btn btn-secondary">Learn About Phoenix Banking</a>
-            </div>
-        
-                
-                <div class="upload-area" id="uploadBox">
-                    <h2>Upload Your Statement</h2>
-                    <button class="upload-btn" id="uploadBtn">
-                        Convert PDF to CSV
-                    </button>
-                    <p>or drag and drop your PDF here</p>
-                    <input type="file" id="fileInput" accept=".pdf" hidden>
-                    
-                    <div class="trust-signals">
-                        <span>✓ Works with all accounts</span>
-                        <span>✓ Preserves transaction categories</span>
-                        <span>✓ QuickBooks compatible</span>
-                    </div>
-                </div>
-                
-                <!-- Progress Container -->
-                <div class="upload-area" id="progressContainer" style="display: none;">
-                    <div class="loading"></div>
-                    <h3 id="progressText">Processing your statement...</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                </div>
-                
-                <!-- Result Container -->
-                <div class="upload-area" id="resultContainer" style="display: none;">
-                    <div class="success-check">✓</div>
-                    <h3>Conversion Complete!</h3>
-                    <p>Your statement has been successfully converted to CSV format.</p>
-                    <button class="upload-btn" id="downloadBtn">Download CSV File</button>
-                    <button class="secondary-btn" id="convertAnotherBtn">Convert Another Statement</button>
-                </div>
-                
-            </div>
-    </section>
-
-    <!-- Phoenix Financial Hub Section -->
-    <section id="phoenix-info" class="city-info">
-        <div class="container">
-            <h2>Phoenix: Arizona's Thriving Financial Center</h2>
-            <p>Phoenix has emerged as one of the fastest-growing financial centers in the United States, attracting major banks, fintech companies, and businesses from across the nation. As the fifth-largest city in America and the heart of the Valley of the Sun metropolitan area, Phoenix serves as the economic engine for Arizona's diverse economy.</p>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h3>1.7M+</h3>
-                    <p>Population in Phoenix Metro</p>
-                </div>
-                <div class="stat-card">
-                    <h3>200,000+</h3>
-                    <p>Businesses Operating</p>
-                </div>
-                <div class="stat-card">
-                    <h3>$300B+</h3>
-                    <p>Annual Economic Output</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Top 10</h3>
-                    <p>US Cities for Business Growth</p>
-                </div>
-            </div>
-
-            <h3>Why Phoenix Businesses Need Efficient Bank Statement Conversion</h3>
-            <p>The Phoenix metropolitan area's rapid growth has created unique financial management challenges for businesses. With thousands of new companies establishing operations in Phoenix, Scottsdale, Tempe, and Mesa each year, the demand for efficient financial document processing has never been higher. Our Phoenix bank statement converter addresses these needs by providing instant, accurate conversion of bank statements from all major Arizona financial institutions.</p>
-
-            <h3>Phoenix's Key Economic Sectors</h3>
-            <div class="industry-grid">
-                <div class="industry-card">
-                    <h4>Real Estate & Construction</h4>
-                    <p>Phoenix's booming real estate market requires frequent financial reporting. Real estate developers, property management companies, and construction firms rely on our converter to quickly process bank statements for investor reports, loan applications, and tax preparation.</p>
-                </div>
-                <div class="industry-card">
-                    <h4>Technology & Innovation</h4>
-                    <p>The growing Phoenix tech scene, anchored by companies in Tempe's ASU Research Park and Scottsdale's SkySong innovation center, demands modern financial tools. Tech startups and established firms use our converter for seamless integration with their digital accounting systems.</p>
-                </div>
-                <div class="industry-card">
-                    <h4>Hospitality & Tourism</h4>
-                    <p>With over 16 million annual visitors, Phoenix's hospitality industry manages complex financial operations. Hotels, resorts, restaurants, and tourism businesses throughout Scottsdale's resort corridor and downtown Phoenix trust our converter for accurate financial data processing.</p>
-                </div>
-                <div class="industry-card">
-                    <h4>Manufacturing & Aerospace</h4>
-                    <p>Phoenix's manufacturing sector, including aerospace giants like Honeywell and Raytheon, requires precise financial documentation. Our converter helps these companies maintain accurate records for compliance, auditing, and financial analysis.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Supported Banks Section -->
-    <section id="banks" class="banks-section">
-        <div class="container">
-            <h2>Major Phoenix Banks We Support</h2>
-            <p>Our converter works seamlessly with statements from all major financial institutions serving the Phoenix metropolitan area:</p>
-            
-            <div class="banks-grid">
-                <div class="bank-card">
-                    <h3>Bank of America</h3>
-                    <p>With multiple branches across Phoenix, Scottsdale, and Tempe, Bank of America serves thousands of Arizona businesses. Our converter handles all BoA statement formats.</p>
-                </div>
-                <div class="bank-card">
-                    <h3>Chase Bank</h3>
-                    <p>JPMorgan Chase has a strong presence throughout the Valley, offering business banking to Phoenix's growing companies. Convert Chase statements instantly.</p>
-                </div>
-                <div class="bank-card">
-                    <h3>Wells Fargo</h3>
-                    <p>As one of Arizona's largest banks, Wells Fargo serves businesses from downtown Phoenix to Mesa. Our converter processes all Wells Fargo statement types.</p>
-                </div>
-                <div class="bank-card">
-                    <h3>Western Alliance Bank</h3>
-                    <p>Phoenix-headquartered Western Alliance specializes in business banking. Convert Western Alliance statements with perfect accuracy.</p>
-                </div>
-                <div class="bank-card">
-                    <h3>MidFirst Bank</h3>
-                    <p>With deep roots in Arizona, MidFirst Bank serves many local businesses. Our converter handles MidFirst's unique statement formats.</p>
-                </div>
-                <div class="bank-card">
-                    <h3>National Bank of Arizona</h3>
-                    <p>A truly local institution, National Bank of Arizona provides personalized service to Phoenix businesses. Convert NBA statements effortlessly.</p>
-                </div>
-            </div>
-
-            <h3>Credit Unions and Regional Banks</h3>
-            <p>We also support statements from Arizona Federal Credit Union, Desert Financial Credit Union, OneAZ Credit Union, Arizona Bank & Trust, Republic Bank of Arizona, and many other local financial institutions serving the Phoenix area.</p>
-        </div>
-    </section>
-
-    <!-- Local Service Areas -->
-    <section class="service-areas">
-        <div class="container">
-            <h2>Serving All Phoenix Metro Communities</h2>
-            <p>Our Phoenix bank statement converter serves businesses throughout Maricopa County and the greater Phoenix metropolitan area:</p>
-            
-            <div class="areas-grid">
-                <div class="area-card">
-                    <h3>Phoenix</h3>
-                    <p>From downtown Phoenix's financial district to the Camelback Corridor, we serve businesses in all Phoenix neighborhoods including Arcadia, Ahwatukee, North Phoenix, and Central Phoenix.</p>
-                </div>
-                <div class="area-card">
-                    <h3>Scottsdale</h3>
-                    <p>Supporting Scottsdale's luxury resorts, golf courses, and Old Town businesses, as well as North Scottsdale's corporate offices and financial services firms.</p>
-                </div>
-                <div class="area-card">
-                    <h3>Tempe</h3>
-                    <p>Serving Tempe's innovative businesses near ASU, Mill Avenue district establishments, and companies in the Tempe Town Lake area.</p>
-                </div>
-                <div class="area-card">
-                    <h3>Mesa</h3>
-                    <p>Supporting Mesa's diverse business community, from aerospace manufacturers to healthcare providers in the Fiesta District and beyond.</p>
-                </div>
-                <div class="area-card">
-                    <h3>Chandler</h3>
-                    <p>Assisting Chandler's tech companies in the Price Corridor and businesses throughout this rapidly growing Southeast Valley city.</p>
-                </div>
-                <div class="area-card">
-                    <h3>Glendale</h3>
-                    <p>Supporting Glendale's sports and entertainment district businesses, as well as companies in Arrowhead and throughout the West Valley.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2>Phoenix-Optimized Features</h2>
-            <div class="features-grid">
-                <div class="feature">
-                    <img src="../assets/accurate-icon.svg" alt="Desert Heat Tested">
-                    <h3>Desert-Proof Reliability</h3>
-                    <p>Our servers are optimized for Arizona's unique environment, ensuring 99.9% uptime even during Phoenix's extreme summer heat. Your financial data conversion never stops.</p>
-                </div>
-                <div class="feature">
-                    <img src="../assets/secure-icon.svg" alt="Arizona Compliance">
-                    <h3>Arizona Privacy Compliant</h3>
-                    <p>Fully compliant with Arizona data privacy laws and financial regulations. Your Phoenix business data is protected with bank-level encryption.</p>
-                </div>
-                <div class="feature">
-                    <img src="../assets/institutional-icon.svg" alt="Local Support">
-                    <h3>Mountain Time Support</h3>
-                    <p>Customer support available during Arizona business hours. Get help when Phoenix businesses need it most, with understanding of local banking practices.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2>What Phoenix Businesses Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial">
-                    <p>"As a Scottsdale real estate developer, I process dozens of bank statements monthly. This converter saves me hours and integrates perfectly with our QuickBooks setup."</p>
-                    <cite>- Sarah Martinez, Desert Vista Properties, Scottsdale</cite>
-                </div>
-                <div class="testimonial">
-                    <p>"Our Phoenix tech startup needed a reliable way to convert Western Alliance Bank statements for our investors. This tool is fast, accurate, and secure."</p>
-                    <cite>- David Chen, TechFlow Solutions, Tempe</cite>
-                </div>
-                <div class="testimonial">
-                    <p>"Managing multiple restaurant locations across Phoenix and Mesa means lots of bank statements. This converter handles our Chase and Wells Fargo accounts flawlessly."</p>
-                    <cite>- Maria Rodriguez, Sonoran Hospitality Group, Phoenix</cite>
-                </div>
-                <div class="testimonial">
-                    <p>"Our Chandler manufacturing facility requires precise financial records. Converting our MidFirst Bank statements is now a breeze."</p>
-                    <cite>- Robert Johnson, Precision Aerospace Components, Chandler</cite>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="how-it-works">
-        <div class="container">
-            <h2>Simple 3-Step Process for Phoenix Businesses</h2>
-            <div class="steps-grid">
-                <div class="step">
-                    <span class="step-number">1</span>
-                    <h3>Upload Your Arizona Bank Statement</h3>
-                    <p>Simply drag and drop your PDF statement from any Phoenix-area bank. Our converter recognizes all major Arizona bank formats automatically.</p>
-                </div>
-                <div class="step">
-                    <span class="step-number">2</span>
-                    <h3>Instant Conversion</h3>
-                    <p>Our Phoenix-optimized servers process your statement in seconds, extracting all transaction data with 100% accuracy.</p>
-                </div>
-                <div class="step">
-                    <span class="step-number">3</span>
-                    <h3>Download Your CSV</h3>
-                    <p>Get your converted file ready for Excel, QuickBooks, or any accounting software used by Arizona businesses.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Local SEO Content -->
-    <section class="local-content">
-        <div class="container">
-            <h2>Phoenix Bank Statement Conversion Services</h2>
-            <p>Whether you're a startup in the Phoenix Biomedical Campus, a law firm in the Biltmore area, or a retail business in Desert Ridge, efficient bank statement conversion is essential for modern financial management. Our Phoenix bank statement converter understands the unique needs of Arizona businesses operating in one of America's fastest-growing metropolitan areas.</p>
-            
-            <h3>Supporting Phoenix's Business Growth</h3>
-            <p>Phoenix's pro-business environment has attracted companies from California, Illinois, and across the nation. These businesses bring diverse banking relationships and need a converter that works with statements from banks nationwide, not just Arizona institutions. Our tool handles statements from over 10,000 banks, making it perfect for companies relocating to Phoenix or managing multi-state operations.</p>
-            
-            <h3>Integration with Phoenix Business Tools</h3>
-            <p>Our converter outputs data compatible with the accounting and financial software commonly used by Phoenix businesses, including QuickBooks (popular with small businesses), Xero (favored by tech companies), SAP (used by large manufacturers), and custom ERP systems. This compatibility ensures seamless integration into your existing Phoenix business workflows.</p>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Start Converting Your Phoenix Bank Statements Today</h2>
-            <p>Join thousands of Arizona businesses saving time and improving accuracy with our bank statement converter.</p>
-            <a href="../index.html#converter" class="btn btn-primary btn-large">Convert Your First Statement Free</a>
-            <p class="cta-subtext">No credit card required • Instant conversion • Phoenix-based support</p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Phoenix Resources</h4>
-                    <ul>
-                        <li><a href="los-angeles-bank-statement-converter.html">Los Angeles Converter</a></li>
-                        <li><a href="dallas-bank-statement-converter.html">Dallas Converter</a></li>
-                        <li><a href="houston-bank-statement-converter.html">Houston Converter</a></li>
-                        <li><a href="../blog/bank-statements-tax-preparation-guide.html">Tax Preparation Guide</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Supported Banks</h4>
-                    <ul>
-                        <li><a href="bank-of-america-statement-converter.html">Bank of America</a></li>
-                        <li><a href="chase-bank-statement-converter.html">Chase</a></li>
-                        <li><a href="wells-fargo-statement-converter.html">Wells Fargo</a></li>
-                        <li><a href="us-bank-statement-converter.html">US Bank</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Phoenix Service Areas</h4>
-                    <ul>
-                        <li>Downtown Phoenix</li>
-                        <li>Scottsdale</li>
-                        <li>Tempe</li>
-                        <li>Mesa</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Serving all Phoenix metro areas<br>
-                    Mountain Time Zone Support<br>
-                    support@bankcsvconverter.com</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 BankCSVConverter.com - Phoenix's Trusted Bank Statement Converter</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="../js/main.js"></script>
-    <!-- Mobile menu JavaScript -->
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        menuToggle.addEventListener('click', () => {
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             menuToggle.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
         
         // Close menu when clicking on a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function() {
                 navMenu.classList.remove('active');
                 menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
-    </script>
-</body>
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+  </script>
+  <script src="/js/production.js">
+  </script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
 </html>

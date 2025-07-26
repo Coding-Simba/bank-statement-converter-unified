@@ -1,0 +1,148 @@
+/* Blog Text Size Fix - Makes blog content more readable */
+
+/* Article content text sizes */
+.article-content .article-body p {
+    font-size: 1.6rem !important;  /* Reduced from 1.8rem */
+    line-height: 1.7 !important;   /* Slightly tighter line height */
+}
+
+.article-content .article-body li {
+    font-size: 1.6rem !important;  /* Reduced from 1.8rem */
+    line-height: 1.7 !important;
+}
+
+/* Heading sizes */
+.article-content .article-body h2 {
+    font-size: 2.4rem !important;  /* Reduced from 3.2rem */
+    margin: 3rem 0 1.5rem !important;
+}
+
+.article-content .article-body h3 {
+    font-size: 2rem !important;    /* Reduced from 2.4rem */
+    margin: 2.5rem 0 1.2rem !important;
+}
+
+.article-content .article-body h4 {
+    font-size: 1.8rem !important;
+    margin: 2rem 0 1rem !important;
+}
+
+/* Article title - keep prominent but not overwhelming */
+.article-title {
+    font-size: 3.6rem !important;  /* Reduced from 4.8rem */
+}
+
+/* Highlight boxes and special content */
+.highlight-box h4 {
+    font-size: 1.8rem !important;  /* Reduced from 2rem */
+}
+
+.highlight-box p,
+.highlight-box li {
+    font-size: 1.5rem !important;
+    line-height: 1.6 !important;
+}
+
+/* Quick answer and key points sections */
+.quick-answer,
+.key-points {
+    font-size: 1.6rem !important;  /* Reduced from 1.8rem */
+}
+
+/* Author bio text */
+.author-info-detailed .bio {
+    font-size: 1.5rem !important;  /* Reduced from 1.6rem */
+}
+
+.author-info-detailed h3 {
+    font-size: 2rem !important;    /* Reduced from 2.4rem */
+}
+
+.author-info-detailed .author-title {
+    font-size: 1.6rem !important;  /* Reduced from 1.8rem */
+}
+
+/* Related articles */
+.related-title {
+    font-size: 1.6rem !important;  /* Reduced from 1.8rem */
+}
+
+.related-excerpt {
+    font-size: 1.4rem !important;  /* Keep as is */
+}
+
+/* Meta information */
+.article-meta {
+    font-size: 1.4rem !important;  /* Reduced from 1.6rem */
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    font-size: 1.3rem !important;  /* Reduced from 1.4rem */
+}
+
+/* Mobile adjustments - smaller screens need even smaller text */
+@media (max-width: 768px) {
+    .article-title {
+        font-size: 2.8rem !important;  /* Reduced from 3.2rem */
+    }
+    
+    .article-content .article-body h2 {
+        font-size: 2rem !important;    /* Reduced from 2.4rem */
+    }
+    
+    .article-content .article-body h3 {
+        font-size: 1.8rem !important;  /* Reduced from 2rem */
+    }
+    
+    .article-content .article-body p,
+    .article-content .article-body li {
+        font-size: 1.5rem !important;  /* Reduced from 1.6rem */
+        line-height: 1.65 !important;
+    }
+}
+
+/* Blockquotes and code blocks */
+.article-content blockquote {
+    font-size: 1.6rem !important;
+    line-height: 1.7 !important;
+}
+
+.article-content code {
+    font-size: 1.4rem !important;
+}
+
+.article-content pre code {
+    font-size: 1.3rem !important;
+}
+
+/* Tables */
+.article-content table {
+    font-size: 1.5rem !important;
+}
+
+.article-content th,
+.article-content td {
+    font-size: 1.5rem !important;
+}
+
+/* Lists spacing adjustment */
+.article-content ul,
+.article-content ol {
+    margin: 1.5rem 0 !important;
+}
+
+.article-content li {
+    margin-bottom: 0.8rem !important;
+}
+
+/* Improve readability with better spacing */
+.article-body {
+    max-width: 800px !important;  /* Limit line length for better readability */
+    margin: 0 auto !important;
+}
+
+/* Paragraph spacing */
+.article-content .article-body p {
+    margin-bottom: 1.5rem !important;
+}

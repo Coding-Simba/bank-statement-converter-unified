@@ -1,0 +1,157 @@
+/* Simple CSS-only dropdown fix - ensures menu stays open */
+
+/* Reset the dropdown styles for better control */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Create a larger hover area */
+.dropdown::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    z-index: -1;
+}
+
+/* Dropdown button */
+.dropdown-toggle {
+    background: transparent;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4a5568;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown-toggle:hover,
+.dropdown:hover .dropdown-toggle {
+    background: #f7fafc;
+    color: #1a1a1a;
+}
+
+/* Dropdown menu - using opacity/visibility for smoother transitions */
+.dropdown .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    min-width: 220px;
+    z-index: 1000;
+    
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    
+    /* Ensure it's not display: none */
+    display: block !important;
+}
+
+/* Create an invisible bridge between button and menu */
+.dropdown .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: transparent;
+}
+
+/* Show menu on hover - with extended hover area */
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Ensure menu stays open when hovering over it */
+.dropdown .dropdown-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Menu items */
+.dropdown-item {
+    display: block;
+    padding: 10px 16px;
+    color: #4a5568;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background: #f7fafc;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+/* Icons in dropdown items */
+.dropdown-item i {
+    margin-right: 8px;
+    width: 16px;
+    display: inline-block;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.dropdown-item:hover i {
+    opacity: 1;
+}
+
+/* Alternative approach: Delayed closing */
+@media (pointer: fine) {
+    /* Only apply to devices with precise pointers (mouse) */
+    .dropdown .dropdown-menu {
+        transition-delay: 0s;
+    }
+    
+    .dropdown:not(:hover) .dropdown-menu {
+        transition-delay: 0.3s; /* Delay closing by 300ms */
+    }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    /* On mobile, use click instead of hover */
+    .dropdown:hover .dropdown-menu {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .dropdown.is-open .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .dropdown .dropdown-menu {
+        position: fixed;
+        top: auto;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}

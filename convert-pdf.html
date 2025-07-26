@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert PDF bank statements to CSV or Excel format instantly. Free online PDF to CSV converter for all major banks. No registration required.">
+    <title>Convert PDF Bank Statements to CSV/Excel - Free Online Tool | BankCSV</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="/css/nav-fix.css">
+    <link rel="stylesheet" href="/css/dropdown-fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Ensure all content is centered */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .tool-hero {
+            background: linear-gradient(135deg, #00bfa5 0%, #00d4aa 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .tool-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .tool-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .tool-features {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .feature-item i {
+            font-size: 3rem;
+            color: #00bfa5;
+            margin-bottom: 20px;
+        }
+        
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+        
+        .feature-item p {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .upload-section {
+            padding: 60px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .process-step {
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #00bfa5;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .supported-formats {
+            background: #e3f2fd;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .format-list {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .format-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.125rem;
+        }
+        
+        .format-item i {
+            color: #1976d2;
+            font-size: 1.5rem;
+        }
+    </style>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <span class="logo-text">BankCSV</span>
+                </a>
+                <div class="nav-links desktop-only">
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            <i class="fas fa-th"></i> Tools
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="/convert-pdf.html" class="dropdown-item">
+                                <i class="fas fa-file-pdf"></i>
+                                Convert PDF
+                            </a>
+                            <a href="/merge-statements.html" class="dropdown-item">
+                                <i class="fas fa-object-group"></i>
+                                Merge Statements
+                            </a>
+                            <a href="/split-by-date.html" class="dropdown-item">
+                                <i class="fas fa-cut"></i>
+                                Split by Date
+                            </a>
+                            <a href="/analyze-transactions.html" class="dropdown-item">
+                                <i class="fas fa-chart-line"></i>
+                                Analyze Transactions
+                            </a>
+                        </div>
+                    </div>
+                    <a href="/#features" class="nav-link">Features</a>
+                    <a href="/#banks" class="nav-link">Supported Banks</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                    
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="/pricing.html" class="nav-link desktop-only">Pricing</a>
+                <a href="/business.html" class="nav-link desktop-only">Business</a>
+                <a href="/login.html" class="nav-link">Log In</a>
+                <a href="/signup.html" class="btn-primary">Sign Up Free</a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tool Hero Section -->
+    <section class="tool-hero">
+        <div class="container">
+            <h1>Convert PDF Bank Statements</h1>
+            <p>Transform your PDF bank statements into CSV or Excel format in seconds. Works with all major banks worldwide.</p>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section class="upload-section">
+        <div class="container">
+            <h2 class="section-title">Upload Your PDF Statement</h2>
+            <div class="upload-container">
+                <div class="upload-box" id="uploadBox">
+                    <div class="upload-icon">
+                        <img src="/assets/pdf-icon.svg" alt="PDF icon" class="pdf-icon">
+                    </div>
+                    <button class="choose-files-btn" id="chooseFilesBtn">
+                        <i class="fas fa-file-pdf"></i> CHOOSE PDF FILES
+                    </button>
+                    <p class="upload-text">or drop PDF files here</p>
+                    <input type="file" id="fileInput" accept=".pdf" multiple hidden>
+                </div>
+            </div>
+            
+            <div class="trust-badges" style="margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <div class="trust-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Supports multi-page PDF statements</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Batch convert multiple statements</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Automatic bank format detection</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="tool-features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our PDF Converter?</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <i class="fas fa-magic"></i>
+                    <h3>Smart Recognition</h3>
+                    <p>AI-powered OCR technology accurately extracts data from scanned PDFs and complex bank formats.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-globe"></i>
+                    <h3>Universal Support</h3>
+                    <p>Works with over 15,000 banks worldwide, automatically detecting your bank's format.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Bank-Level Security</h3>
+                    <p>256-bit SSL encryption and automatic file deletion ensure your financial data stays private.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Lightning Fast</h3>
+                    <p>Convert even large PDF statements in under 30 seconds with our optimized processing.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-file-export"></i>
+                    <h3>Multiple Formats</h3>
+                    <p>Export to CSV for data analysis or Excel for easy editing and accounting software import.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-double"></i>
+                    <h3>99.9% Accuracy</h3>
+                    <p>Industry-leading accuracy rate ensures your financial data is converted correctly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" style="text-align: center;">
+        <div class="container">
+            <h2 class="section-title">How PDF Conversion Works</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Upload PDF</h4>
+                    <p>Select or drag your PDF bank statement into the upload area</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Auto Detection</h4>
+                    <p>Our AI identifies your bank and statement format automatically</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Data Extraction</h4>
+                    <p>Advanced OCR extracts all transactions, dates, and amounts</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Download Results</h4>
+                    <p>Get your converted CSV or Excel file instantly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Formats -->
+    <section class="supported-formats">
+        <div class="container">
+            <h2 class="section-title">Supported File Types</h2>
+            <p>Our converter handles various PDF formats and outputs</p>
+            <div class="format-list">
+                <div class="format-item">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Standard PDF</span>
+                </div>
+                <div class="format-item">
+                    <i class="fas fa-file-image"></i>
+                    <span>Scanned PDF</span>
+                </div>
+                <div class="format-item">
+                    <i class="fas fa-file-csv"></i>
+                    <span>CSV Output</span>
+                </div>
+                <div class="format-item">
+                    <i class="fas fa-file-excel"></i>
+                    <span>Excel Output</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" style="text-align: center;">
+        <div class="container">
+            <h2>Start Converting Your PDF Statements</h2>
+            <p>Join millions who trust us with their bank statement conversions</p>
+            <a href="#uploadBox" class="btn-cta">
+                <i class="fas fa-file-upload"></i> Convert PDF Now - It's Free
+            </a>
+            <p class="cta-note">No registration required • Instant conversion • 100% secure</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/convert-pdf.html">Convert PDF</a></li>
+                        <li><a href="/merge-statements.html">Merge Statements</a></li>
+                        <li><a href="/split-by-date.html">Split by Date</a></li>
+                        <li><a href="/analyze-transactions.html">Analyze Transactions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/press.html">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/gdpr.html">GDPR</a></li>
+                        <li><a href="/ccpa.html">CCPA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 BankCSV Converter. All rights reserved.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/modern-homepage-fixed.js"></script>
+    <script src="/js/dropdown-handler.js"></script>
+</body>
+</html>

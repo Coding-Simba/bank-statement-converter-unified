@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Learn how to fix common CSV formatting issues when converting bank statements. Troubleshooting guide for date formats, encoding errors, and data misalignment." name="description"/>
+  <link href="/css/production.css" rel="stylesheet"/>
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+    <link href="/css/blog-text-size-fix.css" rel="stylesheet"/>
+  <title>
+   Common CSV Formatting Issues and How to Fix Them - BankCSVConverter
+  </title>
+  <link href="https://BankCSVConverter.com/blog/csv-formatting-fixes" rel="canonical"/>
+  <!-- Unified Design System -->
+  <!-- Skip Link for Accessibility -->
+  <style>
+   .skip-link {
+            position: absolute;
+            left: -9999px;
+        }
+        .skip-link:focus {
+            position: absolute;
+            left: 6px;
+            top: 7px;
+            z-index: 999999;
+            padding: 8px 16px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+        }
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to main content
+  </a>
+  <!-- Standardized Header -->
+  <header>
+   <nav>
+    <a class="nav-logo" href="../">
+     <svg style="width: 24px; height: 24px; flex-shrink: 0;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+      </rect>
+      <line x1="3" x2="21" y1="9" y2="9">
+      </line>
+      <line x1="9" x2="9" y1="21" y2="9">
+      </line>
+     </svg>
+     BankCSVConverter
+    </a>
+    <ul class="nav-menu">
+     <li>
+      <a href="../features.html">
+       Features
+      </a>
+     </li>
+     <li>
+      <a href="../how-it-works.html">
+       How It Works
+      </a>
+     </li>
+     <li>
+      <a href="../pricing.html">
+       Pricing
+      </a>
+     </li>
+     <li>
+      <a href="../blog.html">
+       Blog
+      </a>
+     </li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle">
+     <span>
+     </span>
+     <span>
+     </span>
+     <span>
+     </span>
+    </button>
+   </nav>
+   <div class="nav-overlay">
+   </div>
+  </header>
+  <main id="main">
+   <div class="content-wrapper">
+    <div class="container">
+     <div class="nav-breadcrumb">
+      <a href="../index.html">
+       Home
+      </a>
+      →
+      <a href="../index.html#blog">
+       Blog
+      </a>
+      → CSV Formatting Fixes
+     </div>
+     <h1>
+      Common CSV Formatting Issues and How to Fix Them
+     </h1>
+     <div class="blog-meta">
+      <span class="author">By Sarah Johnson, Accounting Specialist</span>
+      <span class="date">December 10, 2024</span>
+     </div>
+     <p>
+      CSV files are the universal format for financial data exchange, but they're not without their challenges. Whether you're importing bank statements into accounting software or analyzing transactions in Excel, formatting issues can cause hours of frustration. This comprehensive guide will help you identify and fix the most common CSV formatting problems quickly and efficiently.
+     </p>
+     <div class="toc">
+      <h2>
+       Table of Contents
+      </h2>
+      <ul>
+       <li>
+        <a href="#understanding-csv">
+         1. Understanding CSV File Structure
+        </a>
+       </li>
+       <li>
+        <a href="#date-formatting">
+         2. Date Formatting Issues
+        </a>
+       </li>
+       <li>
+        <a href="#number-formatting">
+         3. Number and Currency Problems
+        </a>
+       </li>
+       <li>
+        <a href="#encoding-issues">
+         4. Character Encoding Errors
+        </a>
+       </li>
+       <li>
+        <a href="#delimiter-problems">
+         5. Delimiter and Separator Issues
+        </a>
+       </li>
+       <li>
+        <a href="#data-alignment">
+         6. Data Misalignment and Column Shifts
+        </a>
+       </li>
+       <li>
+        <a href="#excel-issues">
+         7. Excel-Specific Problems
+        </a>
+       </li>
+       <li>
+        <a href="#prevention-tips">
+         8. Prevention and Best Practices
+        </a>
+       </li>
+      </ul>
+     </div>
+     <h2 id="understanding-csv">
+      1. Understanding CSV File Structure
+     </h2>
+     <p>
+      Before diving into specific issues, it's important to understand what makes a CSV file tick. CSV (Comma-Separated Values) files are plain text files that use specific characters to separate data into rows and columns.
+     </p>
+     <h3>
+      Basic CSV Structure
+     </h3>
+     <div class="code-block">
+      Date,Description,Amount,Balance
+01/15/2024,Coffee Shop,-4.50,1245.50
+01/16/2024,Salary Deposit,2500.00,3745.50
+01/17/2024,Utility Bill,-125.00,3620.50
+     </div>
+     <h3>
+      Key Components
+     </h3>
+     <ul>
+      <li>
+       <strong>
+        Headers:
+       </strong>
+       First row typically contains column names
+      </li>
+      <li>
+       <strong>
+        Delimiters:
+       </strong>
+       Characters that separate values (usually commas)
+      </li>
+      <li>
+       <strong>
+        Line breaks:
+       </strong>
+       Separate rows of data
+      </li>
+      <li>
+       <strong>
+        Text qualifiers:
+       </strong>
+       Quote marks around text containing delimiters
+      </li>
+      <li>
+       <strong>
+        Encoding:
+       </strong>
+       Character set used (UTF-8, ASCII, etc.)
+      </li>
+     </ul>
+     <h3>
+      Common CSV Variations
+     </h3>
+     <div class="table-responsive">
+      <table class="example-table">
+       <tr>
+        <th>
+         Type
+        </th>
+        <th>
+         Delimiter
+        </th>
+        <th>
+         Extension
+        </th>
+        <th>
+         Common Use
+        </th>
+       </tr>
+       <tr>
+        <td>
+         Standard CSV
+        </td>
+        <td>
+         Comma (,)
+        </td>
+        <td>
+         .csv
+        </td>
+        <td>
+         Most applications
+        </td>
+       </tr>
+       <tr>
+        <td>
+         TSV
+        </td>
+        <td>
+         Tab
+        </td>
+        <td>
+         .tsv or .txt
+        </td>
+        <td>
+         Data with commas
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Semicolon-delimited
+        </td>
+        <td>
+         Semicolon (;)
+        </td>
+        <td>
+         .csv
+        </td>
+        <td>
+         European systems
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Pipe-delimited
+        </td>
+        <td>
+         Pipe (|)
+        </td>
+        <td>
+         .csv or .txt
+        </td>
+        <td>
+         Database exports
+        </td>
+       </tr>
+      </table>
+     </div>
+     <div class="tip-box">
+      <strong>
+       Quick Tip:
+       </strong>
+       Always open CSV files in a text editor first to understand their structure before importing into Excel or other software.
+     </div>
+     <h2 id="date-formatting">
+      2. Date Formatting Issues
+     </h2>
+     <p>
+      Date formatting is the most common source of CSV import errors. Different regions, software, and systems use various date formats, leading to misinterpretation and errors.
+     </p>
+     <h3>
+      Common Date Format Problems
+     </h3>
+     <h4>
+      Problem 1: Regional Format Confusion
+     </h4>
+     <div class="table-responsive">
+      <table class="example-table">
+       <tr>
+        <th>
+         Format
+        </th>
+        <th>
+         US Interpretation
+        </th>
+        <th>
+         EU Interpretation
+        </th>
+       </tr>
+       <tr>
+        <td>
+         01/02/2024
+        </td>
+        <td>
+         January 2, 2024
+        </td>
+        <td>
+         February 1, 2024
+        </td>
+       </tr>
+       <tr>
+        <td>
+         03/12/2024
+        </td>
+        <td>
+         March 12, 2024
+        </td>
+        <td>
+         December 3, 2024
+        </td>
+       </tr>
+      </table>
+     </div>
+     <p>
+      <strong>
+       Solution:
+      </strong>
+      Use unambiguous date formats:
+     </p>
+     <div class="code-block">
+      YYYY-MM-DD (2024-01-15)  // ISO 8601 format - recommended
+DD-MMM-YYYY (15-Jan-2024)  // Month name prevents confusion
+MM/DD/YYYY with clear headers  // Specify format in documentation
+     </div>
+     <h4>
+      Problem 2: Excel Auto-Conversion
+     </h4>
+     <p>
+      Excel often converts date-like strings into its internal date format, causing issues like:
+     </p>
+     <ul>
+      <li>
+       "1/2" becomes "2-Jan" (current year assumed)
+      </li>
+      <li>
+       "3-4" becomes "4-Mar"
+      </li>
+      <li>
+       Account numbers like "12-2345" become dates
+      </li>
+     </ul>
+     <p>
+      <strong>
+       Solutions:
+      </strong>
+     </p>
+     <ol>
+      <li>
+       <strong>
+        Import as Text:
+       </strong>
+       Use Excel's import wizard and set column type to "Text"
+      </li>
+      <li>
+       <strong>
+        Prefix with apostrophe:
+       </strong>
+       Add ' before values ('12-2345)
+      </li>
+      <li>
+       <strong>
+        Use Text qualifier:
+       </strong>
+       Wrap in quotes ("12-2345")
+      </li>
+      <li>
+       <strong>
+        Change format:
+       </strong>
+       Use underscores or other separators (12_2345)
+      </li>
+     </ol>
+     <h4>
+      Problem 3: Two-Digit Year Issues
+     </h4>
+     <div class="code-block">
+      01/15/24  // Is this 1924 or 2024?
+     </div>
+     <p>
+      <strong>
+       Solution:
+       </strong>
+      Always use four-digit years:
+     </p>
+     <div class="code-block">
+      01/15/2024  // Unambiguous
+2024-01-15  // Even better
+     </div>
+     <h3>
+      Date Formatting Best Practices
+     </h3>
+     <ul>
+      <li>
+       Use ISO 8601 format (YYYY-MM-DD) when possible
+      </li>
+      <li>
+       Be consistent throughout the file
+      </li>
+      <li>
+       Document the date format used
+      </li>
+      <li>
+       Test with sample data before full import
+      </li>
+      <li>
+       Consider timezone implications for timestamps
+      </li>
+     </ul>
+     <h2 id="number-formatting">
+      3. Number and Currency Problems
+     </h2>
+     <p>
+      Numeric data in CSV files can be problematic due to different regional conventions and software interpretations.
+     </p>
+     <h3>
+      Common Number Format Issues
+     </h3>
+     <h4>
+      Problem 1: Decimal Separator Confusion
+     </h4>
+     <div class="table-responsive">
+      <table class="example-table">
+       <tr>
+        <th>
+         Region
+        </th>
+        <th>
+         Format
+        </th>
+        <th>
+         One Thousand
+        </th>
+        <th>
+         One and Half
+        </th>
+       </tr>
+       <tr>
+        <td>
+         US/UK
+        </td>
+        <td>
+         1,234.56
+        </td>
+        <td>
+         1,000
+        </td>
+        <td>
+         1.5
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Europe
+        </td>
+        <td>
+         1.234,56
+        </td>
+        <td>
+         1.000
+        </td>
+        <td>
+         1,5
+        </td>
+       </tr>
+      </table>
+     </div>
+     <p>
+      <strong>
+       Solutions:
+      </strong>
+     </p>
+     <ol>
+      <li>
+       Remove thousand separators entirely: 1234.56
+      </li>
+      <li>
+       Use consistent decimal separator (preferably period)
+      </li>
+      <li>
+       Configure import settings to match your data
+      </li>
+     </ol>
+     <h4>
+      Problem 2: Currency Symbol Issues
+     </h4>
+     <div class="code-block">
+      $1,234.56   // May cause import errors
+€1.234,56   // European format with currency
+(125.00)    // Negative value in accounting format
+     </div>
+     <p>
+      <strong>
+       Best Practice:
+       </strong>
+      Remove currency symbols and use standard negative notation:
+     </p>
+     <div class="code-block">
+      1234.56    // Positive amount
+-125.00    // Negative amount
+     </div>
+     <h4>
+      Problem 3: Scientific Notation
+     </h4>
+     <p>
+      Large numbers may convert to scientific notation:
+     </p>
+     <div class="code-block">
+      Account: 1234567890123456  // Becomes: 1.23457E+15
+     </div>
+     <p>
+      <strong>
+       Solutions:
+      </strong>
+     </p>
+     <ul>
+      <li>
+       Format as text with quotes: "1234567890123456"
+      </li>
+      <li>
+       Add prefix/suffix: ACCT_1234567890123456
+      </li>
+      <li>
+       Import column as text in Excel
+      </li>
+     </ul>
+     <h4>
+      Problem 4: Leading Zeros
+     </h4>
+     <div class="code-block">
+      00123  // Becomes: 123 (zeros removed)
+     </div>
+     <p>
+      <strong>
+       Solutions:
+      </strong>
+     </p>
+     <ul>
+      <li>
+       Wrap in quotes: "00123"
+      </li>
+      <li>
+       Prefix with apostrophe: '00123
+      </li>
+      <li>
+       Import as text column
+      </li>
+     </ul>
+     <h2 id="encoding-issues">
+      4. Character Encoding Errors
+     </h2>
+     <p>
+      Character encoding problems manifest as strange symbols, question marks, or missing characters in your CSV files.
+     </p>
+     <h3>
+      Common Encoding Problems
+     </h3>
+     <h4>
+      Problem 1: Special Characters Display Incorrectly
+     </h4>
+     <div class="table-responsive">
+      <table class="example-table">
+       <tr>
+        <th>
+         Original
+        </th>
+        <th>
+         Incorrect Display
+        </th>
+        <th>
+         Cause
+        </th>
+       </tr>
+       <tr>
+        <td>
+         Café
+        </td>
+        <td>
+         CafÃ©
+        </td>
+        <td>
+         UTF-8 read as Latin-1
+        </td>
+       </tr>
+       <tr>
+        <td>
+         €100
+        </td>
+        <td>
+         â‚¬100
+        </td>
+        <td>
+         Wrong encoding
+        </td>
+       </tr>
+       <tr>
+        <td>
+         "Smart quotes"
+        </td>
+        <td>
+         â€œSmart quotesâ€
+        </td>
+        <td>
+         UTF-8 as ASCII
+        </td>
+       </tr>
+      </table>
+     </div>
+     <p>
+      <strong>
+       Solution:
+       </strong>
+      Ensure consistent encoding:
+     </p>
+     <ol>
+      <li>
+       Save files as UTF-8 (recommended)
+      </li>
+      <li>
+       Specify encoding when opening: 
+       <div class="code-block">
+        Excel: Data → From Text → File Origin: UTF-8
+Python: pd.read_csv('file.csv', encoding='utf-8')
+       </div>
+      </li>
+      <li>
+       Convert encoding if needed using tools like iconv or Notepad++
+      </li>
+     </ol>
+     <h4>
+      Problem 2: BOM (Byte Order Mark) Issues
+     </h4>
+     <p>
+      Some programs add invisible BOM characters that cause import failures.
+     </p>
+     <p>
+      <strong>
+       Detection:
+       </strong>
+      Open file in hex editor and look for EF BB BF at start
+     </p>
+     <p>
+      <strong>
+       Solution:
+       </strong>
+      Save without BOM:
+     </p>
+     <ul>
+      <li>
+       Notepad++: Encoding → UTF-8 (without BOM)
+      </li>
+      <li>
+       Command line: Use tools to strip BOM
+      </li>
+     </ul>
+     <h3>
+      Encoding Best Practices
+     </h3>
+     <ul>
+      <li>
+       Always use UTF-8 encoding for international compatibility
+      </li>
+      <li>
+       Document the encoding used
+      </li>
+      <li>
+       Test with special characters before full import
+      </li>
+      <li>
+       Avoid smart quotes and special formatting
+      </li>
+      <li>
+       Use ASCII characters when possible
+      </li>
+     </ul>
+     <h2 id="delimiter-problems">
+      5. Delimiter and Separator Issues
+     </h2>
+     <p>
+      Delimiter problems occur when the character used to separate fields conflicts with the data itself or when software expects a different delimiter.
+     </p>
+     <h3>
+      Common Delimiter Issues
+     </h3>
+     <h4>
+      Problem 1: Commas in Data
+     </h4>
+     <div class="code-block">
+      Date,Description,Amount
+01/15/2024,Purchase at Store, Inc.,-125.50  // Extra comma breaks parsing
+     </div>
+     <p>
+      <strong>
+       Solutions:
+      </strong>
+     </p>
+     <ol>
+      <li>
+       Use quotes around fields with commas:
+       <div class="code-block">
+        01/15/2024,"Purchase at Store, Inc.",-125.50
+       </div>
+      </li>
+      <li>
+       Switch to different delimiter (tab, pipe, semicolon)
+      </li>
+      <li>
+       Remove or replace commas in data
+      </li>
+     </ol>
+     <h4>
+      Problem 2: Inconsistent Delimiters
+     </h4>
+     <div class="code-block">
+      Date,Description;Amount    // Mixed delimiters
+01/15/2024,Coffee Shop,-4.50
+01/16/2024;Salary;2500.00   // Different delimiter
+     </div>
+     <p>
+      <strong>
+       Solution:
+       </strong>
+      Use find-and-replace to standardize delimiters
+     </p>
+     <h4>
+      Problem 3: Quotes Within Quoted Fields
+     </h4>
+     <div class="code-block">
+      "John's "Special" Account"  // Breaks CSV parsing
+     </div>
+     <p>
+      <strong>
+       Solution:
+       </strong>
+      Escape quotes by doubling them:
+     </p>
+     <div class="code-block">
+      "John's ""Special"" Account"  // Correct escaping
+     </div>
+     <h3>
+      Delimiter Best Practices
+     </h3>
+     <div class="table-responsive">
+      <table class="example-table">
+       <tr>
+        <th>
+         If your data contains...
+        </th>
+        <th>
+         Use this delimiter
+        </th>
+       </tr>
+       <tr>
+        <td>
+         Commas
+        </td>
+        <td>
+         Tab or Pipe (|)
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Tabs
+        </td>
+        <td>
+         Comma or Pipe
+        </td>
+       </tr>
+       <tr>
+        <td>
+         All common delimiters
+        </td>
+        <td>
+         Uncommon character like ¦
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2 id="data-alignment">
+      6. Data Misalignment and Column Shifts
+     </h2>
+     <p>
+      Data misalignment occurs when values end up in wrong columns, often due to inconsistent field counts or improper handling of empty fields.
+     </p>
+     <h3>
+      Common Alignment Problems
+     </h3>
+     <h4>
+      Problem 1: Missing Fields
+     </h4>
+     <div class="code-block">
+      Date,Description,Category,Amount
+01/15/2024,Coffee Shop,,,-4.50    // Extra comma
+01/16/2024,Salary,Income,2500.00   // Correct
+01/17/2024,Utility Bill,-125.00    // Missing category - shifts amount
+     </div>
+     <p>
+      <strong>
+       Solution:
+       </strong>
+      Ensure consistent field count:
+     </p>
+     <div class="code-block">
+      01/15/2024,Coffee Shop,,-4.50      // Empty category field
+01/17/2024,Utility Bill,,-125.00    // Maintains structure
+     </div>
+     <h4>
+      Problem 2: Line Breaks in Data
+     </h4>
+     <div class="code-block">
+      01/15/2024,"Multi-line
+Description",-4.50  // Line break causes new row
+     </div>
+     <p>
+      <strong>
+       Solutions:
+      </strong>
+     </p>
+     <ul>
+      <li>
+       Remove line breaks from data
+      </li>
+      <li>
+       Replace with spaces or other characters
+      </li>
+      <li>
+       Ensure proper quoting of multi-line fields
+      </li>
+     </ul>
+     <h4>
+      Problem 3: Variable Column Count
+     </h4>
+     <p>
+      Some rows having different numbers of columns causes import failures.
+     </p>
+     <p>
+      <strong>
+       Detection Method:
+      </strong>
+     </p>
+     <div class="code-block">
+      # Count commas per line
+Line 1: 3 commas (4 fields)
+Line 2: 4 commas (5 fields)  // Problem row
+Line 3: 3 commas (4 fields)
+     </div>
+     <p>
+      <strong>
+       Solution:
+       </strong>
+      Standardize column count across all rows
+     </p>
+     <h3>
+      Validation Techniques
+     </h3>
+     <ol>
+      <li>
+       Count delimiters per row
+      </li>
+      <li>
+       Check for consistent column headers
+      </li>
+      <li>
+       Validate data types per column
+      </li>
+      <li>
+       Look for shifted patterns
+      </li>
+     </ol>
+     <h2 id="excel-issues">
+      7. Excel-Specific Problems
+     </h2>
+     <p>
+      Excel's "helpful" auto-formatting can create numerous issues when working with CSV files.
+     </p>
+     <h3>
+      Common Excel Issues
+     </h3>
+     <h4>
+      Problem 1: Scientific Notation for Large Numbers
+     </h4>
+     <div class="table-responsive">
+      <table class="example-table">
+       <tr>
+        <th>
+         Original Value
+        </th>
+        <th>
+         Excel Display
+        </th>
+        <th>
+         Issue
+        </th>
+       </tr>
+       <tr>
+        <td>
+         1234567890123456
+        </td>
+        <td>
+         1.23457E+15
+        </td>
+        <td>
+         Loss of precision
+        </td>
+       </tr>
+       <tr>
+        <td>
+         00123456
+        </td>
+        <td>
+         123456
+        </td>
+        <td>
+         Leading zeros removed
+        </td>
+       </tr>
+       <tr>
+        <td>
+         3/4
+        </td>
+        <td>
+         4-Mar
+        </td>
+        <td>
+         Converted to date
+        </td>
+       </tr>
+      </table>
+     </div>
+     <p>
+      <strong>
+       Prevention:
+      </strong>
+     </p>
+     <ol>
+      <li>
+       Import using Text Import Wizard
+      </li>
+      <li>
+       Set column data types explicitly
+      </li>
+      <li>
+       Format cells before pasting data
+      </li>
+      <li>
+       Use Power Query for better control
+      </li>
+     </ol>
+     <h4>
+      Problem 2: 255 Character Limit (Older Excel)
+     </h4>
+     <p>
+      Long descriptions may be truncated in older Excel versions.
+     </p>
+     <p>
+      <strong>
+       Solutions:
+      </strong>
+     </p>
+     <ul>
+      <li>
+       Upgrade to newer Excel version
+      </li>
+      <li>
+       Split long text across multiple cells
+      </li>
+      <li>
+       Use alternative software for initial processing
+      </li>
+     </ul>
+     <h4>
+      Problem 3: Formula Interpretation
+     </h4>
+     <div class="code-block">
+      =1+2    // Interpreted as formula, shows "3"
+-4.50   // May be interpreted as formula
++1234   // Treated as formula
+     </div>
+     <p>
+      <strong>
+       Solution:
+       </strong>
+      Prefix with apostrophe or import as text
+     </p>
+     <h3>
+      Excel Import Best Practices
+     </h3>
+     <ol>
+      <li>
+       Always use Import Wizard (Data → From Text/CSV)
+      </li>
+      <li>
+       Preview data before completing import
+      </li>
+      <li>
+       Set appropriate data types for each column
+      </li>
+      <li>
+       Save as .xlsx after import to preserve formatting
+      </li>
+      <li>
+       Use Power Query for complex imports
+      </li>
+     </ol>
+     <div class="tip-box">
+      <strong>
+       Power User Tip:
+       </strong>
+      Create an Excel template with pre-formatted columns and paste CSV data into it to avoid auto-formatting issues.
+     </div>
+     <h2 id="prevention-tips">
+      8. Prevention and Best Practices
+     </h2>
+     <p>
+      The best way to handle CSV formatting issues is to prevent them from occurring in the first place.
+     </p>
+     <h3>
+      CSV Creation Best Practices
+     </h3>
+     <h4>
+      1. Standardize Your Format
+     </h4>
+     <p>
+      Create a CSV specification document that includes:
+     </p>
+     <ul>
+      <li>
+       Delimiter choice (comma, tab, etc.)
+      </li>
+      <li>
+       Text qualifier (quotes or none)
+      </li>
+      <li>
+       Date format (YYYY-MM-DD recommended)
+      </li>
+      <li>
+       Number format (decimal separator, negative notation)
+      </li>
+      <li>
+       Character encoding (UTF-8 recommended)
+      </li>
+      <li>
+       Header row requirements
+      </li>
+     </ul>
+     <h4>
+      2. Data Validation Rules
+     </h4>
+     <div class="code-block">
+      ✓ Dates: YYYY-MM-DD format
+✓ Numbers: No thousand separators, period for decimal
+✓ Currency: No symbols, negative sign for debits
+✓ Text: Quoted if contains delimiters
+✓ Empty fields: Represented by consecutive delimiters
+     </div>
+     <h4>
+      3. Pre-Import Checklist
+     </h4>
+     <ul style="list-style-type: none;">
+      <li>
+       ☐ Open in text editor to verify structure
+      </li>
+      <li>
+       ☐ Check encoding (UTF-8 preferred)
+      </li>
+      <li>
+       ☐ Verify delimiter consistency
+      </li>
+      <li>
+       ☐ Count columns per row
+      </li>
+      <li>
+       ☐ Check for special characters
+      </li>
+      <li>
+       ☐ Validate date formats
+      </li>
+      <li>
+       ☐ Test with sample import
+      </li>
+     </ul>
+     <h3>
+      Tools for CSV Validation
+     </h3>
+     <h4>
+      Text Editors
+     </h4>
+     <ul>
+      <li>
+       <strong>
+        Notepad++:
+       </strong>
+       Shows encoding, line endings, find/replace
+      </li>
+      <li>
+       <strong>
+        VS Code:
+       </strong>
+       CSV preview, syntax highlighting
+      </li>
+      <li>
+       <strong>
+        Sublime Text:
+       </strong>
+       Powerful find/replace with regex
+      </li>
+     </ul>
+     <h4>
+      Online Validators
+     </h4>
+     <ul>
+      <li>
+       CSV Lint - Validates structure and formatting
+      </li>
+      <li>
+       CSV Schema validators - Check against predefined rules
+      </li>
+      <li>
+       Online CSV viewers - Preview without Excel interference
+      </li>
+     </ul>
+     <h4>
+      Command Line Tools
+     </h4>
+     <div class="code-block">
+      # Count fields per line
+awk -F',' '{print NF}' file.csv | sort | uniq -c
+
+# Check encoding
+file -bi file.csv
+
+# Convert encoding
+iconv -f ISO-8859-1 -t UTF-8 input.csv > output.csv
+     </div>
+     <h3>
+      Automated Fixes
+     </h3>
+     <p>
+      Consider using automated tools for common fixes:
+     </p>
+     <ol>
+      <li>
+       <strong>
+        <a href="../index.html">
+         BankCSVConverter:
+        </a>
+       </strong>
+       Automatically handles bank statement formatting issues
+      </li>
+      <li>
+       <strong>
+        Python pandas:
+       </strong>
+       Powerful data cleaning capabilities
+      </li>
+      <li>
+       <strong>
+        OpenRefine:
+       </strong>
+       Interactive data cleaning tool
+      </li>
+      <li>
+       <strong>
+        csvkit:
+       </strong>
+       Command-line CSV utilities
+      </li>
+     </ol>
+     <h3>
+      Quick Reference Card
+     </h3>
+     <div class="table-responsive">
+      <table class="example-table">
+       <tr>
+        <th>
+         Issue
+        </th>
+        <th>
+         Quick Fix
+        </th>
+       </tr>
+       <tr>
+        <td>
+         Date converts to number
+        </td>
+        <td>
+         Format as YYYY-MM-DD
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Commas in data
+        </td>
+        <td>
+         Wrap in quotes
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Leading zeros disappear
+        </td>
+        <td>
+         Import as text
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Special characters show wrong
+        </td>
+        <td>
+         Save as UTF-8
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Scientific notation
+        </td>
+        <td>
+         Format as text with quotes
+        </td>
+       </tr>
+       <tr>
+        <td>
+         Columns shift
+        </td>
+        <td>
+         Check delimiter count
+        </td>
+       </tr>
+      </table>
+     </div>
+     <h2>
+      Troubleshooting Workflow
+     </h2>
+     <p>
+      When facing CSV issues, follow this systematic approach:
+     </p>
+     <ol>
+      <li>
+       <strong>
+        Identify the Problem:
+       </strong>
+       <ul>
+        <li>
+         What exactly is wrong?
+        </li>
+        <li>
+         Which rows/columns are affected?
+        </li>
+        <li>
+         When does it occur?
+        </li>
+       </ul>
+      </li>
+      <li>
+       <strong>
+        Examine the Raw File:
+       </strong>
+       <ul>
+        <li>
+         Open in text editor
+        </li>
+        <li>
+         Check encoding
+        </li>
+        <li>
+         Look for patterns
+        </li>
+       </ul>
+      </li>
+      <li>
+       <strong>
+        Test Solutions:
+       </strong>
+       <ul>
+        <li>
+         Try fix on sample data
+        </li>
+        <li>
+         Verify results
+        </li>
+        <li>
+         Document what works
+        </li>
+       </ul>
+      </li>
+      <li>
+       <strong>
+        Apply Fix:
+       </strong>
+       <ul>
+        <li>
+         Backup original file
+        </li>
+        <li>
+         Apply to full dataset
+        </li>
+        <li>
+         Validate results
+        </li>
+       </ul>
+      </li>
+      <li>
+       <strong>
+        Prevent Recurrence:
+       </strong>
+       <ul>
+        <li>
+         Update processes
+        </li>
+        <li>
+         Document solution
+        </li>
+        <li>
+         Train team members
+        </li>
+       </ul>
+      </li>
+     </ol>
+     <h2>
+      Conclusion
+     </h2>
+     <p>
+      CSV formatting issues can be frustrating, but they're usually solvable with the right knowledge and tools. By understanding common problems and their solutions, you can save hours of manual data cleanup and ensure accurate data imports every time.
+     </p>
+     <p>
+      Remember that prevention is always better than correction. Establishing clear CSV standards, using appropriate tools, and following best practices will minimize formatting issues. When problems do arise, approach them systematically using the troubleshooting techniques outlined in this guide.
+     </p>
+     <p>
+      Whether you're dealing with bank statements, transaction logs, or any other financial data, mastering CSV formatting will make your data processing more efficient and reliable. Keep this guide handy for quick reference when you encounter formatting challenges.
+     </p>
+     <div class="tip-box">
+      <strong>
+       Save Time on Bank Statement CSVs:
+       </strong>
+       Skip the formatting headaches entirely. Our
+      <a href="../index.html">
+       automated converter
+      </a>
+       handles all these issues automatically, delivering perfectly formatted CSV files ready for your accounting software.
+     </div>
+    </div>
+   </div>
+  </main>
+  <!-- Standardized Footer -->
+  <footer>
+   <div class="container">
+    <div class="footer-content">
+     <div class="footer-section">
+      <h4>
+       Product
+      </h4>
+      <ul>
+       <li>
+        <a href="../features.html">
+         Features
+        </a>
+       </li>
+       <li>
+        <a href="../how-it-works.html">
+         How It Works
+        </a>
+       </li>
+       <li>
+        <a href="../pricing.html">
+         Pricing
+        </a>
+       </li>
+       </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Company
+      </h4>
+      <ul>
+       <li>
+        <a href="../about.html">
+         About
+        </a>
+       </li>
+       <li>
+        <a href="../blog.html">
+         Blog
+        </a>
+       </li>
+       <li>
+        <a href="../contact.html">
+         Contact
+        </a>
+       </li>
+       <li>
+        <a href="../careers.html">
+         Careers
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Support
+      </h4>
+      <ul>
+       <li>
+        <a href="../help.html">
+         Help Center
+        </a>
+       </li>
+       <li>
+        <a href="../faq.html">
+         FAQ
+        </a>
+       </li>
+       <li>
+        <a href="../security.html">
+         Security
+        </a>
+       </li>
+       <li>
+        <a href="../status.html">
+         Status
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-section">
+      <h4>
+       Legal
+      </h4>
+      <ul>
+       <li>
+        <a href="../privacy.html">
+         Privacy Policy
+        </a>
+       </li>
+       <li>
+        <a href="../terms.html">
+         Terms of Service
+        </a>
+       </li>
+       <li>
+        <a href="../gdpr.html">
+         GDPR
+        </a>
+       </li>
+       <li>
+        <a href="../ccpa.html">
+         CCPA
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>
+      © 2025 BankCSVConverter. All rights reserved.
+     </p>
+    </div>
+   </div>
+  </footer>
+  <!-- Standardized Scripts -->
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+  </script>
+  <script src="/js/production.js">
+  </script>
+  <button aria-label="Scroll to top" class="scroll-to-top" id="scrollToTop">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+ </body>
+</html>
