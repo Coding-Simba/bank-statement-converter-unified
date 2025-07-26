@@ -160,5 +160,19 @@
     ],
     "file_size": 256826,
     "status": "pending_review"
+  },
+  "c5c9f912bfca5ea09dee31a097d8d7d40a2b3e77eaf41459743d96adb54b5226": {
+    "original_name": "5f3d874d-6474-4bf6-a44f-75e571561fb2.pdf",
+    "saved_name": "20250727_012333_c5c9f912_5f3d874d-6474-4bf6-a44f-75e571561fb2.pdf",
+    "saved_path": "failed_pdfs/20250727_012333_c5c9f912_5f3d874d-6474-4bf6-a44f-75e571561fb2.pdf",
+    "timestamp": "20250727_012333",
+    "date_saved": "2025-07-27T01:23:33.563465",
+    "transactions_found": 0,
+    "valid_transactions": 0,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [],
+    "file_size": 563284,
+    "status": "pending_review"
   }
 }

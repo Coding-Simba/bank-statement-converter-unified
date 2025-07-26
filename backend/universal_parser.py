@@ -19,6 +19,11 @@ try:
 except ImportError:
     ACCURATE_COLUMN_PARSER_AVAILABLE = False
 try:
+    from .summary_statement_parser import parse_summary_statement
+    SUMMARY_PARSER_AVAILABLE = True
+except ImportError:
+    SUMMARY_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -512,6 +517,17 @@ def parse_universal_pdf(pdf_path):
                     print(f"Standard OCR extraction failed: {e}")
         else:
             print(f"OCR not available: {message}")
+    
+    # Method 7: Try summary statement parser for statements without transaction details
+    if len(transactions) == 0 and SUMMARY_PARSER_AVAILABLE:
+        try:
+            print("No transactions found, trying summary statement parser...")
+            summary_transactions = parse_summary_statement(pdf_path)
+            if summary_transactions:
+                print(f"Extracted {len(summary_transactions)} summary items as transactions")
+                transactions = summary_transactions
+        except Exception as e:
+            print(f"Summary parser failed: {e}")
     
     # Remove duplicates based on date, description, and amount
     seen = set()
