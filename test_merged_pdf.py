@@ -1,39 +1,33 @@
 #!/usr/bin/env python3
-"""Test the merged PDF to see what's happening"""
+"""Test merged statements PDF with accurate parser"""
 
-import sys
-sys.path.append('.')
+from backend.accurate_column_parser import parse_accurate_columns
 
-from backend.universal_parser import parse_universal_pdf
-import os
+pdf_path = '/Users/MAC/Desktop/pdfs/merged_statements_2025-07-26.pdf'
 
-pdf_path = "/Users/MAC/Downloads/merged_statements_2025-07-26.pdf"
+print("=== TESTING MERGED STATEMENTS PDF ===")
+print("=" * 60)
 
-if os.path.exists(pdf_path):
-    print(f"Testing PDF: {pdf_path}")
-    print(f"File size: {os.path.getsize(pdf_path) / 1024 / 1024:.2f} MB")
-    print("-" * 60)
-    
-    transactions = parse_universal_pdf(pdf_path)
-    
-    print(f"\nFound {len(transactions)} transactions")
-    
-    if transactions:
-        print("\nFirst 5 transactions:")
-        for i, trans in enumerate(transactions[:5]):
-            print(f"\n{i+1}. Date: {trans.get('date')}")
-            print(f"   Description: {trans.get('description')}")
-            print(f"   Amount: {trans.get('amount')}")
-    else:
-        print("\nNo transactions found!")
-        
-        # Let's try to see what's in the PDF
-        import PyPDF2
-        print("\nTrying to extract raw text from first page:")
-        with open(pdf_path, 'rb') as file:
-            pdf_reader = PyPDF2.PdfReader(file)
-            if len(pdf_reader.pages) > 0:
-                text = pdf_reader.pages[0].extract_text()
-                print(text[:500])  # First 500 chars
-else:
-    print(f"PDF not found at {pdf_path}")
+transactions = parse_accurate_columns(pdf_path)
+
+print(f"\nTotal transactions: {len(transactions)}")
+
+# Group by type
+deposits = [t for t in transactions if t.get('amount', 0) > 0]
+withdrawals = [t for t in transactions if t.get('amount', 0) < 0]
+
+print(f"\nDeposits: {len(deposits)} transactions")
+if deposits:
+    print(f"Total deposits: ${sum(t['amount'] for t in deposits):,.2f}")
+    for i, trans in enumerate(deposits[:5]):
+        print(f"  {i+1}. {trans.get('date_string', 'N/A')} - {trans.get('description', 'N/A')}: ${trans.get('amount', 0):.2f}")
+    if len(deposits) > 5:
+        print(f"  ... and {len(deposits) - 5} more")
+
+print(f"\nWithdrawals: {len(withdrawals)} transactions")
+if withdrawals:
+    print(f"Total withdrawals: ${sum(t['amount'] for t in withdrawals):,.2f}")
+    for i, trans in enumerate(withdrawals[:5]):
+        print(f"  {i+1}. {trans.get('date_string', 'N/A')} - {trans.get('description', 'N/A')}: ${trans.get('amount', 0):.2f}")
+    if len(withdrawals) > 5:
+        print(f"  ... and {len(withdrawals) - 5} more")

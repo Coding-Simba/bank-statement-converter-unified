@@ -100,5 +100,65 @@
     ],
     "file_size": 2411891,
     "status": "pending_review"
+  },
+  "0c55e6662ef748b3b84b8984dbeb566fd4b719f61237255297e65a43f2b28ff9": {
+    "original_name": "Bank-Statement-Template-4-TemplateLab.pdf",
+    "saved_name": "20250727_005204_0c55e666_Bank-Statement-Template-4-TemplateLab.pdf",
+    "saved_path": "failed_pdfs/20250727_005204_0c55e666_Bank-Statement-Template-4-TemplateLab.pdf",
+    "timestamp": "20250727_005204",
+    "date_saved": "2025-07-27T00:52:04.106605",
+    "transactions_found": 9,
+    "valid_transactions": 9,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [
+      {
+        "description": "Petron - C5 Station",
+        "amount": 223.26,
+        "amount_string": "223.26"
+      },
+      {
+        "description": "South Star Drug",
+        "amount": 313.39,
+        "amount_string": "313.39"
+      },
+      {
+        "description": "Rosewood Condominum",
+        "amount": 582.96,
+        "amount_string": "582.96"
+      }
+    ],
+    "file_size": 2165481,
+    "status": "pending_review"
+  },
+  "a17b26f9924c40e1910cb503e39c2f888ff00eb860844668bdbe991693c0c831": {
+    "original_name": "Bank Statement Example Final.pdf",
+    "saved_name": "20250727_005210_a17b26f9_Bank Statement Example Final.pdf",
+    "saved_path": "failed_pdfs/20250727_005210_a17b26f9_Bank Statement Example Final.pdf",
+    "timestamp": "20250727_005210",
+    "date_saved": "2025-07-27T00:52:10.264763",
+    "transactions_found": 12,
+    "valid_transactions": 12,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [
+      {
+        "description": "1 February     Card payment - High St Petrol Station         24.50",
+        "amount": 39975.5,
+        "amount_string": "39,975.50"
+      },
+      {
+        "description": "Direct debit - Green Mobile Phone Bill        20.00",
+        "amount": 39955.5,
+        "amount_string": "39,955.50"
+      },
+      {
+        "description": "3 February     Cash Withdrawal - YourBank, Anytown           30.00",
+        "amount": 39925.5,
+        "amount_string": "39,925.50"
+      }
+    ],
+    "file_size": 256826,
+    "status": "pending_review"
   }
 }

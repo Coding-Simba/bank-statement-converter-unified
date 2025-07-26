@@ -1,75 +1,86 @@
 #!/usr/bin/env python3
-"""Test PDF parser with all uploaded PDFs"""
+"""Test all user PDFs and verify transaction extraction"""
 
 from backend.universal_parser import parse_universal_pdf
 import os
-import glob
 
-# Get all PDFs in uploads directory
-pdf_files = glob.glob('./uploads/*.pdf')
+# List of PDFs to test
+pdf_files = [
+    '/Users/MAC/Desktop/pdfs/merged_statements_2025-07-26.pdf',
+    '/Users/MAC/Desktop/pdfs/Bank-Statement-Template-4-TemplateLab.pdf',
+    '/Users/MAC/Desktop/pdfs/dummy_statement.pdf',
+    '/Users/MAC/Desktop/pdfs/Bank Statement Example Final.pdf'
+]
 
-print(f"Found {len(pdf_files)} PDF files to test")
-print("=" * 60)
+print("=== TESTING ALL USER PDFs ===")
+print("=" * 80)
 
-results = []
+all_results = {}
 
 for pdf_path in pdf_files:
-    print(f"\nTesting: {os.path.basename(pdf_path)}")
-    print("-" * 40)
+    print(f"\n\nTesting: {os.path.basename(pdf_path)}")
+    print("-" * 60)
+    
+    if not os.path.exists(pdf_path):
+        print(f"ERROR: PDF file not found at {pdf_path}")
+        continue
     
     try:
         transactions = parse_universal_pdf(pdf_path)
         
-        # Count valid vs header transactions
-        valid_count = 0
-        header_count = 0
+        print(f"\nTotal transactions extracted: {len(transactions)}")
         
-        for trans in transactions:
-            desc = trans.get('description', '').lower()
-            if any(word in desc for word in ['bank', 'america', 'p.o.', 'box', 'statement', 'account', 'issue', 'period', 'customer service']):
-                header_count += 1
-            else:
-                valid_count += 1
+        # Group by type
+        deposits = [t for t in transactions if t.get('amount', 0) > 0]
+        withdrawals = [t for t in transactions if t.get('amount', 0) < 0]
         
-        results.append({
-            'file': os.path.basename(pdf_path),
+        print(f"\nDeposits: {len(deposits)} transactions")
+        if deposits:
+            total_deposits = sum(t['amount'] for t in deposits)
+            print(f"Total deposits: ${total_deposits:,.2f}")
+            for i, trans in enumerate(deposits[:3]):  # Show first 3
+                print(f"  {i+1}. {trans.get('date_string', 'N/A')} - {trans.get('description', 'N/A')}: ${trans.get('amount', 0):.2f}")
+            if len(deposits) > 3:
+                print(f"  ... and {len(deposits) - 3} more")
+        
+        print(f"\nWithdrawals: {len(withdrawals)} transactions")
+        if withdrawals:
+            total_withdrawals = sum(t['amount'] for t in withdrawals)
+            print(f"Total withdrawals: ${total_withdrawals:,.2f}")
+            for i, trans in enumerate(withdrawals[:3]):  # Show first 3
+                print(f"  {i+1}. {trans.get('date_string', 'N/A')} - {trans.get('description', 'N/A')}: ${trans.get('amount', 0):.2f}")
+            if len(withdrawals) > 3:
+                print(f"  ... and {len(withdrawals) - 3} more")
+        
+        # Store results
+        all_results[pdf_path] = {
             'total': len(transactions),
-            'valid': valid_count,
-            'headers': header_count
-        })
+            'deposits': len(deposits),
+            'withdrawals': len(withdrawals),
+            'transactions': transactions
+        }
         
-        print(f"Total transactions: {len(transactions)}")
-        print(f"Valid transactions: {valid_count}")
-        print(f"Header/junk entries: {header_count}")
-        
-        # Show first valid transaction if any
-        if valid_count > 0:
-            for trans in transactions:
-                desc = trans.get('description', '').lower()
-                if not any(word in desc for word in ['bank', 'america', 'p.o.', 'box', 'statement', 'account', 'issue', 'period', 'customer service']):
-                    print(f"\nFirst valid transaction:")
-                    print(f"  Date: {trans.get('date_string', 'N/A')}")
-                    print(f"  Description: {trans.get('description', 'N/A')}")
-                    print(f"  Amount: ${trans.get('amount', 0):.2f}")
-                    break
-                    
     except Exception as e:
-        print(f"Error: {e}")
-        results.append({
-            'file': os.path.basename(pdf_path),
-            'total': 0,
-            'valid': 0,
-            'headers': 0,
-            'error': str(e)
-        })
+        print(f"ERROR parsing PDF: {e}")
+        import traceback
+        traceback.print_exc()
+        all_results[pdf_path] = {'error': str(e)}
 
-print("\n" + "=" * 60)
-print("SUMMARY:")
-print("=" * 60)
+print("\n\n" + "=" * 80)
+print("SUMMARY OF ALL TESTS")
+print("=" * 80)
 
-for result in results:
-    print(f"\n{result['file']}:")
+for pdf_path, result in all_results.items():
+    print(f"\n{os.path.basename(pdf_path)}:")
     if 'error' in result:
         print(f"  ERROR: {result['error']}")
     else:
-        print(f"  Total: {result['total']}, Valid: {result['valid']}, Headers: {result['headers']}")
+        print(f"  Total: {result['total']} transactions")
+        print(f"  Deposits: {result['deposits']}")
+        print(f"  Withdrawals: {result['withdrawals']}")
+
+# Check for potential issues
+print("\n\nPOTENTIAL ISSUES:")
+for pdf_path, result in all_results.items():
+    if 'error' not in result and result['total'] <= 1:
+        print(f"⚠️  {os.path.basename(pdf_path)}: Only {result['total']} transaction(s) found - may need investigation")

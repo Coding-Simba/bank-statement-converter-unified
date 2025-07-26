@@ -9,6 +9,16 @@ from .rabobank_parser import parse_rabobank_pdf
 from .pdftotext_parser import parse_pdftotext_output
 from .ocr_parser import parse_scanned_pdf, is_scanned_pdf, check_ocr_requirements
 try:
+    from .fixed_column_parser import parse_fixed_column_layout
+    FIXED_COLUMN_PARSER_AVAILABLE = True
+except ImportError:
+    FIXED_COLUMN_PARSER_AVAILABLE = False
+try:
+    from .accurate_column_parser import parse_accurate_columns
+    ACCURATE_COLUMN_PARSER_AVAILABLE = True
+except ImportError:
+    ACCURATE_COLUMN_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -422,7 +432,29 @@ def parse_universal_pdf(pdf_path):
             except Exception as e2:
                 print(f"pdfplumber extraction also failed: {e2}")
     
-    # Method 4: Try pdftotext command line tool
+    # Method 4: Try accurate column parser for bank statements with money in/out columns
+    if not transactions and ACCURATE_COLUMN_PARSER_AVAILABLE:
+        try:
+            print("Trying accurate column parser...")
+            extracted = parse_accurate_columns(pdf_path)
+            if extracted:
+                transactions.extend(extracted)
+                print(f"Extracted {len(extracted)} transactions using accurate column parser")
+        except Exception as e:
+            print(f"Accurate column parser failed: {e}")
+    
+    # Method 4b: Try fixed column parser for bank statements with money in/out columns
+    if not transactions and FIXED_COLUMN_PARSER_AVAILABLE:
+        try:
+            print("Trying fixed column parser for money in/out layout...")
+            extracted = parse_fixed_column_layout(pdf_path)
+            if extracted:
+                transactions.extend(extracted)
+                print(f"Extracted {len(extracted)} transactions using fixed column parser")
+        except Exception as e:
+            print(f"Fixed column parser failed: {e}")
+    
+    # Method 5: Try pdftotext command line tool
     if not transactions:
         try:
             extracted = parse_pdftotext_output(pdf_path)
@@ -432,7 +464,7 @@ def parse_universal_pdf(pdf_path):
         except Exception as e:
             print(f"pdftotext extraction failed: {e}")
     
-    # Method 5: Fallback to PyPDF2 for text extraction
+    # Method 6: Fallback to PyPDF2 for text extraction
     if not transactions:
         try:
             with open(pdf_path, 'rb') as file:
@@ -449,7 +481,7 @@ def parse_universal_pdf(pdf_path):
         except Exception as e:
             print(f"PyPDF2 extraction failed: {e}")
     
-    # Method 6: OCR for scanned PDFs or complex layouts (last resort)
+    # Method 7: OCR for scanned PDFs or complex layouts (last resort)
     # Always try OCR if we have very few transactions
     if len(transactions) <= 1:
         # Check if OCR is available

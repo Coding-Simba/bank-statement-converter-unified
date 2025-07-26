@@ -1,96 +1,61 @@
 #!/usr/bin/env python3
-"""Analyze PDF structure to understand transaction layout"""
+"""Analyze PDF structure to understand transaction format"""
 
-import os
-import subprocess
-import re
+import PyPDF2
+import pdfplumber
 
-pdf_path = './test_example.pdf'
+pdf_path = '/Users/MAC/Desktop/pdfs/Bank Statement Example Final.pdf'
 
-print("=== PDF STRUCTURE ANALYSIS ===")
+print("=== ANALYZING PDF STRUCTURE ===")
 print("=" * 60)
 
-# Extract text with layout from both pages
-print("\n1. Full text extraction with layout (both pages):")
-print("-" * 40)
-
-# Use pdftotext to extract each page separately
-for page in [1, 2]:
-    print(f"\n--- Page {page} ---")
-    result = subprocess.run(['pdftotext', '-layout', '-f', str(page), '-l', str(page), pdf_path, '-'], 
-                          capture_output=True, text=True)
-    if result.returncode == 0:
-        print(result.stdout)
-        print(f"\n[Page {page} has {len(result.stdout)} characters]")
-    else:
-        print(f"Error: {result.stderr}")
-
-# Try with pdf2txt which sometimes works better
-print("\n\n2. Using pdf2txt.py (if available):")
-print("-" * 40)
-result = subprocess.run(['pdf2txt.py', pdf_path], capture_output=True, text=True)
-if result.returncode == 0:
-    text = result.stdout
-    # Look for transaction patterns
-    lines = text.split('\n')
-    transaction_lines = []
-    
-    for i, line in enumerate(lines):
-        # Look for dates or amounts
-        if re.search(r'\d{1,2}[/-]\d{1,2}[/-]\d{2,4}', line) or \
-           re.search(r'[$-]?\d+\.\d{2}', line):
-            transaction_lines.append((i, line))
-    
-    print(f"Found {len(transaction_lines)} potential transaction lines:")
-    for line_num, line in transaction_lines[:20]:  # Show first 20
-        print(f"Line {line_num}: {line.strip()}")
-else:
-    print("pdf2txt.py not available or error occurred")
-
-# Use OCR specifically on page 2
-print("\n\n3. OCR on page 2 only:")
-print("-" * 40)
-
-# First extract page 2 as a separate PDF
+# First, get basic info
 try:
-    from pypdf import PdfReader, PdfWriter
-    
-    reader = PdfReader(pdf_path)
-    writer = PdfWriter()
-    writer.add_page(reader.pages[1])  # Page 2 (0-indexed)
-    
-    with open('page2_only.pdf', 'wb') as f:
-        writer.write(f)
-    
-    print("Extracted page 2 to page2_only.pdf")
-    
-    # Now OCR just page 2
-    from backend.ocr_parser import parse_scanned_pdf
-    transactions = parse_scanned_pdf('page2_only.pdf')
-    print(f"OCR found {len(transactions)} transactions on page 2")
-    
-    if len(transactions) == 0:
-        # Try to get raw OCR text
-        print("\nTrying raw OCR text extraction:")
-        result = subprocess.run(['tesseract', 'page2_only.pdf', '-', '--psm', '6'], 
-                              capture_output=True, text=True)
-        if result.returncode == 0:
-            print("Raw OCR text:")
-            print(result.stdout[:1000])  # First 1000 chars
-        else:
-            print(f"Tesseract error: {result.stderr}")
-            
+    with open(pdf_path, 'rb') as file:
+        pdf_reader = PyPDF2.PdfReader(file)
+        print(f"Number of pages: {len(pdf_reader.pages)}")
+        
+        # Extract first page text
+        first_page_text = pdf_reader.pages[0].extract_text()
+        print("\nFirst 500 characters of page 1:")
+        print("-" * 40)
+        print(first_page_text[:500])
 except Exception as e:
-    print(f"Error: {e}")
+    print(f"PyPDF2 error: {e}")
+
+# Now use pdfplumber for better table detection
+print("\n\nUSING PDFPLUMBER FOR TABLES:")
+print("=" * 60)
+
+try:
+    with pdfplumber.open(pdf_path) as pdf:
+        for page_num, page in enumerate(pdf.pages[:2]):  # First 2 pages
+            print(f"\nPage {page_num + 1}:")
+            
+            # Extract tables
+            tables = page.extract_tables()
+            print(f"Found {len(tables)} tables")
+            
+            for i, table in enumerate(tables):
+                if table and len(table) > 0:
+                    print(f"\nTable {i+1} (first 5 rows):")
+                    for row_num, row in enumerate(table[:5]):
+                        print(f"  Row {row_num}: {row}")
+                    
+                    if len(table) > 5:
+                        print(f"  ... and {len(table) - 5} more rows")
+            
+            # Also get raw text
+            text = page.extract_text()
+            if text:
+                lines = text.split('\n')
+                print(f"\nSample text lines from page {page_num + 1}:")
+                # Find lines that might be transactions
+                for line in lines[:30]:  # First 30 lines
+                    if any(char.isdigit() for char in line) and len(line) > 20:
+                        print(f"  > {line}")
+                        
+except Exception as e:
+    print(f"pdfplumber error: {e}")
     import traceback
     traceback.print_exc()
-
-# Check with pdfimages if page 2 has extractable images
-print("\n\n4. Checking for images in PDF:")
-print("-" * 40)
-result = subprocess.run(['pdfimages', '-list', pdf_path], capture_output=True, text=True)
-if result.returncode == 0:
-    print("Images found:")
-    print(result.stdout)
-else:
-    print("pdfimages not available or error")
