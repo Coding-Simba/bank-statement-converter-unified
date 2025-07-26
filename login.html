@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Log in to Bank Statement Converter - Access your account to convert bank statements to CSV/Excel.">
-    <title>Log In - Bank Statement Converter</title>
-    <link rel="stylesheet" href="/css/modern-homepage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Log in to Bank Statement Converter - Access your account to convert bank statements to CSV/Excel." name="description"/>
+<link href="https://bankcsvconverter.com/login.html" rel="canonical"/><title>Log In - Bank Statement Converter</title>
+<link href="/css/modern-homepage.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<style>
         .login-container {
             min-height: calc(100vh - 70px);
             display: flex;
@@ -143,80 +144,71 @@
             font-weight: 600;
         }
     </style>
-  <link href="/css/blog-fix.css" rel="stylesheet"/>
-</head>
+<link href="/css/blog-fix.css" rel="stylesheet">
+</link></head>
 <body>
-    <!-- Simplified Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-left">
-                <a href="/" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                    </div>
-                    <span class="logo-text">BankCSV</span>
-                </a>
-            </div>
-            <div class="nav-right">
-                <a href="/signup.html" class="nav-link">Don't have an account? Sign Up</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Login Form -->
-    <div class="login-container">
-        <div class="login-box">
-            <div class="login-header">
-                <h1>Welcome Back</h1>
-                <p>Log in to your account</p>
-            </div>
-
-            <form id="loginForm">
-                <div class="social-login">
-                    <button type="button" class="social-btn">
-                        <i class="fab fa-google" style="color: #4285f4;"></i>
+<!-- Simplified Navigation -->
+<nav class="navbar">
+<div class="nav-container">
+<div class="nav-left">
+<a class="logo" href="/">
+<div class="logo-icon">
+<i class="fas fa-file-invoice-dollar"></i>
+</div>
+<span class="logo-text">BankCSV</span>
+</a>
+</div>
+<div class="nav-right">
+<a class="nav-link" href="/signup.html">Don't have an account? Sign Up</a>
+</div>
+</div>
+</nav>
+<!-- Login Form -->
+<div class="login-container">
+<div class="login-box">
+<div class="login-header">
+<h1>Welcome Back</h1>
+<p>Log in to your account</p>
+</div>
+<form id="loginForm">
+<div class="social-login">
+<button class="social-btn" type="button">
+<i class="fab fa-google" style="color: #4285f4;"></i>
                         Google
                     </button>
-                    <button type="button" class="social-btn">
-                        <i class="fab fa-microsoft" style="color: #00a4ef;"></i>
+<button class="social-btn" type="button">
+<i class="fab fa-microsoft" style="color: #00a4ef;"></i>
                         Microsoft
                     </button>
-                </div>
-
-                <div class="divider">
-                    <span>or log in with email</span>
-                </div>
-
-                <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" id="email" name="email" class="form-input" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" id="password" name="password" class="form-input" required>
-                </div>
-
-                <div class="form-footer">
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember" name="remember">
-                        <label for="remember">Remember me</label>
-                    </div>
-                    <a href="/forgot-password.html" class="forgot-link">Forgot password?</a>
-                </div>
-
-                <button type="submit" class="login-btn">
+</div>
+<div class="divider">
+<span>or log in with email</span>
+</div>
+<div class="form-group">
+<label class="form-label" for="email">Email Address</label>
+<input class="form-input" id="email" name="email" required="" type="email"/>
+</div>
+<div class="form-group">
+<label class="form-label" for="password">Password</label>
+<input class="form-input" id="password" name="password" required="" type="password"/>
+</div>
+<div class="form-footer">
+<div class="remember-me">
+<input id="remember" name="remember" type="checkbox"/>
+<label for="remember">Remember me</label>
+</div>
+<a class="forgot-link" href="/forgot-password.html">Forgot password?</a>
+</div>
+<button class="login-btn" type="submit">
                     Log In
                 </button>
-            </form>
-
-            <div class="signup-link">
+</form>
+<div class="signup-link">
                 New to BankCSV? <a href="/signup.html">Create an account</a>
-            </div>
-        </div>
-    </div>
-
-    <script>
+</div>
+</div>
+</div>
+<script>
         // Handle form submission
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();

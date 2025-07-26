@@ -1,123 +1,116 @@
-# Bank Statement Converter Backend
+# Bank Statement Split by Date Backend
 
-This is the backend API for the Bank Statement Converter application, built with FastAPI and SQLAlchemy.
+This backend service provides functionality to split PDF bank statements based on transaction dates and export filtered transactions as CSV files.
 
 ## Features
 
-- **User Authentication**: JWT-based authentication with access and refresh tokens
-- **Account Types**: 
-  - No Account: 3 PDFs/day (tracked by IP/session)
-  - Free Account: 10 PDFs/day
-  - Premium: Unlimited conversions
-- **Statement Management**: Convert PDFs to CSV with automatic cleanup after 1 hour
-- **Rate Limiting**: Daily generation limits based on account type
-- **Feedback System**: Users can rate and comment on conversions
+- **PDF Parsing**: Extracts transactions from PDF bank statements using multiple methods (tabula-py and PyPDF2)
+- **Date Range Filtering**: Filter transactions by custom date ranges or preset periods
+- **Multiple Date Formats**: Supports various date formats commonly used in bank statements
+- **CSV Export**: Exports filtered transactions in a clean CSV format
+- **Preset Date Ranges**: Quick selection for common periods (last month, quarter, year, etc.)
 
-## Installation
+## Setup
 
-1. Create a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-2. Install dependencies:
+1. **Install Python dependencies**:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Copy `.env.example` to `.env` and configure:
+2. **Install Java** (required for tabula-py):
+- tabula-py requires Java 8+ to be installed
+- Download from: https://www.java.com/download/
+
+3. **Run the Flask server**:
 ```bash
-cp .env.example .env
+python split-by-date.py
 ```
 
-4. Initialize the database:
-```bash
-python init_db.py
-```
-
-## Running the Server
-
-```bash
-# Development mode with auto-reload
-uvicorn main:app --reload --host 0.0.0.0 --port 5000
-
-# Or using the Python module
-python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 5000
-```
+The server will start on `http://localhost:5000`
 
 ## API Endpoints
 
-### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - Login user
-- `GET /api/auth/profile` - Get user profile (auth required)
-- `POST /api/auth/logout` - Logout user
-- `POST /api/auth/refresh` - Refresh access token
-- `GET /api/auth/session` - Get/create session for anonymous users
+### POST `/api/split-statement`
 
-### Statements
-- `GET /api/check-limit` - Check generation limit
-- `POST /api/convert` - Convert PDF to CSV
-- `GET /api/user/statements` - Get user's statements (auth required)
-- `GET /api/statement/{id}/download` - Download converted statement
+Splits a PDF bank statement by date range and returns a CSV file.
 
-### Feedback
-- `POST /api/feedback` - Submit feedback
-- `GET /api/feedback/stats` - Get feedback statistics
+**Request:**
+- Method: `POST`
+- Content-Type: `multipart/form-data`
+- Parameters:
+  - `file`: PDF file (required)
+  - `preset`: Date range preset (optional) - Options: `last_month`, `last_quarter`, `last_3_months`, `last_6_months`, `year_to_date`, `last_year`
+  - `start_date`: Custom start date in YYYY-MM-DD format (required if preset not provided)
+  - `end_date`: Custom end date in YYYY-MM-DD format (required if preset not provided)
 
-### Utility
-- `GET /` - API information
-- `GET /health` - Health check
+**Response:**
+- Success: CSV file download with filtered transactions
+- Error: JSON with error message
 
-## Database Schema
+### POST `/api/test-extraction`
 
-### Users Table
-- `id`: Primary key
-- `email`: Unique email address
-- `password_hash`: Bcrypt hashed password
-- `account_type`: free/premium
-- `daily_generations`: Current day's generation count
-- `last_generation_reset`: Last reset timestamp
+Test endpoint to check PDF extraction without filtering.
 
-### Statements Table
-- `id`: Primary key
-- `user_id`: Foreign key to users (nullable)
-- `session_id`: For anonymous users
-- `filename`: Generated filename
-- `file_path`: Full path to file
-- `original_filename`: User's filename
-- `expires_at`: Auto-deletion time
+**Request:**
+- Method: `POST`
+- Content-Type: `multipart/form-data`
+- Parameters:
+  - `file`: PDF file (required)
 
-### Feedback Table
-- `id`: Primary key
-- `user_id`: Foreign key to users (nullable)
-- `statement_id`: Foreign key to statements
-- `rating`: 1-5 star rating
-- `comment`: Optional text feedback
+**Response:**
+- JSON with extraction results including total transactions and date range
 
-### Generation Tracking Table
-- `id`: Primary key
-- `ip_address`: Client IP
-- `session_id`: Session identifier
-- `generation_count`: Daily count
-- `date`: Current date
+## Transaction Extraction
 
-## Security
+The backend uses multiple methods to extract transactions:
 
-- Passwords are hashed using bcrypt
-- JWT tokens for authentication
-- Session IDs for anonymous user tracking
-- File access validation
-- Rate limiting to prevent abuse
+1. **Tabula-py**: Attempts to extract data from tables in the PDF
+2. **PyPDF2**: Falls back to text extraction with regex patterns
 
-## TODO
+Supported transaction patterns:
+- `MM/DD/YYYY Description Amount`
+- `DD-MMM-YYYY Description Amount`
+- Various date formats with reference numbers
 
-- Implement actual PDF to CSV conversion logic
-- Add admin endpoints
-- Implement file virus scanning
-- Add comprehensive logging
-- Set up automated tests
-- Add API documentation (Swagger/ReDoc)
-- Implement webhook notifications
-- Add background job queue for conversions
+## Date Formats Supported
+
+- MM/DD/YYYY
+- MM-DD-YYYY
+- YYYY-MM-DD
+- DD/MM/YYYY
+- DD-MM-YYYY
+- MMM DD, YYYY
+- MMMM DD, YYYY
+- MM/DD/YY
+- DD-MMM-YYYY
+
+## Error Handling
+
+The API returns appropriate error messages for:
+- Invalid file types
+- Missing required parameters
+- Invalid date formats
+- No transactions found
+- PDF parsing errors
+
+## Security Considerations
+
+- File size limit: 50MB
+- Only PDF files are accepted
+- Uploaded files are temporarily stored and deleted after processing
+- CORS is enabled for local development
+
+## Troubleshooting
+
+1. **"No transactions found"**: 
+   - Ensure the PDF contains transaction data
+   - Check if the PDF is text-based (not scanned image)
+   - Try the test extraction endpoint to debug
+
+2. **Java not found error**:
+   - Install Java 8 or higher
+   - Ensure Java is in your system PATH
+
+3. **Date parsing errors**:
+   - Check if transaction dates match supported formats
+   - Ensure date range is valid (start date before end date)

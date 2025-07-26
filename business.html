@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bank Statement Converter for Business - Streamline financial workflows, automate data entry, and save hours with our enterprise solution.">
-    <title>Business Solutions - Bank Statement Converter</title>
+    <meta name="description" content="Enterprise bank statement conversion for businesses. Team collaboration, API access, bulk processing, and custom integrations. SOC 2 certified.">
+    <title>Business Solutions - Bank Statement Converter | Enterprise PDF to CSV</title>
+    <link rel="canonical" href="https://bankcsvconverter.com/business.html">
     <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="/css/nav-fix.css">
+    <link rel="stylesheet" href="/css/dropdown-fix.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link href="/css/blog-fix.css" rel="stylesheet"/>
+    <link href="/css/blog-fix.css" rel="stylesheet"/>
 </head>
 <body>
-    <!-- Copy navigation from index.html -->
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-left">
@@ -27,22 +30,34 @@
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="dropdown-menu">
-                            <a href="/#convert" class="dropdown-item">Convert PDF</a>
-                            <a href="#merge" class="dropdown-item">Merge Statements</a>
-                            <a href="#split" class="dropdown-item">Split by Date</a>
-                            <a href="#analyze" class="dropdown-item">Analyze Transactions</a>
+                            <a href="/convert-pdf.html" class="dropdown-item">
+                                <i class="fas fa-file-pdf"></i>
+                                Convert PDF
+                            </a>
+                            <a href="/merge-statements.html" class="dropdown-item">
+                                <i class="fas fa-object-group"></i>
+                                Merge Statements
+                            </a>
+                            <a href="/split-by-date.html" class="dropdown-item">
+                                <i class="fas fa-cut"></i>
+                                Split by Date
+                            </a>
+                            <a href="/analyze-transactions.html" class="dropdown-item">
+                                <i class="fas fa-chart-line"></i>
+                                Analyze Transactions
+                            </a>
                         </div>
                     </div>
                     <a href="/#features" class="nav-link">Features</a>
                     <a href="/#banks" class="nav-link">Supported Banks</a>
                     <a href="/blog.html" class="nav-link">Blog</a>
-                    </div>
+                </div>
             </div>
             <div class="nav-right">
                 <a href="/pricing.html" class="nav-link desktop-only">Pricing</a>
                 <a href="/business.html" class="nav-link desktop-only active">Business</a>
                 <a href="/login.html" class="nav-link">Log In</a>
-                <a href="/signup.html" class="btn-primary">Sign Up Free</a>
+                <a href="/signup.html" class="btn-primary">Sign Up</a>
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -50,111 +65,634 @@
         </div>
     </nav>
 
-    <!-- Business Hero -->
-    <section class="hero" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 80px 0;">
-        <div class="container">
-            <h1 style="color: white; font-size: 3rem; margin-bottom: 1.5rem;">Bank Statement Converter for Business</h1>
-            <p style="font-size: 1.5rem; margin-bottom: 2rem; opacity: 0.95;">
-                Automate financial data processing for your entire organization
-            </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="/signup.html" class="btn-cta" style="background: white; color: #667eea;">
-                    Sign Up Free
-                </a>
-                <a href="#demo" class="btn-cta" style="background: transparent; border: 2px solid white; color: white;">
-                    Request a Demo
-                </a>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="/#features" class="mobile-link">Features</a>
+            <a href="/#banks" class="mobile-link">Supported Banks</a>
+            <a href="/blog.html" class="mobile-link">Blog</a>
+            <a href="/pricing.html" class="mobile-link">Pricing</a>
+            <a href="/business.html" class="mobile-link active">Business</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="breadcrumb">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <span class="separator">›</span>
+            <span>Business Solutions</span>
+        </div>
+        
+        <h1 class="hero-title" style="color: white; max-width: 900px; margin: 0 auto 1.5rem;">
+            Enterprise Bank Statement Conversion for Growing Teams
+        </h1>
+        
+        <p style="font-size: 1.5rem; color: rgba(255,255,255,0.95); max-width: 700px; margin: 0 auto 2.5rem; line-height: 1.6;">
+            Automate financial data processing across your entire organization with enterprise-grade security and seamless integrations
+        </p>
+
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+            <a href="/signup.html" class="btn-cta" style="background: white; color: #667eea; padding: 1rem 2rem; font-size: 1.1rem;">
+                <i class="fas fa-rocket"></i> Get Started
+            </a>
+            <a href="#demo" class="btn-cta" style="background: transparent; border: 2px solid white; color: white; padding: 1rem 2rem; font-size: 1.1rem;">
+                <i class="fas fa-calendar"></i> Request a Demo
+            </a>
+        </div>
+
+        <div style="display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap; opacity: 0.9;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; color: white;">
+                <i class="fas fa-check-circle"></i>
+                <span>SOC 2 Certified</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; color: white;">
+                <i class="fas fa-check-circle"></i>
+                <span>99.9% Uptime SLA</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; color: white;">
+                <i class="fas fa-check-circle"></i>
+                <span>Enterprise Support</span>
             </div>
         </div>
     </section>
 
-    <!-- Business Features -->
-    <section class="features-section">
+    <!-- Business Features Section -->
+    <section class="features-section" id="features">
         <div class="container">
-            <h2 class="section-title">Enterprise-Grade Features</h2>
+            <h2 class="section-title">Built for Teams That Process Financial Data at Scale</h2>
+            <p style="text-align: center; margin-bottom: 3rem; color: #666; font-size: 1.1rem;">
+                Everything you need to streamline financial workflows and save hours every week
+            </p>
+            
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
                         <i class="fas fa-users"></i>
                     </div>
                     <h3>Team Collaboration</h3>
-                    <p>Manage multiple users with role-based permissions and shared workspaces.</p>
+                    <p>Create shared workspaces with role-based permissions. Manage users, control access, and collaborate seamlessly across departments.</p>
+                    <ul style="text-align: left; margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                        <li>Multiple team members</li>
+                        <li>Role-based permissions</li>
+                        <li>Audit trails</li>
+                    </ul>
                 </div>
+
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Batch Processing</h3>
-                    <p>Convert hundreds of statements simultaneously with our bulk processing engine.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
                         <i class="fas fa-plug"></i>
                     </div>
-                    <h3>API Integration</h3>
-                    <p>Seamlessly integrate with your existing accounting and ERP systems.</p>
+                    <h3>API Access</h3>
+                    <p>Integrate directly with your existing systems using our RESTful API. Process statements programmatically at scale.</p>
+                    <ul style="text-align: left; margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                        <li>REST & Webhook APIs</li>
+                        <li>SDK libraries</li>
+                        <li>99.9% uptime SLA</li>
+                    </ul>
                 </div>
+
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Custom Integrations</h3>
+                    <p>Connect with QuickBooks, Xero, SAP, and 50+ accounting tools. Custom integration support available.</p>
+                    <ul style="text-align: left; margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                        <li>Pre-built connectors</li>
+                        <li>Custom workflows</li>
+                        <li>Zapier integration</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Volume Processing</h3>
+                    <p>Process hundreds of statements simultaneously with our high-performance infrastructure. No file limits.</p>
+                    <ul style="text-align: left; margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                        <li>Bulk batch processing</li>
+                        <li>Parallel processing</li>
+                        <li>Smart categorization</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h3>Advanced Analytics</h3>
-                    <p>Get insights into transaction patterns and financial trends across all accounts.</p>
+                    <p>Get insights into spending patterns, cash flow trends, and financial health across all your accounts.</p>
+                    <ul style="text-align: left; margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                        <li>Custom dashboards</li>
+                        <li>Export reports</li>
+                        <li>Trend analysis</li>
+                    </ul>
                 </div>
+
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>Enterprise Security</h3>
-                    <p>SOC 2 Type II certified with advanced encryption and compliance features.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
                         <i class="fas fa-headset"></i>
                     </div>
                     <h3>Priority Support</h3>
-                    <p>Dedicated account manager and 24/7 technical support for your team.</p>
+                    <p>Get dedicated support from our enterprise team. Phone, email, and chat support with guaranteed response times.</p>
+                    <ul style="text-align: left; margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                        <li>24/7 availability</li>
+                        <li>Dedicated account manager</li>
+                        <li>1-hour response SLA</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ROI Section -->
-    <section class="stats-section" style="background: #f8f9fa;">
+    <!-- Security & Compliance Section -->
+    <section class="banks-section" style="background: #f8f9fa;">
         <div class="container">
-            <h2 class="section-title" style="margin-bottom: 3rem;">The Business Impact</h2>
-            <div class="stats-grid">
-                <div class="stat">
-                    <h3 style="color: #00bfa5;">85%</h3>
-                    <p>Time Saved on Data Entry</p>
+            <h2 class="section-title">Enterprise-Grade Security & Compliance</h2>
+            <p style="text-align: center; margin-bottom: 3rem; color: #666; font-size: 1.1rem;">
+                Your data security is our top priority. We maintain the highest standards of protection.
+            </p>
+
+            <div class="features-grid" style="max-width: 1000px; margin: 0 auto;">
+                <div class="feature-card" style="border: 1px solid #e0e0e0;">
+                    <div class="feature-icon" style="background: #00bfa5;">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>SOC 2 Type II Certified</h3>
+                    <p>Annual third-party audits ensure our security controls meet the highest industry standards.</p>
                 </div>
-                <div class="stat">
-                    <h3 style="color: #00bfa5;">99.9%</h3>
-                    <p>Accuracy Rate</p>
+
+                <div class="feature-card" style="border: 1px solid #e0e0e0;">
+                    <div class="feature-icon" style="background: #00bfa5;">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>256-bit Encryption</h3>
+                    <p>Bank-level encryption for data in transit and at rest. Your files are protected end-to-end.</p>
                 </div>
-                <div class="stat">
-                    <h3 style="color: #00bfa5;">2 hours</h3>
-                    <p>Average Time Saved Per Day</p>
+
+                <div class="feature-card" style="border: 1px solid #e0e0e0;">
+                    <div class="feature-icon" style="background: #00bfa5;">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>GDPR & CCPA Compliant</h3>
+                    <p>Full compliance with global privacy regulations. Data residency options available.</p>
                 </div>
-                <div class="stat">
-                    <h3 style="color: #00bfa5;">$50K+</h3>
-                    <p>Average Annual Savings</p>
+
+                <div class="feature-card" style="border: 1px solid #e0e0e0;">
+                    <div class="feature-icon" style="background: #00bfa5;">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Private Cloud Options</h3>
+                    <p>Deploy on your own infrastructure or choose dedicated cloud instances for complete control.</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Pricing -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Transform Your Financial Workflows?</h2>
-            <p>Join thousands of businesses that trust us with their financial data processing</p>
-            <div style="margin-top: 2rem;">
-                <a href="/pricing.html" class="btn-cta">
-                    View Business Pricing
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="/pages/security.html" class="btn-cta" style="background: #00bfa5;">
+                    Learn More About Security <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
-            <p class="cta-note">Free account with 5 daily conversions • No credit card required • Upgrade anytime</p>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Trusted by Leading Organizations</h2>
+            <p style="text-align: center; margin-bottom: 3rem; color: #666; font-size: 1.1rem;">
+                See how businesses save time and reduce errors with our platform
+            </p>
+
+            <div class="stats-grid" style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-bottom: 3rem;">
+                <div class="stat">
+                    <h3 style="color: #667eea;">85%</h3>
+                    <p>Average time saved on data entry</p>
+                </div>
+                <div class="stat">
+                    <h3 style="color: #667eea;">99.9%</h3>
+                    <p>Accuracy rate across all banks</p>
+                </div>
+                <div class="stat">
+                    <h3 style="color: #667eea;">2 hours</h3>
+                    <p>Saved per employee daily</p>
+                </div>
+                <div class="stat">
+                    <h3 style="color: #667eea;">$50K+</h3>
+                    <p>Average annual cost savings</p>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 0.5rem; border-left: 4px solid #667eea;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <i class="fas fa-building" style="font-size: 2rem; color: #667eea;"></i>
+                        <div>
+                            <h4 style="margin: 0;">TechCorp Solutions</h4>
+                            <p style="margin: 0; color: #666; font-size: 0.9rem;">500+ employees</p>
+                        </div>
+                    </div>
+                    <p style="color: #666; font-style: italic; margin-bottom: 1rem;">
+                        "We've reduced our monthly reconciliation time from 3 days to just 4 hours. The API integration with our ERP was seamless."
+                    </p>
+                    <p style="color: #667eea; font-weight: 600;">90% reduction in processing time</p>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 0.5rem; border-left: 4px solid #764ba2;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <i class="fas fa-chart-line" style="font-size: 2rem; color: #764ba2;"></i>
+                        <div>
+                            <h4 style="margin: 0;">Global Accounting Inc.</h4>
+                            <p style="margin: 0; color: #666; font-size: 0.9rem;">1000+ clients</p>
+                        </div>
+                    </div>
+                    <p style="color: #666; font-style: italic; margin-bottom: 1rem;">
+                        "The batch processing feature has transformed our workflow. We process thousands of statements monthly with zero errors."
+                    </p>
+                    <p style="color: #764ba2; font-weight: 600;">$100K+ saved annually</p>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 0.5rem; border-left: 4px solid #00bfa5;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <i class="fas fa-store" style="font-size: 2rem; color: #00bfa5;"></i>
+                        <div>
+                            <h4 style="margin: 0;">RetailChain Pro</h4>
+                            <p style="margin: 0; color: #666; font-size: 0.9rem;">200 locations</p>
+                        </div>
+                    </div>
+                    <p style="color: #666; font-style: italic; margin-bottom: 1rem;">
+                        "Perfect for multi-location businesses. The team collaboration features keep everyone on the same page."
+                    </p>
+                    <p style="color: #00bfa5; font-weight: 600;">15 hours saved weekly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator Section -->
+    <section class="cta-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 2rem;">Calculate Your ROI</h2>
+            
+            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 1rem; max-width: 600px; margin: 0 auto;">
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                        How many bank statements do you process monthly?
+                    </label>
+                    <input type="range" id="statementsRange" min="50" max="5000" value="500" 
+                           style="width: 100%; margin-bottom: 0.5rem;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                        <span>50</span>
+                        <span id="statementsValue" style="font-weight: bold; font-size: 1.1rem;">500</span>
+                        <span>5000+</span>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.2); padding: 1.5rem; border-radius: 0.5rem; text-align: center;">
+                    <p style="margin-bottom: 0.5rem; opacity: 0.9;">Estimated Annual Savings:</p>
+                    <h3 id="savingsAmount" style="font-size: 2.5rem; margin: 0; color: white;">$60,000</h3>
+                    <p style="margin-top: 0.5rem; opacity: 0.9;">
+                        <span id="hoursValue">1,200</span> hours saved annually
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#demo" class="btn-cta" style="background: white; color: #667eea; font-size: 1.1rem; padding: 1rem 2rem;">
+                    Get a Personalized ROI Report <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enterprise Pricing Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Enterprise Pricing That Scales With You</h2>
+            <p style="text-align: center; margin-bottom: 3rem; color: #666; font-size: 1.1rem;">
+                Transparent pricing with no hidden fees. Volume discounts available.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                <!-- Team Plan -->
+                <div class="feature-card" style="border: 2px solid #e0e0e0; position: relative;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Team</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">For growing teams</p>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: #333; margin-bottom: 0.5rem;">
+                        $60<span style="font-size: 1rem; font-weight: 400; color: #666;">/month</span>
+                    </div>
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 2rem;">1,000 pages/month</p>
+                    
+                    <ul style="text-align: left; margin-bottom: 2rem;">
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            1,000 pages per month
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            Basic API access
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            Priority email support
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            Standard integrations
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            Team collaboration features
+                        </li>
+                    </ul>
+                    
+                    <a href="/signup.html" class="btn-cta" style="width: 100%; text-align: center; background: #667eea;">
+                        Buy Now
+                    </a>
+                </div>
+
+                <!-- Business Plan -->
+                <div class="feature-card" style="border: 2px solid #667eea; position: relative; transform: scale(1.05);">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); 
+                                background: #667eea; color: white; padding: 0.25rem 1rem; 
+                                border-radius: 1rem; font-size: 0.85rem; font-weight: 600;">
+                        MOST POPULAR
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Business</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">For established businesses</p>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: #333; margin-bottom: 0.5rem;">
+                        $99<span style="font-size: 1rem; font-weight: 400; color: #666;">/month</span>
+                    </div>
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 2rem;">4,000 pages/month</p>
+                    
+                    <ul style="text-align: left; margin-bottom: 2rem;">
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            4,000 pages per month
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            Full API access
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            Priority phone & email support
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            Custom integrations
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            Advanced analytics & reporting
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            White-label options
+                        </li>
+                    </ul>
+                    
+                    <a href="/signup.html" class="btn-cta" style="width: 100%; text-align: center; background: #667eea;">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="feature-card" style="border: 2px solid #e0e0e0; position: relative;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Enterprise</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">For large organizations</p>
+                    <div style="font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 0.5rem;">
+                        Custom Pricing
+                    </div>
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 2rem;">Unlimited pages</p>
+                    
+                    <ul style="text-align: left; margin-bottom: 2rem;">
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            Unlimited pages
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            Dedicated infrastructure
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            24/7 dedicated support
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            99.99% uptime SLA
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            On-premise deployment
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: #666;">
+                            <i class="fas fa-check" style="color: #00bfa5; margin-right: 0.5rem;"></i>
+                            Custom integrations
+                        </li>
+                    </ul>
+                    
+                    <a href="#demo" class="btn-cta" style="width: 100%; text-align: center; background: #764ba2;">
+                        Contact Sales
+                    </a>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; color: #666;">
+                All plans include: Bank-level encryption, GDPR/CCPA compliance, 99.9% uptime SLA, and regular updates. Save 20% with annual billing.
+            </p>
+        </div>
+    </section>
+
+    <!-- Integration Showcase -->
+    <section class="banks-section" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Seamless Integration With Your Tech Stack</h2>
+            <p style="text-align: center; margin-bottom: 3rem; color: #666; font-size: 1.1rem;">
+                Connect with the tools your team already uses
+            </p>
+
+            <div class="bank-logos-grid" style="max-width: 900px; margin: 0 auto;">
+                <!-- Accounting Software -->
+                <div class="bank-logo-card" style="cursor: default;">
+                    <div class="bank-logo-content">
+                        <i class="fab fa-creative-commons-by" style="font-size: 2rem; color: #2ca01c;"></i>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: #333;">QuickBooks</p>
+                    </div>
+                </div>
+                
+                <div class="bank-logo-card" style="cursor: default;">
+                    <div class="bank-logo-content">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: #13b5ea;">xero</div>
+                    </div>
+                </div>
+
+                <div class="bank-logo-card" style="cursor: default;">
+                    <div class="bank-logo-content">
+                        <div style="font-size: 1.2rem; font-weight: bold; color: #1e88e5;">SAP</div>
+                    </div>
+                </div>
+
+                <div class="bank-logo-card" style="cursor: default;">
+                    <div class="bank-logo-content">
+                        <i class="fas fa-chart-pie" style="font-size: 2rem; color: #ff6b6b;"></i>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: #333;">NetSuite</p>
+                    </div>
+                </div>
+
+                <!-- Cloud Storage -->
+                <div class="bank-logo-card" style="cursor: default;">
+                    <div class="bank-logo-content">
+                        <i class="fab fa-google-drive" style="font-size: 2rem; color: #4285f4;"></i>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: #333;">Google Drive</p>
+                    </div>
+                </div>
+
+                <div class="bank-logo-card" style="cursor: default;">
+                    <div class="bank-logo-content">
+                        <i class="fab fa-dropbox" style="font-size: 2rem; color: #0061ff;"></i>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: #333;">Dropbox</p>
+                    </div>
+                </div>
+
+                <div class="bank-logo-card" style="cursor: default;">
+                    <div class="bank-logo-content">
+                        <i class="fab fa-microsoft" style="font-size: 2rem; color: #00a4ef;"></i>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: #333;">OneDrive</p>
+                    </div>
+                </div>
+
+                <div class="bank-logo-card" style="cursor: default;">
+                    <div class="bank-logo-content">
+                        <i class="fab fa-aws" style="font-size: 2rem; color: #ff9900;"></i>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: #333;">AWS S3</p>
+                    </div>
+                </div>
+
+                <!-- Automation -->
+                <div class="bank-logo-card" style="cursor: default;">
+                    <div class="bank-logo-content">
+                        <div style="font-size: 1.2rem; font-weight: bold; color: #ff4a00;">Zapier</div>
+                    </div>
+                </div>
+
+                <div class="bank-logo-card" style="cursor: default;">
+                    <div class="bank-logo-content">
+                        <i class="fas fa-project-diagram" style="font-size: 2rem; color: #7b68ee;"></i>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: #333;">Make</p>
+                    </div>
+                </div>
+
+                <div class="bank-logo-card" style="cursor: default;">
+                    <div class="bank-logo-content">
+                        <i class="fab fa-slack" style="font-size: 2rem; color: #4a154b;"></i>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: #333;">Slack</p>
+                    </div>
+                </div>
+
+                <div class="bank-logo-card" style="cursor: default;">
+                    <div class="bank-logo-content">
+                        <i class="fab fa-microsoft" style="font-size: 2rem; color: #5559c1;"></i>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: #333;">Teams</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="color: #666; margin-bottom: 1rem;">Don't see your tool? We can build custom integrations.</p>
+                <a href="/integrations.html" class="btn-cta" style="background: #667eea;">
+                    View All Integrations <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Request Form -->
+    <section class="cta-section" id="demo">
+        <div class="container">
+            <h2>See BankCSV Business in Action</h2>
+            <p style="margin-bottom: 2rem;">Get a personalized demo from our enterprise team</p>
+            
+            <div style="background: white; padding: 2rem; border-radius: 1rem; max-width: 600px; margin: 0 auto; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                <form id="demoForm" style="display: grid; gap: 1.5rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">
+                                First Name <span style="color: #e74c3c;">*</span>
+                            </label>
+                            <input type="text" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 0.25rem;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">
+                                Last Name <span style="color: #e74c3c;">*</span>
+                            </label>
+                            <input type="text" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 0.25rem;">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">
+                            Work Email <span style="color: #e74c3c;">*</span>
+                        </label>
+                        <input type="email" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 0.25rem;">
+                    </div>
+                    
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">
+                            Company Name <span style="color: #e74c3c;">*</span>
+                        </label>
+                        <input type="text" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 0.25rem;">
+                    </div>
+                    
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">
+                            Company Size <span style="color: #e74c3c;">*</span>
+                        </label>
+                        <select required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 0.25rem;">
+                            <option value="">Select company size</option>
+                            <option value="1-10">1-10 employees</option>
+                            <option value="11-50">11-50 employees</option>
+                            <option value="51-200">51-200 employees</option>
+                            <option value="201-500">201-500 employees</option>
+                            <option value="500+">500+ employees</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">
+                            Monthly Statement Volume
+                        </label>
+                        <select style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 0.25rem;">
+                            <option value="">Select volume</option>
+                            <option value="<100">Less than 100</option>
+                            <option value="100-500">100-500</option>
+                            <option value="500-1000">500-1,000</option>
+                            <option value="1000-5000">1,000-5,000</option>
+                            <option value="5000+">5,000+</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">
+                            How can we help?
+                        </label>
+                        <textarea rows="4" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 0.25rem; resize: vertical;"
+                                  placeholder="Tell us about your use case and requirements..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-cta" style="background: #667eea; border: none; cursor: pointer; font-size: 1.1rem;">
+                        Request Demo <i class="fas fa-arrow-right"></i>
+                    </button>
+                    
+                    <p style="text-align: center; color: #666; font-size: 0.9rem; margin: 0;">
+                        By submitting this form, you agree to our 
+                        <a href="/privacy.html" style="color: #667eea;">Privacy Policy</a> and 
+                        <a href="/terms.html" style="color: #667eea;">Terms of Service</a>
+                    </p>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -167,7 +705,8 @@
                     <ul>
                         <li><a href="/features.html">Features</a></li>
                         <li><a href="/pricing.html">Pricing</a></li>
-                        </ul>
+                        <li><a href="/integrations.html">Integrations</a></li>
+                    </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Solutions</h4>
@@ -175,6 +714,7 @@
                         <li><a href="/accountants.html">For Accountants</a></li>
                         <li><a href="/bookkeepers.html">For Bookkeepers</a></li>
                         <li><a href="/business.html">For Business</a></li>
+                        <li><a href="/personal.html">Personal Finance</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -182,6 +722,7 @@
                     <ul>
                         <li><a href="/blog.html">Blog</a></li>
                         <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/tutorials.html">Tutorials</a></li>
                         <li><a href="/faq.html">FAQ</a></li>
                     </ul>
                 </div>
@@ -191,6 +732,7 @@
                         <li><a href="/about.html">About Us</a></li>
                         <li><a href="/contact.html">Contact</a></li>
                         <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/press.html">Press</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -216,6 +758,40 @@
         </div>
     </footer>
 
-    <script src="/js/modern-homepage.js"></script>
+    <script src="/js/modern-homepage-fixed.js"></script>
+    <script src="/js/dropdown-handler.js"></script>
+    <script>
+        // ROI Calculator
+        const statementsRange = document.getElementById('statementsRange');
+        const statementsValue = document.getElementById('statementsValue');
+        const savingsAmount = document.getElementById('savingsAmount');
+        const hoursValue = document.getElementById('hoursValue');
+
+        function updateROI() {
+            const statements = parseInt(statementsRange.value);
+            statementsValue.textContent = statements.toLocaleString();
+            
+            // Calculate savings based on time saved (3 minutes per statement manually vs 5 seconds automated)
+            // Average data entry rate: $25/hour
+            const annualStatements = statements * 12;
+            const hoursManual = (annualStatements * 3) / 60; // 3 minutes per statement
+            const hoursAutomated = (annualStatements * 5) / 3600; // 5 seconds per statement
+            const hoursSaved = Math.round(hoursManual - hoursAutomated);
+            const savings = Math.round(hoursSaved * 25); // $25 per hour saved
+            
+            savingsAmount.textContent = '$' + savings.toLocaleString();
+            hoursValue.textContent = hoursSaved.toLocaleString();
+        }
+
+        statementsRange.addEventListener('input', updateROI);
+        updateROI();
+
+        // Demo form submission
+        document.getElementById('demoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! Our team will contact you within 24 hours to schedule your personalized demo.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>

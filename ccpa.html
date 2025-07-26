@@ -3,177 +3,693 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CCPA compliance information for Bank Statement Converter. Learn about your California privacy rights and how we protect your personal information.">
-    <title>CCPA Compliance - Bank Statement Converter</title>
-    <link rel="stylesheet" href="/css/production.css">
-  <link href="/css/blog-fix.css" rel="stylesheet"/>
+    <meta name="description" content="CCPA Compliance - BankCSVConverter respects California privacy rights. Learn about your rights to know, delete, and opt-out under California Consumer Privacy Act.">
+    <title>CCPA Compliance - BankCSVConverter</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="/css/nav-fix.css">
+    <link rel="stylesheet" href="/css/dropdown-fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .legal-hero {
+            background: linear-gradient(135deg, #0066ff 0%, #004dd6 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .legal-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .legal-hero .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .last-updated {
+            background: #f8f9fa;
+            border-left: 4px solid #0066ff;
+            padding: 20px 30px;
+            margin-bottom: 60px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            color: #495057;
+        }
+        
+        .legal-section {
+            margin-bottom: 60px;
+        }
+        
+        .legal-section h2 {
+            font-size: 2.2rem;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            font-weight: 700;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .legal-section h2:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 30px;
+            background: #0066ff;
+            border-radius: 3px;
+        }
+        
+        .legal-section h3 {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin: 30px 0 20px;
+            font-weight: 600;
+        }
+        
+        .legal-section p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #495057;
+            margin-bottom: 20px;
+        }
+        
+        .legal-section ul,
+        .legal-section ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+        
+        .legal-section li {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #495057;
+            margin-bottom: 15px;
+            list-style-type: none;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .legal-section li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #00d26a;
+            font-size: 0.875rem;
+        }
+        
+        .legal-section ol li:before {
+            content: counter(item);
+            counter-increment: item;
+            background: #0066ff;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            left: 0;
+            top: 2px;
+        }
+        
+        .legal-section ol {
+            counter-reset: item;
+        }
+        
+        .highlight-box {
+            background: #e6f4ff;
+            border: 2px solid #b3d9ff;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+        
+        .highlight-box h3 {
+            color: #0066ff;
+            margin-top: 0;
+        }
+        
+        .success-box {
+            background: #e6fff0;
+            border: 2px solid #b3ffcc;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .success-box h3 {
+            color: #00d26a;
+            margin-top: 0;
+        }
+        
+        .rights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .rights-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .rights-card:hover {
+            border-color: #0066ff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.1);
+        }
+        
+        .rights-card i {
+            font-size: 2.5rem;
+            color: #0066ff;
+            margin-bottom: 20px;
+        }
+        
+        .rights-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+        
+        .rights-card p {
+            font-size: 1rem;
+            color: #6c757d;
+            margin: 0;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 16px 20px;
+            text-align: left;
+        }
+        
+        .data-table th {
+            background: #0066ff;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .data-table td {
+            color: #495057;
+            font-size: 1rem;
+        }
+        
+        .data-table .yes {
+            color: #00d26a;
+            font-weight: 600;
+        }
+        
+        .data-table .no {
+            color: #dc3545;
+            font-weight: 600;
+        }
+        
+        .data-table .limited {
+            color: #ffc107;
+            font-weight: 600;
+        }
+        
+        .exercise-rights {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        
+        .exercise-rights h3 {
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-method {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            border-color: #0066ff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.1);
+        }
+        
+        .contact-method i {
+            font-size: 2.5rem;
+            color: #0066ff;
+            margin-bottom: 20px;
+        }
+        
+        .contact-method h4 {
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+        
+        .contact-method p {
+            font-size: 1rem;
+            color: #6c757d;
+            margin: 0;
+        }
+        
+        .contact-method a {
+            color: #0066ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-method a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+        
+        .contact-section p {
+            font-size: 1.125rem;
+            color: #495057;
+            margin-bottom: 25px;
+        }
+        
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #0066ff;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-button:hover {
+            background: #0052cc;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .legal-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .legal-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .rights-grid,
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .data-table {
+                font-size: 0.875rem;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 12px 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <div class="container nav-container">
-            <a href="/" class="nav-logo">
-                <img src="/assets/logo.svg" alt="Bank Statement Converter">
-                Bank Statement Converter
-            </a>
-            <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="/features.html" class="nav-link">Features</a></li>
-                <li class="nav-item"><a href="/pricing.html" class="nav-link">Pricing</a></li>
-                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
-            </ul>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <span class="logo-text">BankCSV</span>
+                </a>
+                <div class="nav-links desktop-only">
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            <i class="fas fa-th"></i> Tools
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="/convert-pdf.html" class="dropdown-item">
+                                <i class="fas fa-file-pdf"></i>
+                                Convert PDF
+                            </a>
+                            <a href="/merge-statements.html" class="dropdown-item">
+                                <i class="fas fa-object-group"></i>
+                                Merge Statements
+                            </a>
+                            <a href="/split-by-date.html" class="dropdown-item">
+                                <i class="fas fa-cut"></i>
+                                Split by Date
+                            </a>
+                            <a href="/analyze-transactions.html" class="dropdown-item">
+                                <i class="fas fa-chart-line"></i>
+                                Analyze Transactions
+                            </a>
+                        </div>
+                    </div>
+                    <a href="/#features" class="nav-link">Features</a>
+                    <a href="/#banks" class="nav-link">Supported Banks</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="/pricing.html" class="nav-link desktop-only">Pricing</a>
+                <a href="/business.html" class="nav-link desktop-only">Business</a>
+                <a href="/login.html" class="nav-link">Log In</a>
+                <a href="/signup.html" class="btn-primary">Sign Up Free</a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
-        <div class="nav-overlay"></div>
     </nav>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>CCPA Compliance</h1>
-                    <p>California Consumer Privacy Act Rights</p>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="/#features" class="mobile-link">Features</a>
+            <a href="/#banks" class="mobile-link">Supported Banks</a>
+            <a href="/blog.html" class="mobile-link">Blog</a>
+            <a href="/pricing.html" class="mobile-link">Pricing</a>
+            <a href="/business.html" class="mobile-link">Business</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="legal-hero">
+        <div class="container">
+            <h1>CCPA Compliance</h1>
+            <p class="subtitle">California Consumer Privacy Act rights fully respected. Know your data, control your privacy, exercise your rights with confidence.</p>
+        </div>
+    </section>
+
+    <!-- Legal Content -->
+    <main class="legal-content">
+        <div class="last-updated">
+            <strong>Last Updated:</strong> January 26, 2025 | <strong>Effective Date:</strong> January 1, 2020
+        </div>
+
+        <section class="legal-section">
+            <h2>Your California Privacy Rights</h2>
+            <p>BankCSVConverter is committed to transparency and respecting the privacy rights of California residents under the California Consumer Privacy Act (CCPA). This page explains your rights and how to exercise them.</p>
+            
+            <div class="success-box">
+                <h3><i class="fas fa-ban"></i> We Do NOT Sell Your Personal Information</h3>
+                <p style="font-size: 1.2rem; margin: 0;">BankCSVConverter has never sold personal information and commits to never selling your data in the future.</p>
+            </div>
+        </section>
+
+        <section class="legal-section">
+            <h2>Your Rights Under CCPA</h2>
+            <p>As a California resident, you have specific rights regarding your personal information:</p>
+            
+            <div class="rights-grid">
+                <div class="rights-card">
+                    <i class="fas fa-info-circle"></i>
+                    <h4>Right to Know</h4>
+                    <p>Request disclosure of what personal information we collect, use, disclose, and sell (we don't sell data).</p>
+                </div>
+                <div class="rights-card">
+                    <i class="fas fa-trash-alt"></i>
+                    <h4>Right to Delete</h4>
+                    <p>Request deletion of personal information we collected from you, subject to certain exceptions.</p>
+                </div>
+                <div class="rights-card">
+                    <i class="fas fa-hand-paper"></i>
+                    <h4>Right to Opt-Out</h4>
+                    <p>Opt-out of the sale of personal information (not applicable as we don't sell data).</p>
+                </div>
+                <div class="rights-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h4>Right to Non-Discrimination</h4>
+                    <p>Exercise your privacy rights without receiving discriminatory treatment.</p>
                 </div>
             </div>
         </section>
 
-        <section class="section">
-            <div class="container">
-                <div class="content-wrapper" style="max-width: 800px; margin: 0 auto;">
-                    <h2>California Consumer Privacy Act (CCPA)</h2>
-                    <p>Bank Statement Converter respects the privacy rights of California residents and is committed to complying with the California Consumer Privacy Act (CCPA).</p>
+        <section class="legal-section">
+            <h2>Personal Information We Collect</h2>
+            <p>Here's a comprehensive breakdown of the categories of personal information we may collect:</p>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Examples</th>
+                        <th>Collected</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Identifiers</strong></td>
+                        <td>Email address, IP address, device ID</td>
+                        <td class="yes">Yes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Personal Information (CA Civil Code)</strong></td>
+                        <td>Name, contact information</td>
+                        <td class="yes">Yes (if provided)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Protected Classifications</strong></td>
+                        <td>Age, race, gender, religion</td>
+                        <td class="no">No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Commercial Information</strong></td>
+                        <td>Purchase history, transaction data</td>
+                        <td class="limited">Limited (subscription only)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Biometric Information</strong></td>
+                        <td>Fingerprints, facial recognition</td>
+                        <td class="no">No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Internet Activity</strong></td>
+                        <td>Browsing history, search history</td>
+                        <td class="limited">Limited (on our site only)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Geolocation Data</strong></td>
+                        <td>Physical location, GPS data</td>
+                        <td class="no">No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sensory Data</strong></td>
+                        <td>Audio, visual, thermal data</td>
+                        <td class="no">No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Professional/Employment</strong></td>
+                        <td>Job title, employer, work history</td>
+                        <td class="no">No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Education Information</strong></td>
+                        <td>Student records, grades</td>
+                        <td class="no">No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inferences</strong></td>
+                        <td>Profiles, preferences, behaviors</td>
+                        <td class="limited">Limited (usage patterns)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-                    <h3 class="mt-xl">Your Rights Under CCPA</h3>
-                    <p>As a California resident, you have the following rights:</p>
-                    
-                    <h4 class="mt-lg">1. Right to Know</h4>
-                    <p>You have the right to request that we disclose:</p>
-                    <ul>
-                        <li>The categories of personal information we collect</li>
-                        <li>The sources from which we collect personal information</li>
-                        <li>Our business purposes for collecting personal information</li>
-                        <li>The categories of third parties with whom we share personal information</li>
-                        <li>The specific pieces of personal information we have collected about you</li>
-                    </ul>
+        <section class="legal-section">
+            <h2>How We Use Your Information</h2>
+            
+            <h3>Business Purposes</h3>
+            <ul>
+                <li>Providing bank statement conversion services</li>
+                <li>Processing transactions and managing accounts</li>
+                <li>Communicating about our services</li>
+                <li>Improving and developing our services</li>
+                <li>Detecting security incidents and protecting against fraud</li>
+                <li>Debugging and repairing errors</li>
+                <li>Complying with legal obligations</li>
+            </ul>
 
-                    <h4 class="mt-lg">2. Right to Delete</h4>
-                    <p>You have the right to request deletion of your personal information, subject to certain exceptions.</p>
+            <h3>Sources of Personal Information</h3>
+            <ul>
+                <li><strong>Directly from you:</strong> When you create an account or use our services</li>
+                <li><strong>Automatically:</strong> Through cookies and similar technologies</li>
+                <li><strong>Service providers:</strong> Payment processors, analytics providers</li>
+            </ul>
+        </section>
 
-                    <h4 class="mt-lg">3. Right to Opt-Out of Sale</h4>
-                    <p><strong>We do not sell personal information.</strong> We have not sold personal information in the preceding 12 months.</p>
+        <section class="legal-section">
+            <h2>Information Sharing & Disclosure</h2>
+            
+            <div class="highlight-box">
+                <h3><i class="fas fa-share-alt"></i> We Share Information Only When Necessary</h3>
+                <p>We may share your personal information with:</p>
+                <ul>
+                    <li><strong>Service Providers:</strong> Companies that help us operate our business (hosting, analytics, support)</li>
+                    <li><strong>Legal Requirements:</strong> When required by law or to protect rights and safety</li>
+                    <li><strong>Business Transfers:</strong> In connection with a merger, sale, or acquisition</li>
+                    <li><strong>With Your Consent:</strong> When you explicitly agree to sharing</li>
+                </ul>
+            </div>
+        </section>
 
-                    <h4 class="mt-lg">4. Right to Non-Discrimination</h4>
-                    <p>We will not discriminate against you for exercising your CCPA rights.</p>
-
-                    <h3 class="mt-xl">Personal Information We Collect</h3>
-                    <table class="data-table" style="width: 100%; margin-top: 20px;">
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Examples</th>
-                                <th>Collected</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Identifiers</td>
-                                <td>Email address, IP address</td>
-                                <td>Yes</td>
-                            </tr>
-                            <tr>
-                                <td>Personal Information</td>
-                                <td>Name, contact information</td>
-                                <td>Yes (if provided)</td>
-                            </tr>
-                            <tr>
-                                <td>Commercial Information</td>
-                                <td>Transaction history</td>
-                                <td>No</td>
-                            </tr>
-                            <tr>
-                                <td>Internet Activity</td>
-                                <td>Browsing history, interaction data</td>
-                                <td>Yes (limited)</td>
-                            </tr>
-                            <tr>
-                                <td>Geolocation Data</td>
-                                <td>Physical location</td>
-                                <td>No</td>
-                            </tr>
-                            <tr>
-                                <td>Professional Information</td>
-                                <td>Employment data</td>
-                                <td>No</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <h3 class="mt-xl">How We Use Your Information</h3>
-                    <ul>
-                        <li>To provide and maintain our service</li>
-                        <li>To notify you about changes to our service</li>
-                        <li>To provide customer support</li>
-                        <li>To detect and prevent fraud</li>
-                        <li>To comply with legal obligations</li>
-                    </ul>
-
-                    <h3 class="mt-xl">Information Sharing</h3>
-                    <p>We may share your personal information with:</p>
-                    <ul>
-                        <li>Service providers (for hosting, analytics, customer support)</li>
-                        <li>Legal authorities (when required by law)</li>
-                        <li>Business transfers (in case of merger or acquisition)</li>
-                    </ul>
-                    <p><strong>We do not sell your personal information to third parties.</strong></p>
-
-                    <h3 class="mt-xl">How to Exercise Your Rights</h3>
-                    <p>To exercise your CCPA rights, you can:</p>
-                    <ul>
-                        <li>Email us at: privacy@bankcsvconverter.com</li>
-                        <li>Call us at: 1-800-PRIVACY (1-800-774-8229)</li>
-                        <li>Submit a request through our <a href="/contact.html">contact form</a></li>
-                    </ul>
-
-                    <h3 class="mt-xl">Verification Process</h3>
-                    <p>To protect your privacy, we will verify your identity before responding to requests. We may ask for:</p>
-                    <ul>
-                        <li>Information that matches our records</li>
-                        <li>A signed declaration under penalty of perjury</li>
-                    </ul>
-
-                    <h3 class="mt-xl">Response Timeline</h3>
-                    <p>We will acknowledge receipt of your request within 10 business days and provide a substantive response within 45 days. If we need more time, we will inform you of the reason and extension period.</p>
-
-                    <h3 class="mt-xl">Authorized Agents</h3>
-                    <p>You may designate an authorized agent to make requests on your behalf. The agent must provide proof of authorization.</p>
-
-                    <h3 class="mt-xl">Contact Information</h3>
-                    <p>For questions about this CCPA notice or to exercise your rights:</p>
-                    <p>
-                        Bank Statement Converter<br>
-                        Attn: Privacy Department<br>
-                        123 Privacy Street<br>
-                        Data City, CA 12345<br>
-                        Email: privacy@bankcsvconverter.com<br>
-                        Phone: 1-800-PRIVACY (1-800-774-8229)
-                    </p>
-
-                    <h3 class="mt-xl">Last Updated</h3>
-                    <p>This CCPA Privacy Notice was last updated on January 26, 2025.</p>
-
-                    <div class="mt-xl">
-                        <a href="/privacy.html" class="btn btn-primary">View Full Privacy Policy</a>
-                        <a href="/gdpr.html" class="btn btn-secondary">GDPR Compliance</a>
+        <section class="legal-section">
+            <h2>How to Exercise Your Rights</h2>
+            
+            <div class="exercise-rights">
+                <h3>Submit a Request Through Any of These Methods:</h3>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p><a href="mailto:privacy@bankcsvconverter.com">privacy@bankcsvconverter.com</a></p>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-phone"></i>
+                        <h4>Toll-Free</h4>
+                        <p><a href="tel:1-800-774-8229">1-800-PRIVACY</a><br>(1-800-774-8229)</p>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-globe"></i>
+                        <h4>Online Form</h4>
+                        <p><a href="/contact.html">Submit Request</a></p>
                     </div>
                 </div>
             </div>
+
+            <h3>Verification Process</h3>
+            <p>To protect your privacy and security, we will verify your identity before processing requests. We may ask you to:</p>
+            <ul>
+                <li>Provide information that matches our records</li>
+                <li>Confirm your email address</li>
+                <li>Sign a declaration under penalty of perjury (for certain requests)</li>
+            </ul>
+
+            <h3>Response Timeline</h3>
+            <ol>
+                <li><strong>Acknowledgment:</strong> Within 10 business days of receiving your request</li>
+                <li><strong>Response:</strong> Within 45 days (may be extended by 45 additional days if necessary)</li>
+                <li><strong>Deletion:</strong> Completed within 45 days of verification</li>
+            </ol>
         </section>
+
+        <section class="legal-section">
+            <h2>Authorized Agents</h2>
+            <p>You may designate an authorized agent to make requests on your behalf. The agent must provide:</p>
+            <ul>
+                <li>Written permission signed by you</li>
+                <li>Verification of their identity</li>
+                <li>Direct confirmation from you about the authorization (we may contact you)</li>
+            </ul>
+        </section>
+
+        <section class="legal-section">
+            <h2>California "Shine the Light" Law</h2>
+            <p>California Civil Code Section 1798.83 permits residents to request information about disclosure of personal information to third parties for marketing purposes. <strong>We do not share personal information with third parties for their direct marketing purposes.</strong></p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Updates to This Notice</h2>
+            <p>We will update this CCPA notice at least annually and when our practices change materially. The "Last Updated" date at the top shows when this notice was last revised.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Contact Information</h2>
+            <p>For questions about this CCPA notice or to exercise your rights:</p>
+            
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 12px; margin-top: 20px;">
+                <p style="margin: 0; line-height: 1.8;">
+                    <strong>BankCSVConverter Privacy Department</strong><br>
+                    123 Privacy Street<br>
+                    San Francisco, CA 94105<br><br>
+                    <strong>Email:</strong> privacy@bankcsvconverter.com<br>
+                    <strong>Phone:</strong> 1-800-PRIVACY (1-800-774-8229)<br>
+                    <strong>Hours:</strong> Monday-Friday, 9 AM - 5 PM PST
+                </p>
+            </div>
+        </section>
+
+        <div class="contact-section">
+            <h2>Exercise Your Privacy Rights</h2>
+            <p>Ready to submit a privacy request? We're here to help you exercise your CCPA rights.</p>
+            <a href="/contact.html" class="contact-button">
+                <i class="fas fa-user-shield"></i>
+                Submit Privacy Request
+            </a>
+            <p style="margin-top: 20px; font-size: 1rem;">
+                Or call toll-free: 1-800-PRIVACY (1-800-774-8229)<br>
+                Response within 45 days guaranteed
+            </p>
+        </div>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -181,8 +697,9 @@
                     <h4>Product</h4>
                     <ul>
                         <li><a href="/features.html">Features</a></li>
+                        <li><a href="/how-it-works.html">How It Works</a></li>
                         <li><a href="/pricing.html">Pricing</a></li>
-                        </ul>
+                    </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Company</h4>
@@ -190,6 +707,16 @@
                         <li><a href="/about.html">About</a></li>
                         <li><a href="/blog.html">Blog</a></li>
                         <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/security.html">Security</a></li>
+                        <li><a href="/status.html">Status</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -203,15 +730,12 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Bank Statement Converter. All rights reserved.</p>
+                <p>© 2025 BankCSVConverter. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <script src="/js/production.js"></script>
+    <script src="/js/modern-homepage-fixed.js"></script>
+    <script src="/js/dropdown-handler.js"></script>
 </body>
 </html>

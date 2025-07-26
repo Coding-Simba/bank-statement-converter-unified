@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bank statement converter for accountants. Batch process multiple clients, QuickBooks integration, and professional tools to save hours on data entry.">
+    <title>Bank Statement Converter for Accountants - Professional Tools | BankCSV</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="/css/nav-fix.css">
+    <link rel="stylesheet" href="/css/dropdown-fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="/css/blog-fix.css" rel="stylesheet"/>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <span class="logo-text">BankCSV</span>
+                </a>
+                <div class="nav-links desktop-only">
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            <i class="fas fa-th"></i> Tools
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="/convert-pdf.html" class="dropdown-item">
+                                <i class="fas fa-file-pdf"></i>
+                                Convert PDF
+                            </a>
+                            <a href="/merge-statements.html" class="dropdown-item">
+                                <i class="fas fa-object-group"></i>
+                                Merge Statements
+                            </a>
+                            <a href="/split-by-date.html" class="dropdown-item">
+                                <i class="fas fa-cut"></i>
+                                Split by Date
+                            </a>
+                            <a href="/analyze-transactions.html" class="dropdown-item">
+                                <i class="fas fa-chart-line"></i>
+                                Analyze Transactions
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#banks" class="nav-link">Supported Banks</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="/pricing.html" class="nav-link desktop-only">Pricing</a>
+                <a href="/business.html" class="nav-link desktop-only">Business</a>
+                <a href="/login.html" class="nav-link">Log In</a>
+                <a href="/signup.html" class="btn-primary">Get Started</a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#features" class="mobile-link">Features</a>
+            <a href="#banks" class="mobile-link">Supported Banks</a>
+            <a href="/blog.html" class="mobile-link">Blog</a>
+            <a href="/pricing.html" class="mobile-link">Pricing</a>
+            <a href="/business.html" class="mobile-link">Business</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="breadcrumb">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <span class="separator">›</span>
+            <a href="/solutions.html">Solutions</a>
+            <span class="separator">›</span>
+            <span>For Accountants</span>
+        </div>
+        
+        <h1 class="hero-title">Bank Statement Converter for Accountants</h1>
+        <p class="hero-subtitle">Save hours on data entry with professional tools designed for accounting firms</p>
+        
+        <div class="hero-description">
+            <p>Process multiple clients' bank statements in minutes, not hours. Our professional-grade converter handles batch processing, integrates with QuickBooks, and maintains audit trails for compliance.</p>
+        </div>
+
+        <div class="hero-cta-buttons" style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="/signup.html" class="btn-cta">
+                <i class="fas fa-rocket"></i> Get Started
+            </a>
+            <a href="#demo" class="btn-secondary" style="background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); padding: 0.875rem 2rem; border-radius: var(--radius-full); font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s ease;">
+                <i class="fas fa-play-circle"></i> Watch Demo
+            </a>
+        </div>
+
+        <div class="trust-badges">
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Trusted by 50,000+ accounting professionals</span>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>QuickBooks & Xero certified integration</span>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>SOC 2 Type II & ISO 27001 certified</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="section-title">Features Built for Accounting Professionals</h2>
+            <p class="section-subtitle">Everything you need to streamline your workflow and serve more clients</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Batch Processing</h3>
+                    <p>Upload and convert multiple statements at once. Process an entire year's worth of statements for multiple clients in minutes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>QuickBooks Integration</h3>
+                    <p>Direct import to QuickBooks Online and Desktop. Map transactions automatically with smart categorization.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>Client Management</h3>
+                    <p>Organize work by client with dedicated folders. Set up recurring conversions and automated workflows.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Generate cash flow reports, expense categorization, and trend analysis for better client insights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Audit Trail</h3>
+                    <p>Complete conversion history with timestamps. Download original files anytime for compliance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Smart Recognition</h3>
+                    <p>AI-powered OCR handles scanned statements, handwritten notes, and poor quality PDFs with 99.9% accuracy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="how-it-works" style="background: var(--off-white);">
+        <div class="container">
+            <h2 class="section-title">Why Accountants Choose BankCSV</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number" style="background: var(--primary-color); color: white;">
+                        <i class="fas fa-clock" style="font-size: 1.5rem;"></i>
+                    </div>
+                    <h4>Save 10+ Hours Per Week</h4>
+                    <p>Eliminate manual data entry. Process months of statements in minutes, not hours.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number" style="background: var(--primary-color); color: white;">
+                        <i class="fas fa-check-double" style="font-size: 1.5rem;"></i>
+                    </div>
+                    <h4>Reduce Errors by 95%</h4>
+                    <p>Automated extraction ensures accuracy. Built-in validation catches discrepancies.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number" style="background: var(--primary-color); color: white;">
+                        <i class="fas fa-users" style="font-size: 1.5rem;"></i>
+                    </div>
+                    <h4>Handle More Clients</h4>
+                    <p>Scale your practice without adding staff. Serve more clients with the same team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" style="background: white; padding: var(--spacing-2xl) 0;">
+        <div class="container">
+            <h2 class="section-title">Trusted by Leading Accounting Firms</h2>
+            <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--spacing-lg); margin-top: var(--spacing-xl);">
+                <div class="testimonial-card" style="background: var(--light-gray); padding: var(--spacing-lg); border-radius: var(--radius-lg); position: relative;">
+                    <div class="quote-icon" style="position: absolute; top: -10px; left: 20px; font-size: 3rem; color: var(--primary-color); opacity: 0.2;">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div class="stars" style="color: #ffc107; margin-bottom: var(--spacing-sm);">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: var(--spacing-md);">"BankCSV has transformed our practice. What used to take our team hours now takes minutes. We've been able to take on 40% more clients without hiring additional staff."</p>
+                    <div class="testimonial-author">
+                        <strong>Sarah Johnson, CPA</strong>
+                        <p style="color: var(--gray); font-size: var(--font-size-sm);">Johnson & Associates CPAs</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" style="background: var(--light-gray); padding: var(--spacing-lg); border-radius: var(--radius-lg); position: relative;">
+                    <div class="quote-icon" style="position: absolute; top: -10px; left: 20px; font-size: 3rem; color: var(--primary-color); opacity: 0.2;">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div class="stars" style="color: #ffc107; margin-bottom: var(--spacing-sm);">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: var(--spacing-md);">"The QuickBooks integration alone saves us 5 hours per client during tax season. The accuracy is incredible - we've virtually eliminated data entry errors."</p>
+                    <div class="testimonial-author">
+                        <strong>Michael Chen, EA</strong>
+                        <p style="color: var(--gray); font-size: var(--font-size-sm);">Chen Tax & Accounting Services</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" style="background: var(--light-gray); padding: var(--spacing-lg); border-radius: var(--radius-lg); position: relative;">
+                    <div class="quote-icon" style="position: absolute; top: -10px; left: 20px; font-size: 3rem; color: var(--primary-color); opacity: 0.2;">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div class="stars" style="color: #ffc107; margin-bottom: var(--spacing-sm);">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: var(--spacing-md);">"As a small firm, efficiency is everything. BankCSV lets us compete with larger firms by automating the tedious work so we can focus on advisory services."</p>
+                    <div class="testimonial-author">
+                        <strong>Lisa Martinez, CPA</strong>
+                        <p style="color: var(--gray); font-size: var(--font-size-sm);">Martinez Financial Advisory</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" style="background: var(--off-white); padding: var(--spacing-2xl) 0;">
+        <div class="container">
+            <h2 class="section-title">Professional Plans for Accounting Firms</h2>
+            <p class="section-subtitle">Flexible pricing that scales with your practice</p>
+            
+            <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-lg); margin-top: var(--spacing-xl); max-width: 900px; margin-left: auto; margin-right: auto;">
+                <div class="pricing-card" style="background: white; padding: var(--spacing-xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); position: relative;">
+                    <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-sm);">Professional</h3>
+                    <div class="price" style="font-size: var(--font-size-3xl); font-weight: bold; margin-bottom: var(--spacing-md);">
+                        $60<span style="font-size: var(--font-size-base); color: var(--gray); font-weight: normal;">/month</span>
+                    </div>
+                    <ul style="list-style: none; margin-bottom: var(--spacing-lg);">
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> 1000 pages/month</li>
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> Batch processing</li>
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> QuickBooks integration</li>
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> Custom date formats</li>
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> Priority support</li>
+                    </ul>
+                    <a href="/signup.html?plan=professional" class="btn-primary" style="width: 100%; text-align: center; display: block;">Sign Up</a>
+                </div>
+                
+                <div class="pricing-card" style="background: white; padding: var(--spacing-xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); position: relative; border: 2px solid var(--primary-color);">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: white; padding: 0.25rem 1rem; border-radius: var(--radius-full); font-size: var(--font-size-sm);">Most Popular</div>
+                    <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-sm);">Business</h3>
+                    <div class="price" style="font-size: var(--font-size-3xl); font-weight: bold; margin-bottom: var(--spacing-md);">
+                        $99<span style="font-size: var(--font-size-base); color: var(--gray); font-weight: normal;">/month</span>
+                    </div>
+                    <ul style="list-style: none; margin-bottom: var(--spacing-lg);">
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> 4000 pages/month</li>
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> Bulk batch processing</li>
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> CSV, Excel & JSON export</li>
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> Custom integrations</li>
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> Dedicated support</li>
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> White-label option</li>
+                    </ul>
+                    <a href="/signup.html?plan=business" class="btn-cta" style="width: 100%; text-align: center; display: block;">Get Started</a>
+                </div>
+                
+                <div class="pricing-card" style="background: white; padding: var(--spacing-xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); position: relative;">
+                    <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-sm);">Enterprise</h3>
+                    <div class="price" style="font-size: var(--font-size-3xl); font-weight: bold; margin-bottom: var(--spacing-md);">
+                        Custom
+                    </div>
+                    <ul style="list-style: none; margin-bottom: var(--spacing-lg);">
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> Everything in Business</li>
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> Custom integrations</li>
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> Dedicated account manager</li>
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> On-premise deployment</li>
+                        <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: var(--spacing-xs);"></i> SLA guarantee</li>
+                    </ul>
+                    <a href="/contact.html" class="btn-secondary" style="width: 100%; text-align: center; display: block; background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color);">Contact Sales</a>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: var(--spacing-lg); color: var(--gray);">
+                Flexible pricing that scales with your practice. Cancel anytime.
+            </p>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section class="integration-section" style="background: white; padding: var(--spacing-2xl) 0;">
+        <div class="container">
+            <h2 class="section-title">Seamless Integration with Your Tools</h2>
+            <p class="section-subtitle">Works with the software you already use</p>
+            
+            <div class="integration-logos" style="display: flex; justify-content: center; align-items: center; gap: var(--spacing-xl); flex-wrap: wrap; margin-top: var(--spacing-xl);">
+                <div class="integration-logo" style="text-align: center;">
+                    <div style="width: 120px; height: 60px; background: #2CA01C; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md);">
+                        <span style="color: white; font-weight: bold; font-size: 1.2rem;">QuickBooks</span>
+                    </div>
+                </div>
+                <div class="integration-logo" style="text-align: center;">
+                    <div style="width: 120px; height: 60px; background: #13B5EA; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md);">
+                        <span style="color: white; font-weight: bold; font-size: 1.2rem;">Xero</span>
+                    </div>
+                </div>
+                <div class="integration-logo" style="text-align: center;">
+                    <div style="width: 120px; height: 60px; background: #1976D2; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md);">
+                        <span style="color: white; font-weight: bold; font-size: 1.2rem;">Wave</span>
+                    </div>
+                </div>
+                <div class="integration-logo" style="text-align: center;">
+                    <div style="width: 120px; height: 60px; background: #FF5722; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md);">
+                        <span style="color: white; font-weight: bold; font-size: 1.2rem;">FreshBooks</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Accounting Practice?</h2>
+            <p>Join thousands of accountants who save hours every week with BankCSV</p>
+            <a href="/signup.html" class="btn-cta">
+                <i class="fas fa-rocket"></i> Start Converting Now
+            </a>
+            <p class="cta-note">Join thousands of accountants who save hours every week</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="/features.html">Features</a></li>
+                        <li><a href="/pricing.html">Pricing</a></li>
+                        <li><a href="/integrations.html">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="/accountants.html">For Accountants</a></li>
+                        <li><a href="/bookkeepers.html">For Bookkeepers</a></li>
+                        <li><a href="/business.html">For Business</a></li>
+                        <li><a href="/personal.html">Personal Finance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/tutorials.html">Tutorials</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/press.html">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/gdpr.html">GDPR</a></li>
+                        <li><a href="/ccpa.html">CCPA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 BankCSV Converter. All rights reserved.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/modern-homepage-fixed.js"></script>
+    <script src="/js/dropdown-handler.js"></script>
+</body>
+</html>

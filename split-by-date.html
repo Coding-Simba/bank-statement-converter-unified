@@ -178,6 +178,12 @@
             border-color: #ff6b6b;
         }
         
+        .quick-range-btn.active {
+            background: #ff6b6b;
+            color: white;
+            border-color: #ff6b6b;
+        }
+        
         .split-examples {
             padding: 80px 0;
         }
@@ -237,6 +243,22 @@
             justify-content: center;
             color: white;
             font-size: 0.75rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .split-button:hover:not([disabled]) {
+            background: #ff5252 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .split-button.enabled {
+            opacity: 1 !important;
+            pointer-events: auto !important;
         }
     </style>
   <link href="/css/blog-fix.css" rel="stylesheet"/>
@@ -345,6 +367,43 @@
                     <button class="quick-range-btn">Year to Date</button>
                     <button class="quick-range-btn">Last Year</button>
                 </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button id="splitButton" class="split-button" style="
+                        background: #ff6b6b;
+                        color: white;
+                        border: none;
+                        padding: 16px 40px;
+                        font-size: 1.125rem;
+                        font-weight: 600;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 10px;
+                        transition: all 0.3s ease;
+                        opacity: 0.5;
+                        pointer-events: none;
+                    ">
+                        <i class="fas fa-scissors"></i>
+                        Split & Download
+                    </button>
+                </div>
+                
+                <div id="processingMessage" style="display: none; text-align: center; margin-top: 20px;">
+                    <div class="spinner" style="
+                        border: 3px solid #f3f3f3;
+                        border-top: 3px solid #ff6b6b;
+                        border-radius: 50%;
+                        width: 40px;
+                        height: 40px;
+                        animation: spin 1s linear infinite;
+                        margin: 0 auto 10px;
+                    "></div>
+                    <p style="color: #6c757d;">Processing your statement...</p>
+                </div>
+                
+                <div id="errorMessage" style="display: none; background: #fee; color: #c33; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center;"></div>
             </div>
         </div>
     </section>
@@ -556,5 +615,227 @@
 
     <script src="/js/modern-homepage-fixed.js"></script>
     <script src="/js/dropdown-handler.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Test backend connection
+        fetch('http://localhost:5001/api/split-statement', { method: 'POST' })
+            .then(res => res.json())
+            .then(data => console.log('Backend is running:', data))
+            .catch(err => console.error('Backend connection error:', err));
+        
+        // Date range button functionality
+        const quickRangeButtons = document.querySelectorAll('.quick-range-btn');
+        const startDateInput = document.getElementById('startDate');
+        const endDateInput = document.getElementById('endDate');
+        
+        quickRangeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const range = this.textContent.trim();
+                const today = new Date();
+                let startDate, endDate;
+                
+                switch(range) {
+                    case 'Last Month':
+                        startDate = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+                        endDate = new Date(today.getFullYear(), today.getMonth(), 0);
+                        break;
+                        
+                    case 'Last Quarter':
+                        const currentQuarter = Math.floor(today.getMonth() / 3);
+                        const lastQuarter = currentQuarter === 0 ? 3 : currentQuarter - 1;
+                        const lastQuarterYear = currentQuarter === 0 ? today.getFullYear() - 1 : today.getFullYear();
+                        startDate = new Date(lastQuarterYear, lastQuarter * 3, 1);
+                        endDate = new Date(lastQuarterYear, (lastQuarter + 1) * 3, 0);
+                        break;
+                        
+                    case 'Last 3 Months':
+                        startDate = new Date(today.getFullYear(), today.getMonth() - 3, today.getDate());
+                        endDate = today;
+                        break;
+                        
+                    case 'Last 6 Months':
+                        startDate = new Date(today.getFullYear(), today.getMonth() - 6, today.getDate());
+                        endDate = today;
+                        break;
+                        
+                    case 'Year to Date':
+                        startDate = new Date(today.getFullYear(), 0, 1);
+                        endDate = today;
+                        break;
+                        
+                    case 'Last Year':
+                        startDate = new Date(today.getFullYear() - 1, 0, 1);
+                        endDate = new Date(today.getFullYear() - 1, 11, 31);
+                        break;
+                }
+                
+                // Format dates as YYYY-MM-DD for input fields
+                if (startDate && endDate) {
+                    startDateInput.value = formatDate(startDate);
+                    endDateInput.value = formatDate(endDate);
+                    
+                    // Add active state to clicked button
+                    quickRangeButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Check if split button should be enabled
+                    checkEnableSplitButton();
+                }
+            });
+        });
+        
+        // Helper function to format date as YYYY-MM-DD
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+        
+        // Remove active state when user manually changes dates
+        startDateInput.addEventListener('change', function() {
+            quickRangeButtons.forEach(btn => btn.classList.remove('active'));
+        });
+        
+        endDateInput.addEventListener('change', function() {
+            quickRangeButtons.forEach(btn => btn.classList.remove('active'));
+        });
+        
+        // File upload functionality
+        const splitArea = document.getElementById('splitArea');
+        const fileInput = document.getElementById('fileInput');
+        const chooseFilesBtn = document.getElementById('chooseFilesBtn');
+        const splitButton = document.getElementById('splitButton');
+        const processingMessage = document.getElementById('processingMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        let selectedFile = null;
+        
+        chooseFilesBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            fileInput.click();
+        });
+        
+        splitArea.addEventListener('click', function() {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                selectedFile = e.target.files[0];
+                const fileName = selectedFile.name;
+                chooseFilesBtn.innerHTML = `<i class="fas fa-check"></i> ${fileName}`;
+                splitArea.style.borderColor = 'rgba(255, 255, 255, 0.8)';
+                checkEnableSplitButton();
+            }
+        });
+        
+        // Check if split button should be enabled
+        function checkEnableSplitButton() {
+            const hasFile = selectedFile !== null;
+            const hasDateRange = (startDateInput.value && endDateInput.value);
+            
+            if (hasFile && hasDateRange) {
+                splitButton.classList.add('enabled');
+            } else {
+                splitButton.classList.remove('enabled');
+            }
+        }
+        
+        // Check enable state when dates change
+        startDateInput.addEventListener('change', function() {
+            quickRangeButtons.forEach(btn => btn.classList.remove('active'));
+            checkEnableSplitButton();
+        });
+        
+        endDateInput.addEventListener('change', function() {
+            quickRangeButtons.forEach(btn => btn.classList.remove('active'));
+            checkEnableSplitButton();
+        });
+        
+        // Drag and drop functionality
+        splitArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.style.transform = 'scale(1.05)';
+            this.style.borderColor = 'white';
+        });
+        
+        splitArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.style.transform = 'scale(1.02)';
+            this.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+        });
+        
+        splitArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.style.transform = 'scale(1.02)';
+            this.style.borderColor = 'rgba(255, 255, 255, 0.8)';
+            
+            if (e.dataTransfer.files.length > 0) {
+                selectedFile = e.dataTransfer.files[0];
+                fileInput.files = e.dataTransfer.files;
+                const fileName = selectedFile.name;
+                chooseFilesBtn.innerHTML = `<i class="fas fa-check"></i> ${fileName}`;
+                checkEnableSplitButton();
+            }
+        });
+        
+        // Split button click handler
+        splitButton.addEventListener('click', async function() {
+            if (!this.classList.contains('enabled')) return;
+            
+            // Hide error message if shown
+            errorMessage.style.display = 'none';
+            
+            // Show processing message
+            processingMessage.style.display = 'block';
+            splitButton.style.display = 'none';
+            
+            try {
+                // Create form data
+                const formData = new FormData();
+                formData.append('file', selectedFile);
+                formData.append('start_date', startDateInput.value);
+                formData.append('end_date', endDateInput.value);
+                
+                // Send to backend
+                const response = await fetch('http://localhost:5001/api/split-statement', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    // Download the result
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `split_${selectedFile.name.replace('.pdf', '')}_${startDateInput.value}_to_${endDateInput.value}.csv`;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                    
+                    // Reset UI
+                    processingMessage.style.display = 'none';
+                    splitButton.style.display = 'inline-flex';
+                    
+                    // Show success (you could add a success message div)
+                    alert('Statement split successfully! Check your downloads.');
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Failed to split statement');
+                }
+            } catch (error) {
+                // Show error
+                console.error('Split error:', error);
+                errorMessage.textContent = 'Error: ' + error.message;
+                errorMessage.style.display = 'block';
+                processingMessage.style.display = 'none';
+                splitButton.style.display = 'inline-flex';
+            }
+        });
+    });
+    </script>
 </body>
 </html>

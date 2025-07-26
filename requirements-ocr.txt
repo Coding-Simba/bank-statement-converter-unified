@@ -1,0 +1,9 @@
+# OCR dependencies for scanned PDF support
+pdf2image==1.16.3
+pillow>=10.0.0
+pytesseract==0.3.10
+opencv-python==4.9.0.80
+
+# Note: Also requires system installation of:
+# - Tesseract OCR: brew install tesseract (Mac) or apt-get install tesseract-ocr (Linux)
+# - Poppler: brew install poppler (Mac) or apt-get install poppler-utils (Linux)

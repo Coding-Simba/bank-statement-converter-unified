@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage your personal finances with ease. Convert bank statements, track expenses, prepare taxes, and organize your financial life - all in one secure platform starting at $30/month.">
+    <title>Personal Finance Management - Bank Statement Converter</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="/css/nav-fix.css">
+    <link rel="stylesheet" href="/css/dropdown-fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="/css/blog-fix.css" rel="stylesheet"/>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <span class="logo-text">BankCSV</span>
+                </a>
+                <div class="nav-links desktop-only">
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            <i class="fas fa-th"></i> Tools
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="/convert-pdf.html" class="dropdown-item">
+                                <i class="fas fa-file-pdf"></i>
+                                Convert PDF
+                            </a>
+                            <a href="/merge-statements.html" class="dropdown-item">
+                                <i class="fas fa-object-group"></i>
+                                Merge Statements
+                            </a>
+                            <a href="/split-by-date.html" class="dropdown-item">
+                                <i class="fas fa-cut"></i>
+                                Split by Date
+                            </a>
+                            <a href="/analyze-transactions.html" class="dropdown-item">
+                                <i class="fas fa-chart-line"></i>
+                                Analyze Transactions
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#banks" class="nav-link">Supported Banks</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="/pricing.html" class="nav-link desktop-only">Pricing</a>
+                <a href="/business.html" class="nav-link desktop-only">Business</a>
+                <a href="/login.html" class="nav-link">Log In</a>
+                <a href="/signup.html" class="btn-primary">Sign Up</a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#features" class="mobile-link">Features</a>
+            <a href="#banks" class="mobile-link">Supported Banks</a>
+            <a href="/blog.html" class="mobile-link">Blog</a>
+            <a href="/pricing.html" class="mobile-link">Pricing</a>
+            <a href="/business.html" class="mobile-link">Business</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="breadcrumb">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <span class="separator">›</span>
+            <span>Personal Finance</span>
+        </div>
+        
+        <h1 class="hero-title">Take Control of Your Personal Finances</h1>
+        
+        <div class="hero-description" style="max-width: 800px; margin: 0 auto;">
+            <p style="font-size: 1.25rem; margin-bottom: 2rem;">Transform the way you manage money. Convert bank statements instantly, track expenses effortlessly, and stay organized for tax season - all in one secure platform designed for individuals.</p>
+        </div>
+
+        <div class="cta-buttons" style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem;">
+            <a href="/signup.html" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                <i class="fas fa-rocket"></i> Get Started
+            </a>
+            <a href="#pricing" class="btn-secondary" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                View Pricing <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="trust-badges">
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Starting at just $30/month</span>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>14-day money-back guarantee</span>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Bank-level security for your data</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features for Personal Use -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="section-title">Features Built for Your Financial Success</h2>
+            <p class="section-subtitle">Everything you need to organize, track, and optimize your personal finances</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Expense Tracking</h3>
+                    <p>Automatically categorize transactions and visualize your spending patterns. See exactly where your money goes each month.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>Tax Preparation</h3>
+                    <p>Export tax-ready reports with deductible expenses highlighted. Save hours during tax season with organized records.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h3>Budget Assistant</h3>
+                    <p>Set spending limits and get alerts when you're approaching them. Build better financial habits with smart insights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Multi-Bank Support</h3>
+                    <p>Connect all your accounts in one place. Support for 1000+ banks means you can manage everything together.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #30cfd0, #330867);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Investment Tracking</h3>
+                    <p>Monitor your portfolio performance and track dividends. Get a complete picture of your financial growth.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Access</h3>
+                    <p>Check your finances on the go. Our mobile-optimized platform works seamlessly on any device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="use-cases-section" style="background: var(--light-gray); padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">Perfect for Every Financial Goal</h2>
+            <div class="use-cases-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="use-case-card" style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow-md);">
+                    <div class="use-case-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>First-Time Homebuyers</h3>
+                    <p>Organize statements for mortgage applications. Show consistent income and savings patterns to lenders.</p>
+                </div>
+                <div class="use-case-card" style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow-md);">
+                    <div class="use-case-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Freelancers & Contractors</h3>
+                    <p>Track business expenses separately. Prepare for quarterly taxes and maximize deductions.</p>
+                </div>
+                <div class="use-case-card" style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow-md);">
+                    <div class="use-case-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Students & Recent Grads</h3>
+                    <p>Build good financial habits early. Track student loan payments and budget on a tight income.</p>
+                </div>
+                <div class="use-case-card" style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow-md);">
+                    <div class="use-case-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Families</h3>
+                    <p>Manage household budgets and track family expenses. Plan for education and vacation savings.</p>
+                </div>
+                <div class="use-case-card" style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow-md);">
+                    <div class="use-case-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3>Retirees</h3>
+                    <p>Monitor fixed income and track spending. Ensure your retirement savings last longer.</p>
+                </div>
+                <div class="use-case-card" style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow-md);">
+                    <div class="use-case-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Investors</h3>
+                    <p>Track investment performance across multiple accounts. Monitor dividends and capital gains.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" style="padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">Why Choose BankCSV for Personal Finance?</h2>
+            <div class="benefits-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; margin-top: 3rem;">
+                <div class="benefit-item" style="display: flex; gap: 1.5rem;">
+                    <div class="benefit-icon" style="flex-shrink: 0;">
+                        <i class="fas fa-dollar-sign" style="font-size: 2rem; color: var(--primary-color);"></i>
+                    </div>
+                    <div>
+                        <h3>Save Money on Accountants</h3>
+                        <p>Do your own bookkeeping and only pay for professional help when you really need it. Save hundreds per year.</p>
+                    </div>
+                </div>
+                <div class="benefit-item" style="display: flex; gap: 1.5rem;">
+                    <div class="benefit-icon" style="flex-shrink: 0;">
+                        <i class="fas fa-clock" style="font-size: 2rem; color: var(--primary-color);"></i>
+                    </div>
+                    <div>
+                        <h3>Save 10+ Hours Monthly</h3>
+                        <p>No more manual data entry. Convert statements in seconds and spend time on what matters.</p>
+                    </div>
+                </div>
+                <div class="benefit-item" style="display: flex; gap: 1.5rem;">
+                    <div class="benefit-icon" style="flex-shrink: 0;">
+                        <i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--primary-color);"></i>
+                    </div>
+                    <div>
+                        <h3>Bank-Level Security</h3>
+                        <p>Your financial data is encrypted and never stored. We're ISO/IEC 27001 certified for your peace of mind.</p>
+                    </div>
+                </div>
+                <div class="benefit-item" style="display: flex; gap: 1.5rem;">
+                    <div class="benefit-icon" style="flex-shrink: 0;">
+                        <i class="fas fa-search-dollar" style="font-size: 2rem; color: var(--primary-color);"></i>
+                    </div>
+                    <div>
+                        <h3>Find Hidden Tax Deductions</h3>
+                        <p>Our categorization helps identify deductible expenses you might have missed.</p>
+                    </div>
+                </div>
+                <div class="benefit-item" style="display: flex; gap: 1.5rem;">
+                    <div class="benefit-icon" style="flex-shrink: 0;">
+                        <i class="fas fa-folder-open" style="font-size: 2rem; color: var(--primary-color);"></i>
+                    </div>
+                    <div>
+                        <h3>Stay Organized Year-Round</h3>
+                        <p>No more scrambling during tax season. Keep all your financial records organized and accessible.</p>
+                    </div>
+                </div>
+                <div class="benefit-item" style="display: flex; gap: 1.5rem;">
+                    <div class="benefit-icon" style="flex-shrink: 0;">
+                        <i class="fas fa-sync" style="font-size: 2rem; color: var(--primary-color);"></i>
+                    </div>
+                    <div>
+                        <h3>Automatic Updates</h3>
+                        <p>We continuously improve our system to support new bank formats and features.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing" style="background: var(--light-gray); padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p class="section-subtitle">Choose the plan that fits your needs</p>
+            <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 800px; margin: 3rem auto;">
+                <div class="pricing-card" style="background: white; border-radius: 1rem; padding: 2.5rem; text-align: center; border: 2px solid var(--light-gray);">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Starter</h3>
+                    <div class="price" style="font-size: 3rem; font-weight: bold; color: var(--primary-color); margin-bottom: 1rem;">
+                        $30<span style="font-size: 1rem; color: var(--gray);">/month</span>
+                    </div>
+                    <ul style="list-style: none; padding: 0; margin: 2rem 0; text-align: left;">
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> 400 pages per month</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Expense categorization</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> CSV & Excel export</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Email support</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Basic reporting</li>
+                    </ul>
+                    <a href="/signup.html" class="btn-secondary" style="width: 100%; padding: 1rem;">Get Started</a>
+                </div>
+                <div class="pricing-card" style="background: white; border-radius: 1rem; padding: 2.5rem; text-align: center; border: 2px solid var(--primary-color); position: relative;">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: white; padding: 0.25rem 1rem; border-radius: 1rem; font-size: 0.875rem;">
+                        MOST POPULAR
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Professional</h3>
+                    <div class="price" style="font-size: 3rem; font-weight: bold; color: var(--primary-color); margin-bottom: 1rem;">
+                        $60<span style="font-size: 1rem; color: var(--gray);">/month</span>
+                    </div>
+                    <ul style="list-style: none; padding: 0; margin: 2rem 0; text-align: left;">
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> 1000 pages per month</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Advanced categorization & insights</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Tax report generation</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Budget tracking tools</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Priority support</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> API access</li>
+                    </ul>
+                    <a href="/signup.html" class="btn-primary" style="width: 100%; padding: 1rem;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Content Section -->
+    <section class="education-section" style="padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">Financial Tips & Resources</h2>
+            <p class="section-subtitle">Learn how to make the most of your money</p>
+            <div class="tips-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="tip-card" style="background: var(--light-gray); padding: 2rem; border-radius: 1rem;">
+                    <div class="tip-icon" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Track Every Expense</h3>
+                    <p>Small purchases add up. Converting your statements monthly helps you spot spending patterns and cut unnecessary costs.</p>
+                    <a href="/blog/expense-tracking-guide.html" style="color: var(--primary-color); font-weight: 500;">Learn more →</a>
+                </div>
+                <div class="tip-card" style="background: var(--light-gray); padding: 2rem; border-radius: 1rem;">
+                    <div class="tip-icon" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Prepare for Tax Season</h3>
+                    <p>Start organizing receipts and statements early. Our tools help categorize deductible expenses automatically.</p>
+                    <a href="/blog/tax-preparation-guide.html" style="color: var(--primary-color); font-weight: 500;">Read guide →</a>
+                </div>
+                <div class="tip-card" style="background: var(--light-gray); padding: 2rem; border-radius: 1rem;">
+                    <div class="tip-icon" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Create a Budget That Works</h3>
+                    <p>Use your converted statements to create realistic budgets based on actual spending, not estimates.</p>
+                    <a href="/blog/budgeting-basics.html" style="color: var(--primary-color); font-weight: 500;">Get started →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" style="background: var(--light-gray); padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">What Our Users Say</h2>
+            <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow-md);">
+                    <div class="stars" style="color: #ffd700; margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: 1.5rem;">"This tool saved me hours during tax season. I converted all my statements in minutes and my accountant was impressed with how organized everything was."</p>
+                    <div class="testimonial-author">
+                        <strong>Sarah M.</strong>
+                        <span style="color: var(--gray); display: block; font-size: 0.875rem;">Freelance Designer</span>
+                    </div>
+                </div>
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow-md);">
+                    <div class="stars" style="color: #ffd700; margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: 1.5rem;">"I manage accounts at 4 different banks. BankCSV makes it easy to see all my finances in one place. The expense categorization is spot-on!"</p>
+                    <div class="testimonial-author">
+                        <strong>Michael R.</strong>
+                        <span style="color: var(--gray); display: block; font-size: 0.875rem;">Small Business Owner</span>
+                    </div>
+                </div>
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow-md);">
+                    <div class="stars" style="color: #ffd700; margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: 1.5rem;">"As a recent grad, I needed to get my finances in order. This tool helped me understand where my money was going and create my first real budget."</p>
+                    <div class="testimonial-author">
+                        <strong>Emily L.</strong>
+                        <span style="color: var(--gray); display: block; font-size: 0.875rem;">Graduate Student</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Start Your Financial Journey Today</h2>
+            <p>Join thousands who've taken control of their finances with BankCSV</p>
+            <a href="/signup.html" class="btn-cta">
+                <i class="fas fa-user-plus"></i> Get Started Now
+            </a>
+            <p class="cta-note">14-day money-back guarantee • Cancel anytime</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="/features.html">Features</a></li>
+                        <li><a href="/pricing.html">Pricing</a></li>
+                        <li><a href="/integrations.html">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="/accountants.html">For Accountants</a></li>
+                        <li><a href="/bookkeepers.html">For Bookkeepers</a></li>
+                        <li><a href="/business.html">For Business</a></li>
+                        <li><a href="/personal.html">Personal Finance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/tutorials.html">Tutorials</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/press.html">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/gdpr.html">GDPR</a></li>
+                        <li><a href="/ccpa.html">CCPA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 BankCSV Converter. All rights reserved.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/modern-homepage-fixed.js"></script>
+    <script src="/js/dropdown-handler.js"></script>
+</body>
+</html>

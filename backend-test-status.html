@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Backend Status Check</title>
+</head>
+<body>
+    <h1>Backend Status</h1>
+    <div id="status">Checking...</div>
+    
+    <script>
+    // Test backend connection
+    fetch('http://localhost:5001/api/split-statement', {
+        method: 'POST'
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById('status').innerHTML = `
+            <p style="color: green;">✓ Backend is running on port 5001</p>
+            <p>Response: ${JSON.stringify(data)}</p>
+            <p>Expected error: "No file provided" - This is correct!</p>
+        `;
+    })
+    .catch(err => {
+        document.getElementById('status').innerHTML = `
+            <p style="color: red;">✗ Backend connection failed</p>
+            <p>Error: ${err.message}</p>
+            <p>Make sure the backend is running with: ./run-split-backend.sh</p>
+        `;
+    });
+    </script>
+</body>
+</html>

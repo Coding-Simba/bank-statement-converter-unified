@@ -1,0 +1,112 @@
+name: Deploy to AWS Lightsail
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # Allow manual trigger
+
+env:
+  DEPLOY_PATH: /home/ubuntu/bank-statement-converter
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup SSH Key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.LIGHTSAIL_SSH_KEY }}" > ~/.ssh/lightsail_key
+        chmod 600 ~/.ssh/lightsail_key
+        ssh-keyscan -H ${{ secrets.LIGHTSAIL_HOST }} >> ~/.ssh/known_hosts
+
+    - name: Create deployment package
+      run: |
+        # Create deployment archive
+        tar -czf deploy.tar.gz \
+          --exclude='.git' \
+          --exclude='*.pyc' \
+          --exclude='__pycache__' \
+          --exclude='venv' \
+          --exclude='failed_pdfs/*' \
+          --exclude='uploads/*' \
+          .
+
+    - name: Copy files to Lightsail
+      run: |
+        # Upload deployment package
+        scp -i ~/.ssh/lightsail_key deploy.tar.gz ubuntu@${{ secrets.LIGHTSAIL_HOST }}:/tmp/
+
+    - name: Deploy on Lightsail
+      run: |
+        ssh -i ~/.ssh/lightsail_key ubuntu@${{ secrets.LIGHTSAIL_HOST }} << 'EOF'
+          set -e
+          
+          # Backup current version
+          if [ -d "${{ env.DEPLOY_PATH }}" ]; then
+            sudo cp -r ${{ env.DEPLOY_PATH }} ${{ env.DEPLOY_PATH }}.backup.$(date +%Y%m%d_%H%M%S)
+          fi
+          
+          # Extract new version
+          cd /tmp
+          tar -xzf deploy.tar.gz
+          
+          # Ensure directories exist
+          mkdir -p ${{ env.DEPLOY_PATH }}/{backend,frontend,uploads,failed_pdfs,data}
+          
+          # Copy backend files
+          cp -r backend/* ${{ env.DEPLOY_PATH }}/backend/
+          
+          # Copy frontend files  
+          cp -r *.html css js ${{ env.DEPLOY_PATH }}/frontend/ 2>/dev/null || true
+          
+          # Activate virtual environment and install dependencies
+          cd ${{ env.DEPLOY_PATH }}
+          source venv/bin/activate
+          pip install -r backend/requirements-fastapi.txt
+          pip install -r requirements-ocr.txt 2>/dev/null || true
+          
+          # Run database migrations if needed
+          cd backend
+          python -c "from models.database import engine, Base; Base.metadata.create_all(bind=engine)" || true
+          
+          # Restart services
+          sudo systemctl restart bankconverter
+          sudo systemctl restart nginx
+          
+          # Cleanup
+          rm -f /tmp/deploy.tar.gz
+          
+          # Check if service is running
+          sleep 5
+          if sudo systemctl is-active --quiet bankconverter; then
+            echo "✅ Deployment successful!"
+          else
+            echo "❌ Service failed to start. Rolling back..."
+            # Rollback logic here if needed
+            exit 1
+          fi
+        EOF
+
+    - name: Health check
+      run: |
+        sleep 10
+        response=$(curl -s -o /dev/null -w "%{http_code}" http://${{ secrets.LIGHTSAIL_HOST }}/api/health || echo "000")
+        if [ "$response" = "200" ]; then
+          echo "✅ Health check passed!"
+        else
+          echo "❌ Health check failed with status: $response"
+          exit 1
+        fi
+
+    - name: Cleanup old backups
+      if: success()
+      run: |
+        ssh -i ~/.ssh/lightsail_key ubuntu@${{ secrets.LIGHTSAIL_HOST }} << 'EOF'
+          # Keep only last 3 backups
+          cd /home/ubuntu
+          ls -td bank-statement-converter.backup.* | tail -n +4 | xargs rm -rf
+        EOF

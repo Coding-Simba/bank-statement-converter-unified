@@ -119,11 +119,8 @@
         // Show processing state
         showProcessingState(file);
 
-        // Simulate file upload and conversion
-        setTimeout(() => {
-            // In production, this would be an actual API call
-            showSuccessState(file);
-        }, 2000);
+        // Upload to backend API
+        uploadToBackend(file);
     }
 
     function showProcessingState(file) {
@@ -219,20 +216,111 @@
         setupFileUpload(); // Re-initialize event listeners
     }
 
+    // Backend upload functionality
+    async function uploadToBackend(file) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        console.log('Attempting to upload file:', file.name, 'Size:', file.size);
+
+        try {
+            // Try different URL formats to avoid CORS issues
+            const apiUrl = window.location.hostname === 'localhost' 
+                ? 'http://localhost:5000/api/convert'
+                : 'http://127.0.0.1:5000/api/convert';
+            
+            console.log('Using API URL:', apiUrl);
+            
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                body: formData,
+                // Remove credentials for now to avoid CORS issues
+                // credentials: 'include',
+                mode: 'cors'
+            });
+
+            console.log('Response received:', response.status, response.statusText);
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.detail || 'Conversion failed');
+            }
+
+            const result = await response.json();
+            console.log('Conversion result:', result);
+            
+            // Store the statement ID for download
+            uploadBox.setAttribute('data-statement-id', result.id);
+            
+            // Show success state
+            showSuccessState(file);
+            
+        } catch (error) {
+            console.error('Upload error:', error);
+            console.error('Error name:', error.name);
+            console.error('Error message:', error.message);
+            
+            // More detailed error logging
+            if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+                console.error('Network error - cannot reach backend');
+                showNotification('Cannot connect to backend server at http://localhost:5000. Check browser console for details.', 'error');
+                
+                // Test connection
+                testBackendConnection();
+            } else {
+                showNotification(error.message || 'Failed to convert file', 'error');
+            }
+            resetUploadBox();
+        }
+    }
+    
+    // Test backend connection
+    async function testBackendConnection() {
+        console.log('Testing backend connection...');
+        const healthUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:5000/health'
+            : 'http://127.0.0.1:5000/health';
+            
+        try {
+            const response = await fetch(healthUrl, {
+                method: 'GET',
+                mode: 'cors'
+            });
+            const data = await response.json();
+            console.log('Backend health check successful:', data);
+        } catch (error) {
+            console.error('Backend health check failed:', error);
+            console.error('Please ensure the backend is running: python3 -m uvicorn backend.main:app --host 0.0.0.0 --port 5000');
+        }
+    }
+
     // Download functionality
     function downloadFile(originalFile, format) {
         console.log('Downloading file:', originalFile.name, 'as', format);
         
-        const fileName = originalFile.name.replace(/\.[^/.]+$/, '');
-        const convertedFileName = `${fileName}_converted.${format === 'csv' ? 'csv' : 'xlsx'}`;
+        const statementId = uploadBox.getAttribute('data-statement-id');
         
-        if (format === 'csv') {
-            downloadCSV(convertedFileName);
+        if (statementId) {
+            // Download from backend
+            const downloadUrl = window.location.hostname === 'localhost' 
+                ? `http://localhost:5000/api/statement/${statementId}/download`
+                : `http://127.0.0.1:5000/api/statement/${statementId}/download`;
+            
+            window.location.href = downloadUrl;
+            showNotification(`Downloading converted file`, 'success');
         } else {
-            downloadExcel(convertedFileName);
+            // Fallback to demo data
+            const fileName = originalFile.name.replace(/\.[^/.]+$/, '');
+            const convertedFileName = `${fileName}_converted.${format === 'csv' ? 'csv' : 'xlsx'}`;
+            
+            if (format === 'csv') {
+                downloadCSV(convertedFileName);
+            } else {
+                downloadExcel(convertedFileName);
+            }
+            
+            showNotification(`Downloading ${convertedFileName}`, 'success');
         }
-        
-        showNotification(`Downloading ${convertedFileName}`, 'success');
     }
 
     function downloadCSV(filename) {

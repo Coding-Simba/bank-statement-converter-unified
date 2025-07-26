@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Download Test</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://bankcsvconverter.com/download-simple-test.html" rel="canonical"/><title>Simple Download Test</title>
+<style>
         body {
             font-family: Arial, sans-serif;
             max-width: 800px;
@@ -75,42 +76,37 @@
             min-height: 100px;
         }
     </style>
-  <link href="/css/blog-fix.css" rel="stylesheet"/>
+<link href="/css/blog-fix.css" rel="stylesheet"/>
 </head>
 <body>
-    <div class="container">
-        <h1>Simple Download Test</h1>
-        
-        <div class="info">
-            <p><strong>Direct Download Test</strong></p>
-            <p>Click the buttons below to test file downloads. The files should download directly to your Downloads folder.</p>
-        </div>
-        
-        <div class="button-group">
-            <button class="csv-btn" onclick="simpleDownloadCSV()">
+<div class="container">
+<h1>Simple Download Test</h1>
+<div class="info">
+<p><strong>Direct Download Test</strong></p>
+<p>Click the buttons below to test file downloads. The files should download directly to your Downloads folder.</p>
+</div>
+<div class="button-group">
+<button class="csv-btn" onclick="simpleDownloadCSV()">
                 Download CSV
             </button>
-            <button class="excel-btn" onclick="simpleDownloadExcel()">
+<button class="excel-btn" onclick="simpleDownloadExcel()">
                 Download Excel
             </button>
-        </div>
-        
-        <div class="info">
-            <p><strong>Alternative Methods:</strong></p>
-            <div class="button-group">
-                <button onclick="testDataURI()">Test Data URI</button>
-                <button onclick="testWindowOpen()">Test Window.open</button>
-                <button onclick="testFormSubmit()">Test Form Submit</button>
-            </div>
-        </div>
-        
-        <div class="console" id="console">
+</div>
+<div class="info">
+<p><strong>Alternative Methods:</strong></p>
+<div class="button-group">
+<button onclick="testDataURI()">Test Data URI</button>
+<button onclick="testWindowOpen()">Test Window.open</button>
+<button onclick="testFormSubmit()">Test Form Submit</button>
+</div>
+</div>
+<div class="console" id="console">
             Console output...
         </div>
-    </div>
-    
-    <script src="/js/simple-download.js"></script>
-    <script>
+</div>
+<script src="/js/simple-download.js"></script>
+<script>
         function log(msg) {
             const console = document.getElementById('console');
             console.innerHTML += '<br>' + new Date().toLocaleTimeString() + ' - ' + msg;

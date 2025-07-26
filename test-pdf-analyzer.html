@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Analyzer Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+</head>
+<body>
+    <h1>PDF Analyzer Test</h1>
+    <input type="file" id="fileInput" accept=".pdf">
+    <pre id="output"></pre>
+    
+    <script>
+        // Set worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        
+        const output = document.getElementById('output');
+        
+        function log(message) {
+            output.textContent += message + '\n';
+            console.log(message);
+        }
+        
+        document.getElementById('fileInput').addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            log('File selected: ' + file.name);
+            
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                log('File loaded, size: ' + arrayBuffer.byteLength);
+                
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                log('PDF loaded, pages: ' + pdf.numPages);
+                
+                let allText = '';
+                
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const textContent = await page.getTextContent();
+                    
+                    log(`\nPage ${i} - Items: ${textContent.items.length}`);
+                    
+                    // Group items by Y position
+                    const lines = {};
+                    
+                    textContent.items.forEach(item => {
+                        const y = Math.round(item.transform[5]);
+                        if (!lines[y]) {
+                            lines[y] = [];
+                        }
+                        lines[y].push({
+                            text: item.str,
+                            x: item.transform[4],
+                            width: item.width,
+                            height: item.height
+                        });
+                    });
+                    
+                    // Sort lines by Y position (descending)
+                    const sortedLines = Object.keys(lines)
+                        .map(y => parseInt(y))
+                        .sort((a, b) => b - a);
+                    
+                    log(`Lines found: ${sortedLines.length}`);
+                    
+                    // Process first 10 lines for debugging
+                    sortedLines.slice(0, 10).forEach((y, idx) => {
+                        const lineItems = lines[y].sort((a, b) => a.x - b.x);
+                        const lineText = lineItems.map(item => item.text).join(' ');
+                        log(`Line ${idx}: ${lineText}`);
+                    });
+                    
+                    // Look for transaction patterns
+                    const datePattern = /\d{2}-\d{2}-\d{4}/;
+                    const amountPattern = /\d{1,3}(?:\.\d{3})*,\d{2}/;
+                    
+                    let transactionCount = 0;
+                    sortedLines.forEach(y => {
+                        const lineItems = lines[y].sort((a, b) => a.x - b.x);
+                        const lineText = lineItems.map(item => item.text).join(' ');
+                        
+                        if (datePattern.test(lineText) && amountPattern.test(lineText)) {
+                            transactionCount++;
+                            if (transactionCount <= 5) {
+                                log(`\nTransaction found: ${lineText}`);
+                            }
+                        }
+                    });
+                    
+                    log(`\nTotal transactions found on page ${i}: ${transactionCount}`);
+                    
+                    allText += textContent.items.map(item => item.str).join(' ') + '\n';
+                }
+                
+                // Test date extraction
+                const dates = allText.match(/\d{2}-\d{2}-\d{4}/g);
+                log(`\nDates found: ${dates ? dates.length : 0}`);
+                if (dates) {
+                    log('Sample dates: ' + dates.slice(0, 5).join(', '));
+                }
+                
+                // Test amount extraction
+                const amounts = allText.match(/\d{1,3}(?:\.\d{3})*,\d{2}/g);
+                log(`\nAmounts found: ${amounts ? amounts.length : 0}`);
+                if (amounts) {
+                    log('Sample amounts: ' + amounts.slice(0, 5).join(', '));
+                }
+                
+            } catch (error) {
+                log('Error: ' + error.message);
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html>

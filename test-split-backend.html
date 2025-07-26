@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Split Backend</title>
+</head>
+<body>
+    <h1>Test Split Backend</h1>
+    <input type="file" id="fileInput" accept=".pdf">
+    <button onclick="testBackend()">Test Backend</button>
+    <div id="result"></div>
+
+    <script>
+    async function testBackend() {
+        const fileInput = document.getElementById('fileInput');
+        const resultDiv = document.getElementById('result');
+        
+        if (!fileInput.files[0]) {
+            resultDiv.innerHTML = 'Please select a file first';
+            return;
+        }
+        
+        const formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+        formData.append('start_date', '2024-01-01');
+        formData.append('end_date', '2024-12-31');
+        
+        try {
+            resultDiv.innerHTML = 'Sending request...';
+            
+            const response = await fetch('http://localhost:5001/api/split-statement', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const contentType = response.headers.get('content-type');
+            
+            if (response.ok) {
+                if (contentType && contentType.includes('application/json')) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = 'Success: ' + JSON.stringify(data);
+                } else {
+                    // It's a file download
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'split_result.csv';
+                    a.click();
+                    resultDiv.innerHTML = 'File downloaded successfully!';
+                }
+            } else {
+                const error = await response.text();
+                resultDiv.innerHTML = 'Error: ' + error;
+            }
+        } catch (err) {
+            resultDiv.innerHTML = 'Network error: ' + err.message;
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{
+  "48b7bacd950be1bf773b1a5ff90697d6ba16a5d0fd964cbecf1dcce26a098081": {
+    "original_name": "Shot-2024-09-14-at-19.24.43@2x.jpg.pdf",
+    "saved_name": "20250726_212412_48b7bacd_Shot-2024-09-14-at-19.24.43@2x.jpg.pdf",
+    "saved_path": "failed_pdfs/20250726_212412_48b7bacd_Shot-2024-09-14-at-19.24.43@2x.jpg.pdf",
+    "timestamp": "20250726_212412",
+    "date_saved": "2025-07-26T21:24:12.797082",
+    "transactions_found": 8,
+    "valid_transactions": 8,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [
+      {
+        "description": "Bank",
+        "page": 1,
+        "amount": 0.0
+      },
+      {
+        "description": "\u2018Commerce",
+        "page": 1,
+        "amount": 0.0
+      },
+      {
+        "description": "\u201cMember FOIC",
+        "amount": -15.0,
+        "page": 1
+      }
+    ],
+    "file_size": 220593,
+    "status": "pending_review"
+  },
+  "381dc7099dc6a1c139735de958e1784a9637fc64d38b5223daba7de56b14d89a": {
+    "original_name": "11a56e83-e80a-4725-adf3-e33f19ee8f36.pdf",
+    "saved_name": "20250726_225542_381dc709_11a56e83-e80a-4725-adf3-e33f19ee8f36.pdf",
+    "saved_path": "failed_pdfs/20250726_225542_381dc709_11a56e83-e80a-4725-adf3-e33f19ee8f36.pdf",
+    "timestamp": "20250726_225542",
+    "date_saved": "2025-07-26T22:55:42.857100",
+    "transactions_found": 14,
+    "valid_transactions": 0,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [
+      {
+        "description": "Bank of America\ufffd"
+      },
+      {
+        "description": "P.O. box 12345"
+      },
+      {
+        "description": "Customer service  information"
+      }
+    ],
+    "file_size": 239791,
+    "status": "pending_review"
+  }
+}

@@ -1,118 +1,111 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Convert bank statements from PDF to CSV/Excel instantly. Free online converter for 1000+ banks. Secure, fast & accurate.">
-    <title>Bank Statement Converter - PDF to CSV/Excel Free</title>
-    <link rel="stylesheet" href="/css/modern-homepage.css">
-    <link rel="stylesheet" href="/css/nav-fix.css">
-    <link rel="stylesheet" href="/css/dropdown-fix.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link href="/css/blog-fix.css" rel="stylesheet"/>
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Convert bank statements from PDF to CSV/Excel instantly. Free online converter for 1000+ banks. Secure, fast &amp; accurate." name="description"/>
+<link href="https://bankcsvconverter.com/index-with-download-fix.html" rel="canonical"/><title>Bank Statement Converter - PDF to CSV/Excel Free</title>
+<link href="/css/modern-homepage.css" rel="stylesheet"/>
+<link href="/css/nav-fix.css" rel="stylesheet"/>
+<link href="/css/dropdown-fix.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="/css/blog-fix.css" rel="stylesheet">
+</link></head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-left">
-                <a href="/" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                    </div>
-                    <span class="logo-text">BankCSV</span>
-                </a>
-                <div class="nav-links desktop-only">
-                    <div class="dropdown">
-                        <button class="nav-link dropdown-toggle">
-                            <i class="fas fa-th"></i> Tools
+<!-- Navigation -->
+<nav class="navbar">
+<div class="nav-container">
+<div class="nav-left">
+<a class="logo" href="/">
+<div class="logo-icon">
+<i class="fas fa-file-invoice-dollar"></i>
+</div>
+<span class="logo-text">BankCSV</span>
+</a>
+<div class="nav-links desktop-only">
+<div class="dropdown">
+<button class="nav-link dropdown-toggle">
+<i class="fas fa-th"></i> Tools
                             <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a href="#convert" class="dropdown-item">Convert PDF</a>
-                            <a href="#merge" class="dropdown-item">Merge Statements</a>
-                            <a href="#split" class="dropdown-item">Split by Date</a>
-                            <a href="#analyze" class="dropdown-item">Analyze Transactions</a>
-                        </div>
-                    </div>
-                    <a href="#features" class="nav-link">Features</a>
-                    <a href="#banks" class="nav-link">Supported Banks</a>
-                    <a href="/blog.html" class="nav-link">Blog</a>
-                    </div>
-            </div>
-            <div class="nav-right">
-                <a href="/pricing.html" class="nav-link desktop-only">Pricing</a>
-                <a href="/business.html" class="nav-link desktop-only">Business</a>
-                <a href="/login.html" class="nav-link">Log In</a>
-                <a href="/signup.html" class="btn-primary">Sign Up Free</a>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <i class="fas fa-bars"></i>
+</button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="#convert">Convert PDF</a>
+<a class="dropdown-item" href="#merge">Merge Statements</a>
+<a class="dropdown-item" href="#split">Split by Date</a>
+<a class="dropdown-item" href="#analyze">Analyze Transactions</a>
+</div>
+</div>
+<a class="nav-link" href="#features">Features</a>
+<a class="nav-link" href="#banks">Supported Banks</a>
+<a class="nav-link" href="/blog.html">Blog</a>
+</div>
+</div>
+<div class="nav-right">
+<a class="nav-link desktop-only" href="/pricing.html">Pricing</a>
+<a class="nav-link desktop-only" href="/business.html">Business</a>
+<a class="nav-link" href="/login.html">Log In</a>
+<a class="btn-primary" href="/signup.html">Sign Up Free</a>
+<button class="mobile-menu-toggle" id="mobileMenuToggle">
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu-content">
+<a class="mobile-link" href="#features">Features</a>
+<a class="mobile-link" href="#banks">Supported Banks</a>
+<a class="mobile-link" href="/blog.html">Blog</a>
+<a class="mobile-link" href="/pricing.html">Pricing</a>
+<a class="mobile-link" href="/business.html">Business</a>
+</div>
+</div>
+<!-- Hero Section -->
+<section class="hero">
+<div class="breadcrumb">
+<a href="/"><i class="fas fa-home"></i> Home</a>
+<span class="separator">›</span>
+<span>Convert Bank Statements</span>
+</div>
+<h1 class="hero-title">Convert Bank Statements</h1>
+<div class="upload-container">
+<div class="upload-box" id="uploadBox">
+<div class="upload-icon">
+<img alt="PDF icon" class="pdf-icon" src="/assets/pdf-icon.svg"/>
+</div>
+<button class="choose-files-btn" id="chooseFilesBtn">
+<i class="fas fa-file-pdf"></i> CHOOSE FILES
                 </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-content">
-            <a href="#features" class="mobile-link">Features</a>
-            <a href="#banks" class="mobile-link">Supported Banks</a>
-            <a href="/blog.html" class="mobile-link">Blog</a>
-            <a href="/pricing.html" class="mobile-link">Pricing</a>
-            <a href="/business.html" class="mobile-link">Business</a>
-        </div>
-    </div>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="breadcrumb">
-            <a href="/"><i class="fas fa-home"></i> Home</a>
-            <span class="separator">›</span>
-            <span>Convert Bank Statements</span>
-        </div>
-        
-        <h1 class="hero-title">Convert Bank Statements</h1>
-        
-        <div class="upload-container">
-            <div class="upload-box" id="uploadBox">
-                <div class="upload-icon">
-                    <img src="/assets/pdf-icon.svg" alt="PDF icon" class="pdf-icon">
-                </div>
-                <button class="choose-files-btn" id="chooseFilesBtn">
-                    <i class="fas fa-file-pdf"></i> CHOOSE FILES
-                </button>
-                <p class="upload-text">or drop files here</p>
-                <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" multiple hidden>
-            </div>
-        </div>
-
-        <div class="hero-description">
-            <p>Convert your bank statements from PDF to CSV or Excel with ease. Just upload a file and get a downloadable spreadsheet in seconds.</p>
-        </div>
-
-        <div class="trust-badges">
-            <div class="trust-item">
-                <i class="fas fa-check-circle"></i>
-                <span>Free conversion for statements up to 50 pages</span>
-            </div>
-            <div class="trust-item">
-                <i class="fas fa-check-circle"></i>
-                <span>Trusted by 2.5 million users since 2019</span>
-            </div>
-            <div class="trust-item">
-                <i class="fas fa-check-circle"></i>
-                <span>Bank-level security and ISO/IEC 27001 certified</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hidden download links for testing -->
-    <div style="display: none;">
-        <a id="csvDownloadLink" download="bank_statement.csv"></a>
-        <a id="excelDownloadLink" download="bank_statement.xls"></a>
-    </div>
-
-    <script>
+<p class="upload-text">or drop files here</p>
+<input accept=".pdf,.jpg,.jpeg,.png" hidden="" id="fileInput" multiple="" type="file"/>
+</div>
+</div>
+<div class="hero-description">
+<p>Convert your bank statements from PDF to CSV or Excel with ease. Just upload a file and get a downloadable spreadsheet in seconds.</p>
+</div>
+<div class="trust-badges">
+<div class="trust-item">
+<i class="fas fa-check-circle"></i>
+<span>Free conversion for statements up to 50 pages</span>
+</div>
+<div class="trust-item">
+<i class="fas fa-check-circle"></i>
+<span>Trusted by 2.5 million users since 2019</span>
+</div>
+<div class="trust-item">
+<i class="fas fa-check-circle"></i>
+<span>Bank-level security and ISO/IEC 27001 certified</span>
+</div>
+</div>
+</section>
+<!-- Hidden download links for testing -->
+<div style="display: none;">
+<a download="bank_statement.csv" id="csvDownloadLink"></a>
+<a download="bank_statement.xls" id="excelDownloadLink"></a>
+</div>
+<script>
         // Simple inline download implementation
         let uploadedFile = null;
         
@@ -215,7 +208,6 @@
         style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
         document.head.appendChild(style);
     </script>
-
-    <script src="/js/dropdown-handler.js"></script>
+<script src="/js/dropdown-handler.js"></script>
 </body>
 </html>

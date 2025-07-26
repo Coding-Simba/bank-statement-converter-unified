@@ -115,17 +115,44 @@ async function processFile() {
     uploadBox.style.display = 'none';
     progressContainer.style.display = 'block';
     
-    // For demo purposes, simulate the conversion process
-    simulateProgress();
-    
-    // Simulate conversion completion after 3 seconds
-    setTimeout(() => {
+    try {
+        // Create FormData and append file
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+        
+        // Start progress simulation
+        simulateProgress();
+        
+        // Send file to backend API
+        const response = await fetch(`${API_BASE_URL}/convert`, {
+            method: 'POST',
+            body: formData,
+            credentials: 'include'
+        });
+        
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.detail || 'Conversion failed');
+        }
+        
+        const result = await response.json();
+        
+        // Store the download URL
+        convertedFileUrl = `/api/statement/${result.id}/download`;
+        
+        // Show result
         progressContainer.style.display = 'none';
         resultContainer.style.display = 'block';
         
-        // Set a flag to use demo CSV
+    } catch (error) {
+        console.error('Conversion error:', error);
+        alert(`Error: ${error.message}. Using demo data instead.`);
+        
+        // Fallback to demo mode
+        progressContainer.style.display = 'none';
+        resultContainer.style.display = 'block';
         convertedFileUrl = 'demo';
-    }, 3000);
+    }
 }
 
 // Simulate progress bar
@@ -154,9 +181,9 @@ function simulateProgress() {
 
 // Download CSV
 async function downloadCSV() {
-    if (convertedFileUrl) {
-        // Download from server - convertedFileUrl already includes /api/
-        window.location.href = `http://localhost:5000${convertedFileUrl}`;
+    if (convertedFileUrl && convertedFileUrl !== 'demo') {
+        // Download from server
+        window.location.href = `${API_BASE_URL.replace('/api', '')}${convertedFileUrl}`;
     } else {
         // For demo purposes, create a sample CSV
         const sampleCSV = `Date,Description,Money Out,Money In,Balance

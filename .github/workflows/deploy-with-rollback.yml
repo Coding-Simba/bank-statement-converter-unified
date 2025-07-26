@@ -1,0 +1,157 @@
+name: Deploy with Rollback
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  DEPLOY_PATH: /home/ubuntu/bank-statement-converter
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup deployment
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.LIGHTSAIL_SSH_KEY }}" > ~/.ssh/lightsail_key
+        chmod 600 ~/.ssh/lightsail_key
+        ssh-keyscan -H ${{ secrets.LIGHTSAIL_HOST }} >> ~/.ssh/known_hosts
+
+    - name: Create rollback script
+      run: |
+        cat > rollback.sh << 'EOF'
+        #!/bin/bash
+        BACKUP_DIR=$(ls -td /home/ubuntu/bank-statement-converter.backup.* 2>/dev/null | head -1)
+        if [ -z "$BACKUP_DIR" ]; then
+          echo "❌ No backup found to rollback to"
+          exit 1
+        fi
+        
+        echo "🔄 Rolling back to: $BACKUP_DIR"
+        sudo systemctl stop bankconverter
+        rm -rf /home/ubuntu/bank-statement-converter
+        mv $BACKUP_DIR /home/ubuntu/bank-statement-converter
+        sudo systemctl start bankconverter
+        
+        sleep 3
+        if sudo systemctl is-active --quiet bankconverter; then
+          echo "✅ Rollback successful"
+        else
+          echo "❌ Rollback failed - service not running"
+          exit 1
+        fi
+        EOF
+
+    - name: Deploy application
+      id: deploy
+      run: |
+        # Create deployment package
+        tar -czf deploy.tar.gz \
+          --exclude='.git' \
+          --exclude='*.pyc' \
+          --exclude='__pycache__' \
+          --exclude='venv' \
+          --exclude='failed_pdfs/*' \
+          --exclude='uploads/*' \
+          .
+        
+        # Copy files
+        scp -i ~/.ssh/lightsail_key deploy.tar.gz ubuntu@${{ secrets.LIGHTSAIL_HOST }}:/tmp/
+        scp -i ~/.ssh/lightsail_key rollback.sh ubuntu@${{ secrets.LIGHTSAIL_HOST }}:/tmp/
+        
+        # Deploy with error handling
+        ssh -i ~/.ssh/lightsail_key ubuntu@${{ secrets.LIGHTSAIL_HOST }} << 'EOF'
+          set -e
+          
+          # Make rollback script executable
+          chmod +x /tmp/rollback.sh
+          
+          # Create backup with timestamp
+          BACKUP_NAME="bank-statement-converter.backup.$(date +%Y%m%d_%H%M%S)"
+          if [ -d "${{ env.DEPLOY_PATH }}" ]; then
+            echo "📦 Creating backup: $BACKUP_NAME"
+            cp -r ${{ env.DEPLOY_PATH }} /home/ubuntu/$BACKUP_NAME
+          fi
+          
+          # Extract new version
+          cd /tmp
+          tar -xzf deploy.tar.gz
+          
+          # Ensure directories
+          mkdir -p ${{ env.DEPLOY_PATH }}/{backend,frontend,uploads,failed_pdfs,data}
+          
+          # Deploy files
+          cp -r backend/* ${{ env.DEPLOY_PATH }}/backend/
+          cp -r *.html css js ${{ env.DEPLOY_PATH }}/frontend/ 2>/dev/null || true
+          
+          # Update dependencies
+          cd ${{ env.DEPLOY_PATH }}
+          if [ -f "venv/bin/activate" ]; then
+            source venv/bin/activate
+            pip install -r backend/requirements-fastapi.txt --quiet
+          fi
+          
+          # Test configuration before restart
+          cd backend
+          python -c "from main import app; print('✅ App imports successful')"
+          
+          # Restart service
+          sudo systemctl restart bankconverter
+          
+          # Wait and check
+          sleep 5
+          if ! sudo systemctl is-active --quiet bankconverter; then
+            echo "❌ Service failed to start after deployment"
+            echo "🔄 Initiating automatic rollback..."
+            /tmp/rollback.sh
+            exit 1
+          fi
+          
+          # Cleanup
+          rm -f /tmp/deploy.tar.gz
+          ls -td /home/ubuntu/bank-statement-converter.backup.* | tail -n +4 | xargs rm -rf
+          
+          echo "✅ Deployment successful!"
+        EOF
+
+    - name: Health check
+      id: healthcheck
+      run: |
+        echo "Waiting for service to stabilize..."
+        sleep 10
+        
+        # Multiple health check attempts
+        for i in {1..3}; do
+          response=$(curl -s -o /dev/null -w "%{http_code}" http://${{ secrets.LIGHTSAIL_HOST }}/health || echo "000")
+          if [ "$response" = "200" ]; then
+            echo "✅ Health check passed on attempt $i"
+            exit 0
+          fi
+          echo "⚠️ Health check attempt $i failed with status: $response"
+          sleep 5
+        done
+        
+        echo "❌ Health checks failed"
+        exit 1
+
+    - name: Rollback on failure
+      if: failure() && (steps.deploy.outcome == 'success')
+      run: |
+        echo "🔄 Initiating rollback due to health check failure..."
+        ssh -i ~/.ssh/lightsail_key ubuntu@${{ secrets.LIGHTSAIL_HOST }} "/tmp/rollback.sh"
+
+    - name: Notify deployment status
+      if: always()
+      run: |
+        if [ "${{ job.status }}" = "success" ]; then
+          echo "✅ Deployment completed successfully!"
+          echo "🌐 Application URL: http://${{ secrets.LIGHTSAIL_HOST }}"
+        else
+          echo "❌ Deployment failed and was rolled back"
+        fi

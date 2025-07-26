@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bank statement converter designed for bookkeepers. Streamline transaction categorization, reconciliation, and client reporting. Plans from $30/month.">
+    <title>Bank Statement Converter for Bookkeepers - BankCSV</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="/css/nav-fix.css">
+    <link rel="stylesheet" href="/css/dropdown-fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="/css/blog-fix.css" rel="stylesheet"/>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <span class="logo-text">BankCSV</span>
+                </a>
+                <div class="nav-links desktop-only">
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            <i class="fas fa-th"></i> Tools
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="/convert-pdf.html" class="dropdown-item">
+                                <i class="fas fa-file-pdf"></i>
+                                Convert PDF
+                            </a>
+                            <a href="/merge-statements.html" class="dropdown-item">
+                                <i class="fas fa-object-group"></i>
+                                Merge Statements
+                            </a>
+                            <a href="/split-by-date.html" class="dropdown-item">
+                                <i class="fas fa-cut"></i>
+                                Split by Date
+                            </a>
+                            <a href="/analyze-transactions.html" class="dropdown-item">
+                                <i class="fas fa-chart-line"></i>
+                                Analyze Transactions
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#banks" class="nav-link">Supported Banks</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="/pricing.html" class="nav-link desktop-only">Pricing</a>
+                <a href="/business.html" class="nav-link desktop-only">Business</a>
+                <a href="/login.html" class="nav-link">Log In</a>
+                <a href="/signup.html" class="btn-primary">Sign Up</a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#features" class="mobile-link">Features</a>
+            <a href="#banks" class="mobile-link">Supported Banks</a>
+            <a href="/blog.html" class="mobile-link">Blog</a>
+            <a href="/pricing.html" class="mobile-link">Pricing</a>
+            <a href="/business.html" class="mobile-link">Business</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="breadcrumb">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <span class="separator">›</span>
+            <span>For Bookkeepers</span>
+        </div>
+        
+        <h1 class="hero-title">Bank Statement Converter for Bookkeepers</h1>
+        
+        <div class="hero-description" style="max-width: 800px; margin: 0 auto 2rem;">
+            <p style="font-size: 1.25rem; line-height: 1.8;">Transform hours of manual data entry into minutes. Our intelligent converter processes bank statements from 1000+ banks, automatically categorizes transactions, and exports clean data ready for your accounting software.</p>
+        </div>
+
+        <div class="hero-cta" style="text-align: center; margin-bottom: 2rem;">
+            <a href="/signup.html" class="btn-cta" style="display: inline-block; background: var(--primary-color); color: white; padding: 1rem 2rem; border-radius: var(--radius-md); font-weight: 600; margin-right: 1rem;">
+                <i class="fas fa-rocket"></i> Get Started
+            </a>
+            <a href="#demo" class="btn-secondary" style="display: inline-block; background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); padding: 1rem 2rem; border-radius: var(--radius-md); font-weight: 600;">
+                <i class="fas fa-play-circle"></i> Watch Demo
+            </a>
+        </div>
+
+        <div class="trust-badges">
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Trusted by 50,000+ bookkeeping professionals</span>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Save 10+ hours per week on data entry</span>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>99.9% accuracy with intelligent OCR</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features for Bookkeepers -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="section-title">Features Built for Bookkeeping Professionals</h2>
+            <p class="section-subtitle">Everything you need to streamline client workflows and scale your practice</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Smart Transaction Categorization</h3>
+                    <p>AI-powered categorization learns from your patterns. Automatically assign transactions to the right accounts with customizable rules and bulk editing capabilities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Reconciliation Tools</h3>
+                    <p>Match transactions across multiple statements instantly. Identify duplicates, missing entries, and discrepancies with our intelligent reconciliation engine.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Client Management Portal</h3>
+                    <p>Organize all your clients in one place. Set up client-specific categorization rules, manage permissions, and track statement processing history.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                        <i class="fas fa-file-export"></i>
+                    </div>
+                    <h3>Universal Export Options</h3>
+                    <p>Export to QuickBooks, Xero, Sage, Wave, and 20+ accounting platforms. Custom CSV mapping ensures perfect compatibility with any software.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #30cfd0, #330867);">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Financial Reporting</h3>
+                    <p>Generate professional reports for clients instantly. Cash flow analysis, expense breakdowns, and trend reports with beautiful visualizations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Bank-Level Security</h3>
+                    <p>SOC 2 Type II certified with 256-bit encryption. GDPR compliant with automatic data deletion. Your clients' data is always protected.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" style="background: var(--light-gray); padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">Why Bookkeepers Choose BankCSV</h2>
+            
+            <div class="benefits-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="benefit-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-clock"></i> Save 10+ Hours Per Week
+                    </h3>
+                    <p>Eliminate manual data entry. Process months of statements in minutes, not hours. Focus on high-value advisory services instead of repetitive tasks.</p>
+                </div>
+                
+                <div class="benefit-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-check-double"></i> 99.9% Accuracy Guaranteed
+                    </h3>
+                    <p>Our advanced OCR technology ensures every transaction is captured correctly. Built-in validation catches errors before they reach your accounting software.</p>
+                </div>
+                
+                <div class="benefit-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-chart-line"></i> Scale Your Practice
+                    </h3>
+                    <p>Handle more clients without hiring. Our automation lets you grow your practice efficiently while maintaining quality and accuracy.</p>
+                </div>
+                
+                <div class="benefit-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-smile"></i> Delight Your Clients
+                    </h3>
+                    <p>Faster turnaround times and fewer errors mean happier clients. Provide better insights with the time saved from manual processes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="use-cases-section" style="padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">Perfect for Every Bookkeeping Service</h2>
+            
+            <div class="use-cases-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="use-case" style="text-align: center; padding: 2rem;">
+                    <div class="use-case-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Small Business Bookkeeping</h3>
+                    <p>Process statements for retail, restaurants, and service businesses. Handle high transaction volumes with ease.</p>
+                </div>
+                
+                <div class="use-case" style="text-align: center; padding: 2rem;">
+                    <div class="use-case-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Freelancer & Contractor Accounting</h3>
+                    <p>Simplify expense tracking for independent professionals. Auto-categorize business expenses for tax preparation.</p>
+                </div>
+                
+                <div class="use-case" style="text-align: center; padding: 2rem;">
+                    <div class="use-case-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Property Management</h3>
+                    <p>Track rental income and expenses across multiple properties. Generate owner statements with detailed breakdowns.</p>
+                </div>
+                
+                <div class="use-case" style="text-align: center; padding: 2rem;">
+                    <div class="use-case-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Non-Profit Organizations</h3>
+                    <p>Manage donations and grants efficiently. Create detailed reports for board members and compliance.</p>
+                </div>
+                
+                <div class="use-case" style="text-align: center; padding: 2rem;">
+                    <div class="use-case-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-briefcase-medical"></i>
+                    </div>
+                    <h3>Healthcare Practices</h3>
+                    <p>Handle complex payment reconciliation. Track insurance payments, patient billing, and operating expenses.</p>
+                </div>
+                
+                <div class="use-case" style="text-align: center; padding: 2rem;">
+                    <div class="use-case-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>E-commerce & Retail</h3>
+                    <p>Reconcile multiple payment processors. Track inventory purchases and sales across channels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section" style="background: var(--light-gray); padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">What Bookkeepers Say About BankCSV</h2>
+            
+            <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                    <div class="stars" style="color: #ffd700; margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: 1.5rem;">"BankCSV has transformed my practice. What used to take me 2 hours per client now takes 15 minutes. The automatic categorization is incredibly accurate."</p>
+                    <div class="testimonial-author">
+                        <strong>Sarah Mitchell</strong><br>
+                        <span style="color: var(--gray); font-size: 0.9rem;">Mitchell Bookkeeping Services</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                    <div class="stars" style="color: #ffd700; margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: 1.5rem;">"The reconciliation features alone are worth it. I've caught discrepancies that would have taken hours to find manually. My clients love the detailed reports."</p>
+                    <div class="testimonial-author">
+                        <strong>David Chen</strong><br>
+                        <span style="color: var(--gray); font-size: 0.9rem;">Chen & Associates Bookkeeping</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                    <div class="stars" style="color: #ffd700; margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p style="font-style: italic; margin-bottom: 1.5rem;">"I've doubled my client base without hiring anyone. BankCSV handles the tedious work so I can focus on advisory services. Best investment I've made."</p>
+                    <div class="testimonial-author">
+                        <strong>Maria Rodriguez</strong><br>
+                        <span style="color: var(--gray); font-size: 0.9rem;">QuickBooks ProAdvisor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" style="padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">Pricing Plans for Bookkeeping Professionals</h2>
+            <p class="section-subtitle">Choose the plan that fits your practice</p>
+            
+            <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                <div class="pricing-card" style="background: white; border: 2px solid var(--light-gray); padding: 2rem; border-radius: var(--radius-lg); text-align: center;">
+                    <h3>Starter</h3>
+                    <div class="price" style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin: 1rem 0;">
+                        $30<span style="font-size: 1rem; color: var(--gray);">/month</span>
+                    </div>
+                    <p style="color: var(--gray); margin-bottom: 2rem;">Perfect for solo bookkeepers</p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2rem; text-align: left;">
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> 400 pages/month</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Support for 50+ banks</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> CSV & Excel export</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Email support</li>
+                    </ul>
+                    <a href="/signup.html" class="btn-secondary" style="display: block; padding: 1rem; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: var(--radius-md); font-weight: 600;">Buy Now</a>
+                </div>
+                
+                <div class="pricing-card" style="background: var(--primary-color); color: white; padding: 2rem; border-radius: var(--radius-lg); text-align: center; position: relative;">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent-color); color: white; padding: 0.25rem 1rem; border-radius: var(--radius-full); font-size: 0.875rem;">Most Popular</div>
+                    <h3>Professional</h3>
+                    <div class="price" style="font-size: 2.5rem; font-weight: bold; margin: 1rem 0;">
+                        $60<span style="font-size: 1rem; opacity: 0.8;">/month</span>
+                    </div>
+                    <p style="opacity: 0.9; margin-bottom: 2rem;">For growing practices</p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2rem; text-align: left;">
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="margin-right: 0.5rem;"></i> 1000 pages/month</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="margin-right: 0.5rem;"></i> Support for 1000+ banks</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="margin-right: 0.5rem;"></i> Batch processing</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="margin-right: 0.5rem;"></i> Priority support</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="margin-right: 0.5rem;"></i> Advanced categorization</li>
+                    </ul>
+                    <a href="/signup.html" class="btn-cta" style="display: block; padding: 1rem; background: white; color: var(--primary-color); border-radius: var(--radius-md); font-weight: 600;">Get Started</a>
+                </div>
+                
+                <div class="pricing-card" style="background: white; border: 2px solid var(--light-gray); padding: 2rem; border-radius: var(--radius-lg); text-align: center;">
+                    <h3>Business</h3>
+                    <div class="price" style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin: 1rem 0;">
+                        $99<span style="font-size: 1rem; color: var(--gray);">/month</span>
+                    </div>
+                    <p style="color: var(--gray); margin-bottom: 2rem;">For teams and agencies</p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2rem; text-align: left;">
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> 4000 pages/month</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Support for 1000+ banks</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> CSV, Excel & JSON export</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Dedicated support</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> White-label option</li>
+                    </ul>
+                    <a href="/signup.html" class="btn-secondary" style="display: block; padding: 1rem; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: var(--radius-md); font-weight: 600;">Sign Up</a>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 2rem; color: var(--gray);">
+                All plans include: Secure processing • Bank-level encryption • Cancel anytime
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Bookkeeping Practice?</h2>
+            <p>Join thousands of bookkeepers who've streamlined their workflows with BankCSV</p>
+            <a href="/signup.html" class="btn-cta">
+                <i class="fas fa-rocket"></i> Start Converting Now
+            </a>
+            <p class="cta-note">Secure processing • Instant setup • Cancel anytime</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="/features.html">Features</a></li>
+                        <li><a href="/pricing.html">Pricing</a></li>
+                        <li><a href="/integrations.html">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="/accountants.html">For Accountants</a></li>
+                        <li><a href="/bookkeepers.html">For Bookkeepers</a></li>
+                        <li><a href="/business.html">For Business</a></li>
+                        <li><a href="/personal.html">Personal Finance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/tutorials.html">Tutorials</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/press.html">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/gdpr.html">GDPR</a></li>
+                        <li><a href="/ccpa.html">CCPA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 BankCSV Converter. All rights reserved.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/modern-homepage-fixed.js"></script>
+    <script src="/js/dropdown-handler.js"></script>
+</body>
+</html>

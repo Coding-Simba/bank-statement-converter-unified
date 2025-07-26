@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Merge multiple bank statements into a single file. Combine PDF statements from different months or accounts. Free online tool.">
-    <title>Merge Bank Statements - Combine Multiple PDFs | BankCSV</title>
-    <link rel="stylesheet" href="/css/modern-homepage.css">
-    <link rel="stylesheet" href="/css/nav-fix.css">
-    <link rel="stylesheet" href="/css/dropdown-fix.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Merge multiple bank statements into a single file. Combine PDF statements from different months or accounts. Free online tool." name="description"/>
+<link href="https://bankcsvconverter.com/merge-statements.html" rel="canonical"/><title>Merge Bank Statements - Combine Multiple PDFs | BankCSV</title>
+<link href="/css/modern-homepage.css" rel="stylesheet"/>
+<link href="/css/nav-fix.css" rel="stylesheet"/>
+<link href="/css/dropdown-fix.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<style>
         /* Ensure all content is centered */
         .container {
             max-width: 1200px;
@@ -190,308 +191,300 @@
             box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
         }
     </style>
-  <link href="/css/blog-fix.css" rel="stylesheet"/>
+<link href="/css/blog-fix.css" rel="stylesheet"/>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-left">
-                <a href="/" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                    </div>
-                    <span class="logo-text">BankCSV</span>
-                </a>
-                <div class="nav-links desktop-only">
-                    <div class="dropdown">
-                        <button class="nav-link dropdown-toggle">
-                            <i class="fas fa-th"></i> Tools
+<!-- Navigation -->
+<nav class="navbar">
+<div class="nav-container">
+<div class="nav-left">
+<a class="logo" href="/">
+<div class="logo-icon">
+<i class="fas fa-file-invoice-dollar"></i>
+</div>
+<span class="logo-text">BankCSV</span>
+</a>
+<div class="nav-links desktop-only">
+<div class="dropdown">
+<button class="nav-link dropdown-toggle">
+<i class="fas fa-th"></i> Tools
                             <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a href="/convert-pdf.html" class="dropdown-item">
-                                <i class="fas fa-file-pdf"></i>
+</button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="/convert-pdf.html">
+<i class="fas fa-file-pdf"></i>
                                 Convert PDF
                             </a>
-                            <a href="/merge-statements.html" class="dropdown-item">
-                                <i class="fas fa-object-group"></i>
+<a class="dropdown-item" href="/merge-statements.html">
+<i class="fas fa-object-group"></i>
                                 Merge Statements
                             </a>
-                            <a href="/split-by-date.html" class="dropdown-item">
-                                <i class="fas fa-cut"></i>
+<a class="dropdown-item" href="/split-by-date.html">
+<i class="fas fa-cut"></i>
                                 Split by Date
                             </a>
-                            <a href="/analyze-transactions.html" class="dropdown-item">
-                                <i class="fas fa-chart-line"></i>
+<a class="dropdown-item" href="/analyze-transactions.html">
+<i class="fas fa-chart-line"></i>
                                 Analyze Transactions
                             </a>
-                        </div>
-                    </div>
-                    <a href="/#features" class="nav-link">Features</a>
-                    <a href="/#banks" class="nav-link">Supported Banks</a>
-                    <a href="/blog.html" class="nav-link">Blog</a>
-                    <a href="/api.html" class="nav-link">API</a>
-                </div>
-            </div>
-            <div class="nav-right">
-                <a href="/pricing.html" class="nav-link desktop-only">Pricing</a>
-                <a href="/business.html" class="nav-link desktop-only">Business</a>
-                <a href="/login.html" class="nav-link">Log In</a>
-                <a href="/signup.html" class="btn-primary">Sign Up Free</a>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Tool Hero Section -->
-    <section class="tool-hero">
-        <div class="container">
-            <h1>Merge Bank Statements</h1>
-            <p>Combine multiple bank statement PDFs into one organized file. Perfect for year-end reports, loan applications, or financial analysis.</p>
-        </div>
-    </section>
-
-    <!-- Upload Section -->
-    <section class="upload-section">
-        <div class="container">
-            <h2 class="section-title">Select Statements to Merge</h2>
-            <div class="upload-container">
-                <div class="merge-area" id="mergeArea">
-                    <div class="merge-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <button class="choose-files-btn" id="chooseFilesBtn" style="background: white; color: #667eea;">
-                        <i class="fas fa-folder-open"></i> SELECT MULTIPLE STATEMENTS
+</div>
+</div>
+<a class="nav-link" href="/#features">Features</a>
+<a class="nav-link" href="/#banks">Supported Banks</a>
+<a class="nav-link" href="/blog.html">Blog</a>
+<a class="nav-link" href="/api.html">API</a>
+</div>
+</div>
+<div class="nav-right">
+<a class="nav-link desktop-only" href="/pricing.html">Pricing</a>
+<a class="nav-link desktop-only" href="/business.html">Business</a>
+<a class="nav-link" href="/login.html">Log In</a>
+<a class="btn-primary" href="/signup.html">Sign Up Free</a>
+<button class="mobile-menu-toggle" id="mobileMenuToggle">
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</div>
+</nav>
+<!-- Tool Hero Section -->
+<section class="tool-hero">
+<div class="container">
+<h1>Merge Bank Statements</h1>
+<p>Combine multiple bank statement PDFs into one organized file. Perfect for year-end reports, loan applications, or financial analysis.</p>
+</div>
+</section>
+<!-- Upload Section -->
+<section class="upload-section">
+<div class="container">
+<h2 class="section-title">Select Statements to Merge</h2>
+<div class="upload-container">
+<div class="merge-area" id="mergeArea">
+<div class="merge-icon">
+<i class="fas fa-layer-group"></i>
+</div>
+<button class="choose-files-btn" id="chooseFilesBtn" style="background: white; color: #667eea;">
+<i class="fas fa-folder-open"></i> SELECT MULTIPLE STATEMENTS
                     </button>
-                    <p class="upload-text" style="color: white;">or drop statement files here</p>
-                    <p style="color: rgba(255,255,255,0.8); margin-top: 20px; font-size: 14px;">
+<p class="upload-text" style="color: white;">or drop statement files here</p>
+<p style="color: rgba(255,255,255,0.8); margin-top: 20px; font-size: 14px;">
                         Supports PDF, JPG, PNG formats • Max 50 files
                     </p>
-                    <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" multiple hidden>
-                </div>
-            </div>
-            
-            <div class="process-visual">
-                <div class="process-file">
-                    <i class="fas fa-file-pdf"></i>
-                </div>
-                <div class="process-arrow">+</div>
-                <div class="process-file">
-                    <i class="fas fa-file-pdf"></i>
-                </div>
-                <div class="process-arrow">+</div>
-                <div class="process-file">
-                    <i class="fas fa-file-pdf"></i>
-                </div>
-                <div class="process-arrow">=</div>
-                <div class="process-result">
-                    <i class="fas fa-file-archive"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="merge-features">
-        <div class="container">
-            <h2 class="section-title">Smart Statement Merging</h2>
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <i class="fas fa-brain"></i>
-                    <h3>Intelligent Ordering</h3>
-                    <p>Automatically sorts statements by date, ensuring your merged document is in perfect chronological order.</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-compress-alt"></i>
-                    <h3>Duplicate Detection</h3>
-                    <p>Identifies and removes duplicate transactions when statements overlap, preventing double entries.</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-tags"></i>
-                    <h3>Page Numbering</h3>
-                    <p>Adds consistent page numbers and labels to track which original statement each page came from.</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-file-contract"></i>
-                    <h3>Table of Contents</h3>
-                    <p>Creates an index showing date ranges and page numbers for easy navigation in merged documents.</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-palette"></i>
-                    <h3>Format Preservation</h3>
-                    <p>Maintains original formatting, logos, and layouts from each bank statement in the merged file.</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-lock"></i>
-                    <h3>Secure Processing</h3>
-                    <p>All merging happens in your browser. Files are never uploaded to our servers for maximum privacy.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Use Cases -->
-    <section class="use-cases">
-        <div class="container">
-            <h2 class="section-title">When to Merge Statements</h2>
-            <div class="use-case-grid">
-                <div class="use-case">
-                    <div class="use-case-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <div class="use-case-content">
-                        <h4>Mortgage Applications</h4>
-                        <p>Combine 3-6 months of statements into one file for easier submission to lenders and faster processing.</p>
-                    </div>
-                </div>
-                <div class="use-case">
-                    <div class="use-case-icon">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <div class="use-case-content">
-                        <h4>Tax Preparation</h4>
-                        <p>Merge a full year of monthly statements for comprehensive income and expense tracking during tax season.</p>
-                    </div>
-                </div>
-                <div class="use-case">
-                    <div class="use-case-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="use-case-content">
-                        <h4>Financial Analysis</h4>
-                        <p>Create quarterly or annual compilations to analyze spending patterns and financial trends over time.</p>
-                    </div>
-                </div>
-                <div class="use-case">
-                    <div class="use-case-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <div class="use-case-content">
-                        <h4>Business Reports</h4>
-                        <p>Consolidate multiple account statements for comprehensive business financial reporting and audits.</p>
-                    </div>
-                </div>
-                <div class="use-case">
-                    <div class="use-case-icon">
-                        <i class="fas fa-passport"></i>
-                    </div>
-                    <div class="use-case-content">
-                        <h4>Visa Applications</h4>
-                        <p>Combine required months of bank statements into a single document for immigration purposes.</p>
-                    </div>
-                </div>
-                <div class="use-case">
-                    <div class="use-case-icon">
-                        <i class="fas fa-archive"></i>
-                    </div>
-                    <div class="use-case-content">
-                        <h4>Digital Archiving</h4>
-                        <p>Create annual statement compilations for organized long-term storage and easy future reference.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="how-it-works" style="background: #f8f9fa;">
-        <div class="container">
-            <h2 class="section-title">How Statement Merging Works</h2>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number" style="background: #667eea;">1</div>
-                    <h4>Upload Statements</h4>
-                    <p>Select multiple PDF statements from your computer or drag them into the upload area</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number" style="background: #667eea;">2</div>
-                    <h4>Arrange Order</h4>
-                    <p>Preview and rearrange statements if needed, or let our AI sort them by date automatically</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number" style="background: #667eea;">3</div>
-                    <h4>Configure Options</h4>
-                    <p>Choose merge settings like page numbering, table of contents, and duplicate handling</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number" style="background: #667eea;">4</div>
-                    <h4>Download Merged File</h4>
-                    <p>Get your combined statement as a single PDF, ready for submission or archiving</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Start Merging Your Statements</h2>
-            <p>Save time and stay organized with our intelligent statement merger</p>
-            <a href="#mergeArea" class="btn-cta" style="background: #667eea;">
-                <i class="fas fa-layer-group"></i> Merge Statements Now - It's Free
+<input accept=".pdf,.jpg,.jpeg,.png" hidden="" id="fileInput" multiple="" type="file"/>
+</div>
+</div>
+<div class="process-visual">
+<div class="process-file">
+<i class="fas fa-file-pdf"></i>
+</div>
+<div class="process-arrow">+</div>
+<div class="process-file">
+<i class="fas fa-file-pdf"></i>
+</div>
+<div class="process-arrow">+</div>
+<div class="process-file">
+<i class="fas fa-file-pdf"></i>
+</div>
+<div class="process-arrow">=</div>
+<div class="process-result">
+<i class="fas fa-file-archive"></i>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="merge-features">
+<div class="container">
+<h2 class="section-title">Smart Statement Merging</h2>
+<div class="feature-grid">
+<div class="feature-item">
+<i class="fas fa-brain"></i>
+<h3>Intelligent Ordering</h3>
+<p>Automatically sorts statements by date, ensuring your merged document is in perfect chronological order.</p>
+</div>
+<div class="feature-item">
+<i class="fas fa-compress-alt"></i>
+<h3>Duplicate Detection</h3>
+<p>Identifies and removes duplicate transactions when statements overlap, preventing double entries.</p>
+</div>
+<div class="feature-item">
+<i class="fas fa-tags"></i>
+<h3>Page Numbering</h3>
+<p>Adds consistent page numbers and labels to track which original statement each page came from.</p>
+</div>
+<div class="feature-item">
+<i class="fas fa-file-contract"></i>
+<h3>Table of Contents</h3>
+<p>Creates an index showing date ranges and page numbers for easy navigation in merged documents.</p>
+</div>
+<div class="feature-item">
+<i class="fas fa-palette"></i>
+<h3>Format Preservation</h3>
+<p>Maintains original formatting, logos, and layouts from each bank statement in the merged file.</p>
+</div>
+<div class="feature-item">
+<i class="fas fa-lock"></i>
+<h3>Secure Processing</h3>
+<p>All merging happens in your browser. Files are never uploaded to our servers for maximum privacy.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Use Cases -->
+<section class="use-cases">
+<div class="container">
+<h2 class="section-title">When to Merge Statements</h2>
+<div class="use-case-grid">
+<div class="use-case">
+<div class="use-case-icon">
+<i class="fas fa-home"></i>
+</div>
+<div class="use-case-content">
+<h4>Mortgage Applications</h4>
+<p>Combine 3-6 months of statements into one file for easier submission to lenders and faster processing.</p>
+</div>
+</div>
+<div class="use-case">
+<div class="use-case-icon">
+<i class="fas fa-calculator"></i>
+</div>
+<div class="use-case-content">
+<h4>Tax Preparation</h4>
+<p>Merge a full year of monthly statements for comprehensive income and expense tracking during tax season.</p>
+</div>
+</div>
+<div class="use-case">
+<div class="use-case-icon">
+<i class="fas fa-chart-bar"></i>
+</div>
+<div class="use-case-content">
+<h4>Financial Analysis</h4>
+<p>Create quarterly or annual compilations to analyze spending patterns and financial trends over time.</p>
+</div>
+</div>
+<div class="use-case">
+<div class="use-case-icon">
+<i class="fas fa-briefcase"></i>
+</div>
+<div class="use-case-content">
+<h4>Business Reports</h4>
+<p>Consolidate multiple account statements for comprehensive business financial reporting and audits.</p>
+</div>
+</div>
+<div class="use-case">
+<div class="use-case-icon">
+<i class="fas fa-passport"></i>
+</div>
+<div class="use-case-content">
+<h4>Visa Applications</h4>
+<p>Combine required months of bank statements into a single document for immigration purposes.</p>
+</div>
+</div>
+<div class="use-case">
+<div class="use-case-icon">
+<i class="fas fa-archive"></i>
+</div>
+<div class="use-case-content">
+<h4>Digital Archiving</h4>
+<p>Create annual statement compilations for organized long-term storage and easy future reference.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="how-it-works" style="background: #f8f9fa;">
+<div class="container">
+<h2 class="section-title">How Statement Merging Works</h2>
+<div class="process-steps">
+<div class="process-step">
+<div class="step-number" style="background: #667eea;">1</div>
+<h4>Upload Statements</h4>
+<p>Select multiple PDF statements from your computer or drag them into the upload area</p>
+</div>
+<div class="process-step">
+<div class="step-number" style="background: #667eea;">2</div>
+<h4>Arrange Order</h4>
+<p>Preview and rearrange statements if needed, or let our AI sort them by date automatically</p>
+</div>
+<div class="process-step">
+<div class="step-number" style="background: #667eea;">3</div>
+<h4>Configure Options</h4>
+<p>Choose merge settings like page numbering, table of contents, and duplicate handling</p>
+</div>
+<div class="process-step">
+<div class="step-number" style="background: #667eea;">4</div>
+<h4>Download Merged File</h4>
+<p>Get your combined statement as a single PDF, ready for submission or archiving</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="cta-section">
+<div class="container">
+<h2>Start Merging Your Statements</h2>
+<p>Save time and stay organized with our intelligent statement merger</p>
+<a class="btn-cta" href="#mergeArea" style="background: #667eea;">
+<i class="fas fa-layer-group"></i> Merge Statements Now - It's Free
             </a>
-            <p class="cta-note">No registration required • Process unlimited files • 100% secure</p>
-        </div>
-    </section>
+<p class="cta-note">No registration required • Process unlimited files • 100% secure</p>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-column">
+<h4>Tools</h4>
+<ul>
+<li><a href="/convert-pdf.html">Convert PDF</a></li>
+<li><a href="/merge-statements.html">Merge Statements</a></li>
+<li><a href="/split-by-date.html">Split by Date</a></li>
+<li><a href="/analyze-transactions.html">Analyze Transactions</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Resources</h4>
+<ul>
+<li><a href="/blog.html">Blog</a></li>
+<li><a href="/help.html">Help Center</a></li>
+<li><a href="/api.html">API Docs</a></li>
+<li><a href="/faq.html">FAQ</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Company</h4>
+<ul>
+<li><a href="/about.html">About Us</a></li>
+<li><a href="/contact.html">Contact</a></li>
+<li><a href="/careers.html">Careers</a></li>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h4>Tools</h4>
-                    <ul>
-                        <li><a href="/convert-pdf.html">Convert PDF</a></li>
-                        <li><a href="/merge-statements.html">Merge Statements</a></li>
-                        <li><a href="/split-by-date.html">Split by Date</a></li>
-                        <li><a href="/analyze-transactions.html">Analyze Transactions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="/blog.html">Blog</a></li>
-                        <li><a href="/help.html">Help Center</a></li>
-                        <li><a href="/api.html">API Docs</a></li>
-                        <li><a href="/faq.html">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="/about.html">About Us</a></li>
-                        <li><a href="/contact.html">Contact</a></li>
-                        <li><a href="/careers.html">Careers</a></li>
-                        <li><a href="/press.html">Press</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="/privacy.html">Privacy Policy</a></li>
-                        <li><a href="/terms.html">Terms of Service</a></li>
-                        <li><a href="/gdpr.html">GDPR</a></li>
-                        <li><a href="/ccpa.html">CCPA</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <p>&copy; 2025 BankCSV Converter. All rights reserved.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="/js/modern-homepage-fixed.js"></script>
-    <script src="/js/dropdown-handler.js"></script>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Legal</h4>
+<ul>
+<li><a href="/privacy.html">Privacy Policy</a></li>
+<li><a href="/terms.html">Terms of Service</a></li>
+<li><a href="/gdpr.html">GDPR</a></li>
+<li><a href="/ccpa.html">CCPA</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-bottom-content">
+<p>© 2025 BankCSV Converter. All rights reserved.</p>
+<div class="social-links">
+<a aria-label="Twitter" href="#"><i class="fab fa-twitter"></i></a>
+<a aria-label="LinkedIn" href="#"><i class="fab fa-linkedin"></i></a>
+<a aria-label="Facebook" href="#"><i class="fab fa-facebook"></i></a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="/js/modern-homepage-fixed.js"></script>
+<script src="/js/dropdown-handler.js"></script>
+<script src="/js/pdf-merger.js"></script>
 </body>
 </html>

@@ -1,0 +1,956 @@
+INFO:     Will watch for changes in these directories: ['/Users/MAC/chrome/bank-statement-converter-unified']
+INFO:     Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+INFO:     Started reloader process [31856] using WatchFiles
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [31865]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Starting up...
+INFO:     127.0.0.1:58803 - "GET /health HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'test_conversion.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [31865]
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [31983]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+/opt/anaconda3/lib/python3.12/site-packages/PyPDF2/_cmap.py:142: PdfReadWarning: Advanced encoding /StandardEncoding not implemented yet
+  warnings.warn(
+Starting up...
+INFO:     127.0.0.1:58879 - "POST /api/convert HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58881 - "GET /api/statement/1/download HTTP/1.1" 403 Forbidden
+WARNING:  WatchFiles detected changes in 'test_conversion.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [31983]
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [32046]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+/opt/anaconda3/lib/python3.12/site-packages/PyPDF2/_cmap.py:142: PdfReadWarning: Advanced encoding /StandardEncoding not implemented yet
+  warnings.warn(
+Starting up...
+INFO:     127.0.0.1:58930 - "POST /api/convert HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58930 - "GET /api/statement/2/download HTTP/1.1" 403 Forbidden
+WARNING:  WatchFiles detected changes in 'backend/universal_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [32046]
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [33042]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/api/statements.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [33042]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [33097]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Starting up...
+INFO:     127.0.0.1:59519 - "POST /api/convert HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/api/statements.py", line 148, in convert_statement
+    from ..universal_parser import parse_universal_pdf
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/universal_parser.py", line 8, in <module>
+    from rabobank_parser import parse_rabobank_pdf
+ModuleNotFoundError: No module named 'rabobank_parser'
+WARNING:  WatchFiles detected changes in 'backend/universal_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [33097]
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [33204]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+/opt/anaconda3/lib/python3.12/site-packages/PyPDF2/_cmap.py:142: PdfReadWarning: Advanced encoding /StandardEncoding not implemented yet
+  warnings.warn(
+Starting up...
+Detected Rabobank PDF, using dedicated parser
+INFO:     127.0.0.1:59566 - "POST /api/convert HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59566 - "GET /api/statement/3/download HTTP/1.1" 403 Forbidden
+WARNING:  WatchFiles detected changes in 'test_universal_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [33204]
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [33355]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_text_parsing.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [33355]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [33476]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Starting up...
+INFO:     127.0.0.1:60063 - "GET /health HTTP/1.1" 200 OK
+Failed to import jpype dependencies. Fallback to subprocess.
+No module named 'jpype'
+Failed to extract amount from 'Past Due AmountUnbilled Installment AmountUnbilld Loan AmountTotal Outstanding Balance': could not convert string to float: 'PastDueAmount\rUnbilledInstallmentAmount\rUnbilldLoanAmount\rTotalOutstandingBalance'
+Failed to extract amount from 'Previous': could not convert string to float: 'Previous'
+Failed to extract amount from 'Purchases and': could not convert string to float: 'Purchasesand'
+Failed to extract amount from 'Installment': could not convert string to float: 'Installment'
+Failed to extract amount from 'Late Payment': could not convert string to float: 'LatePayment'
+Failed to extract amount from 'Card Type': could not convert string to float: 'CardType'
+Failed to extract amount from 'Credits and': could not convert string to float: 'Creditsand'
+Failed to extract amount from 'Charges and': could not convert string to float: 'Chargesand'
+Failed to extract amount from 'Amount Due': could not convert string to float: 'AmountDue'
+Failed to extract amount from 'Balance': could not convert string to float: 'Balance'
+Failed to extract amount from 'Advances': could not convert string to float: 'Advances'
+Failed to extract amount from 'Due': could not convert string to float: 'Due'
+Failed to extract amount from 'Charges': could not convert string to float: 'Charges'
+Failed to extract amount from 'Rebates': could not convert string to float: 'Rebates'
+Failed to extract amount from 'Other Fees': could not convert string to float: 'OtherFees'
+Failed to extract amount from 'Past Due Amount': could not convert string to float: 'PastDueAmount'
+Failed to extract amount from 'Unbilled Installment Amount': could not convert string to float: 'UnbilledInstallmentAmount'
+Failed to extract amount from 'Unbilld Loan Amount': could not convert string to float: 'UnbilldLoanAmount'
+Failed to extract amount from 'Total Outstanding Balance': could not convert string to float: 'TotalOutstandingBalance'
+Failed to extract amount from 'Previous': could not convert string to float: 'Previous'
+Failed to extract amount from 'Purchases and': could not convert string to float: 'Purchasesand'
+Failed to extract amount from 'Installment': could not convert string to float: 'Installment'
+Failed to extract amount from 'Late Payment': could not convert string to float: 'LatePayment'
+Failed to extract amount from 'Card Type': could not convert string to float: 'CardType'
+Failed to extract amount from 'Credits and': could not convert string to float: 'Creditsand'
+Failed to extract amount from 'Charges and': could not convert string to float: 'Chargesand'
+Failed to extract amount from 'Amount Due': could not convert string to float: 'AmountDue'
+Failed to extract amount from 'Balance': could not convert string to float: 'Balance'
+Failed to extract amount from 'Advances': could not convert string to float: 'Advances'
+Failed to extract amount from 'Due': could not convert string to float: 'Due'
+Failed to extract amount from 'Charges': could not convert string to float: 'Charges'
+Failed to extract amount from 'Rebates': could not convert string to float: 'Rebates'
+Failed to extract amount from 'Other Fees': could not convert string to float: 'OtherFees'
+Failed to extract amount from 'Past Due Amount': could not convert string to float: 'PastDueAmount'
+Failed to extract amount from 'Unbilled Installment Amount': could not convert string to float: 'UnbilledInstallmentAmount'
+Failed to extract amount from 'Unbilld Loan Amount': could not convert string to float: 'UnbilldLoanAmount'
+Failed to extract amount from 'Total Outstanding Balance': could not convert string to float: 'TotalOutstandingBalance'
+Failed to extract amount from 'Date Payment Type Detail Paid In Paid Out Balance': could not convert string to float: 'DatePaymentTypeDetailPaidInPaidOutBalance'
+Failed to extract amount from 'Note:': could not convert string to float: 'Note:'
+Failed to extract amount from 'Past Due Amount
+Unbilled Installment Amount
+Unbilld Loan Amount
+Total Outstanding Balance': could not convert string to float: 'PastDueAmount\nUnbilledInstallmentAmount\nUnbilldLoanAmount\nTotalOutstandingBalance'
+INFO:     127.0.0.1:60154 - "POST /api/convert HTTP/1.1" 200 OK
+unknown widths : 
+[0, IndirectObject(98, 0, 5079638112)]
+unknown widths : 
+[0, IndirectObject(93, 0, 5079638112)]
+unknown widths : 
+[0, IndirectObject(88, 0, 5079638112)]
+unknown widths : 
+[0, IndirectObject(83, 0, 5079638112)]
+unknown widths : 
+[0, IndirectObject(78, 0, 5079638112)]
+unknown widths : 
+[0, IndirectObject(73, 0, 5079638112)]
+unknown widths : 
+[0, IndirectObject(68, 0, 5079638112)]
+unknown widths : 
+[0, IndirectObject(63, 0, 5079638112)]
+unknown widths : 
+[0, IndirectObject(58, 0, 5079638112)]
+unknown widths : 
+[0, IndirectObject(53, 0, 5079638112)]
+unknown widths : 
+[0, IndirectObject(48, 0, 5079638112)]
+unknown widths : 
+[0, IndirectObject(43, 0, 5079638112)]
+unknown widths : 
+[0, IndirectObject(38, 0, 5079638112)]
+unknown widths : 
+[0, IndirectObject(98, 0, 6109040224)]
+unknown widths : 
+[0, IndirectObject(93, 0, 6109040224)]
+unknown widths : 
+[0, IndirectObject(88, 0, 6109040224)]
+unknown widths : 
+[0, IndirectObject(83, 0, 6109040224)]
+unknown widths : 
+[0, IndirectObject(78, 0, 6109040224)]
+unknown widths : 
+[0, IndirectObject(73, 0, 6109040224)]
+unknown widths : 
+[0, IndirectObject(68, 0, 6109040224)]
+unknown widths : 
+[0, IndirectObject(63, 0, 6109040224)]
+unknown widths : 
+[0, IndirectObject(58, 0, 6109040224)]
+unknown widths : 
+[0, IndirectObject(53, 0, 6109040224)]
+unknown widths : 
+[0, IndirectObject(48, 0, 6109040224)]
+unknown widths : 
+[0, IndirectObject(43, 0, 6109040224)]
+unknown widths : 
+[0, IndirectObject(38, 0, 6109040224)]
+INFO:     127.0.0.1:60165 - "POST /api/convert HTTP/1.1" 200 OK
+unknown widths : 
+[0, IndirectObject(98, 0, 4403524384)]
+unknown widths : 
+[0, IndirectObject(93, 0, 4403524384)]
+unknown widths : 
+[0, IndirectObject(88, 0, 4403524384)]
+unknown widths : 
+[0, IndirectObject(83, 0, 4403524384)]
+unknown widths : 
+[0, IndirectObject(78, 0, 4403524384)]
+unknown widths : 
+[0, IndirectObject(73, 0, 4403524384)]
+unknown widths : 
+[0, IndirectObject(68, 0, 4403524384)]
+unknown widths : 
+[0, IndirectObject(63, 0, 4403524384)]
+unknown widths : 
+[0, IndirectObject(58, 0, 4403524384)]
+unknown widths : 
+[0, IndirectObject(53, 0, 4403524384)]
+unknown widths : 
+[0, IndirectObject(48, 0, 4403524384)]
+unknown widths : 
+[0, IndirectObject(43, 0, 4403524384)]
+unknown widths : 
+[0, IndirectObject(38, 0, 4403524384)]
+unknown widths : 
+[0, IndirectObject(98, 0, 6108903904)]
+unknown widths : 
+[0, IndirectObject(93, 0, 6108903904)]
+unknown widths : 
+[0, IndirectObject(88, 0, 6108903904)]
+unknown widths : 
+[0, IndirectObject(83, 0, 6108903904)]
+unknown widths : 
+[0, IndirectObject(78, 0, 6108903904)]
+unknown widths : 
+[0, IndirectObject(73, 0, 6108903904)]
+unknown widths : 
+[0, IndirectObject(68, 0, 6108903904)]
+unknown widths : 
+[0, IndirectObject(63, 0, 6108903904)]
+unknown widths : 
+[0, IndirectObject(58, 0, 6108903904)]
+unknown widths : 
+[0, IndirectObject(53, 0, 6108903904)]
+unknown widths : 
+[0, IndirectObject(48, 0, 6108903904)]
+unknown widths : 
+[0, IndirectObject(43, 0, 6108903904)]
+unknown widths : 
+[0, IndirectObject(38, 0, 6108903904)]
+INFO:     127.0.0.1:60182 - "POST /api/convert HTTP/1.1" 200 OK
+unknown widths : 
+[0, IndirectObject(98, 0, 6109906896)]
+unknown widths : 
+[0, IndirectObject(93, 0, 6109906896)]
+unknown widths : 
+[0, IndirectObject(88, 0, 6109906896)]
+unknown widths : 
+[0, IndirectObject(83, 0, 6109906896)]
+unknown widths : 
+[0, IndirectObject(78, 0, 6109906896)]
+unknown widths : 
+[0, IndirectObject(73, 0, 6109906896)]
+unknown widths : 
+[0, IndirectObject(68, 0, 6109906896)]
+unknown widths : 
+[0, IndirectObject(63, 0, 6109906896)]
+unknown widths : 
+[0, IndirectObject(58, 0, 6109906896)]
+unknown widths : 
+[0, IndirectObject(53, 0, 6109906896)]
+unknown widths : 
+[0, IndirectObject(48, 0, 6109906896)]
+unknown widths : 
+[0, IndirectObject(43, 0, 6109906896)]
+unknown widths : 
+[0, IndirectObject(38, 0, 6109906896)]
+unknown widths : 
+[0, IndirectObject(98, 0, 4829808928)]
+unknown widths : 
+[0, IndirectObject(93, 0, 4829808928)]
+unknown widths : 
+[0, IndirectObject(88, 0, 4829808928)]
+unknown widths : 
+[0, IndirectObject(83, 0, 4829808928)]
+unknown widths : 
+[0, IndirectObject(78, 0, 4829808928)]
+unknown widths : 
+[0, IndirectObject(73, 0, 4829808928)]
+unknown widths : 
+[0, IndirectObject(68, 0, 4829808928)]
+unknown widths : 
+[0, IndirectObject(63, 0, 4829808928)]
+unknown widths : 
+[0, IndirectObject(58, 0, 4829808928)]
+unknown widths : 
+[0, IndirectObject(53, 0, 4829808928)]
+unknown widths : 
+[0, IndirectObject(48, 0, 4829808928)]
+unknown widths : 
+[0, IndirectObject(43, 0, 4829808928)]
+unknown widths : 
+[0, IndirectObject(38, 0, 4829808928)]
+INFO:     127.0.0.1:60260 - "POST /api/convert HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60547 - "OPTIONS /api/convert HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:60596 - "POST /api/convert HTTP/1.1" 422 Unprocessable Entity
+Failed to extract amount from 'Past Due AmountUnbilled Installment AmountUnbilld Loan AmountTotal Outstanding Balance': could not convert string to float: 'PastDueAmount\rUnbilledInstallmentAmount\rUnbilldLoanAmount\rTotalOutstandingBalance'
+Failed to extract amount from 'Previous': could not convert string to float: 'Previous'
+Failed to extract amount from 'Purchases and': could not convert string to float: 'Purchasesand'
+Failed to extract amount from 'Installment': could not convert string to float: 'Installment'
+Failed to extract amount from 'Late Payment': could not convert string to float: 'LatePayment'
+Failed to extract amount from 'Card Type': could not convert string to float: 'CardType'
+Failed to extract amount from 'Credits and': could not convert string to float: 'Creditsand'
+Failed to extract amount from 'Charges and': could not convert string to float: 'Chargesand'
+Failed to extract amount from 'Amount Due': could not convert string to float: 'AmountDue'
+Failed to extract amount from 'Balance': could not convert string to float: 'Balance'
+Failed to extract amount from 'Advances': could not convert string to float: 'Advances'
+Failed to extract amount from 'Due': could not convert string to float: 'Due'
+Failed to extract amount from 'Charges': could not convert string to float: 'Charges'
+Failed to extract amount from 'Rebates': could not convert string to float: 'Rebates'
+Failed to extract amount from 'Other Fees': could not convert string to float: 'OtherFees'
+Failed to extract amount from 'Past Due Amount': could not convert string to float: 'PastDueAmount'
+Failed to extract amount from 'Unbilled Installment Amount': could not convert string to float: 'UnbilledInstallmentAmount'
+Failed to extract amount from 'Unbilld Loan Amount': could not convert string to float: 'UnbilldLoanAmount'
+Failed to extract amount from 'Total Outstanding Balance': could not convert string to float: 'TotalOutstandingBalance'
+Failed to extract amount from 'Previous': could not convert string to float: 'Previous'
+Failed to extract amount from 'Purchases and': could not convert string to float: 'Purchasesand'
+Failed to extract amount from 'Installment': could not convert string to float: 'Installment'
+Failed to extract amount from 'Late Payment': could not convert string to float: 'LatePayment'
+Failed to extract amount from 'Card Type': could not convert string to float: 'CardType'
+Failed to extract amount from 'Credits and': could not convert string to float: 'Creditsand'
+Failed to extract amount from 'Charges and': could not convert string to float: 'Chargesand'
+Failed to extract amount from 'Amount Due': could not convert string to float: 'AmountDue'
+Failed to extract amount from 'Balance': could not convert string to float: 'Balance'
+Failed to extract amount from 'Advances': could not convert string to float: 'Advances'
+Failed to extract amount from 'Due': could not convert string to float: 'Due'
+Failed to extract amount from 'Charges': could not convert string to float: 'Charges'
+Failed to extract amount from 'Rebates': could not convert string to float: 'Rebates'
+Failed to extract amount from 'Other Fees': could not convert string to float: 'OtherFees'
+Failed to extract amount from 'Past Due Amount': could not convert string to float: 'PastDueAmount'
+Failed to extract amount from 'Unbilled Installment Amount': could not convert string to float: 'UnbilledInstallmentAmount'
+Failed to extract amount from 'Unbilld Loan Amount': could not convert string to float: 'UnbilldLoanAmount'
+Failed to extract amount from 'Total Outstanding Balance': could not convert string to float: 'TotalOutstandingBalance'
+Failed to extract amount from 'Date Payment Type Detail Paid In Paid Out Balance': could not convert string to float: 'DatePaymentTypeDetailPaidInPaidOutBalance'
+Failed to extract amount from 'Note:': could not convert string to float: 'Note:'
+Failed to extract amount from 'Past Due Amount
+Unbilled Installment Amount
+Unbilld Loan Amount
+Total Outstanding Balance': could not convert string to float: 'PastDueAmount\nUnbilledInstallmentAmount\nUnbilldLoanAmount\nTotalOutstandingBalance'
+INFO:     127.0.0.1:61600 - "POST /api/convert HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61626 - "GET /health HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'backend/main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [33476]
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [35895]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Failed to import jpype dependencies. Fallback to subprocess.
+No module named 'jpype'
+Starting up...
+Failed to extract amount from 'Past Due AmountUnbilled Installment AmountUnbilld Loan AmountTotal Outstanding Balance': could not convert string to float: 'PastDueAmount\rUnbilledInstallmentAmount\rUnbilldLoanAmount\rTotalOutstandingBalance'
+Failed to extract amount from 'Previous': could not convert string to float: 'Previous'
+Failed to extract amount from 'Purchases and': could not convert string to float: 'Purchasesand'
+Failed to extract amount from 'Installment': could not convert string to float: 'Installment'
+Failed to extract amount from 'Late Payment': could not convert string to float: 'LatePayment'
+Failed to extract amount from 'Card Type': could not convert string to float: 'CardType'
+Failed to extract amount from 'Credits and': could not convert string to float: 'Creditsand'
+Failed to extract amount from 'Charges and': could not convert string to float: 'Chargesand'
+Failed to extract amount from 'Amount Due': could not convert string to float: 'AmountDue'
+Failed to extract amount from 'Balance': could not convert string to float: 'Balance'
+Failed to extract amount from 'Advances': could not convert string to float: 'Advances'
+Failed to extract amount from 'Due': could not convert string to float: 'Due'
+Failed to extract amount from 'Charges': could not convert string to float: 'Charges'
+Failed to extract amount from 'Rebates': could not convert string to float: 'Rebates'
+Failed to extract amount from 'Other Fees': could not convert string to float: 'OtherFees'
+Failed to extract amount from 'Past Due Amount': could not convert string to float: 'PastDueAmount'
+Failed to extract amount from 'Unbilled Installment Amount': could not convert string to float: 'UnbilledInstallmentAmount'
+Failed to extract amount from 'Unbilld Loan Amount': could not convert string to float: 'UnbilldLoanAmount'
+Failed to extract amount from 'Total Outstanding Balance': could not convert string to float: 'TotalOutstandingBalance'
+Failed to extract amount from 'Previous': could not convert string to float: 'Previous'
+Failed to extract amount from 'Purchases and': could not convert string to float: 'Purchasesand'
+Failed to extract amount from 'Installment': could not convert string to float: 'Installment'
+Failed to extract amount from 'Late Payment': could not convert string to float: 'LatePayment'
+Failed to extract amount from 'Card Type': could not convert string to float: 'CardType'
+Failed to extract amount from 'Credits and': could not convert string to float: 'Creditsand'
+Failed to extract amount from 'Charges and': could not convert string to float: 'Chargesand'
+Failed to extract amount from 'Amount Due': could not convert string to float: 'AmountDue'
+Failed to extract amount from 'Balance': could not convert string to float: 'Balance'
+Failed to extract amount from 'Advances': could not convert string to float: 'Advances'
+Failed to extract amount from 'Due': could not convert string to float: 'Due'
+Failed to extract amount from 'Charges': could not convert string to float: 'Charges'
+Failed to extract amount from 'Rebates': could not convert string to float: 'Rebates'
+Failed to extract amount from 'Other Fees': could not convert string to float: 'OtherFees'
+Failed to extract amount from 'Past Due Amount': could not convert string to float: 'PastDueAmount'
+Failed to extract amount from 'Unbilled Installment Amount': could not convert string to float: 'UnbilledInstallmentAmount'
+Failed to extract amount from 'Unbilld Loan Amount': could not convert string to float: 'UnbilldLoanAmount'
+Failed to extract amount from 'Total Outstanding Balance': could not convert string to float: 'TotalOutstandingBalance'
+Failed to extract amount from 'Date Payment Type Detail Paid In Paid Out Balance': could not convert string to float: 'DatePaymentTypeDetailPaidInPaidOutBalance'
+Failed to extract amount from 'Note:': could not convert string to float: 'Note:'
+Failed to extract amount from 'Past Due Amount
+Unbilled Installment Amount
+Unbilld Loan Amount
+Total Outstanding Balance': could not convert string to float: 'PastDueAmount\nUnbilledInstallmentAmount\nUnbilldLoanAmount\nTotalOutstandingBalance'
+INFO:     127.0.0.1:62441 - "POST /api/convert HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62490 - "GET /api/statement/9/download HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:62490 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62490 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62490 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+Failed to extract amount from 'Past Due AmountUnbilled Installment AmountUnbilld Loan AmountTotal Outstanding Balance': could not convert string to float: 'PastDueAmount\rUnbilledInstallmentAmount\rUnbilldLoanAmount\rTotalOutstandingBalance'
+Failed to extract amount from 'Previous': could not convert string to float: 'Previous'
+Failed to extract amount from 'Purchases and': could not convert string to float: 'Purchasesand'
+Failed to extract amount from 'Installment': could not convert string to float: 'Installment'
+Failed to extract amount from 'Late Payment': could not convert string to float: 'LatePayment'
+Failed to extract amount from 'Card Type': could not convert string to float: 'CardType'
+Failed to extract amount from 'Credits and': could not convert string to float: 'Creditsand'
+Failed to extract amount from 'Charges and': could not convert string to float: 'Chargesand'
+Failed to extract amount from 'Amount Due': could not convert string to float: 'AmountDue'
+Failed to extract amount from 'Balance': could not convert string to float: 'Balance'
+Failed to extract amount from 'Advances': could not convert string to float: 'Advances'
+Failed to extract amount from 'Due': could not convert string to float: 'Due'
+Failed to extract amount from 'Charges': could not convert string to float: 'Charges'
+Failed to extract amount from 'Rebates': could not convert string to float: 'Rebates'
+Failed to extract amount from 'Other Fees': could not convert string to float: 'OtherFees'
+Failed to extract amount from 'Past Due Amount': could not convert string to float: 'PastDueAmount'
+Failed to extract amount from 'Unbilled Installment Amount': could not convert string to float: 'UnbilledInstallmentAmount'
+Failed to extract amount from 'Unbilld Loan Amount': could not convert string to float: 'UnbilldLoanAmount'
+Failed to extract amount from 'Total Outstanding Balance': could not convert string to float: 'TotalOutstandingBalance'
+Failed to extract amount from 'Previous': could not convert string to float: 'Previous'
+Failed to extract amount from 'Purchases and': could not convert string to float: 'Purchasesand'
+Failed to extract amount from 'Installment': could not convert string to float: 'Installment'
+Failed to extract amount from 'Late Payment': could not convert string to float: 'LatePayment'
+Failed to extract amount from 'Card Type': could not convert string to float: 'CardType'
+Failed to extract amount from 'Credits and': could not convert string to float: 'Creditsand'
+Failed to extract amount from 'Charges and': could not convert string to float: 'Chargesand'
+Failed to extract amount from 'Amount Due': could not convert string to float: 'AmountDue'
+Failed to extract amount from 'Balance': could not convert string to float: 'Balance'
+Failed to extract amount from 'Advances': could not convert string to float: 'Advances'
+Failed to extract amount from 'Due': could not convert string to float: 'Due'
+Failed to extract amount from 'Charges': could not convert string to float: 'Charges'
+Failed to extract amount from 'Rebates': could not convert string to float: 'Rebates'
+Failed to extract amount from 'Other Fees': could not convert string to float: 'OtherFees'
+Failed to extract amount from 'Past Due Amount': could not convert string to float: 'PastDueAmount'
+Failed to extract amount from 'Unbilled Installment Amount': could not convert string to float: 'UnbilledInstallmentAmount'
+Failed to extract amount from 'Unbilld Loan Amount': could not convert string to float: 'UnbilldLoanAmount'
+Failed to extract amount from 'Total Outstanding Balance': could not convert string to float: 'TotalOutstandingBalance'
+Failed to extract amount from 'Date Payment Type Detail Paid In Paid Out Balance': could not convert string to float: 'DatePaymentTypeDetailPaidInPaidOutBalance'
+Failed to extract amount from 'Note:': could not convert string to float: 'Note:'
+Failed to extract amount from 'Past Due Amount
+Unbilled Installment Amount
+Unbilld Loan Amount
+Total Outstanding Balance': could not convert string to float: 'PastDueAmount\nUnbilledInstallmentAmount\nUnbilldLoanAmount\nTotalOutstandingBalance'
+INFO:     127.0.0.1:62580 - "POST /api/convert HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'backend/api/statements.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [35895]
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [36186]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Starting up...
+INFO:     127.0.0.1:62733 - "GET /api/statement/10/download HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'test_merged_pdf.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [36186]
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [36386]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'analyze_pdf_content.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [36386]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [36488]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_tabula_extraction.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [36488]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [36559]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_original_pdf.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [36559]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [37113]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_original_pdf.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [37113]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [37169]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_original_pdf.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [37169]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [37316]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_original_pdf.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [37316]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [37346]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_pdfplumber_detailed.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [37346]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [37514]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_pdf_all_pages.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [37514]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [37585]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'check_page2_details.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [37585]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [37658]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_pymupdf.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [37658]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [37732]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_pymupdf.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [37732]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [37778]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/pdftotext_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [37778]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [37939]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/universal_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [37939]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [37988]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/universal_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [37988]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38041]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_updated_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38041]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38071]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_updated_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38071]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38152]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/pdftotext_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38152]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38178]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/pdftotext_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38178]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38223]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/pdftotext_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38223]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38254]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/pdftotext_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38254]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38348]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/pdftotext_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38348]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38389]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/universal_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38389]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38510]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/pdftotext_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38510]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38594]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/pdftotext_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38594]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38609]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/pdftotext_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38609]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38639]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_final_parsing.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38639]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38904]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/universal_parser.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38904]
+Starting up...
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [38984]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Failed to import jpype dependencies. Fallback to subprocess.
+No module named 'jpype'
+Starting up...
+Extracted 25 transactions using pdftotext
+INFO:     127.0.0.1:55024 - "POST /api/convert HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55061 - "GET /api/statement/11/download HTTP/1.1" 200 OK
+/opt/anaconda3/lib/python3.12/site-packages/PyPDF2/_cmap.py:142: PdfReadWarning: Advanced encoding /StandardEncoding not implemented yet
+  warnings.warn(
+Detected Rabobank PDF, using dedicated parser
+INFO:     127.0.0.1:55366 - "POST /api/convert HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55380 - "GET /api/statement/12/download HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'backend/api/statements.py'. Reloading...
+unknown widths : 
+[0, IndirectObject(98, 0, 6151265488)]
+unknown widths : 
+[0, IndirectObject(93, 0, 6151265488)]
+unknown widths : 
+[0, IndirectObject(88, 0, 6151265488)]
+unknown widths : 
+[0, IndirectObject(83, 0, 6151265488)]
+unknown widths : 
+[0, IndirectObject(78, 0, 6151265488)]
+unknown widths : 
+[0, IndirectObject(73, 0, 6151265488)]
+unknown widths : 
+[0, IndirectObject(68, 0, 6151265488)]
+unknown widths : 
+[0, IndirectObject(63, 0, 6151265488)]
+unknown widths : 
+[0, IndirectObject(58, 0, 6151265488)]
+unknown widths : 
+[0, IndirectObject(53, 0, 6151265488)]
+unknown widths : 
+[0, IndirectObject(48, 0, 6151265488)]
+unknown widths : 
+[0, IndirectObject(43, 0, 6151265488)]
+unknown widths : 
+[0, IndirectObject(38, 0, 6151265488)]
+Extracted 1 transactions using pdftotext
+INFO:     127.0.0.1:55534 - "POST /api/convert HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38984]
+Shutting down...
+/opt/anaconda3/lib/python3.12/site-packages/pydantic/_internal/_config.py:341: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [39900]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Starting up...
+INFO:     127.0.0.1:55577 - "GET /api/statement/13/download HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [39900]
+Shutting down...
+INFO:     Stopping reloader process [31856]
