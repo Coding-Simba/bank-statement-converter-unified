@@ -34,6 +34,11 @@ try:
 except ImportError:
     WESTPAC_PARSER_AVAILABLE = False
 try:
+    from .rbc_parser_v2 import parse_rbc_v2 as parse_rbc
+    RBC_PARSER_AVAILABLE = True
+except ImportError:
+    RBC_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -380,6 +385,13 @@ def parse_universal_pdf(pdf_path):
                 if WESTPAC_PARSER_AVAILABLE and 'westpac' in first_page.lower():
                     print("Detected Westpac PDF, using dedicated parser")
                     transactions = parse_westpac(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for RBC format
+                if RBC_PARSER_AVAILABLE and ('royal bank of canada' in first_page.lower() or 'rbc' in first_page.lower()):
+                    print("Detected RBC PDF, using dedicated parser")
+                    transactions = parse_rbc(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
