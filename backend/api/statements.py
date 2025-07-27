@@ -180,7 +180,7 @@ async def convert_statement(
             # This PDF has already been saved by the universal parser for improvement
             with open(csv_path, 'w') as f:
                 f.write("Date,Description,Amount,Balance\n")
-                f.write("2024-01-01,No transactions found in PDF - saved for improvement,0.00,0.00\n")
+                f.write(f"2024-01-01,No transactions found in PDF: {file.filename},0.00,0.00\n")
                 
     except Exception as e:
         # If parsing fails, create error CSV

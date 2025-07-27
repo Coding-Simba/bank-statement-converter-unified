@@ -218,5 +218,19 @@
     "sample_transactions": [],
     "file_size": 837035,
     "status": "pending_review"
+  },
+  "a85eec86fe966b0e63d0de592a2a66649265824e93052e534fedfad0a4670c2d": {
+    "original_name": "5ec5ed64-d551-45c3-9d4b-5648e6f92b92.pdf",
+    "saved_name": "20250727_101617_a85eec86_5ec5ed64-d551-45c3-9d4b-5648e6f92b92.pdf",
+    "saved_path": "failed_pdfs/20250727_101617_a85eec86_5ec5ed64-d551-45c3-9d4b-5648e6f92b92.pdf",
+    "timestamp": "20250727_101617",
+    "date_saved": "2025-07-27T10:16:17.620935",
+    "transactions_found": 0,
+    "valid_transactions": 0,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [],
+    "file_size": 183623,
+    "status": "pending_review"
   }
 }
