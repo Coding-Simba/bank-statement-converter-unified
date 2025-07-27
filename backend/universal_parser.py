@@ -89,6 +89,11 @@ try:
 except ImportError:
     PAYPAL_PARSER_AVAILABLE = False
 try:
+    from .suntrust_parser import parse_suntrust
+    SUNTRUST_PARSER_AVAILABLE = True
+except ImportError:
+    SUNTRUST_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -512,6 +517,13 @@ def parse_universal_pdf(pdf_path):
                 if PAYPAL_PARSER_AVAILABLE and 'paypal' in first_page.lower() and 'account activity' in first_page.lower():
                     print("Detected PayPal PDF, using dedicated parser")
                     transactions = parse_paypal(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for SunTrust format
+                if SUNTRUST_PARSER_AVAILABLE and 'suntrust' in first_page.lower():
+                    print("Detected SunTrust PDF, using dedicated parser")
+                    transactions = parse_suntrust(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
