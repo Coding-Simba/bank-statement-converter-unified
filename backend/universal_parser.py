@@ -59,6 +59,11 @@ try:
 except ImportError:
     BOA_PARSER_AVAILABLE = False
 try:
+    from .becu_parser import parse_becu
+    BECU_PARSER_AVAILABLE = True
+except ImportError:
+    BECU_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -440,6 +445,13 @@ def parse_universal_pdf(pdf_path):
                 if BOA_PARSER_AVAILABLE and ('bank of america' in first_page.lower() or 'bankofamerica' in first_page.lower()):
                     print("Detected Bank of America PDF, using dedicated parser")
                     transactions = parse_boa(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for BECU format
+                if BECU_PARSER_AVAILABLE and ('boeing employees' in first_page.lower() or 'becu' in first_page.lower()):
+                    print("Detected BECU PDF, using dedicated parser")
+                    transactions = parse_becu(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
