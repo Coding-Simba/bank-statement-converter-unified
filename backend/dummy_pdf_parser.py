@@ -1,4 +1,4 @@
-"""Specialized parser for the dummy statement PDF format"""
+"""Specialized parser for scanned/image-based statement PDFs with specific layouts"""
 
 import re
 from datetime import datetime
@@ -15,27 +15,59 @@ except ImportError:
 logger = logging.getLogger(__name__)
 
 def parse_dummy_pdf(pdf_path: str) -> List[Dict]:
-    """Parse the specific dummy PDF format with its unique layout"""
+    """Parse scanned/image-based PDFs with check entries and transaction tables"""
     if not OCR_AVAILABLE:
         raise ImportError("OCR dependencies not installed")
     
     transactions = []
     
-    # Convert PDF to images
+    # Convert PDF to images with high DPI for better OCR
     images = convert_from_path(pdf_path, dpi=300)
     
     for page_num, image in enumerate(images):
-        # Get OCR text
+        # Get OCR text with detailed data
         text = pytesseract.image_to_string(image)
+        data = pytesseract.image_to_data(image, output_type=pytesseract.Output.DICT)
         
-        if page_num == 0:
-            # Page 1 has a table with check entries
+        # Look for check entries pattern
+        if has_check_pattern(text):
             transactions.extend(parse_page1_checks(text))
-        else:
-            # Page 2 has detailed transactions
+        
+        # Look for detailed transaction patterns
+        if has_transaction_sections(text):
             transactions.extend(parse_page2_transactions(text))
+        
+        # Also try structured data extraction
+        transactions.extend(extract_from_ocr_data(data))
     
-    return transactions
+    # Remove duplicates
+    return deduplicate_transactions(transactions)
+
+def has_check_pattern(text: str) -> bool:
+    """Check if text contains check entry patterns"""
+    # Look for patterns like "1234 10/05 $9.98" or "CHECK 1234"
+    check_patterns = [
+        r'\d{4}\*?\s+\d{1,2}/\d{1,2}\s+\$?[\d,]+\.?\d*',
+        r'CHECK\s+\d{4}',
+        r'\d{4}\s+\d{1,2}/\d{1,2}'
+    ]
+    
+    for pattern in check_patterns:
+        if re.search(pattern, text):
+            return True
+    return False
+
+def has_transaction_sections(text: str) -> bool:
+    """Check if text contains transaction section headers"""
+    section_keywords = [
+        'deposits and other credits',
+        'withdrawals and other debits',
+        'transaction history',
+        'account activity'
+    ]
+    
+    text_lower = text.lower()
+    return any(keyword in text_lower for keyword in section_keywords)
 
 def parse_page1_checks(text: str) -> List[Dict]:
     """Parse check entries from page 1 table"""
@@ -118,20 +150,8 @@ def parse_page2_transactions(text: str) -> List[Dict]:
     in_deposits = False
     in_withdrawals = False
     
-    # Known amounts from the page 1 summary table
-    known_amounts = {
-        'PAYROLL': 763.01,
-        'SOC SEC': 828.74,
-        'DEPOSIT TERMINAL': 185.01,
-        'INTEREST': 0.26,
-        'WAL-MART': 73.00,
-        'PLAYERS SPORTS': 11.68,
-        'KWAN COURT': 9.98,
-        'HOME DEPOT': 36.48,
-        'ATM': 140.00,
-        'DILLONS': 60.10,
-        'SERVICE CHARGE': 12.00
-    }
+    # Try to extract amounts from the text using regex patterns
+    amount_pattern = r'\$?([\d,]+\.\d{2})'
     
     for i, line in enumerate(lines):
         line = line.strip()
@@ -170,19 +190,30 @@ def parse_page2_transactions(text: str) -> List[Dict]:
             description = re.sub(r'\s+[A-Z0-9]{16,}', '', description)  # Remove long IDs
             description = re.sub(r'\s+', ' ', description).strip()
             
-            # Find amount based on transaction type
+            # Try to find amount in the line or next lines
             amount = None
-            for key, value in known_amounts.items():
-                if key in description.upper():
-                    amount = value
-                    break
             
-            # If no amount found, use a reasonable default
+            # Look for amount in the same line
+            amount_match = re.search(amount_pattern, line)
+            if amount_match:
+                try:
+                    amount = float(amount_match.group(1).replace(',', ''))
+                except:
+                    pass
+            
+            # If no amount found in current line, check next line
+            if amount is None and i + 1 < len(lines):
+                next_line = lines[i + 1].strip()
+                amount_match = re.search(amount_pattern, next_line)
+                if amount_match:
+                    try:
+                        amount = float(amount_match.group(1).replace(',', ''))
+                    except:
+                        pass
+            
+            # Skip transaction if no amount found
             if amount is None:
-                if in_deposits:
-                    amount = 100.00  # Default deposit
-                else:
-                    amount = 50.00   # Default withdrawal
+                continue
             
             # Apply sign based on section
             if in_deposits:
@@ -198,3 +229,111 @@ def parse_page2_transactions(text: str) -> List[Dict]:
             })
     
     return transactions
+
+def extract_from_ocr_data(data: Dict) -> List[Dict]:
+    """Extract transactions from OCR data with positional information"""
+    transactions = []
+    
+    # Group text by lines based on vertical position
+    lines = {}
+    for i in range(len(data['text'])):
+        if data['text'][i].strip() and data['conf'][i] > 30:  # Confidence threshold
+            top = data['top'][i]
+            line_key = round(top / 10) * 10
+            
+            if line_key not in lines:
+                lines[line_key] = []
+            
+            lines[line_key].append({
+                'text': data['text'][i],
+                'left': data['left'][i],
+                'conf': data['conf'][i]
+            })
+    
+    # Process each line
+    for _, line_items in sorted(lines.items()):
+        line_items.sort(key=lambda x: x['left'])
+        line_text = ' '.join(item['text'] for item in line_items)
+        
+        # Try to parse as transaction
+        transaction = parse_transaction_line(line_text)
+        if transaction:
+            transactions.append(transaction)
+    
+    return transactions
+
+def parse_transaction_line(line: str) -> Optional[Dict]:
+    """Parse a single line that might be a transaction"""
+    # Common transaction patterns
+    patterns = [
+        # Date Description Amount
+        r'^(\d{1,2}[/\-\.]\d{1,2}(?:[/\-\.]\d{2,4})?)\s+(.+?)\s+\$?([\d,]+\.?\d*)$',
+        # Check pattern: check# date amount
+        r'^(\d{4})\*?\s+(\d{1,2}/\d{1,2})\s+\$?([\d,]+\.?\d*)$',
+        # Date and description (amount might be on next line)
+        r'^(\d{1,2}[/\-\.]\d{1,2})\s+(.+?)$'
+    ]
+    
+    for pattern in patterns:
+        match = re.match(pattern, line.strip())
+        if match:
+            if len(match.groups()) == 3:
+                if re.match(r'^\d{4}', match.group(1)):
+                    # Check pattern
+                    return {
+                        'date_string': match.group(2),
+                        'description': f'CHECK {match.group(1)}',
+                        'amount': -float(match.group(3).replace(',', ''))
+                    }
+                else:
+                    # Regular transaction
+                    return {
+                        'date_string': match.group(1),
+                        'description': match.group(2).strip(),
+                        'amount': float(match.group(3).replace(',', ''))
+                    }
+            elif len(match.groups()) == 2:
+                # Date and description only
+                return {
+                    'date_string': match.group(1),
+                    'description': match.group(2).strip(),
+                    'amount': None  # Will need to find amount elsewhere
+                }
+    
+    return None
+
+def deduplicate_transactions(transactions: List[Dict]) -> List[Dict]:
+    """Remove duplicate transactions based on date, description, and amount"""
+    seen = set()
+    unique = []
+    
+    for trans in transactions:
+        # Skip incomplete transactions
+        if not trans.get('description') or trans.get('amount') is None:
+            continue
+            
+        # Create unique key
+        key = (
+            trans.get('date_string', ''),
+            trans.get('description', ''),
+            trans.get('amount', 0)
+        )
+        
+        if key not in seen:
+            seen.add(key)
+            # Parse date if needed
+            if 'date' not in trans and trans.get('date_string'):
+                try:
+                    date_str = trans['date_string']
+                    # Add current year if not present
+                    if len(date_str.split('/')[-1]) <= 2:
+                        current_year = datetime.now().year
+                        trans['date'] = datetime.strptime(f"{date_str}/{current_year}", "%m/%d/%Y")
+                    else:
+                        trans['date'] = datetime.strptime(date_str, "%m/%d/%Y")
+                except:
+                    trans['date'] = None
+            
+            unique.append(trans)
+    
+    return unique

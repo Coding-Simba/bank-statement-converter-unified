@@ -424,121 +424,121 @@ def parse_universal_pdf(pdf_path):
                 # Skip dummy PDF detection - let it fall through to OCR
                 # The dummy parser will be called automatically when OCR detects the content
                 
-                # Check for Rabobank format - based on document structure
-                if 'Rekeningafschrift' in first_page and 'IBAN' in first_page and 'AF' in first_page and 'BIJ' in first_page:
-                    print("Detected Rabobank PDF format, using dedicated parser")
+                # Check for Rabobank format
+                if 'Rabobank' in first_page and 'Rekeningafschrift' in first_page:
+                    print("Detected Rabobank PDF, using dedicated parser")
                     transactions = parse_rabobank_pdf(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for Commonwealth Bank format - based on document structure
-                if COMMONWEALTH_PARSER_AVAILABLE and 'smart access' in first_page.lower() and 'account number' in first_page.lower() and 'bsb' in first_page.lower():
-                    print("Detected Commonwealth Bank PDF format, using dedicated parser")
+                # Check for Commonwealth Bank format
+                if COMMONWEALTH_PARSER_AVAILABLE and 'commonwealth' in first_page.lower() and 'smart access' in first_page.lower():
+                    print("Detected Commonwealth Bank PDF, using dedicated parser")
                     transactions = parse_commonwealth_bank(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for Westpac format - based on document structure
-                if WESTPAC_PARSER_AVAILABLE and 'statement period' in first_page.lower() and 'opening balance' in first_page.lower() and 'closing balance' in first_page.lower():
-                    print("Detected Westpac PDF format, using dedicated parser")
+                # Check for Westpac format
+                if WESTPAC_PARSER_AVAILABLE and 'westpac' in first_page.lower():
+                    print("Detected Westpac PDF, using dedicated parser")
                     transactions = parse_westpac(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for RBC format - based on document structure
-                if RBC_PARSER_AVAILABLE and 'account statement' in first_page.lower() and 'transit' in first_page.lower() and 'institution' in first_page.lower():
-                    print("Detected RBC PDF format, using dedicated parser")
+                # Check for RBC format
+                if RBC_PARSER_AVAILABLE and ('royal bank of canada' in first_page.lower() or 'rbc' in first_page.lower()):
+                    print("Detected RBC PDF, using dedicated parser")
                     transactions = parse_rbc(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for Monzo format - based on document structure
-                if MONZO_PARSER_AVAILABLE and 'sort code' in first_page.lower() and 'account number' in first_page.lower() and 'spending' in first_page.lower():
-                    print("Detected Monzo PDF format, using dedicated parser")
+                # Check for Monzo format
+                if MONZO_PARSER_AVAILABLE and 'monzo' in first_page.lower():
+                    print("Detected Monzo PDF, using dedicated parser")
                     transactions = parse_monzo(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for Monese format - based on document structure
-                if MONESE_PARSER_AVAILABLE and 'account details' in first_page.lower() and 'money in' in first_page.lower() and 'money out' in first_page.lower():
-                    print("Detected Monese PDF format, using dedicated parser")
+                # Check for Monese format
+                if MONESE_PARSER_AVAILABLE and 'monese' in first_page.lower():
+                    print("Detected Monese PDF, using dedicated parser")
                     transactions = parse_monese(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for Santander format - based on document structure
-                if SANTANDER_PARSER_AVAILABLE and 'account summary' in first_page.lower() and 'payments in' in first_page.lower() and 'payments out' in first_page.lower():
-                    print("Detected Santander PDF format, using dedicated parser")
+                # Check for Santander format
+                if SANTANDER_PARSER_AVAILABLE and 'santander' in first_page.lower():
+                    print("Detected Santander PDF, using dedicated parser")
                     transactions = parse_santander(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for Bank of America format - based on document structure
-                if BOA_PARSER_AVAILABLE and 'account summary' in first_page.lower() and 'deposits and additions' in first_page.lower() and 'withdrawals' in first_page.lower():
-                    print("Detected Bank of America PDF format, using dedicated parser")
+                # Check for Bank of America format
+                if BOA_PARSER_AVAILABLE and ('bank of america' in first_page.lower() or 'bankofamerica' in first_page.lower()):
+                    print("Detected Bank of America PDF, using dedicated parser")
                     transactions = parse_boa(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for BECU format - based on document structure
-                if BECU_PARSER_AVAILABLE and 'member number' in first_page.lower() and 'share id' in first_page.lower() and 'description' in first_page.lower():
-                    print("Detected BECU PDF format, using dedicated parser")
+                # Check for BECU format
+                if BECU_PARSER_AVAILABLE and ('boeing employees' in first_page.lower() or 'becu' in first_page.lower()):
+                    print("Detected BECU PDF, using dedicated parser")
                     transactions = parse_becu(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for Citizens Bank format - based on document structure
-                if CITIZENS_PARSER_AVAILABLE and 'phonebank' in first_page.lower() and 'deposits' in first_page.lower() and 'checks' in first_page.lower():
-                    print("Detected Citizens Bank PDF format, using dedicated parser")
+                # Check for Citizens Bank format
+                if CITIZENS_PARSER_AVAILABLE and 'citizens' in first_page.lower() and 'phonebank' in first_page.lower():
+                    print("Detected Citizens Bank PDF, using dedicated parser")
                     transactions = parse_citizens(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for Discover format - based on document structure
-                if DISCOVER_PARSER_AVAILABLE and ('cashback bonus' in first_page.lower() or 'card member since' in first_page.lower()) and 'payment' in first_page.lower():
-                    print("Detected Discover PDF format, using dedicated parser")
+                # Check for Discover format
+                if DISCOVER_PARSER_AVAILABLE and 'discover' in first_page.lower() and ('cashback bonus' in first_page.lower() or 'card member since' in first_page.lower()):
+                    print("Detected Discover PDF, using dedicated parser")
                     transactions = parse_discover(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for Green Dot format - based on document structure
-                if GREENDOT_PARSER_AVAILABLE and 'monthly statement' in first_page.lower() and 'deposits' in first_page.lower() and 'purchases' in first_page.lower():
-                    print("Detected Green Dot PDF format, using dedicated parser")
+                # Check for Green Dot format
+                if GREENDOT_PARSER_AVAILABLE and 'green dot' in first_page.lower():
+                    print("Detected Green Dot PDF, using dedicated parser")
                     transactions = parse_greendot(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for Netspend format - based on document structure
-                if NETSPEND_PARSER_AVAILABLE and 'card number' in first_page.lower() and 'transaction history' in first_page.lower():
-                    print("Detected Netspend PDF format, using dedicated parser")
+                # Check for Netspend format
+                if NETSPEND_PARSER_AVAILABLE and 'netspend' in first_page.lower():
+                    print("Detected Netspend PDF, using dedicated parser")
                     transactions = parse_netspend(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for PayPal format - based on document structure
-                if PAYPAL_PARSER_AVAILABLE and 'account activity' in first_page.lower() and 'transaction id' in first_page.lower():
-                    print("Detected PayPal PDF format, using dedicated parser")
+                # Check for PayPal format
+                if PAYPAL_PARSER_AVAILABLE and 'paypal' in first_page.lower() and 'account activity' in first_page.lower():
+                    print("Detected PayPal PDF, using dedicated parser")
                     transactions = parse_paypal(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for SunTrust format - based on document structure
-                if SUNTRUST_PARSER_AVAILABLE and 'account activity' in first_page.lower() and 'deposits' in first_page.lower() and 'withdrawals' in first_page.lower():
-                    print("Detected SunTrust PDF format, using dedicated parser")
+                # Check for SunTrust format
+                if SUNTRUST_PARSER_AVAILABLE and 'suntrust' in first_page.lower():
+                    print("Detected SunTrust PDF, using dedicated parser")
                     transactions = parse_suntrust(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for Woodforest format - based on document structure
-                if WOODFOREST_PARSER_AVAILABLE and 'business checking' in first_page.lower() and 'daily balance' in first_page.lower():
-                    print("Detected Woodforest PDF format, using dedicated parser")
+                # Check for Woodforest format
+                if WOODFOREST_PARSER_AVAILABLE and ('woodforest' in first_page.lower() or 'business checking' in first_page.lower()):
+                    print("Detected Woodforest PDF, using dedicated parser")
                     transactions = parse_woodforest(pdf_path)
                     if transactions:
                         return transactions
                 
-                # Check for Walmart Money Card format - based on document structure
-                if WALMART_PARSER_AVAILABLE and 'moneycard' in first_page.lower() and 'transaction date' in first_page.lower():
-                    print("Detected Walmart Money Card PDF format, using dedicated parser")
+                # Check for Walmart Money Card format
+                if WALMART_PARSER_AVAILABLE and ('walmart' in first_page.lower() or 'walmartmoneycard' in first_page.lower()):
+                    print("Detected Walmart Money Card PDF, using dedicated parser")
                     transactions = parse_walmart(pdf_path)
                     if transactions:
                         return transactions
