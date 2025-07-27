@@ -5,8 +5,8 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
 
 ## Progress Tracking
 - [ ] Total PDFs to test: 17
-- [ ] PDFs completed: 13
-- [ ] PDFs with issues fixed: 13
+- [ ] PDFs completed: 14
+- [ ] PDFs with issues fixed: 14
 
 ## Testing Methodology for Each PDF
 1. Run parser on the PDF
@@ -102,11 +102,11 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
   - Issues found: Table format with columns for Date, Details, Withdrawals, Deposits, and Balance. Uses Mon D date format.
   - Fix applied: Created netspend_parser.py using column position parsing. Successfully extracts 24 transactions (9 deposits, 15 withdrawals) 
 
-- [ ] **USA PayPal Account Statement.pdf**
+- [x] **USA PayPal Account Statement.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/USA PayPal Account Statement.pdf`
-  - Status: Not tested
-  - Issues found: 
-  - Fix applied: 
+  - Status: ✅ Fixed and tested
+  - Issues found: PayPal format with columns for Date, Description, Currency, Amount, Fees, and Total. Some totals wrap to next line.
+  - Fix applied: Created paypal_parser.py that handles wrapped transactions and extracts fees/totals. Successfully extracts all 10 transactions (5 deposits, 5 transfers) 
 
 - [ ] **USA Suntrust.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/USA Suntrust.pdf`
@@ -142,7 +142,8 @@ Document each parser update here with timestamp and what was changed:
 11. **2025-01-27 04:45**: Created citizens_parser.py for Citizens Bank M/D date format with multi-line descriptions
 12. **2025-01-27 05:00**: Created discover_parser.py for Discover credit card format with transaction categories
 13. **2025-01-27 05:15**: Created greendot_parser.py for Green Dot simple statement format
-14. **2025-01-27 05:30**: Created netspend_parser.py for Netspend table format with column positions 
+14. **2025-01-27 05:30**: Created netspend_parser.py for Netspend table format with column positions
+15. **2025-01-27 05:45**: Created paypal_parser.py for PayPal account statements with fees and wrapped totals 
 
 ## Common Issues Found
 List recurring issues across multiple PDFs:
