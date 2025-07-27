@@ -174,5 +174,35 @@
     "sample_transactions": [],
     "file_size": 563284,
     "status": "pending_review"
+  },
+  "f7adc98b4b622893e869729323c8e5674577ecc59cabf6af71fca9222b7bfbb7": {
+    "original_name": "UK Santander.pdf",
+    "saved_name": "20250727_020455_f7adc98b_UK Santander.pdf",
+    "saved_path": "failed_pdfs/20250727_020455_f7adc98b_UK Santander.pdf",
+    "timestamp": "20250727_020455",
+    "date_saved": "2025-07-27T02:04:55.559501",
+    "transactions_found": 4,
+    "valid_transactions": 4,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [
+      {
+        "description": "16th Feb      BANK GIRO CREDIT REF JG95063 1 D DWP EESA, 000000000301959154                                            375.90",
+        "amount": 2667.19,
+        "amount_string": "2,667.19"
+      },
+      {
+        "description": "24th Feb      BANK GIRO CREDIT REF JG95063 1 D ESA CWP, 0000000003 172845 13                                            25.00",
+        "amount": 2548.69,
+        "amount_string": "2,548.69"
+      },
+      {
+        "description": "26th Feb      BANK GIRO CREDIT REF JG95063 1 D DWP PIP, 00000000032 1454839                                            451.00",
+        "amount": 2964.61,
+        "amount_string": "2,964.61"
+      }
+    ],
+    "file_size": 562507,
+    "status": "pending_review"
   }
 }

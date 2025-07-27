@@ -49,6 +49,11 @@ try:
 except ImportError:
     MONESE_PARSER_AVAILABLE = False
 try:
+    from .santander_parser import parse_santander
+    SANTANDER_PARSER_AVAILABLE = True
+except ImportError:
+    SANTANDER_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -416,6 +421,13 @@ def parse_universal_pdf(pdf_path):
                 if MONESE_PARSER_AVAILABLE and 'monese' in first_page.lower():
                     print("Detected Monese PDF, using dedicated parser")
                     transactions = parse_monese(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Santander format
+                if SANTANDER_PARSER_AVAILABLE and 'santander' in first_page.lower():
+                    print("Detected Santander PDF, using dedicated parser")
+                    transactions = parse_santander(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
