@@ -5,8 +5,8 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
 
 ## Progress Tracking
 - [ ] Total PDFs to test: 17
-- [ ] PDFs completed: 10
-- [ ] PDFs with issues fixed: 10
+- [ ] PDFs completed: 11
+- [ ] PDFs with issues fixed: 11
 
 ## Testing Methodology for Each PDF
 1. Run parser on the PDF
@@ -84,11 +84,11 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
   - Issues found: M/D date format without year, multi-line transaction descriptions that continue across lines
   - Fix applied: Created citizens_parser.py that handles multi-line descriptions and M/D dates. Successfully extracts 68 transactions (9 deposits, 59 withdrawals) 
 
-- [ ] **USA Discover Bank.pdf**
+- [x] **USA Discover Bank.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/USA Discover Bank.pdf`
-  - Status: Not tested
-  - Issues found: 
-  - Fix applied: 
+  - Status: ✅ Fixed and tested
+  - Issues found: Credit card statement format with categories (Payments, Merchandise, Restaurants, etc.) and Mon D date format
+  - Fix applied: Created discover_parser.py that handles category headers and transaction/post dates. Successfully extracts 32 transactions (1 payment credit, 31 purchase debits) 
 
 - [ ] **USA Green Dot Bank Statement 3 page.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/USA Green Dot Bank Statement 3 page.pdf`
@@ -139,7 +139,8 @@ Document each parser update here with timestamp and what was changed:
 8. **2025-01-27 04:00**: Created santander_parser.py for Santander multi-line format with spacing detection
 9. **2025-01-27 04:15**: Created boa_parser.py for Bank of America multi-section format
 10. **2025-01-27 04:30**: Created becu_parser.py for BECU multi-page format with varying section headers
-11. **2025-01-27 04:45**: Created citizens_parser.py for Citizens Bank M/D date format with multi-line descriptions 
+11. **2025-01-27 04:45**: Created citizens_parser.py for Citizens Bank M/D date format with multi-line descriptions
+12. **2025-01-27 05:00**: Created discover_parser.py for Discover credit card format with transaction categories 
 
 ## Common Issues Found
 List recurring issues across multiple PDFs:
