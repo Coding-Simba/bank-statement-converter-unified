@@ -69,6 +69,11 @@ try:
 except ImportError:
     CITIZENS_PARSER_AVAILABLE = False
 try:
+    from .discover_parser import parse_discover
+    DISCOVER_PARSER_AVAILABLE = True
+except ImportError:
+    DISCOVER_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -464,6 +469,13 @@ def parse_universal_pdf(pdf_path):
                 if CITIZENS_PARSER_AVAILABLE and 'citizens' in first_page.lower() and 'phonebank' in first_page.lower():
                     print("Detected Citizens Bank PDF, using dedicated parser")
                     transactions = parse_citizens(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Discover format
+                if DISCOVER_PARSER_AVAILABLE and 'discover' in first_page.lower() and ('cashback bonus' in first_page.lower() or 'card member since' in first_page.lower()):
+                    print("Detected Discover PDF, using dedicated parser")
+                    transactions = parse_discover(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
