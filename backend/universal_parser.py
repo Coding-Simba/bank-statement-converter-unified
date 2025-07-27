@@ -79,6 +79,11 @@ try:
 except ImportError:
     GREENDOT_PARSER_AVAILABLE = False
 try:
+    from .netspend_parser import parse_netspend
+    NETSPEND_PARSER_AVAILABLE = True
+except ImportError:
+    NETSPEND_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -488,6 +493,13 @@ def parse_universal_pdf(pdf_path):
                 if GREENDOT_PARSER_AVAILABLE and 'green dot' in first_page.lower():
                     print("Detected Green Dot PDF, using dedicated parser")
                     transactions = parse_greendot(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Netspend format
+                if NETSPEND_PARSER_AVAILABLE and 'netspend' in first_page.lower():
+                    print("Detected Netspend PDF, using dedicated parser")
+                    transactions = parse_netspend(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
