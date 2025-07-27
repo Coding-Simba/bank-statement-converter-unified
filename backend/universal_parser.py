@@ -94,6 +94,11 @@ try:
 except ImportError:
     SUNTRUST_PARSER_AVAILABLE = False
 try:
+    from .woodforest_parser import parse_woodforest
+    WOODFOREST_PARSER_AVAILABLE = True
+except ImportError:
+    WOODFOREST_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -524,6 +529,13 @@ def parse_universal_pdf(pdf_path):
                 if SUNTRUST_PARSER_AVAILABLE and 'suntrust' in first_page.lower():
                     print("Detected SunTrust PDF, using dedicated parser")
                     transactions = parse_suntrust(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Woodforest format
+                if WOODFOREST_PARSER_AVAILABLE and ('woodforest' in first_page.lower() or 'business checking' in first_page.lower()):
+                    print("Detected Woodforest PDF, using dedicated parser")
+                    transactions = parse_woodforest(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:

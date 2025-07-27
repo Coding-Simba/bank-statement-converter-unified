@@ -204,5 +204,19 @@
     ],
     "file_size": 562507,
     "status": "pending_review"
+  },
+  "e0faab21cab25f70f7ee7ea4da8fc47a6d32294caaa20605b317d0adb779222c": {
+    "original_name": "USA Woodforest.pdf",
+    "saved_name": "20250727_094850_e0faab21_USA Woodforest.pdf",
+    "saved_path": "failed_pdfs/20250727_094850_e0faab21_USA Woodforest.pdf",
+    "timestamp": "20250727_094850",
+    "date_saved": "2025-07-27T09:48:50.694575",
+    "transactions_found": 0,
+    "valid_transactions": 0,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [],
+    "file_size": 837035,
+    "status": "pending_review"
   }
 }
