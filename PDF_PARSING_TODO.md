@@ -5,8 +5,8 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
 
 ## Progress Tracking
 - [ ] Total PDFs to test: 17
-- [ ] PDFs completed: 7
-- [ ] PDFs with issues fixed: 7
+- [ ] PDFs completed: 8
+- [ ] PDFs with issues fixed: 8
 
 ## Testing Methodology for Each PDF
 1. Run parser on the PDF
@@ -66,11 +66,11 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
   - Fix applied: Created santander_parser.py with proper spacing detection. Successfully extracts 27 transactions (4 deposits, 23 withdrawals)
 
 ### USA (10 PDFs)
-- [ ] **USA Bank of America.zip**
-  - Path: `/Users/MAC/Desktop/pdfs/1/USA Bank of America.zip`
-  - Status: Not tested (needs unzipping first)
-  - Issues found: 
-  - Fix applied: 
+- [x] **USA Bank of America.pdf**
+  - Path: `/Users/MAC/Desktop/pdfs/1/USA Bank of America.pdf`
+  - Status: ✅ Fixed and tested
+  - Issues found: Multi-section format with separate "Deposits and other credits" and "Withdrawals and other debits" sections
+  - Fix applied: Created boa_parser.py that handles separate sections. Successfully extracts 69 transactions (28 deposits, 41 withdrawals) 
 
 - [ ] **USA BECU statement 4 pages.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/USA BECU statement 4 pages.pdf`
@@ -132,7 +132,12 @@ Document each parser update here with timestamp and what was changed:
 1. **2025-01-27**: Initial TODO list created
 2. **2025-01-27 01:33**: Created summary_statement_parser.py for ANZ home loan statement (summary-only format)
 3. **2025-01-27 02:45**: Created commonwealth_simple_parser.py for Commonwealth Bank multi-line format with proper debit/credit detection
-4. **2025-01-27 03:00**: Created westpac_parser.py for Westpac In/Out column format with negative values 
+4. **2025-01-27 03:00**: Created westpac_parser.py for Westpac In/Out column format with negative values
+5. **2025-01-27 03:15**: Created rbc_parser_v2.py for RBC multi-line format where date appears once for multiple transactions
+6. **2025-01-27 03:30**: Created monzo_parser.py for Monzo simple table format
+7. **2025-01-27 03:45**: Created monese_simple_parser.py for Monese multi-line format with transaction reconstruction
+8. **2025-01-27 04:00**: Created santander_parser.py for Santander multi-line format with spacing detection
+9. **2025-01-27 04:15**: Created boa_parser.py for Bank of America multi-section format 
 
 ## Common Issues Found
 List recurring issues across multiple PDFs:
