@@ -138,6 +138,10 @@
     transition: all 0.2s ease;
     border: none;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1.2;
+    white-space: nowrap;
 }
 
 .btn-primary:hover {
@@ -238,6 +242,10 @@
         flex: initial;
     }
     
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
     .logo {
         margin-right: 0;
     }
@@ -249,5 +257,42 @@
     .logo-icon {
         width: 40px;
         height: 40px;
+    }
+    
+    /* Fix Sign Up button on mobile */
+    .btn-primary {
+        padding: 8px 12px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+    
+    .nav-right {
+        gap: 8px;
+    }
+    
+    .nav-link {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .btn-primary {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    .nav-right {
+        gap: 6px;
+    }
+    
+    .logo-text {
+        font-size: 20px;
+    }
+    
+    .logo-icon {
+        width: 35px;
+        height: 35px;
     }
 }
