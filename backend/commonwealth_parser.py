@@ -1,176 +1,377 @@
-"""Parser for Commonwealth Bank of Australia statements"""
+#\!/usr/bin/env python3
+"""
+Commonwealth Bank of Australia PDF Parser
+Handles Commonwealth Bank personal and business account statements
+"""
 
 import re
+import pandas as pd
 from datetime import datetime
-import subprocess
+import tabula
+import pdfplumber
 
-def parse_date_commonwealth(date_str):
-    """Parse Commonwealth Bank date format (01 Jul, 15 Aug, etc)"""
-    # Add current year since it's not in the date
-    current_year = datetime.now().year
-    
-    try:
-        # Try with current year first
-        date_with_year = f"{date_str} {current_year}"
-        return datetime.strptime(date_with_year, "%d %b %Y")
-    except:
+
+class CommonwealthParser:
+    def __init__(self):
+        self.bank_name = "Commonwealth Bank"
+        self.statement_year = None
+        self.statement_period = None
+        
+    def extract_transactions(self, pdf_path):
+        """Extract transactions from Commonwealth Bank PDF"""
+        all_transactions = []
+        
         try:
-            # Try with previous year if that fails
-            date_with_year = f"{date_str} {current_year - 1}"
-            return datetime.strptime(date_with_year, "%d %b %Y")
+            # Extract statement period to get year
+            self._extract_statement_period(pdf_path)
+            
+            # Try tabula first for table extraction
+            transactions_tabula = self._extract_with_tabula(pdf_path)
+            if transactions_tabula:
+                all_transactions.extend(transactions_tabula)
+            
+            # Also try pdfplumber for better text extraction
+            transactions_plumber = self._extract_with_pdfplumber(pdf_path)
+            if transactions_plumber:
+                all_transactions.extend(transactions_plumber)
+            
+            # Remove duplicates
+            all_transactions = self._remove_duplicates(all_transactions)
+            
+            # Sort by date
+            all_transactions.sort(key=lambda x: x.get('date', datetime.min))
+            
+        except Exception as e:
+            print(f"Error parsing Commonwealth Bank PDF: {e}")
+            
+        return all_transactions
+    
+    def _extract_statement_period(self, pdf_path):
+        """Extract the statement period from the PDF"""
+        try:
+            with pdfplumber.open(pdf_path) as pdf:
+                if pdf.pages:
+                    first_page_text = pdf.pages[0].extract_text()
+                    # Look for "Period DD Mon YYYY - DD Mon YYYY"
+                    period_match = re.search(r'Period\s+(\d{1,2}\s+\w{3}\s+\d{4})\s*-\s*(\d{1,2}\s+\w{3}\s+\d{4})', first_page_text)
+                    if period_match:
+                        # Extract year from the period
+                        year_match = re.search(r'(\d{4})', period_match.group(1))
+                        if year_match:
+                            self.statement_year = int(year_match.group(1))
+                        self.statement_period = (period_match.group(1), period_match.group(2))
+                        return
+                    # Alternative: look for year in statement
+                    year_match = re.search(r'20[1-2]\d', first_page_text)
+                    if year_match:
+                        self.statement_year = int(year_match.group())
         except:
-            return None
-
-def extract_amount(amount_str):
-    """Extract numeric amount from string"""
-    if not amount_str or not amount_str.strip():
-        return None
+            pass
+        if not self.statement_year:
+            self.statement_year = datetime.now().year
     
-    try:
-        # Clean the string
-        cleaned = amount_str.strip()
-        cleaned = re.sub(r'[€$£¥₹,]', '', cleaned)
-        cleaned = cleaned.replace(' ', '')
+    def _extract_with_tabula(self, pdf_path):
+        """Extract using tabula-py"""
+        transactions = []
         
-        # Convert to float
-        return float(cleaned)
-    except:
-        return None
-
-def parse_commonwealth_bank(pdf_path):
-    """Parse Commonwealth Bank of Australia statements"""
-    transactions = []
-    
-    try:
-        # Extract text with layout
-        result = subprocess.run(['pdftotext', '-layout', pdf_path, '-'], 
-                                capture_output=True, text=True)
-        
-        if result.returncode != 0:
-            print(f"pdftotext failed: {result.stderr}")
-            return transactions
+        try:
+            # Read all tables from all pages
+            tables = tabula.read_pdf(pdf_path, pages='all', multiple_tables=True, silent=True)
             
-        lines = result.stdout.split('\n')
-        
-        # Find the transaction table header
-        header_found = False
-        debit_pos = None
-        credit_pos = None
-        balance_pos = None
-        
-        for i, line in enumerate(lines):
-            # Look for header line
-            if 'Date' in line and 'Transaction' in line and 'Debit' in line and 'Credit' in line:
-                header_found = True
-                # Find column positions
-                debit_pos = line.find('Debit')
-                credit_pos = line.find('Credit')
-                balance_pos = line.find('Balance')
-                print(f"Found header at line {i}, Debit pos: {debit_pos}, Credit pos: {credit_pos}")
-                break
-        
-        if not header_found:
-            print("Could not find transaction table header")
-            return transactions
-        
-        # Process transaction lines
-        current_date = None
-        header_line_index = None
-        
-        # Find the actual header line index
-        for i, line in enumerate(lines):
-            if header_found and 'Date' in line and 'Transaction' in line:
-                header_line_index = i
-                break
-        
-        if header_line_index is None:
-            return transactions
-        
-        for i, line in enumerate(lines):
-            # Skip lines before header
-            if i <= header_line_index:
-                continue
-            
-            if not line.strip():
-                continue
-            
-            # Check if line starts with a date (DD Mon format)
-            # Account for various indentations
-            date_match = re.match(r'^\s*(\d{2}\s+[A-Za-z]{3})\s+', line)
-            
-            if date_match:
-                # This is a new transaction
-                date_str = date_match.group(1).strip()
-                current_date = parse_date_commonwealth(date_str)
+            for table in tables:
+                if table.empty:
+                    continue
                 
-                if current_date:
-                    # Extract the rest of the line after date
-                    rest_of_line = line[len(date_match.group(0)):]
+                # Look for transaction tables
+                if self._is_transaction_table(table):
+                    trans = self._parse_transaction_table(table)
+                    transactions.extend(trans)
                     
-                    # Find amounts in debit/credit columns
-                    debit_amount = None
-                    credit_amount = None
-                    
-                    # Extract potential amounts based on position
-                    if debit_pos and credit_pos:
-                        # Get text in debit column area (roughly)
-                        debit_area = rest_of_line[max(0, debit_pos-15):credit_pos-5].strip()
-                        credit_area = rest_of_line[credit_pos-5:balance_pos-5].strip() if balance_pos else rest_of_line[credit_pos-5:].strip()
-                        
-                        # Look for amounts
-                        debit_match = re.search(r'([\d,]+\.?\d*)\s*$', debit_area)
-                        credit_match = re.search(r'([\d,]+\.?\d*)\s*$', credit_area)
-                        
-                        if debit_match:
-                            debit_amount = extract_amount(debit_match.group(1))
-                        if credit_match:
-                            credit_amount = extract_amount(credit_match.group(1))
-                    
-                    # Extract description (everything before the amounts)
-                    desc_end = len(rest_of_line)
-                    if debit_amount or credit_amount:
-                        # Find where the amount starts
-                        amount_match = re.search(r'[\d,]+\.?\d*\s*[\d,]+\.?\d*\s*[A-Z]{2}\s*$', rest_of_line)
-                        if amount_match:
-                            desc_end = amount_match.start()
-                        else:
-                            # Just look for first amount
-                            first_amount = re.search(r'\s+([\d,]+\.?\d*)\s*$', rest_of_line)
-                            if first_amount:
-                                desc_end = first_amount.start()
-                    
-                    description = rest_of_line[:desc_end].strip()
-                    
-                    # Determine transaction amount and type
-                    if debit_amount:
-                        amount = -abs(debit_amount)  # Debits are negative
-                    elif credit_amount:
-                        amount = abs(credit_amount)   # Credits are positive
-                    else:
-                        continue  # Skip if no amount found
-                    
-                    transaction = {
-                        'date': current_date,
-                        'date_string': date_str,
-                        'description': description,
-                        'amount': amount,
-                        'amount_string': f"{abs(amount):.2f}"
-                    }
-                    
-                    transactions.append(transaction)
+        except Exception as e:
+            print(f"Tabula extraction error: {e}")
             
-            elif current_date and line.strip() and not line.strip().startswith('Date'):
-                # This might be a continuation line (additional description)
-                # Check if it contains transaction info
-                if 'Card xx' in line or 'Value Date:' in line:
-                    # Add to previous transaction's description if exists
-                    if transactions and transactions[-1]['date'] == current_date:
-                        transactions[-1]['description'] += ' ' + line.strip()
-        
         return transactions
+    
+    def _extract_with_pdfplumber(self, pdf_path):
+        """Extract using pdfplumber for better text handling"""
+        transactions = []
         
-    except Exception as e:
-        print(f"Error parsing Commonwealth Bank statement: {e}")
-        import traceback
-        traceback.print_exc()
+        try:
+            with pdfplumber.open(pdf_path) as pdf:
+                for page_num, page in enumerate(pdf.pages):
+                    text = page.extract_text()
+                    if text:
+                        # Look for transaction patterns in text
+                        trans = self._parse_text_transactions(text)
+                        transactions.extend(trans)
+                        
+        except Exception as e:
+            print(f"PDFPlumber extraction error: {e}")
+            
         return transactions
+    
+    def _is_transaction_table(self, df):
+        """Check if dataframe is likely a transaction table"""
+        # Convert column names to string and check for headers
+        columns_str = ' '.join([str(col).lower() for col in df.columns])
+        
+        # Commonwealth specific headers
+        has_headers = any(term in columns_str for term in ['date', 'transaction', 'debit', 'credit', 'balance'])
+        
+        # Check for date patterns in first column
+        if len(df) > 0:
+            first_col = df.iloc[:, 0].astype(str)
+            # Commonwealth uses "DD Mon" format
+            date_pattern = r'^\d{1,2}\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'
+            has_dates = any(re.match(date_pattern, val, re.IGNORECASE) for val in first_col[:5])
+            
+            return has_headers or has_dates
+        
+        return False
+    
+    def _parse_transaction_table(self, df):
+        """Parse a transaction table from Commonwealth Bank"""
+        transactions = []
+        
+        # Identify columns (Date, Transaction, Debit, Credit, Balance)
+        date_col = None
+        desc_col = None
+        debit_col = None
+        credit_col = None
+        
+        # Find columns by header names or position
+        for i, col in enumerate(df.columns):
+            col_str = str(col).lower()
+            if 'date' in col_str or i == 0:
+                date_col = i
+            elif 'transaction' in col_str or i == 1:
+                desc_col = i
+            elif 'debit' in col_str:
+                debit_col = i
+            elif 'credit' in col_str:
+                credit_col = i
+        
+        # Parse rows
+        for _, row in df.iterrows():
+            try:
+                transaction = {}
+                
+                # Get date
+                if date_col is not None:
+                    date_str = str(row.iloc[date_col]).strip()
+                    date = self._parse_date(date_str)
+                    if date:
+                        transaction['date'] = date
+                        transaction['date_string'] = date_str
+                
+                # Get description
+                if desc_col is not None:
+                    desc = str(row.iloc[desc_col]).strip()
+                    if desc and desc != 'nan' and 'BALANCE' not in desc.upper():
+                        transaction['description'] = desc
+                
+                # Get amount (check both debit and credit)
+                amount = None
+                amount_str = None
+                
+                if debit_col is not None:
+                    debit_str = str(row.iloc[debit_col]).strip()
+                    debit = self._parse_amount(debit_str)
+                    if debit is not None:
+                        amount = -abs(debit)  # Debits are negative
+                        amount_str = debit_str
+                
+                if credit_col is not None and amount is None:
+                    credit_str = str(row.iloc[credit_col]).strip()
+                    credit = self._parse_amount(credit_str)
+                    if credit is not None:
+                        amount = abs(credit)  # Credits are positive
+                        amount_str = credit_str
+                
+                if amount is not None:
+                    transaction['amount'] = amount
+                    transaction['amount_string'] = amount_str
+                
+                # Only add if we have date, description and amount
+                if all(key in transaction for key in ['date', 'description', 'amount']):
+                    transactions.append(transaction)
+                    
+            except Exception as e:
+                continue
+                
+        return transactions
+    
+    def _parse_text_transactions(self, text):
+        """Parse transactions from text using regex"""
+        transactions = []
+        
+        # Commonwealth Bank transaction patterns
+        patterns = [
+            # Date at start followed by merchant and amount
+            r'(\d{2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\s+(.+?)\s+([\d,]+\.\d{2})\s+\$[\d,]+\.\d{2}\s+CR',
+            # With card number
+            r'(\d{2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\s+(.+?Card\s+xx\d+.*?)\s+([\d,]+\.\d{2})',
+            # Transfer patterns
+            r'(\d{2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\s+(Transfer\s+.+?)\s+([\d,]+\.\d{2})',
+            # Direct debit/credit
+            r'(\d{2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\s+(Direct\s+(?:Debit|Credit).+?)\s+([\d,]+\.\d{2})',
+            # Generic pattern
+            r'(\d{2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\s+([A-Z].+?)\s+([\d,]+\.\d{2})',
+        ]
+        
+        lines = text.split('\n')
+        
+        for i, line in enumerate(lines):
+            line = line.strip()
+            if not line or 'OPENING BALANCE' in line or 'CLOSING BALANCE' in line:
+                continue
+                
+            for pattern in patterns:
+                match = re.search(pattern, line, re.IGNORECASE)
+                if match:
+                    try:
+                        date_str = match.group(1)
+                        date = self._parse_date(date_str)
+                        
+                        desc = match.group(2).strip()
+                        
+                        # Clean up description - remove extra info
+                        desc = re.sub(r'\s+Value Date:.*', '', desc)
+                        desc = re.sub(r'\s+AUD\s+[\d,]+\.\d{2}', '', desc)
+                        desc = desc.strip()
+                        
+                        amount_str = match.group(3)
+                        amount = self._parse_amount(amount_str)
+                        
+                        if date and amount is not None:
+                            # Check if it's a debit or credit
+                            # Look at the balance change or presence of CR
+                            if 'CR' in line and i < len(lines) - 1:
+                                # This is likely a credit
+                                amount = abs(amount)
+                            else:
+                                # Check next line for value date info
+                                if i + 1 < len(lines) and 'Value Date:' in lines[i + 1]:
+                                    # This is typically a debit
+                                    amount = -abs(amount)
+                                else:
+                                    # Default to debit for purchases
+                                    if any(keyword in desc.lower() for keyword in ['purchase', 'payment', 'withdrawal', 'transfer to']):
+                                        amount = -abs(amount)
+                                    else:
+                                        amount = abs(amount)
+                            
+                            transactions.append({
+                                'date': date,
+                                'date_string': date_str,
+                                'description': desc,
+                                'amount': amount,
+                                'amount_string': amount_str
+                            })
+                            break
+                            
+                    except Exception as e:
+                        continue
+                        
+        return transactions
+    
+    def _parse_date(self, date_str):
+        """Parse Commonwealth Bank date format (DD Mon)"""
+        if not date_str or date_str == 'nan':
+            return None
+            
+        date_str = str(date_str).strip()
+        
+        # Commonwealth uses "DD Mon" format with optional year
+        date_patterns = [
+            (r'^(\d{1,2})\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{4})$', '%d %b %Y'),
+            (r'^(\d{1,2})\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)$', None)
+        ]
+        
+        for pattern, fmt in date_patterns:
+            match = re.match(pattern, date_str, re.IGNORECASE)
+            if match:
+                if fmt:
+                    # Full date with year
+                    try:
+                        return datetime.strptime(date_str, fmt)
+                    except ValueError:
+                        pass
+                else:
+                    # Date without year - use statement year
+                    day = int(match.group(1))
+                    month_str = match.group(2).title()
+                    
+                    if self.statement_year:
+                        try:
+                            month_map = {
+                                'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
+                                'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12
+                            }
+                            month = month_map.get(month_str, 1)
+                            return datetime(self.statement_year, month, day)
+                        except ValueError:
+                            pass
+        
+        return None
+    
+    def _parse_amount(self, amount_str):
+        """Parse amount from string"""
+        if not amount_str or amount_str == 'nan' or amount_str == '':
+            return None
+            
+        amount_str = str(amount_str).strip()
+        
+        # Remove currency symbols and text
+        amount_str = amount_str.replace('$', '').replace(',', '').replace('AUD', '').replace('CR', '').strip()
+        
+        try:
+            return float(amount_str)
+        except ValueError:
+            return None
+    
+    def _remove_duplicates(self, transactions):
+        """Remove duplicate transactions"""
+        seen = set()
+        unique = []
+        
+        for trans in transactions:
+            key = (
+                trans.get('date'),
+                trans.get('description', ''),
+                trans.get('amount')
+            )
+            if key not in seen and key[0] is not None:
+                seen.add(key)
+                unique.append(trans)
+                
+        return unique
+
+
+# Test function
+if __name__ == "__main__":
+    import sys
+    
+    if len(sys.argv) > 1:
+        pdf_path = sys.argv[1]
+    else:
+        pdf_path = "/Users/MAC/Desktop/pdfs/1/Australia Commonwealth J C.pdf"
+    
+    parser = CommonwealthParser()
+    transactions = parser.extract_transactions(pdf_path)
+    
+    print(f"Found {len(transactions)} transactions")
+    
+    # Show first 5 transactions
+    for i, trans in enumerate(transactions[:5]):
+        print(f"\nTransaction {i+1}:")
+        print(f"  Date: {trans.get('date')}")
+        print(f"  Description: {trans.get('description')}")
+        print(f"  Amount: ${trans.get('amount', 0):.2f}")
+        
+    # Save to CSV
+    if transactions:
+        df = pd.DataFrame(transactions)
+        output_file = pdf_path.replace('.pdf', '_parsed.csv')
+        df.to_csv(output_file, index=False)
+        print(f"\nSaved to: {output_file}")

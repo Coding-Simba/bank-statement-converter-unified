@@ -1,178 +1,365 @@
-"""Parser for RBC (Royal Bank of Canada) bank statements"""
+#!/usr/bin/env python3
+"""
+RBC (Royal Bank of Canada) PDF Parser
+Handles RBC personal and business account statements
+"""
 
 import re
+import pandas as pd
 from datetime import datetime
-import subprocess
+import tabula
+import pdfplumber
 
-def parse_date_rbc(date_str, year=None):
-    """Parse RBC date format (D Mon or DD Mon)"""
-    if not year:
-        year = datetime.now().year
-    
-    try:
-        # Add year to date string
-        date_with_year = f"{date_str} {year}"
-        return datetime.strptime(date_with_year, "%d %b %Y")
-    except:
-        return None
 
-def extract_amount(amount_str):
-    """Extract numeric amount from string"""
-    if not amount_str or not amount_str.strip():
-        return None
-    
-    try:
-        # Clean the string
-        cleaned = amount_str.strip()
-        cleaned = re.sub(r'[€$£¥₹,]', '', cleaned)
-        cleaned = cleaned.replace(' ', '')
+class RBCParser:
+    def __init__(self):
+        self.bank_name = "RBC"
+        self.statement_year = None
+        self.statement_months = []
         
-        # Convert to float
-        return float(cleaned)
-    except:
-        return None
-
-def parse_rbc(pdf_path):
-    """Parse RBC bank statements"""
-    transactions = []
-    
-    try:
-        # Extract text with layout
-        result = subprocess.run(['pdftotext', '-layout', pdf_path, '-'], 
-                                capture_output=True, text=True)
+    def extract_transactions(self, pdf_path):
+        """Extract transactions from RBC PDF"""
+        all_transactions = []
         
-        if result.returncode != 0:
-            print(f"pdftotext failed: {result.stderr}")
-            return transactions
+        try:
+            # Extract statement period to get year
+            self._extract_statement_period(pdf_path)
             
-        text = result.stdout
+            # Try tabula first for table extraction
+            transactions_tabula = self._extract_with_tabula(pdf_path)
+            if transactions_tabula:
+                all_transactions.extend(transactions_tabula)
+            
+            # Also try pdfplumber for better text extraction
+            transactions_plumber = self._extract_with_pdfplumber(pdf_path)
+            if transactions_plumber:
+                all_transactions.extend(transactions_plumber)
+            
+            # Remove duplicates
+            all_transactions = self._remove_duplicates(all_transactions)
+            
+            # Sort by date
+            all_transactions.sort(key=lambda x: x.get('date', datetime.min))
+            
+        except Exception as e:
+            print(f"Error parsing RBC PDF: {e}")
+            
+        return all_transactions
+    
+    def _extract_statement_period(self, pdf_path):
+        """Extract the statement period from the PDF"""
+        try:
+            with pdfplumber.open(pdf_path) as pdf:
+                if pdf.pages:
+                    first_page_text = pdf.pages[0].extract_text()
+                    # Look for "From Month DD, YYYY to Month DD, YYYY"
+                    period_match = re.search(r'From\s+(\w+)\s+(\d+),\s+(\d{4})\s+to\s+(\w+)\s+(\d+),\s+(\d{4})', first_page_text)
+                    if period_match:
+                        self.statement_year = int(period_match.group(3))
+                        self.statement_months = [period_match.group(1), period_match.group(4)]
+                        return
+                    # Alternative format
+                    year_match = re.search(r'20[1-2]\d', first_page_text)
+                    if year_match:
+                        self.statement_year = int(year_match.group())
+        except:
+            pass
+        if not self.statement_year:
+            self.statement_year = datetime.now().year
+    
+    def _extract_with_tabula(self, pdf_path):
+        """Extract using tabula-py"""
+        transactions = []
         
-        # Extract year from statement period
-        year = None
-        period_match = re.search(r'From\s+\w+\s+\d+,\s+(\d{4})', text)
-        if period_match:
-            year = int(period_match.group(1))
-        else:
-            year = datetime.now().year
+        try:
+            # Read all tables from all pages
+            tables = tabula.read_pdf(pdf_path, pages='all', multiple_tables=True, silent=True)
+            
+            for table in tables:
+                if table.empty:
+                    continue
+                
+                # Look for transaction tables with Date, Description, Withdrawals, Deposits, Balance
+                if self._is_transaction_table(table):
+                    trans = self._parse_transaction_table(table)
+                    transactions.extend(trans)
+                    
+        except Exception as e:
+            print(f"Tabula extraction error: {e}")
+            
+        return transactions
+    
+    def _extract_with_pdfplumber(self, pdf_path):
+        """Extract using pdfplumber for better text handling"""
+        transactions = []
+        
+        try:
+            with pdfplumber.open(pdf_path) as pdf:
+                for page in pdf.pages:
+                    text = page.extract_text()
+                    if text:
+                        # Look for transaction patterns in text
+                        trans = self._parse_text_transactions(text)
+                        transactions.extend(trans)
+                        
+        except Exception as e:
+            print(f"PDFPlumber extraction error: {e}")
+            
+        return transactions
+    
+    def _is_transaction_table(self, df):
+        """Check if dataframe is likely a transaction table"""
+        # Convert column names to string and check for RBC headers
+        columns_str = ' '.join([str(col).lower() for col in df.columns])
+        
+        # RBC specific headers
+        has_rbc_headers = any(term in columns_str for term in ['withdrawal', 'deposit', 'balance', 'description'])
+        
+        # Check for date patterns in first column
+        if len(df) > 0:
+            first_col = df.iloc[:, 0].astype(str)
+            # RBC uses "D Mon" format (e.g., "3 Apr")
+            date_pattern = r'^\d{1,2}\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'
+            has_dates = any(re.match(date_pattern, val, re.IGNORECASE) for val in first_col[:5])
+            
+            return has_rbc_headers or has_dates
+        
+        return False
+    
+    def _parse_transaction_table(self, df):
+        """Parse a transaction table from RBC"""
+        transactions = []
+        
+        # Identify columns
+        date_col = None
+        desc_col = None
+        withdrawal_col = None
+        deposit_col = None
+        
+        # Find columns by header names
+        for i, col in enumerate(df.columns):
+            col_str = str(col).lower()
+            if 'date' in col_str or re.match(r'^\d{1,2}\s+\w{3}', str(df.iloc[0, i]) if len(df) > 0 else ''):
+                date_col = i
+            elif 'description' in col_str:
+                desc_col = i
+            elif 'withdrawal' in col_str:
+                withdrawal_col = i
+            elif 'deposit' in col_str:
+                deposit_col = i
+        
+        # If no explicit columns found, use positions
+        if date_col is None and len(df.columns) >= 4:
+            date_col = 0
+            desc_col = 1
+            withdrawal_col = 2
+            deposit_col = 3
+        
+        # Parse rows
+        for _, row in df.iterrows():
+            try:
+                transaction = {}
+                
+                # Get date
+                if date_col is not None:
+                    date_str = str(row.iloc[date_col]).strip()
+                    date = self._parse_date(date_str)
+                    if date:
+                        transaction['date'] = date
+                        transaction['date_string'] = date_str
+                
+                # Get description
+                if desc_col is not None:
+                    desc = str(row.iloc[desc_col]).strip()
+                    if desc and desc != 'nan' and desc != 'Opening Balance' and desc != 'Closing Balance':
+                        transaction['description'] = desc
+                
+                # Get amount (check both withdrawal and deposit)
+                amount = None
+                amount_str = None
+                
+                if withdrawal_col is not None:
+                    withdrawal_str = str(row.iloc[withdrawal_col]).strip()
+                    withdrawal = self._parse_amount(withdrawal_str)
+                    if withdrawal is not None:
+                        amount = -abs(withdrawal)  # Withdrawals are negative
+                        amount_str = withdrawal_str
+                
+                if deposit_col is not None and amount is None:
+                    deposit_str = str(row.iloc[deposit_col]).strip()
+                    deposit = self._parse_amount(deposit_str)
+                    if deposit is not None:
+                        amount = abs(deposit)  # Deposits are positive
+                        amount_str = deposit_str
+                
+                if amount is not None:
+                    transaction['amount'] = amount
+                    transaction['amount_string'] = amount_str
+                
+                # Only add if we have date, description and amount
+                if all(key in transaction for key in ['date', 'description', 'amount']):
+                    transactions.append(transaction)
+                    
+            except Exception as e:
+                continue
+                
+        return transactions
+    
+    def _parse_text_transactions(self, text):
+        """Parse transactions from text using regex"""
+        transactions = []
+        
+        # RBC transaction patterns
+        # Format: D Mon Description Amount
+        patterns = [
+            # Standard transaction with date
+            r'(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\s+(.+?)\s+([\d,]+\.\d{2})\s*(?:[\d,]+\.\d{2})?\s*$',
+            # e-Transfer patterns
+            r'(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\s+(e-Transfer.+?)\s+([\d,]+\.\d{2})',
+            # Interac purchase patterns
+            r'(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\s+((?:Contactless\s+)?Interac\s+purchase.+?)\s+([\d,]+\.\d{2})',
+            # Online banking payment
+            r'(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\s+(Online Banking payment.+?)\s+([\d,]+\.\d{2})',
+        ]
         
         lines = text.split('\n')
         
-        # Find header line
-        header_found = False
-        for i, line in enumerate(lines):
-            if 'Date' in line and 'Description' in line and 'Withdrawals' in line and 'Deposits' in line:
-                header_found = True
-                break
+        # Track if we're in the withdrawals or deposits section
+        current_type = None
         
-        if not header_found:
-            print("Could not find transaction table header")
-            return transactions
-        
-        # Process transactions
-        i = 0
-        current_transaction = None
-        
-        while i < len(lines):
-            line = lines[i]
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
             
-            # Look for date at start of line (D Mon or DD Mon format)
-            date_match = re.match(r'^(\d{1,2}\s+[A-Z][a-z]{2})\s+(.+)', line)
-            
-            if date_match:
-                # Save previous transaction if exists
-                if current_transaction and current_transaction.get('amount') is not None:
-                    transactions.append(current_transaction)
+            # Check for section headers
+            if 'Withdrawals ($)' in line:
+                current_type = 'withdrawal'
+                continue
+            elif 'Deposits ($)' in line:
+                current_type = 'deposit'
+                continue
                 
-                # Start new transaction
-                date_str = date_match.group(1)
-                rest_of_line = date_match.group(2)
-                
-                current_transaction = {
-                    'date': parse_date_rbc(date_str, year),
-                    'date_string': date_str,
-                    'description': '',
-                    'amount': None,
-                    'amount_string': ''
-                }
-                
-                # Look for amounts in the line
-                # RBC format: description, then optional withdrawal amount, then optional deposit amount, then balance
-                # Find all numbers at the end of the line
-                numbers = re.findall(r'([\d,]+\.?\d*)', rest_of_line)
-                
-                if numbers:
-                    # The last number is typically the balance
-                    # The second-to-last could be the transaction amount
-                    if len(numbers) >= 2:
-                        # Extract description (everything before the first amount)
-                        first_amount_pos = rest_of_line.find(numbers[-2])
-                        description = rest_of_line[:first_amount_pos].strip()
-                        current_transaction['description'] = description
+            for pattern in patterns:
+                match = re.search(pattern, line, re.IGNORECASE)
+                if match:
+                    try:
+                        date_str = match.group(1)
+                        date = self._parse_date(date_str)
                         
-                        # Check if this is a withdrawal or deposit
-                        # Look at the position of the amount in the line
-                        amount_str = numbers[-2]
-                        amount = extract_amount(amount_str)
+                        desc = match.group(2).strip()
+                        amount_str = match.group(3)
+                        amount = self._parse_amount(amount_str)
                         
-                        if amount:
-                            # Check if description indicates deposit
-                            if re.search(r'Payment|Transfer.*Autodeposit|Misc Payment|Deposit|Credit', description, re.I):
-                                current_transaction['amount'] = abs(amount)
+                        if date and amount is not None:
+                            # Determine if it's a withdrawal based on description keywords
+                            withdrawal_keywords = ['purchase', 'payment', 'withdrawal', 'transfer sent']
+                            is_withdrawal = any(keyword in desc.lower() for keyword in withdrawal_keywords)
+                            
+                            if is_withdrawal:
+                                amount = -abs(amount)
                             else:
-                                current_transaction['amount'] = -abs(amount)
-                            current_transaction['amount_string'] = amount_str
-                    else:
-                        # Only one number (balance), description is everything before it
-                        current_transaction['description'] = rest_of_line.strip()
-                else:
-                    # No amounts on this line
-                    current_transaction['description'] = rest_of_line.strip()
-            
-            # Handle continuation lines
-            elif current_transaction and line.strip() and not re.match(r'^\s*\d{1,2}\s+[A-Z][a-z]{2}', line):
-                # This is a continuation of the previous transaction
-                stripped = line.strip()
-                
-                # Skip page headers/footers
-                if 'Details of your account activity' in stripped or 'From' in stripped and 'to' in stripped:
-                    i += 1
-                    continue
-                
-                # Add to description
-                current_transaction['description'] += ' ' + stripped
-                
-                # Look for amounts if we don't have one yet
-                if current_transaction['amount'] is None:
-                    # Look for amount pattern
-                    amounts = re.findall(r'([\d,]+\.?\d*)', stripped)
-                    
-                    if amounts:
-                        # Take the first significant amount
-                        for amt_str in amounts:
-                            amount = extract_amount(amt_str)
-                            if amount and amount > 0:
-                                # Determine if withdrawal or deposit based on description
-                                if re.search(r'Payment|Transfer.*Autodeposit|Misc Payment|Deposit|Credit', 
-                                           current_transaction['description'], re.I):
-                                    current_transaction['amount'] = abs(amount)
-                                else:
-                                    current_transaction['amount'] = -abs(amount)
-                                current_transaction['amount_string'] = amt_str
-                                break
-            
-            i += 1
-        
-        # Don't forget the last transaction
-        if current_transaction and current_transaction.get('amount') is not None:
-            transactions.append(current_transaction)
-        
-        # Sort by date
-        transactions.sort(key=lambda x: x.get('date') or datetime.min)
-        
+                                amount = abs(amount)
+                            
+                            transactions.append({
+                                'date': date,
+                                'date_string': date_str,
+                                'description': desc,
+                                'amount': amount,
+                                'amount_string': amount_str
+                            })
+                            break
+                            
+                    except Exception as e:
+                        continue
+                        
         return transactions
+    
+    def _parse_date(self, date_str):
+        """Parse RBC date format (D Mon or DD Mon)"""
+        if not date_str or date_str == 'nan':
+            return None
+            
+        date_str = str(date_str).strip()
         
-    except Exception as e:
-        print(f"Error parsing RBC statement: {e}")
-        import traceback
-        traceback.print_exc()
-        return transactions
+        # RBC uses "D Mon" format (e.g., "3 Apr", "15 May")
+        date_match = re.match(r'^(\d{1,2})\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)', date_str, re.IGNORECASE)
+        if date_match:
+            day = int(date_match.group(1))
+            month_str = date_match.group(2).title()
+            
+            # Add year
+            if self.statement_year:
+                try:
+                    # Handle month abbreviations
+                    month_map = {
+                        'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
+                        'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12
+                    }
+                    month = month_map.get(month_str, 1)
+                    return datetime(self.statement_year, month, day)
+                except ValueError:
+                    pass
+        
+        return None
+    
+    def _parse_amount(self, amount_str):
+        """Parse amount from string"""
+        if not amount_str or amount_str == 'nan' or amount_str == '':
+            return None
+            
+        amount_str = str(amount_str).strip()
+        
+        # Remove currency symbols and commas
+        amount_str = amount_str.replace('$', '').replace(',', '').replace('CAD', '').strip()
+        
+        try:
+            return float(amount_str)
+        except ValueError:
+            return None
+    
+    def _remove_duplicates(self, transactions):
+        """Remove duplicate transactions"""
+        seen = set()
+        unique = []
+        
+        for trans in transactions:
+            key = (
+                trans.get('date'),
+                trans.get('description', ''),
+                trans.get('amount')
+            )
+            if key not in seen and key[0] is not None:
+                seen.add(key)
+                unique.append(trans)
+                
+        return unique
+
+
+# Test function
+if __name__ == "__main__":
+    import sys
+    
+    if len(sys.argv) > 1:
+        pdf_path = sys.argv[1]
+    else:
+        pdf_path = "/Users/MAC/Desktop/pdfs/1/Canada RBC.pdf"
+    
+    parser = RBCParser()
+    transactions = parser.extract_transactions(pdf_path)
+    
+    print(f"Found {len(transactions)} transactions")
+    
+    # Show first 5 transactions
+    for i, trans in enumerate(transactions[:5]):
+        print(f"\nTransaction {i+1}:")
+        print(f"  Date: {trans.get('date')}")
+        print(f"  Description: {trans.get('description')}")
+        print(f"  Amount: ${trans.get('amount', 0):.2f}")
+        
+    # Save to CSV
+    if transactions:
+        df = pd.DataFrame(transactions)
+        output_file = pdf_path.replace('.pdf', '_parsed.csv')
+        df.to_csv(output_file, index=False)
+        print(f"\nSaved to: {output_file}")

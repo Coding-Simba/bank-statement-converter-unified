@@ -6,122 +6,143 @@ from datetime import datetime
 import PyPDF2
 import tabula
 import pdfplumber
-from .rabobank_parser import parse_rabobank_pdf
-from .pdftotext_parser import parse_pdftotext_output
-from .ocr_parser import parse_scanned_pdf, is_scanned_pdf, check_ocr_requirements
+from rabobank_parser import parse_rabobank_pdf
+from pdftotext_parser import parse_pdftotext_output
+from ocr_parser import parse_scanned_pdf, is_scanned_pdf, check_ocr_requirements
 try:
-    from .fixed_column_parser import parse_fixed_column_layout
+    from fixed_column_parser import parse_fixed_column_layout
     FIXED_COLUMN_PARSER_AVAILABLE = True
 except ImportError:
     FIXED_COLUMN_PARSER_AVAILABLE = False
 try:
-    from .accurate_column_parser import parse_accurate_columns
+    from accurate_column_parser import parse_accurate_columns
     ACCURATE_COLUMN_PARSER_AVAILABLE = True
 except ImportError:
     ACCURATE_COLUMN_PARSER_AVAILABLE = False
 try:
-    from .summary_statement_parser import parse_summary_statement
+    from summary_statement_parser import parse_summary_statement
     SUMMARY_PARSER_AVAILABLE = True
 except ImportError:
     SUMMARY_PARSER_AVAILABLE = False
 try:
-    from .commonwealth_simple_parser import parse_commonwealth_simple as parse_commonwealth_bank
+    from commonwealth_simple_parser import parse_commonwealth_simple as parse_commonwealth_bank
     COMMONWEALTH_PARSER_AVAILABLE = True
 except ImportError:
     COMMONWEALTH_PARSER_AVAILABLE = False
 try:
-    from .westpac_parser import parse_westpac
+    from westpac_parser import parse_westpac
     WESTPAC_PARSER_AVAILABLE = True
 except ImportError:
     WESTPAC_PARSER_AVAILABLE = False
 try:
-    from .rbc_parser_v2 import parse_rbc_v2 as parse_rbc
+    from rbc_parser_v2 import parse_rbc_v2 as parse_rbc
     RBC_PARSER_AVAILABLE = True
 except ImportError:
     RBC_PARSER_AVAILABLE = False
 try:
-    from .monzo_parser import parse_monzo
+    from monzo_parser import parse_monzo
     MONZO_PARSER_AVAILABLE = True
 except ImportError:
     MONZO_PARSER_AVAILABLE = False
 try:
-    from .monese_simple_parser import parse_monese_simple as parse_monese
+    from monese_simple_parser import parse_monese_simple as parse_monese
     MONESE_PARSER_AVAILABLE = True
 except ImportError:
     MONESE_PARSER_AVAILABLE = False
 try:
-    from .santander_parser import parse_santander
+    from santander_parser import parse_santander
     SANTANDER_PARSER_AVAILABLE = True
 except ImportError:
     SANTANDER_PARSER_AVAILABLE = False
 try:
-    from .boa_parser import parse_boa
+    from boa_parser import parse_boa
     BOA_PARSER_AVAILABLE = True
 except ImportError:
     BOA_PARSER_AVAILABLE = False
 try:
-    from .becu_parser import parse_becu
+    from becu_parser import parse_becu
     BECU_PARSER_AVAILABLE = True
 except ImportError:
     BECU_PARSER_AVAILABLE = False
 try:
-    from .citizens_parser import parse_citizens
+    from citizens_parser import parse_citizens
     CITIZENS_PARSER_AVAILABLE = True
 except ImportError:
     CITIZENS_PARSER_AVAILABLE = False
 try:
-    from .discover_parser import parse_discover
+    from discover_parser import parse_discover
     DISCOVER_PARSER_AVAILABLE = True
 except ImportError:
     DISCOVER_PARSER_AVAILABLE = False
 try:
-    from .greendot_parser import parse_greendot
+    from greendot_parser import parse_greendot
     GREENDOT_PARSER_AVAILABLE = True
 except ImportError:
     GREENDOT_PARSER_AVAILABLE = False
 try:
-    from .netspend_parser import parse_netspend
+    from netspend_parser import parse_netspend
     NETSPEND_PARSER_AVAILABLE = True
 except ImportError:
     NETSPEND_PARSER_AVAILABLE = False
 try:
-    from .paypal_parser import parse_paypal
+    from paypal_parser import parse_paypal
     PAYPAL_PARSER_AVAILABLE = True
 except ImportError:
     PAYPAL_PARSER_AVAILABLE = False
 try:
-    from .suntrust_parser import parse_suntrust
+    from suntrust_parser import parse_suntrust
     SUNTRUST_PARSER_AVAILABLE = True
 except ImportError:
     SUNTRUST_PARSER_AVAILABLE = False
 try:
-    from .woodforest_parser import parse_woodforest
+    from woodforest_parser import parse_woodforest
     WOODFOREST_PARSER_AVAILABLE = True
 except ImportError:
     WOODFOREST_PARSER_AVAILABLE = False
 try:
-    from .walmart_parser import parse_walmart
+    from walmart_parser import parse_walmart
     WALMART_PARSER_AVAILABLE = True
 except ImportError:
     WALMART_PARSER_AVAILABLE = False
 try:
-    from .advanced_ocr_parser import parse_scanned_pdf_advanced
+    from advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
     ADVANCED_OCR_AVAILABLE = False
 try:
-    from .dummy_pdf_parser import parse_dummy_pdf
+    from dummy_pdf_parser import parse_dummy_pdf
     DUMMY_PARSER_AVAILABLE = True
 except ImportError:
     DUMMY_PARSER_AVAILABLE = False
+# Import our new bank-specific parsers
 try:
-    from .camelot_parser import parse_with_camelot, parse_with_pdfplumber
+    from bank_of_america_parser import BankOfAmericaParser
+    NEW_BOA_PARSER_AVAILABLE = True
+except ImportError:
+    NEW_BOA_PARSER_AVAILABLE = False
+try:
+    from wells_fargo_parser import WellsFargoParser
+    NEW_WELLS_PARSER_AVAILABLE = True
+except ImportError:
+    NEW_WELLS_PARSER_AVAILABLE = False
+try:
+    from rbc_parser import RBCParser as NewRBCParser
+    NEW_RBC_PARSER_AVAILABLE = True
+except ImportError:
+    NEW_RBC_PARSER_AVAILABLE = False
+try:
+    from commonwealth_parser import CommonwealthParser as NewCommonwealthParser
+    NEW_COMMONWEALTH_PARSER_AVAILABLE = True
+except ImportError:
+    NEW_COMMONWEALTH_PARSER_AVAILABLE = False
+try:
+    from camelot_parser import parse_with_camelot, parse_with_pdfplumber
     CAMELOT_PARSER_AVAILABLE = True
 except ImportError:
     CAMELOT_PARSER_AVAILABLE = False
     print("Camelot parser not available")
 try:
-    from .failed_pdf_manager import FailedPDFManager
+    from failed_pdf_manager import FailedPDFManager
     FAILED_PDF_MANAGER_AVAILABLE = True
 except ImportError:
     FAILED_PDF_MANAGER_AVAILABLE = False
@@ -432,9 +453,17 @@ def parse_universal_pdf(pdf_path):
                     if transactions:
                         return transactions
                 
-                # Check for Commonwealth Bank format - based on document structure
+                # Check for Commonwealth Bank format with NEW parser first
+                if NEW_COMMONWEALTH_PARSER_AVAILABLE and ('commonwealth bank' in first_page.lower() or 'commbank' in first_page.lower()):
+                    print("Detected Commonwealth Bank PDF format, using NEW dedicated parser")
+                    parser = NewCommonwealthParser()
+                    transactions = parser.extract_transactions(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Fallback to old Commonwealth parser
                 if COMMONWEALTH_PARSER_AVAILABLE and 'smart access' in first_page.lower() and 'account number' in first_page.lower() and 'bsb' in first_page.lower():
-                    print("Detected Commonwealth Bank PDF format, using dedicated parser")
+                    print("Detected Commonwealth Bank PDF format, using old dedicated parser")
                     transactions = parse_commonwealth_bank(pdf_path)
                     if transactions:
                         return transactions
@@ -446,9 +475,17 @@ def parse_universal_pdf(pdf_path):
                     if transactions:
                         return transactions
                 
-                # Check for RBC format - based on document structure
+                # Check for RBC format with NEW parser first
+                if NEW_RBC_PARSER_AVAILABLE and ('royal bank of canada' in first_page.lower() or 'rbcroyalbank' in first_page.lower()):
+                    print("Detected RBC PDF format, using NEW dedicated parser")
+                    parser = NewRBCParser()
+                    transactions = parser.extract_transactions(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Fallback to old RBC parser
                 if RBC_PARSER_AVAILABLE and 'account statement' in first_page.lower() and 'transit' in first_page.lower() and 'institution' in first_page.lower():
-                    print("Detected RBC PDF format, using dedicated parser")
+                    print("Detected RBC PDF format, using old dedicated parser")
                     transactions = parse_rbc(pdf_path)
                     if transactions:
                         return transactions
@@ -474,9 +511,17 @@ def parse_universal_pdf(pdf_path):
                     if transactions:
                         return transactions
                 
-                # Check for Bank of America format - based on document structure
+                # Check for Bank of America format with NEW parser first
+                if NEW_BOA_PARSER_AVAILABLE and ('bank of america' in first_page.lower() or 'bofamerica' in first_page.lower()):
+                    print("Detected Bank of America PDF format, using NEW dedicated parser")
+                    parser = BankOfAmericaParser()
+                    transactions = parser.extract_transactions(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Fallback to old BOA parser
                 if BOA_PARSER_AVAILABLE and 'account summary' in first_page.lower() and 'deposits and additions' in first_page.lower() and 'withdrawals' in first_page.lower():
-                    print("Detected Bank of America PDF format, using dedicated parser")
+                    print("Detected Bank of America PDF format, using old dedicated parser")
                     transactions = parse_boa(pdf_path)
                     if transactions:
                         return transactions
@@ -530,8 +575,18 @@ def parse_universal_pdf(pdf_path):
                     if transactions:
                         return transactions
                 
+                # Check for Wells Fargo format with NEW parser
+                if NEW_WELLS_PARSER_AVAILABLE and 'wells fargo' in first_page.lower():
+                    print("Detected Wells Fargo PDF format, using NEW dedicated parser")
+                    parser = WellsFargoParser()
+                    transactions = parser.extract_transactions(pdf_path)
+                    if transactions:
+                        return transactions
+                
                 # Check for Woodforest format - based on document structure
-                if WOODFOREST_PARSER_AVAILABLE and 'business checking' in first_page.lower() and 'daily balance' in first_page.lower():
+                # Look for Woodforest name or Business Checking with specific format
+                if WOODFOREST_PARSER_AVAILABLE and ('woodforest' in first_page.lower() or 
+                    ('business checking' in first_page.lower() and 'summary of accounts' in first_page.lower())):
                     print("Detected Woodforest PDF format, using dedicated parser")
                     transactions = parse_woodforest(pdf_path)
                     if transactions:

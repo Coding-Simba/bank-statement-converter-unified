@@ -9,9 +9,10 @@ import os
 import uuid
 from pathlib import Path
 
-from ..models.database import get_db, User, Statement, GenerationTracking
-from ..middleware.auth_middleware import get_user_or_session, get_current_user
-from ..utils.auth import generate_session_id
+from models.database import get_db, User, Statement, GenerationTracking
+from middleware.auth_middleware import get_user_or_session, get_current_user
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from utils.auth import generate_session_id
 
 router = APIRouter(prefix="/api", tags=["statements"])
 
@@ -145,7 +146,7 @@ async def convert_statement(
     csv_path = UPLOAD_DIR / csv_filename
     
     # Import the universal parser
-    from ..universal_parser import parse_universal_pdf
+    from universal_parser import parse_universal_pdf
     
     try:
         # Parse the PDF using universal parser
