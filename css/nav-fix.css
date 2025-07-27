@@ -260,39 +260,70 @@
     }
     
     /* Fix Sign Up button on mobile */
-    .btn-primary {
-        padding: 8px 12px;
-        font-size: 14px;
-        white-space: nowrap;
+    .nav-right .btn-primary {
+        padding: 6px 10px !important;
+        font-size: 13px !important;
+        white-space: nowrap !important;
+        line-height: 1.2 !important;
+        display: inline-block !important;
+        text-align: center !important;
     }
     
     .nav-right {
-        gap: 8px;
+        gap: 6px !important;
     }
     
     .nav-link {
-        font-size: 14px;
-        padding: 6px 10px;
+        font-size: 14px !important;
+        padding: 6px 8px !important;
     }
 }
 
 /* Extra small devices */
 @media (max-width: 480px) {
-    .btn-primary {
-        padding: 6px 10px;
-        font-size: 13px;
+    .nav-right .btn-primary {
+        padding: 5px 8px !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        border-radius: 6px !important;
     }
     
     .nav-right {
-        gap: 6px;
+        gap: 4px !important;
+    }
+    
+    .nav-link {
+        font-size: 12px !important;
+        padding: 5px 6px !important;
     }
     
     .logo-text {
-        font-size: 20px;
+        font-size: 18px !important;
     }
     
     .logo-icon {
-        width: 35px;
-        height: 35px;
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 16px !important;
+    }
+    
+    .navbar {
+        padding: 0.5rem 0 !important;
+    }
+}
+
+/* iPhone SE and very small screens */
+@media (max-width: 375px) {
+    .nav-right .btn-primary {
+        padding: 4px 6px !important;
+        font-size: 11px !important;
+    }
+    
+    .nav-right {
+        gap: 3px !important;
+    }
+    
+    .logo-text {
+        font-size: 16px !important;
     }
 }
