@@ -39,6 +39,11 @@ try:
 except ImportError:
     RBC_PARSER_AVAILABLE = False
 try:
+    from .monzo_parser import parse_monzo
+    MONZO_PARSER_AVAILABLE = True
+except ImportError:
+    MONZO_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -392,6 +397,13 @@ def parse_universal_pdf(pdf_path):
                 if RBC_PARSER_AVAILABLE and ('royal bank of canada' in first_page.lower() or 'rbc' in first_page.lower()):
                     print("Detected RBC PDF, using dedicated parser")
                     transactions = parse_rbc(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Monzo format
+                if MONZO_PARSER_AVAILABLE and 'monzo' in first_page.lower():
+                    print("Detected Monzo PDF, using dedicated parser")
+                    transactions = parse_monzo(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
