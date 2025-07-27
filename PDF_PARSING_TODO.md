@@ -5,8 +5,8 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
 
 ## Progress Tracking
 - [ ] Total PDFs to test: 17
-- [ ] PDFs completed: 9
-- [ ] PDFs with issues fixed: 9
+- [ ] PDFs completed: 10
+- [ ] PDFs with issues fixed: 10
 
 ## Testing Methodology for Each PDF
 1. Run parser on the PDF
@@ -78,11 +78,11 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
   - Issues found: Multi-page format with Deposits/Withdrawals sections that don't continue across all pages. Different spacing patterns on different pages.
   - Fix applied: Created becu_parser.py that handles section headers and also parses transactions without section headers. Successfully extracts 71 transactions (9 deposits, 62 withdrawals) 
 
-- [ ] **USA Citizens Bank.pdf**
+- [x] **USA Citizens Bank.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/USA Citizens Bank.pdf`
-  - Status: Not tested
-  - Issues found: 
-  - Fix applied: 
+  - Status: ✅ Fixed and tested
+  - Issues found: M/D date format without year, multi-line transaction descriptions that continue across lines
+  - Fix applied: Created citizens_parser.py that handles multi-line descriptions and M/D dates. Successfully extracts 68 transactions (9 deposits, 59 withdrawals) 
 
 - [ ] **USA Discover Bank.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/USA Discover Bank.pdf`
@@ -138,7 +138,8 @@ Document each parser update here with timestamp and what was changed:
 7. **2025-01-27 03:45**: Created monese_simple_parser.py for Monese multi-line format with transaction reconstruction
 8. **2025-01-27 04:00**: Created santander_parser.py for Santander multi-line format with spacing detection
 9. **2025-01-27 04:15**: Created boa_parser.py for Bank of America multi-section format
-10. **2025-01-27 04:30**: Created becu_parser.py for BECU multi-page format with varying section headers 
+10. **2025-01-27 04:30**: Created becu_parser.py for BECU multi-page format with varying section headers
+11. **2025-01-27 04:45**: Created citizens_parser.py for Citizens Bank M/D date format with multi-line descriptions 
 
 ## Common Issues Found
 List recurring issues across multiple PDFs:
