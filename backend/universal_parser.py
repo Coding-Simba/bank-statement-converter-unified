@@ -64,6 +64,11 @@ try:
 except ImportError:
     BECU_PARSER_AVAILABLE = False
 try:
+    from .citizens_parser import parse_citizens
+    CITIZENS_PARSER_AVAILABLE = True
+except ImportError:
+    CITIZENS_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -452,6 +457,13 @@ def parse_universal_pdf(pdf_path):
                 if BECU_PARSER_AVAILABLE and ('boeing employees' in first_page.lower() or 'becu' in first_page.lower()):
                     print("Detected BECU PDF, using dedicated parser")
                     transactions = parse_becu(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Citizens Bank format
+                if CITIZENS_PARSER_AVAILABLE and 'citizens' in first_page.lower() and 'phonebank' in first_page.lower():
+                    print("Detected Citizens Bank PDF, using dedicated parser")
+                    transactions = parse_citizens(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
