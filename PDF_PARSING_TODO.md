@@ -5,8 +5,8 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
 
 ## Progress Tracking
 - [ ] Total PDFs to test: 17
-- [ ] PDFs completed: 15
-- [ ] PDFs with issues fixed: 15
+- [ ] PDFs completed: 16
+- [ ] PDFs with issues fixed: 16
 
 ## Testing Methodology for Each PDF
 1. Run parser on the PDF
@@ -114,11 +114,11 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
   - Issues found: Credit card statement format with simple transaction layout (date, description, amount)
   - Fix applied: Created suntrust_parser.py that handles MM/DD/YYYY date format. Successfully extracts all 9 transactions (all charges) 
 
-- [ ] **USA Woodforest.pdf**
+- [x] **USA Woodforest.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/USA Woodforest.pdf`
-  - Status: Not tested
-  - Issues found: 
-  - Fix applied: 
+  - Status: ✅ Fixed and tested
+  - Issues found: Business checking format with columns for Date, Credits, Debits, Balance, and Description. Uses MM-DD date format.
+  - Fix applied: Created woodforest_parser.py using column position parsing. Successfully extracts all 51 transactions (10 deposits, 41 withdrawals) 
 
 - [ ] **Walmart Money Card Bank Statement 3 page.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/Walmart Money Card Bank Statement 3 page.pdf`
@@ -144,7 +144,8 @@ Document each parser update here with timestamp and what was changed:
 13. **2025-01-27 05:15**: Created greendot_parser.py for Green Dot simple statement format
 14. **2025-01-27 05:30**: Created netspend_parser.py for Netspend table format with column positions
 15. **2025-01-27 05:45**: Created paypal_parser.py for PayPal account statements with fees and wrapped totals
-16. **2025-01-27 06:00**: Created suntrust_parser.py for SunTrust credit card statements 
+16. **2025-01-27 06:00**: Created suntrust_parser.py for SunTrust credit card statements
+17. **2025-01-27 06:15**: Created woodforest_parser.py for Woodforest National Bank business checking 
 
 ## Common Issues Found
 List recurring issues across multiple PDFs:
