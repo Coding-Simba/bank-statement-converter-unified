@@ -421,16 +421,8 @@ def parse_universal_pdf(pdf_path):
             if len(pdf_reader.pages) > 0:
                 first_page = pdf_reader.pages[0].extract_text()
                 
-                # Check for dummy PDF format
-                # Since dummy PDF might be scanned, also check filename
-                is_dummy = ('SAMPLE' in first_page and 'Statement of Account' in first_page and 'JAMES C. MORRISON' in first_page) or \
-                          'dummy' in pdf_path.lower()
-                
-                if DUMMY_PARSER_AVAILABLE and is_dummy:
-                    print("Detected dummy statement PDF, using specialized parser")
-                    transactions = parse_dummy_pdf(pdf_path)
-                    if transactions:
-                        return transactions
+                # Skip dummy PDF detection - let it fall through to OCR
+                # The dummy parser will be called automatically when OCR detects the content
                 
                 # Check for Rabobank format
                 if 'Rabobank' in first_page and 'Rekeningafschrift' in first_page:
@@ -678,16 +670,51 @@ def parse_universal_pdf(pdf_path):
         except Exception as e:
             print(f"PyPDF2 extraction failed: {e}")
     
-    # Method 7: OCR for scanned PDFs or complex layouts (last resort)
-    # Always try OCR if we have very few transactions
+    # Method 7: OCR for scanned PDFs or PDFs with minimal text extraction
+    # Check if PDF might be scanned/image-based
+    should_try_ocr = False
+    
+    # Try OCR if we have very few transactions
     if len(transactions) <= 1:
+        should_try_ocr = True
+        print(f"Only {len(transactions)} transactions found, will attempt OCR")
+    
+    # Also check if the PDF text extraction was minimal
+    try:
+        with open(pdf_path, 'rb') as file:
+            pdf_reader = PyPDF2.PdfReader(file)
+            total_text_length = 0
+            for page in pdf_reader.pages[:2]:  # Check first 2 pages
+                text = page.extract_text()
+                total_text_length += len(text.strip())
+            
+            # If very little text was extracted, it's likely a scanned PDF
+            if total_text_length < 100:
+                should_try_ocr = True
+                print("Minimal text extracted, likely a scanned/image PDF")
+    except:
+        pass
+    
+    if should_try_ocr:
         # Check if OCR is available
         ocr_ready, message = check_ocr_requirements()
         if ocr_ready:
-            print(f"Only {len(transactions)} transactions found, attempting OCR for better extraction...")
+            print("Processing with OCR (this may take a moment)...")
             
-            # Try advanced OCR parser first for complex layouts
-            if ADVANCED_OCR_AVAILABLE:
+            # First, try specialized parsers that use OCR
+            if DUMMY_PARSER_AVAILABLE:
+                try:
+                    # The dummy parser uses OCR internally
+                    print("Attempting specialized OCR parser...")
+                    ocr_transactions = parse_dummy_pdf(pdf_path)
+                    if ocr_transactions and len(ocr_transactions) > len(transactions):
+                        print(f"Successfully extracted {len(ocr_transactions)} transactions using specialized OCR parser")
+                        transactions = ocr_transactions
+                except Exception as e:
+                    print(f"Specialized OCR parser failed: {e}")
+            
+            # Try advanced OCR parser for complex layouts
+            if len(transactions) <= 1 and ADVANCED_OCR_AVAILABLE:
                 try:
                     print("Trying advanced OCR parser for complex layouts...")
                     ocr_transactions = parse_scanned_pdf_advanced(pdf_path)
@@ -697,7 +724,7 @@ def parse_universal_pdf(pdf_path):
                 except Exception as e:
                     print(f"Advanced OCR extraction failed: {e}")
             
-            # Fall back to standard OCR parser if advanced didn't work
+            # Fall back to standard OCR parser if needed
             if len(transactions) <= 1:
                 try:
                     print("Trying standard OCR parser...")
