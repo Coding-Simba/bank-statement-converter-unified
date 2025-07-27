@@ -99,6 +99,11 @@ try:
 except ImportError:
     WOODFOREST_PARSER_AVAILABLE = False
 try:
+    from .walmart_parser import parse_walmart
+    WALMART_PARSER_AVAILABLE = True
+except ImportError:
+    WALMART_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -536,6 +541,13 @@ def parse_universal_pdf(pdf_path):
                 if WOODFOREST_PARSER_AVAILABLE and ('woodforest' in first_page.lower() or 'business checking' in first_page.lower()):
                     print("Detected Woodforest PDF, using dedicated parser")
                     transactions = parse_woodforest(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Walmart Money Card format
+                if WALMART_PARSER_AVAILABLE and ('walmart' in first_page.lower() or 'walmartmoneycard' in first_page.lower()):
+                    print("Detected Walmart Money Card PDF, using dedicated parser")
+                    transactions = parse_walmart(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
