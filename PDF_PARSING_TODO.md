@@ -5,8 +5,8 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
 
 ## Progress Tracking
 - [ ] Total PDFs to test: 17
-- [ ] PDFs completed: 4
-- [ ] PDFs with issues fixed: 4
+- [ ] PDFs completed: 5
+- [ ] PDFs with issues fixed: 5
 
 ## Testing Methodology for Each PDF
 1. Run parser on the PDF
@@ -47,11 +47,11 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
   - Fix applied: Created rbc_parser_v2.py that handles multi-line format. Successfully extracts 50 transactions (8 deposits, 42 withdrawals)
 
 ### UK (3 PDFs)
-- [ ] **Monzo Bank st. word.pdf**
+- [x] **Monzo Bank st. word.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/Monzo Bank st. word.pdf`
-  - Status: Not tested
-  - Issues found: 
-  - Fix applied: 
+  - Status: ✅ Fixed and tested
+  - Issues found: Default parser was only extracting dates as descriptions
+  - Fix applied: Created monzo_parser.py for simple table format. Successfully extracts 28 transactions (13 deposits, 15 withdrawals) with proper descriptions
 
 - [ ] **UK Monese Bank Statement.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/UK Monese Bank Statement.pdf`

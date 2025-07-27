@@ -44,6 +44,11 @@ try:
 except ImportError:
     MONZO_PARSER_AVAILABLE = False
 try:
+    from .monese_simple_parser import parse_monese_simple as parse_monese
+    MONESE_PARSER_AVAILABLE = True
+except ImportError:
+    MONESE_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -404,6 +409,13 @@ def parse_universal_pdf(pdf_path):
                 if MONZO_PARSER_AVAILABLE and 'monzo' in first_page.lower():
                     print("Detected Monzo PDF, using dedicated parser")
                     transactions = parse_monzo(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Monese format
+                if MONESE_PARSER_AVAILABLE and 'monese' in first_page.lower():
+                    print("Detected Monese PDF, using dedicated parser")
+                    transactions = parse_monese(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
