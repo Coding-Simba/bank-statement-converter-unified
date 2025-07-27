@@ -84,6 +84,11 @@ try:
 except ImportError:
     NETSPEND_PARSER_AVAILABLE = False
 try:
+    from .paypal_parser import parse_paypal
+    PAYPAL_PARSER_AVAILABLE = True
+except ImportError:
+    PAYPAL_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -500,6 +505,13 @@ def parse_universal_pdf(pdf_path):
                 if NETSPEND_PARSER_AVAILABLE and 'netspend' in first_page.lower():
                     print("Detected Netspend PDF, using dedicated parser")
                     transactions = parse_netspend(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for PayPal format
+                if PAYPAL_PARSER_AVAILABLE and 'paypal' in first_page.lower() and 'account activity' in first_page.lower():
+                    print("Detected PayPal PDF, using dedicated parser")
+                    transactions = parse_paypal(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
