@@ -5,6 +5,7 @@ import pandas as pd
 from datetime import datetime
 import PyPDF2
 import tabula
+import pdfplumber
 from .rabobank_parser import parse_rabobank_pdf
 from .pdftotext_parser import parse_pdftotext_output
 from .ocr_parser import parse_scanned_pdf, is_scanned_pdf, check_ocr_requirements
@@ -670,14 +671,9 @@ def parse_universal_pdf(pdf_path):
         except Exception as e:
             print(f"PyPDF2 extraction failed: {e}")
     
-    # Method 7: OCR for scanned PDFs or PDFs with minimal text extraction
-    # Check if PDF might be scanned/image-based
-    should_try_ocr = False
-    
-    # Try OCR if we have very few transactions
-    if len(transactions) <= 1:
-        should_try_ocr = True
-        print(f"Only {len(transactions)} transactions found, will attempt OCR")
+    # Method 7: Always use OCR for maximum accuracy in business applications
+    should_try_ocr = True
+    print("Using OCR-first approach for maximum accuracy")
     
     # Also check if the PDF text extraction was minimal
     try:
@@ -713,10 +709,10 @@ def parse_universal_pdf(pdf_path):
                 except Exception as e:
                     print(f"Specialized OCR parser failed: {e}")
             
-            # Try advanced OCR parser for complex layouts
-            if len(transactions) <= 1 and ADVANCED_OCR_AVAILABLE:
+            # Always try advanced OCR parser for maximum accuracy
+            if ADVANCED_OCR_AVAILABLE:
                 try:
-                    print("Trying advanced OCR parser for complex layouts...")
+                    print("Using advanced OCR parser for maximum accuracy...")
                     ocr_transactions = parse_scanned_pdf_advanced(pdf_path)
                     if ocr_transactions and len(ocr_transactions) > len(transactions):
                         print(f"Successfully extracted {len(ocr_transactions)} transactions using advanced OCR")
@@ -724,8 +720,8 @@ def parse_universal_pdf(pdf_path):
                 except Exception as e:
                     print(f"Advanced OCR extraction failed: {e}")
             
-            # Fall back to standard OCR parser if needed
-            if len(transactions) <= 1:
+            # Also try standard OCR parser as additional fallback
+            if len(transactions) < 10:
                 try:
                     print("Trying standard OCR parser...")
                     ocr_transactions = parse_scanned_pdf(pdf_path)

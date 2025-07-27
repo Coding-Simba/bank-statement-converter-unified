@@ -21,18 +21,26 @@
         setupDropdowns();
     }
 
+    // Store event handlers for cleanup
+    let uploadBoxClickHandler = null;
+    let chooseFilesBtnClickHandler = null;
+    let fileInputChangeHandler = null;
+
     // File Upload Functionality
     function setupFileUpload() {
         if (!uploadBox || !fileInput || !chooseFilesBtn) return;
 
-        // Click to upload
-        chooseFilesBtn.addEventListener('click', (e) => {
+        // Remove existing event listeners before adding new ones
+        cleanupFileUploadListeners();
+
+        // Create new handlers
+        chooseFilesBtnClickHandler = (e) => {
             e.preventDefault();
             e.stopPropagation();
             fileInput.click();
-        });
+        };
 
-        uploadBox.addEventListener('click', (e) => {
+        uploadBoxClickHandler = (e) => {
             // Check if we're clicking on a button or in success state
             if (isSuccessState) {
                 e.stopPropagation();
@@ -47,10 +55,14 @@
             if (e.target.closest('.success-state')) return;
             
             fileInput.click();
-        });
+        };
 
-        // File input change
-        fileInput.addEventListener('change', handleFileSelect);
+        fileInputChangeHandler = handleFileSelect;
+
+        // Add event listeners
+        chooseFilesBtn.addEventListener('click', chooseFilesBtnClickHandler);
+        uploadBox.addEventListener('click', uploadBoxClickHandler);
+        fileInput.addEventListener('change', fileInputChangeHandler);
 
         // Drag and drop
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
@@ -67,6 +79,19 @@
         });
 
         uploadBox.addEventListener('drop', handleDrop, false);
+    }
+
+    // Cleanup function to remove event listeners
+    function cleanupFileUploadListeners() {
+        if (uploadBoxClickHandler && uploadBox) {
+            uploadBox.removeEventListener('click', uploadBoxClickHandler);
+        }
+        if (chooseFilesBtnClickHandler && chooseFilesBtn) {
+            chooseFilesBtn.removeEventListener('click', chooseFilesBtnClickHandler);
+        }
+        if (fileInputChangeHandler && fileInput) {
+            fileInput.removeEventListener('change', fileInputChangeHandler);
+        }
     }
 
     function preventDefaults(e) {
@@ -132,36 +157,86 @@
             <div class="processing-state">
                 <div class="spinner"></div>
                 <h3>Processing ${file.name}</h3>
-                <p>Converting your bank statement...</p>
+                <p class="processing-message">Converting your bank statement...</p>
                 <div class="progress-bar">
                     <div class="progress-fill"></div>
                 </div>
             </div>
         `;
 
-        // Animate progress bar
+        // Animate progress bar and update message
         const progressFill = uploadBox.querySelector('.progress-fill');
+        const processingMessage = uploadBox.querySelector('.processing-message');
         let progress = 0;
+        let messageIndex = 0;
+        const messages = [
+            'Converting your bank statement...',
+            'Analyzing document structure...',
+            'Extracting transaction data...',
+            'Applying OCR for scanned pages...',
+            'Finalizing conversion...'
+        ];
+        
         const interval = setInterval(() => {
-            progress += 10;
+            progress += 5;
             progressFill.style.width = progress + '%';
+            
+            // Update message every 20% progress
+            if (progress % 20 === 0 && messageIndex < messages.length - 1) {
+                messageIndex++;
+                processingMessage.textContent = messages[messageIndex];
+            }
+            
             if (progress >= 90) {
+                processingMessage.textContent = messages[messages.length - 1];
                 clearInterval(interval);
             }
-        }, 180);
+        }, 360);
     }
 
-    function showSuccessState(file) {
+    async function showSuccessState(file) {
         isSuccessState = true;
         
         // Store file reference for download
         uploadBox.setAttribute('data-file-name', file.name);
         
+        // Try to fetch the CSV content to show transaction count
+        let transactionText = `${file.name} has been converted successfully.`;
+        const statementId = uploadBox.getAttribute('data-statement-id');
+        
+        if (statementId) {
+            try {
+                const downloadUrl = window.location.hostname === 'localhost' 
+                    ? `http://localhost:8000/api/statement/${statementId}/download`
+                    : `https://bankcsvconverter.com/api/statement/${statementId}/download`;
+                
+                const response = await fetch(downloadUrl, {
+                    method: 'GET',
+                    mode: 'cors'
+                });
+                
+                if (response.ok) {
+                    const csvText = await response.text();
+                    const lines = csvText.trim().split('\n');
+                    // Subtract 1 for header row
+                    const transactionCount = lines.length - 1;
+                    
+                    if (transactionCount > 0) {
+                        transactionText = `Found ${transactionCount} transaction${transactionCount !== 1 ? 's' : ''} in ${file.name}`;
+                    } else {
+                        transactionText = `No transactions found in PDF: ${file.name}`;
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching CSV for preview:', error);
+            }
+        }
+        
         uploadBox.innerHTML = `
             <div class="success-state">
                 <i class="fas fa-check-circle" style="font-size: 3rem; color: #4ade80; margin-bottom: 1rem;"></i>
                 <h3>Conversion Complete!</h3>
-                <p>${file.name} has been converted successfully.</p>
+                <p>${transactionText}</p>
                 <div class="download-buttons">
                     <button class="download-btn csv-btn" type="button" data-format="csv">
                         <i class="fas fa-file-csv"></i> Download CSV
@@ -226,8 +301,8 @@
         try {
             // Try different URL formats to avoid CORS issues
             const apiUrl = window.location.hostname === 'localhost' 
-                ? 'http://localhost:5000/api/convert'
-                : 'http://127.0.0.1:5000/api/convert';
+                ? 'http://localhost:8000/api/convert'
+                : 'https://bankcsvconverter.com/api/convert';
             
             console.log('Using API URL:', apiUrl);
             
@@ -253,7 +328,7 @@
             uploadBox.setAttribute('data-statement-id', result.id);
             
             // Show success state
-            showSuccessState(file);
+            await showSuccessState(file);
             
         } catch (error) {
             console.error('Upload error:', error);
@@ -263,7 +338,7 @@
             // More detailed error logging
             if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
                 console.error('Network error - cannot reach backend');
-                showNotification('Cannot connect to backend server at http://localhost:5000. Check browser console for details.', 'error');
+                showNotification('Cannot connect to backend server. Please try again later.', 'error');
                 
                 // Test connection
                 testBackendConnection();
@@ -278,8 +353,8 @@
     async function testBackendConnection() {
         console.log('Testing backend connection...');
         const healthUrl = window.location.hostname === 'localhost' 
-            ? 'http://localhost:5000/health'
-            : 'http://127.0.0.1:5000/health';
+            ? 'http://localhost:8000/health'
+            : 'https://bankcsvconverter.com/health';
             
         try {
             const response = await fetch(healthUrl, {
@@ -303,8 +378,8 @@
         if (statementId) {
             // Download from backend
             const downloadUrl = window.location.hostname === 'localhost' 
-                ? `http://localhost:5000/api/statement/${statementId}/download`
-                : `http://127.0.0.1:5000/api/statement/${statementId}/download`;
+                ? `http://localhost:8000/api/statement/${statementId}/download`
+                : `https://bankcsvconverter.com/api/statement/${statementId}/download`;
             
             window.location.href = downloadUrl;
             showNotification(`Downloading converted file`, 'success');
