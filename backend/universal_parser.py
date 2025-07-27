@@ -74,6 +74,11 @@ try:
 except ImportError:
     DISCOVER_PARSER_AVAILABLE = False
 try:
+    from .greendot_parser import parse_greendot
+    GREENDOT_PARSER_AVAILABLE = True
+except ImportError:
+    GREENDOT_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -476,6 +481,13 @@ def parse_universal_pdf(pdf_path):
                 if DISCOVER_PARSER_AVAILABLE and 'discover' in first_page.lower() and ('cashback bonus' in first_page.lower() or 'card member since' in first_page.lower()):
                     print("Detected Discover PDF, using dedicated parser")
                     transactions = parse_discover(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Green Dot format
+                if GREENDOT_PARSER_AVAILABLE and 'green dot' in first_page.lower():
+                    print("Detected Green Dot PDF, using dedicated parser")
+                    transactions = parse_greendot(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
