@@ -5,8 +5,8 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
 
 ## Progress Tracking
 - [ ] Total PDFs to test: 17
-- [ ] PDFs completed: 8
-- [ ] PDFs with issues fixed: 8
+- [ ] PDFs completed: 9
+- [ ] PDFs with issues fixed: 9
 
 ## Testing Methodology for Each PDF
 1. Run parser on the PDF
@@ -72,11 +72,11 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
   - Issues found: Multi-section format with separate "Deposits and other credits" and "Withdrawals and other debits" sections
   - Fix applied: Created boa_parser.py that handles separate sections. Successfully extracts 69 transactions (28 deposits, 41 withdrawals) 
 
-- [ ] **USA BECU statement 4 pages.pdf**
+- [x] **USA BECU statement 4 pages.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/USA BECU statement 4 pages.pdf`
-  - Status: Not tested
-  - Issues found: 
-  - Fix applied: 
+  - Status: ✅ Fixed and tested
+  - Issues found: Multi-page format with Deposits/Withdrawals sections that don't continue across all pages. Different spacing patterns on different pages.
+  - Fix applied: Created becu_parser.py that handles section headers and also parses transactions without section headers. Successfully extracts 71 transactions (9 deposits, 62 withdrawals) 
 
 - [ ] **USA Citizens Bank.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/USA Citizens Bank.pdf`
@@ -137,7 +137,8 @@ Document each parser update here with timestamp and what was changed:
 6. **2025-01-27 03:30**: Created monzo_parser.py for Monzo simple table format
 7. **2025-01-27 03:45**: Created monese_simple_parser.py for Monese multi-line format with transaction reconstruction
 8. **2025-01-27 04:00**: Created santander_parser.py for Santander multi-line format with spacing detection
-9. **2025-01-27 04:15**: Created boa_parser.py for Bank of America multi-section format 
+9. **2025-01-27 04:15**: Created boa_parser.py for Bank of America multi-section format
+10. **2025-01-27 04:30**: Created becu_parser.py for BECU multi-page format with varying section headers 
 
 ## Common Issues Found
 List recurring issues across multiple PDFs:
