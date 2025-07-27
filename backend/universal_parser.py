@@ -54,6 +54,11 @@ try:
 except ImportError:
     SANTANDER_PARSER_AVAILABLE = False
 try:
+    from .boa_parser import parse_boa
+    BOA_PARSER_AVAILABLE = True
+except ImportError:
+    BOA_PARSER_AVAILABLE = False
+try:
     from .advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -428,6 +433,13 @@ def parse_universal_pdf(pdf_path):
                 if SANTANDER_PARSER_AVAILABLE and 'santander' in first_page.lower():
                     print("Detected Santander PDF, using dedicated parser")
                     transactions = parse_santander(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Bank of America format
+                if BOA_PARSER_AVAILABLE and ('bank of america' in first_page.lower() or 'bankofamerica' in first_page.lower()):
+                    print("Detected Bank of America PDF, using dedicated parser")
+                    transactions = parse_boa(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:

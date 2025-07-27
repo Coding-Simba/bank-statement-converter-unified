@@ -5,8 +5,8 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
 
 ## Progress Tracking
 - [ ] Total PDFs to test: 17
-- [ ] PDFs completed: 6
-- [ ] PDFs with issues fixed: 6
+- [ ] PDFs completed: 7
+- [ ] PDFs with issues fixed: 7
 
 ## Testing Methodology for Each PDF
 1. Run parser on the PDF
@@ -59,11 +59,11 @@ Test and fix parsing for 17 different bank statement PDFs from various countries
   - Issues found: Multi-line format where some transactions split across lines. Initial parser missed the £200 transaction.
   - Fix applied: Created monese_simple_parser.py that finds all amounts and reconstructs transactions. Successfully extracts all 29 transactions (6 deposits, 23 withdrawals)
 
-- [ ] **UK Santander.pdf**
+- [x] **UK Santander.pdf**
   - Path: `/Users/MAC/Desktop/pdfs/1/UK Santander.pdf`
-  - Status: Not tested
-  - Issues found: 
-  - Fix applied: 
+  - Status: ✅ Fixed and tested
+  - Issues found: Multi-line format with reference numbers on separate lines. Initial parser was confusing balance with transaction amount.
+  - Fix applied: Created santander_parser.py with proper spacing detection. Successfully extracts 27 transactions (4 deposits, 23 withdrawals)
 
 ### USA (10 PDFs)
 - [ ] **USA Bank of America.zip**
