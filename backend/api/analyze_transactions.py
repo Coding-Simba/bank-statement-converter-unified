@@ -1,8 +1,8 @@
 """Analyze transactions API endpoint."""
 
 from fastapi import APIRouter, UploadFile, File, HTTPException, status
-from fastapi.responses import JSONResponse
-from typing import Dict, List, Any
+from fastapi.responses import JSONResponse, StreamingResponse
+from typing import Dict, List, Any, Optional
 from datetime import datetime
 import io
 import pandas as pd
@@ -10,6 +10,20 @@ from pathlib import Path
 import os
 import uuid
 import json
+from reportlab.lib.pagesizes import letter, A4
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, PageBreak, Image
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.units import inch
+from reportlab.lib import colors
+from reportlab.lib.enums import TA_CENTER, TA_RIGHT
+from reportlab.graphics.shapes import Drawing, Rect, String
+from reportlab.graphics.charts.piecharts import Pie
+from reportlab.graphics.charts.barcharts import VerticalBarChart
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend
+import matplotlib.pyplot as plt
+import base64
+from io import BytesIO
 
 # Import the universal parser
 from universal_parser import parse_universal_pdf
@@ -293,7 +307,8 @@ async def analyze_transactions_endpoint(file: UploadFile = File(...)):
             content={
                 "success": True,
                 "transaction_count": len(transactions),
-                "analysis": analysis
+                "analysis": analysis,
+                "transactions": transactions  # Include transactions for export
             }
         )
         
@@ -308,3 +323,226 @@ async def analyze_transactions_endpoint(file: UploadFile = File(...)):
         # Clean up temporary file
         if file_path.exists():
             os.remove(file_path)
+
+
+def generate_pdf_report(analysis: Dict[str, Any]) -> bytes:
+    """Generate a PDF report from analysis results"""
+    buffer = BytesIO()
+    doc = SimpleDocTemplate(buffer, pagesize=letter)
+    story = []
+    styles = getSampleStyleSheet()
+    
+    # Title
+    title_style = ParagraphStyle(
+        'CustomTitle',
+        parent=styles['Heading1'],
+        fontSize=24,
+        textColor=colors.HexColor('#1a1a1a'),
+        spaceAfter=30,
+        alignment=TA_CENTER
+    )
+    
+    story.append(Paragraph("Financial Analysis Report", title_style))
+    story.append(Spacer(1, 0.5*inch))
+    
+    # Summary Section
+    story.append(Paragraph("Summary", styles['Heading2']))
+    summary = analysis['summary']
+    summary_data = [
+        ['Total Transactions:', str(summary['total_transactions'])],
+        ['Total Deposits:', f"${summary['total_deposits']:,.2f}"],
+        ['Total Withdrawals:', f"${summary['total_withdrawals']:,.2f}"],
+        ['Net Change:', f"${summary['net_change']:,.2f}"],
+        ['Average Transaction:', f"${summary['average_transaction']:,.2f}"],
+    ]
+    
+    if summary.get('date_range'):
+        summary_data.append(['Date Range:', f"{summary['date_range']['start']} to {summary['date_range']['end']}"])
+    
+    summary_table = Table(summary_data, colWidths=[2.5*inch, 2*inch])
+    summary_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), colors.white),
+        ('TEXTCOLOR', (0, 0), (-1, -1), colors.black),
+        ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+        ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
+        ('FONTSIZE', (0, 0), (-1, -1), 10),
+        ('GRID', (0, 0), (-1, -1), 1, colors.lightgrey),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ('ROWBACKGROUNDS', (0, 0), (-1, -1), [colors.white, colors.HexColor('#f8f9fa')]),
+    ]))
+    
+    story.append(summary_table)
+    story.append(Spacer(1, 0.5*inch))
+    
+    # Category Breakdown
+    story.append(Paragraph("Spending by Category", styles['Heading2']))
+    categories = analysis['categories']
+    category_data = [['Category', 'Amount', 'Count']]
+    
+    for cat, data in sorted(categories.items(), key=lambda x: x[1]['total'], reverse=True):
+        if data['total'] > 0:
+            category_data.append([cat, f"${data['total']:,.2f}", str(data['count'])])
+    
+    if len(category_data) > 1:
+        category_table = Table(category_data, colWidths=[2.5*inch, 1.5*inch, 1*inch])
+        category_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#4facfe')),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 0), (-1, -1), 10),
+            ('GRID', (0, 0), (-1, -1), 1, colors.lightgrey),
+            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ]))
+        story.append(category_table)
+    
+    story.append(Spacer(1, 0.5*inch))
+    
+    # Top Merchants
+    if analysis.get('top_merchants'):
+        story.append(Paragraph("Top Merchants", styles['Heading2']))
+        merchant_data = [['Merchant', 'Total Spent', 'Transactions']]
+        
+        for merchant in analysis['top_merchants'][:10]:
+            merchant_data.append([
+                merchant['merchant'][:40] + '...' if len(merchant['merchant']) > 40 else merchant['merchant'],
+                f"${merchant['total_spent']:,.2f}",
+                str(merchant['transaction_count'])
+            ])
+        
+        merchant_table = Table(merchant_data, colWidths=[3*inch, 1.5*inch, 1*inch])
+        merchant_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#4facfe')),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 0), (-1, -1), 9),
+            ('GRID', (0, 0), (-1, -1), 1, colors.lightgrey),
+            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ]))
+        story.append(merchant_table)
+    
+    # Build PDF
+    doc.build(story)
+    buffer.seek(0)
+    return buffer.read()
+
+
+def generate_excel_report(analysis: Dict[str, Any], transactions: List[Dict]) -> bytes:
+    """Generate an Excel report from analysis results"""
+    buffer = BytesIO()
+    
+    with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
+        # Summary Sheet
+        summary_df = pd.DataFrame({
+            'Metric': ['Total Transactions', 'Total Deposits', 'Total Withdrawals', 'Net Change', 'Average Transaction'],
+            'Value': [
+                analysis['summary']['total_transactions'],
+                f"${analysis['summary']['total_deposits']:,.2f}",
+                f"${analysis['summary']['total_withdrawals']:,.2f}",
+                f"${analysis['summary']['net_change']:,.2f}",
+                f"${analysis['summary']['average_transaction']:,.2f}"
+            ]
+        })
+        summary_df.to_excel(writer, sheet_name='Summary', index=False)
+        
+        # Transactions Sheet
+        if transactions:
+            trans_df = pd.DataFrame(transactions)
+            trans_df.to_excel(writer, sheet_name='Transactions', index=False)
+        
+        # Categories Sheet
+        categories_data = []
+        for cat, data in analysis['categories'].items():
+            if data['total'] > 0:
+                categories_data.append({
+                    'Category': cat,
+                    'Total': data['total'],
+                    'Count': data['count']
+                })
+        
+        if categories_data:
+            categories_df = pd.DataFrame(categories_data)
+            categories_df.to_excel(writer, sheet_name='Categories', index=False)
+        
+        # Monthly Breakdown Sheet
+        if analysis['monthly_breakdown']:
+            monthly_data = []
+            for month, data in analysis['monthly_breakdown'].items():
+                monthly_data.append({
+                    'Month': month,
+                    'Total': data['total'],
+                    'Count': data['count'],
+                    'Average': data['average']
+                })
+            
+            monthly_df = pd.DataFrame(monthly_data)
+            monthly_df.to_excel(writer, sheet_name='Monthly Analysis', index=False)
+        
+        # Top Merchants Sheet
+        if analysis['top_merchants']:
+            merchants_df = pd.DataFrame(analysis['top_merchants'])
+            merchants_df.to_excel(writer, sheet_name='Top Merchants', index=False)
+        
+        # Format the workbook
+        workbook = writer.book
+        
+        # Add formats
+        header_format = workbook.add_format({
+            'bold': True,
+            'bg_color': '#4facfe',
+            'font_color': 'white'
+        })
+        
+        currency_format = workbook.add_format({'num_format': '$#,##0.00'})
+        
+        # Apply formats to all sheets
+        for sheet_name in workbook.sheetnames:
+            worksheet = workbook[sheet_name]
+            # This would require openpyxl specific formatting
+    
+    buffer.seek(0)
+    return buffer.read()
+
+
+@router.post("/generate-pdf-report")
+async def generate_pdf_report_endpoint(analysis_data: Dict[str, Any]):
+    """Generate PDF report from analysis data"""
+    try:
+        pdf_bytes = generate_pdf_report(analysis_data)
+        
+        return StreamingResponse(
+            BytesIO(pdf_bytes),
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition": f"attachment; filename=financial_analysis_{datetime.now().strftime('%Y%m%d')}.pdf"
+            }
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Error generating PDF: {str(e)}"
+        )
+
+
+@router.post("/generate-excel-report")
+async def generate_excel_report_endpoint(report_data: Dict[str, Any]):
+    """Generate Excel report from analysis data"""
+    try:
+        analysis = report_data.get('analysis', {})
+        transactions = report_data.get('transactions', [])
+        
+        excel_bytes = generate_excel_report(analysis, transactions)
+        
+        return StreamingResponse(
+            BytesIO(excel_bytes),
+            media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            headers={
+                "Content-Disposition": f"attachment; filename=financial_analysis_{datetime.now().strftime('%Y%m%d')}.xlsx"
+            }
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Error generating Excel: {str(e)}"
+        )

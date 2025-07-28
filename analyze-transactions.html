@@ -477,6 +477,33 @@
         opacity: 1 !important;
         pointer-events: auto !important;
     }
+    
+    .download-btn {
+        background: #4facfe;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 6px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+    }
+    
+    .download-btn:hover {
+        background: #3d8ff7;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+    }
+    
+    .download-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
 </style>
 
 <!-- Insights Preview -->
@@ -582,6 +609,9 @@
 </div>
 <h3>PDF Summary Report</h3>
 <p>Beautiful, shareable reports with charts, insights, and recommendations ready for meetings or records.</p>
+<button class="download-btn" id="downloadPdfBtn" style="display: none;">
+    <i class="fas fa-download"></i> Download PDF
+</button>
 </div>
 <div class="report-card">
 <div class="report-icon">
@@ -589,6 +619,9 @@
 </div>
 <h3>Excel Dashboard</h3>
 <p>Interactive spreadsheets with pivot tables, formulas, and customizable analysis for deeper insights.</p>
+<button class="download-btn" id="downloadExcelBtn" style="display: none;">
+    <i class="fas fa-download"></i> Download Excel
+</button>
 </div>
 <div class="report-card">
 <div class="report-icon">

@@ -10,8 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const processingMessage = document.getElementById('processingMessage');
     const errorMessage = document.getElementById('errorMessage');
     const resultsSection = document.getElementById('resultsSection');
+    const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+    const downloadExcelBtn = document.getElementById('downloadExcelBtn');
     
     let selectedFile = null;
+    let currentTransactions = [];
     
     // File selection
     chooseFilesBtn.addEventListener('click', function(e) {
@@ -86,6 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = await response.json();
             
             if (response.ok && data.success) {
+                // Store transactions for export
+                currentTransactions = data.transactions || [];
                 displayResults(data.analysis);
                 resultsSection.style.display = 'block';
             } else {
@@ -115,6 +120,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     function displayResults(analysis) {
+        // Store analysis data globally for downloads
+        window.currentAnalysis = analysis;
+        
         // Summary cards
         document.getElementById('totalTransactions').textContent = analysis.summary.total_transactions.toLocaleString();
         document.getElementById('totalDeposits').textContent = '$' + analysis.summary.total_deposits.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
@@ -143,6 +151,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Spending patterns
         displaySpendingPatterns(analysis.spending_patterns);
+        
+        // Show download buttons
+        document.getElementById('downloadPdfBtn').style.display = 'inline-flex';
+        document.getElementById('downloadExcelBtn').style.display = 'inline-flex';
     }
     
     function displayCategoriesChart(categories) {
@@ -294,6 +306,85 @@ document.addEventListener('DOMContentLoaded', function() {
             default: return 'info-circle';
         }
     }
+    
+    // Download PDF button
+    downloadPdfBtn.addEventListener('click', async function() {
+        if (!window.currentAnalysis) return;
+        
+        try {
+            downloadPdfBtn.disabled = true;
+            downloadPdfBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+            
+            const response = await fetch(API_CONFIG.getUrl('/api/generate-pdf-report'), {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(window.currentAnalysis)
+            });
+            
+            if (response.ok) {
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `financial_analysis_${new Date().toISOString().split('T')[0]}.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            } else {
+                throw new Error('Failed to generate PDF');
+            }
+        } catch (error) {
+            console.error('PDF download error:', error);
+            alert('Error generating PDF report: ' + error.message);
+        } finally {
+            downloadPdfBtn.disabled = false;
+            downloadPdfBtn.innerHTML = '<i class="fas fa-download"></i> Download PDF';
+        }
+    });
+    
+    // Download Excel button
+    downloadExcelBtn.addEventListener('click', async function() {
+        if (!window.currentAnalysis) return;
+        
+        try {
+            downloadExcelBtn.disabled = true;
+            downloadExcelBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating Excel...';
+            
+            const response = await fetch(API_CONFIG.getUrl('/api/generate-excel-report'), {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    analysis: window.currentAnalysis,
+                    transactions: currentTransactions
+                })
+            });
+            
+            if (response.ok) {
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `financial_analysis_${new Date().toISOString().split('T')[0]}.xlsx`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            } else {
+                throw new Error('Failed to generate Excel');
+            }
+        } catch (error) {
+            console.error('Excel download error:', error);
+            alert('Error generating Excel report: ' + error.message);
+        } finally {
+            downloadExcelBtn.disabled = false;
+            downloadExcelBtn.innerHTML = '<i class="fas fa-download"></i> Download Excel';
+        }
+    });
 });
 
 // Add required styles
