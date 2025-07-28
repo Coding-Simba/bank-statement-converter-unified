@@ -232,5 +232,71 @@
     "sample_transactions": [],
     "file_size": 183623,
     "status": "pending_review"
+  },
+  "62673cdbd7091b2444d18d2bd2dc9c6c22493ebb6c9e0931fc141c03ee832877": {
+    "original_name": "USA Chase bank.pdf",
+    "saved_name": "20250727_150440_62673cdb_USA Chase bank.pdf",
+    "saved_path": "failed_pdfs/20250727_150440_62673cdb_USA Chase bank.pdf",
+    "timestamp": "20250727_150440",
+    "date_saved": "2025-07-27T15:04:40.203637",
+    "transactions_found": 16,
+    "valid_transactions": 16,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [
+      {
+        "description": "Deposits and Additions                                        10",
+        "amount": 125883.63,
+        "amount_string": "125,883.63"
+      },
+      {
+        "description": "Checks Paid                                                    2           -",
+        "amount": 3169.04,
+        "amount_string": "3,169.04"
+      },
+      {
+        "description": "Other Withdrawals, Fees & Charges                              4         -",
+        "amount": 15025.68,
+        "amount_string": "15,025.68"
+      }
+    ],
+    "file_size": 166919,
+    "status": "pending_review"
+  },
+  "f53dd0c9ee402506a30a3790923aec7a05cfa2fae51c97325793e5a6605d7701": {
+    "original_name": "48664ee8-0125-4746-a65b-75e81713a3d4.pdf",
+    "saved_name": "20250727_165807_f53dd0c9_48664ee8-0125-4746-a65b-75e81713a3d4.pdf",
+    "saved_path": "failed_pdfs/20250727_165807_f53dd0c9_48664ee8-0125-4746-a65b-75e81713a3d4.pdf",
+    "timestamp": "20250727_165807",
+    "date_saved": "2025-07-27T16:58:07.857098",
+    "transactions_found": 5,
+    "valid_transactions": 5,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [
+      {
+        "date": null,
+        "date_string": "mm/dd/yyyy",
+        "description": "Payment - Credit Card",
+        "amount": 5400.0,
+        "amount_string": "5400.00"
+      },
+      {
+        "date": null,
+        "date_string": "mm/dd/yyyy",
+        "description": "Payment - Insurance",
+        "amount": 3000.0,
+        "amount_string": "3000.00"
+      },
+      {
+        "date": null,
+        "date_string": "mm/dd/yyyy",
+        "description": "Payment - Electricity",
+        "amount": 1500.0,
+        "amount_string": "1500.00"
+      }
+    ],
+    "file_size": 2137970,
+    "status": "pending_review"
   }
 }

@@ -1,0 +1,183 @@
+::1 - - [27/Jul/2025 16:48:46] "GET / HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:46] "GET /css/modern-homepage.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:46] "GET /css/blog-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:46] "GET /css/nav-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:46] "GET /assets/pdf-icon.svg HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:46] "GET /css/dropdown-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:46] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:46] "GET /js/dropdown-handler.js HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:46] code 404, message File not found
+::1 - - [27/Jul/2025 16:48:46] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 16:48:46] code 404, message File not found
+::1 - - [27/Jul/2025 16:48:46] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 16:48:47] "GET / HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:47] "GET /css/modern-homepage.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:47] "GET /css/nav-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:47] "GET /css/blog-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:47] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:47] "GET /css/dropdown-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:47] "GET /assets/pdf-icon.svg HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:47] "GET /js/dropdown-handler.js HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:47] code 404, message File not found
+::1 - - [27/Jul/2025 16:48:47] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 16:48:47] code 404, message File not found
+::1 - - [27/Jul/2025 16:48:47] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 16:48:49] "GET / HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:49] "GET /css/modern-homepage.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:49] "GET /css/nav-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:49] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:49] "GET /assets/pdf-icon.svg HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:49] "GET /css/blog-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:49] "GET /css/dropdown-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:49] "GET /js/dropdown-handler.js HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:48:49] code 404, message File not found
+::1 - - [27/Jul/2025 16:48:49] code 404, message File not found
+::1 - - [27/Jul/2025 16:48:49] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 16:48:49] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 16:48:50] "HEAD / HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:49:04] code 501, message Unsupported method ('POST')
+::1 - - [27/Jul/2025 16:49:04] "POST /api/convert HTTP/1.1" 501 -
+::1 - - [27/Jul/2025 16:49:07] code 501, message Unsupported method ('POST')
+::1 - - [27/Jul/2025 16:49:07] "POST /api/convert HTTP/1.1" 501 -
+::1 - - [27/Jul/2025 16:57:19] "GET / HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:19] code 404, message File not found
+::1 - - [27/Jul/2025 16:57:19] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 16:57:24] code 501, message Unsupported method ('POST')
+::1 - - [27/Jul/2025 16:57:24] "POST /api/convert HTTP/1.1" 501 -
+::1 - - [27/Jul/2025 16:57:47] "GET / HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:47] "GET /css/modern-homepage.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:47] "GET /css/nav-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:47] "GET /css/dropdown-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:47] "GET /css/blog-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:47] "GET /assets/pdf-icon.svg HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:47] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:47] "GET /js/dropdown-handler.js HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET / HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/modern-homepage.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/dropdown-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/nav-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/blog-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /assets/pdf-icon.svg HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /js/dropdown-handler.js HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET / HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/modern-homepage.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/nav-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/dropdown-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/blog-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /assets/pdf-icon.svg HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /js/dropdown-handler.js HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET / HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/modern-homepage.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/nav-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/dropdown-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/blog-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /assets/pdf-icon.svg HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /js/dropdown-handler.js HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET / HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/modern-homepage.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/blog-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/dropdown-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /css/nav-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /assets/pdf-icon.svg HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] "GET /js/dropdown-handler.js HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 16:57:48] code 404, message File not found
+::1 - - [27/Jul/2025 16:57:48] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 16:57:48] code 404, message File not found
+::1 - - [27/Jul/2025 16:57:48] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 16:58:07] code 404, message File not found
+::1 - - [27/Jul/2025 16:58:07] "GET /api/statement/48/download HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 16:58:09] code 404, message File not found
+::1 - - [27/Jul/2025 16:58:09] "GET /api/statement/48/download HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 16:58:09] code 404, message File not found
+::1 - - [27/Jul/2025 16:58:09] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 17:30:22] "GET / HTTP/1.1" 304 -
+::1 - - [27/Jul/2025 17:30:22] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 304 -
+::1 - - [27/Jul/2025 17:30:22] code 404, message File not found
+::1 - - [27/Jul/2025 17:30:22] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 17:30:35] code 404, message File not found
+::1 - - [27/Jul/2025 17:30:35] "GET /api/statement/49/download HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 17:32:06] code 404, message File not found
+::1 - - [27/Jul/2025 17:32:06] "GET /api/statement/49/download HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 17:32:06] code 404, message File not found
+::1 - - [27/Jul/2025 17:32:06] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 17:32:11] code 404, message File not found
+::1 - - [27/Jul/2025 17:32:11] "GET /api/statement/49/download HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 17:32:11] code 404, message File not found
+::1 - - [27/Jul/2025 17:32:11] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 17:37:12] "GET / HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 17:37:12] "GET /css/nav-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 17:37:12] "GET /css/modern-homepage.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 17:37:12] "GET /css/dropdown-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 17:37:12] "GET /css/blog-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 17:37:12] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 17:37:12] "GET /assets/pdf-icon.svg HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 17:37:12] "GET /js/dropdown-handler.js HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 17:37:12] code 404, message File not found
+::1 - - [27/Jul/2025 17:37:12] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 17:37:12] code 404, message File not found
+::1 - - [27/Jul/2025 17:37:12] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 23:27:59] "GET / HTTP/1.1" 304 -
+::1 - - [27/Jul/2025 23:27:59] "GET /css/modern-homepage.css HTTP/1.1" 304 -
+::1 - - [27/Jul/2025 23:27:59] "GET /css/nav-fix.css HTTP/1.1" 304 -
+::1 - - [27/Jul/2025 23:27:59] "GET /css/dropdown-fix.css HTTP/1.1" 304 -
+::1 - - [27/Jul/2025 23:27:59] "GET /css/blog-fix.css HTTP/1.1" 304 -
+::1 - - [27/Jul/2025 23:27:59] "GET /assets/pdf-icon.svg HTTP/1.1" 304 -
+::1 - - [27/Jul/2025 23:27:59] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 304 -
+::1 - - [27/Jul/2025 23:27:59] "GET /js/dropdown-handler.js HTTP/1.1" 304 -
+::1 - - [27/Jul/2025 23:28:00] code 404, message File not found
+::1 - - [27/Jul/2025 23:28:00] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 23:28:03] "GET / HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:03] "GET /css/modern-homepage.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:03] "GET /css/nav-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:03] "GET /css/blog-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:03] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:03] "GET /assets/pdf-icon.svg HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:03] "GET /css/dropdown-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:03] "GET /js/dropdown-handler.js HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:03] code 404, message File not found
+::1 - - [27/Jul/2025 23:28:03] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 23:28:03] code 404, message File not found
+::1 - - [27/Jul/2025 23:28:03] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 23:28:04] "GET / HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:04] "GET /css/modern-homepage.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:04] "GET /css/dropdown-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:04] "GET /css/blog-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:04] "GET /css/nav-fix.css HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:04] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:04] "GET /assets/pdf-icon.svg HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:04] "GET /js/dropdown-handler.js HTTP/1.1" 200 -
+::1 - - [27/Jul/2025 23:28:04] code 404, message File not found
+::1 - - [27/Jul/2025 23:28:04] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [27/Jul/2025 23:28:04] code 404, message File not found
+::1 - - [27/Jul/2025 23:28:04] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [28/Jul/2025 00:07:58] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 304 -
+::1 - - [28/Jul/2025 00:07:58] code 404, message File not found
+::1 - - [28/Jul/2025 00:07:58] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [28/Jul/2025 11:46:25] "GET / HTTP/1.1" 304 -
+::1 - - [28/Jul/2025 11:46:25] "GET /css/modern-homepage.css HTTP/1.1" 304 -
+::1 - - [28/Jul/2025 11:46:25] "GET /css/dropdown-fix.css HTTP/1.1" 304 -
+::1 - - [28/Jul/2025 11:46:25] "GET /assets/pdf-icon.svg HTTP/1.1" 304 -
+::1 - - [28/Jul/2025 11:46:25] "GET /css/nav-fix.css HTTP/1.1" 200 -
+::1 - - [28/Jul/2025 11:46:25] "GET /css/blog-fix.css HTTP/1.1" 304 -
+::1 - - [28/Jul/2025 11:46:25] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 304 -
+::1 - - [28/Jul/2025 11:46:25] "GET /js/dropdown-handler.js HTTP/1.1" 304 -
+::1 - - [28/Jul/2025 11:46:25] code 404, message File not found
+::1 - - [28/Jul/2025 11:46:25] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [28/Jul/2025 11:46:27] code 404, message File not found
+::1 - - [28/Jul/2025 11:46:27] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [28/Jul/2025 11:46:36] "GET /merge-statements.html HTTP/1.1" 200 -
+::1 - - [28/Jul/2025 11:46:36] "GET /js/modern-homepage-fixed.js HTTP/1.1" 200 -
+::1 - - [28/Jul/2025 11:46:36] "GET /js/pdf-merger.js HTTP/1.1" 200 -
+::1 - - [28/Jul/2025 11:46:37] code 404, message File not found
+::1 - - [28/Jul/2025 11:46:37] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [28/Jul/2025 11:46:39] "GET /split-by-date.html HTTP/1.1" 200 -
+::1 - - [28/Jul/2025 11:46:39] code 404, message File not found
+::1 - - [28/Jul/2025 11:46:39] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [28/Jul/2025 11:48:14] "GET /analyze-transactions.html HTTP/1.1" 200 -
+::1 - - [28/Jul/2025 11:48:14] "GET /js/pdf-transaction-analyzer.js HTTP/1.1" 200 -
+::1 - - [28/Jul/2025 11:48:14] code 404, message File not found
+::1 - - [28/Jul/2025 11:48:14] "GET /favicon.ico HTTP/1.1" 404 -

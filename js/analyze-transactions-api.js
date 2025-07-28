@@ -93,7 +93,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } catch (error) {
             console.error('Analysis error:', error);
-            errorMessage.textContent = 'Error: ' + error.message;
+            
+            // Check if it's a connection error
+            if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+                errorMessage.innerHTML = `
+                    <strong>Backend API Connection Error</strong><br>
+                    The analysis backend is currently unavailable. This could mean:<br>
+                    • The backend service is not running<br>
+                    • Nginx is not configured to proxy /api requests<br>
+                    • The backend is deployed but not accessible<br><br>
+                    Please contact support or try again later.
+                `;
+            } else {
+                errorMessage.textContent = 'Error: ' + error.message;
+            }
             errorMessage.style.display = 'block';
         } finally {
             processingMessage.style.display = 'none';

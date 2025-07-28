@@ -7,8 +7,8 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
 
-from ..models.database import get_db, User, Statement, Feedback
-from ..middleware.auth_middleware import get_user_or_session
+from models.database import get_db, User, Statement, Feedback
+from middleware.auth_middleware import get_user_or_session
 
 router = APIRouter(prefix="/api", tags=["feedback"])
 
@@ -26,7 +26,7 @@ class FeedbackResponse(BaseModel):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 @router.post("/feedback", response_model=FeedbackResponse)

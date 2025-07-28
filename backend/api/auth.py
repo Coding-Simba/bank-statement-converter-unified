@@ -6,13 +6,13 @@ from pydantic import BaseModel, EmailStr
 from typing import Optional
 from datetime import datetime
 
-from ..models.database import get_db, User
-from ..utils.auth import (
+from models.database import get_db, User
+from utils.auth import (
     verify_password, get_password_hash, create_access_token, 
     create_refresh_token, validate_email, validate_password,
     generate_session_id
 )
-from ..middleware.auth_middleware import JWTBearer, get_current_user
+from middleware.auth_middleware import JWTBearer, get_current_user
 
 router = APIRouter(prefix="/api/auth", tags=["authentication"])
 
@@ -21,6 +21,8 @@ router = APIRouter(prefix="/api/auth", tags=["authentication"])
 class UserRegister(BaseModel):
     email: EmailStr
     password: str
+    full_name: Optional[str] = None
+    company_name: Optional[str] = None
     account_type: Optional[str] = "free"
 
 
@@ -38,7 +40,7 @@ class UserResponse(BaseModel):
     daily_limit: int
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class TokenResponse(BaseModel):
@@ -80,7 +82,11 @@ async def register(user_data: UserRegister, db: Session = Depends(get_db)):
     new_user = User(
         email=user_data.email,
         password_hash=hashed_password,
-        account_type=user_data.account_type if user_data.account_type in ["free", "premium"] else "free"
+        full_name=user_data.full_name,
+        company_name=user_data.company_name,
+        account_type=user_data.account_type if user_data.account_type in ["free", "premium"] else "free",
+        auth_provider="email",
+        email_verified=False  # Will need email verification
     )
     
     db.add(new_user)
@@ -183,7 +189,7 @@ async def logout(response: Response):
 async def refresh_token(refresh_token: str, db: Session = Depends(get_db)):
     """Refresh access token using refresh token."""
     try:
-        from ..utils.auth import decode_token
+        from utils.auth import decode_token
         payload = decode_token(refresh_token)
         
         if payload.get("type") != "refresh":

@@ -1,0 +1,425 @@
+{
+  "analysis_date": "2025-07-28T00:04:57.801001",
+  "total_files": 21,
+  "results": {
+    "/Users/MAC/Desktop/pdfs/1/Canada RBC (1).pdf": {
+      "structure": {
+        "file_name": "Canada RBC (1).pdf",
+        "file_size": 116646,
+        "pages": 1,
+        "text_length": 1897,
+        "has_tables": true,
+        "date_formats_found": [
+          "MMM DD, YYYY"
+        ],
+        "amount_formats_found": [
+          "USD with $"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/Australia Westpac bank statement.pdf": {
+      "structure": {
+        "file_name": "Australia Westpac bank statement.pdf",
+        "file_size": 444272,
+        "pages": 1,
+        "text_length": 2427,
+        "has_tables": true,
+        "date_formats_found": [
+          "MM/DD/YYYY or DD/MM/YYYY"
+        ],
+        "amount_formats_found": [
+          "USD suffix",
+          "Negative with minus"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/Australia Bendigo Bank Statement.pdf": {
+      "structure": {
+        "file_name": "Australia Bendigo Bank Statement.pdf",
+        "file_size": 473155,
+        "pages": 2,
+        "text_length": 3432,
+        "has_tables": true,
+        "date_formats_found": [
+          "MM/DD/YYYY or DD/MM/YYYY"
+        ],
+        "amount_formats_found": [
+          "USD with $"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/Canada RBC.pdf": {
+      "structure": {
+        "file_name": "Canada RBC.pdf",
+        "file_size": 871418,
+        "pages": 4,
+        "text_length": 6538,
+        "has_tables": true,
+        "date_formats_found": [
+          "MMM DD, YYYY"
+        ],
+        "amount_formats_found": [
+          "USD with $"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/United Kingdom Metro Bank.pdf": {
+      "structure": {
+        "file_name": "United Kingdom Metro Bank.pdf",
+        "file_size": 258039,
+        "pages": 1,
+        "text_length": 1838,
+        "has_tables": true,
+        "date_formats_found": [
+          "MM/DD/YYYY or DD/MM/YYYY"
+        ],
+        "amount_formats_found": [
+          "USD suffix"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/UK Nationwide word pdf.pdf": {
+      "structure": {
+        "file_name": "UK Nationwide word pdf.pdf",
+        "file_size": 1010314,
+        "pages": 5,
+        "text_length": 14159,
+        "has_tables": true,
+        "date_formats_found": [
+          "MM/DD/YYYY or DD/MM/YYYY",
+          "MM-DD-YYYY or DD-MM-YYYY"
+        ],
+        "amount_formats_found": [
+          "GBP with \u00a3",
+          "Negative with minus"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/USA Woodforest.pdf": {
+      "structure": {
+        "file_name": "USA Woodforest.pdf",
+        "file_size": 837035,
+        "pages": 3,
+        "text_length": 8621,
+        "has_tables": true,
+        "date_formats_found": [],
+        "amount_formats_found": [
+          "USD with $",
+          "Negative with minus"
+        ],
+        "potential_issues": [
+          "No date patterns found"
+        ]
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/USA PNC 2.pdf": {
+      "structure": {
+        "file_name": "USA PNC 2.pdf",
+        "file_size": 517630,
+        "pages": 3,
+        "text_length": 2588,
+        "has_tables": true,
+        "date_formats_found": [
+          "MM/DD/YYYY or DD/MM/YYYY"
+        ],
+        "amount_formats_found": [
+          "USD with $"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/USA Citizens Bank.pdf": {
+      "structure": {
+        "file_name": "USA Citizens Bank.pdf",
+        "file_size": 862639,
+        "pages": 7,
+        "text_length": 7935,
+        "has_tables": true,
+        "date_formats_found": [
+          "MMM DD, YYYY"
+        ],
+        "amount_formats_found": [
+          "USD with $",
+          "Negative with minus"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/USA Navy Federal 5 pages.pdf": {
+      "structure": {
+        "file_name": "USA Navy Federal 5 pages.pdf",
+        "file_size": 1091451,
+        "pages": 10,
+        "text_length": 8501,
+        "has_tables": true,
+        "date_formats_found": [
+          "MM/DD/YYYY or DD/MM/YYYY",
+          "MM-DD-YYYY or DD-MM-YYYY"
+        ],
+        "amount_formats_found": [
+          "USD with $",
+          "Negative with minus"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/USA DCU Bank Statement 5 page.pdf": {
+      "structure": {
+        "file_name": "USA DCU Bank Statement 5 page.pdf",
+        "file_size": 795138,
+        "pages": 5,
+        "text_length": 18460,
+        "has_tables": true,
+        "date_formats_found": [
+          "MM/DD/YYYY or DD/MM/YYYY",
+          "MM-DD-YYYY or DD-MM-YYYY"
+        ],
+        "amount_formats_found": [
+          "USD with $",
+          "Negative with minus"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/USA PayPal Account Statement.pdf": {
+      "structure": {
+        "file_name": "USA PayPal Account Statement.pdf",
+        "file_size": 547518,
+        "pages": 1,
+        "text_length": 2723,
+        "has_tables": true,
+        "date_formats_found": [
+          "MM/DD/YYYY or DD/MM/YYYY",
+          "MMM DD, YYYY"
+        ],
+        "amount_formats_found": [
+          "Negative with minus"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/USAA Bank Statement 5 page .pdf": {
+      "structure": {
+        "file_name": "USAA Bank Statement 5 page .pdf",
+        "file_size": 325043,
+        "pages": 5,
+        "text_length": 9774,
+        "has_tables": true,
+        "date_formats_found": [
+          "MM/DD/YYYY or DD/MM/YYYY"
+        ],
+        "amount_formats_found": [],
+        "potential_issues": [
+          "No amount patterns found"
+        ]
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/USA BECU statement 4 pages.pdf": {
+      "structure": {
+        "file_name": "USA BECU statement 4 pages.pdf",
+        "file_size": 207482,
+        "pages": 5,
+        "text_length": 11038,
+        "has_tables": true,
+        "date_formats_found": [
+          "MM/DD/YYYY or DD/MM/YYYY"
+        ],
+        "amount_formats_found": [
+          "USD with $",
+          "Negative in parentheses"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/USA Wells Fargo 7 pages.pdf": {
+      "structure": {
+        "file_name": "USA Wells Fargo 7 pages.pdf",
+        "file_size": 180052,
+        "pages": 7,
+        "text_length": 20919,
+        "has_tables": true,
+        "date_formats_found": [
+          "MM/DD/YYYY or DD/MM/YYYY",
+          "MMM DD, YYYY"
+        ],
+        "amount_formats_found": [
+          "USD with $",
+          "Negative with minus"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/USA Bank of America.pdf": {
+      "structure": {
+        "file_name": "USA Bank of America.pdf",
+        "file_size": 789771,
+        "pages": 10,
+        "text_length": 27171,
+        "has_tables": true,
+        "date_formats_found": [
+          "MM/DD/YYYY or DD/MM/YYYY",
+          "MM-DD-YYYY or DD-MM-YYYY"
+        ],
+        "amount_formats_found": [
+          "USD with $",
+          "Negative with minus"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/1/Australia Commonwealth J C.pdf": {
+      "structure": {
+        "file_name": "Australia Commonwealth J C.pdf",
+        "file_size": 850432,
+        "pages": 23,
+        "text_length": 52389,
+        "has_tables": true,
+        "date_formats_found": [
+          "MM/DD/YYYY or DD/MM/YYYY"
+        ],
+        "amount_formats_found": [
+          "USD with $",
+          "Credit indicator"
+        ],
+        "potential_issues": []
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/merged_statements_2025-07-26.pdf": {
+      "structure": {
+        "file_name": "merged_statements_2025-07-26.pdf",
+        "file_size": 4552181,
+        "pages": 2,
+        "text_length": 534,
+        "has_tables": true,
+        "date_formats_found": [],
+        "amount_formats_found": [],
+        "potential_issues": [
+          "No date patterns found",
+          "No amount patterns found"
+        ]
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/Bank-Statement-Template-4-TemplateLab.pdf": {
+      "structure": {
+        "file_name": "Bank-Statement-Template-4-TemplateLab.pdf",
+        "file_size": 2165481,
+        "pages": 1,
+        "text_length": 419,
+        "has_tables": true,
+        "date_formats_found": [],
+        "amount_formats_found": [],
+        "potential_issues": [
+          "No date patterns found",
+          "No amount patterns found"
+        ]
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/dummy_statement.pdf": {
+      "structure": {
+        "file_name": "dummy_statement.pdf",
+        "file_size": 183623,
+        "pages": 2,
+        "text_length": 2,
+        "has_tables": false,
+        "date_formats_found": [],
+        "amount_formats_found": [],
+        "potential_issues": [
+          "No table headers found",
+          "Very little text extracted",
+          "No date patterns found",
+          "No amount patterns found"
+        ]
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    },
+    "/Users/MAC/Desktop/pdfs/Bank Statement Example Final.pdf": {
+      "structure": {
+        "file_name": "Bank Statement Example Final.pdf",
+        "file_size": 256826,
+        "pages": 1,
+        "text_length": 1354,
+        "has_tables": true,
+        "date_formats_found": [],
+        "amount_formats_found": [
+          "GBP with \u00a3"
+        ],
+        "potential_issues": [
+          "No date patterns found"
+        ]
+      },
+      "parser": {
+        "error": "UniversalParser not available"
+      }
+    }
+  },
+  "summary": {
+    "successful_parses": 0,
+    "failed_parses": 21,
+    "files_with_issues": 6
+  }
+}

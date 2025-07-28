@@ -1,0 +1,1773 @@
+[
+  {
+    "filename": "USA Bank of America.pdf",
+    "pages": 10,
+    "tabula_results": [
+      {
+        "method": "tabula",
+        "table_num": 0,
+        "rows": 2,
+        "columns": [
+          "Unnamed: 0",
+          "Unnamed: 1",
+          "Unnamed: 2"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": NaN,
+            "1": NaN
+          },
+          "Unnamed: 1": {
+            "0": "Please see the Important Messages - Please Read section of your statement for important details that could impact you.",
+            "1": NaN
+          },
+          "Unnamed: 2": {
+            "0": NaN,
+            "1": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 2,
+        "rows": 32,
+        "columns": [
+          "02/01/22 Zelle Transfer Conf# 580341df4; WILLIAMS, MYKEL",
+          "300.00",
+          "Unnamed: 0"
+        ],
+        "sample": {
+          "02/01/22 Zelle Transfer Conf# 580341df4; WILLIAMS, MYKEL": {
+            "0": "02/01/22 Zelle Transfer Conf# 13fb912cc; WILLIAMS, MYKEL",
+            "1": "02/01/22 01/31 #000284935 PMNT RCVD Cash App*Cash Out San Francisco CA",
+            "2": "02/01/22 Zelle Transfer Conf# 59edc634e; WILLIAMS, MYKEL"
+          },
+          "300.00": {
+            "0": "150.00",
+            "1": "127.06",
+            "2": "120.00"
+          },
+          "Unnamed: 0": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 3,
+        "rows": 69,
+        "columns": [
+          "Date Description",
+          "Unnamed: 0",
+          "Amount"
+        ],
+        "sample": {
+          "Date Description": {
+            "0": "02/26/22 Counter Credit",
+            "1": "02/26/22 Zelle Transfer Conf# T09WYHB9G; ASHLEY SANCHEZ",
+            "2": NaN
+          },
+          "Unnamed: 0": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "Amount": {
+            "0": "2,000.00",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 4,
+        "rows": 4,
+        "columns": [
+          "Unnamed: 0",
+          "CHECKCARD 0216 DISCOUNT KEY CODE LAS VEGAS NV 85506471047980000588989 CKCD",
+          "Unnamed: 1"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "02/17/22",
+            "1": NaN,
+            "2": NaN
+          },
+          "CHECKCARD 0216 DISCOUNT KEY CODE LAS VEGAS NV 85506471047980000588989 CKCD": {
+            "0": NaN,
+            "1": "7399 XXXXXXXXXXXX6916 XXXX XXXX XXXX 6916",
+            "2": "CHECKCARD 0217 AUTOCODE NY. 718-404-9691 NY 55432861048200960918347 CKCD 8999"
+          },
+          "Unnamed: 1": {
+            "0": -45.0,
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 5,
+        "rows": 2,
+        "columns": [
+          "Unnamed: 0",
+          "Total for this period",
+          "Total year-to-date"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Total Overdraft fees",
+            "1": "Total NSF: Returned Item fees"
+          },
+          "Total for this period": {
+            "0": "$35.00",
+            "1": "$35.00"
+          },
+          "Total year-to-date": {
+            "0": "$35.00",
+            "1": "$35.00"
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 6,
+        "rows": 10,
+        "columns": [
+          "Unnamed: 0",
+          "Unnamed: 1",
+          "Unnamed: 2",
+          "Unnamed: 3",
+          "Unnamed: 4"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": NaN,
+            "1": "Daily ledger balances",
+            "2": "Date Balance ($)"
+          },
+          "Unnamed: 1": {
+            "0": NaN,
+            "1": NaN,
+            "2": "Date"
+          },
+          "Unnamed: 2": {
+            "0": NaN,
+            "1": NaN,
+            "2": "Balance($)"
+          },
+          "Unnamed: 3": {
+            "0": NaN,
+            "1": NaN,
+            "2": "Date"
+          },
+          "Unnamed: 4": {
+            "0": NaN,
+            "1": NaN,
+            "2": "Balance ($)"
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 7,
+        "rows": 48,
+        "columns": [
+          "Account Changes",
+          "Effective Date",
+          "What to Expect After the Changes Become Effective"
+        ],
+        "sample": {
+          "Account Changes": {
+            "0": NaN,
+            "1": "Business Advantage Checking will become Business",
+            "2": "Advantage Relationship Banking."
+          },
+          "Effective Date": {
+            "0": NaN,
+            "1": "February 19, 2022",
+            "2": NaN
+          },
+          "What to Expect After the Changes Become Effective": {
+            "0": NaN,
+            "1": "You will see the new name on your statements, in Mobile banking",
+            "2": "and in Business Advantage 360, our small business online banking."
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 8,
+        "rows": 19,
+        "columns": [
+          "Unnamed: 0",
+          "Unnamed: 1"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Excess Transactions Fee and Deposited Item Fee",
+            "1": "Account statement",
+            "2": "cycles on or after"
+          },
+          "Unnamed: 1": {
+            "0": "For more information about any fees that may apply to business",
+            "1": "accounts, review the Business Schedule of Fees for the state in",
+            "2": NaN
+          }
+        }
+      }
+    ],
+    "plumber_results": [
+      {
+        "method": "pdfplumber",
+        "page": 1,
+        "table_num": 0,
+        "rows": 1,
+        "columns": 3,
+        "sample": [
+          [
+            "",
+            "Please see the Important Messages - Please Read section of your statement for important details that could impact you.",
+            ""
+          ]
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 1,
+        "potential_transactions": 10,
+        "sample": [
+          "P.O. Box 15284",
+          "1.888.BUSINESS (1.888.287.4637)",
+          "P.O. Box 25118"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 2,
+        "potential_transactions": 2,
+        "sample": [
+          "this statement as soon as you can. We must hear from you no later than 60 days after we sent you the FIRST statement on",
+          "will correct any error promptly. If we take more than 10 business days (10 calendar days if you are a Massachusetts"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 3,
+        "potential_transactions": 22,
+        "sample": [
+          "scams involving promises for COVID-19 vaccines, stimulus payments, employment and more. Scammers may try to contact you in",
+          "02/01/22 Zelle Transfer Conf# 580341df4; WILLIAMS, MYKEL 300.00",
+          "02/01/22 Zelle Transfer Conf# 13fb912cc; WILLIAMS, MYKEL 150.00"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 4,
+        "potential_transactions": 26,
+        "sample": [
+          "02/26/22 Counter Credit 2,000.00",
+          "02/26/22 Zelle Transfer Conf# T09WYHB9G; ASHLEY SANCHEZ 499.00",
+          "02/26/22 100.00"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 5,
+        "potential_transactions": 30,
+        "sample": [
+          "CHECKCARD 0203 AUTOCODE NY. 718-404-9691 NY 55432861034200344993392 CKCD 8999",
+          "02/03/22 -27.00",
+          "02/04/22 -232.66"
+        ]
+      },
+      {
+        "method": "pdfplumber",
+        "page": 6,
+        "table_num": 0,
+        "rows": 7,
+        "columns": 3,
+        "sample": [
+          [
+            null,
+            "Total for this period",
+            "Total year-to-date"
+          ],
+          [
+            "",
+            "",
+            ""
+          ],
+          [
+            "Total Overdraft fees",
+            "$35.00",
+            "$35.00"
+          ]
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 6,
+        "potential_transactions": 17,
+        "sample": [
+          "CHECKCARD 0225 AUTOCODE NY. 718-404-9691 NY 55432861056200004165961 CKCD 8999",
+          "02/25/22 -18.00",
+          "Subtotal for card account # XXXX XXXX XXXX 6916 -$2,649.47"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 7,
+        "potential_transactions": 7,
+        "sample": [
+          "02/01 691.91 02/10 7,504.46 02/19 430.41",
+          "02/02 34.01 02/11 5,004.46 02/22 407.69",
+          "02/03 7.01 02/12 442.70 02/23 3,278.98"
+        ]
+      },
+      {
+        "method": "pdfplumber",
+        "page": 9,
+        "table_num": 0,
+        "rows": 8,
+        "columns": 3,
+        "sample": [
+          [
+            "",
+            "",
+            ""
+          ],
+          [
+            "Account Changes",
+            "Effective Date",
+            "What to Expect After the Changes Become Effective"
+          ],
+          [
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 9,
+        "potential_transactions": 16,
+        "sample": [
+          "Advantage Relationship Banking. and in Business Advantage 360, our small business online banking.",
+          "The Monthly Fee of $29.95 will no longer be waived based January 30, 2022 \u00b7 Maintain a combined average monthly balance of $15,000 or more",
+          "\u00b7 $15,000 average monthly balance."
+        ]
+      },
+      {
+        "method": "pdfplumber",
+        "page": 10,
+        "table_num": 0,
+        "rows": 2,
+        "columns": 3,
+        "sample": [
+          [
+            "Excess Transactions Fee and Deposited Item Fee\nThese fees will no longer apply to deposits made using\nRemote Deposit Online, Mobile Check Deposit, or at a\nBank of America ATM.",
+            "Account statement\ncycles on or after\nJanuary 30, 2022",
+            "For more information about any fees that may apply to business\naccounts, review the Business Schedule of Fees for the state in\nwhich you opened your account at\nbankofamerica.com/businessfeesataglance."
+          ],
+          [
+            "Business Advantage Savings\nThe Monthly Fee is decreasing from $15 to $10.",
+            "Account statement\ncycles on or after\nJanuary 30, 2022",
+            "To avoid the Monthly Fee, meet any ONE of the following\nrequirements during each statement cycle:\n\u00b7 Maintain a minimum daily balance of $2,500 or more in your\naccount. Previously, the minimum daily balance was $5,000.\n\u00b7 Include in your Business Advantage Relationship Banking solution\n(one per checking solution).\n\u00b7 Qualify for and enroll in Preferred Rewards for Business (first four\nsavings accounts, per enrolled business)."
+          ]
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 10,
+        "potential_transactions": 4,
+        "sample": [
+          "The Monthly Fee is decreasing from $15 to $10. \u00b7 Maintain a minimum daily balance of $2,500 or more in your",
+          "account. Previously, the minimum daily balance was $5,000.",
+          "(Footnote 1) Intuit and the Intuit logo are registered trademarks of Intuit Inc., used under license. ADP and the ADP logo are registered"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "USA Wells Fargo 7 pages.pdf",
+    "pages": 7,
+    "tabula_results": [
+      {
+        "method": "tabula",
+        "table_num": 0,
+        "rows": 39,
+        "columns": [
+          "2/1",
+          "ATM Cash Deposit on 02/01 2401 W Cheltenham Ave Wyncote",
+          "523.00",
+          "Unnamed: 0",
+          "Unnamed: 1"
+        ],
+        "sample": {
+          "2/1": {
+            "0": NaN,
+            "1": "2/1",
+            "2": NaN
+          },
+          "ATM Cash Deposit on 02/01 2401 W Cheltenham Ave Wyncote": {
+            "0": "PA 0005237 ATM ID 2818A Card 7634",
+            "1": "Purchase authorized on 02/01 Geico *Auto Macon DC",
+            "2": "S461026848186037 Card 7634"
+          },
+          "523.00": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "Unnamed: 0": {
+            "0": NaN,
+            "1": 386.17,
+            "2": NaN
+          },
+          "Unnamed: 1": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 1,
+        "rows": 61,
+        "columns": [
+          "2/5",
+          "Purchase authorized on 02/01 Apple.Com/Bill 866-712-7753 CA",
+          "Unnamed: 0",
+          "5.39",
+          "Unnamed: 1"
+        ],
+        "sample": {
+          "2/5": {
+            "0": NaN,
+            "1": "2/2",
+            "2": NaN
+          },
+          "Purchase authorized on 02/01 Apple.Com/Bill 866-712-7753 CA": {
+            "0": "S461032731881636 Card 7634",
+            "1": "ATM Withdrawal authorized on 02/01 2843 North Broad Street",
+            "2": "Philadelphia PA 0002050 ATM ID 6598C Card 7634"
+          },
+          "Unnamed: 0": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "5.39": {
+            "0": NaN,
+            "1": 100.0,
+            "2": NaN
+          },
+          "Unnamed: 1": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 2,
+        "rows": 48,
+        "columns": [
+          "Date Number",
+          "Unnamed: 0",
+          "Description",
+          "Additions",
+          "Subtractions",
+          "balance"
+        ],
+        "sample": {
+          "Date Number": {
+            "0": "2/11",
+            "1": "2/11",
+            "2": NaN
+          },
+          "Unnamed: 0": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "Description": {
+            "0": "Square Inc 210211P2 210211 L205598362095 Citizen Furman Jr",
+            "1": "Money Transfer authorized on 02/11 From Furman Citizen PA",
+            "2": "S00381042811573514 Card 7634"
+          },
+          "Additions": {
+            "0": 245.92,
+            "1": 623.7,
+            "2": NaN
+          },
+          "Subtractions": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "balance": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 12,
+        "rows": 7,
+        "columns": [
+          "us at Wells Fargo Bank, P.O. Box 6995, Portland, OR 97228-6995 as soon as Description Amount",
+          "Unnamed: 0"
+        ],
+        "sample": {
+          "us at Wells Fargo Bank, P.O. Box 6995, Portland, OR 97228-6995 as soon as Description Amount": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "Unnamed: 0": {
+            "0": "you can, if you think your statement or receipt is wrong or if you need more",
+            "1": "information about a transfer on the statement or receipt. We must hear",
+            "2": "from you no later than 60 days after we sent you the FIRST statement on"
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 13,
+        "rows": 34,
+        "columns": [
+          "Number/Description",
+          "Unnamed: 0",
+          "Amount",
+          "Unnamed: 1",
+          "Unnamed: 2"
+        ],
+        "sample": {
+          "Number/Description": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "Unnamed: 0": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "Amount": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "Unnamed: 1": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "Unnamed: 2": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      }
+    ],
+    "plumber_results": [
+      {
+        "method": "pdfplumber_text",
+        "page": 1,
+        "potential_transactions": 5,
+        "sample": [
+          "Write: Wells Fargo Bank, N.A. (345)",
+          "P.O. Box 6995",
+          "Wells Fargo Everyday Checking 2 5844082932 582.42 -364.62"
+        ]
+      },
+      {
+        "method": "pdfplumber",
+        "page": 2,
+        "table_num": 0,
+        "rows": 1,
+        "columns": 2,
+        "sample": [
+          [
+            "",
+            ""
+          ]
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 2,
+        "potential_transactions": 26,
+        "sample": [
+          "Beginning balance on 02/01 $582.42 JOHN CITIZEN",
+          "Deposits/Additions 2,149.45 Pennsylvania account terms and conditions apply",
+          "Withdrawals/Subtractions - 3,096.49 For Direct Deposit use"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 3,
+        "potential_transactions": 32,
+        "sample": [
+          "2/5 Purchase authorized on 02/01 Apple.Com/Bill 866-712-7753 CA 5.39",
+          "2/2 ATM Withdrawal authorized on 02/01 2843 North Broad Street 100.00",
+          "2/2 ATM Withdrawal authorized on 02/02 700 Adams Ave. 50.00 196.95"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 4,
+        "potential_transactions": 29,
+        "sample": [
+          "2/11 Square Inc 210211P2 210211 L205598362095 Citizen Furman Jr 245.92",
+          "2/11 Money Transfer authorized on 02/11 From Furman Citizen PA 623.70",
+          "2/11 Recurring Payment authorized on 02/09 Apple.Com/Bill 14.03"
+        ]
+      },
+      {
+        "method": "pdfplumber",
+        "page": 5,
+        "table_num": 0,
+        "rows": 2,
+        "columns": 1,
+        "sample": [
+          [
+            ""
+          ],
+          [
+            ""
+          ]
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 5,
+        "potential_transactions": 10,
+        "sample": [
+          "\u00b7 Minimum daily balance $500.00 -$364.62",
+          "\u00b7 Total amount of qualifying direct deposits $500.00 $245.92",
+          "by signing on to Wells Fargo Online\u00ae or calling the number on your statement. Once requested, replacement cards arrive by mail in 5"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 6,
+        "potential_transactions": 16,
+        "sample": [
+          "Interest paid this statement $0.00",
+          "Average collected balance $21.32",
+          "Annual percentage yield earned 0.00%"
+        ]
+      },
+      {
+        "method": "pdfplumber",
+        "page": 7,
+        "table_num": 0,
+        "rows": 6,
+        "columns": 2,
+        "sample": [
+          [
+            "Description",
+            "Amount"
+          ],
+          [
+            "",
+            ""
+          ],
+          [
+            "",
+            ""
+          ]
+        ]
+      },
+      {
+        "method": "pdfplumber",
+        "page": 7,
+        "table_num": 1,
+        "rows": 21,
+        "columns": 3,
+        "sample": [
+          [
+            "Number/Description",
+            "Amount",
+            null
+          ],
+          [
+            "",
+            "",
+            null
+          ],
+          [
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 7,
+        "potential_transactions": 6,
+        "sample": [
+          "period. Collection and Recovery, P.O. Box 5058, Portland, OR 97208-5058. Please",
+          "us at Wells Fargo Bank, P.O. Box 6995, Portland, OR 97228-6995 as soon as",
+          "1. Tell us your name and account number (if any)."
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Canada RBC.pdf",
+    "pages": 4,
+    "tabula_results": [
+      {
+        "method": "tabula",
+        "table_num": 0,
+        "rows": 6,
+        "columns": [
+          "253",
+          "Unnamed: 0",
+          "Unnamed: 1"
+        ],
+        "sample": {
+          "253": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "Unnamed: 0": {
+            "0": NaN,
+            "1": "Royal Bank of Canada",
+            "2": "P.O. Box4047 Terminal A"
+          },
+          "Unnamed: 1": {
+            "0": NaN,
+            "1": NaN,
+            "2": "Your RBC personal banking"
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 1,
+        "rows": 4,
+        "columns": [
+          "Unnamed: 0"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 2,
+        "rows": 32,
+        "columns": [
+          "Unnamed: 0",
+          "Loan payment 298.87",
+          "28707.28"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "10 Apr",
+            "1": NaN,
+            "2": NaN
+          },
+          "Loan payment 298.87": {
+            "0": "Interac purchase - 8338 WAL-MART #1120 72.60",
+            "1": "Online Banking payment \u2013 7484",
+            "2": NaN
+          },
+          "28707.28": {
+            "0": "2,735.361",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 3,
+        "rows": 3,
+        "columns": [
+          "Date",
+          "Description",
+          "Withdrawals ($)",
+          "Deposits ($)",
+          "Balance ($)"
+        ],
+        "sample": {
+          "Date": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "Description": {
+            "0": "Online Banking payment - 9707",
+            "1": NaN,
+            "2": "RBC MASTERCARD"
+          },
+          "Withdrawals ($)": {
+            "0": NaN,
+            "1": NaN,
+            "2": 500.0
+          },
+          "Deposits ($)": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "Balance ($)": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 4,
+        "rows": 43,
+        "columns": [
+          "Details of your account activity - continued",
+          "Unnamed: 0",
+          "Unnamed: 1"
+        ],
+        "sample": {
+          "Details of your account activity - continued": {
+            "0": NaN,
+            "1": "Date Description Withdrawals ($)",
+            "2": "Contactless Interac purchase \u2013 7004"
+          },
+          "Unnamed: 0": {
+            "0": NaN,
+            "1": "Deposits ($)",
+            "2": NaN
+          },
+          "Unnamed: 1": {
+            "0": NaN,
+            "1": "Balance ($)",
+            "2": NaN
+          }
+        }
+      }
+    ],
+    "plumber_results": [
+      {
+        "method": "pdfplumber_text",
+        "page": 1,
+        "potential_transactions": 13,
+        "sample": [
+          "P.O. Box4047 Terminal A",
+          "Opening Balance 5,575.83",
+          "3 Apr e-Transfer - Autodeposit 700.00 6,275.83"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 2,
+        "potential_transactions": 26,
+        "sample": [
+          "RBC MASTERCARD 500.00",
+          "TIM HORTONS #55 6.74",
+          "AFROCAN DIRECT 60.77"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 3,
+        "potential_transactions": 27,
+        "sample": [
+          "P.O. Box4047 Terminal A",
+          "SHOPPER'S DRUG 47.69",
+          "Loan payment 298.87 861.53"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 4,
+        "potential_transactions": 7,
+        "sample": [
+          "Fee Electronic transaction 27 @ $1.00 27.00",
+          "MultiProduct rebate 4.00 1,699.34",
+          "Closing Balance $1,699.34"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Australia Commonwealth J C.pdf",
+    "pages": 23,
+    "tabula_results": [
+      {
+        "method": "tabula",
+        "table_num": 7,
+        "rows": 2,
+        "columns": [
+          "Unnamed: 0",
+          "Date",
+          "Transaction",
+          "Debit",
+          "Credit",
+          "Unnamed: 1",
+          "Unnamed: 2",
+          "Unnamed: 3",
+          "Unnamed: 4",
+          "Unnamed: 5"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": NaN,
+            "1": NaN
+          },
+          "Date": {
+            "0": NaN,
+            "1": NaN
+          },
+          "Transaction": {
+            "0": NaN,
+            "1": NaN
+          },
+          "Debit": {
+            "0": NaN,
+            "1": NaN
+          },
+          "Credit": {
+            "0": NaN,
+            "1": NaN
+          },
+          "Unnamed: 1": {
+            "0": NaN,
+            "1": NaN
+          },
+          "Unnamed: 2": {
+            "0": NaN,
+            "1": NaN
+          },
+          "Unnamed: 3": {
+            "0": NaN,
+            "1": NaN
+          },
+          "Unnamed: 4": {
+            "0": NaN,
+            "1": NaN
+          },
+          "Unnamed: 5": {
+            "0": NaN,
+            "1": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 21,
+        "rows": 55,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "18 Jul DAVID JONES LIMITED BRISBANE QLD",
+            "2": "18 Jul Refund Purchase"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": "778.00",
+            "2": NaN
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": "$6,619.56 CR",
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 22,
+        "rows": 53,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "20 Aug Direct Credit 128594 MARTIN DIGBY TRANSFER",
+            "2": "FROM NAB"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": NaN,
+            "2": "800.00"
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": NaN,
+            "2": "$7,153.53 CR"
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 23,
+        "rows": 57,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "03 Sep OPTUS BILLING PAY MY B MACQUARIE PAR NS",
+            "2": "Card xx7831"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": NaN,
+            "2": NaN
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 24,
+        "rows": 50,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number 06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "13 Sep CLEARSKINCARE CHERMS CHERMSIDE AUS",
+            "2": "Card xx7831"
+          },
+          "Account Number 06 4791 10044706": {
+            "0": "Debit Credit Balance",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 25,
+        "rows": 56,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "27 Sep WORLDREMIT LTD LONDON W14 8U GB GBR",
+            "2": "Card xx7831 AUD 399.84"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": NaN,
+            "2": NaN
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 26,
+        "rows": 54,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "04 Oct WORLDREMIT LTD LONDON W14 8U GB GBR",
+            "2": "Card xx7831 AUD 429.82"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": NaN,
+            "2": NaN
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 27,
+        "rows": 56,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "09 Oct Transfer from xx7846 CommBank app",
+            "2": "Home"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": NaN,
+            "2": "500.00"
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": NaN,
+            "2": "$11,620.56 CR"
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 28,
+        "rows": 56,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "09 Oct WORLDREMIT LTD LONDON W14 8U GB GBR",
+            "2": "Card xx7831 AUD 199.33"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": NaN,
+            "2": NaN
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 29,
+        "rows": 56,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "10 Oct AliExpress Supplies",
+            "2": "Card xx7831 AUD 50.00"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": NaN,
+            "2": NaN
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 30,
+        "rows": 56,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "15 Oct AliExpress Supplies",
+            "2": "Card xx7831 AUD 400.00"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": NaN,
+            "2": NaN
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 31,
+        "rows": 53,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "21 Oct WOOLWORTHS W1055 POTTS POINT AUS",
+            "2": "Card xx7831"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": NaN,
+            "2": NaN
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 32,
+        "rows": 55,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number 06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "29 Oct BP Classified Hertfordshire GBR Card",
+            "2": "xx7831 AUD 1.00"
+          },
+          "Account Number 06 4791 10044706": {
+            "0": "Debit Credit Balance",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 33,
+        "rows": 54,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "05 Nov Transfer to xx7846 CommBank app",
+            "2": "Bill"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": NaN,
+            "2": "500.00"
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": NaN,
+            "2": "$4,129.98 CR"
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 34,
+        "rows": 57,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "26 Nov APPLE ITUNES STORE SYDNEY AU AUS",
+            "2": "Card xx7831"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": NaN,
+            "2": NaN
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 35,
+        "rows": 60,
+        "columns": [
+          "04 Dec WOOLWORTHS W2696 SPRING HILL AUS",
+          "Unnamed: 0",
+          "Unnamed: 1",
+          "Unnamed: 2"
+        ],
+        "sample": {
+          "04 Dec WOOLWORTHS W2696 SPRING HILL AUS": {
+            "0": "Card xx7831",
+            "1": "Value Date: 02/12/2021",
+            "2": "04 Dec Wdl ATM ST.GEOR ST.GEORGE TAIGUTAIGUM"
+          },
+          "Unnamed: 0": {
+            "0": NaN,
+            "1": "298.60",
+            "2": "100.00"
+          },
+          "Unnamed: 1": {
+            "0": NaN,
+            "1": NaN,
+            "2": NaN
+          },
+          "Unnamed: 2": {
+            "0": NaN,
+            "1": "$2,190.05 CR",
+            "2": "$2,090.05 CR"
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 36,
+        "rows": 51,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "13 Dec BP Classified 19726438509 GBR",
+            "2": "Card xx3892 AUD 22.60"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": NaN,
+            "2": NaN
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 37,
+        "rows": 50,
+        "columns": [
+          "Unnamed: 0",
+          "Account Number",
+          "06 4791 10044706"
+        ],
+        "sample": {
+          "Unnamed: 0": {
+            "0": "Date  Transaction",
+            "1": "24 Dec BP Classified Hertfordshire GBR",
+            "2": "Card xx3892 AUD 1.00"
+          },
+          "Account Number": {
+            "0": "Debit Credit",
+            "1": NaN,
+            "2": NaN
+          },
+          "06 4791 10044706": {
+            "0": "Balance",
+            "1": NaN,
+            "2": NaN
+          }
+        }
+      },
+      {
+        "method": "tabula",
+        "table_num": 38,
+        "rows": 3,
+        "columns": [
+          "Staff assisted withdrawals",
+          "0",
+          "0.1",
+          "0.2",
+          "0.3",
+          "0.4",
+          "$0.00",
+          "$0.00.1"
+        ],
+        "sample": {
+          "Staff assisted withdrawals": {
+            "0": "Cheques written",
+            "1": NaN,
+            "2": "Total"
+          },
+          "0": {
+            "0": 0.0,
+            "1": NaN,
+            "2": 0.0
+          },
+          "0.1": {
+            "0": 0.0,
+            "1": NaN,
+            "2": 0.0
+          },
+          "0.2": {
+            "0": 0.0,
+            "1": NaN,
+            "2": 0.0
+          },
+          "0.3": {
+            "0": 0.0,
+            "1": NaN,
+            "2": 0.0
+          },
+          "0.4": {
+            "0": 0.0,
+            "1": NaN,
+            "2": 0.0
+          },
+          "$0.00": {
+            "0": "$0.00",
+            "1": NaN,
+            "2": NaN
+          },
+          "$0.00.1": {
+            "0": "$0.00",
+            "1": NaN,
+            "2": "$0.00"
+          }
+        }
+      }
+    ],
+    "plumber_results": [
+      {
+        "method": "pdfplumber",
+        "page": 1,
+        "table_num": 0,
+        "rows": 1,
+        "columns": 5,
+        "sample": [
+          [
+            "Date",
+            "Transaction",
+            "Debit",
+            "Credit",
+            "Balance"
+          ]
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 1,
+        "potential_transactions": 22,
+        "sample": [
+          "Closing Balance $17,259.72 CR",
+          "monthly account fee waived if you deposit at least $2,000 each calendar month.",
+          ".0"
+        ]
+      },
+      {
+        "method": "pdfplumber",
+        "page": 2,
+        "table_num": 0,
+        "rows": 1,
+        "columns": 5,
+        "sample": [
+          [
+            "Date",
+            "Transaction",
+            "Debit",
+            "Credit",
+            "Balance"
+          ]
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 2,
+        "potential_transactions": 28,
+        "sample": [
+          "Card xx7831 AUD 257.88",
+          "Value Date: 01/07/2021 257.88 $8,651.90 CR",
+          "Value Date: 30/06/2021 25.49 $8,626.41 CR"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 3,
+        "potential_transactions": 39,
+        "sample": [
+          "18 Jul DAVID JONES LIMITED BRISBANE QLD 778.00 $6,619.56 CR",
+          "DAVID JONES LIMITED BRISBANE QLD 200.00 $6,819.56 CR",
+          "PHP 200000.00000 Rate 39.6150"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 4,
+        "potential_transactions": 28,
+        "sample": [
+          "Card xx7831 AUD 29.06",
+          "Value Date: 29/07/2021 29.06 $1,144.29 CR",
+          "03 Aug Transfer to xx8459 CommBank app 100.00 $1,044.29 CR"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 5,
+        "potential_transactions": 39,
+        "sample": [
+          "FROM NAB 800.00 $7,153.53 CR",
+          "20 Aug Cash Dep Branch F'titude Valley 3,400.00 $10,553.53 CR",
+          "Card xx7831 AUD 260.65"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 6,
+        "potential_transactions": 29,
+        "sample": [
+          "Value Date: 29/08/2021 327.00 $7,841.44 CR",
+          "Card xx7831 AUD 1.00",
+          "Value Date: 31/08/2021 1.00 $7,840.44 CR"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 7,
+        "potential_transactions": 34,
+        "sample": [
+          "Value Date: 10/09/2021 219.00 $5,727.34 CR",
+          "Yanni 700.00 $6,427.34 CR",
+          "15 Sep Transfer to xx8459 CommBank app 200.00 $6,227.34 CR"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 8,
+        "potential_transactions": 40,
+        "sample": [
+          "Card xx7831 AUD 24.00",
+          "Value Date: 22/09/2021 24.00 $5,676.30 CR",
+          "25 Sep Cash Dep Branch 240 Queen Bne 439.35 $6,115.65 CR"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 9,
+        "potential_transactions": 39,
+        "sample": [
+          "Card xx7831 AUD 399.84",
+          "Value Date: 24/09/2021 399.84 $9,038.38 CR",
+          "MLT Card xx7831 AUD 300.00"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 10,
+        "potential_transactions": 32,
+        "sample": [
+          "Card xx7831 AUD 429.82",
+          "Value Date: 01/10/2021 429.82 $9,608.56 CR",
+          "Card xx7831 AUD 120.00"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 11,
+        "potential_transactions": 41,
+        "sample": [
+          "Home 500.00 $11,620.56 CR",
+          "Home 500.00 $12,120.56 CR",
+          "Home 500.00 $12,620.56 CR"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 12,
+        "potential_transactions": 36,
+        "sample": [
+          "Card xx7831 AUD 199.33",
+          "Value Date: 06/10/2021 199.33 $9,221.23 CR",
+          "Card xx7831 AUD 200.00"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 13,
+        "potential_transactions": 39,
+        "sample": [
+          "Card xx7831 AUD 50.00",
+          "Value Date: 04/10/2021 50.00 $3,971.23 CR",
+          "CBA ATM 240 QUEEN ST B QLD 400002 AUS 1,190.00 $5,161.23 CR"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 14,
+        "potential_transactions": 36,
+        "sample": [
+          "Card xx7831 AUD 400.00",
+          "Value Date: 08/10/2021 400.00 $1,173.80 CR",
+          "Card xx7831 AUD 200.00"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 15,
+        "potential_transactions": 34,
+        "sample": [
+          "Value Date: 20/10/2021 52.00 $772.18 CR",
+          "Value Date: 21/10/2021 304.00 $468.18 CR",
+          "Value Date: 21/10/2021 30.00 $438.18 CR"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 16,
+        "potential_transactions": 32,
+        "sample": [
+          "xx7831 AUD 1.00",
+          "Value Date: 26/10/2021 1.00 $1,079.10 CR",
+          "Card xx7831 AUD 294.34"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 17,
+        "potential_transactions": 34,
+        "sample": [
+          "Bill 500.00 $4,129.98 CR",
+          "Value Date: 03/11/2021 8.42 $4,121.56 CR",
+          "martin 900.00 $5,021.56 CR"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 18,
+        "potential_transactions": 37,
+        "sample": [
+          "Value Date: 12/11/2021 49.99 $874.88 CR",
+          "05181 1,100.00 $1,974.88 CR",
+          "40690781 EYWQ 37.05 $2,011.93 CR"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 19,
+        "potential_transactions": 33,
+        "sample": [
+          "Value Date: 21/11/2021 28.78 $2,813.01 CR",
+          "27 Nov VICTORIAS SECRET 0001 MASCOT 289.00 $2,524.01 CR",
+          "xx7831 PHP 12172.21"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 20,
+        "potential_transactions": 27,
+        "sample": [
+          "04 Dec GM CABS PTY. LTD. MASCOT AUS",
+          "Value Date: 03/12/2021 59.82 $3,393.55 CR",
+          "Value Date: 01/12/2021 904.90 $2,488.65 CR"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 21,
+        "potential_transactions": 31,
+        "sample": [
+          "Card xx3892 AUD 22.60",
+          "Value Date: 10/12/2021 22.60 $13,591.68 CR",
+          "Card xx3892 AUD 5.00"
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 22,
+        "potential_transactions": 26,
+        "sample": [
+          "Card xx3892 AUD 1.00",
+          "Value Date: 20/12/2021 1.00 $21,264.58 CR",
+          "Card xx3892 AUD 5.00"
+        ]
+      },
+      {
+        "method": "pdfplumber",
+        "page": 23,
+        "table_num": 0,
+        "rows": 2,
+        "columns": 1,
+        "sample": [
+          [
+            "Transaction Summary during 1st July 2021 to 30th November 2021"
+          ],
+          [
+            ""
+          ]
+        ]
+      },
+      {
+        "method": "pdfplumber_text",
+        "page": 23,
+        "potential_transactions": 12,
+        "sample": [
+          "Staff assisted withdrawals 0 0 0 0 0 $0.00 $0.00",
+          "Cheques written 0 0 0 0 0 $0.00 $0.00",
+          "Total 0 0 0 0 0 $0.00"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "dummy_statement.pdf",
+    "pages": 2,
+    "tabula_results": [],
+    "plumber_results": []
+  }
+]

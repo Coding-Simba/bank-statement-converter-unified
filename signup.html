@@ -156,11 +156,11 @@
 </div>
 <form id="signupForm">
 <div class="social-signup">
-<button class="social-btn" type="button">
+<button class="social-btn google-btn" type="button" data-provider="google">
 <i class="fab fa-google" style="color: #4285f4;"></i>
                         Google
                     </button>
-<button class="social-btn" type="button">
+<button class="social-btn microsoft-btn" type="button" data-provider="microsoft">
 <i class="fab fa-microsoft" style="color: #00a4ef;"></i>
                         Microsoft
                     </button>
@@ -203,33 +203,10 @@
 </div>
 </div>
 </div>
+<script src="/js/auth.js"></script>
 <script>
-        // Handle form submission
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show success message
-            const btn = e.target.querySelector('.signup-btn');
-            const originalText = btn.textContent;
-            btn.textContent = 'Creating account...';
-            btn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                // In production, this would redirect to dashboard after successful signup
-                alert('Account created successfully! You would be redirected to your dashboard.');
-                btn.textContent = originalText;
-                btn.disabled = false;
-            }, 1500);
-        });
-
-        // Handle social signup
-        document.querySelectorAll('.social-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const provider = this.textContent.trim();
-                alert(`Social signup with ${provider} would be implemented here`);
-            });
-        });
+        // The auth.js module will handle all signup functionality
+        // OAuth buttons and form submission are automatically set up by auth.js
     </script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+{
+  "test_time": "2025-07-28T13:02:11.252001",
+  "total_tests": 16,
+  "passed": 12,
+  "failed": 4,
+  "failed_banks": [
+    "green_dot",
+    "suntrust",
+    "walmart",
+    "westpac"
+  ]
+}

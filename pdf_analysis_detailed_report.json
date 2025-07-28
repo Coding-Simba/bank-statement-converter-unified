@@ -1,0 +1,221 @@
+{
+  "analysis_date": "2025-07-28T00:06:40.249267",
+  "summary": {
+    "total_pdfs": 21,
+    "successful": 0,
+    "failed": 21,
+    "success_rate": 0.0
+  },
+  "results": [
+    {
+      "filename": "Canada RBC (1).pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/Canada RBC (1).pdf",
+      "detected_bank": "rbc",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "Australia Westpac bank statement.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/Australia Westpac bank statement.pdf",
+      "detected_bank": "westpac",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "Australia Bendigo Bank Statement.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/Australia Bendigo Bank Statement.pdf",
+      "detected_bank": "bendigo",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "Canada RBC.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/Canada RBC.pdf",
+      "detected_bank": "rbc",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "United Kingdom Metro Bank.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/United Kingdom Metro Bank.pdf",
+      "detected_bank": "paypal",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "UK Nationwide word pdf.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/UK Nationwide word pdf.pdf",
+      "detected_bank": "paypal",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "USA Woodforest.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Woodforest.pdf",
+      "detected_bank": "pnc bank",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "USA PNC 2.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA PNC 2.pdf",
+      "detected_bank": "pnc bank",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "USA Citizens Bank.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Citizens Bank.pdf",
+      "detected_bank": "citizens bank",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "USA Navy Federal 5 pages.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Navy Federal 5 pages.pdf",
+      "detected_bank": "navy federal",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "USA DCU Bank Statement 5 page.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA DCU Bank Statement 5 page.pdf",
+      "detected_bank": "dcu",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "USA PayPal Account Statement.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA PayPal Account Statement.pdf",
+      "detected_bank": "paypal",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "USAA Bank Statement 5 page .pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USAA Bank Statement 5 page .pdf",
+      "detected_bank": "usaa",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "USA BECU statement 4 pages.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA BECU statement 4 pages.pdf",
+      "detected_bank": "becu",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "USA Wells Fargo 7 pages.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Wells Fargo 7 pages.pdf",
+      "detected_bank": "wells fargo",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "USA Bank of America.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Bank of America.pdf",
+      "detected_bank": "bank of america",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "Australia Commonwealth J C.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/Australia Commonwealth J C.pdf",
+      "detected_bank": "paypal",
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "merged_statements_2025-07-26.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/merged_statements_2025-07-26.pdf",
+      "detected_bank": null,
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "Bank-Statement-Template-4-TemplateLab.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/Bank-Statement-Template-4-TemplateLab.pdf",
+      "detected_bank": null,
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "dummy_statement.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/dummy_statement.pdf",
+      "detected_bank": null,
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    },
+    {
+      "filename": "Bank Statement Example Final.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/Bank Statement Example Final.pdf",
+      "detected_bank": null,
+      "parser_used": null,
+      "transactions_found": 0,
+      "parsing_success": false,
+      "error": null,
+      "sample_data": null
+    }
+  ]
+}

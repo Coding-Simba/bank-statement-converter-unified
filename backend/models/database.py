@@ -28,13 +28,24 @@ class User(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String(255), unique=True, index=True, nullable=False)
-    password_hash = Column(String(255), nullable=False)
+    password_hash = Column(String(255), nullable=True)  # Nullable for OAuth users
+    full_name = Column(String(255), nullable=True)
+    company_name = Column(String(255), nullable=True)
     account_type = Column(String(50), default="free", nullable=False)  # no_account, free, premium
+    subscription_status = Column(String(50), default="free", nullable=False)  # free, trial, active, cancelled, expired
+    subscription_plan = Column(String(50), nullable=True)  # starter, professional, business
+    subscription_expires_at = Column(DateTime, nullable=True)
+    auth_provider = Column(String(50), default="email", nullable=False)  # email, google, microsoft
+    provider_user_id = Column(String(255), nullable=True)  # OAuth provider's user ID
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     daily_generations = Column(Integer, default=0, nullable=False)
     last_generation_reset = Column(DateTime, default=datetime.utcnow, nullable=False)
     is_active = Column(Boolean, default=True, nullable=False)
+    email_verified = Column(Boolean, default=False, nullable=False)
+    email_verification_token = Column(String(255), nullable=True)
+    password_reset_token = Column(String(255), nullable=True)
+    password_reset_expires = Column(DateTime, nullable=True)
     
     # Relationships
     statements = relationship("Statement", back_populates="user", cascade="all, delete-orphan")

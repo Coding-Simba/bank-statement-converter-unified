@@ -7,7 +7,9 @@
 <meta content="Log in to Bank Statement Converter - Access your account to convert bank statements to CSV/Excel." name="description"/>
 <link href="https://bankcsvconverter.com/login.html" rel="canonical"/><title>Log In - Bank Statement Converter</title>
 <link href="/css/modern-homepage.css" rel="stylesheet"/>
+<link href="/css/auth.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="/css/nav-fix.css" rel="stylesheet"/>
 <style>
         .login-container {
             min-height: calc(100vh - 70px);
@@ -172,11 +174,11 @@
 </div>
 <form id="loginForm">
 <div class="social-login">
-<button class="social-btn" type="button">
+<button class="social-btn google-btn" type="button" data-provider="google">
 <i class="fab fa-google" style="color: #4285f4;"></i>
                         Google
                     </button>
-<button class="social-btn" type="button">
+<button class="social-btn microsoft-btn" type="button" data-provider="microsoft">
 <i class="fab fa-microsoft" style="color: #00a4ef;"></i>
                         Microsoft
                     </button>
@@ -199,7 +201,7 @@
 </div>
 <a class="forgot-link" href="/forgot-password.html">Forgot password?</a>
 </div>
-<button class="login-btn" type="submit">
+<button class="login-btn submit-btn" type="submit">
                     Log In
                 </button>
 </form>
@@ -208,33 +210,10 @@
 </div>
 </div>
 </div>
+<script src="/js/auth.js"></script>
 <script>
-        // Handle form submission
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show loading state
-            const btn = e.target.querySelector('.login-btn');
-            const originalText = btn.textContent;
-            btn.textContent = 'Logging in...';
-            btn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                // In production, this would redirect to dashboard after successful login
-                alert('Login successful! You would be redirected to your dashboard.');
-                btn.textContent = originalText;
-                btn.disabled = false;
-            }, 1500);
-        });
-
-        // Handle social login
-        document.querySelectorAll('.social-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const provider = this.textContent.trim();
-                alert(`Social login with ${provider} would be implemented here`);
-            });
-        });
+        // The auth.js module will handle all login functionality
+        // OAuth buttons and form submission are automatically set up by auth.js
     </script>
 </body>
 </html>

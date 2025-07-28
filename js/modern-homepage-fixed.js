@@ -207,7 +207,7 @@
         if (statementId) {
             try {
                 const downloadUrl = window.location.hostname === 'localhost' 
-                    ? `http://localhost:8000/api/statement/${statementId}/download`
+                    ? `http://localhost:5000/api/statement/${statementId}/download`
                     : `https://bankcsvconverter.com/api/statement/${statementId}/download`;
                 
                 const response = await fetch(downloadUrl, {
@@ -301,7 +301,7 @@
         try {
             // Try different URL formats to avoid CORS issues
             const apiUrl = window.location.hostname === 'localhost' 
-                ? 'http://localhost:8000/api/convert'
+                ? 'http://localhost:5000/api/convert'
                 : 'https://bankcsvconverter.com/api/convert';
             
             console.log('Using API URL:', apiUrl);
@@ -378,7 +378,7 @@
         if (statementId) {
             // Download from backend
             const downloadUrl = window.location.hostname === 'localhost' 
-                ? `http://localhost:8000/api/statement/${statementId}/download`
+                ? `http://localhost:5000/api/statement/${statementId}/download`
                 : `https://bankcsvconverter.com/api/statement/${statementId}/download`;
             
             window.location.href = downloadUrl;

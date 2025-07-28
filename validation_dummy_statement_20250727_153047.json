@@ -1,0 +1,141 @@
+{
+  "metadata": {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/dummy_statement.pdf",
+    "extraction_timestamp": "2025-07-27T15:30:47.634161",
+    "original_count": 9,
+    "validation_status": "pending"
+  },
+  "transactions": [
+    {
+      "index": 0,
+      "date": "10/05",
+      "description": "CHECK 1234",
+      "amount": -9.98,
+      "issues": [],
+      "confidence": 1.0,
+      "needs_review": false
+    },
+    {
+      "index": 1,
+      "date": "10/12",
+      "description": "CHECK 1236",
+      "amount": -69.0,
+      "issues": [],
+      "confidence": 1.0,
+      "needs_review": false
+    },
+    {
+      "index": 2,
+      "date": "10/14",
+      "description": "CHECK 1237",
+      "amount": -180.63,
+      "issues": [],
+      "confidence": 1.0,
+      "needs_review": false
+    },
+    {
+      "index": 3,
+      "date": "10/16",
+      "description": "PREAUTHORIZED CREDIT",
+      "amount": 310.0,
+      "issues": [],
+      "confidence": 1.0,
+      "needs_review": false
+    },
+    {
+      "index": 4,
+      "date": "10/31",
+      "description": "PREAUTHORIZED CREDIT",
+      "amount": 9809.0,
+      "issues": [],
+      "confidence": 1.0,
+      "needs_review": false
+    },
+    {
+      "index": 5,
+      "date": "10/04",
+      "description": "POS PURCHASE",
+      "amount": -443565.0,
+      "issues": [
+        "large_amount"
+      ],
+      "confidence": 0.5,
+      "needs_review": true
+    },
+    {
+      "index": 6,
+      "date": "10/07",
+      "description": "POS PURCHASE",
+      "amount": -98765.0,
+      "issues": [
+        "large_amount"
+      ],
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "index": 7,
+      "date": "10/14",
+      "description": "POS PURCHASE",
+      "amount": -98765.0,
+      "issues": [
+        "large_amount"
+      ],
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "index": 8,
+      "date": "10/30",
+      "description": "POS PURCHASE",
+      "amount": -98765.0,
+      "issues": [
+        "large_amount"
+      ],
+      "confidence": 0.8,
+      "needs_review": true
+    }
+  ],
+  "summary": {
+    "total_transactions": 9,
+    "total_credits": 10119.0,
+    "total_debits": -740119.61,
+    "suspicious_amounts": [
+      {
+        "index": 5,
+        "amount": -443565.0
+      },
+      {
+        "index": 6,
+        "amount": -98765.0
+      },
+      {
+        "index": 7,
+        "amount": -98765.0
+      },
+      {
+        "index": 8,
+        "amount": -98765.0
+      }
+    ],
+    "missing_dates": [],
+    "missing_descriptions": []
+  },
+  "instructions": {
+    "review_process": [
+      "1. Review each transaction marked with needs_review=true",
+      "2. Verify dates are in correct format (MM/DD/YYYY)",
+      "3. Check amounts are reasonable for the transaction type",
+      "4. Ensure descriptions match the transaction",
+      "5. Mark validated=true when correct or after correction",
+      "6. Add correction notes if changes were made"
+    ],
+    "fields_to_update": {
+      "date": "Correct date in MM/DD/YYYY format",
+      "description": "Clear description of the transaction",
+      "amount": "Positive for credits, negative for debits",
+      "validated": "Set to true after review",
+      "correction_notes": "Explain any changes made"
+    }
+  }
+}

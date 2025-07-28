@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Analyze API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+        .info {
+            color: blue;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #4facfe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #3d8ff7;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Analyze Transactions API Test</h1>
+    
+    <div class="test-section">
+        <h2>1. Check API Base URL</h2>
+        <button onclick="checkApiUrl()">Check API URL</button>
+        <div id="apiUrlResult"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. Test API Health</h2>
+        <button onclick="testApiHealth()">Test Health Endpoint</button>
+        <div id="healthResult"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. Test Analyze Endpoint</h2>
+        <input type="file" id="testFile" accept=".pdf">
+        <button onclick="testAnalyzeEndpoint()">Test Analyze</button>
+        <div id="analyzeResult"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. Check Client-Side Parser</h2>
+        <button onclick="checkClientParser()">Check Parser</button>
+        <div id="parserResult"></div>
+    </div>
+
+    <script src="/js/api-config.js"></script>
+    <script>
+        function checkApiUrl() {
+            const resultDiv = document.getElementById('apiUrlResult');
+            const baseUrl = API_CONFIG.getBaseUrl();
+            const analyzeUrl = API_CONFIG.getUrl('/api/analyze-transactions');
+            
+            resultDiv.innerHTML = `
+                <p class="info">Base URL: ${baseUrl}</p>
+                <p class="info">Analyze URL: ${analyzeUrl}</p>
+                <p class="info">Current hostname: ${window.location.hostname}</p>
+            `;
+        }
+        
+        async function testApiHealth() {
+            const resultDiv = document.getElementById('healthResult');
+            resultDiv.innerHTML = '<p class="info">Testing...</p>';
+            
+            try {
+                const response = await fetch(API_CONFIG.getUrl('/health'));
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `
+                        <p class="success">✓ API is accessible</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <p class="error">✗ API returned error: ${response.status}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">✗ Failed to connect to API</p>
+                    <p class="error">Error: ${error.message}</p>
+                    <p class="info">This likely means the backend is not deployed or nginx is not configured properly.</p>
+                `;
+            }
+        }
+        
+        async function testAnalyzeEndpoint() {
+            const resultDiv = document.getElementById('analyzeResult');
+            const fileInput = document.getElementById('testFile');
+            
+            if (!fileInput.files.length) {
+                resultDiv.innerHTML = '<p class="error">Please select a PDF file first</p>';
+                return;
+            }
+            
+            resultDiv.innerHTML = '<p class="info">Testing...</p>';
+            
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            
+            try {
+                const response = await fetch(API_CONFIG.getUrl('/api/analyze-transactions'), {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `
+                        <p class="success">✓ Analysis successful</p>
+                        <p class="info">Transaction count: ${data.transaction_count || 0}</p>
+                        <pre>${JSON.stringify(data.analysis?.summary || data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <p class="error">✗ Analysis failed: ${response.status}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">✗ Failed to call analyze endpoint</p>
+                    <p class="error">Error: ${error.message}</p>
+                `;
+            }
+        }
+        
+        function checkClientParser() {
+            const resultDiv = document.getElementById('parserResult');
+            
+            // Check if client-side PDF parser is loaded
+            const hasPdfJs = typeof window.pdfjsLib !== 'undefined';
+            const hasAnalyzer = typeof window.PDFTransactionAnalyzer !== 'undefined';
+            
+            resultDiv.innerHTML = `
+                <p class="${hasPdfJs ? 'success' : 'error'}">
+                    ${hasPdfJs ? '✓' : '✗'} PDF.js library: ${hasPdfJs ? 'Loaded' : 'Not loaded'}
+                </p>
+                <p class="${hasAnalyzer ? 'success' : 'error'}">
+                    ${hasAnalyzer ? '✓' : '✗'} PDFTransactionAnalyzer: ${hasAnalyzer ? 'Loaded' : 'Not loaded'}
+                </p>
+                <p class="info">
+                    Note: The analyze-transactions page should use the backend API, 
+                    not client-side parsing.
+                </p>
+            `;
+        }
+    </script>
+</body>
+</html>

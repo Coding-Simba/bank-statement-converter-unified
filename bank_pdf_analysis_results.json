@@ -1,0 +1,677 @@
+[
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/Australia ANZ.pdf",
+    "filename": "Australia ANZ.pdf",
+    "bank_name": "ANZ Bank",
+    "extraction_status": "success",
+    "transaction_count": 1,
+    "issues": [
+      "Missing dates: 1/1 transactions"
+    ],
+    "sample_transactions": [
+      {
+        "date": "1/15",
+        "description": "/15 ETHEL ST",
+        "amount": 1.0
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 1,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/Australia Commonwealth J C.pdf",
+    "filename": "Australia Commonwealth J C.pdf",
+    "bank_name": "Commonwealth Bank",
+    "extraction_status": "success",
+    "transaction_count": 257,
+    "issues": [
+      "Missing dates: 257/257 transactions"
+    ],
+    "sample_transactions": [
+      {
+        "date": "27/06/2021",
+        "description": "/06/2021 59.99 $4,935.74 CR",
+        "amount": 27.0
+      },
+      {
+        "date": "26/06/2021",
+        "description": "Value Date: 26/06/2021 53.49 $4,882.25 CR",
+        "amount": 3.0
+      },
+      {
+        "date": "25/06/2021",
+        "description": "/06/2021 10.75 $4,871.50 CR",
+        "amount": 25.0
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 23,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/Australia Westpac bank statement.pdf",
+    "filename": "Australia Westpac bank statement.pdf",
+    "bank_name": "Westpac",
+    "extraction_status": "success",
+    "transaction_count": 26,
+    "issues": [
+      "Missing dates: 26/26 transactions"
+    ],
+    "sample_transactions": [
+      {
+        "date": "2/11/2022",
+        "description": "Transaction",
+        "amount": 1136.0
+      },
+      {
+        "date": "2/11/2022",
+        "description": "Transaction",
+        "amount": 55.0
+      },
+      {
+        "date": "2/12/2022",
+        "description": "Transaction",
+        "amount": 1081.06
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 1,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/Canada Scotiabank.pdf",
+    "filename": "Canada Scotiabank.pdf",
+    "bank_name": "Scotiabank",
+    "extraction_status": "success",
+    "transaction_count": 2,
+    "issues": [
+      "Missing dates: 2/2 transactions"
+    ],
+    "sample_transactions": [
+      {
+        "date": "1-88",
+        "description": "888-861-5443 / 416-701-7820",
+        "amount": 1.0
+      },
+      {
+        "date": "1-80",
+        "description": "800-665-2582.",
+        "amount": 1.0
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 1,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/UK Lloyds Bank.pdf",
+    "filename": "UK Lloyds Bank.pdf",
+    "bank_name": "Lloyds Bank",
+    "extraction_status": "success",
+    "transaction_count": 2,
+    "issues": [
+      "Missing dates: 2/2 transactions",
+      "Low extraction rate: 0.7 transactions/page"
+    ],
+    "sample_transactions": [
+      {
+        "date": "30-13-55",
+        "description": "13-55",
+        "amount": 30.0
+      },
+      {
+        "date": "42/1/2060",
+        "description": "RD62879 3990 542/1/20607",
+        "amount": 360344.0
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 3,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/UK Nationwide word pdf.pdf",
+    "filename": "UK Nationwide word pdf.pdf",
+    "bank_name": "Nationwide",
+    "extraction_status": "success",
+    "transaction_count": 8,
+    "issues": [
+      "Missing dates: 8/8 transactions",
+      "Low extraction rate: 1.6 transactions/page"
+    ],
+    "sample_transactions": [
+      {
+        "date": "07-04-36",
+        "description": "Aug 2020 Sort Code 07-04-36",
+        "amount": 14.0
+      },
+      {
+        "date": "14/07/2020",
+        "description": "Balance from statement 54 dated 14/07/2020 \u00a345,850",
+        "amount": 2020.0
+      },
+      {
+        "date": "23/11",
+        "description": "/112035811 3,000.00 23,136.60",
+        "amount": 323.0
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 5,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/United Kingdom Metro Bank.pdf",
+    "filename": "United Kingdom Metro Bank.pdf",
+    "bank_name": "Metro Bank",
+    "extraction_status": "success",
+    "transaction_count": 1,
+    "issues": [
+      "Missing dates: 1/1 transactions"
+    ],
+    "sample_transactions": [
+      {
+        "date": "21/01/2021",
+        "description": "/01/2021",
+        "amount": 21.0
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 1,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/USA BECU statement 4 pages.pdf",
+    "filename": "USA BECU statement 4 pages.pdf",
+    "bank_name": "BECU",
+    "extraction_status": "success",
+    "transaction_count": 72,
+    "issues": [
+      "Missing dates: 72/72 transactions"
+    ],
+    "sample_transactions": [
+      {
+        "date": "04/03",
+        "description": "External Deposit THE BOEING COMPA - DIR DEP",
+        "amount": 3107.52
+      },
+      {
+        "date": "04/18",
+        "description": "External Deposit THE BOEING COMPA - DIR DEP",
+        "amount": 2433.02
+      },
+      {
+        "date": "04/19",
+        "description": "Dividend/Interest",
+        "amount": 0.28
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 5,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/USA Citizens Bank.pdf",
+    "filename": "USA Citizens Bank.pdf",
+    "bank_name": "Citizens Bank",
+    "extraction_status": "success",
+    "transaction_count": 85,
+    "issues": [
+      "Missing dates: 85/85 transactions"
+    ],
+    "sample_transactions": [
+      {
+        "date": "1/1",
+        "description": "3299",
+        "amount": 283.98
+      },
+      {
+        "date": "1/1",
+        "description": "70.00 Purchase -",
+        "amount": 267414.0
+      },
+      {
+        "date": "1/1",
+        "description": "297414",
+        "amount": 40.0
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 7,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/USA Discover Bank.pdf",
+    "filename": "USA Discover Bank.pdf",
+    "bank_name": "Discover Bank",
+    "extraction_status": "success",
+    "transaction_count": 1,
+    "issues": [
+      "Missing dates: 1/1 transactions",
+      "Low extraction rate: 0.2 transactions/page"
+    ],
+    "sample_transactions": [
+      {
+        "date": "23-12-0358",
+        "description": "12-03587",
+        "amount": 170923.0
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 6,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/USA Green Dot Bank Statement 3 page.pdf",
+    "filename": "USA Green Dot Bank Statement 3 page.pdf",
+    "bank_name": "Green Dot Bank",
+    "extraction_status": "success",
+    "transaction_count": 5,
+    "issues": [
+      "Missing dates: 5/5 transactions",
+      "Low extraction rate: 1.7 transactions/page"
+    ],
+    "sample_transactions": [
+      {
+        "date": "04/15",
+        "description": "IDES PAYMENTS Deposit",
+        "amount": 1338.0
+      },
+      {
+        "date": "04/27",
+        "description": "Monthly Fee Fee",
+        "amount": -9.95
+      },
+      {
+        "date": "04/09/2022",
+        "description": "/09/2022-05/01/2022",
+        "amount": 4.0
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 3,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/USA Netspend Bank Statement.pdf",
+    "filename": "USA Netspend Bank Statement.pdf",
+    "bank_name": "Netspend",
+    "extraction_status": "success",
+    "transaction_count": 4,
+    "issues": [
+      "Missing dates: 4/4 transactions"
+    ],
+    "sample_transactions": [
+      {
+        "date": "1-80",
+        "description": "801-930-0991",
+        "amount": 1.0
+      },
+      {
+        "date": "1-80",
+        "description": "800-555-7347",
+        "amount": 1.0
+      },
+      {
+        "date": "1-87",
+        "description": "877-555-4281",
+        "amount": 1.0
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 1,
+      "has_tables": false,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/USA PayPal Account Statement.pdf",
+    "filename": "USA PayPal Account Statement.pdf",
+    "bank_name": "PayPal",
+    "extraction_status": "success",
+    "transaction_count": 21,
+    "issues": [
+      "Missing dates: 21/21 transactions"
+    ],
+    "sample_transactions": [
+      {
+        "date": "Apr 01, 2022",
+        "description": "- May",
+        "amount": 1.0
+      },
+      {
+        "date": "04/01/22",
+        "description": "Deposit in Paypal ID(839439283) USD",
+        "amount": 432.65
+      },
+      {
+        "date": "04/04/22",
+        "description": "Deposit in Paypal ID(839439283) USD",
+        "amount": 633.46
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 1,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/USA Suntrust.pdf",
+    "filename": "USA Suntrust.pdf",
+    "bank_name": "SunTrust",
+    "extraction_status": "success",
+    "transaction_count": 21,
+    "issues": [
+      "Missing dates: 21/21 transactions"
+    ],
+    "sample_transactions": [
+      {
+        "date": "04/04/2022",
+        "description": "Petron - C5 Station",
+        "amount": 223.26
+      },
+      {
+        "date": "04/09/2022",
+        "description": "South Star Drug",
+        "amount": 313.39
+      },
+      {
+        "date": "04/11/2022",
+        "description": "Rosewood Condominum",
+        "amount": 582.96
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 1,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/USA Woodforest.pdf",
+    "filename": "USA Woodforest.pdf",
+    "bank_name": "Woodforest National Bank",
+    "extraction_status": "success",
+    "transaction_count": 51,
+    "issues": [],
+    "sample_transactions": [
+      {
+        "date": "02-01",
+        "description": "DEPOSIT",
+        "amount": 203.0
+      },
+      {
+        "date": "02-01",
+        "description": "DEPOSIT",
+        "amount": 50.0
+      },
+      {
+        "date": "02-01",
+        "description": "POS DB MCDONALD'S M5906 KETTERING OH 0000000006180",
+        "amount": -5.48
+      }
+    ],
+    "needs_custom_parser": false,
+    "pdf_characteristics": {
+      "total_pages": 3,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/1/Walmart Money Card Bank Statement 3 page.pdf",
+    "filename": "Walmart Money Card Bank Statement 3 page.pdf",
+    "bank_name": "Walmart MoneyCard",
+    "extraction_status": "success",
+    "transaction_count": 31,
+    "issues": [
+      "Missing dates: 31/31 transactions"
+    ],
+    "sample_transactions": [
+      {
+        "date": "02/01",
+        "description": "Nancyhomes32@Gmail.com",
+        "amount": -20.0
+      },
+      {
+        "date": "02/03",
+        "description": "$21.68",
+        "amount": -280.0
+      },
+      {
+        "date": "02/05",
+        "description": "$301.68",
+        "amount": 300.0
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 3,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/example_bank_statement.pdf",
+    "filename": "example_bank_statement.pdf",
+    "bank_name": "Unknown Bank",
+    "extraction_status": "success",
+    "transaction_count": 10,
+    "issues": [],
+    "sample_transactions": [
+      {
+        "date": "01/05/19",
+        "description": "Deposit",
+        "amount": 50.0
+      },
+      {
+        "date": "11/05/19",
+        "description": "Counter credit",
+        "amount": 50.0
+      },
+      {
+        "date": "19/05/19",
+        "description": "SEVEN ELEVEN SALARY MAY",
+        "amount": 50.0
+      }
+    ],
+    "needs_custom_parser": false,
+    "pdf_characteristics": {
+      "total_pages": 2,
+      "has_tables": false,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "medium"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/merged_statements_2025-07-26.pdf",
+    "filename": "merged_statements_2025-07-26.pdf",
+    "bank_name": "Unknown Bank",
+    "extraction_status": "success",
+    "transaction_count": 17,
+    "issues": [
+      "Missing dates: 17/17 transactions"
+    ],
+    "sample_transactions": [
+      {
+        "date": "mm/dd/yyyy",
+        "description": "Fast Payment       Amazon",
+        "amount": -132.3
+      },
+      {
+        "date": "mm/dd/yyyy",
+        "description": "BACS               eBAY Trading Co.",
+        "amount": -515.22
+      },
+      {
+        "date": "mm/dd/yyyy",
+        "description": "Fast Payment       Morrisons Petrol",
+        "amount": -80.0
+      }
+    ],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 2,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "medium"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/Bank-Statement-Template-4-TemplateLab.pdf",
+    "filename": "Bank-Statement-Template-4-TemplateLab.pdf",
+    "bank_name": "Unknown Bank",
+    "extraction_status": "no_transactions",
+    "transaction_count": 0,
+    "issues": [
+      "No transactions extracted"
+    ],
+    "sample_transactions": [],
+    "needs_custom_parser": true,
+    "pdf_characteristics": {
+      "total_pages": 1,
+      "has_tables": true,
+      "is_scanned": false,
+      "has_forms": true,
+      "text_extraction_quality": "medium"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/dummy_statement.pdf",
+    "filename": "dummy_statement.pdf",
+    "bank_name": "Unknown Bank",
+    "extraction_status": "success",
+    "transaction_count": 22,
+    "issues": [],
+    "sample_transactions": [
+      {
+        "date": "10/02",
+        "description": "POS PURCHASE",
+        "amount": -4.23
+      },
+      {
+        "date": "10/03",
+        "description": "PREAUTHORIZED CREDIT",
+        "amount": 763.01
+      },
+      {
+        "date": "10/04",
+        "description": "POS PURCHASE",
+        "amount": -11.68
+      }
+    ],
+    "needs_custom_parser": false,
+    "pdf_characteristics": {
+      "total_pages": 2,
+      "has_tables": false,
+      "is_scanned": true,
+      "has_forms": false,
+      "text_extraction_quality": "poor"
+    }
+  },
+  {
+    "pdf_path": "/Users/MAC/Desktop/pdfs/Bank Statement Example Final.pdf",
+    "filename": "Bank Statement Example Final.pdf",
+    "bank_name": "Unknown Bank",
+    "extraction_status": "success",
+    "transaction_count": 13,
+    "issues": [],
+    "sample_transactions": [
+      {
+        "date": "1 February",
+        "description": "Card payment - High St Petrol Station",
+        "amount": -24.5
+      },
+      {
+        "date": "1 February",
+        "description": "Direct debit - Green Mobile Phone Bill",
+        "amount": -20.0
+      },
+      {
+        "date": "3 February",
+        "description": "Cash Withdrawal - YourBank, Anytown",
+        "amount": -30.0
+      }
+    ],
+    "needs_custom_parser": false,
+    "pdf_characteristics": {
+      "total_pages": 1,
+      "has_tables": false,
+      "is_scanned": false,
+      "has_forms": false,
+      "text_extraction_quality": "good"
+    }
+  }
+]

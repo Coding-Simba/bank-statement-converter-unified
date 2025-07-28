@@ -30,7 +30,7 @@ class StatementResponse(BaseModel):
     file_size: Optional[int]
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class GenerationLimitResponse(BaseModel):

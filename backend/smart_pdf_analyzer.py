@@ -128,7 +128,7 @@ class SmartPDFAnalyzer:
     
     def _extract_with_pdfplumber(self) -> List[Dict]:
         """Extract using pdfplumber"""
-        from .pdfplumber_parser import parse_with_pdfplumber
+        from pdfplumber_parser import parse_with_pdfplumber
         return parse_with_pdfplumber(self.pdf_path)
     
     def _extract_with_camelot(self) -> List[Dict]:
@@ -196,14 +196,14 @@ class SmartPDFAnalyzer:
     def _extract_with_ocr(self) -> List[Dict]:
         """Extract using OCR for scanned documents"""
         try:
-            from .advanced_ocr_parser import parse_scanned_pdf_advanced
+            from advanced_ocr_parser import parse_scanned_pdf_advanced
             print("Using advanced OCR parser...")
             return parse_scanned_pdf_advanced(self.pdf_path)
         except Exception as e:
             print(f"Advanced OCR failed: {e}, trying basic OCR...")
             # Fallback to basic OCR
             try:
-                from .ocr_parser import parse_scanned_pdf
+                from ocr_parser import parse_scanned_pdf
                 return parse_scanned_pdf(self.pdf_path)
             except Exception as e2:
                 print(f"Basic OCR also failed: {e2}")

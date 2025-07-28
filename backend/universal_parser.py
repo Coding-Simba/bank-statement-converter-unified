@@ -109,11 +109,8 @@ try:
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
     ADVANCED_OCR_AVAILABLE = False
-try:
-    from dummy_pdf_parser import parse_dummy_pdf
-    DUMMY_PARSER_AVAILABLE = True
-except ImportError:
-    DUMMY_PARSER_AVAILABLE = False
+# Removed dummy parser - contained hard-coded transactions
+DUMMY_PARSER_AVAILABLE = False
 # Import our new bank-specific parsers
 try:
     from bank_of_america_parser import BankOfAmericaParser
@@ -752,17 +749,7 @@ def parse_universal_pdf(pdf_path):
         if ocr_ready:
             print("Processing with OCR (this may take a moment)...")
             
-            # First, try specialized parsers that use OCR
-            if DUMMY_PARSER_AVAILABLE:
-                try:
-                    # The dummy parser uses OCR internally
-                    print("Attempting specialized OCR parser...")
-                    ocr_transactions = parse_dummy_pdf(pdf_path)
-                    if ocr_transactions and len(ocr_transactions) > len(transactions):
-                        print(f"Successfully extracted {len(ocr_transactions)} transactions using specialized OCR parser")
-                        transactions = ocr_transactions
-                except Exception as e:
-                    print(f"Specialized OCR parser failed: {e}")
+            # Removed dummy parser fallback - contained hard-coded transactions
             
             # Always try advanced OCR parser for maximum accuracy
             if ADVANCED_OCR_AVAILABLE:

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authenticating - Bank Statement Converter</title>
+    <link href="/css/modern-homepage.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #f8f9fa;
+        }
+        .auth-loading {
+            text-align: center;
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #e5e7eb;
+            border-top-color: #00bfa5;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        p {
+            color: #6c757d;
+            margin-bottom: 0;
+        }
+        .error-state {
+            display: none;
+        }
+        .error-state .spinner {
+            display: none;
+        }
+        .error-icon {
+            font-size: 3rem;
+            color: #dc3545;
+            margin-bottom: 1rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #00bfa5;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #00a693;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-loading" id="loadingState">
+        <div class="spinner"></div>
+        <h2>Authenticating...</h2>
+        <p>Please wait while we complete your sign-in</p>
+    </div>
+    
+    <div class="auth-loading error-state" id="errorState">
+        <div class="error-icon">⚠️</div>
+        <h2>Authentication Failed</h2>
+        <p id="errorMessage">Something went wrong during authentication</p>
+        <a href="/login" class="btn">Try Again</a>
+    </div>
+
+    <script src="/js/auth.js"></script>
+    <script>
+        // Handle OAuth callback
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+        const error = urlParams.get('error');
+        
+        if (token) {
+            // Store the token and redirect to dashboard
+            window.BankAuth.TokenManager.setTokens(token, '');
+            
+            // Get user profile
+            window.BankAuth.AuthAPI.getProfile()
+                .then(user => {
+                    window.BankAuth.UserManager.setUser(user);
+                    window.location.href = '/dashboard';
+                })
+                .catch(err => {
+                    console.error('Failed to get user profile:', err);
+                    showError('Failed to complete authentication');
+                });
+        } else if (error) {
+            // Show error state
+            let errorMsg = 'Authentication failed';
+            
+            switch(error) {
+                case 'invalid_state':
+                    errorMsg = 'Invalid authentication state. Please try again.';
+                    break;
+                case 'authentication_failed':
+                    errorMsg = 'Authentication failed. Please try again.';
+                    break;
+                case 'access_denied':
+                    errorMsg = 'Access was denied. Please try again.';
+                    break;
+                default:
+                    errorMsg = 'Something went wrong. Please try again.';
+            }
+            
+            showError(errorMsg);
+        } else {
+            // No token or error, redirect to login
+            window.location.href = '/login';
+        }
+        
+        function showError(message) {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('errorState').style.display = 'block';
+            document.getElementById('errorMessage').textContent = message;
+        }
+    </script>
+</body>
+</html>

@@ -6,8 +6,8 @@ const API_CONFIG = {
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             return 'http://localhost:5000';
         }
-        // Use the same protocol and hostname as the current page
-        return `${window.location.protocol}//${window.location.hostname}:5000`;
+        // In production, use the main domain without port (nginx handles the proxy)
+        return `${window.location.protocol}//${window.location.hostname}`;
     },
     
     // API endpoints

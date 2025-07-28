@@ -1,0 +1,504 @@
+[
+  {
+    "filename": "Canada RBC (1).pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/Canada RBC (1).pdf",
+    "file_size": 116646,
+    "exists": true,
+    "analysis": {
+      "count": 5,
+      "date_formats": [
+        "MM-DD-YYYY"
+      ],
+      "missing_dates": 0,
+      "missing_descriptions": 0,
+      "missing_amounts": 0,
+      "zero_amounts": 0,
+      "huge_amounts": 0,
+      "negative_amounts": 0,
+      "positive_amounts": 5,
+      "amount_range": {
+        "min": 1.0,
+        "max": 2782.0
+      },
+      "quality": "Good",
+      "issues": []
+    },
+    "success": true,
+    "transaction_count": 5,
+    "sample_transactions": [
+      {
+        "date_string": "01-12",
+        "description": "123456789-01-000001-1-0001",
+        "amount": 1.0
+      },
+      {
+        "date_string": "82-50",
+        "description": "5094431",
+        "amount": 2782.0
+      },
+      {
+        "date_string": "1-80",
+        "description": "800 ROYAL 1-1",
+        "amount": 1.0
+      }
+    ]
+  },
+  {
+    "filename": "Australia Westpac bank statement.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/Australia Westpac bank statement.pdf",
+    "file_size": 444272,
+    "exists": true,
+    "analysis": {
+      "count": 15,
+      "date_formats": [
+        "MM/DD/YYYY"
+      ],
+      "missing_dates": 0,
+      "missing_descriptions": 0,
+      "missing_amounts": 0,
+      "zero_amounts": 0,
+      "huge_amounts": 0,
+      "negative_amounts": 0,
+      "positive_amounts": 15,
+      "amount_range": {
+        "min": 55.0,
+        "max": 1136.0
+      },
+      "quality": "Good",
+      "issues": []
+    },
+    "success": true,
+    "transaction_count": 15,
+    "sample_transactions": [
+      {
+        "date_string": "2/11/2022",
+        "description": "1136.00",
+        "amount": 1136.0
+      },
+      {
+        "date_string": "2/11/2022",
+        "description": "-55.00",
+        "amount": 55.0
+      },
+      {
+        "date_string": "2/11/2022",
+        "description": "-55.00",
+        "amount": 55.0
+      }
+    ]
+  },
+  {
+    "filename": "Australia Bendigo Bank Statement.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/Australia Bendigo Bank Statement.pdf",
+    "file_size": 473155,
+    "exists": true,
+    "error": "'date_formats'",
+    "success": false
+  },
+  {
+    "filename": "Canada RBC.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/Canada RBC.pdf",
+    "file_size": 871418,
+    "exists": true,
+    "analysis": {
+      "count": 6,
+      "date_formats": [
+        "MM-DD-YYYY"
+      ],
+      "missing_dates": 0,
+      "missing_descriptions": 0,
+      "missing_amounts": 0,
+      "zero_amounts": 0,
+      "huge_amounts": 0,
+      "negative_amounts": 0,
+      "positive_amounts": 6,
+      "amount_range": {
+        "min": 1.0,
+        "max": 2064.0
+      },
+      "quality": "Good",
+      "issues": []
+    },
+    "success": true,
+    "transaction_count": 6,
+    "sample_transactions": [
+      {
+        "date_string": "1-80",
+        "description": "800 1-1",
+        "amount": 1.0
+      },
+      {
+        "date_string": "1-80",
+        "description": "800-769-2511)",
+        "amount": 1.0
+      },
+      {
+        "date_string": "64-12",
+        "description": "123456789",
+        "amount": 2064.0
+      }
+    ]
+  },
+  {
+    "filename": "United Kingdom Metro Bank.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/United Kingdom Metro Bank.pdf",
+    "file_size": 258039,
+    "exists": true,
+    "error": "'date_formats'",
+    "success": false
+  },
+  {
+    "filename": "UK Nationwide word pdf.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/UK Nationwide word pdf.pdf",
+    "file_size": 1010314,
+    "exists": true,
+    "analysis": {
+      "count": 4,
+      "date_formats": [
+        "MM-DD-YYYY",
+        "Other"
+      ],
+      "missing_dates": 0,
+      "missing_descriptions": 0,
+      "missing_amounts": 0,
+      "zero_amounts": 3,
+      "huge_amounts": 0,
+      "negative_amounts": 0,
+      "positive_amounts": 4,
+      "amount_range": {
+        "min": 0.0,
+        "max": 336.0
+      },
+      "quality": "Good",
+      "issues": []
+    },
+    "success": true,
+    "transaction_count": 4,
+    "sample_transactions": [
+      {
+        "date_string": "14 Aug 2020",
+        "description": "Statement date",
+        "amount": 0.0
+      },
+      {
+        "date_string": "07-04-36",
+        "description": "APPLEPAY ****7332",
+        "amount": 0.0
+      },
+      {
+        "date_string": "07-04-36",
+        "description": "29 Aug",
+        "amount": 336.0
+      }
+    ]
+  },
+  {
+    "filename": "USA Woodforest.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/USA Woodforest.pdf",
+    "file_size": 837035,
+    "exists": true,
+    "error": "'date_formats'",
+    "success": false
+  },
+  {
+    "filename": "USA PNC 2.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/USA PNC 2.pdf",
+    "file_size": 517630,
+    "exists": true,
+    "analysis": {
+      "count": 29,
+      "date_formats": [
+        "MM-DD-YYYY",
+        "MM/DD/YYYY"
+      ],
+      "missing_dates": 0,
+      "missing_descriptions": 3,
+      "missing_amounts": 0,
+      "zero_amounts": 0,
+      "huge_amounts": 2,
+      "negative_amounts": 0,
+      "positive_amounts": 29,
+      "amount_range": {
+        "min": 1.0,
+        "max": 62493572.0
+      },
+      "quality": "Warning",
+      "issues": [
+        "2 suspiciously large amounts"
+      ]
+    },
+    "success": true,
+    "transaction_count": 29,
+    "sample_transactions": [
+      {
+        "date_string": "1/23",
+        "description": "SQuave Inc T200167842193",
+        "amount": 250.0
+      },
+      {
+        "date_string": "1/25",
+        "description": "340.00 Deposit Ref. No.",
+        "amount": 62493572.0
+      },
+      {
+        "date_string": "1/26",
+        "description": "353.76 Deposit Ref. No.",
+        "amount": 41784629.0
+      }
+    ]
+  },
+  {
+    "filename": "USA Citizens Bank.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/USA Citizens Bank.pdf",
+    "file_size": 862639,
+    "exists": true,
+    "error": "'date_formats'",
+    "success": false
+  },
+  {
+    "filename": "USA Fifth Third Bank.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/USA Fifth Third Bank.pdf",
+    "file_size": 473882,
+    "exists": true,
+    "analysis": {
+      "count": 26,
+      "date_formats": [
+        "MM-DD-YYYY",
+        "MM/DD/YYYY"
+      ],
+      "missing_dates": 0,
+      "missing_descriptions": 3,
+      "missing_amounts": 0,
+      "zero_amounts": 0,
+      "huge_amounts": 1,
+      "negative_amounts": 0,
+      "positive_amounts": 26,
+      "amount_range": {
+        "min": 1.0,
+        "max": 10000000059.0
+      },
+      "quality": "Warning",
+      "issues": [
+        "1 suspiciously large amounts"
+      ]
+    },
+    "success": true,
+    "transaction_count": 26,
+    "sample_transactions": [
+      {
+        "date_string": "12/22",
+        "description": "11.87 DEBIT CARD PURCHASE AT wing Factory Cafe, KENNESAW, GA ON",
+        "amount": 122016.0
+      },
+      {
+        "date_string": "12/22",
+        "description": "OVERDRAFT FEE",
+        "amount": 158.0
+      },
+      {
+        "date_string": "12/23",
+        "description": "OVERDRAFT FEE",
+        "amount": 37.0
+      }
+    ]
+  },
+  {
+    "filename": "USA Suntrust.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/USA Suntrust.pdf",
+    "file_size": 434395,
+    "exists": true,
+    "analysis": {
+      "count": 11,
+      "date_formats": [
+        "MM/DD/YYYY"
+      ],
+      "missing_dates": 0,
+      "missing_descriptions": 0,
+      "missing_amounts": 0,
+      "zero_amounts": 2,
+      "huge_amounts": 0,
+      "negative_amounts": 0,
+      "positive_amounts": 11,
+      "amount_range": {
+        "min": 0.0,
+        "max": 965.0
+      },
+      "quality": "Good",
+      "issues": []
+    },
+    "success": true,
+    "transaction_count": 11,
+    "sample_transactions": [
+      {
+        "date_string": "04/04/2022",
+        "description": "Petron - C5 Station",
+        "amount": 223.26
+      },
+      {
+        "date_string": "04/09/2022",
+        "description": "South Star Drug",
+        "amount": 313.39
+      },
+      {
+        "date_string": "04/11/2022",
+        "description": "Rosewood Condominum",
+        "amount": 582.96
+      }
+    ]
+  },
+  {
+    "filename": "USA Ohio Huntington bank statement 7  page.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/USA Ohio Huntington bank statement 7  page.pdf",
+    "file_size": 628653,
+    "exists": true,
+    "analysis": {
+      "count": 99,
+      "date_formats": [
+        "MM-DD-YYYY",
+        "MM/DD/YYYY"
+      ],
+      "missing_dates": 0,
+      "missing_descriptions": 0,
+      "missing_amounts": 0,
+      "zero_amounts": 0,
+      "huge_amounts": 2,
+      "negative_amounts": 0,
+      "positive_amounts": 99,
+      "amount_range": {
+        "min": 1.0,
+        "max": 123456789.0
+      },
+      "quality": "Warning",
+      "issues": [
+        "2 suspiciously large amounts"
+      ]
+    },
+    "success": true,
+    "transaction_count": 99,
+    "sample_transactions": [
+      {
+        "date_string": "16-15",
+        "description": "1558",
+        "amount": 43216.0
+      },
+      {
+        "date_string": "1-80",
+        "description": "800-480-BANK (2265)",
+        "amount": 1.0
+      },
+      {
+        "date_string": "01/05/22",
+        "description": "/05/22 to 02/05/22",
+        "amount": 1.0
+      }
+    ]
+  },
+  {
+    "filename": "USA Chase bank.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/USA Chase bank.pdf",
+    "file_size": 166919,
+    "exists": true,
+    "error": "'date_formats'",
+    "success": false
+  },
+  {
+    "filename": "USA Discover Bank.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/USA Discover Bank.pdf",
+    "file_size": 628178,
+    "exists": true,
+    "error": "'date_formats'",
+    "success": false
+  },
+  {
+    "filename": "USA Netspend Bank Statement.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/USA Netspend Bank Statement.pdf",
+    "file_size": 196295,
+    "exists": true,
+    "analysis": {
+      "count": 4,
+      "date_formats": [
+        "MM-DD-YYYY"
+      ],
+      "missing_dates": 0,
+      "missing_descriptions": 0,
+      "missing_amounts": 0,
+      "zero_amounts": 0,
+      "huge_amounts": 0,
+      "negative_amounts": 0,
+      "positive_amounts": 4,
+      "amount_range": {
+        "min": 1.0,
+        "max": 1.0
+      },
+      "quality": "Good",
+      "issues": []
+    },
+    "success": true,
+    "transaction_count": 4,
+    "sample_transactions": [
+      {
+        "date_string": "1-80",
+        "description": "801-930-0991",
+        "amount": 1.0
+      },
+      {
+        "date_string": "1-80",
+        "description": "800-555-7347",
+        "amount": 1.0
+      },
+      {
+        "date_string": "1-87",
+        "description": "877-555-4281",
+        "amount": 1.0
+      }
+    ]
+  },
+  {
+    "filename": "USA Wells Fargo 7 pages.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/USA Wells Fargo 7 pages.pdf",
+    "file_size": 180052,
+    "exists": true,
+    "error": "'date_formats'",
+    "success": false
+  },
+  {
+    "filename": "Australia Commonwealth J C.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/1/Australia Commonwealth J C.pdf",
+    "file_size": 850432,
+    "exists": true,
+    "error": "'date_formats'",
+    "success": false
+  },
+  {
+    "filename": "merged_statements_2025-07-26.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/merged_statements_2025-07-26.pdf",
+    "file_size": 4552181,
+    "exists": true,
+    "error": "'date_formats'",
+    "success": false
+  },
+  {
+    "filename": "Bank-Statement-Template-4-TemplateLab.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/Bank-Statement-Template-4-TemplateLab.pdf",
+    "file_size": 2165481,
+    "exists": true,
+    "error": "'date_formats'",
+    "success": false
+  },
+  {
+    "filename": "dummy_statement.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/dummy_statement.pdf",
+    "file_size": 183623,
+    "exists": true,
+    "error": "'date_formats'",
+    "success": false
+  },
+  {
+    "filename": "Bank Statement Example Final.pdf",
+    "path": "/Users/MAC/Desktop/pdfs/Bank Statement Example Final.pdf",
+    "file_size": 256826,
+    "exists": true,
+    "error": "'date_formats'",
+    "success": false
+  }
+]

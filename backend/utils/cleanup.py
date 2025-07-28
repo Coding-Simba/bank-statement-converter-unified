@@ -5,7 +5,7 @@ from datetime import datetime
 from pathlib import Path
 from sqlalchemy.orm import Session
 
-from ..models.database import SessionLocal, Statement
+from models.database import SessionLocal, Statement
 
 
 def cleanup_expired_statements():

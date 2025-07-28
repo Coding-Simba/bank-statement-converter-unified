@@ -1,7 +1,7 @@
 // Authentication module for Bank Statement Converter
 
-const AUTH_API_BASE = 'http://localhost:5000/api/auth';
-const API_BASE = 'http://localhost:5000/api';
+const AUTH_API_BASE = 'https://bankcsvconverter.com/api/auth';
+const API_BASE = 'https://bankcsvconverter.com/api';
 
 // Token management
 const TokenManager = {
@@ -47,14 +47,14 @@ const UserManager = {
 
 // Authentication API calls
 const AuthAPI = {
-    async register(email, password) {
+    async register(userData) {
         try {
             const response = await fetch(`${AUTH_API_BASE}/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify(userData),
             });
             
             if (!response.ok) {
@@ -349,6 +349,245 @@ const setupAuthInterceptor = () => {
 // Initialize auth interceptor
 setupAuthInterceptor();
 
+// OAuth Authentication
+const OAuthAPI = {
+    async loginWithGoogle() {
+        try {
+            // Redirect to Google OAuth endpoint
+            window.location.href = `${AUTH_API_BASE}/oauth/google`;
+        } catch (error) {
+            console.error('Google login error:', error);
+            throw error;
+        }
+    },
+    
+    async loginWithMicrosoft() {
+        try {
+            // Redirect to Microsoft OAuth endpoint
+            window.location.href = `${AUTH_API_BASE}/oauth/microsoft`;
+        } catch (error) {
+            console.error('Microsoft login error:', error);
+            throw error;
+        }
+    },
+    
+    async handleOAuthCallback() {
+        // Check if we're on the OAuth callback page
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        const state = urlParams.get('state');
+        const error = urlParams.get('error');
+        
+        if (error) {
+            console.error('OAuth error:', error);
+            window.location.href = '/login?error=oauth_failed';
+            return;
+        }
+        
+        if (code && state) {
+            try {
+                // The backend will handle the callback and redirect
+                // This is just for client-side error handling
+                const provider = window.location.pathname.includes('google') ? 'google' : 'microsoft';
+                console.log(`Processing ${provider} OAuth callback...`);
+            } catch (error) {
+                console.error('OAuth callback error:', error);
+                window.location.href = '/login?error=oauth_failed';
+            }
+        }
+    }
+};
+
+// Signup/Login Form Handlers
+const AuthForms = {
+    async handleSignup(formData) {
+        try {
+            const userData = {
+                email: formData.get('email'),
+                password: formData.get('password'),
+                full_name: formData.get('fullName'),
+                company_name: formData.get('company'),
+                account_type: 'free'
+            };
+            
+            const result = await AuthAPI.register(userData);
+            
+            // Redirect to dashboard on success
+            window.location.href = '/dashboard';
+            
+            return result;
+        } catch (error) {
+            console.error('Signup error:', error);
+            throw error;
+        }
+    },
+    
+    async handleLogin(formData) {
+        try {
+            const email = formData.get('email');
+            const password = formData.get('password');
+            
+            const result = await AuthAPI.login(email, password);
+            
+            // Redirect to dashboard on success
+            const redirect = new URLSearchParams(window.location.search).get('redirect') || '/dashboard';
+            window.location.href = redirect;
+            
+            return result;
+        } catch (error) {
+            console.error('Login error:', error);
+            throw error;
+        }
+    },
+    
+    setupSignupForm() {
+        const form = document.getElementById('signupForm');
+        if (!form) return;
+        
+        // OAuth buttons
+        const googleBtn = form.querySelector('.google-btn, [data-provider="google"]');
+        const microsoftBtn = form.querySelector('.microsoft-btn, [data-provider="microsoft"]');
+        
+        if (googleBtn) {
+            googleBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                OAuthAPI.loginWithGoogle();
+            });
+        }
+        
+        if (microsoftBtn) {
+            microsoftBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                OAuthAPI.loginWithMicrosoft();
+            });
+        }
+        
+        // Form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            try {
+                submitBtn.textContent = 'Creating account...';
+                submitBtn.disabled = true;
+                
+                const formData = new FormData(form);
+                await AuthForms.handleSignup(formData);
+                
+            } catch (error) {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Show error message
+                const errorMsg = error.message || 'Signup failed. Please try again.';
+                alert(errorMsg); // In production, use a proper error display
+            }
+        });
+    },
+    
+    setupLoginForm() {
+        const form = document.getElementById('loginForm');
+        if (!form) return;
+        
+        // OAuth buttons
+        const googleBtn = form.querySelector('.google-btn, [data-provider="google"]');
+        const microsoftBtn = form.querySelector('.microsoft-btn, [data-provider="microsoft"]');
+        
+        if (googleBtn) {
+            googleBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                OAuthAPI.loginWithGoogle();
+            });
+        }
+        
+        if (microsoftBtn) {
+            microsoftBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                OAuthAPI.loginWithMicrosoft();
+            });
+        }
+        
+        // Form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            try {
+                submitBtn.textContent = 'Logging in...';
+                submitBtn.disabled = true;
+                
+                const formData = new FormData(form);
+                await AuthForms.handleLogin(formData);
+                
+            } catch (error) {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Show error message
+                const errorMsg = error.message || 'Login failed. Please try again.';
+                alert(errorMsg); // In production, use a proper error display
+            }
+        });
+    }
+};
+
+// Initialize authentication on page load
+if (typeof document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        // Setup forms if on auth pages
+        AuthForms.setupSignupForm();
+        AuthForms.setupLoginForm();
+        
+        // Handle OAuth callbacks
+        if (window.location.pathname.includes('/oauth/') && window.location.pathname.includes('/callback')) {
+            OAuthAPI.handleOAuthCallback();
+        }
+        
+        // Update UI based on auth state
+        const updateAuthUI = () => {
+            const isAuthenticated = TokenManager.isAuthenticated();
+            const user = UserManager.getUser();
+            
+            // Update navigation
+            const loginLink = document.querySelector('a[href="/login"]');
+            const signupLink = document.querySelector('a[href="/signup"]');
+            const logoutBtn = document.querySelector('.logout-btn');
+            const userMenu = document.querySelector('.user-menu');
+            
+            if (isAuthenticated && user) {
+                if (loginLink) loginLink.style.display = 'none';
+                if (signupLink) signupLink.style.display = 'none';
+                if (logoutBtn) logoutBtn.style.display = 'block';
+                if (userMenu) {
+                    userMenu.style.display = 'block';
+                    const userEmail = userMenu.querySelector('.user-email');
+                    if (userEmail) userEmail.textContent = user.email;
+                }
+            } else {
+                if (loginLink) loginLink.style.display = 'block';
+                if (signupLink) signupLink.style.display = 'block';
+                if (logoutBtn) logoutBtn.style.display = 'none';
+                if (userMenu) userMenu.style.display = 'none';
+            }
+        };
+        
+        updateAuthUI();
+        
+        // Logout button handler
+        const logoutBtn = document.querySelector('.logout-btn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                await AuthAPI.logout();
+            });
+        }
+    });
+}
+
 // Export for use in other modules
 window.BankAuth = {
     TokenManager,
@@ -356,4 +595,6 @@ window.BankAuth = {
     AuthAPI,
     StatementAPI,
     FeedbackAPI,
+    OAuthAPI,
+    AuthForms
 };

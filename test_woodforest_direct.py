@@ -1,26 +1,43 @@
-#!/usr/bin/env python3
+#\!/usr/bin/env python3
 """Test Woodforest parser directly"""
 
-from backend.woodforest_parser import parse_woodforest
+import sys
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'backend'))
 
-pdf_path = '/Users/MAC/Desktop/pdfs/1/USA Woodforest.pdf'
+from woodforest_parser_enhanced import parse_woodforest
+from woodforest_parser import parse_woodforest as parse_woodforest_old
 
-print("Testing Woodforest statement with dedicated parser...")
-print("=" * 60)
+pdf_path = "/Users/MAC/Desktop/pdfs/1/USA Woodforest.pdf"
 
-transactions = parse_woodforest(pdf_path)
+print("Testing Woodforest parsers...")
 
-print(f"\nTotal transactions: {len(transactions)}")
+# Test old parser
+print("\n=== Old Woodforest Parser ===")
+trans_old = parse_woodforest_old(pdf_path)
+print(f"Transactions found: {len(trans_old)}")
 
-# Group by type  
-credits = [t for t in transactions if t.get('amount', 0) > 0]
-debits = [t for t in transactions if t.get('amount', 0) < 0]
+# Test enhanced parser
+print("\n=== Enhanced Woodforest Parser ===")
+trans_new = parse_woodforest(pdf_path)
+print(f"Transactions found: {len(trans_new)}")
 
-print(f"Credits/Deposits: {len(credits)}")
-print(f"Debits/Withdrawals: {len(debits)}")
+if trans_new:
+    print(f"\nFirst 5 transactions:")
+    for i, trans in enumerate(trans_new[:5]):
+        print(f"{i+1}. {trans['date_string']} | {trans['description'][:50]}... | ${trans['amount']:.2f}")
 
-# Show all transactions
-if transactions:
-    print("\nAll transactions:")
-    for trans in transactions:
-        print(f"{trans.get('date_string', 'N/A')} - {trans.get('description', 'N/A')[:50]}... ${trans['amount']:.2f}")
+# Let's check the PDF content
+import pdfplumber
+print("\n=== PDF Content Check ===")
+with pdfplumber.open(pdf_path) as pdf:
+    print(f"Total pages: {len(pdf.pages)}")
+    # Check first page
+    text = pdf.pages[0].extract_text()
+    if text:
+        lines = text.split('\n')
+        print("\nLooking for transaction patterns:")
+        import re
+        for line in lines[:50]:
+            if re.search(r'\d{2}-\d{2}', line):
+                print(f"  {line[:100]}")
