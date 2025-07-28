@@ -614,11 +614,12 @@
     </footer>
 
     <script src="/js/modern-homepage-fixed.js"></script>
+    <script src="/js/api-config.js"></script>
     <script src="/js/dropdown-handler.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Test backend connection
-        fetch('http://localhost:5001/api/split-statement', { method: 'POST' })
+        fetch(API_CONFIG.getUrl(API_CONFIG.endpoints.splitStatement), { method: 'POST' })
             .then(res => res.json())
             .then(data => console.log('Backend is running:', data))
             .catch(err => console.error('Backend connection error:', err));
@@ -633,6 +634,18 @@
                 const range = this.textContent.trim();
                 const today = new Date();
                 let startDate, endDate;
+                
+                // Map display text to preset values
+                const presetMap = {
+                    'Last Month': 'last_month',
+                    'Last Quarter': 'last_quarter',
+                    'Last 3 Months': 'last_3_months',
+                    'Last 6 Months': 'last_6_months',
+                    'Year to Date': 'year_to_date',
+                    'Last Year': 'last_year'
+                };
+                
+                selectedPreset = presetMap[range];
                 
                 switch(range) {
                     case 'Last Month':
@@ -695,10 +708,12 @@
         // Remove active state when user manually changes dates
         startDateInput.addEventListener('change', function() {
             quickRangeButtons.forEach(btn => btn.classList.remove('active'));
+            selectedPreset = null;
         });
         
         endDateInput.addEventListener('change', function() {
             quickRangeButtons.forEach(btn => btn.classList.remove('active'));
+            selectedPreset = null;
         });
         
         // File upload functionality
@@ -710,6 +725,7 @@
         const errorMessage = document.getElementById('errorMessage');
         
         let selectedFile = null;
+        let selectedPreset = null;
         
         chooseFilesBtn.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -795,11 +811,17 @@
                 // Create form data
                 const formData = new FormData();
                 formData.append('file', selectedFile);
-                formData.append('start_date', startDateInput.value);
-                formData.append('end_date', endDateInput.value);
+                
+                // Use preset if available, otherwise use custom dates
+                if (selectedPreset) {
+                    formData.append('preset', selectedPreset);
+                } else {
+                    formData.append('start_date', startDateInput.value);
+                    formData.append('end_date', endDateInput.value);
+                }
                 
                 // Send to backend
-                const response = await fetch('http://localhost:5001/api/split-statement', {
+                const response = await fetch(API_CONFIG.getUrl(API_CONFIG.endpoints.splitStatement), {
                     method: 'POST',
                     body: formData
                 });

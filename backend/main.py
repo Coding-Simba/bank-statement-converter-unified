@@ -9,9 +9,9 @@ from datetime import datetime
 import asyncio
 
 # Import routers
-from .api import auth, statements, feedback
-from .models.database import init_db, engine, Base
-from .utils.cleanup import cleanup_expired_statements
+from api import auth, statements, feedback, oauth, split_statement, analyze_transactions
+from models.database import init_db, engine, Base
+from utils.cleanup import cleanup_expired_statements
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -68,8 +68,11 @@ async def periodic_cleanup():
 
 # Include routers
 app.include_router(auth.router)
+app.include_router(oauth.router)
 app.include_router(statements.router)
 app.include_router(feedback.router)
+app.include_router(split_statement.router)
+app.include_router(analyze_transactions.router)
 
 
 @app.get("/")
@@ -110,7 +113,7 @@ async def global_exception_handler(request: Request, exc: Exception):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
-        "backend.main:app",
+        "main:app",
         host="0.0.0.0",
         port=5000,
         reload=True
