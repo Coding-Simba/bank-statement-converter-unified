@@ -1,7 +1,19 @@
 // Authentication module for Bank Statement Converter
 
-const AUTH_API_BASE = 'https://bankcsvconverter.com/api/auth';
-const API_BASE = 'https://bankcsvconverter.com/api';
+// Use dynamic API configuration
+const getApiBase = () => {
+    if (window.API_CONFIG) {
+        return window.API_CONFIG.getBaseUrl();
+    }
+    // Fallback to dynamic detection
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'http://localhost:5000';
+    }
+    return `${window.location.protocol}//${window.location.hostname}`;
+};
+
+const AUTH_API_BASE = getApiBase() + '/api/auth';
+const API_BASE = getApiBase() + '/api';
 
 // Token management
 const TokenManager = {
@@ -49,6 +61,9 @@ const UserManager = {
 const AuthAPI = {
     async register(userData) {
         try {
+            console.log('Registering user:', userData);
+            console.log('API URL:', `${AUTH_API_BASE}/register`);
+            
             const response = await fetch(`${AUTH_API_BASE}/register`, {
                 method: 'POST',
                 headers: {
@@ -68,6 +83,9 @@ const AuthAPI = {
             return data;
         } catch (error) {
             console.error('Registration error:', error);
+            if (error.message === 'Failed to fetch') {
+                throw new Error('Failed to connect to server. Please ensure the backend is running on port 5000.');
+            }
             throw error;
         }
     },
@@ -406,14 +424,24 @@ const AuthForms = {
                 email: formData.get('email'),
                 password: formData.get('password'),
                 full_name: formData.get('fullName'),
-                company_name: formData.get('company'),
+                company_name: formData.get('company') || '',
                 account_type: 'free'
             };
             
+            console.log('Form data collected:', userData);
+            
             const result = await AuthAPI.register(userData);
             
-            // Redirect to dashboard on success
-            window.location.href = '/dashboard';
+            // Show success message and redirect
+            const submitBtn = document.querySelector('[type="submit"]');
+            if (submitBtn) {
+                submitBtn.textContent = 'Success! Redirecting...';
+            }
+            
+            // Redirect to dashboard or homepage on success
+            setTimeout(() => {
+                window.location.href = '/dashboard.html';
+            }, 1000);
             
             return result;
         } catch (error) {
@@ -430,7 +458,7 @@ const AuthForms = {
             const result = await AuthAPI.login(email, password);
             
             // Redirect to dashboard on success
-            const redirect = new URLSearchParams(window.location.search).get('redirect') || '/dashboard';
+            const redirect = new URLSearchParams(window.location.search).get('redirect') || '/dashboard.html';
             window.location.href = redirect;
             
             return result;
@@ -482,7 +510,16 @@ const AuthForms = {
                 
                 // Show error message
                 const errorMsg = error.message || 'Signup failed. Please try again.';
-                alert(errorMsg); // In production, use a proper error display
+                
+                // Display error in the error alert
+                const errorAlert = document.getElementById('errorAlert');
+                const errorMessage = document.getElementById('errorMessage');
+                if (errorAlert && errorMessage) {
+                    errorMessage.textContent = errorMsg;
+                    errorAlert.style.display = 'block';
+                } else {
+                    alert(errorMsg); // Fallback to alert
+                }
             }
         });
     },

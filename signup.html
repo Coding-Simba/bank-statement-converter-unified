@@ -154,6 +154,9 @@
 <h1>Create Your Free Account</h1>
 <p>Get 5 free conversions per day</p>
 </div>
+<div id="errorAlert" style="display: none; background: #fee; color: #c33; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+    <strong>Error:</strong> <span id="errorMessage"></span>
+</div>
 <form id="signupForm">
 <div class="social-signup">
 <button class="social-btn google-btn" type="button" data-provider="google">
@@ -180,7 +183,7 @@
 <label class="form-label" for="password">Password</label>
 <input class="form-input" id="password" name="password" required="" type="password"/>
 <small style="color: #6c757d; display: block; margin-top: 0.25rem;">
-                        At least 8 characters
+                        At least 8 characters with uppercase, lowercase, and numbers
                     </small>
 </div>
 <div class="form-group">
@@ -203,10 +206,16 @@
 </div>
 </div>
 </div>
+<script src="/js/api-config.js"></script>
 <script src="/js/auth.js"></script>
 <script>
         // The auth.js module will handle all signup functionality
         // OAuth buttons and form submission are automatically set up by auth.js
+        
+        // Add error display for better debugging
+        window.addEventListener('error', (event) => {
+            console.error('Global error:', event.error);
+        });
     </script>
 </body>
 </html>

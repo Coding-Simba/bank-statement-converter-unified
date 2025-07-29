@@ -75,10 +75,25 @@ document.addEventListener('DOMContentLoaded', function() {
         processingMessage.style.display = 'block';
         analyzeButton.style.display = 'none';
         
+        // Reset progress
+        updateProgress(0, 'Uploading your bank statement...');
+        updateStep(1, 'active');
+        
         try {
+            // Simulate upload progress
+            updateProgress(10, 'Uploading document to secure server...');
+            
             // Create form data
             const formData = new FormData();
             formData.append('file', selectedFile);
+            
+            // Add progress simulation
+            const progressInterval = setInterval(() => {
+                const currentProgress = parseInt(document.getElementById('progressBar').style.width);
+                if (currentProgress < 40) {
+                    updateProgress(currentProgress + 5, 'Processing your document...');
+                }
+            }, 300);
             
             // Send to backend
             const response = await fetch(API_CONFIG.getUrl('/api/analyze-transactions'), {
@@ -86,9 +101,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: formData
             });
             
+            clearInterval(progressInterval);
+            
+            // Update progress based on response
+            updateProgress(40, 'Document uploaded successfully!');
+            updateStep(1, 'complete');
+            updateStep(2, 'active');
+            
+            updateProgress(55, 'Extracting transactions from PDF...');
+            await sleep(500);
+            
             const data = await response.json();
             
             if (response.ok && data.success) {
+                updateStep(2, 'complete');
+                updateStep(3, 'active');
+                updateProgress(70, `Found ${data.transaction_count} transactions! Categorizing...`);
+                await sleep(500);
+                
+                updateStep(3, 'complete');
+                updateStep(4, 'active');
+                updateProgress(85, 'Analyzing spending patterns and generating insights...');
+                await sleep(500);
+                
+                updateProgress(100, 'Analysis complete!');
+                updateStep(4, 'complete');
+                await sleep(300);
+                
                 // Store transactions for export
                 currentTransactions = data.transactions || [];
                 displayResults(data.analysis);
@@ -116,8 +155,45 @@ document.addEventListener('DOMContentLoaded', function() {
         } finally {
             processingMessage.style.display = 'none';
             analyzeButton.style.display = 'inline-flex';
+            // Reset steps
+            resetSteps();
         }
     });
+    
+    // Helper functions for progress updates
+    function updateProgress(percent, message) {
+        document.getElementById('progressBar').style.width = percent + '%';
+        document.getElementById('statusMessage').textContent = message;
+    }
+    
+    function updateStep(stepNumber, status) {
+        const step = document.getElementById(`step${stepNumber}`);
+        const icon = step.querySelector('i');
+        
+        if (status === 'active') {
+            step.style.opacity = '1';
+            icon.className = 'fas fa-circle-notch fa-spin';
+            icon.style.color = '#4facfe';
+        } else if (status === 'complete') {
+            step.style.opacity = '1';
+            icon.className = 'fas fa-check-circle';
+            icon.style.color = '#52c41a';
+        } else {
+            step.style.opacity = '0.5';
+            icon.className = 'fas fa-circle';
+            icon.style.color = '#dee2e6';
+        }
+    }
+    
+    function resetSteps() {
+        for (let i = 1; i <= 4; i++) {
+            updateStep(i, 'inactive');
+        }
+    }
+    
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
     
     function displayResults(analysis) {
         // Store analysis data globally for downloads

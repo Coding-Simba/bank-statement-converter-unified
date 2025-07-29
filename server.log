@@ -181,3 +181,42 @@
 ::1 - - [28/Jul/2025 11:48:14] "GET /js/pdf-transaction-analyzer.js HTTP/1.1" 200 -
 ::1 - - [28/Jul/2025 11:48:14] code 404, message File not found
 ::1 - - [28/Jul/2025 11:48:14] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [29/Jul/2025 23:28:11] "GET /signup.html HTTP/1.1" 200 -
+::1 - - [29/Jul/2025 23:28:11] "GET /js/api-config.js HTTP/1.1" 200 -
+::1 - - [29/Jul/2025 23:28:11] "GET /js/auth.js HTTP/1.1" 200 -
+::1 - - [29/Jul/2025 23:28:11] "GET /css/modern-homepage.css HTTP/1.1" 304 -
+::1 - - [29/Jul/2025 23:28:11] "GET /css/blog-fix.css HTTP/1.1" 304 -
+::1 - - [29/Jul/2025 23:28:11] code 404, message File not found
+::1 - - [29/Jul/2025 23:28:11] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [29/Jul/2025 23:30:42] "GET / HTTP/1.1" 200 -
+::1 - - [29/Jul/2025 23:30:42] "GET /css/nav-fix.css HTTP/1.1" 304 -
+::1 - - [29/Jul/2025 23:30:42] "GET /css/dropdown-fix.css HTTP/1.1" 304 -
+::1 - - [29/Jul/2025 23:30:42] "GET /assets/pdf-icon.svg HTTP/1.1" 304 -
+::1 - - [29/Jul/2025 23:30:42] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 304 -
+::1 - - [29/Jul/2025 23:30:42] "GET /js/dropdown-handler.js HTTP/1.1" 304 -
+::1 - - [29/Jul/2025 23:30:42] code 404, message File not found
+::1 - - [29/Jul/2025 23:30:42] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [29/Jul/2025 23:30:51] "GET /pricing.html HTTP/1.1" 200 -
+::1 - - [29/Jul/2025 23:30:51] "GET /css/production.min.css HTTP/1.1" 200 -
+::1 - - [29/Jul/2025 23:30:51] "GET /js/conversion-limit-modal.js HTTP/1.1" 200 -
+::1 - - [29/Jul/2025 23:30:51] code 404, message File not found
+::1 - - [29/Jul/2025 23:30:51] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [29/Jul/2025 23:30:56] code 404, message File not found
+::1 - - [29/Jul/2025 23:30:56] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [29/Jul/2025 23:30:59] code 404, message File not found
+::1 - - [29/Jul/2025 23:30:59] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [29/Jul/2025 23:31:03] code 404, message File not found
+::1 - - [29/Jul/2025 23:31:03] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [29/Jul/2025 23:31:05] code 404, message File not found
+::1 - - [29/Jul/2025 23:31:05] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [29/Jul/2025 23:31:06] code 404, message File not found
+::1 - - [29/Jul/2025 23:31:06] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [29/Jul/2025 23:31:08] code 404, message File not found
+::1 - - [29/Jul/2025 23:31:08] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [29/Jul/2025 23:31:11] code 404, message File not found
+::1 - - [29/Jul/2025 23:31:11] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [29/Jul/2025 23:32:10] code 404, message File not found
+::1 - - [29/Jul/2025 23:32:10] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [29/Jul/2025 23:35:06] "GET /test-signup.html HTTP/1.1" 200 -
+::1 - - [29/Jul/2025 23:35:06] code 404, message File not found
+::1 - - [29/Jul/2025 23:35:06] "GET /favicon.ico HTTP/1.1" 404 -
