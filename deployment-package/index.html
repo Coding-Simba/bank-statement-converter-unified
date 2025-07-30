@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert bank statements from PDF to CSV/Excel instantly. Free online converter for 1000+ banks. Secure, fast & accurate.">
+    <title>Bank Statement Converter - PDF to CSV/Excel Free</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="/css/nav-fix.css">
+    <link rel="stylesheet" href="/css/dropdown-fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="/css/blog-fix.css" rel="stylesheet"/>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <span class="logo-text">BankCSV</span>
+                </a>
+                <div class="nav-links desktop-only">
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            <i class="fas fa-th"></i> Tools
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="/convert-pdf.html" class="dropdown-item">
+                                <i class="fas fa-file-pdf"></i>
+                                Convert PDF
+                            </a>
+                            <a href="/merge-statements.html" class="dropdown-item">
+                                <i class="fas fa-object-group"></i>
+                                Merge Statements
+                            </a>
+                            <a href="/split-by-date.html" class="dropdown-item">
+                                <i class="fas fa-cut"></i>
+                                Split by Date
+                            </a>
+                            <a href="/analyze-transactions.html" class="dropdown-item">
+                                <i class="fas fa-chart-line"></i>
+                                Analyze Transactions
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#banks" class="nav-link">Supported Banks</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                    </div>
+            </div>
+            <div class="nav-right">
+                <a href="/pricing.html" class="nav-link desktop-only">Pricing</a>
+                <a href="/business.html" class="nav-link desktop-only">Business</a>
+                <a href="/login.html" class="nav-link">Log In</a>
+                <a href="/signup.html" class="btn-primary">Sign Up Free</a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#features" class="mobile-link">Features</a>
+            <a href="#banks" class="mobile-link">Supported Banks</a>
+            <a href="/blog.html" class="mobile-link">Blog</a>
+            <a href="/pricing.html" class="mobile-link">Pricing</a>
+            <a href="/business.html" class="mobile-link">Business</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="breadcrumb">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <span class="separator">›</span>
+            <span>Convert Bank Statements</span>
+        </div>
+        
+        <h1 class="hero-title">Convert Bank Statements</h1>
+        
+        <div class="upload-container">
+            <div class="upload-box" id="uploadBox">
+                <div class="upload-icon">
+                    <img src="/assets/pdf-icon.svg" alt="PDF icon" class="pdf-icon">
+                </div>
+                <button class="choose-files-btn" id="chooseFilesBtn">
+                    <i class="fas fa-file-pdf"></i> CHOOSE FILES
+                </button>
+                <p class="upload-text">or drop files here</p>
+                <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" multiple hidden>
+            </div>
+        </div>
+
+        <div class="hero-description">
+            <p>Convert your bank statements from PDF to CSV or Excel with ease. Just upload a file and get a downloadable spreadsheet in seconds.</p>
+        </div>
+
+        <div class="trust-badges">
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Free daily conversions - Sign up for 5 per day</span>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Trusted by 2.5 million users since 2019</span>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Bank-level security and ISO/IEC 27001 certified</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Quick & Easy Conversion</h3>
+                    <p>Upload and convert your bank statements in seconds. No complex setup or software installation required.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure Processing</h3>
+                    <p>We use bank-level encryption to protect your documents. All files are automatically deleted after conversion.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Works on Any Device</h3>
+                    <p>Our converter works with any internet browser on any device or operating system, including Windows, Mac, or Linux.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How to Convert Bank Statements</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Upload Your Statement</h4>
+                    <p>Click "Choose Files" or drag and drop your PDF bank statement</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Select Output Format</h4>
+                    <p>Choose between CSV for data analysis or Excel for easy editing</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Download Your File</h4>
+                    <p>Get your converted file instantly, ready for accounting software</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Banks -->
+    <section class="banks-section" id="banks">
+        <div class="container">
+            <h2 class="section-title">1000+ Banks Supported</h2>
+            <p class="section-subtitle">We support all major banks and credit unions</p>
+            <div class="banks-grid">
+                <div class="bank-logo-card" data-bank="chase">
+                    <div class="bank-logo-content">
+                        <div style="background: #117ACA; color: white; padding: 8px 20px; font-family: Arial, sans-serif; font-weight: bold; font-size: 18px; letter-spacing: 1px;">
+                            CHASE
+                        </div>
+                    </div>
+                </div>
+                <div class="bank-logo-card" data-bank="bofa">
+                    <div class="bank-logo-content">
+                        <div style="background: #E31837; color: white; padding: 8px 15px; font-family: Arial, sans-serif; text-align: center;">
+                            <div style="font-size: 11px; font-weight: bold;">BANK OF</div>
+                            <div style="font-size: 11px; font-weight: bold;">AMERICA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bank-logo-card" data-bank="wells-fargo">
+                    <div class="bank-logo-content">
+                        <div style="background: #D71E2B; padding: 8px 15px;">
+                            <div style="color: #FFCC00; font-family: Georgia, serif; font-weight: bold; font-size: 13px;">WELLS</div>
+                            <div style="color: #FFCC00; font-family: Georgia, serif; font-weight: bold; font-size: 13px;">FARGO</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bank-logo-card" data-bank="citi">
+                    <div class="bank-logo-content">
+                        <div style="font-family: Arial, sans-serif; font-size: 26px; color: #1976D2; position: relative;">
+                            citi
+                            <span style="position: absolute; top: -5px; right: -20px; color: #EE3124; font-size: 16px;">◗</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bank-logo-card" data-bank="capital-one">
+                    <div class="bank-logo-content">
+                        <div style="font-family: Arial, sans-serif;">
+                            
+                            <span style="color: #D03027; font-weight: bold; font-size: 15px;">One</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bank-logo-card" data-bank="usbank">
+                    <div class="bank-logo-content">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <div style="width: 24px; height: 16px; background: linear-gradient(to right, #0033A0 50%, #E11E3C 50%);"></div>
+                            <span style="color: #0033A0; font-family: Arial, sans-serif; font-weight: bold; font-size: 16px;">U.S. Bank</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bank-logo-card" data-bank="pnc">
+                    <div class="bank-logo-content">
+                        <div style="display: flex; align-items: center;">
+                            <span style="color: #FF6900; font-family: Arial, sans-serif; font-weight: bold; font-size: 24px; letter-spacing: -1px;">pnc</span>
+                            <div style="width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 12px solid #FF6900; margin-left: 3px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bank-logo-card" data-bank="td">
+                    <div class="bank-logo-content">
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <div style="background: #34A853; padding: 4px 8px; border-radius: 2px;">
+                                <span style="color: white; font-family: Arial, sans-serif; font-weight: bold; font-size: 18px;">TD</span>
+                            </div>
+                            <span style="color: #34A853; font-family: Arial, sans-serif; font-size: 15px;">Bank</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="/pages/bank-statement-converter-comparison.html" class="view-all-banks">
+                View all supported banks <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <h3>50M+</h3>
+                    <p>Statements Converted</p>
+                </div>
+                <div class="stat">
+                    <h3>2.5M+</h3>
+                    <p>Happy Users</p>
+                </div>
+                <div class="stat">
+                    <h3>99.9%</h3>
+                    <p>Accuracy Rate</p>
+                </div>
+                <div class="stat">
+                    <h3>1000+</h3>
+                    <p>Banks Supported</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Convert Your Bank Statements?</h2>
+            <p>Join millions of users who trust us with their financial documents</p>
+            <a href="#uploadBox" class="btn-cta">
+                <i class="fas fa-file-upload"></i> Start Converting Now - It's Free
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="/features.html">Features</a></li>
+                        <li><a href="/pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="/accountants.html">For Accountants</a></li>
+                        <li><a href="/bookkeepers.html">For Bookkeepers</a></li>
+                        <li><a href="/business.html">For Business</a></li>
+                        <li><a href="/personal.html">Personal Finance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/gdpr.html">GDPR</a></li>
+                        <li><a href="/ccpa.html">CCPA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 BankCSV Converter. All rights reserved.</p>
+                    <div class="social-links">
+                        <a href="https://twitter.com/bankcsvconverter" aria-label="Twitter" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/bankcsvconverter" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://facebook.com/bankcsvconverter" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/modern-homepage-fixed.js?v=5"></script>
+    <script src="/js/dropdown-handler.js"></script>
+</body>
+</html>

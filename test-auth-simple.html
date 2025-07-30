@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Auth Test</title>
+</head>
+<body>
+    <h1>Simple Authentication Test</h1>
+    
+    <div style="margin: 20px; padding: 20px; border: 1px solid #ccc;">
+        <h2>1. Login</h2>
+        <button onclick="login()">Login as test@example.com</button>
+        <div id="loginResult"></div>
+    </div>
+    
+    <div style="margin: 20px; padding: 20px; border: 1px solid #ccc;">
+        <h2>2. Check Auth</h2>
+        <button onclick="checkAuth()">Check Authentication</button>
+        <div id="authResult"></div>
+    </div>
+    
+    <div style="margin: 20px; padding: 20px; border: 1px solid #ccc;">
+        <h2>3. Test Buy Button</h2>
+        <button onclick="testBuyButton()">Click Buy Button (Starter Plan)</button>
+        <div id="buyResult"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://bankcsvconverter.com/api';
+        
+        async function login() {
+            const resultDiv = document.getElementById('loginResult');
+            resultDiv.innerHTML = 'Logging in...';
+            
+            try {
+                const response = await fetch(`${API_BASE}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: 'test@example.com',
+                        password: 'test123'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.access_token) {
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('user_email', 'test@example.com');
+                    resultDiv.innerHTML = `✅ Login successful!<br>Token saved to localStorage`;
+                } else {
+                    resultDiv.innerHTML = `❌ Login failed: ${JSON.stringify(data)}`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Error: ${error.message}`;
+            }
+        }
+        
+        function checkAuth() {
+            const resultDiv = document.getElementById('authResult');
+            const token = localStorage.getItem('access_token');
+            
+            if (token) {
+                resultDiv.innerHTML = `✅ Token found in localStorage<br>
+                    Token: ${token.substring(0, 50)}...<br>
+                    <br>
+                    Now go to <a href="https://bankcsvconverter.com/pricing.html" target="_blank">Pricing Page</a> and try clicking a Buy button.`;
+            } else {
+                resultDiv.innerHTML = '❌ No token found in localStorage';
+            }
+        }
+        
+        async function testBuyButton() {
+            const resultDiv = document.getElementById('buyResult');
+            const token = localStorage.getItem('access_token');
+            
+            if (!token) {
+                resultDiv.innerHTML = '❌ Not logged in. Would redirect to: /signup.html?plan=starter&redirect=/pricing.html';
+                return;
+            }
+            
+            resultDiv.innerHTML = '✅ Logged in. Creating Stripe checkout session...';
+            
+            try {
+                const response = await fetch(`${API_BASE}/stripe/create-checkout-session`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        plan: 'starter',
+                        billing_period: 'monthly'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.checkout_url) {
+                    resultDiv.innerHTML = `✅ Success! Would redirect to:<br>${data.checkout_url}`;
+                } else {
+                    resultDiv.innerHTML = `❌ Failed: ${JSON.stringify(data)}`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>

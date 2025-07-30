@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage your bank statement conversions and account settings">
+    <title>Dashboard - Bank Statement Converter</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="/css/nav-fix.css">
+    <link rel="stylesheet" href="/css/dropdown-fix.css">
+    <link rel="stylesheet" href="/css/modern-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/blog-fix.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <span class="logo-text">BankCSV</span>
+                </a>
+                <div class="nav-links desktop-only">
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            <i class="fas fa-th"></i> Tools
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="/convert-pdf.html" class="dropdown-item">
+                                <i class="fas fa-file-pdf"></i>
+                                Convert PDF
+                            </a>
+                            <a href="/merge-statements.html" class="dropdown-item">
+                                <i class="fas fa-object-group"></i>
+                                Merge Statements
+                            </a>
+                            <a href="/split-by-date.html" class="dropdown-item">
+                                <i class="fas fa-cut"></i>
+                                Split by Date
+                            </a>
+                            <a href="/analyze-transactions.html" class="dropdown-item">
+                                <i class="fas fa-chart-line"></i>
+                                Analyze Transactions
+                            </a>
+                        </div>
+                    </div>
+                    <a href="/#features" class="nav-link">Features</a>
+                    <a href="/#banks" class="nav-link">Supported Banks</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="/pricing.html" class="nav-link desktop-only">Pricing</a>
+                <a href="/business.html" class="nav-link desktop-only">Business</a>
+                <div class="user-menu">
+                    <button class="user-menu-toggle" id="userMenuToggle">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userEmail" class="desktop-only">Loading...</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="/dashboard.html" class="dropdown-item">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                        <a href="/settings.html" class="dropdown-item">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="/#features" class="mobile-link">Features</a>
+            <a href="/#banks" class="mobile-link">Supported Banks</a>
+            <a href="/blog.html" class="mobile-link">Blog</a>
+            <a href="/pricing.html" class="mobile-link">Pricing</a>
+            <a href="/business.html" class="mobile-link">Business</a>
+            <div class="mobile-divider"></div>
+            <a href="/settings.html" class="mobile-link">Settings</a>
+            <a href="#" class="mobile-link" id="logoutBtnMobile">Logout</a>
+        </div>
+    </div>
+
+    <!-- Dashboard Header -->
+    <section class="dashboard-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/"><i class="fas fa-home"></i> Home</a>
+                <span class="separator">›</span>
+                <span>Dashboard</span>
+            </div>
+            
+            <h1 class="dashboard-title">Welcome back!</h1>
+            <p class="dashboard-subtitle">Manage your conversions and account settings</p>
+        </div>
+    </section>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-content">
+        <div class="container">
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="todayConversions">0</div>
+                        <div class="stat-label">Today's Conversions</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="totalConversions">0</div>
+                        <div class="stat-label">Total Conversions</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="remainingToday">5</div>
+                        <div class="stat-label">Remaining Today</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value">Free</div>
+                        <div class="stat-label">Account Type</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="dashboard-grid">
+                <!-- Recent Conversions -->
+                <div class="dashboard-section conversions-section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-history"></i>
+                            Recent Conversions
+                        </h2>
+                        <span class="section-subtitle">Files are saved for 1 hour</span>
+                    </div>
+                    <div class="conversions-list" id="conversionsContainer">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="dashboard-section actions-section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-bolt"></i>
+                            Quick Actions
+                        </h2>
+                    </div>
+                    <div class="actions-grid">
+                        <a href="/" class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-file-upload"></i>
+                            </div>
+                            <div class="action-content">
+                                <h3>Convert New Statement</h3>
+                                <p>Upload a PDF to convert</p>
+                            </div>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="/pricing.html" class="action-card upgrade">
+                            <div class="action-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="action-content">
+                                <h3>Upgrade Account</h3>
+                                <p>Get more conversions</p>
+                            </div>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="/settings.html" class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <div class="action-content">
+                                <h3>Account Settings</h3>
+                                <p>Manage your profile</p>
+                            </div>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="/help.html" class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <div class="action-content">
+                                <h3>Help Center</h3>
+                                <p>Get support & guides</p>
+                            </div>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Usage Progress -->
+            <div class="usage-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-chart-bar"></i>
+                        Daily Usage
+                    </h2>
+                </div>
+                <div class="usage-progress">
+                    <div class="progress-info">
+                        <span class="progress-label">Used today</span>
+                        <span class="progress-value" id="usagePercentage">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="usageProgressFill"></div>
+                    </div>
+                    <p class="usage-note">
+                        <i class="fas fa-info-circle"></i>
+                        Free users get 5 conversions per day. <a href="/pricing.html">View pricing plans</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <span class="logo-text">BankCSV</span>
+                    </div>
+                    <p class="footer-description">
+                        Convert bank statements from PDF to CSV/Excel instantly. Secure, fast & accurate.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="/#features">Features</a></li>
+                        <li><a href="/pricing.html">Pricing</a></li>
+                        <li><a href="/business.html">Business</a></li>
+                        <li><a href="/#banks">Supported Banks</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/contact.html">Contact Us</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/status.html">Status</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/security.html">Security</a></li>
+                        <li><a href="/gdpr.html">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 BankCSVConverter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/api-config.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/auth-universal.js"></script>
+    <script src="/js/modern-dashboard.js"></script>
+    <script src="/js/production.js"></script>
+</body>
+</html>

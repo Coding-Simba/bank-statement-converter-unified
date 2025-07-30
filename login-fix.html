@@ -1,0 +1,12 @@
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize auth forms
+            if (window.BankAuth && window.BankAuth.AuthForms) {
+                window.BankAuth.AuthForms.setupLoginForm();
+            }
+        });
+    </script>
+    <script src="/js/api-config.js"></script>
+    <script src="/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Test - Bank Statement Converter</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .test-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        .test-button {
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .btn-login { background: #00bfa5; color: white; }
+        .btn-logout { background: #dc3545; color: white; }
+        .btn-check { background: #0066ff; color: white; }
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .status { font-weight: bold; }
+        .status.authenticated { color: #28a745; }
+        .status.not-authenticated { color: #dc3545; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <span class="logo-text">BankCSV</span>
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="/pricing.html" class="nav-link">Pricing</a>
+                <a href="/login.html" class="nav-link">Log In</a>
+                <a href="/signup.html" class="btn-primary">Sign Up Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="test-container">
+        <h1>Authentication Test Page</h1>
+        
+        <div class="test-section">
+            <h2>Current Auth Status</h2>
+            <p>Status: <span id="authStatus" class="status">Checking...</span></p>
+            <p>User Email: <span id="userEmail">N/A</span></p>
+            <p>Token: <span id="tokenStatus">N/A</span></p>
+        </div>
+
+        <div class="test-section">
+            <h2>Test Actions</h2>
+            <button class="test-button btn-login" onclick="testLogin()">Test Login</button>
+            <button class="test-button btn-logout" onclick="testLogout()">Test Logout</button>
+            <button class="test-button btn-check" onclick="checkAuth()">Check Auth</button>
+            <button class="test-button btn-check" onclick="window.location.href='/pricing.html'">Go to Pricing</button>
+        </div>
+
+        <div class="test-section">
+            <h2>LocalStorage Contents</h2>
+            <pre id="storageContents"></pre>
+        </div>
+
+        <div class="test-section">
+            <h2>Console Log</h2>
+            <pre id="consoleLog"></pre>
+        </div>
+    </div>
+
+    <script src="/js/auth-persistent.js"></script>
+    <script>
+        // Override console.log to capture output
+        const logOutput = [];
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            logOutput.push(args.join(' '));
+            document.getElementById('consoleLog').textContent = logOutput.join('\n');
+        };
+
+        function checkAuth() {
+            const token = localStorage.getItem('access_token');
+            const user = localStorage.getItem('user');
+            const authStatus = document.getElementById('authStatus');
+            const userEmail = document.getElementById('userEmail');
+            const tokenStatus = document.getElementById('tokenStatus');
+            
+            if (token && user) {
+                authStatus.textContent = 'Authenticated';
+                authStatus.className = 'status authenticated';
+                try {
+                    const userData = JSON.parse(user);
+                    userEmail.textContent = userData.email || 'Unknown';
+                } catch (e) {
+                    userEmail.textContent = 'Error parsing user data';
+                }
+                tokenStatus.textContent = token.substring(0, 20) + '...';
+            } else {
+                authStatus.textContent = 'Not Authenticated';
+                authStatus.className = 'status not-authenticated';
+                userEmail.textContent = 'N/A';
+                tokenStatus.textContent = 'N/A';
+            }
+            
+            updateStorageDisplay();
+        }
+
+        function updateStorageDisplay() {
+            const storage = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                storage[key] = localStorage.getItem(key);
+            }
+            document.getElementById('storageContents').textContent = JSON.stringify(storage, null, 2);
+        }
+
+        async function testLogin() {
+            // Simulate login
+            const testUser = {
+                email: 'test@example.com',
+                id: 1,
+                fullName: 'Test User'
+            };
+            const testToken = 'test_token_' + Date.now();
+            
+            localStorage.setItem('access_token', testToken);
+            localStorage.setItem('user', JSON.stringify(testUser));
+            
+            alert('Test login successful! Refresh the page to see the user menu.');
+            checkAuth();
+            
+            // Reload to trigger auth-persistent.js
+            setTimeout(() => window.location.reload(), 1000);
+        }
+
+        function testLogout() {
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('user');
+            alert('Logged out! Refresh the page to see login/signup buttons.');
+            checkAuth();
+            
+            // Reload to trigger auth-persistent.js
+            setTimeout(() => window.location.reload(), 1000);
+        }
+
+        // Check auth on load
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkAuth, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Authentication Flow</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        input {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Authentication Flow Test</h1>
+    
+    <div class="test-section">
+        <h2>1. Test Login</h2>
+        <input type="email" id="email" placeholder="Email" value="test@example.com">
+        <input type="password" id="password" placeholder="Password" value="test123">
+        <button onclick="testLogin()">Test Login</button>
+        <div id="loginResult" class="test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Check Auth State</h2>
+        <button onclick="checkAuthState()">Check Current Auth State</button>
+        <div id="authStateResult" class="test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Test Stripe Checkout</h2>
+        <button onclick="testStripeCheckout('starter')">Test Starter Plan</button>
+        <button onclick="testStripeCheckout('professional')">Test Professional Plan</button>
+        <button onclick="testStripeCheckout('business')">Test Business Plan</button>
+        <div id="stripeResult" class="test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Test Buy Button Logic</h2>
+        <button onclick="testBuyButtonLogic()">Simulate Buy Button Click</button>
+        <div id="buyButtonResult" class="test-result"></div>
+    </div>
+
+    <script>
+        // Test configuration
+        const API_BASE = 'https://bankcsvconverter.com/api';
+        
+        // Utility function to log results
+        function logResult(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            element.appendChild(div);
+        }
+
+        // 1. Test Login
+        async function testLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            logResult('loginResult', 'Testing login...', 'info');
+            
+            try {
+                const response = await fetch(`${API_BASE}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.access_token) {
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('user_email', email);
+                    logResult('loginResult', `Success! Token: ${data.access_token.substring(0, 50)}...`, 'success');
+                    
+                    // Immediately check if token persists
+                    setTimeout(() => {
+                        const savedToken = localStorage.getItem('access_token');
+                        if (savedToken) {
+                            logResult('loginResult', 'Token successfully saved to localStorage', 'success');
+                        } else {
+                            logResult('loginResult', 'ERROR: Token not found in localStorage!', 'error');
+                        }
+                    }, 100);
+                } else {
+                    logResult('loginResult', `Login failed: ${JSON.stringify(data)}`, 'error');
+                }
+            } catch (error) {
+                logResult('loginResult', `Network error: ${error.message}`, 'error');
+            }
+        }
+
+        // 2. Check Auth State
+        function checkAuthState() {
+            logResult('authStateResult', 'Checking authentication state...', 'info');
+            
+            // Check localStorage
+            const token = localStorage.getItem('access_token');
+            const email = localStorage.getItem('user_email');
+            
+            logResult('authStateResult', `localStorage token: ${token ? 'Present' : 'Missing'}`, token ? 'success' : 'error');
+            logResult('authStateResult', `localStorage email: ${email || 'Not found'}`, email ? 'success' : 'error');
+            
+            // Check if BankAuth exists
+            if (window.BankAuth) {
+                logResult('authStateResult', 'BankAuth module: Found', 'success');
+                
+                if (window.BankAuth.TokenManager) {
+                    logResult('authStateResult', 'TokenManager: Found', 'success');
+                    
+                    const authToken = window.BankAuth.TokenManager.getAccessToken();
+                    const isAuth = window.BankAuth.TokenManager.isAuthenticated();
+                    
+                    logResult('authStateResult', `TokenManager.getAccessToken(): ${authToken ? 'Present' : 'Missing'}`, authToken ? 'success' : 'error');
+                    logResult('authStateResult', `TokenManager.isAuthenticated(): ${isAuth}`, isAuth ? 'success' : 'error');
+                } else {
+                    logResult('authStateResult', 'TokenManager: Not found!', 'error');
+                }
+            } else {
+                logResult('authStateResult', 'BankAuth module: Not found!', 'error');
+                logResult('authStateResult', 'This means auth.js is not loaded on the page', 'error');
+            }
+        }
+
+        // 3. Test Stripe Checkout
+        async function testStripeCheckout(plan) {
+            logResult('stripeResult', `Testing Stripe checkout for ${plan} plan...`, 'info');
+            
+            const token = localStorage.getItem('access_token');
+            if (!token) {
+                logResult('stripeResult', 'No access token found. Please login first.', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/stripe/create-checkout-session`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        plan: plan,
+                        billing_period: 'monthly'
+                    })
+                });
+                
+                logResult('stripeResult', `Response status: ${response.status}`, response.ok ? 'success' : 'error');
+                
+                const data = await response.json();
+                
+                if (response.ok && data.checkout_url) {
+                    logResult('stripeResult', `Success! Checkout URL: ${data.checkout_url}`, 'success');
+                    logResult('stripeResult', 'In production, this would redirect to Stripe', 'info');
+                } else {
+                    logResult('stripeResult', `Error: ${JSON.stringify(data)}`, 'error');
+                }
+            } catch (error) {
+                logResult('stripeResult', `Network error: ${error.message}`, 'error');
+            }
+        }
+
+        // 4. Test Buy Button Logic
+        function testBuyButtonLogic() {
+            logResult('buyButtonResult', 'Simulating Buy button click...', 'info');
+            
+            // Check if user is authenticated
+            const token = localStorage.getItem('access_token');
+            const hasToken = !!token;
+            
+            logResult('buyButtonResult', `Step 1: Check localStorage token: ${hasToken ? 'Found' : 'Missing'}`, hasToken ? 'success' : 'error');
+            
+            // Check BankAuth
+            if (window.BankAuth && window.BankAuth.TokenManager) {
+                const isAuth = window.BankAuth.TokenManager.isAuthenticated();
+                logResult('buyButtonResult', `Step 2: BankAuth.isAuthenticated(): ${isAuth}`, isAuth ? 'success' : 'error');
+                
+                if (!isAuth) {
+                    logResult('buyButtonResult', 'Step 3: Would redirect to: /signup.html?plan=starter&redirect=/pricing.html', 'info');
+                } else {
+                    logResult('buyButtonResult', 'Step 3: Would proceed to create Stripe checkout session', 'success');
+                }
+            } else {
+                logResult('buyButtonResult', 'Step 2: BankAuth not available - would redirect to signup', 'error');
+                logResult('buyButtonResult', 'Step 3: Would redirect to: /signup.html?plan=starter&redirect=/pricing.html', 'info');
+            }
+        }
+
+        // Load auth.js if available
+        function loadAuthScript() {
+            const script = document.createElement('script');
+            script.src = 'https://bankcsvconverter.com/js/auth.js';
+            script.onload = () => {
+                logResult('authStateResult', 'auth.js loaded successfully', 'success');
+                // Check auth state after loading
+                setTimeout(checkAuthState, 500);
+            };
+            script.onerror = () => {
+                logResult('authStateResult', 'Failed to load auth.js', 'error');
+            };
+            document.head.appendChild(script);
+        }
+
+        // Load api-config.js first
+        const apiConfigScript = document.createElement('script');
+        apiConfigScript.src = 'https://bankcsvconverter.com/js/api-config.js';
+        apiConfigScript.onload = loadAuthScript;
+        document.head.appendChild(apiConfigScript);
+    </script>
+</body>
+</html>

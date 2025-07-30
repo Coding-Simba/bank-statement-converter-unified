@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auth System Debug</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Auth System Debug</h1>
+    <div id="results"></div>
+    
+    <h2>Test Account Creation</h2>
+    <form id="testSignup">
+        <input type="email" id="email" placeholder="Email" value="test@test.com"><br>
+        <input type="password" id="password" placeholder="Password" value="Password123"><br>
+        <input type="text" id="fullName" placeholder="Full Name" value="Test User"><br>
+        <button type="submit">Create Account</button>
+    </form>
+    
+    <h2>Test Login</h2>
+    <form id="testLogin">
+        <input type="email" id="loginEmail" placeholder="Email" value="test@example.com"><br>
+        <input type="password" id="loginPassword" placeholder="Password" value="test123"><br>
+        <button type="submit">Login</button>
+    </form>
+    
+    <script src="/js/api-config.js"></script>
+    <script src="/js/auth.js"></script>
+    <script>
+        const results = document.getElementById('results');
+        
+        function addResult(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.textContent = message;
+            results.appendChild(div);
+        }
+        
+        // Check if auth modules loaded
+        if (window.BankAuth) {
+            addResult('✓ BankAuth module loaded', 'success');
+            
+            if (window.BankAuth.AuthAPI) {
+                addResult('✓ AuthAPI available', 'success');
+            }
+            
+            if (window.BankAuth.TokenManager) {
+                addResult('✓ TokenManager available', 'success');
+                
+                if (window.BankAuth.TokenManager.isAuthenticated()) {
+                    addResult('✓ User is authenticated', 'success');
+                    const user = window.BankAuth.UserManager.getUser();
+                    addResult(`User: ${user?.email}`, 'info');
+                } else {
+                    addResult('✗ User not authenticated', 'error');
+                }
+            }
+        } else {
+            addResult('✗ BankAuth module not loaded!', 'error');
+        }
+        
+        // Test signup
+        document.getElementById('testSignup').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            try {
+                const userData = {
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                    full_name: document.getElementById('fullName').value,
+                    account_type: 'free'
+                };
+                
+                addResult('Attempting signup...', 'info');
+                const result = await window.BankAuth.AuthAPI.register(userData);
+                addResult(`✓ Signup successful! User ID: ${result.user.id}`, 'success');
+            } catch (error) {
+                addResult(`✗ Signup failed: ${error.message}`, 'error');
+            }
+        });
+        
+        // Test login
+        document.getElementById('testLogin').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            try {
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                addResult('Attempting login...', 'info');
+                const result = await window.BankAuth.AuthAPI.login(email, password);
+                addResult(`✓ Login successful! User: ${result.user.email}`, 'success');
+            } catch (error) {
+                addResult(`✗ Login failed: ${error.message}`, 'error');
+            }
+        });
+    </script>
+</body>
+</html>

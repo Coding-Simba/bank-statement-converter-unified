@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deployment Test</title>
+</head>
+<body>
+    <h1>Testing Stripe Integration</h1>
+    <div id="results"></div>
+    
+    <script>
+        const results = document.getElementById('results');
+        
+        // Test 1: Check if scripts load
+        const scripts = [
+            '/js/api-config.js',
+            '/js/auth.js', 
+            '/js/stripe-integration.js'
+        ];
+        
+        scripts.forEach(script => {
+            fetch(`https://bankcsvconverter.com${script}?v=${Date.now()}`)
+                .then(res => {
+                    const div = document.createElement('div');
+                    if (res.ok) {
+                        div.innerHTML = `✅ ${script} loaded successfully`;
+                        div.style.color = 'green';
+                    } else {
+                        div.innerHTML = `❌ ${script} failed to load`;
+                        div.style.color = 'red';
+                    }
+                    results.appendChild(div);
+                });
+        });
+        
+        // Test 2: Check API
+        fetch('https://bankcsvconverter.com/api/stripe/subscription-status')
+            .then(res => res.json())
+            .then(data => {
+                const div = document.createElement('div');
+                div.innerHTML = `✅ API is responding: ${JSON.stringify(data)}`;
+                div.style.color = 'green';
+                results.appendChild(div);
+            })
+            .catch(err => {
+                const div = document.createElement('div');
+                div.innerHTML = `❌ API error: ${err}`;
+                div.style.color = 'red';
+                results.appendChild(div);
+            });
+    </script>
+</body>
+</html>

@@ -22,6 +22,10 @@ Bank statement PDF to CSV converter with web interface. Deployed on AWS Lightsai
   - Added advanced_ocr_parser.py for image-based pages
   - Universal parser now automatically tries OCR for better extraction
   - Successfully extracts all transactions from multi-line formats
+- Fixed authentication persistence issues (2025-07-30)
+  - Created auth-fixed.js that doesn't clear tokens on API errors
+  - Removed conflicting auth scripts (auth-global.js, auth-persistent.js, auth-universal.js)
+  - Users no longer get logged out when navigating between pages
 
 ## Testing
 - Test PDF: `/Users/MAC/Downloads/example_bank_statement.pdf`

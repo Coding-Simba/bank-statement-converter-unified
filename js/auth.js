@@ -34,6 +34,7 @@ const TokenManager = {
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
         localStorage.removeItem('user_data');
+        localStorage.removeItem('user'); // Also clear old format
     },
     
     isAuthenticated() {
@@ -44,16 +45,19 @@ const TokenManager = {
 // User management
 const UserManager = {
     setUser(userData) {
+        // Store in both formats for compatibility
         localStorage.setItem('user_data', JSON.stringify(userData));
+        localStorage.setItem('user', JSON.stringify(userData)); // For backward compatibility
     },
     
     getUser() {
-        const userData = localStorage.getItem('user_data');
+        const userData = localStorage.getItem('user_data') || localStorage.getItem('user');
         return userData ? JSON.parse(userData) : null;
     },
     
     clearUser() {
         localStorage.removeItem('user_data');
+        localStorage.removeItem('user'); // Also clear old format
     }
 };
 

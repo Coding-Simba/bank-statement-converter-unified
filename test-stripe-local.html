@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Stripe Integration Locally</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Test Stripe Integration</h1>
+    
+    <h2>1. Check if scripts are loading:</h2>
+    <div id="script-status"></div>
+    
+    <h2>2. Test Buy Button:</h2>
+    <button class="pricing-cta primary" href="#">Test Buy Button</button>
+    
+    <h2>3. Console Output:</h2>
+    <pre id="console-output" style="background: #f0f0f0; padding: 10px; border-radius: 5px;"></pre>
+    
+    <script>
+    // Override console.log to show in page
+    const output = document.getElementById('console-output');
+    const originalLog = console.log;
+    console.log = function(...args) {
+        originalLog.apply(console, args);
+        output.textContent += args.join(' ') + '\n';
+    };
+    </script>
+    
+    <script src="/js/api-config.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/stripe-integration.js"></script>
+    
+    <script>
+    // Check script loading
+    setTimeout(() => {
+        const status = document.getElementById('script-status');
+        status.innerHTML = `
+            <p>API_CONFIG loaded: ${typeof window.API_CONFIG !== 'undefined' ? '✅' : '❌'}</p>
+            <p>BankAuth loaded: ${typeof window.BankAuth !== 'undefined' ? '✅' : '❌'}</p>
+            <p>STRIPE_API_BASE defined: ${typeof STRIPE_API_BASE !== 'undefined' ? '✅' : '❌'}</p>
+            <p>API Base URL: ${typeof getApiBase !== 'undefined' ? getApiBase() : 'N/A'}</p>
+        `;
+    }, 1000);
+    </script>
+</body>
+</html>

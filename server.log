@@ -252,3 +252,326 @@
 ::1 - - [29/Jul/2025 23:45:20] "GET /favicon.ico HTTP/1.1" 404 -
 ::1 - - [29/Jul/2025 23:45:22] code 404, message File not found
 ::1 - - [29/Jul/2025 23:45:22] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:22] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:22] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:24] "GET / HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:47:24] "GET /css/modern-homepage.css HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:47:24] "GET /css/dropdown-fix.css HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:47:24] "GET /css/nav-fix.css HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:47:24] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:47:24] "GET /css/blog-fix.css HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:47:24] "GET /assets/pdf-icon.svg HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:47:24] "GET /js/dropdown-handler.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:47:24] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:24] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:25] "GET /pricing.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:25] "GET /css/production.min.css HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:47:25] "GET /js/conversion-limit-modal.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:47:25] "GET /js/auth.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:47:25] "GET /js/stripe-integration.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:25] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:25] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:27] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:27] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:28] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:28] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:30] "GET /pricing.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /css/production.min.css HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /js/conversion-limit-modal.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /js/auth.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /js/stripe-integration.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:30] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:30] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:30] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:30] "GET /pricing.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /css/production.min.css HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /js/auth.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /js/conversion-limit-modal.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /js/stripe-integration.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:30] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:30] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:30] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:30] "GET /pricing.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /css/production.min.css HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /js/conversion-limit-modal.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /js/auth.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /js/stripe-integration.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:30] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:30] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:30] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:30] "GET /pricing.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /css/production.min.css HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /js/conversion-limit-modal.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /js/auth.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:30] "GET /js/stripe-integration.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:47:31] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:31] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:31] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:31] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:47:32] code 404, message File not found
+::1 - - [30/Jul/2025 20:47:32] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:52:50] code 404, message File not found
+::1 - - [30/Jul/2025 20:52:50] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:52:51] code 404, message File not found
+::1 - - [30/Jul/2025 20:52:51] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:52:53] code 404, message File not found
+::1 - - [30/Jul/2025 20:52:53] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:53:06] code 404, message File not found
+::1 - - [30/Jul/2025 20:53:06] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:53:11] code 404, message File not found
+::1 - - [30/Jul/2025 20:53:11] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:53:36] code 404, message File not found
+::1 - - [30/Jul/2025 20:53:36] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:53:36] code 404, message File not found
+::1 - - [30/Jul/2025 20:53:36] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:44] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:44] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:44] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:44] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:49] "GET /pricing.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:54:49] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:49] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:49] "GET /css/production.min.css HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:54:49] "GET /js/auth.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:54:49] "GET /js/conversion-limit-modal.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:54:49] "GET /js/stripe-integration.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:54:49] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:49] "GET /login HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:49] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:49] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:49] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:49] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:49] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:49] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:50] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:50] "GET /login HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:50] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:50] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:50] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:50] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:50] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:50] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:50] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:50] "GET /login HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:50] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:50] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:50] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:50] "GET /login HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:50] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:50] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:50] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:50] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:51] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:51] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:51] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:51] "GET /login HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:51] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:51] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:51] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:51] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:51] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:51] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:52] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:52] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:52] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:52] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:56] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:56] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:54:56] "GET /js/stripe-integration.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:54:56] code 404, message File not found
+::1 - - [30/Jul/2025 20:54:56] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:55:01] "GET /signup.html?plan=business&redirect=/pricing.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 20:55:01] code 404, message File not found
+::1 - - [30/Jul/2025 20:55:01] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:55:01] "GET /js/api-config.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:55:01] code 404, message File not found
+::1 - - [30/Jul/2025 20:55:01] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:55:11] code 404, message File not found
+::1 - - [30/Jul/2025 20:55:11] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:55:11] code 404, message File not found
+::1 - - [30/Jul/2025 20:55:11] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:55:13] code 404, message File not found
+::1 - - [30/Jul/2025 20:55:13] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:55:13] code 404, message File not found
+::1 - - [30/Jul/2025 20:55:13] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:55:28] "GET /login.html HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:55:28] code 404, message File not found
+::1 - - [30/Jul/2025 20:55:28] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 20:55:28] "GET /css/auth.css HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 20:55:28] code 404, message File not found
+::1 - - [30/Jul/2025 20:55:28] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:10:37] "GET /pricing.html HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:10:37] code 404, message File not found
+::1 - - [30/Jul/2025 21:10:37] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:10:37] "GET /js/stripe-integration.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:10:37] code 404, message File not found
+::1 - - [30/Jul/2025 21:10:37] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:10:39] code 404, message File not found
+::1 - - [30/Jul/2025 21:10:39] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:10:39] code 404, message File not found
+::1 - - [30/Jul/2025 21:10:39] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:10:52] "GET /dashboard.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:10:52] code 404, message File not found
+::1 - - [30/Jul/2025 21:10:52] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:10:52] "GET /css/production.css HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:10:52] "GET /css/dashboard.css HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:10:52] "GET /js/dashboard.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:10:52] "GET /js/production.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:10:52] "GET /css/enhancements.css HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:10:52] code 404, message File not found
+::1 - - [30/Jul/2025 21:10:52] "GET /favicon-32x32.png HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:10:52] code 404, message File not found
+::1 - - [30/Jul/2025 21:10:52] "GET /favicon-32x32.png HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:10:52] code 404, message File not found
+::1 - - [30/Jul/2025 21:10:52] "GET /favicon-16x16.png HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:11:23] code 404, message File not found
+::1 - - [30/Jul/2025 21:11:23] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:11:24] code 404, message File not found
+::1 - - [30/Jul/2025 21:11:24] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:11:42] "GET /pricing.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:11:43] code 404, message File not found
+::1 - - [30/Jul/2025 21:11:43] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:11:53] code 404, message File not found
+::1 - - [30/Jul/2025 21:11:53] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:11:59] code 404, message File not found
+::1 - - [30/Jul/2025 21:11:59] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:12:07] code 404, message File not found
+::1 - - [30/Jul/2025 21:12:07] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:12:14] code 404, message File not found
+::1 - - [30/Jul/2025 21:12:14] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:13:17] "GET /blog.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:13:17] "GET /js/modern-homepage-fixed.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:13:18] code 404, message File not found
+::1 - - [30/Jul/2025 21:13:18] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:13:21] "GET /signup.html HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:13:21] code 404, message File not found
+::1 - - [30/Jul/2025 21:13:21] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:13:22] code 404, message File not found
+::1 - - [30/Jul/2025 21:13:22] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:13:27] code 404, message File not found
+::1 - - [30/Jul/2025 21:13:27] "GET /favicon-32x32.png HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:16:25] code 404, message File not found
+::1 - - [30/Jul/2025 21:16:25] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:16:26] "GET /pricing.html HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:16:26] "GET /js/stripe-integration.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:16:26] code 404, message File not found
+::1 - - [30/Jul/2025 21:16:26] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:16:35] "GET /pricing.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:16:35] "GET /css/production.min.css HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:16:35] "GET /js/conversion-limit-modal.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:16:35] "GET /js/stripe-integration.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:16:35] "GET /js/auth.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:16:35] code 404, message File not found
+::1 - - [30/Jul/2025 21:16:35] code 404, message File not found
+::1 - - [30/Jul/2025 21:16:35] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:16:35] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:16:36] "GET /pricing.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:16:36] "GET /css/production.min.css HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:16:36] "GET /js/conversion-limit-modal.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:16:36] "GET /js/stripe-integration.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:16:36] "GET /js/auth.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:16:36] code 404, message File not found
+::1 - - [30/Jul/2025 21:16:36] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:16:36] code 404, message File not found
+::1 - - [30/Jul/2025 21:16:36] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:16:45] code 404, message File not found
+::1 - - [30/Jul/2025 21:16:45] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:16:46] code 404, message File not found
+::1 - - [30/Jul/2025 21:16:46] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:17:00] code 404, message File not found
+::1 - - [30/Jul/2025 21:17:00] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:18:06] "GET /pricing.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:18:06] code 404, message File not found
+::1 - - [30/Jul/2025 21:18:06] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:18:06] "GET /css/production.min.css HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:18:06] "GET /js/conversion-limit-modal.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:18:06] "GET /js/auth.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:18:06] "GET /js/api-config.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:18:06] "GET /js/stripe-integration.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:18:07] code 404, message File not found
+::1 - - [30/Jul/2025 21:18:07] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:18:07] code 404, message File not found
+::1 - - [30/Jul/2025 21:18:07] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:18:43] "GET /pricing.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:18:43] code 404, message File not found
+::1 - - [30/Jul/2025 21:18:43] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:18:44] "GET /js/auth.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:18:44] "GET /js/stripe-integration.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:18:44] code 404, message File not found
+::1 - - [30/Jul/2025 21:18:44] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:13] "GET /pricing.html HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:23:13] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:13] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:13] "GET /js/auth.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:23:13] "GET /js/stripe-integration.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:23:14] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:14] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:14] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:14] "GET /login HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:14] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:14] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:14] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:14] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:19] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:19] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:19] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:19] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:25] "GET /pricing.html HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:23:25] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:25] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:25] "GET /js/auth.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:23:26] "GET /js/stripe-integration.js HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:23:26] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:26] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:27] "GET /signup.html?plan=starter&redirect=/pricing.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:23:27] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:27] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:27] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:27] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:32] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:32] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:32] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:32] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:37] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:37] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:37] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:37] "GET /favicon-32x32.png HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:38] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:38] "GET /favicon-32x32.png HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:38] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:38] "GET /favicon-16x16.png HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:42] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:42] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:42] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:42] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:44] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:44] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:23:44] code 404, message File not found
+::1 - - [30/Jul/2025 21:23:44] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:24:17] "GET /pricing.html HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:24:17] code 404, message File not found
+::1 - - [30/Jul/2025 21:24:17] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:24:17] "GET /js/auth.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:24:17] "GET /js/stripe-integration.js HTTP/1.1" 304 -
+::1 - - [30/Jul/2025 21:24:17] code 404, message File not found
+::1 - - [30/Jul/2025 21:24:17] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:24:22] "GET /how-it-works.html HTTP/1.1" 200 -
+::1 - - [30/Jul/2025 21:24:22] code 404, message File not found
+::1 - - [30/Jul/2025 21:24:22] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:24:22] code 404, message File not found
+::1 - - [30/Jul/2025 21:24:22] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:24:28] code 404, message File not found
+::1 - - [30/Jul/2025 21:24:28] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:24:28] code 404, message File not found
+::1 - - [30/Jul/2025 21:24:28] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:24:51] code 404, message File not found
+::1 - - [30/Jul/2025 21:24:51] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:24:51] code 404, message File not found
+::1 - - [30/Jul/2025 21:24:51] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:24:56] code 404, message File not found
+::1 - - [30/Jul/2025 21:24:56] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [30/Jul/2025 21:24:56] code 404, message File not found
+::1 - - [30/Jul/2025 21:24:56] "GET /favicon-32x32.png HTTP/1.1" 404 -

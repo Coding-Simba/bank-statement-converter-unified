@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage your BankCSV account settings, update profile information, change password, and configure preferences">
+    <title>Account Settings - Bank Statement Converter</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <link rel="stylesheet" href="/css/nav-fix.css">
+    <link rel="stylesheet" href="/css/dropdown-fix.css">
+    <link rel="stylesheet" href="/css/settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/blog-fix.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <span class="logo-text">BankCSV</span>
+                </a>
+                <div class="nav-links desktop-only">
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            <i class="fas fa-th"></i> Tools
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="/convert-pdf.html" class="dropdown-item">
+                                <i class="fas fa-file-pdf"></i>
+                                Convert PDF
+                            </a>
+                            <a href="/merge-statements.html" class="dropdown-item">
+                                <i class="fas fa-object-group"></i>
+                                Merge Statements
+                            </a>
+                            <a href="/split-by-date.html" class="dropdown-item">
+                                <i class="fas fa-cut"></i>
+                                Split by Date
+                            </a>
+                            <a href="/analyze-transactions.html" class="dropdown-item">
+                                <i class="fas fa-chart-line"></i>
+                                Analyze Transactions
+                            </a>
+                        </div>
+                    </div>
+                    <a href="/#features" class="nav-link">Features</a>
+                    <a href="/#banks" class="nav-link">Supported Banks</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="/pricing.html" class="nav-link desktop-only">Pricing</a>
+                <a href="/business.html" class="nav-link desktop-only">Business</a>
+                <div class="user-menu">
+                    <button class="user-menu-toggle" id="userMenuToggle">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userEmail" class="desktop-only">Loading...</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="/dashboard.html" class="dropdown-item">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                        <a href="/settings.html" class="dropdown-item active">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="/#features" class="mobile-link">Features</a>
+            <a href="/#banks" class="mobile-link">Supported Banks</a>
+            <a href="/blog.html" class="mobile-link">Blog</a>
+            <a href="/pricing.html" class="mobile-link">Pricing</a>
+            <a href="/business.html" class="mobile-link">Business</a>
+            <div class="mobile-divider"></div>
+            <a href="/dashboard.html" class="mobile-link">Dashboard</a>
+            <a href="#" class="mobile-link" id="logoutBtnMobile">Logout</a>
+        </div>
+    </div>
+
+    <!-- Settings Header -->
+    <section class="settings-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/"><i class="fas fa-home"></i> Home</a>
+                <span class="separator">›</span>
+                <a href="/dashboard.html">Dashboard</a>
+                <span class="separator">›</span>
+                <span>Account Settings</span>
+            </div>
+            
+            <h1 class="settings-title">Account Settings</h1>
+            <p class="settings-subtitle">Manage your profile and preferences</p>
+        </div>
+    </section>
+
+    <!-- Settings Content -->
+    <section class="settings-content">
+        <div class="container">
+            <div class="settings-grid">
+                <!-- Settings Navigation -->
+                <div class="settings-nav">
+                    <a href="#profile" class="settings-nav-item active" data-section="profile">
+                        <i class="fas fa-user"></i>
+                        <span>Profile Information</span>
+                    </a>
+                    <a href="#security" class="settings-nav-item" data-section="security">
+                        <i class="fas fa-lock"></i>
+                        <span>Security</span>
+                    </a>
+                    <a href="#notifications" class="settings-nav-item" data-section="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span>Notifications</span>
+                    </a>
+                    <a href="#billing" class="settings-nav-item" data-section="billing">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Billing & Plan</span>
+                    </a>
+                    <a href="#preferences" class="settings-nav-item" data-section="preferences">
+                        <i class="fas fa-sliders-h"></i>
+                        <span>Preferences</span>
+                    </a>
+                    <a href="#danger" class="settings-nav-item" data-section="danger">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Danger Zone</span>
+                    </a>
+                </div>
+
+                <!-- Settings Panels -->
+                <div class="settings-panels">
+                    <!-- Profile Information -->
+                    <div class="settings-panel active" id="profile-panel">
+                        <div class="panel-header">
+                            <h2>Profile Information</h2>
+                            <p>Update your personal details and account information</p>
+                        </div>
+                        
+                        <form class="settings-form" id="profileForm">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" class="form-control" placeholder="John Doe">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com">
+                                <p class="form-hint">We'll send important notifications to this email</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="company">Company (Optional)</label>
+                                <input type="text" id="company" name="company" class="form-control" placeholder="Acme Corp">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="timezone">Timezone</label>
+                                <select id="timezone" name="timezone" class="form-control">
+                                    <option value="UTC">UTC (GMT+0)</option>
+                                    <option value="America/New_York">Eastern Time (GMT-5)</option>
+                                    <option value="America/Chicago">Central Time (GMT-6)</option>
+                                    <option value="America/Denver">Mountain Time (GMT-7)</option>
+                                    <option value="America/Los_Angeles">Pacific Time (GMT-8)</option>
+                                    <option value="Europe/London">London (GMT+0)</option>
+                                    <option value="Europe/Paris">Paris (GMT+1)</option>
+                                    <option value="Asia/Tokyo">Tokyo (GMT+9)</option>
+                                    <option value="Australia/Sydney">Sydney (GMT+11)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Security -->
+                    <div class="settings-panel" id="security-panel">
+                        <div class="panel-header">
+                            <h2>Security</h2>
+                            <p>Manage your password and security settings</p>
+                        </div>
+
+                        <!-- Change Password -->
+                        <div class="security-section">
+                            <h3>Change Password</h3>
+                            <form class="settings-form" id="passwordForm">
+                                <div class="form-group">
+                                    <label for="currentPassword">Current Password</label>
+                                    <input type="password" id="currentPassword" name="currentPassword" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="newPassword">New Password</label>
+                                    <input type="password" id="newPassword" name="newPassword" class="form-control">
+                                    <div class="password-strength" id="passwordStrength">
+                                        <div class="strength-bar"></div>
+                                    </div>
+                                    <p class="form-hint">Use at least 8 characters with a mix of letters, numbers & symbols</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="confirmPassword">Confirm New Password</label>
+                                    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control">
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-key"></i> Update Password
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Two-Factor Authentication -->
+                        <div class="security-section">
+                            <h3>Two-Factor Authentication</h3>
+                            <div class="two-factor-status">
+                                <div class="status-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="status-info">
+                                    <p class="status-label">Status: <span class="status-value" id="2faStatus">Disabled</span></p>
+                                    <p class="status-description">Add an extra layer of security to your account</p>
+                                </div>
+                                <button class="btn btn-secondary" id="toggle2FA">
+                                    Enable 2FA
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Login History -->
+                        <div class="security-section">
+                            <h3>Recent Login Activity</h3>
+                            <div class="login-history" id="loginHistory">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div class="settings-panel" id="notifications-panel">
+                        <div class="panel-header">
+                            <h2>Notifications</h2>
+                            <p>Choose what notifications you want to receive</p>
+                        </div>
+
+                        <form class="settings-form" id="notificationsForm">
+                            <div class="notification-group">
+                                <h3>Email Notifications</h3>
+                                
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <label for="emailConversions">Conversion Completed</label>
+                                        <p>Get notified when your PDF conversion is ready</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="emailConversions" name="emailConversions" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <label for="emailSecurity">Security Alerts</label>
+                                        <p>Important notifications about your account security</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="emailSecurity" name="emailSecurity" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <label for="emailUpdates">Product Updates</label>
+                                        <p>New features and improvements to our service</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="emailUpdates" name="emailUpdates">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <label for="emailMarketing">Marketing & Offers</label>
+                                        <p>Special offers and promotional content</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="emailMarketing" name="emailMarketing">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Save Preferences
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Billing & Plan -->
+                    <div class="settings-panel" id="billing-panel">
+                        <div class="panel-header">
+                            <h2>Billing & Plan</h2>
+                            <p>Manage your subscription and payment methods</p>
+                        </div>
+
+                        <!-- Current Plan -->
+                        <div class="current-plan">
+                            <h3>Current Plan</h3>
+                            <div class="plan-card">
+                                <div class="plan-info">
+                                    <div class="plan-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="plan-details">
+                                        <h4 id="currentPlanName">Free Plan</h4>
+                                        <p id="currentPlanDetails">5 conversions per day</p>
+                                    </div>
+                                </div>
+                                <a href="/pricing.html" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-up"></i> Upgrade Plan
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Usage Stats -->
+                        <div class="usage-stats-section">
+                            <h3>Usage This Month</h3>
+                            <div class="usage-stats">
+                                <div class="usage-item">
+                                    <span class="usage-label">Conversions Used</span>
+                                    <span class="usage-value" id="monthlyUsage">0 / 150</span>
+                                </div>
+                                <div class="usage-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="usageProgress" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="payment-section">
+                            <h3>Payment Method</h3>
+                            <div class="payment-methods" id="paymentMethods">
+                                <div class="empty-state">
+                                    <i class="fas fa-credit-card"></i>
+                                    <p>No payment method on file</p>
+                                    <button class="btn btn-secondary" id="addPaymentMethod">
+                                        Add Payment Method
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Billing History -->
+                        <div class="billing-history-section">
+                            <h3>Billing History</h3>
+                            <div class="billing-history" id="billingHistory">
+                                <p class="empty-message">No billing history available</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preferences -->
+                    <div class="settings-panel" id="preferences-panel">
+                        <div class="panel-header">
+                            <h2>Preferences</h2>
+                            <p>Customize your experience</p>
+                        </div>
+
+                        <form class="settings-form" id="preferencesForm">
+                            <div class="preference-group">
+                                <h3>Conversion Settings</h3>
+                                
+                                <div class="form-group">
+                                    <label for="defaultFormat">Default Export Format</label>
+                                    <select id="defaultFormat" name="defaultFormat" class="form-control">
+                                        <option value="csv">CSV (.csv)</option>
+                                        <option value="excel">Excel (.xlsx)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="dateFormat">Date Format</label>
+                                    <select id="dateFormat" name="dateFormat" class="form-control">
+                                        <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                                        <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                                        <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                                    </select>
+                                </div>
+
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <label for="autoDownload">Auto-download after conversion</label>
+                                        <p>Automatically download files when conversion is complete</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="autoDownload" name="autoDownload">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="preference-group">
+                                <h3>Privacy</h3>
+                                
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <label for="saveHistory">Save conversion history</label>
+                                        <p>Keep a record of your converted files for easy access</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="saveHistory" name="saveHistory" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <label for="analytics">Usage analytics</label>
+                                        <p>Help us improve by sharing anonymous usage data</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="analytics" name="analytics" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Save Preferences
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Danger Zone -->
+                    <div class="settings-panel" id="danger-panel">
+                        <div class="panel-header">
+                            <h2 class="danger-title">Danger Zone</h2>
+                            <p>Irreversible and destructive actions</p>
+                        </div>
+
+                        <div class="danger-actions">
+                            <!-- Export Data -->
+                            <div class="danger-item">
+                                <div class="danger-info">
+                                    <h3>Export Account Data</h3>
+                                    <p>Download all your data including conversion history and account information</p>
+                                </div>
+                                <button class="btn btn-secondary" id="exportData">
+                                    <i class="fas fa-download"></i> Export Data
+                                </button>
+                            </div>
+
+                            <!-- Delete Account -->
+                            <div class="danger-item danger-delete">
+                                <div class="danger-info">
+                                    <h3>Delete Account</h3>
+                                    <p>Permanently delete your account and all associated data. This action cannot be undone.</p>
+                                </div>
+                                <button class="btn btn-danger" id="deleteAccount">
+                                    <i class="fas fa-trash"></i> Delete Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <span class="logo-text">BankCSV</span>
+                    </div>
+                    <p class="footer-description">
+                        Convert bank statements from PDF to CSV/Excel instantly. Secure, fast & accurate.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="/#features">Features</a></li>
+                        <li><a href="/pricing.html">Pricing</a></li>
+                        <li><a href="/business.html">Business</a></li>
+                        <li><a href="/#banks">Supported Banks</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/contact.html">Contact Us</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/status.html">Status</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/security.html">Security</a></li>
+                        <li><a href="/gdpr.html">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 BankCSVConverter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Delete Account Confirmation Modal -->
+    <div class="modal" id="deleteAccountModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Delete Account</h3>
+                <button class="modal-close" onclick="closeModal('deleteAccountModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="warning-message">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>This action is irreversible. All your data will be permanently deleted.</p>
+                </div>
+                <p>Please type <strong>DELETE</strong> to confirm:</p>
+                <input type="text" id="deleteConfirmation" class="form-control" placeholder="Type DELETE">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('deleteAccountModal')">Cancel</button>
+                <button class="btn btn-danger" id="confirmDelete" disabled>Delete My Account</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/api-config.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/settings.js"></script>
+    <script src="/js/production.js"></script>
+</body>
+</html>

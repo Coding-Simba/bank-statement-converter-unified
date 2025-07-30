@@ -1,0 +1,27 @@
+<\!DOCTYPE html>
+<html>
+<head>
+    <title>Test Stripe Integration</title>
+</head>
+<body>
+    <h1>Test Stripe Integration</h1>
+    <p>Open this file in your browser and check the console for errors</p>
+    
+    <script>
+        // Test if auth.js is accessible
+        fetch('https://bankcsvconverter.com/js/auth.js')
+            .then(r => console.log('auth.js:', r.status))
+            .catch(e => console.error('auth.js error:', e));
+            
+        // Test if stripe-integration.js is accessible
+        fetch('https://bankcsvconverter.com/js/stripe-integration.js')
+            .then(r => console.log('stripe-integration.js:', r.status))
+            .catch(e => console.error('stripe-integration.js error:', e));
+            
+        // Test if api-config.js is accessible
+        fetch('https://bankcsvconverter.com/js/api-config.js')
+            .then(r => console.log('api-config.js:', r.status))
+            .catch(e => console.error('api-config.js error:', e));
+    </script>
+</body>
+</html>

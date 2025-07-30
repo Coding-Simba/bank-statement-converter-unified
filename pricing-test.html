@@ -1,0 +1,40 @@
+<\!DOCTYPE html>
+<html>
+<head>
+    <title>Pricing Test - No Cache</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Stripe Integration Test</h1>
+    <button onclick="testStripe()">Test Buy Button</button>
+    
+    <script>
+    function testStripe() {
+        console.log('Testing Stripe...');
+        
+        // Check if auth is loaded
+        if (typeof window.BankAuth === 'undefined') {
+            alert('Auth not loaded\! Loading it now...');
+            const script = document.createElement('script');
+            script.src = '/js/auth.js';
+            document.head.appendChild(script);
+            return;
+        }
+        
+        // Check if user is authenticated
+        const isAuth = window.BankAuth && window.BankAuth.TokenManager.isAuthenticated();
+        if (\!isAuth) {
+            alert('Not logged in\! Redirecting to signup...');
+            window.location.href = '/signup.html';
+            return;
+        }
+        
+        alert('Would create Stripe checkout session now\!');
+    }
+    </script>
+    
+    <script src="/js/api-config.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/stripe-integration.js"></script>
+</body>
+</html>
