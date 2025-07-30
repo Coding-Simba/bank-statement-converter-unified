@@ -15,6 +15,7 @@ from api.feedback import router as feedback_router
 from api.oauth import router as oauth_router
 from api.split_statement import router as split_statement_router
 from api.analyze_transactions import router as analyze_transactions_router
+from api.stripe_payments import router as stripe_router
 from models.database import init_db, engine, Base
 from utils.cleanup import cleanup_expired_statements
 
@@ -78,6 +79,7 @@ app.include_router(statements_router)
 app.include_router(feedback_router)
 app.include_router(split_statement_router)
 app.include_router(analyze_transactions_router)
+app.include_router(stripe_router)
 
 
 @app.get("/")

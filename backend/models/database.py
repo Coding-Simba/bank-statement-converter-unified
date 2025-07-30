@@ -35,6 +35,7 @@ class User(Base):
     subscription_status = Column(String(50), default="free", nullable=False)  # free, trial, active, cancelled, expired
     subscription_plan = Column(String(50), nullable=True)  # starter, professional, business
     subscription_expires_at = Column(DateTime, nullable=True)
+    stripe_customer_id = Column(String(255), unique=True, nullable=True)
     auth_provider = Column(String(50), default="email", nullable=False)  # email, google, microsoft
     provider_user_id = Column(String(255), nullable=True)  # OAuth provider's user ID
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
@@ -50,6 +51,9 @@ class User(Base):
     # Relationships
     statements = relationship("Statement", back_populates="user", cascade="all, delete-orphan")
     feedback = relationship("Feedback", back_populates="user", cascade="all, delete-orphan")
+    subscriptions = relationship("Subscription", back_populates="user", cascade="all, delete-orphan")
+    usage_logs = relationship("UsageLog", back_populates="user", cascade="all, delete-orphan")
+    payments = relationship("Payment", back_populates="user", cascade="all, delete-orphan")
     
     def reset_daily_limit_if_needed(self):
         """Reset daily generation count if a new day has started."""
@@ -177,6 +181,75 @@ class GenerationTracking(Base):
         """Increment the generation count."""
         self.generation_count += 1
         self.last_generation = datetime.utcnow()
+
+
+class Plan(Base):
+    """Plan model for different subscription tiers."""
+    __tablename__ = "plans"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(50), unique=True, nullable=False)
+    display_name = Column(String(100), nullable=False)
+    monthly_pages = Column(Integer, nullable=False)
+    monthly_price = Column(Float, nullable=False)
+    yearly_price = Column(Float, nullable=True)
+    stripe_monthly_price_id = Column(String(255), nullable=True)
+    stripe_yearly_price_id = Column(String(255), nullable=True)
+    features = Column(Text, nullable=True)  # JSON string of features
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
+class Subscription(Base):
+    """User subscription model."""
+    __tablename__ = "subscriptions"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    stripe_subscription_id = Column(String(255), unique=True, nullable=False)
+    stripe_customer_id = Column(String(255), nullable=False)
+    plan_id = Column(String(50), nullable=False)  # references plan name
+    status = Column(String(50), nullable=False)  # active, canceled, past_due, etc
+    current_period_start = Column(DateTime, nullable=False)
+    current_period_end = Column(DateTime, nullable=False)
+    cancel_at_period_end = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    
+    # Relationships
+    user = relationship("User", back_populates="subscriptions")
+
+
+class UsageLog(Base):
+    """Track page usage for each user."""
+    __tablename__ = "usage_logs"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    pages = Column(Integer, default=1)
+    statement_id = Column(Integer, ForeignKey("statements.id"), nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    # Relationships
+    user = relationship("User", back_populates="usage_logs")
+    statement = relationship("Statement")
+
+
+class Payment(Base):
+    """Payment history model."""
+    __tablename__ = "payments"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    stripe_payment_intent_id = Column(String(255), unique=True, nullable=False)
+    amount = Column(Float, nullable=False)
+    currency = Column(String(10), default="usd")
+    status = Column(String(50), nullable=False)
+    description = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    # Relationships
+    user = relationship("User", back_populates="payments")
 
 
 # Create tables

@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Validation - Bank Statement Converter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Info Bar */
+        .info-bar {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-item i {
+            color: #667eea;
+        }
+
+        .info-label {
+            font-size: 0.875rem;
+            color: #718096;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* Validation Table */
+        .validation-table {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .table-header {
+            background: #f7fafc;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Table */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f7fafc;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background-color: #f7fafc;
+        }
+
+        /* Editable cells */
+        .editable {
+            cursor: pointer;
+            position: relative;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .editable:hover {
+            background-color: #edf2f7;
+        }
+
+        .editable.editing {
+            background-color: #e6fffa;
+        }
+
+        .editable input {
+            width: 100%;
+            border: 1px solid #4299e1;
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+            font-size: inherit;
+            font-family: inherit;
+        }
+
+        /* Status badges */
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status.valid {
+            background-color: #c6f6d5;
+            color: #276749;
+        }
+
+        .status.warning {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .status.error {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #5a67d8;
+        }
+
+        .btn-secondary {
+            background-color: #e2e8f0;
+            color: #4a5568;
+        }
+
+        .btn-secondary:hover {
+            background-color: #cbd5e0;
+        }
+
+        .btn-success {
+            background-color: #48bb78;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #38a169;
+        }
+
+        .btn-danger {
+            background-color: #f56565;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #e53e3e;
+        }
+
+        /* Action buttons in table */
+        .row-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-icon {
+            padding: 0.375rem;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        /* Footer actions */
+        .footer-actions {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .summary-stats {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #718096;
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            display: none;
+        }
+
+        .loading-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .spinner {
+            border: 3px solid #e2e8f0;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .info-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-actions {
+                flex-direction: column;
+            }
+
+            .table-wrapper {
+                overflow-x: scroll;
+            }
+
+            table {
+                min-width: 600px;
+            }
+        }
+
+        /* Toast notifications */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        .toast {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 300px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast.success {
+            border-left: 4px solid #48bb78;
+        }
+
+        .toast.error {
+            border-left: 4px solid #f56565;
+        }
+
+        .toast.warning {
+            border-left: 4px solid #ed8936;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1><i class="fas fa-check-circle"></i> Transaction Validation</h1>
+            <div class="header-actions">
+                <button class="btn btn-secondary" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="btn btn-primary" onclick="saveChanges()">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Info Bar -->
+        <div class="info-bar">
+            <div class="info-item">
+                <i class="fas fa-file-pdf"></i>
+                <div>
+                    <div class="info-label">File Name</div>
+                    <div class="info-value" id="fileName">Loading...</div>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-university"></i>
+                <div>
+                    <div class="info-label">Bank</div>
+                    <div class="info-value" id="bankName">Loading...</div>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-list"></i>
+                <div>
+                    <div class="info-label">Total Transactions</div>
+                    <div class="info-value" id="totalTransactions">0</div>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <div class="info-label">Issues Found</div>
+                    <div class="info-value" id="issuesCount">0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Validation Table -->
+        <div class="validation-table">
+            <div class="table-header">
+                <h2 class="table-title">Transactions</h2>
+                <div class="table-actions">
+                    <button class="btn btn-secondary" onclick="addTransaction()">
+                        <i class="fas fa-plus"></i> Add Transaction
+                    </button>
+                    <button class="btn btn-secondary" onclick="autoFixDates()">
+                        <i class="fas fa-magic"></i> Auto-Fix Dates
+                    </button>
+                </div>
+            </div>
+            
+            <div class="table-wrapper">
+                <table id="transactionTable">
+                    <thead>
+                        <tr>
+                            <th width="30">
+                                <input type="checkbox" id="selectAll" onchange="toggleSelectAll()">
+                            </th>
+                            <th width="100">Date</th>
+                            <th>Description</th>
+                            <th width="120">Amount</th>
+                            <th width="120">Balance</th>
+                            <th width="100">Status</th>
+                            <th width="100">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionBody">
+                        <!-- Transactions will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="footer-actions">
+            <div class="summary-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalDebits">$0.00</div>
+                    <div class="stat-label">Total Debits</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="totalCredits">$0.00</div>
+                    <div class="stat-label">Total Credits</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="netAmount">$0.00</div>
+                    <div class="stat-label">Net Amount</div>
+                </div>
+            </div>
+            
+            <div>
+                <button class="btn btn-success" onclick="exportValidated()">
+                    <i class="fas fa-download"></i> Export Validated CSV
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Processing...</p>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        // Global variables
+        let statementId = null;
+        let transactions = [];
+        let originalTransactions = [];
+        let hasChanges = false;
+
+        // Initialize on page load
+        window.onload = function() {
+            // Get statement ID from URL params
+            const urlParams = new URLSearchParams(window.location.search);
+            statementId = urlParams.get('id');
+            
+            if (!statementId) {
+                showToast('error', 'No statement ID provided');
+                return;
+            }
+            
+            loadTransactions();
+        };
+
+        // Load transactions from API
+        async function loadTransactions() {
+            showLoading(true);
+            
+            try {
+                const response = await fetch(`/api/statement/${statementId}/validation`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load transactions');
+                }
+                
+                const data = await response.json();
+                
+                // Update UI with metadata
+                document.getElementById('fileName').textContent = data.filename || 'Unknown';
+                document.getElementById('bankName').textContent = data.bank || 'Unknown';
+                
+                // Load transactions
+                transactions = data.transactions || [];
+                originalTransactions = JSON.parse(JSON.stringify(transactions));
+                
+                renderTransactions();
+                updateSummary();
+                
+            } catch (error) {
+                showToast('error', error.message);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Render transactions in table
+        function renderTransactions() {
+            const tbody = document.getElementById('transactionBody');
+            tbody.innerHTML = '';
+            
+            transactions.forEach((transaction, index) => {
+                const row = createTransactionRow(transaction, index);
+                tbody.appendChild(row);
+            });
+            
+            document.getElementById('totalTransactions').textContent = transactions.length;
+            countIssues();
+        }
+
+        // Create transaction row
+        function createTransactionRow(transaction, index) {
+            const row = document.createElement('tr');
+            row.dataset.index = index;
+            
+            const status = validateTransaction(transaction);
+            
+            row.innerHTML = `
+                <td>
+                    <input type="checkbox" class="transaction-select" data-index="${index}">
+                </td>
+                <td>
+                    <div class="editable" onclick="startEdit(this, 'date', ${index})">
+                        ${formatDate(transaction.date)}
+                    </div>
+                </td>
+                <td>
+                    <div class="editable" onclick="startEdit(this, 'description', ${index})">
+                        ${transaction.description || ''}
+                    </div>
+                </td>
+                <td>
+                    <div class="editable" onclick="startEdit(this, 'amount', ${index})">
+                        ${formatCurrency(transaction.amount)}
+                    </div>
+                </td>
+                <td>
+                    <div class="editable" onclick="startEdit(this, 'balance', ${index})">
+                        ${formatCurrency(transaction.balance)}
+                    </div>
+                </td>
+                <td>
+                    ${getStatusBadge(status)}
+                </td>
+                <td>
+                    <div class="row-actions">
+                        <button class="btn btn-icon btn-secondary" onclick="duplicateRow(${index})" title="Duplicate">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <button class="btn btn-icon btn-danger" onclick="deleteRow(${index})" title="Delete">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            `;
+            
+            return row;
+        }
+
+        // Validate transaction
+        function validateTransaction(transaction) {
+            const issues = [];
+            
+            // Check date
+            if (!transaction.date || !isValidDate(transaction.date)) {
+                issues.push('Invalid date');
+            }
+            
+            // Check description
+            if (!transaction.description || transaction.description.trim() === '') {
+                issues.push('Missing description');
+            }
+            
+            // Check amount
+            if (transaction.amount === null || transaction.amount === undefined || isNaN(transaction.amount)) {
+                issues.push('Invalid amount');
+            }
+            
+            if (issues.length === 0) {
+                return { type: 'valid', message: 'Valid' };
+            } else if (issues.length === 1) {
+                return { type: 'warning', message: issues[0] };
+            } else {
+                return { type: 'error', message: `${issues.length} issues` };
+            }
+        }
+
+        // Get status badge HTML
+        function getStatusBadge(status) {
+            const icon = status.type === 'valid' ? 'fa-check' : 
+                        status.type === 'warning' ? 'fa-exclamation' : 'fa-times';
+            
+            return `
+                <span class="status ${status.type}">
+                    <i class="fas ${icon}"></i>
+                    ${status.message}
+                </span>
+            `;
+        }
+
+        // Start editing a cell
+        function startEdit(element, field, index) {
+            if (element.classList.contains('editing')) return;
+            
+            element.classList.add('editing');
+            const currentValue = transactions[index][field];
+            
+            let input;
+            if (field === 'date') {
+                input = document.createElement('input');
+                input.type = 'date';
+                input.value = formatDateForInput(currentValue);
+            } else if (field === 'amount' || field === 'balance') {
+                input = document.createElement('input');
+                input.type = 'number';
+                input.step = '0.01';
+                input.value = currentValue || 0;
+            } else {
+                input = document.createElement('input');
+                input.type = 'text';
+                input.value = currentValue || '';
+            }
+            
+            input.onblur = () => finishEdit(element, field, index, input.value);
+            input.onkeydown = (e) => {
+                if (e.key === 'Enter') {
+                    input.blur();
+                } else if (e.key === 'Escape') {
+                    element.classList.remove('editing');
+                    element.innerHTML = formatValue(field, currentValue);
+                }
+            };
+            
+            element.innerHTML = '';
+            element.appendChild(input);
+            input.focus();
+            input.select();
+        }
+
+        // Finish editing
+        function finishEdit(element, field, index, newValue) {
+            element.classList.remove('editing');
+            
+            // Update transaction
+            if (field === 'amount' || field === 'balance') {
+                transactions[index][field] = parseFloat(newValue) || 0;
+            } else {
+                transactions[index][field] = newValue;
+            }
+            
+            // Re-render the row
+            const row = element.closest('tr');
+            const newRow = createTransactionRow(transactions[index], index);
+            row.replaceWith(newRow);
+            
+            // Update summary
+            updateSummary();
+            hasChanges = true;
+        }
+
+        // Format value for display
+        function formatValue(field, value) {
+            if (field === 'date') {
+                return formatDate(value);
+            } else if (field === 'amount' || field === 'balance') {
+                return formatCurrency(value);
+            } else {
+                return value || '';
+            }
+        }
+
+        // Add new transaction
+        function addTransaction() {
+            const newTransaction = {
+                date: new Date().toISOString().split('T')[0],
+                description: 'New Transaction',
+                amount: 0,
+                balance: 0
+            };
+            
+            transactions.push(newTransaction);
+            renderTransactions();
+            hasChanges = true;
+            
+            // Scroll to new row and start editing description
+            const newRow = document.querySelector(`tr[data-index="${transactions.length - 1}"]`);
+            newRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            setTimeout(() => {
+                const descCell = newRow.querySelector('.editable:nth-child(3)');
+                startEdit(descCell, 'description', transactions.length - 1);
+            }, 300);
+        }
+
+        // Delete row
+        function deleteRow(index) {
+            if (confirm('Are you sure you want to delete this transaction?')) {
+                transactions.splice(index, 1);
+                renderTransactions();
+                hasChanges = true;
+            }
+        }
+
+        // Duplicate row
+        function duplicateRow(index) {
+            const transaction = transactions[index];
+            const duplicate = { ...transaction };
+            transactions.splice(index + 1, 0, duplicate);
+            renderTransactions();
+            hasChanges = true;
+        }
+
+        // Auto-fix dates
+        function autoFixDates() {
+            let lastValidDate = null;
+            let fixed = 0;
+            
+            transactions.forEach((transaction, index) => {
+                if (!transaction.date || !isValidDate(transaction.date)) {
+                    if (lastValidDate) {
+                        // Use the last valid date
+                        transaction.date = lastValidDate;
+                        fixed++;
+                    }
+                } else {
+                    lastValidDate = transaction.date;
+                }
+            });
+            
+            if (fixed > 0) {
+                renderTransactions();
+                hasChanges = true;
+                showToast('success', `Fixed ${fixed} invalid dates`);
+            } else {
+                showToast('info', 'No date issues found');
+            }
+        }
+
+        // Toggle select all
+        function toggleSelectAll() {
+            const selectAll = document.getElementById('selectAll');
+            const checkboxes = document.querySelectorAll('.transaction-select');
+            
+            checkboxes.forEach(cb => {
+                cb.checked = selectAll.checked;
+            });
+        }
+
+        // Count issues
+        function countIssues() {
+            let issues = 0;
+            
+            transactions.forEach(transaction => {
+                const status = validateTransaction(transaction);
+                if (status.type !== 'valid') {
+                    issues++;
+                }
+            });
+            
+            document.getElementById('issuesCount').textContent = issues;
+        }
+
+        // Update summary
+        function updateSummary() {
+            let totalDebits = 0;
+            let totalCredits = 0;
+            
+            transactions.forEach(transaction => {
+                if (transaction.amount < 0) {
+                    totalDebits += Math.abs(transaction.amount);
+                } else {
+                    totalCredits += transaction.amount;
+                }
+            });
+            
+            document.getElementById('totalDebits').textContent = formatCurrency(totalDebits);
+            document.getElementById('totalCredits').textContent = formatCurrency(totalCredits);
+            document.getElementById('netAmount').textContent = formatCurrency(totalCredits - totalDebits);
+        }
+
+        // Save changes
+        async function saveChanges() {
+            if (!hasChanges) {
+                showToast('info', 'No changes to save');
+                return;
+            }
+            
+            showLoading(true);
+            
+            try {
+                const response = await fetch(`/api/statement/${statementId}/validation`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        transactions: transactions
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to save changes');
+                }
+                
+                hasChanges = false;
+                originalTransactions = JSON.parse(JSON.stringify(transactions));
+                showToast('success', 'Changes saved successfully');
+                
+            } catch (error) {
+                showToast('error', error.message);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Export validated CSV
+        async function exportValidated() {
+            // First save any pending changes
+            if (hasChanges) {
+                await saveChanges();
+            }
+            
+            // Download the validated CSV
+            window.location.href = `/api/statement/${statementId}/download?validated=true&token=${localStorage.getItem('access_token')}`;
+            showToast('success', 'Download started');
+        }
+
+        // Helper functions
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            try {
+                const date = new Date(dateStr);
+                return date.toLocaleDateString();
+            } catch {
+                return dateStr;
+            }
+        }
+
+        function formatDateForInput(dateStr) {
+            if (!dateStr) return '';
+            try {
+                const date = new Date(dateStr);
+                return date.toISOString().split('T')[0];
+            } catch {
+                return '';
+            }
+        }
+
+        function formatCurrency(amount) {
+            if (amount === null || amount === undefined) return '$0.00';
+            const negative = amount < 0;
+            const absAmount = Math.abs(amount);
+            const formatted = '$' + absAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            return negative ? '-' + formatted : formatted;
+        }
+
+        function isValidDate(dateStr) {
+            if (!dateStr) return false;
+            const date = new Date(dateStr);
+            return date instanceof Date && !isNaN(date);
+        }
+
+        function showLoading(show) {
+            document.getElementById('loadingOverlay').style.display = show ? 'flex' : 'none';
+        }
+
+        function showToast(type, message) {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const icon = type === 'success' ? 'fa-check-circle' :
+                        type === 'error' ? 'fa-exclamation-circle' :
+                        type === 'warning' ? 'fa-exclamation-triangle' :
+                        'fa-info-circle';
+            
+            toast.innerHTML = `
+                <i class="fas ${icon}"></i>
+                <span>${message}</span>
+            `;
+            
+            document.getElementById('toastContainer').appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function goBack() {
+            if (hasChanges) {
+                if (confirm('You have unsaved changes. Are you sure you want to leave?')) {
+                    window.history.back();
+                }
+            } else {
+                window.history.back();
+            }
+        }
+
+        // Warn before leaving with unsaved changes
+        window.addEventListener('beforeunload', (e) => {
+            if (hasChanges) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,5 +1,19 @@
 // Dashboard functionality for Bank Statement Converter
 
+// Get API base URL
+const getApiBase = () => {
+    if (window.API_CONFIG) {
+        return window.API_CONFIG.getBaseUrl();
+    }
+    // Fallback to dynamic detection
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'http://localhost:5000';
+    }
+    return `${window.location.protocol}//${window.location.hostname}`;
+};
+
+const API_BASE = getApiBase() + '/api';
+
 document.addEventListener('DOMContentLoaded', async () => {
     // Check authentication
     if (!window.BankAuth.TokenManager.isAuthenticated()) {
@@ -20,9 +34,8 @@ async function loadUserProfile() {
     try {
         const user = await window.BankAuth.AuthAPI.getProfile();
         
-        // Update account info
+        // Update basic info
         document.getElementById('userEmail').textContent = user.email;
-        document.getElementById('accountType').textContent = user.account_type || 'Free';
         
         // Format member since date
         const memberDate = new Date(user.created_at);
@@ -32,43 +45,122 @@ async function loadUserProfile() {
             day: 'numeric'
         });
         
-        // Update account badge styling
-        const accountBadge = document.getElementById('accountType');
-        if (user.account_type === 'premium') {
-            accountBadge.classList.add('premium');
+        // Load subscription status
+        const subscriptionResponse = await fetch(`${API_BASE}/stripe/subscription-status`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${window.BankAuth.TokenManager.getAccessToken()}`
+            }
+        });
+        
+        if (subscriptionResponse.ok) {
+            const subscription = await subscriptionResponse.json();
+            
+            // Update account type display
+            const planName = subscription.plan.charAt(0).toUpperCase() + subscription.plan.slice(1);
+            document.getElementById('accountType').textContent = planName;
+            
+            // Update account badge styling
+            const accountBadge = document.getElementById('accountType');
+            accountBadge.className = 'account-badge ' + subscription.plan;
+            
+            // Store subscription data for usage stats
+            window.userSubscription = subscription;
         }
     } catch (error) {
         console.error('Failed to load user profile:', error);
-        UINotification.show('Failed to load user profile', 'error');
+        if (window.UINotification) {
+            window.UINotification.show('Failed to load user profile', 'error');
+        }
     }
 }
 
 async function loadUsageStatistics() {
     try {
-        const limitData = await window.BankAuth.StatementAPI.checkLimit();
-        
-        // Update statistics
-        document.getElementById('todayConversions').textContent = limitData.conversions_used;
-        document.getElementById('remainingConversions').textContent = 
-            limitData.daily_limit - limitData.conversions_used;
-        document.getElementById('totalConversions').textContent = limitData.total_conversions || 0;
-        
-        // Update progress bar
-        const percentage = (limitData.conversions_used / limitData.daily_limit) * 100;
-        document.getElementById('usagePercentage').textContent = `${Math.round(percentage)}%`;
-        document.getElementById('usageProgressFill').style.width = `${percentage}%`;
-        
-        // Color code the progress bar
-        const progressFill = document.getElementById('usageProgressFill');
-        if (percentage >= 80) {
-            progressFill.style.background = 'var(--danger)';
-        } else if (percentage >= 60) {
-            progressFill.style.background = 'var(--warning)';
+        // If we have subscription data, use it
+        if (window.userSubscription) {
+            const subscription = window.userSubscription;
+            const isMonthly = subscription.pages_limit && subscription.pages_limit > 10;
+            
+            if (isMonthly) {
+                // Monthly plan - show monthly usage
+                document.getElementById('todayConversions').textContent = subscription.pages_used;
+                document.getElementById('remainingConversions').textContent = 
+                    subscription.pages_limit - subscription.pages_used;
+                
+                // Update labels
+                document.querySelector('.stat-item:nth-child(1) .stat-label').textContent = 'Monthly Usage';
+                document.querySelector('.stat-item:nth-child(2) .stat-label').textContent = 'Remaining This Month';
+                
+                // Update progress bar
+                const percentage = (subscription.pages_used / subscription.pages_limit) * 100;
+                document.getElementById('usagePercentage').textContent = `${Math.round(percentage)}%`;
+                document.getElementById('usageProgressFill').style.width = `${percentage}%`;
+                
+                // Update progress header
+                document.querySelector('.progress-header span:first-child').textContent = 'Monthly Usage';
+                
+                // Show renewal date if available
+                if (subscription.renewal_date) {
+                    const renewalDate = new Date(subscription.renewal_date).toLocaleDateString();
+                    const existingInfo = document.querySelector('.renewal-info');
+                    if (!existingInfo) {
+                        const progressSection = document.querySelector('.usage-progress');
+                        const renewalInfo = document.createElement('div');
+                        renewalInfo.className = 'renewal-info';
+                        renewalInfo.style.cssText = 'margin-top: 1rem; font-size: 1.4rem; color: #6b7280;';
+                        renewalInfo.textContent = `Resets on ${renewalDate}`;
+                        progressSection.appendChild(renewalInfo);
+                    }
+                }
+                
+                // Color code the progress bar
+                const progressFill = document.getElementById('usageProgressFill');
+                if (percentage >= 90) {
+                    progressFill.style.background = '#ef4444';
+                } else if (percentage >= 75) {
+                    progressFill.style.background = '#f59e0b';
+                } else {
+                    progressFill.style.background = '#0066ff';
+                }
+            } else {
+                // Free plan - show daily usage
+                await loadDailyUsage();
+            }
+            
+            // Update total conversions
+            document.getElementById('totalConversions').textContent = subscription.pages_used || '0';
         } else {
-            progressFill.style.background = 'var(--gradient)';
+            // Fallback to API call
+            await loadDailyUsage();
         }
     } catch (error) {
         console.error('Failed to load usage statistics:', error);
+    }
+}
+
+async function loadDailyUsage() {
+    const limitData = await window.BankAuth.StatementAPI.checkLimit();
+    
+    // Update statistics
+    document.getElementById('todayConversions').textContent = limitData.daily_used;
+    document.getElementById('remainingConversions').textContent = 
+        limitData.daily_limit - limitData.daily_used;
+    document.getElementById('totalConversions').textContent = limitData.monthly_used || limitData.daily_used;
+    
+    // Update progress bar
+    const percentage = (limitData.daily_used / limitData.daily_limit) * 100;
+    document.getElementById('usagePercentage').textContent = `${Math.round(percentage)}%`;
+    document.getElementById('usageProgressFill').style.width = `${percentage}%`;
+    
+    // Color code the progress bar
+    const progressFill = document.getElementById('usageProgressFill');
+    if (percentage >= 80) {
+        progressFill.style.background = '#ef4444';
+    } else if (percentage >= 60) {
+        progressFill.style.background = '#f59e0b';
+    } else {
+        progressFill.style.background = '#0066ff';
     }
 }
 
@@ -196,53 +288,39 @@ async function handleDownload(statementId) {
 }
 
 function handleUpgrade() {
-    const modal = document.createElement('div');
-    modal.className = 'modal upgrade-modal';
-    modal.innerHTML = `
-        <div class="modal-content">
-            <button class="modal-close" onclick="this.closest('.modal').remove()">&times;</button>
-            
-            <div class="upgrade-header">
-                <i class="fas fa-crown upgrade-icon"></i>
-                <h2>Upgrade to Premium</h2>
-                <p>Get unlimited conversions and premium features</p>
-            </div>
-            
-            <div class="pricing-comparison">
-                <div class="plan-card current">
-                    <h3>Free Plan</h3>
-                    <div class="price">$0/month</div>
-                    <ul class="features">
-                        <li><i class="fas fa-check"></i> 5 conversions per day</li>
-                        <li><i class="fas fa-check"></i> Files saved for 1 hour</li>
-                        <li><i class="fas fa-check"></i> Basic support</li>
-                        <li class="disabled"><i class="fas fa-times"></i> Batch processing</li>
-                        <li class="disabled"><i class="fas fa-times"></i> API access</li>
-                    </ul>
-                    <button class="btn btn-outline" disabled>Current Plan</button>
-                </div>
-                
-                <div class="plan-card premium">
-                    <div class="badge">COMING SOON</div>
-                    <h3>Premium Plan</h3>
-                    <div class="price">$9.99/month</div>
-                    <ul class="features">
-                        <li><i class="fas fa-check"></i> Unlimited conversions</li>
-                        <li><i class="fas fa-check"></i> Files saved for 30 days</li>
-                        <li><i class="fas fa-check"></i> Priority support</li>
-                        <li><i class="fas fa-check"></i> Batch processing</li>
-                        <li><i class="fas fa-check"></i> API access</li>
-                    </ul>
-                    <button class="btn btn-primary" onclick="alert('Premium plan coming soon!')">
-                        Coming Soon
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-    setTimeout(() => modal.classList.add('show'), 10);
+    // Check if user has a subscription
+    if (window.userSubscription && window.userSubscription.plan !== 'free') {
+        // User has a paid plan - open customer portal
+        openCustomerPortal();
+    } else {
+        // Redirect to pricing page
+        window.location.href = '/pricing.html';
+    }
+}
+
+async function openCustomerPortal() {
+    try {
+        const response = await fetch(`${API_BASE}/stripe/customer-portal`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${window.BankAuth.TokenManager.getAccessToken()}`
+            },
+            body: JSON.stringify({
+                return_url: '/dashboard.html'
+            })
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            window.location.href = data.portal_url;
+        } else {
+            throw new Error('Failed to create portal session');
+        }
+    } catch (error) {
+        console.error('Portal error:', error);
+        alert('Failed to open subscription management. Please try again.');
+    }
 }
 
 // Auto-refresh conversions every minute

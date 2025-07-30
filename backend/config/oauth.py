@@ -35,6 +35,7 @@ class OAuthSettings(BaseSettings):
     class Config:
         env_file = ".env"
         case_sensitive = False
+        extra = "ignore"  # Ignore extra fields in .env
 
 oauth_settings = OAuthSettings()
 

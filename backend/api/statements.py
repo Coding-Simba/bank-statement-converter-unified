@@ -9,7 +9,7 @@ import os
 import uuid
 from pathlib import Path
 
-from models.database import get_db, User, Statement, GenerationTracking
+from models.database import get_db, User, Statement, GenerationTracking, Subscription, UsageLog
 from middleware.auth_middleware import get_user_or_session, get_current_user
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from utils.auth import generate_session_id
@@ -39,6 +39,8 @@ class GenerationLimitResponse(BaseModel):
     daily_used: int
     account_type: str
     message: Optional[str]
+    monthly_limit: Optional[int] = None
+    monthly_used: Optional[int] = None
 
 
 @router.get("/check-limit", response_model=GenerationLimitResponse)
@@ -50,19 +52,57 @@ async def check_generation_limit(
     user, session_id = get_user_or_session(request)
     
     if user:
-        # Authenticated user
-        user.reset_daily_limit_if_needed()
-        db.commit()
+        # Authenticated user - check subscription-based limits
+        from datetime import datetime
         
-        can_generate = user.can_generate()
-        daily_limit = user.get_daily_limit()
+        # Get active subscription
+        subscription = db.query(Subscription).filter(
+            Subscription.user_id == user.id,
+            Subscription.status == "active"
+        ).first()
+        
+        # Determine plan
+        plan_id = subscription.plan_id if subscription else "free"
+        
+        # Get plan limits
+        plan_limits = {
+            "free": {"monthly": 150, "daily": 5},
+            "starter": {"monthly": 400, "daily": 999},
+            "professional": {"monthly": 1000, "daily": 999},
+            "business": {"monthly": 4000, "daily": 999}
+        }
+        
+        limits = plan_limits.get(plan_id, plan_limits["free"])
+        
+        # Get current month usage
+        start_of_month = datetime.now().replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+        monthly_usage = db.query(UsageLog).filter(
+            UsageLog.user_id == user.id,
+            UsageLog.created_at >= start_of_month
+        ).count()
+        
+        # For free users, also check daily limit
+        if plan_id == "free":
+            user.reset_daily_limit_if_needed()
+            db.commit()
+            can_generate = user.daily_generations < limits["daily"] and monthly_usage < limits["monthly"]
+            message = None
+            if user.daily_generations >= limits["daily"]:
+                message = f"Daily limit of {limits['daily']} conversions reached"
+            elif monthly_usage >= limits["monthly"]:
+                message = f"Monthly limit of {limits['monthly']} conversions reached"
+        else:
+            can_generate = monthly_usage < limits["monthly"]
+            message = f"Monthly limit of {limits['monthly']} conversions reached" if not can_generate else None
         
         return GenerationLimitResponse(
             can_generate=can_generate,
-            daily_limit=daily_limit if daily_limit != float('inf') else 999,
-            daily_used=user.daily_generations,
-            account_type=user.account_type,
-            message=None if can_generate else f"Daily limit of {daily_limit} conversions reached"
+            daily_limit=limits["daily"],
+            daily_used=user.daily_generations if plan_id == "free" else 0,
+            account_type=plan_id,
+            message=message,
+            monthly_limit=limits["monthly"],
+            monthly_used=monthly_usage
         )
     else:
         # Anonymous user - track by session/IP
@@ -95,11 +135,48 @@ async def convert_statement(
     
     # Check generation limit
     if user:
-        user.reset_daily_limit_if_needed()
-        if not user.can_generate():
+        # Check subscription-based limits
+        from datetime import datetime
+        
+        # Get active subscription
+        subscription = db.query(Subscription).filter(
+            Subscription.user_id == user.id,
+            Subscription.status == "active"
+        ).first()
+        
+        # Determine plan
+        plan_id = subscription.plan_id if subscription else "free"
+        
+        # Get plan limits
+        plan_limits = {
+            "free": {"monthly": 150, "daily": 5},
+            "starter": {"monthly": 400, "daily": 999},
+            "professional": {"monthly": 1000, "daily": 999},
+            "business": {"monthly": 4000, "daily": 999}
+        }
+        
+        limits = plan_limits.get(plan_id, plan_limits["free"])
+        
+        # Get current month usage
+        start_of_month = datetime.now().replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+        monthly_usage = db.query(UsageLog).filter(
+            UsageLog.user_id == user.id,
+            UsageLog.created_at >= start_of_month
+        ).count()
+        
+        # For free users, also check daily limit
+        if plan_id == "free":
+            user.reset_daily_limit_if_needed()
+            if user.daily_generations >= limits["daily"]:
+                raise HTTPException(
+                    status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+                    detail=f"Daily limit of {limits['daily']} conversions reached"
+                )
+        
+        if monthly_usage >= limits["monthly"]:
             raise HTTPException(
                 status_code=status.HTTP_429_TOO_MANY_REQUESTS,
-                detail=f"Daily limit of {user.get_daily_limit()} conversions reached"
+                detail=f"Monthly limit of {limits['monthly']} conversions reached. Please upgrade your plan."
             )
     else:
         # Anonymous user
@@ -201,9 +278,24 @@ async def convert_statement(
     
     db.add(statement)
     
-    # Update generation count
+    # Update generation count and log usage
     if user:
-        user.daily_generations += 1
+        # Log usage for subscription tracking
+        usage_log = UsageLog(
+            user_id=user.id,
+            pages=1,
+            statement_id=statement.id
+        )
+        db.add(usage_log)
+        
+        # Also update daily count for free users
+        subscription = db.query(Subscription).filter(
+            Subscription.user_id == user.id,
+            Subscription.status == "active"
+        ).first()
+        
+        if not subscription or subscription.plan_id == "free":
+            user.daily_generations += 1
     else:
         tracking.increment_count()
     
