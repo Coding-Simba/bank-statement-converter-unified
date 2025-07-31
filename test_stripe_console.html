@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Flow Console Tester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-section {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #console-output {
+            background: #000;
+            color: #0f0;
+            padding: 15px;
+            height: 400px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+        .log-entry {
+            margin: 2px 0;
+            padding: 2px;
+        }
+        .error { color: #f00; }
+        .warn { color: #ff0; }
+        .info { color: #0ff; }
+        .auth { color: #f0f; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Stripe Purchase Flow Console Tester</h1>
+    
+    <div class="test-section">
+        <h2>Test Controls</h2>
+        <button onclick="testPricingPage()">Test Pricing Page</button>
+        <button onclick="testLoginPage()">Test Login Page</button>
+        <button onclick="clearConsole()">Clear Console</button>
+        <button onclick="openInNewTab()">Open Real Site</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Console Output</h2>
+        <div id="console-output"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Instructions</h2>
+        <ol>
+            <li>Open Chrome Developer Console (Cmd+Option+J on Mac)</li>
+            <li>Go to <a href="https://bankcsvconverter.com/pricing.html" target="_blank">https://bankcsvconverter.com/pricing.html</a></li>
+            <li>Run this in console to capture all messages:
+                <pre><code>// Intercept console messages
+const originalLog = console.log;
+const originalError = console.error;
+const originalWarn = console.warn;
+
+const messages = [];
+
+console.log = function(...args) {
+    const msg = args.join(' ');
+    messages.push({type: 'log', message: msg, time: new Date().toISOString()});
+    originalLog.apply(console, args);
+    
+    // Check for auth-related messages
+    if (msg.includes('[Force Auth]') || msg.includes('[Stripe Complete]') || 
+        msg.includes('[Auth Login Fix]') || msg.toLowerCase().includes('auth')) {
+        console.warn('AUTH MESSAGE DETECTED:', msg);
+    }
+};
+
+console.error = function(...args) {
+    const msg = args.join(' ');
+    messages.push({type: 'error', message: msg, time: new Date().toISOString()});
+    originalError.apply(console, args);
+};
+
+console.warn = function(...args) {
+    const msg = args.join(' ');
+    messages.push({type: 'warn', message: msg, time: new Date().toISOString()});
+    originalWarn.apply(console, args);
+};
+
+// Function to show all captured messages
+window.showCapturedMessages = function() {
+    console.warn('=== CAPTURED MESSAGES ===');
+    messages.forEach(m => {
+        console.warn(`[${m.time}] ${m.type.toUpperCase()}: ${m.message}`);
+    });
+    return messages;
+};</code></pre>
+            </li>
+            <li>Click a Buy button and watch the console</li>
+            <li>Run <code>showCapturedMessages()</code> to see all captured messages</li>
+        </ol>
+    </div>
+
+    <script>
+        const output = document.getElementById('console-output');
+        
+        function log(message, type = 'info') {
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            output.appendChild(entry);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function clearConsole() {
+            output.innerHTML = '';
+            log('Console cleared', 'info');
+        }
+
+        function testPricingPage() {
+            log('Testing pricing page...', 'info');
+            
+            // Create iframe to test
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = 'https://bankcsvconverter.com/pricing.html';
+            
+            iframe.onload = function() {
+                log('Pricing page loaded in iframe', 'info');
+                try {
+                    // This will likely fail due to CORS
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    log('ERROR: Cannot access iframe content due to CORS policy', 'error');
+                } catch (e) {
+                    log('CORS Error: Cannot access cross-origin iframe', 'error');
+                    log('You must test directly on the website', 'warn');
+                }
+                document.body.removeChild(iframe);
+            };
+            
+            document.body.appendChild(iframe);
+        }
+
+        function testLoginPage() {
+            log('Testing login page...', 'info');
+            log('Opening login page in new tab...', 'info');
+            window.open('https://bankcsvconverter.com/login.html', '_blank');
+        }
+
+        function openInNewTab() {
+            window.open('https://bankcsvconverter.com/pricing.html', '_blank');
+            log('Opened pricing page in new tab', 'info');
+            log('Remember to open DevTools in the new tab!', 'warn');
+        }
+
+        // Initial message
+        log('Stripe Flow Console Tester Ready', 'info');
+        log('Click the buttons above to start testing', 'info');
+    </script>
+</body>
+</html>

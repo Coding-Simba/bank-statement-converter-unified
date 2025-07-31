@@ -47,6 +47,8 @@ class User(Base):
     email_verification_token = Column(String(255), nullable=True)
     password_reset_token = Column(String(255), nullable=True)
     password_reset_expires = Column(DateTime, nullable=True)
+    refresh_token_family = Column(String(255), nullable=True)  # For refresh token rotation
+    refresh_token_version = Column(Integer, default=1, nullable=False)  # Token version tracking
     
     # Relationships
     statements = relationship("Statement", back_populates="user", cascade="all, delete-orphan")
