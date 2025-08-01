@@ -30,6 +30,12 @@ from universal_parser import parse_universal_pdf
 
 router = APIRouter(prefix="/api", tags=["analyze"])
 
+from pydantic import BaseModel
+
+class AnalyzeTransactionsRequest(BaseModel):
+    start_date: Optional[datetime] = None
+    end_date: Optional[datetime] = None
+
 
 def analyze_transactions(transactions: List[Dict]) -> Dict[str, Any]:
     """Analyze transactions and generate insights"""
@@ -546,3 +552,55 @@ async def generate_excel_report_endpoint(report_data: Dict[str, Any]):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error generating Excel: {str(e)}"
         )
+
+
+@router.post("/analyze-transactions-filtered")
+async def analyze_transactions_filtered(
+    transactions: List[Dict[str, Any]],
+    start_date: Optional[datetime] = None,
+    end_date: Optional[datetime] = None
+):
+    """Analyze transactions with optional date filtering"""
+    
+    # Filter transactions by date if provided
+    if start_date or end_date:
+        filtered_transactions = []
+        for trans in transactions:
+            # Try to parse date from transaction
+            trans_date = None
+            if 'date' in trans:
+                try:
+                    if isinstance(trans['date'], str):
+                        # Try common date formats
+                        for fmt in ['%Y-%m-%d', '%d/%m/%Y', '%m/%d/%Y', '%d-%m-%Y']:
+                            try:
+                                trans_date = datetime.strptime(trans['date'], fmt)
+                                break
+                            except:
+                                continue
+                    elif isinstance(trans['date'], datetime):
+                        trans_date = trans['date']
+                except:
+                    pass
+            
+            # Apply date filter
+            if trans_date:
+                if start_date and trans_date < start_date:
+                    continue
+                if end_date and trans_date > end_date:
+                    continue
+                filtered_transactions.append(trans)
+        
+        transactions = filtered_transactions
+    
+    # Analyze the filtered transactions
+    analysis = analyze_transactions(transactions)
+    
+    return {
+        "analysis": analysis,
+        "filtered_count": len(transactions),
+        "date_range": {
+            "start": start_date.isoformat() if start_date else None,
+            "end": end_date.isoformat() if end_date else None
+        }
+    }

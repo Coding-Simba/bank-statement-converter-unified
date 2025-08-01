@@ -1,0 +1,22 @@
+{
+  "id": "settings-backend",
+  "started": "2025-08-01T18:27:00Z",
+  "lastUpdated": "2025-08-01T18:35:00Z",
+  "status": "active",
+  "phase": "complete",
+  "progress": {
+    "discovery": { "answered": 5, "total": 5 },
+    "detail": { "answered": 5, "total": 5 }
+  },
+  "contextFiles": [
+    "/backend/api/auth_cookie.py",
+    "/backend/models/database.py",
+    "/backend/api/stripe_payments.py",
+    "/backend/main.py"
+  ],
+  "relatedFeatures": [
+    "authentication",
+    "stripe_integration",
+    "user_export"
+  ]
+}

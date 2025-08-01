@@ -1,428 +1,283 @@
 INFO:     Will watch for changes in these directories: ['/Users/MAC/chrome/bank-statement-converter-unified/backend']
 INFO:     Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
-INFO:     Started reloader process [93325] using WatchFiles
-INFO:     Started server process [93334]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-Starting up...
-INFO:     127.0.0.1:58933 - "GET / HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'base_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [93334]
-Shutting down...
-INFO:     Started server process [93402]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-Starting up...
-INFO:     127.0.0.1:58976 - "GET /api/auth/session HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59001 - "GET /api/check-limit HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'base_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [93402]
-Shutting down...
-INFO:     Started server process [93500]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/paypal_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [93500]
-Starting up...
-Shutting down...
-INFO:     Started server process [94132]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'config/oauth.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [94132]
-Starting up...
-Shutting down...
-WARNING:  WatchFiles detected changes in 'parsers/paypal_parser.py'. Reloading...
-INFO:     Started server process [94194]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'config/oauth.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [94194]
-Starting up...
-Shutting down...
-INFO:     Started server process [94239]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'config/oauth.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [94239]
-Starting up...
-Shutting down...
-INFO:     Started server process [94261]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/paypal_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [94261]
-Starting up...
-Shutting down...
-INFO:     Started server process [94433]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/paypal_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [94433]
-Starting up...
-Shutting down...
-INFO:     Started server process [94569]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/paypal_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [94569]
-Starting up...
-Shutting down...
-INFO:     Started server process [95001]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/paypal_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [95001]
-Starting up...
-Shutting down...
-INFO:     Started server process [95026]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/paypal_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [95026]
-Starting up...
-Shutting down...
-INFO:     Started server process [95087]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/paypal_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [95087]
-Starting up...
-Shutting down...
-INFO:     Started server process [95149]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/paypal_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [95149]
-Starting up...
-Shutting down...
-INFO:     Started server process [95216]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/suntrust_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [95216]
-Starting up...
-Shutting down...
-INFO:     Started server process [95844]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/suntrust_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [95844]
-Starting up...
-Shutting down...
-INFO:     Started server process [96028]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/discover_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [96028]
-Starting up...
-Shutting down...
-INFO:     Started server process [96821]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/discover_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [96821]
-Starting up...
-Shutting down...
-INFO:     Started server process [96909]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'us_bank_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [96909]
-Starting up...
-Shutting down...
-INFO:     Started server process [97299]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/commonwealth_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [97299]
-Starting up...
-Shutting down...
-INFO:     Started server process [97652]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/commonwealth_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [97652]
-Starting up...
-Shutting down...
-INFO:     Started server process [97682]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'australian_bank_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [97682]
-Starting up...
-Shutting down...
-INFO:     Started server process [97752]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/green_dot_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [97752]
-Starting up...
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/9d6bb2bf-fea2-4244-85f9-205a178a9d17.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/0751c4bd-f922-4ac7-b499-4b03b843c947.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/cbc87083-c096-4eb8-9a45-9181a1384e62.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/58b3c7f7-e645-4ebc-8b91-5446fe2775e0.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/adb13d0b-6c61-4af1-87d4-eaec24bff318.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/d51acb52-c384-4dff-8c38-d4e8b654a0c3.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/26cd06ac-6746-4b3f-a131-786b66343de0.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/45b794c1-3a36-4554-9fc7-4d8690f9423d.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/3fb9b259-f5d9-401c-afef-4e434487df26.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/23e86188-ca32-46fd-9818-f3f3628f8e59.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/f0b1476c-874b-4469-afd1-0eb8ceac34b2.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/ca862448-5b24-4761-a531-810fe794c0e7.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/2de4129d-fc76-4289-97d0-7c4b2f5b7c35.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/507b4bc6-d6c7-47db-9f41-f61f3b4f4ebe.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/17f72550-9503-4cd7-8f9e-b05427dff6f1.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/33e35afe-ce30-4809-bb23-854189367306.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/c3144540-e773-4be7-8972-6f998745806d.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/d646756d-459d-467c-9141-386e220a38cd.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/99473af9-2946-41aa-9ed8-a7a4ef474b9e.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/b01bf436-414d-4601-a29a-593839ede5f4.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/d5a570a0-21c9-4d4d-bea4-b2e893e947d9.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/500c90b1-4fba-4266-a6cc-44c843fae27f.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/0fa04931-db0f-4824-bb04-feb977f918ba.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/61affd4c-84d1-4c49-8fbd-2bf5d5229d32.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/a713bae6-0232-456a-adda-1fe7dad00b95.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/edbbc69a-b4b2-4b9d-8988-072c1b013aba.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/fedeaf62-0b72-402a-ae63-eb9186b27da1.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/7c0da2ab-fd78-4494-837d-118ba16ff4f3.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/0edbb6bf-446b-445e-8f0e-ef33b7403d57.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/180120b3-32d6-422d-8460-c69373e6a09e.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/b9c06d04-3000-455e-bcab-2d175461ffec.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/a42b8ae1-2a99-4490-8ffc-b00f5abbcf5d.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/c7e19547-8ea7-49fe-bdc8-196074f88c9d.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/0c3460e8-7d8d-4790-9790-b7f15219877a.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/07531d23-3295-417e-852a-74272d8ca030.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/c76de04e-8f88-4226-bf27-b85167f1db13.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/ef667d69-43b3-442f-86fa-e13a72deb39d.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/63426d8d-d118-4adb-9ee9-0f381af3b57c.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/6ba48991-f25c-492b-aa33-4d7f32bcb06a.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/fd642077-6f64-46e9-a5a1-198e69bcee60.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/de4987e8-3ac8-4554-a24d-25ff2598a403.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/411e5ecf-0b80-4738-9691-4327ec2661e9.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/1bed5a46-d412-4850-9524-b8142e31ad1b.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/2ca1ca74-682d-4628-8866-59fcaf2e7cd2.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/abb1a571-8dcd-49c8-8b8e-a198cb338832.csv
-Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/3a29efe0-7d05-4ba6-9cc6-a1bc8c5ce6b5.csv
-Cleaned up 46 expired statements
-Shutting down...
-INFO:     Started server process [26043]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/green_dot_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [26043]
-Starting up...
-Shutting down...
-INFO:     Started server process [26072]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/walmart_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [26072]
-Starting up...
-Shutting down...
-INFO:     Started server process [26211]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'api/split_statement.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [26211]
-Starting up...
-Shutting down...
-INFO:     Started server process [26470]
+INFO:     Started reloader process [30316] using WatchFiles
+INFO:     Started server process [30332]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 WARNING:  WatchFiles detected changes in 'main.py'. Reloading...
 INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
-INFO:     Finished server process [26470]
+INFO:     Finished server process [30332]
 Starting up...
 Shutting down...
-INFO:     Started server process [26508]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
+Process SpawnProcess-2:
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/anaconda3/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/config.py", line 467, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/importer.py", line 24, in import_from_string
+    raise exc from None
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/main.py", line 25, in <module>
+    from api.user_settings import router as user_settings_router
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/api/user_settings.py", line 14, in <module>
+    from utils.email import email_service
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/utils/email.py", line 7, in <module>
+    import aiosmtplib
+ModuleNotFoundError: No module named 'aiosmtplib'
 WARNING:  WatchFiles detected changes in 'main.py'. Reloading...
+Process SpawnProcess-3:
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/anaconda3/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/config.py", line 467, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/importer.py", line 24, in import_from_string
+    raise exc from None
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/main.py", line 25, in <module>
+    from api.user_settings import router as user_settings_router
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/api/user_settings.py", line 14, in <module>
+    from utils.email import email_service
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/utils/email.py", line 7, in <module>
+    import aiosmtplib
+ModuleNotFoundError: No module named 'aiosmtplib'
+WARNING:  WatchFiles detected changes in 'api/user_settings.py'. Reloading...
+Process SpawnProcess-4:
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/anaconda3/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/config.py", line 467, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/importer.py", line 24, in import_from_string
+    raise exc from None
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/main.py", line 25, in <module>
+    from api.user_settings import router as user_settings_router
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/api/user_settings.py", line 15, in <module>
+    from utils.email import email_service
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/utils/email.py", line 7, in <module>
+    import aiosmtplib
+ModuleNotFoundError: No module named 'aiosmtplib'
+WARNING:  WatchFiles detected changes in 'main.py'. Reloading...
+Process SpawnProcess-5:
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/anaconda3/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/config.py", line 467, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/main.py", line 109, in <module>
+    app.include_router(user_settings_router, prefix="/v2")  # User settings endpoints
+                       ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'user_settings_router' is not defined. Did you mean: 'user_statistics_router'?
+WARNING:  WatchFiles detected changes in 'main.py'. Reloading...
+INFO:     Started server process [31380]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+CSRF token missing for POST /api/convert
+Starting up...
+INFO:     127.0.0.1:65450 - "POST /api/convert HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 48, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+INFO:     127.0.0.1:49216 - "OPTIONS /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49216 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49245 - "OPTIONS /api/convert HTTP/1.1" 200 OK
+CSRF token missing for POST /api/convert
+INFO:     127.0.0.1:49245 - "POST /api/convert HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 48, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+INFO:     127.0.0.1:49246 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49253 - "GET /health HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'api/user_settings_simple.py'. Reloading...
 INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
-INFO:     Finished server process [26508]
-Starting up...
+INFO:     Finished server process [31380]
 Shutting down...
-INFO:     Started server process [26524]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/walmart_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [26524]
-Starting up...
-Shutting down...
-INFO:     Started server process [26834]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/walmart_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [26834]
-Starting up...
-Shutting down...
-INFO:     Started server process [26914]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/walmart_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [26914]
-Starting up...
-Shutting down...
-INFO:     Started server process [26987]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/walmart_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [26987]
-Starting up...
-Shutting down...
-INFO:     Started server process [27127]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/walmart_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [27127]
-Starting up...
-Shutting down...
-INFO:     Started server process [27210]
+INFO:     Started server process [31824]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 Starting up...
-INFO:     127.0.0.1:54303 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54358 - "POST /api/split-statement HTTP/1.1" 422 Unprocessable Entity
-INFO:     127.0.0.1:54381 - "POST /api/split-statement HTTP/1.1" 422 Unprocessable Entity
-WARNING:  WatchFiles detected changes in 'parsers/westpac_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [27210]
-Shutting down...
-INFO:     Started server process [27479]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'parsers/westpac_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [27479]
-Starting up...
-Shutting down...
-INFO:     Started server process [27536]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-Failed to import jpype dependencies. Fallback to subprocess.
-No module named 'jpype'
-Starting up...
-Detected Bank of America PDF format, using NEW dedicated parser
-INFO:     127.0.0.1:54493 - "POST /api/split-statement HTTP/1.1" 400 Bad Request
-WARNING:  WatchFiles detected changes in 'parsers/westpac_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [27536]
-Shutting down...
-INFO:     Started server process [27604]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-Failed to import jpype dependencies. Fallback to subprocess.
-No module named 'jpype'
-Starting up...
-Detected Bank of America PDF format, using NEW dedicated parser
-INFO:     127.0.0.1:54573 - "POST /api/split-statement HTTP/1.1" 500 Internal Server Error
-WARNING:  WatchFiles detected changes in 'api/split_statement.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [27604]
-Shutting down...
-INFO:     Started server process [27755]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
+INFO:     127.0.0.1:50166 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50366 - "OPTIONS /api/convert HTTP/1.1" 200 OK
+CSRF token missing for POST /api/convert
+INFO:     127.0.0.1:50366 - "POST /api/convert HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 48, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+INFO:     127.0.0.1:50367 - "OPTIONS /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50367 - "GET /health HTTP/1.1" 200 OK

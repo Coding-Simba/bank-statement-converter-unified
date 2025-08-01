@@ -1,0 +1,18 @@
+{
+  "summary": {
+    "total_tests": 1,
+    "passed": 1,
+    "failed": 0,
+    "warnings": 0,
+    "errors": 0,
+    "duration": 48.0145001411438,
+    "timestamp": "2025-08-01T16:53:37.200864"
+  },
+  "results": {
+    "standard_pdf": {
+      "result": "PASS",
+      "details": "Standard PDF uploaded successfully",
+      "timestamp": "2025-08-01T16:53:07.150282"
+    }
+  }
+}

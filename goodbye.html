@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Deleted - BankCSV</title>
+    <link rel="stylesheet" href="/css/modern-homepage.css">
+    <style>
+        .goodbye-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .goodbye-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .goodbye-icon {
+            font-size: 64px;
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+        
+        .goodbye-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        
+        .goodbye-message {
+            font-size: 1.125rem;
+            color: #6c757d;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .goodbye-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-home {
+            background-color: #667eea;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-home:hover {
+            background-color: #5a67d8;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="goodbye-container">
+        <div class="goodbye-content">
+            <div class="goodbye-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            
+            <h1 class="goodbye-title">Account Deleted</h1>
+            
+            <p class="goodbye-message">
+                Your account has been successfully deleted. All your data has been permanently removed from our systems.
+                <br><br>
+                We're sorry to see you go. If you ever need our services again, you're always welcome back.
+            </p>
+            
+            <div class="goodbye-actions">
+                <a href="/" class="btn-home">
+                    Return to Homepage
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script>
+        // Clear any remaining auth data
+        localStorage.clear();
+        sessionStorage.clear();
+        
+        // Clear cookies
+        document.cookie.split(";").forEach(function(c) { 
+            document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+        });
+    </script>
+</body>
+</html>

@@ -19,7 +19,10 @@ class CSRFMiddleware(BaseHTTPMiddleware):
             "/redoc",
             "/openapi.json",
             "/api/auth/csrf",  # CSRF token endpoint itself
-            "/v2/api/auth/csrf"  # v2 CSRF token endpoint
+            "/v2/api/auth/csrf",  # v2 CSRF token endpoint
+            "/api/auth/login",  # Temporarily exclude login
+            "/api/auth/register",  # Temporarily exclude register
+            "/api/convert"  # Temporarily exclude PDF conversion
         ]
     
     async def dispatch(self, request: Request, call_next):

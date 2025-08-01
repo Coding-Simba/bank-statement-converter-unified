@@ -98,7 +98,8 @@ class UploadTestSuite:
                 )
             return response
         except Exception as e:
-            return None, str(e)
+            print(f"Upload error: {str(e)}")
+            return None
     
     def test_various_pdf_formats(self):
         """Test 1: Various PDF formats"""

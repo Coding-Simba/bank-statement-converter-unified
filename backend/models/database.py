@@ -7,6 +7,7 @@ from sqlalchemy.orm import sessionmaker, relationship, scoped_session
 from sqlalchemy.sql import func
 import os
 from pathlib import Path
+import json
 
 # Database configuration
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -50,6 +51,18 @@ class User(Base):
     refresh_token_family = Column(String(255), nullable=True)  # For refresh token rotation
     refresh_token_version = Column(Integer, default=1, nullable=False)  # Token version tracking
     
+    # Settings fields
+    timezone = Column(String(50), default="UTC", nullable=False)
+    two_factor_secret = Column(String(255), nullable=True)
+    two_factor_enabled = Column(Boolean, default=False, nullable=False)
+    two_factor_backup_codes = Column(Text, nullable=True)  # JSON array of backup codes
+    api_key = Column(String(255), unique=True, nullable=True)
+    api_key_created_at = Column(DateTime, nullable=True)
+    notification_preferences = Column(Text, nullable=True)  # JSON object
+    pending_email = Column(String(255), nullable=True)
+    pending_email_token = Column(String(255), nullable=True)
+    pending_email_expires = Column(DateTime, nullable=True)
+    
     # Relationships
     statements = relationship("Statement", back_populates="user", cascade="all, delete-orphan")
     feedback = relationship("Feedback", back_populates="user", cascade="all, delete-orphan")
@@ -86,6 +99,38 @@ class User(Base):
             "premium": float('inf')
         }
         return limits.get(self.account_type, 3)
+    
+    def get_notification_preferences(self):
+        """Get notification preferences as a dictionary."""
+        if self.notification_preferences:
+            try:
+                return json.loads(self.notification_preferences)
+            except json.JSONDecodeError:
+                pass
+        # Return defaults if not set or invalid
+        return {
+            "security_alerts": True,
+            "product_updates": True,
+            "usage_reports": False,
+            "marketing_emails": False
+        }
+    
+    def set_notification_preferences(self, preferences):
+        """Set notification preferences from a dictionary."""
+        self.notification_preferences = json.dumps(preferences)
+    
+    def get_backup_codes(self):
+        """Get 2FA backup codes as a list."""
+        if self.two_factor_backup_codes:
+            try:
+                return json.loads(self.two_factor_backup_codes)
+            except json.JSONDecodeError:
+                pass
+        return []
+    
+    def set_backup_codes(self, codes):
+        """Set 2FA backup codes from a list."""
+        self.two_factor_backup_codes = json.dumps(codes)
 
 
 class Statement(Base):
@@ -99,9 +144,12 @@ class Statement(Base):
     file_path = Column(String(500), nullable=False)
     file_size = Column(Integer, nullable=True)
     original_filename = Column(String(255), nullable=True)
+    bank = Column(String(255), nullable=True)
+    validated = Column(Boolean, default=False, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     expires_at = Column(DateTime, nullable=False)
     is_deleted = Column(Boolean, default=False, nullable=False)
+    deleted_at = Column(DateTime, nullable=True)
     
     # Relationships
     user = relationship("User", back_populates="statements")

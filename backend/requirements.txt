@@ -39,4 +39,14 @@ pdf2image==1.16.3
 # Utilities
 python-dateutil==2.8.2
 pytz==2023.3
-numpy==1.26.2stripe
+numpy==1.26.2
+
+# Stripe Integration
+stripe==7.6.0
+
+# Two-Factor Authentication
+pyotp==2.9.0
+qrcode==7.4.2
+
+# Email Service
+aiosmtplib==3.0.1

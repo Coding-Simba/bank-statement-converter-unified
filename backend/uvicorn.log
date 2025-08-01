@@ -1,0 +1,362 @@
+INFO:     Will watch for changes in these directories: ['/Users/MAC/chrome/bank-statement-converter-unified/backend']
+INFO:     Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+INFO:     Started reloader process [33960] using WatchFiles
+INFO:     Started server process [33969]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Starting up...
+INFO:     127.0.0.1:50599 - "OPTIONS /api/convert HTTP/1.1" 200 OK
+CSRF token missing for POST /api/convert
+INFO:     127.0.0.1:50599 - "POST /api/convert HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 48, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+INFO:     127.0.0.1:50600 - "OPTIONS /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50600 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50624 - "GET /health HTTP/1.1" 200 OK
+CSRF token missing for POST /api/convert
+INFO:     127.0.0.1:50651 - "POST /api/convert HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 48, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+INFO:     127.0.0.1:50652 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50665 - "OPTIONS /api/convert HTTP/1.1" 200 OK
+CSRF token missing for POST /api/convert
+INFO:     127.0.0.1:50665 - "POST /api/convert HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 48, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+INFO:     127.0.0.1:50666 - "OPTIONS /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50666 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50674 - "OPTIONS /api/convert HTTP/1.1" 200 OK
+CSRF token missing for POST /api/convert
+INFO:     127.0.0.1:50674 - "POST /api/convert HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 48, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+INFO:     127.0.0.1:50675 - "OPTIONS /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50675 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50710 - "GET /api/health HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50732 - "GET /api/auth/me HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50757 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50781 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50806 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:50927 - "GET /health HTTP/1.1" 200 OK
+CSRF token missing for POST /api/convert
+INFO:     127.0.0.1:51026 - "POST /api/convert HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 48, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+INFO:     127.0.0.1:51027 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51032 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51057 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'middleware/csrf_middleware.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [33969]
+Shutting down...
+INFO:     Started server process [34754]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+unknown widths : 
+[0, IndirectObject(98, 0, 6171968768)]
+unknown widths : 
+[0, IndirectObject(93, 0, 6171968768)]
+unknown widths : 
+[0, IndirectObject(88, 0, 6171968768)]
+unknown widths : 
+[0, IndirectObject(83, 0, 6171968768)]
+unknown widths : 
+[0, IndirectObject(78, 0, 6171968768)]
+unknown widths : 
+[0, IndirectObject(73, 0, 6171968768)]
+unknown widths : 
+[0, IndirectObject(68, 0, 6171968768)]
+unknown widths : 
+[0, IndirectObject(63, 0, 6171968768)]
+unknown widths : 
+[0, IndirectObject(58, 0, 6171968768)]
+unknown widths : 
+[0, IndirectObject(53, 0, 6171968768)]
+unknown widths : 
+[0, IndirectObject(48, 0, 6171968768)]
+unknown widths : 
+[0, IndirectObject(43, 0, 6171968768)]
+unknown widths : 
+[0, IndirectObject(38, 0, 6171968768)]
+Failed to import jpype dependencies. Fallback to subprocess.
+No module named 'jpype'
+/opt/anaconda3/lib/python3.12/site-packages/camelot/parsers/base.py:124: UserWarning: page-2 is image-based, camelot only works on text-based pages.
+  warnings.warn(
+/opt/anaconda3/lib/python3.12/site-packages/camelot/parsers/base.py:124: UserWarning: page-2 is image-based, camelot only works on text-based pages.
+  warnings.warn(
+unknown widths : 
+[0, IndirectObject(98, 0, 12912583088)]
+unknown widths : 
+[0, IndirectObject(93, 0, 12912583088)]
+unknown widths : 
+[0, IndirectObject(88, 0, 12912583088)]
+unknown widths : 
+[0, IndirectObject(83, 0, 12912583088)]
+unknown widths : 
+[0, IndirectObject(78, 0, 12912583088)]
+unknown widths : 
+[0, IndirectObject(73, 0, 12912583088)]
+unknown widths : 
+[0, IndirectObject(68, 0, 12912583088)]
+unknown widths : 
+[0, IndirectObject(63, 0, 12912583088)]
+unknown widths : 
+[0, IndirectObject(58, 0, 12912583088)]
+unknown widths : 
+[0, IndirectObject(53, 0, 12912583088)]
+unknown widths : 
+[0, IndirectObject(48, 0, 12912583088)]
+unknown widths : 
+[0, IndirectObject(43, 0, 12912583088)]
+unknown widths : 
+[0, IndirectObject(38, 0, 12912583088)]
+Starting up...
+Detected Bank of America PDF format, using NEW dedicated parser
+Trying Camelot for table extraction...
+[CAMELOT DEBUG 19:00:40] Starting Camelot extraction for: /Users/MAC/chrome/bank-statement-converter-unified/uploads/a077dcb1-e89a-448b-a68f-0818cfe9923e.pdf
+[CAMELOT DEBUG 19:00:40] Trying Camelot with method: lattice
+[CAMELOT DEBUG 19:00:40] Found 0 tables with lattice method
+[CAMELOT DEBUG 19:00:40] Trying Camelot with method: stream
+[CAMELOT DEBUG 19:00:40] Found 1 tables with stream method
+[CAMELOT DEBUG 19:00:40] Processing table 1/1
+[CAMELOT DEBUG 19:00:40] Table shape: (14, 3)
+[CAMELOT DEBUG 19:00:40] Filtered out: Bank of America�...
+[CAMELOT DEBUG 19:00:40] Filtered out: P.O. box 12345...
+[CAMELOT DEBUG 19:00:40] Filtered out: Customer service  information...
+[CAMELOT DEBUG 19:00:40] Too few cells: ['Avenida 11, No12-S6', '', '']
+[CAMELOT DEBUG 19:00:40] Too few cells: ['Bogota, 11212', '', '']
+[CAMELOT DEBUG 19:00:40] Filtered out: •l) Customer service:  1.888.432.1000...
+[CAMELOT DEBUG 19:00:40] Too few cells: ['', '', 'TDD/TTY users only: 1.888.123.4567']
+[CAMELOT DEBUG 19:00:40] Too few cells: ['JIMENEZ STREET 7-43', '', '']
+[CAMELOT DEBUG 19:00:40] Filtered out: BOGOTA, 111211 bankofamerica.com...
+[CAMELOT DEBUG 19:00:40] Too few cells: ['COLOMBIA', '', '']
+[CAMELOT DEBUG 19:00:40] Filtered out: ;a Bank of America, N.A....
+[CAMELOT DEBUG 19:00:40] Filtered out: P.O. Box 52111...
+[CAMELOT DEBUG 19:00:40] Too few cells: ['', '', 'Tampa,  FL 33475-1111']
+[CAMELOT DEBUG 19:00:40] Total transactions extracted: 0
+Trying accurate column parser...
+Trying fixed column parser for money in/out layout...
+Extracted 1 transactions using pdftotext
+Using OCR-first approach for maximum accuracy
+Processing with OCR (this may take a moment)...
+Using advanced OCR parser for maximum accuracy...
+Successfully extracted 10 transactions using advanced OCR
+INFO:     127.0.0.1:51138 - "POST /api/convert HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51200 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51231 - "POST /api/auth/login HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: users.refresh_token_family
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 33, in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 84, in call_next
+    raise app_exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 70, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/api/auth.py", line 122, in login
+    user = db.query(User).filter(User.email == user_credentials.email).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2748, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2308, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2343, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: users.refresh_token_family
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.company_name AS users_company_name, users.account_type AS users_account_type, users.subscription_status AS users_subscription_status, users.subscription_plan AS users_subscription_plan, users.subscription_expires_at AS users_subscription_expires_at, users.stripe_customer_id AS users_stripe_customer_id, users.auth_provider AS users_auth_provider, users.provider_user_id AS users_provider_user_id, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.daily_generations AS users_daily_generations, users.last_generation_reset AS users_last_generation_reset, users.is_active AS users_is_active, users.email_verified AS users_email_verified, users.email_verification_token AS users_email_verification_token, users.password_reset_token AS users_password_reset_token, users.password_reset_expires AS users_password_reset_expires, users.refresh_token_family AS users_refresh_token_family, users.refresh_token_version AS users_refresh_token_version, users.timezone AS users_timezone, users.two_factor_secret AS users_two_factor_secret, users.two_factor_enabled AS users_two_factor_enabled, users.two_factor_backup_codes AS users_two_factor_backup_codes, users.api_key AS users_api_key, users.api_key_created_at AS users_api_key_created_at, users.notification_preferences AS users_notification_preferences, users.pending_email AS users_pending_email, users.pending_email_token AS users_pending_email_token, users.pending_email_expires AS users_pending_email_expires 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('test@test.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+WARNING:  WatchFiles detected changes in 'migrations/add_missing_user_columns.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [34754]
+Shutting down...
+INFO:     Started server process [35092]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Starting up...
+INFO:     127.0.0.1:51348 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
