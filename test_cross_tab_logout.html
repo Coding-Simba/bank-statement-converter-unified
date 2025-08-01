@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Tab Logout Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-authenticated { background: #28a745; }
+        .status-unauthenticated { background: #dc3545; }
+        .status-unknown { background: #ffc107; }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover { background: #0056b3; }
+        .logout-button {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .logout-button:hover { background: #c82333; }
+        .log-area {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+            margin-top: 15px;
+        }
+        .instruction {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .tabs-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .tab-card {
+            background: #fff;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        .tab-card.active {
+            border-color: #28a745;
+            background: #f8fff9;
+        }
+        .tab-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin: 5px;
+        }
+        .auth-status {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .progress-section {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .step {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 3px solid #ccc;
+        }
+        .step.completed {
+            border-left-color: #28a745;
+            background: #f8fff9;
+        }
+        .step.failed {
+            border-left-color: #dc3545;
+            background: #fff5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Cross-Tab Logout Functionality Test</h1>
+        <p>This page helps you test logout behavior across multiple browser tabs.</p>
+        
+        <div class="instruction">
+            <h3>📋 Test Instructions</h3>
+            <ol>
+                <li>Open this test page in multiple tabs (recommended: 4-5 tabs)</li>
+                <li>Login as test-20250801-134232@example.com in one tab</li>
+                <li>Verify all tabs show authenticated state</li>
+                <li>Click logout in one tab</li>
+                <li>Check if all other tabs automatically reflect logout</li>
+            </ol>
+        </div>
+        
+        <div class="progress-section">
+            <h3>📊 Test Progress</h3>
+            <div id="testSteps">
+                <div class="step" id="step1">
+                    <strong>Step 1:</strong> Login completed in at least one tab
+                    <span id="step1Status" class="status-indicator status-unknown"></span>
+                </div>
+                <div class="step" id="step2">
+                    <strong>Step 2:</strong> Multiple tabs opened and showing authenticated state
+                    <span id="step2Status" class="status-indicator status-unknown"></span>
+                </div>
+                <div class="step" id="step3">
+                    <strong>Step 3:</strong> Logout initiated from one tab
+                    <span id="step3Status" class="status-indicator status-unknown"></span>
+                </div>
+                <div class="step" id="step4">
+                    <strong>Step 4:</strong> All tabs automatically reflect logout state
+                    <span id="step4Status" class="status-indicator status-unknown"></span>
+                </div>
+                <div class="step" id="step5">
+                    <strong>Step 5:</strong> Protected pages redirect to login
+                    <span id="step5Status" class="status-indicator status-unknown"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>🔐 Authentication Status</h2>
+        <div class="auth-status">
+            Status: <span id="authStatus" class="status-indicator status-unknown"></span>
+            <span id="authText">Checking...</span>
+        </div>
+        <div id="userInfo"></div>
+        
+        <div>
+            <button class="test-button" onclick="checkAuthStatus()">🔍 Check Auth Status</button>
+            <button class="test-button" onclick="quickLogin()">🔓 Quick Login</button>
+            <button class="logout-button" onclick="performLogout()">🚪 LOGOUT (Test This!)</button>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>🌐 Multiple Tab Navigation</h2>
+        <p>Open these pages in separate tabs to test cross-tab logout:</p>
+        
+        <div class="tabs-section">
+            <div class="tab-card" id="dashboardTab">
+                <h4>📊 Dashboard</h4>
+                <a href="/dashboard-modern.html" target="_blank" class="tab-link">Open Dashboard</a>
+                <div class="auth-status" id="dashboardStatus">Status: Unknown</div>
+            </div>
+            
+            <div class="tab-card" id="convertTab">
+                <h4>📄 Convert PDF</h4>
+                <a href="/index.html" target="_blank" class="tab-link">Open Convert</a>
+                <div class="auth-status" id="convertStatus">Status: Unknown</div>
+            </div>
+            
+            <div class="tab-card" id="settingsTab">
+                <h4>⚙️ Settings</h4>
+                <a href="/settings.html" target="_blank" class="tab-link">Open Settings</a>
+                <div class="auth-status" id="settingsStatus">Status: Unknown</div>
+            </div>
+            
+            <div class="tab-card" id="pricingTab">
+                <h4>💰 Pricing</h4>
+                <a href="/pricing.html" target="_blank" class="tab-link">Open Pricing</a>
+                <div class="auth-status" id="pricingStatus">Status: Unknown</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>📊 Logout Monitoring</h2>
+        <p>This section monitors logout API calls and cross-tab behavior:</p>
+        
+        <div>
+            <button class="test-button" onclick="startMonitoring()">🎯 Start Monitoring</button>
+            <button class="test-button" onclick="stopMonitoring()">⏹️ Stop Monitoring</button>
+            <button class="test-button" onclick="clearLogs()">🗑️ Clear Logs</button>
+        </div>
+        
+        <div class="log-area" id="logArea">
+            <div>🕐 Test logs will appear here...</div>
+        </div>
+    </div>
+
+    <script src="/js/auth-unified.js"></script>
+    <script>
+        let monitoringInterval = null;
+        let logoutDetected = false;
+        let initialAuthState = null;
+
+        // Configuration
+        const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://localhost:5000'
+            : `${window.location.protocol}//${window.location.hostname}`;
+
+        // Utility functions
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logArea = document.getElementById('logArea');
+            const colorMap = {
+                'info': '#333',
+                'success': '#28a745',
+                'error': '#dc3545',
+                'warning': '#ffc107'
+            };
+            
+            const logEntry = document.createElement('div');
+            logEntry.style.color = colorMap[type] || '#333';
+            logEntry.innerHTML = `[${timestamp}] ${message}`;
+            logArea.appendChild(logEntry);
+            logArea.scrollTop = logArea.scrollHeight;
+        }
+
+        function updateStepStatus(stepId, status) {
+            const step = document.getElementById(stepId);
+            const statusIndicator = document.getElementById(stepId + 'Status');
+            
+            step.className = 'step ' + (status === 'completed' ? 'completed' : status === 'failed' ? 'failed' : '');
+            statusIndicator.className = 'status-indicator ' + 
+                (status === 'completed' ? 'status-authenticated' : 
+                 status === 'failed' ? 'status-unauthenticated' : 'status-unknown');
+        }
+
+        // Authentication functions
+        async function checkAuthStatus() {
+            try {
+                log('🔍 Checking authentication status...');
+                
+                const response = await fetch(`${API_BASE}/v2/api/auth/check`, {
+                    credentials: 'include'
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    updateAuthUI(data.authenticated, data.user);
+                    
+                    if (data.authenticated) {
+                        log(`✅ User authenticated: ${data.user.email}`, 'success');
+                        if (!initialAuthState) {
+                            initialAuthState = true;
+                            updateStepStatus('step1', 'completed');
+                        }
+                    } else {
+                        log('❌ User not authenticated', 'error');
+                        if (initialAuthState === true) {
+                            log('🚨 LOGOUT DETECTED! User was authenticated but now is not.', 'warning');
+                            logoutDetected = true;
+                            updateStepStatus('step3', 'completed');
+                            updateStepStatus('step4', 'completed');
+                        }
+                    }
+                } else {
+                    log(`❌ Auth check failed: ${response.status}`, 'error');
+                    updateAuthUI(false);
+                }
+            } catch (error) {
+                log(`❌ Auth check error: ${error.message}`, 'error');
+                updateAuthUI(false);
+            }
+        }
+
+        function updateAuthUI(isAuthenticated, user = null) {
+            const authStatus = document.getElementById('authStatus');
+            const authText = document.getElementById('authText');
+            const userInfo = document.getElementById('userInfo');
+            
+            if (isAuthenticated && user) {
+                authStatus.className = 'status-indicator status-authenticated';
+                authText.textContent = 'Authenticated';
+                userInfo.innerHTML = `
+                    <div style="margin-top: 10px; padding: 10px; background: #f8fff9; border-radius: 5px;">
+                        <strong>User:</strong> ${user.email}<br>
+                        <strong>Account:</strong> ${user.account_type}<br>
+                        <strong>Daily Generations:</strong> ${user.daily_generations}/${user.daily_limit}
+                    </div>
+                `;
+            } else {
+                authStatus.className = 'status-indicator status-unauthenticated';
+                authText.textContent = 'Not Authenticated';
+                userInfo.innerHTML = '';
+            }
+        }
+
+        async function quickLogin() {
+            try {
+                log('🔓 Attempting quick login...');
+                
+                // First get CSRF token
+                const csrfResponse = await fetch(`${API_BASE}/v2/api/auth/csrf`, {
+                    credentials: 'include'
+                });
+                
+                if (!csrfResponse.ok) {
+                    throw new Error('Failed to get CSRF token');
+                }
+                
+                const csrfData = await csrfResponse.json();
+                const csrfToken = csrfData.csrf_token;
+                
+                // Now login
+                const loginResponse = await fetch(`${API_BASE}/v2/api/auth/login`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': csrfToken
+                    },
+                    body: JSON.stringify({
+                        email: 'test-20250801-134232@example.com',
+                        password: 'TestPassword123!',
+                        remember_me: false
+                    })
+                });
+                
+                if (loginResponse.ok) {
+                    const data = await loginResponse.json();
+                    log(`✅ Login successful: ${data.user.email}`, 'success');
+                    updateAuthUI(true, data.user);
+                    initialAuthState = true;
+                    updateStepStatus('step1', 'completed');
+                } else {
+                    const error = await loginResponse.json();
+                    log(`❌ Login failed: ${error.detail}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ Login error: ${error.message}`, 'error');
+            }
+        }
+
+        async function performLogout() {
+            try {
+                log('🚪 Initiating logout...', 'warning');
+                
+                // Get CSRF token first
+                const csrfResponse = await fetch(`${API_BASE}/v2/api/auth/csrf`, {
+                    credentials: 'include'
+                });
+                
+                let csrfToken = null;
+                if (csrfResponse.ok) {
+                    const csrfData = await csrfResponse.json();
+                    csrfToken = csrfData.csrf_token;
+                }
+                
+                // Perform logout
+                const response = await fetch(`${API_BASE}/v2/api/auth/logout`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'X-CSRF-Token': csrfToken
+                    }
+                });
+                
+                if (response.ok) {
+                    log('✅ Logout API call successful', 'success');
+                    updateStepStatus('step3', 'completed');
+                    
+                    // Check if cookies are cleared
+                    setTimeout(async () => {
+                        await checkAuthStatus();
+                        log('🔍 Checked auth status after logout', 'info');
+                        
+                        // Test protected page access
+                        try {
+                            const protectedResponse = await fetch(`${API_BASE}/v2/api/auth/profile`, {
+                                credentials: 'include'
+                            });
+                            
+                            if (protectedResponse.status === 401) {
+                                log('✅ Protected page correctly returns 401', 'success');
+                                updateStepStatus('step5', 'completed');
+                            } else {
+                                log('❌ Protected page still accessible!', 'error');
+                                updateStepStatus('step5', 'failed');
+                            }
+                        } catch (error) {
+                            log(`❌ Error testing protected page: ${error.message}`, 'error');
+                        }
+                    }, 1000);
+                    
+                } else {
+                    log(`❌ Logout failed: ${response.status}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ Logout error: ${error.message}`, 'error');
+            }
+        }
+
+        // Monitoring functions
+        function startMonitoring() {
+            if (monitoringInterval) {
+                log('⚠️ Monitoring already active', 'warning');
+                return;
+            }
+            
+            log('🎯 Starting cross-tab monitoring...', 'info');
+            updateStepStatus('step2', 'completed');
+            
+            monitoringInterval = setInterval(async () => {
+                await checkAuthStatus();
+            }, 2000); // Check every 2 seconds
+            
+            // Listen for storage events (cross-tab communication)
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'user' && e.oldValue && !e.newValue) {
+                    log('🔄 Storage event detected: user data removed (possible logout)', 'warning');
+                }
+            });
+            
+            // Listen for auth state changes
+            window.addEventListener('authStateChanged', (e) => {
+                const { authenticated, user } = e.detail;
+                if (!authenticated && initialAuthState === true) {
+                    log('🔄 Auth state change event: User logged out', 'warning');
+                }
+            });
+        }
+
+        function stopMonitoring() {
+            if (monitoringInterval) {
+                clearInterval(monitoringInterval);
+                monitoringInterval = null;
+                log('⏹️ Monitoring stopped', 'info');
+            }
+        }
+
+        function clearLogs() {
+            document.getElementById('logArea').innerHTML = '<div>🗑️ Logs cleared...</div>';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            log('🚀 Cross-tab logout test initialized', 'info');
+            log('📌 Instructions:', 'info');
+            log('1. Open multiple tabs with different pages', 'info');
+            log('2. Login in one tab using "Quick Login"', 'info');
+            log('3. Start monitoring to track auth state', 'info');
+            log('4. Click "LOGOUT" to test cross-tab behavior', 'info');
+            
+            // Initial auth check
+            setTimeout(checkAuthStatus, 1000);
+        });
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            stopMonitoring();
+        });
+    </script>
+</body>
+</html>
