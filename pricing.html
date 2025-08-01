@@ -216,21 +216,25 @@
       font-weight: 600;
     }
     
-    .toggle-switch {
+    /* High specificity toggle styles using ID selector */
+    #pricingToggle.toggle-switch {
       position: relative !important;
       width: 56px !important;
       height: 32px !important;
       background: #e5e7eb !important;
       border-radius: 32px !important;
       cursor: pointer !important;
-      transition: background-color 0.3s !important;
+      transition: background-color 0.3s ease-in-out !important;
+      overflow: hidden !important;
+      border: none !important;
+      outline: none !important;
     }
     
-    .toggle-switch.active {
+    #pricingToggle.toggle-switch.active {
       background: var(--primary) !important;
     }
     
-    .toggle-slider {
+    #pricingToggle.toggle-switch .toggle-slider {
       position: absolute !important;
       top: 4px !important;
       left: 4px !important;
@@ -238,12 +242,46 @@
       height: 24px !important;
       background: white !important;
       border-radius: 50% !important;
-      transition: transform 0.3s !important;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+      will-change: transform !important;
+    }
+    
+    #pricingToggle.toggle-switch.active .toggle-slider {
+      transform: translateX(24px) !important;
+    }
+    
+    /* Fallback styles with lower specificity for other toggle switches */
+    .toggle-switch {
+      position: relative;
+      width: 56px;
+      height: 32px;
+      background: #e5e7eb;
+      border-radius: 32px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+      overflow: hidden;
+    }
+    
+    .toggle-switch.active {
+      background: var(--primary);
+    }
+    
+    .toggle-slider {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 24px;
+      height: 24px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      will-change: transform;
     }
     
     .toggle-switch.active .toggle-slider {
-      transform: translateX(24px) !important;
+      transform: translateX(24px);
     }
     
     .save-badge {
@@ -1168,82 +1206,7 @@
 <script src="/js/auth-unified.js"></script>
 <!-- Stripe Integration -->
 <script src="/js/stripe-integration.js"></script>
-<!-- Pricing Toggle Fix -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Pricing toggle fix loading...');
-    
-    // Re-initialize pricing toggle after all scripts have loaded
-    setTimeout(function() {
-        const pricingToggle = document.getElementById('pricingToggle');
-        const monthlyLabel = document.getElementById('monthlyLabel');
-        const yearlyLabel = document.getElementById('yearlyLabel');
-        
-        if (!pricingToggle || !monthlyLabel || !yearlyLabel) {
-            console.error('Toggle elements not found');
-            return;
-        }
-        
-        console.log('Toggle elements found, reinitializing...');
-        
-        // Remove any existing event listeners by cloning
-        const newToggle = pricingToggle.cloneNode(true);
-        pricingToggle.parentNode.replaceChild(newToggle, pricingToggle);
-        
-        // Get fresh references
-        const toggle = document.getElementById('pricingToggle');
-        const monthly = document.getElementById('monthlyLabel');
-        const yearly = document.getElementById('yearlyLabel');
-        
-        // Function to update display
-        function updateToggle(isYearly) {
-            console.log('Updating toggle to:', isYearly ? 'yearly' : 'monthly');
-            
-            if (isYearly) {
-                toggle.classList.add('active');
-            } else {
-                toggle.classList.remove('active');
-            }
-            
-            monthly.classList.toggle('active', !isYearly);
-            yearly.classList.toggle('active', isYearly);
-            
-            // Update prices
-            document.querySelectorAll('.price-value').forEach(el => {
-                const monthlyPrice = el.getAttribute('data-monthly');
-                const yearlyPrice = el.getAttribute('data-yearly');
-                el.textContent = isYearly ? yearlyPrice : monthlyPrice;
-            });
-            
-            // Update annual price display
-            document.querySelectorAll('.annual-price').forEach(el => {
-                el.style.display = isYearly ? 'block' : 'none';
-            });
-        }
-        
-        // Add event listeners
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const isCurrentlyYearly = toggle.classList.contains('active');
-            updateToggle(!isCurrentlyYearly);
-        });
-        
-        monthly.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            updateToggle(false);
-        });
-        
-        yearly.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            updateToggle(true);
-        });
-        
-        console.log('Pricing toggle reinitialized successfully');
-    }, 100);
-});
-</script>
+<!-- Bulletproof Pricing Toggle -->
+<script src="/js/pricing-toggle-standalone.js"></script>
 </body>
 </html>

@@ -360,3 +360,102 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 Starting up...
 INFO:     127.0.0.1:51348 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/3410863c-2d8a-414b-8f10-230aaa739768.csv
+Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/a077dcb1-e89a-448b-a68f-0818cfe9923e.csv
+Cleaned up 2 expired statements
+INFO:     127.0.0.1:60590 - "OPTIONS /api/convert HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60590 - "POST /api/convert HTTP/1.1" 400 Bad Request
+Failed to import jpype dependencies. Fallback to subprocess.
+No module named 'jpype'
+/opt/anaconda3/lib/python3.12/site-packages/camelot/parsers/base.py:238: UserWarning: No tables found in table area (348.79999999999995, 563.2883029999999, 441.44081973475, 694.3724583293296)
+  cols, rows, v_s, h_s = self._generate_columns_and_rows(bbox, user_cols)
+Trying Camelot for table extraction...
+[CAMELOT DEBUG 22:59:29] Starting Camelot extraction for: /Users/MAC/chrome/bank-statement-converter-unified/uploads/83e67a63-1ebc-45ff-9e6f-4211782f2161.pdf
+[CAMELOT DEBUG 22:59:29] Trying Camelot with method: lattice
+[CAMELOT DEBUG 22:59:29] Found 2 tables with lattice method
+[CAMELOT DEBUG 22:59:29] Processing table 1/2
+[CAMELOT DEBUG 22:59:29] Table shape: (3, 1)
+[CAMELOT DEBUG 22:59:29] Filtered out: Payment / 
+Finance 
+Previous 
+Purchases and 
+Installment 
+Late Payment 
+Card Type
+Credits and 
+Charg...
+[CAMELOT DEBUG 22:59:29] Filtered out: ...
+[CAMELOT DEBUG 22:59:29] Filtered out: Past Due Amount
+Unbilled Installment Amount
+Unbilld Loan Amount
+Total Outstanding Balance...
+[CAMELOT DEBUG 22:59:29] Processing table 2/2
+[CAMELOT DEBUG 22:59:29] Table shape: (3, 1)
+[CAMELOT DEBUG 22:59:29] Too few cells: ['Description\nDate\nAmount']
+[CAMELOT DEBUG 22:59:29] Filtered out: ...
+[CAMELOT DEBUG 22:59:29] Too few cells: ['REMINDER']
+[CAMELOT DEBUG 22:59:29] Trying Camelot with method: stream
+[CAMELOT DEBUG 22:59:30] Found 1 tables with stream method
+[CAMELOT DEBUG 22:59:30] Processing table 1/1
+[CAMELOT DEBUG 22:59:30] Table shape: (6, 1)
+[CAMELOT DEBUG 22:59:30] Too few cells: ['Customer Number:']
+[CAMELOT DEBUG 22:59:30] Too few cells: ['Branch Name:']
+[CAMELOT DEBUG 22:59:30] Too few cells: ['Statement Date:']
+[CAMELOT DEBUG 22:59:30] Too few cells: ['Payment Due Date:']
+[CAMELOT DEBUG 22:59:30] Too few cells: ['Credit Limit:']
+[CAMELOT DEBUG 22:59:30] Filtered out: Total Amount Due:...
+[CAMELOT DEBUG 22:59:30] Total transactions extracted: 0
+Trying accurate column parser...
+Trying fixed column parser for money in/out layout...
+Extracted 9 transactions using pdftotext
+Using OCR-first approach for maximum accuracy
+Processing with OCR (this may take a moment)...
+Using advanced OCR parser for maximum accuracy...
+Trying standard OCR parser...
+Parsing was incomplete for /Users/MAC/chrome/bank-statement-converter-unified/uploads/83e67a63-1ebc-45ff-9e6f-4211782f2161.pdf, saving for improvement...
+Failed PDF saved to: failed_pdfs/20250801_225935_0c55e666_83e67a63-1ebc-45ff-9e6f-4211782f2161.pdf
+INFO:     127.0.0.1:60624 - "POST /api/convert HTTP/1.1" 200 OK
+Deleted file: /Users/MAC/chrome/bank-statement-converter-unified/uploads/83e67a63-1ebc-45ff-9e6f-4211782f2161.csv
+Cleaned up 1 expired statements
+INFO:     127.0.0.1:57635 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/check HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/check HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57667 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57635 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57635 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57667 - "OPTIONS /api/stripe/subscription-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57635 - "GET /api/auth/check HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/stripe/subscription-status HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:57667 - "OPTIONS /api/check-limit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57635 - "GET /api/check-limit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57667 - "OPTIONS /api/user/statements HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57635 - "GET /api/user/statements HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:57635 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/check HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/check HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/check HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/check HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57635 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57676 - "GET /api/stripe/subscription-status HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:57676 - "GET /api/auth/check HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/check-limit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57635 - "GET /api/user/statements HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:57635 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/check HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/check HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/check HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/auth/check HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57635 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57635 - "GET /api/stripe/subscription-status HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:57635 - "GET /api/auth/check HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57793 - "GET /api/check-limit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57793 - "GET /api/user/statements HTTP/1.1" 403 Forbidden

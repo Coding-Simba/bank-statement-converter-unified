@@ -1,0 +1,32 @@
+{
+  "0c55e6662ef748b3b84b8984dbeb566fd4b719f61237255297e65a43f2b28ff9": {
+    "original_name": "83e67a63-1ebc-45ff-9e6f-4211782f2161.pdf",
+    "saved_name": "20250801_225935_0c55e666_83e67a63-1ebc-45ff-9e6f-4211782f2161.pdf",
+    "saved_path": "failed_pdfs/20250801_225935_0c55e666_83e67a63-1ebc-45ff-9e6f-4211782f2161.pdf",
+    "timestamp": "20250801_225935",
+    "date_saved": "2025-08-01T22:59:35.025091",
+    "transactions_found": 9,
+    "valid_transactions": 9,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [
+      {
+        "description": "Petron - C5 Station",
+        "amount": 223.26,
+        "amount_string": "223.26"
+      },
+      {
+        "description": "South Star Drug",
+        "amount": 313.39,
+        "amount_string": "313.39"
+      },
+      {
+        "description": "Rosewood Condominum",
+        "amount": 582.96,
+        "amount_string": "582.96"
+      }
+    ],
+    "file_size": 2165481,
+    "status": "pending_review"
+  }
+}

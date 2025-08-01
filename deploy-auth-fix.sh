@@ -1,134 +1,93 @@
-#!/bin/bash
+#\!/bin/bash
 
-# Deployment script for authentication fix
-# This script should be run on the server
+# Deploy Auth Fix
+echo "🚀 Deploying Auth Fix"
+echo "===================="
+echo ""
 
-echo "=== Deploying Authentication Fix ==="
-echo "Time: $(date)"
+SERVER_IP="3.235.19.83"
+SERVER_USER="ubuntu"
+SSH_KEY="/Users/MAC/Downloads/bank-statement-converter.pem"
 
-# 1. Backup current files
-echo -e "\n1. Creating backups..."
-cd /home/ubuntu/bank-statement-converter/frontend
-mkdir -p backups/$(date +%Y%m%d)
-cp js/stripe-integration.js backups/$(date +%Y%m%d)/stripe-integration-$(date +%H%M%S).js
-cp js/auth.js backups/$(date +%Y%m%d)/auth-$(date +%H%M%S).js
-echo "✓ Backups created"
+# Colors
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
 
-# 2. Create the fixed stripe-integration.js
-echo -e "\n2. Creating fixed stripe-integration.js..."
-cat > js/stripe-integration-fixed.js << 'EOF'
-// Stripe Integration - Fixed Version
-(function() {
-    'use strict';
-    
-    console.log('[Stripe] Loading...');
-    
-    // Wait for DOM
-    function init() {
-        console.log('[Stripe] Initializing...');
-        
-        // Setup buy buttons
-        const buttons = document.querySelectorAll('.pricing-cta.primary');
-        const plans = ['starter', 'professional', 'business'];
-        
-        buttons.forEach((button, index) => {
-            const plan = plans[index];
-            if (!plan) return;
-            
-            // Clone to remove old handlers
-            const newBtn = button.cloneNode(true);
-            button.parentNode.replaceChild(newBtn, button);
-            
-            newBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                console.log('[Stripe] Clicked:', plan);
-                
-                // Check auth NOW
-                const token = localStorage.getItem('access_token');
-                if (!token) {
-                    console.log('[Stripe] No auth, redirecting...');
-                    window.location.href = `/signup.html?plan=${plan}&redirect=/pricing.html`;
-                    return;
-                }
-                
-                // Create checkout
-                handleCheckout(plan, token, newBtn);
-            });
-        });
-    }
-    
-    async function handleCheckout(plan, token, button) {
-        const originalText = button.textContent;
-        button.textContent = 'Processing...';
-        button.disabled = true;
-        
-        try {
-            const toggle = document.getElementById('pricingToggle');
-            const isYearly = toggle && toggle.classList.contains('active');
-            
-            const response = await fetch('https://bankcsvconverter.com/api/stripe/create-checkout-session', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    plan: plan,
-                    billing_period: isYearly ? 'yearly' : 'monthly'
-                })
-            });
-            
-            const data = await response.json();
-            
-            if (response.ok && data.checkout_url) {
-                window.location.href = data.checkout_url;
-            } else {
-                throw new Error(data.detail || 'Checkout failed');
-            }
-        } catch (error) {
-            alert('Unable to start checkout: ' + error.message);
-            button.textContent = originalText;
-            button.disabled = false;
-        }
-    }
-    
-    // Initialize
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
-})();
-EOF
-
-# 3. Replace the current version
-echo -e "\n3. Deploying fixed version..."
-cp js/stripe-integration-fixed.js js/stripe-integration.js
-echo "✓ stripe-integration.js updated"
-
-# 4. Check auth.js exports BankAuth
-echo -e "\n4. Checking auth.js..."
-if grep -q "window.BankAuth" js/auth.js; then
-    echo "✓ auth.js exports BankAuth"
-else
-    echo "⚠ auth.js might not export BankAuth properly"
+# Check SSH key
+if [ \! -f "$SSH_KEY" ]; then
+    echo -e "${RED}✗ SSH key not found at $SSH_KEY${NC}"
+    exit 1
 fi
 
-# 5. Verify pricing.html script order
-echo -e "\n5. Checking pricing.html script order..."
-tail -20 pricing.html | grep -E "api-config|auth|stripe-integration" || echo "⚠ Scripts might be missing"
+echo "1. Uploading updated auth-unified.js..."
+scp -i "$SSH_KEY" -o StrictHostKeyChecking=no \
+    js/auth-unified.js \
+    "$SERVER_USER@$SERVER_IP:/home/ubuntu/bank-statement-converter/js/"
 
-# 6. Clear any caches
-echo -e "\n6. Clearing caches..."
-# Add cache clearing commands if needed
+echo -e "\n2. Setting file permissions..."
+ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no "$SERVER_USER@$SERVER_IP" << 'ENDSSH'
+cd /home/ubuntu/bank-statement-converter
+chmod 644 js/auth-unified.js
+echo "✓ Permissions set"
 
-echo -e "\n=== Deployment Complete ==="
-echo "Test at: https://bankcsvconverter.com/pricing.html"
+echo -e "\n3. Clearing browser cache (nginx)..."
+# Touch the file to update timestamp
+touch js/auth-unified.js
+
+echo -e "\n4. Testing authentication..."
+# First, let's create a test user if needed
+cd /home/ubuntu/backend
+cat > create_test_user.py << 'EOFPY'
+#\!/usr/bin/env python3
+import sys
+sys.path.insert(0, '.')
+from models.database import get_db, User
+from utils.auth import get_password_hash
+from sqlalchemy.orm import Session
+
+def create_test_user():
+    db = next(get_db())
+    
+    # Check if test user exists
+    user = db.query(User).filter(User.email == "test@example.com").first()
+    if not user:
+        user = User(
+            email="test@example.com",
+            password_hash=get_password_hash("test123"),
+            full_name="Test User",
+            account_type="free"
+        )
+        db.add(user)
+        db.commit()
+        print("✓ Test user created")
+    else:
+        print("✓ Test user already exists")
+    
+    db.close()
+
+if __name__ == "__main__":
+    create_test_user()
+EOFPY
+
+python3 create_test_user.py
+
+echo -e "\n5. Testing login with correct credentials..."
+curl -X POST http://localhost:5000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@example.com","password":"test123"}' \
+  -c cookies.txt \
+  -w "\nStatus: %{http_code}\n" | head -10
+
+echo -e "\n6. Checking if cookie was set..."
+cat cookies.txt | grep -E "(access_token|session)" | head -5
+
+ENDSSH
+
 echo ""
-echo "To verify fix:"
-echo "1. Login at /login.html"
-echo "2. Go to /pricing.html"
-echo "3. Open console and run: localStorage.getItem('access_token')"
-echo "4. Click any Buy button - should go to Stripe, not signup"
+echo -e "${GREEN}✓ Auth fix deployed\!${NC}"
+echo ""
+echo "You can now test login at: https://bankcsvconverter.com/login.html"
+echo "Test credentials: test@example.com / test123"
+EOF < /dev/null

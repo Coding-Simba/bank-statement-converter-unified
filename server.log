@@ -604,3 +604,59 @@
 ::1 - - [01/Aug/2025 18:00:48] "GET /js/dropdown-handler.js HTTP/1.1" 200 -
 ::1 - - [01/Aug/2025 19:03:46] "HEAD /login.html HTTP/1.1" 200 -
 ::1 - - [01/Aug/2025 19:03:54] "GET /js/auth-unified.js HTTP/1.1" 200 -
+::1 - - [02/Aug/2025 00:07:56] "GET / HTTP/1.1" 200 -
+::1 - - [02/Aug/2025 00:07:56] "GET /css/modern-homepage.css HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:07:56] "GET /css/nav-fix.css HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:07:56] "GET /css/dropdown-fix.css HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:07:56] "GET /js/auth-unified.js HTTP/1.1" 200 -
+::1 - - [02/Aug/2025 00:07:56] "GET /css/blog-fix.css HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:07:56] "GET /assets/pdf-icon.svg HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:07:56] "GET /js/modern-homepage-fixed.js?v=5 HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:07:56] "GET /js/dropdown-handler.js HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:07:56] code 404, message File not found
+::1 - - [02/Aug/2025 00:07:56] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:07:57] code 404, message File not found
+::1 - - [02/Aug/2025 00:07:57] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:07:58] "GET /login.html HTTP/1.1" 200 -
+::1 - - [02/Aug/2025 00:07:58] "GET /css/auth.css HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:07:58] code 404, message File not found
+::1 - - [02/Aug/2025 00:07:58] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:08:01] "GET /dashboard.html HTTP/1.1" 200 -
+::1 - - [02/Aug/2025 00:08:01] "GET /css/production.css HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:08:01] "GET /css/dashboard.css HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:08:01] "GET /js/dashboard.js HTTP/1.1" 200 -
+::1 - - [02/Aug/2025 00:08:01] "GET /js/production.js HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:08:01] "GET /js/api-config.js HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:08:01] "GET /css/enhancements.css HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:08:01] code 404, message File not found
+::1 - - [02/Aug/2025 00:08:01] "GET /favicon-32x32.png HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:08:01] code 404, message File not found
+::1 - - [02/Aug/2025 00:08:01] "GET /favicon-32x32.png HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:08:01] code 404, message File not found
+::1 - - [02/Aug/2025 00:08:01] "GET /favicon-16x16.png HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:08:04] code 404, message File not found
+::1 - - [02/Aug/2025 00:08:04] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:08:05] "GET /pricing.html HTTP/1.1" 200 -
+::1 - - [02/Aug/2025 00:08:05] "GET /css/production.min.css HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:08:05] "GET /js/stripe-integration.js HTTP/1.1" 200 -
+::1 - - [02/Aug/2025 00:08:05] "GET /js/conversion-limit-modal.js HTTP/1.1" 304 -
+::1 - - [02/Aug/2025 00:08:05] code 404, message File not found
+::1 - - [02/Aug/2025 00:08:05] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:08:07] "GET /signup.html?plan=professional&redirect=/pricing.html HTTP/1.1" 200 -
+::1 - - [02/Aug/2025 00:08:07] code 404, message File not found
+::1 - - [02/Aug/2025 00:08:07] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:08:09] code 404, message File not found
+::1 - - [02/Aug/2025 00:08:09] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:08:13] code 404, message File not found
+::1 - - [02/Aug/2025 00:08:13] "GET /favicon-32x32.png HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:08:17] code 404, message File not found
+::1 - - [02/Aug/2025 00:08:17] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:08:18] code 404, message File not found
+::1 - - [02/Aug/2025 00:08:18] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:08:20] "GET /signup.html?plan=business&redirect=/pricing.html HTTP/1.1" 200 -
+::1 - - [02/Aug/2025 00:08:20] code 404, message File not found
+::1 - - [02/Aug/2025 00:08:20] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:08:21] code 404, message File not found
+::1 - - [02/Aug/2025 00:08:21] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [02/Aug/2025 00:08:24] code 404, message File not found
+::1 - - [02/Aug/2025 00:08:24] "GET /favicon-32x32.png HTTP/1.1" 404 -

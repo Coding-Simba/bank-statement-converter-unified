@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Debug</title>
+    <style>
+        body {
+            padding: 50px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .pricing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 50px 0;
+        }
+        
+        .toggle-label {
+            font-size: 16px;
+            color: #6b7280;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .toggle-label.active {
+            color: #0a0a0a;
+            font-weight: 600;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 56px;
+            height: 32px;
+            background: #e5e7eb;
+            border-radius: 32px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .toggle-switch.active {
+            background: #0066ff;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(24px);
+        }
+        
+        .debug {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pricing Toggle Debug</h1>
+    
+    <div class="pricing-toggle">
+        <span class="toggle-label active" id="monthlyLabel">Monthly</span>
+        <div class="toggle-switch" id="pricingToggle">
+            <div class="toggle-slider"></div>
+        </div>
+        <span class="toggle-label" id="yearlyLabel">Yearly</span>
+    </div>
+    
+    <div class="debug">
+        <h3>Debug Info:</h3>
+        <p>Elements Found:</p>
+        <ul id="elementStatus"></ul>
+        <p>Events Log:</p>
+        <ul id="eventLog"></ul>
+    </div>
+
+    <script>
+        // Debug log function
+        function log(message) {
+            const eventLog = document.getElementById('eventLog');
+            const li = document.createElement('li');
+            li.textContent = `${new Date().toLocaleTimeString()}: ${message}`;
+            eventLog.appendChild(li);
+            console.log(message);
+        }
+
+        // Check if elements exist
+        function checkElements() {
+            const elementStatus = document.getElementById('elementStatus');
+            const elements = {
+                'pricingToggle': document.getElementById('pricingToggle'),
+                'monthlyLabel': document.getElementById('monthlyLabel'),
+                'yearlyLabel': document.getElementById('yearlyLabel'),
+                'toggle-slider': document.querySelector('.toggle-slider')
+            };
+            
+            for (const [name, element] of Object.entries(elements)) {
+                const li = document.createElement('li');
+                li.textContent = `${name}: ${element ? 'Found' : 'NOT FOUND'}`;
+                li.style.color = element ? 'green' : 'red';
+                elementStatus.appendChild(li);
+            }
+            
+            return elements;
+        }
+
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', () => {
+            log('DOM loaded');
+            
+            const elements = checkElements();
+            
+            // Get elements
+            const pricingToggle = elements.pricingToggle;
+            const monthlyLabel = elements.monthlyLabel;
+            const yearlyLabel = elements.yearlyLabel;
+            
+            if (!pricingToggle) {
+                log('ERROR: pricingToggle not found!');
+                return;
+            }
+            
+            // Function to update display
+            function updatePricingDisplay(isYearly) {
+                log(`updatePricingDisplay called with isYearly: ${isYearly}`);
+                
+                if (isYearly) {
+                    pricingToggle.classList.add('active');
+                    log('Added active class to toggle');
+                } else {
+                    pricingToggle.classList.remove('active');
+                    log('Removed active class from toggle');
+                }
+                
+                monthlyLabel.classList.toggle('active', !isYearly);
+                yearlyLabel.classList.toggle('active', isYearly);
+                
+                log(`Toggle classes: ${pricingToggle.className}`);
+            }
+            
+            // Add click event to toggle
+            pricingToggle.addEventListener('click', (e) => {
+                log('Toggle clicked');
+                e.preventDefault();
+                e.stopPropagation();
+                const isCurrentlyYearly = pricingToggle.classList.contains('active');
+                updatePricingDisplay(!isCurrentlyYearly);
+            });
+            
+            // Add click events to labels
+            monthlyLabel.addEventListener('click', (e) => {
+                log('Monthly label clicked');
+                e.preventDefault();
+                e.stopPropagation();
+                updatePricingDisplay(false);
+            });
+            
+            yearlyLabel.addEventListener('click', (e) => {
+                log('Yearly label clicked');
+                e.preventDefault();
+                e.stopPropagation();
+                updatePricingDisplay(true);
+            });
+            
+            log('Event listeners attached');
+        });
+        
+        // Also try immediate attachment
+        window.addEventListener('load', () => {
+            log('Window loaded');
+        });
+    </script>
+</body>
+</html>
