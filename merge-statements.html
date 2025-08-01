@@ -11,6 +11,59 @@
 <link href="/css/dropdown-fix.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 <style>
+        /* How It Works Section Styles */
+        .how-it-works {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .process-step h4 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+        
+        .process-step p {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
         /* Ensure all content is centered */
         .container {
             max-width: 1200px;
