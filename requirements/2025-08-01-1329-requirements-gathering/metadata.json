@@ -1,0 +1,25 @@
+{
+  "id": "e2e-testing",
+  "started": "2025-08-01T13:29:00Z",
+  "lastUpdated": "2025-08-01T13:37:00Z",
+  "status": "complete",
+  "phase": "complete",
+  "progress": {
+    "discovery": { "answered": 5, "total": 5 },
+    "detail": { "answered": 5, "total": 5 }
+  },
+  "contextFiles": [
+    "index.html",
+    "signup.html",
+    "pricing.html",
+    "dashboard.html",
+    "js/auth-unified.js",
+    "backend/api/auth_cookie.py",
+    "backend/api/stripe_payments.py"
+  ],
+  "relatedFeatures": [
+    "authentication",
+    "stripe-payments",
+    "cookie-persistence"
+  ]
+}

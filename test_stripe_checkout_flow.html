@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E2E Stripe Checkout Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .test-step {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            background: #f8f9fa;
+        }
+        .test-step.active {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+        .test-step.error {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+        .button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-size: 16px;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        .button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        .log-area {
+            background: #000;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 5px;
+            height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .auth-status {
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .auth-status.authenticated {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .auth-status.not-authenticated {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .test-info {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .network-monitor {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .network-request {
+            padding: 8px;
+            margin: 5px 0;
+            border-left: 3px solid #007bff;
+            background: white;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .network-request.error {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+        .network-request.success {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 E2E Stripe Checkout Test</h1>
+        
+        <div class="test-info">
+            <h3>📋 Test Information</h3>
+            <p><strong>Target URL:</strong> <a href="https://bankcsvconverter.com/pricing.html" target="_blank">https://bankcsvconverter.com/pricing.html</a></p>
+            <p><strong>Test User:</strong> test-20250801-134232@example.com</p>
+            <p><strong>Current URL:</strong> <span id="currentUrl"></span></p>
+            <p><strong>Test Card:</strong> 4242 4242 4242 4242, 12/25, 123, 10001</p>
+        </div>
+        
+        <div id="authStatus" class="auth-status">
+            <h3>🔐 Authentication Status</h3>
+            <p id="authInfo">Checking...</p>
+        </div>
+        
+        <div class="test-step" id="step1">
+            <h3>Step 1: Check Authentication</h3>
+            <p>Verify user is logged in and tokens are available</p>
+            <button class="button" onclick="checkAuth()">Check Auth Status</button>
+        </div>
+        
+        <div class="test-step" id="step2">
+            <h3>Step 2: Navigate to Pricing Page</h3>
+            <p>Open the pricing page in a new tab for manual testing</p>
+            <button class="button" onclick="openPricingPage()">Open Pricing Page</button>
+        </div>
+        
+        <div class="test-step" id="step3">
+            <h3>Step 3: Monitor Network Requests</h3>
+            <p>This will simulate the network monitoring you should do in DevTools</p>
+            <button class="button" onclick="startNetworkMonitoring()">Start Monitoring</button>
+            <button class="button" onclick="testStripeAPI()">Test Stripe API Calls</button>
+        </div>
+        
+        <div class="test-step" id="step4">
+            <h3>Step 4: Test Checkout Session Creation</h3>
+            <p>Simulate the checkout session creation that happens when you click "Buy"</p>
+            <button class="button" onclick="createCheckoutSession('professional')">Test Professional Plan</button>
+            <button class="button" onclick="createCheckoutSession('starter')">Test Starter Plan</button>
+            <button class="button" onclick="createCheckoutSession('business')">Test Business Plan</button>
+        </div>
+        
+        <div class="test-step" id="step5">
+            <h3>Step 5: Check Subscription Status</h3>
+            <p>Check current subscription status after payment</p>
+            <button class="button" onclick="checkSubscriptionStatus()">Check Status</button>
+        </div>
+        
+        <div class="network-monitor">
+            <h3>🌐 Network Activity Monitor</h3>
+            <div id="networkLog"></div>
+        </div>
+        
+        <div class="log-area" id="logArea">
+            <div>🚀 E2E Test Console Initialized</div>
+            <div>Ready to begin testing...</div>
+        </div>
+        
+        <div class="test-container">
+            <h3>📝 Manual Testing Checklist</h3>
+            <ul>
+                <li>✅ User authenticated with test-20250801-134232@example.com</li>
+                <li>⏳ Open pricing page in new tab</li>
+                <li>⏳ Open DevTools Network tab</li>
+                <li>⏳ Click Professional plan "Buy" button ($60/mo)</li>
+                <li>⏳ Monitor /api/stripe/create-checkout-session request</li>
+                <li>⏳ Verify redirect to checkout.stripe.com</li>
+                <li>⏳ Fill test card: 4242 4242 4242 4242, 12/25, 123, 10001</li>
+                <li>⏳ Complete payment and verify redirect back</li>
+                <li>⏳ Check for session_id in URL</li>
+                <li>⏳ Verify subscription status updated</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let networkMonitoring = false;
+        let authService = null;
+        
+        // Initialize
+        document.getElementById('currentUrl').textContent = window.location.href;
+        
+        function log(message, type = 'info') {
+            const logArea = document.getElementById('logArea');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.innerHTML = `[${timestamp}] ${message}`;
+            if (type === 'error') logEntry.style.color = '#ff6b6b';
+            if (type === 'success') logEntry.style.color = '#51cf66';
+            if (type === 'warning') logEntry.style.color = '#ffd43b';
+            logArea.appendChild(logEntry);
+            logArea.scrollTop = logArea.scrollHeight;
+        }
+        
+        function logNetwork(method, url, status, data = null) {
+            const networkLog = document.getElementById('networkLog');
+            const entry = document.createElement('div');
+            entry.className = 'network-request';
+            if (status >= 200 && status < 300) entry.classList.add('success');
+            else if (status >= 400) entry.classList.add('error');
+            
+            entry.innerHTML = `
+                <strong>${method}</strong> ${url} - ${status}
+                ${data ? `<br><small>${JSON.stringify(data, null, 2)}</small>` : ''}
+            `;
+            networkLog.appendChild(entry);
+        }
+        
+        async function checkAuth() {
+            log('🔐 Checking authentication status...');
+            
+            // Check for UnifiedAuth
+            if (window.UnifiedAuth) {
+                authService = window.UnifiedAuth;
+                const isAuth = authService.isAuthenticated();
+                const user = authService.getUser();
+                
+                const authStatus = document.getElementById('authStatus');
+                const authInfo = document.getElementById('authInfo');
+                
+                if (isAuth && user) {
+                    authStatus.className = 'auth-status authenticated';
+                    authInfo.innerHTML = `
+                        ✅ <strong>Authenticated</strong><br>
+                        Email: ${user.email}<br>
+                        Name: ${user.full_name || 'N/A'}<br>
+                        ID: ${user.id}
+                    `;
+                    log(`✅ User authenticated: ${user.email}`, 'success');
+                } else {
+                    authStatus.className = 'auth-status not-authenticated';
+                    authInfo.innerHTML = '❌ <strong>Not authenticated</strong><br>Please log in first.';
+                    log('❌ User not authenticated', 'error');
+                }
+            } else {
+                log('❌ UnifiedAuth not available', 'error');
+            }
+        }
+        
+        function openPricingPage() {
+            log('🌐 Opening pricing page in new tab...');
+            window.open('https://bankcsvconverter.com/pricing.html', '_blank');
+            log('📄 Pricing page opened. Continue testing there.', 'success');
+        }
+        
+        function startNetworkMonitoring() {
+            if (networkMonitoring) {
+                log('⏹️ Stopping network monitoring');
+                networkMonitoring = false;
+                return;
+            }
+            
+            log('🔍 Starting network monitoring...');
+            networkMonitoring = true;
+            
+            // Override fetch to monitor requests
+            const originalFetch = window.fetch;
+            window.fetch = async function(...args) {
+                const [url, options = {}] = args;
+                const method = options.method || 'GET';
+                
+                if (networkMonitoring && url.includes('/api/stripe/')) {
+                    log(`📡 Network: ${method} ${url}`, 'info');
+                    logNetwork(method, url, 'PENDING');
+                }
+                
+                try {
+                    const response = await originalFetch.apply(this, args);
+                    
+                    if (networkMonitoring && url.includes('/api/stripe/')) {
+                        log(`📥 Response: ${response.status} ${response.statusText}`, 
+                            response.ok ? 'success' : 'error');
+                        logNetwork(method, url, response.status);
+                    }
+                    
+                    return response;
+                } catch (error) {
+                    if (networkMonitoring && url.includes('/api/stripe/')) {
+                        log(`❌ Network error: ${error.message}`, 'error');
+                        logNetwork(method, url, 'ERROR', { error: error.message });
+                    }
+                    throw error;
+                }
+            };
+            
+            log('✅ Network monitoring active', 'success');
+        }
+        
+        async function createCheckoutSession(plan) {
+            if (!authService || !authService.isAuthenticated()) {
+                log('❌ Must be authenticated to test checkout', 'error');
+                return;
+            }
+            
+            log(`💳 Testing checkout session creation for ${plan} plan...`);
+            
+            const API_BASE = window.location.hostname === 'localhost' ? 
+                'http://localhost:5000' : 
+                `${window.location.protocol}//${window.location.hostname}`;
+            
+            try {
+                const response = await authService.makeAuthenticatedRequest('/api/stripe/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        plan: plan,
+                        billing_period: 'monthly'
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log(`✅ Checkout session created successfully!`, 'success');
+                    log(`🔗 Checkout URL: ${data.checkout_url}`, 'info');
+                    log(`📋 Session ID: ${data.session_id}`, 'info');
+                    
+                    // Ask if user wants to open the checkout URL
+                    if (confirm('Checkout session created! Open Stripe checkout page?')) {
+                        window.open(data.checkout_url, '_blank');
+                    }
+                } else {
+                    const error = await response.json();
+                    log(`❌ Checkout creation failed: ${error.detail || 'Unknown error'}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ Network error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function checkSubscriptionStatus() {
+            if (!authService || !authService.isAuthenticated()) {
+                log('❌ Must be authenticated to check subscription', 'error');
+                return;
+            }
+            
+            log('📊 Checking subscription status...');
+            
+            try {
+                const response = await authService.makeAuthenticatedRequest('/api/stripe/subscription-status');
+                
+                if (response.ok) {
+                    const status = await response.json();
+                    log('✅ Subscription status retrieved:', 'success');
+                    log(`📋 Plan: ${status.plan}`, 'info');
+                    log(`📄 Pages used: ${status.pages_used}/${status.pages_limit}`, 'info');
+                    log(`💳 Status: ${status.subscription_status || 'N/A'}`, 'info');
+                } else {
+                    const error = await response.json();
+                    log(`❌ Failed to get subscription status: ${error.detail}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ Network error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testStripeAPI() {
+            log('🧪 Testing Stripe API endpoints...');
+            
+            const endpoints = [
+                '/api/stripe/subscription-status',
+                '/api/stripe/customer-portal'
+            ];
+            
+            for (const endpoint of endpoints) {
+                try {
+                    log(`Testing ${endpoint}...`);
+                    const response = await authService.makeAuthenticatedRequest(endpoint, {
+                        method: endpoint.includes('portal') ? 'POST' : 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: endpoint.includes('portal') ? JSON.stringify({ return_url: '/dashboard.html' }) : undefined
+                    });
+                    
+                    log(`${endpoint}: ${response.status} ${response.statusText}`, 
+                        response.ok ? 'success' : 'error');
+                } catch (error) {
+                    log(`${endpoint}: ERROR - ${error.message}`, 'error');
+                }
+            }
+        }
+        
+        // Auto-check auth on load
+        window.addEventListener('load', () => {
+            setTimeout(checkAuth, 1000);
+        });
+        
+        // Handle successful payment return
+        if (window.location.search.includes('session_id=')) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sessionId = urlParams.get('session_id');
+            log(`🎉 Payment success detected! Session ID: ${sessionId}`, 'success');
+        }
+    </script>
+</body>
+</html>

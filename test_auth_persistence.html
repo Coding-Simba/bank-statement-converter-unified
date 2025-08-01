@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Persistence Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 4px solid;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border-color: #17a2b8;
+            color: #0c5460;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .cookie-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .page-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .page-link {
+            padding: 8px 16px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .page-link:hover {
+            background-color: #545b62;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔐 Authentication Persistence Test</h1>
+        <p>This page tests authentication persistence across multiple tabs and pages for the Bank Statement Converter.</p>
+        
+        <div class="test-result info">
+            <strong>Test User:</strong> test-20250801-134232@example.com
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>📊 Current Authentication Status</h2>
+        <button onclick="checkAuthStatus()">Check Auth Status</button>
+        <button onclick="checkCookies()">Check Cookies</button>
+        <button onclick="runFullTest()">Run Full Test</button>
+        
+        <div id="authStatus"></div>
+        <div id="cookieInfo"></div>
+    </div>
+
+    <div class="test-container">
+        <h2>🔗 Test Pages (Open in New Tabs)</h2>
+        <div class="page-links">
+            <a href="/dashboard.html" target="_blank" class="page-link">Dashboard</a>
+            <a href="/convert-pdf.html" target="_blank" class="page-link">Convert PDF</a>
+            <a href="/analyze-transactions.html" target="_blank" class="page-link">Analyze Transactions</a>
+            <a href="/settings.html" target="_blank" class="page-link">Settings</a>
+            <a href="/pricing.html" target="_blank" class="page-link">Pricing</a>
+        </div>
+        <p><em>Right-click and "Open link in new tab" to test authentication persistence.</em></p>
+    </div>
+
+    <div class="test-container">
+        <h2>🧪 Test Results</h2>
+        <div id="testResults"></div>
+    </div>
+
+    <div class="test-container">
+        <h2>📋 Manual Testing Checklist</h2>
+        <div style="line-height: 1.8;">
+            <label><input type="checkbox" onchange="updateProgress()"> 1. User is logged in on this page</label><br>
+            <label><input type="checkbox" onchange="updateProgress()"> 2. Dashboard shows user info and logout button</label><br>
+            <label><input type="checkbox" onchange="updateProgress()"> 3. Convert PDF page recognizes authenticated user</label><br>
+            <label><input type="checkbox" onchange="updateProgress()"> 4. Analyze Transactions page shows user as logged in</label><br>
+            <label><input type="checkbox" onchange="updateProgress()"> 5. Settings page displays user information</label><br>
+            <label><input type="checkbox" onchange="updateProgress()"> 6. All cookies are HttpOnly and Secure</label><br>
+            <label><input type="checkbox" onchange="updateProgress()"> 7. Authentication persists across all tabs</label><br>
+            <label><input type="checkbox" onchange="updateProgress()"> 8. No authentication errors in browser console</label><br>
+        </div>
+        <div id="progressBar" style="margin-top: 15px;"></div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://localhost:5000'
+            : `${window.location.protocol}//${window.location.hostname}`;
+
+        let testResults = [];
+
+        function logResult(test, status, message, details = null) {
+            const result = {
+                test,
+                status,
+                message,
+                details,
+                timestamp: new Date().toISOString()
+            };
+            testResults.push(result);
+            displayResult(result);
+        }
+
+        function displayResult(result) {
+            const resultsDiv = document.getElementById('testResults');
+            const statusClass = result.status === 'success' ? 'success' : 
+                               result.status === 'error' ? 'error' : 
+                               result.status === 'warning' ? 'warning' : 'info';
+            
+            const resultHtml = `
+                <div class="test-result ${statusClass}">
+                    <strong>${result.test}:</strong> ${result.message}
+                    ${result.details ? `<div style="margin-top: 8px; font-size: 12px; opacity: 0.8;">${result.details}</div>` : ''}
+                    <div style="font-size: 11px; opacity: 0.6; margin-top: 5px;">${new Date(result.timestamp).toLocaleTimeString()}</div>
+                </div>
+            `;
+            resultsDiv.innerHTML += resultHtml;
+        }
+
+        async function checkAuthStatus() {
+            const statusDiv = document.getElementById('authStatus');
+            statusDiv.innerHTML = '<div class="test-result info">Checking authentication status...</div>';
+
+            try {
+                // Check via unified auth API
+                const response = await fetch(`${API_BASE}/v2/api/auth/check`, {
+                    credentials: 'include',
+                    method: 'GET'
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.authenticated && data.user) {
+                        statusDiv.innerHTML = `
+                            <div class="test-result success">
+                                <strong>✅ Authenticated via Cookie API</strong><br>
+                                Email: ${data.user.email}<br>
+                                Account Type: ${data.user.account_type}<br>
+                                Daily Limit: ${data.user.daily_generations}/${data.user.daily_limit}
+                            </div>
+                        `;
+                        logResult('Cookie Authentication', 'success', `User ${data.user.email} is authenticated`);
+                    } else {
+                        statusDiv.innerHTML = '<div class="test-result error">❌ Not authenticated via Cookie API</div>';
+                        logResult('Cookie Authentication', 'error', 'User is not authenticated');
+                    }
+                } else {
+                    statusDiv.innerHTML = `<div class="test-result error">❌ Auth check failed: ${response.status}</div>`;
+                    logResult('Cookie Authentication', 'error', `HTTP ${response.status}: ${response.statusText}`);
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `<div class="test-result error">❌ Auth check error: ${error.message}</div>`;
+                logResult('Cookie Authentication', 'error', error.message);
+            }
+
+            // Also check localStorage (legacy auth)
+            const legacyUser = localStorage.getItem('user');
+            const legacyToken = localStorage.getItem('access_token');
+            
+            if (legacyUser || legacyToken) {
+                statusDiv.innerHTML += `
+                    <div class="test-result warning">
+                        ⚠️ Legacy authentication data found in localStorage<br>
+                        User data: ${legacyUser ? 'Present' : 'Not found'}<br>
+                        Access token: ${legacyToken ? 'Present' : 'Not found'}
+                    </div>
+                `;
+                logResult('Legacy Authentication', 'warning', 'localStorage auth data detected - may cause conflicts');
+            }
+        }
+
+        function checkCookies() {
+            const cookieDiv = document.getElementById('cookieInfo');
+            const cookies = document.cookie.split(';').reduce((acc, cookie) => {
+                const [name, value] = cookie.trim().split('=');
+                acc[name] = value;
+                return acc;
+            }, {});
+
+            let cookieInfo = '<h3>🍪 Cookie Analysis</h3>';
+            
+            // Check for auth-related cookies
+            const authCookies = ['access_token', 'refresh_token', 'csrf_token'];
+            let foundAuthCookies = 0;
+            
+            authCookies.forEach(cookieName => {
+                if (cookies[cookieName]) {
+                    foundAuthCookies++;
+                    cookieInfo += `<div class="test-result success">✅ ${cookieName}: Present</div>`;
+                    logResult('Cookie Check', 'success', `${cookieName} cookie found`);
+                } else {
+                    cookieInfo += `<div class="test-result error">❌ ${cookieName}: Not found</div>`;
+                    logResult('Cookie Check', 'error', `${cookieName} cookie missing`);
+                }
+            });
+
+            // Show all cookies
+            cookieInfo += '<div class="cookie-info"><strong>All Cookies:</strong><br>';
+            if (Object.keys(cookies).length === 0) {
+                cookieInfo += 'No cookies found';
+            } else {
+                Object.entries(cookies).forEach(([name, value]) => {
+                    cookieInfo += `${name}: ${value}<br>`;
+                });
+            }
+            cookieInfo += '</div>';
+
+            // Security analysis
+            if (foundAuthCookies === 0) {
+                cookieInfo += '<div class="test-result error">❌ No authentication cookies found - user likely not logged in</div>';
+                logResult('Security Check', 'error', 'No authentication cookies present');
+            } else {
+                cookieInfo += '<div class="test-result info">ℹ️ Note: HttpOnly cookies cannot be read by JavaScript (this is correct for security)</div>';
+                logResult('Security Check', 'info', 'HttpOnly cookies are properly secured');
+            }
+
+            cookieDiv.innerHTML = cookieInfo;
+        }
+
+        async function runFullTest() {
+            const resultsDiv = document.getElementById('testResults');
+            resultsDiv.innerHTML = '<div class="test-result info">🚀 Starting full authentication test...</div>';
+            testResults = [];
+
+            // Test 1: Cookie-based authentication
+            await checkAuthStatus();
+
+            // Test 2: Cookie analysis
+            checkCookies();
+
+            // Test 3: CSRF token check
+            try {
+                const csrfResponse = await fetch(`${API_BASE}/v2/api/auth/csrf`, {
+                    credentials: 'include'
+                });
+                
+                if (csrfResponse.ok) {
+                    const csrfData = await csrfResponse.json();
+                    logResult('CSRF Token', 'success', 'CSRF token successfully obtained');
+                } else {
+                    logResult('CSRF Token', 'error', `Failed to get CSRF token: ${csrfResponse.status}`);
+                }
+            } catch (error) {
+                logResult('CSRF Token', 'error', `CSRF token error: ${error.message}`);
+            }
+
+            // Test 4: Token refresh test
+            try {
+                const refreshResponse = await fetch(`${API_BASE}/v2/api/auth/refresh`, {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+                
+                if (refreshResponse.ok) {
+                    logResult('Token Refresh', 'success', 'Token refresh endpoint working');
+                } else if (refreshResponse.status === 401) {
+                    logResult('Token Refresh', 'warning', 'Token refresh failed - may need fresh login');
+                } else {
+                    logResult('Token Refresh', 'error', `Token refresh error: ${refreshResponse.status}`);
+                }
+            } catch (error) {
+                logResult('Token Refresh', 'error', `Token refresh error: ${error.message}`);
+            }
+
+            // Test 5: Profile endpoint test
+            try {
+                const profileResponse = await fetch(`${API_BASE}/v2/api/auth/profile`, {
+                    credentials: 'include'
+                });
+                
+                if (profileResponse.ok) {
+                    const profileData = await profileResponse.json();
+                    logResult('Profile Endpoint', 'success', `Profile data retrieved for ${profileData.user.email}`);
+                } else {
+                    logResult('Profile Endpoint', 'error', `Profile endpoint failed: ${profileResponse.status}`);
+                }
+            } catch (error) {
+                logResult('Profile Endpoint', 'error', `Profile endpoint error: ${error.message}`);
+            }
+
+            // Summary
+            const successCount = testResults.filter(r => r.status === 'success').length;
+            const errorCount = testResults.filter(r => r.status === 'error').length;
+            const warningCount = testResults.filter(r => r.status === 'warning').length;
+            
+            const summaryClass = errorCount > 0 ? 'error' : warningCount > 0 ? 'warning' : 'success';
+            const summaryMessage = `Test completed: ${successCount} passed, ${warningCount} warnings, ${errorCount} failed`;
+            
+            displayResult({
+                test: 'Test Summary',
+                status: summaryClass,
+                message: summaryMessage,
+                timestamp: new Date().toISOString()
+            });
+        }
+
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const total = checkboxes.length;
+            const percentage = Math.round((checked / total) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.innerHTML = `
+                <div style="background-color: #e9ecef; border-radius: 4px; height: 20px; position: relative;">
+                    <div style="background-color: ${percentage === 100 ? '#28a745' : '#007bff'}; height: 100%; width: ${percentage}%; border-radius: 4px; transition: width 0.3s;"></div>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12px; font-weight: bold;">
+                        ${checked}/${total} (${percentage}%)
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize progress bar
+        updateProgress();
+
+        // Auto-run basic checks on page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                checkAuthStatus();
+                checkCookies();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -28,6 +28,43 @@
                     localStorage.removeItem('user');
                 }
             }
+            
+            // Set up cross-tab communication
+            this.setupCrossTabSync();
+        }
+        
+        setupCrossTabSync() {
+            // Listen for BroadcastChannel messages
+            if (typeof BroadcastChannel !== 'undefined') {
+                this.authChannel = new BroadcastChannel('auth-channel');
+                this.authChannel.onmessage = (event) => {
+                    if (event.data.type === 'logout') {
+                        this.handleCrossTabLogout();
+                    }
+                };
+            }
+            
+            // Listen for localStorage changes as fallback
+            window.addEventListener('storage', (event) => {
+                if (event.key === 'auth-logout-event') {
+                    this.handleCrossTabLogout();
+                }
+            });
+        }
+        
+        handleCrossTabLogout() {
+            console.log('[UnifiedAuth] Logout detected from another tab');
+            this.user = null;
+            localStorage.removeItem('user');
+            localStorage.removeItem('user_data');
+            this.clearTokenRefresh();
+            this.updateUI();
+            
+            // Show notification to user
+            if (window.location.pathname !== '/') {
+                alert('You have been logged out from another tab.');
+                window.location.href = '/';
+            }
         }
         
         async initialize() {
@@ -57,7 +94,7 @@
         
         async getCsrfToken() {
             try {
-                const response = await fetch(`${API_BASE}/api/v2/auth/csrf`, {
+                const response = await fetch(`${API_BASE}/v2/api/auth/csrf`, {
                     credentials: 'include'
                 });
                 
@@ -73,7 +110,7 @@
         
         async checkAuth() {
             try {
-                const response = await fetch(`${API_BASE}/api/v2/auth/check`, {
+                const response = await fetch(`${API_BASE}/v2/api/auth/check`, {
                     credentials: 'include'
                 });
                 
@@ -96,7 +133,7 @@
         
         async login(email, password, rememberMe = false) {
             try {
-                const response = await fetch(`${API_BASE}/api/v2/auth/login`, {
+                const response = await fetch(`${API_BASE}/v2/api/auth/login`, {
                     method: 'POST',
                     credentials: 'include',
                     headers: {
@@ -128,9 +165,51 @@
             }
         }
         
+        async register(email, password, fullName, companyName = null) {
+            try {
+                const response = await fetch(`${API_BASE}/v2/api/auth/register`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': this.csrfToken
+                    },
+                    body: JSON.stringify({ 
+                        email, 
+                        password,
+                        full_name: fullName,
+                        company_name: companyName
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    this.user = data.user;
+                    
+                    // Store in localStorage for compatibility
+                    localStorage.setItem('user', JSON.stringify(this.user));
+                    localStorage.setItem('user_data', JSON.stringify(this.user));
+                    
+                    // Check authentication status to ensure cookies are set
+                    await this.checkAuth();
+                    
+                    this.setupTokenRefresh();
+                    this.updateUI();
+                    
+                    return { success: true, user: this.user };
+                } else {
+                    const error = await response.json();
+                    return { success: false, error: error.detail || 'Registration failed' };
+                }
+            } catch (error) {
+                console.error('[UnifiedAuth] Registration error:', error);
+                return { success: false, error: 'Network error' };
+            }
+        }
+        
         async logout() {
             try {
-                await fetch(`${API_BASE}/api/v2/auth/logout`, {
+                await fetch(`${API_BASE}/v2/api/auth/logout`, {
                     method: 'POST',
                     credentials: 'include',
                     headers: {
@@ -143,13 +222,35 @@
             
             this.user = null;
             localStorage.removeItem('user');
+            localStorage.removeItem('user_data');
+            
+            // Notify other tabs about logout
+            this.notifyLogout();
+            
             this.clearTokenRefresh();
-            window.location.href = '/';
+            
+            // Small delay to ensure other tabs get the message
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 100);
+        }
+        
+        notifyLogout() {
+            // Use BroadcastChannel if available
+            if (typeof BroadcastChannel !== 'undefined') {
+                const channel = new BroadcastChannel('auth-channel');
+                channel.postMessage({ type: 'logout' });
+                channel.close();
+            }
+            
+            // Also use localStorage event as fallback
+            localStorage.setItem('auth-logout-event', Date.now().toString());
+            localStorage.removeItem('auth-logout-event');
         }
         
         async refreshToken() {
             try {
-                const response = await fetch(`${API_BASE}/api/v2/auth/refresh`, {
+                const response = await fetch(`${API_BASE}/v2/api/auth/refresh`, {
                     method: 'POST',
                     credentials: 'include',
                     headers: {
@@ -321,6 +422,53 @@
                         } else {
                             alert(result.error);
                         }
+                    }
+                });
+            }
+        });
+    }
+    
+    // Handle signup form if on signup page
+    if (window.location.pathname.includes('signup')) {
+        document.addEventListener('DOMContentLoaded', () => {
+            const signupForm = document.getElementById('signupForm');
+            if (signupForm) {
+                signupForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    const fullName = document.getElementById('fullName').value;
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+                    const company = document.getElementById('company').value;
+                    const terms = document.getElementById('terms').checked;
+                    
+                    if (!terms) {
+                        alert('Please accept the terms and conditions');
+                        return;
+                    }
+                    
+                    const submitBtn = signupForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Creating account...';
+                    submitBtn.disabled = true;
+                    
+                    const result = await window.UnifiedAuth.register(email, password, fullName, company);
+                    
+                    if (result.success) {
+                        window.location.href = '/dashboard.html';
+                    } else {
+                        // Show error
+                        const errorAlert = document.getElementById('errorAlert');
+                        const errorMessage = document.getElementById('errorMessage');
+                        if (errorAlert && errorMessage) {
+                            errorMessage.textContent = result.error;
+                            errorAlert.style.display = 'block';
+                        } else {
+                            alert(result.error);
+                        }
+                        
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
                     }
                 });
             }

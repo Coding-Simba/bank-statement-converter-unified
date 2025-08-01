@@ -74,7 +74,7 @@ def set_auth_cookies(response: Response, access_token: str, refresh_token: str, 
         secure=production,
         samesite="lax",
         max_age=refresh_max_age,
-        path="/api/auth/refresh",
+        path="/v2/api/auth/refresh",
         domain=COOKIE_DOMAIN if production else None
     )
 
@@ -82,7 +82,7 @@ def set_auth_cookies(response: Response, access_token: str, refresh_token: str, 
 def clear_auth_cookies(response: Response):
     """Clear all authentication cookies."""
     response.delete_cookie(key="access_token", path="/", domain=COOKIE_DOMAIN)
-    response.delete_cookie(key="refresh_token", path="/api/auth/refresh", domain=COOKIE_DOMAIN)
+    response.delete_cookie(key="refresh_token", path="/v2/api/auth/refresh", domain=COOKIE_DOMAIN)
     response.delete_cookie(key="csrf_token", path="/", domain=COOKIE_DOMAIN)
 
 

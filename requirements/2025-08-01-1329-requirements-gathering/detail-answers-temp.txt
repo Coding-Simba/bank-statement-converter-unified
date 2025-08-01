@@ -1,0 +1,5 @@
+Q6: Test with Stripe test card 4242 4242 4242 4242 - Yes
+Q7: Verify HttpOnly and Secure cookies - Yes
+Q8: Test automatic token refresh after 25 minutes - No
+Q9: Test logout clears cookies across all tabs - Yes
+Q10: Generate unique test email with timestamp - Yes

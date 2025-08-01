@@ -1,0 +1,5 @@
+Q1: Production website - Yes
+Q2: Test email address - Yes
+Q3: Stripe payment mode - Test mode
+Q4: Verify login on multiple pages - Yes
+Q5: Document issues/bugs - Yes
