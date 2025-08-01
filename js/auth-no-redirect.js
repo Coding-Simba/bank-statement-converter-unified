@@ -390,6 +390,23 @@
         getUser() {
             return this.user;
         }
+        
+        async makeAuthenticatedRequest(url, options = {}) {
+            const token = localStorage.getItem('access_token');
+            if (!token) {
+                throw new Error('Not authenticated');
+            }
+            
+            return fetch(url, {
+                ...options,
+                credentials: 'include',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                    ...options.headers
+                }
+            });
+        }
     }
     
     // Create global instance

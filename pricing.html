@@ -789,16 +789,9 @@
         </p>
 </div>
 </section>
-<!-- Pricing Toggle -->
-<div class="pricing-toggle">
-<span class="toggle-label active" id="monthlyLabel">Monthly</span>
-<div class="toggle-switch" id="pricingToggle">
-<div class="toggle-slider"></div>
-</div>
-<span class="toggle-label" id="yearlyLabel">
-        Yearly
-        <span class="save-badge">Save 20%</span>
-</span>
+<!-- New Simple Pricing Toggle -->
+<div id="newPricingToggle">
+    <!-- Toggle buttons will be inserted here by JavaScript -->
 </div>
 <!-- Pricing Cards -->
 <section class="container">
@@ -1083,66 +1076,7 @@
       menuToggle.classList.toggle('active');
     });
     
-    // Pricing Toggle
-    const pricingToggle = document.getElementById('pricingToggle');
-    const monthlyLabel = document.getElementById('monthlyLabel');
-    const yearlyLabel = document.getElementById('yearlyLabel');
-    const priceElements = document.querySelectorAll('.price-value');
-    const annualPrices = document.querySelectorAll('.annual-price');
-    const periodElements = document.querySelectorAll('.period');
-    
-    // Function to update pricing display
-    function updatePricingDisplay(isYearly) {
-      // Update toggle visual state
-      if (isYearly) {
-        pricingToggle.classList.add('active');
-      } else {
-        pricingToggle.classList.remove('active');
-      }
-      
-      // Update labels
-      monthlyLabel.classList.toggle('active', !isYearly);
-      yearlyLabel.classList.toggle('active', isYearly);
-      
-      // Update prices
-      priceElements.forEach(el => {
-        const monthly = el.getAttribute('data-monthly');
-        const yearly = el.getAttribute('data-yearly');
-        el.textContent = isYearly ? yearly : monthly;
-      });
-      
-      // Update annual price display
-      annualPrices.forEach(el => {
-        el.style.display = isYearly ? 'block' : 'none';
-      });
-      
-      // Period text stays the same for both
-      periodElements.forEach(el => {
-        el.textContent = '/month';
-      });
-      
-      // Update buy button text to reflect pricing
-      const buyButtons = document.querySelectorAll('.pricing-cta.primary');
-      buyButtons.forEach((button, index) => {
-        // Keep button text simple
-        button.textContent = 'Buy';
-      });
-    }
-    
-    // Handle toggle click
-    pricingToggle.addEventListener('click', () => {
-      const isCurrentlyYearly = pricingToggle.classList.contains('active');
-      updatePricingDisplay(!isCurrentlyYearly);
-    });
-    
-    // Also allow clicking on labels
-    monthlyLabel.addEventListener('click', () => {
-      updatePricingDisplay(false);
-    });
-    
-    yearlyLabel.addEventListener('click', () => {
-      updatePricingDisplay(true);
-    });
+    // Old toggle code removed - new simple toggle handles everything
     
     // FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');
@@ -1206,7 +1140,7 @@
 <script src="/js/auth-unified.js"></script>
 <!-- Stripe Integration -->
 <script src="/js/stripe-integration.js"></script>
-<!-- Bulletproof Pricing Toggle -->
-<script src="/js/pricing-toggle-standalone.js"></script>
+<!-- Simple Pricing Toggle -->
+<script src="/js/simple-pricing-toggle.js"></script>
 </body>
 </html>

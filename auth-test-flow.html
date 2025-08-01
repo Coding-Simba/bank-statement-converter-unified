@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auth Flow Test</title>
+    <style>
+        body { font-family: Arial; padding: 40px; max-width: 600px; margin: 0 auto; }
+        button { padding: 10px 20px; margin: 10px; cursor: pointer; }
+        .log { background: #f5f5f5; padding: 20px; border-radius: 8px; margin-top: 20px; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Test Auth Flow</h1>
+    
+    <button onclick="testLogin()">Test Login</button>
+    <button onclick="checkStorage()">Check Storage</button>
+    <button onclick="navigateToDashboard()">Go to Dashboard</button>
+    <button onclick="clearAll()">Clear All</button>
+    
+    <div class="log" id="log">
+        <h3>Log:</h3>
+        <pre id="output">Ready to test...</pre>
+    </div>
+    
+    <script>
+        function log(msg, type = '') {
+            const output = document.getElementById('output');
+            const time = new Date().toLocaleTimeString();
+            const className = type ? ` class="${type}"` : '';
+            output.innerHTML += `\n<span${className}>[${time}] ${msg}</span>`;
+        }
+        
+        async function testLogin() {
+            log('Testing login...');
+            
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: 'test@example.com',
+                        password: 'test123',
+                        remember_me: true
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.access_token) {
+                    log('Login successful!', 'success');
+                    log('Token: ' + data.access_token.substring(0, 50) + '...');
+                    
+                    // Store auth data
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    log('Auth data stored in localStorage', 'success');
+                    checkStorage();
+                } else {
+                    log('Login failed: ' + (data.detail || 'Unknown error'), 'error');
+                }
+            } catch (error) {
+                log('Network error: ' + error.message, 'error');
+            }
+        }
+        
+        function checkStorage() {
+            log('\nChecking storage...');
+            
+            const token = localStorage.getItem('access_token');
+            const user = localStorage.getItem('user');
+            
+            if (token) {
+                log('Token found: ' + token.substring(0, 50) + '...', 'success');
+            } else {
+                log('No token in localStorage', 'error');
+            }
+            
+            if (user) {
+                const userData = JSON.parse(user);
+                log('User found: ' + userData.email, 'success');
+            } else {
+                log('No user in localStorage', 'error');
+            }
+        }
+        
+        function navigateToDashboard() {
+            log('Navigating to dashboard...');
+            window.location.href = '/dashboard-modern.html';
+        }
+        
+        function clearAll() {
+            localStorage.clear();
+            sessionStorage.clear();
+            log('All storage cleared', 'success');
+        }
+    </script>
+</body>
+</html>

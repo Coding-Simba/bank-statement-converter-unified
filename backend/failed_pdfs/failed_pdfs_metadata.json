@@ -28,5 +28,41 @@
     ],
     "file_size": 2165481,
     "status": "pending_review"
+  },
+  "f53dd0c9ee402506a30a3790923aec7a05cfa2fae51c97325793e5a6605d7701": {
+    "original_name": "a309d232-b220-41c4-90ef-37b08e4e4838.pdf",
+    "saved_name": "20250802_010514_f53dd0c9_a309d232-b220-41c4-90ef-37b08e4e4838.pdf",
+    "saved_path": "failed_pdfs/20250802_010514_f53dd0c9_a309d232-b220-41c4-90ef-37b08e4e4838.pdf",
+    "timestamp": "20250802_010514",
+    "date_saved": "2025-08-02T01:05:14.446025",
+    "transactions_found": 5,
+    "valid_transactions": 5,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [
+      {
+        "date": null,
+        "date_string": "mm/dd/yyyy",
+        "description": "Payment - Credit Card",
+        "amount": 5400.0,
+        "amount_string": "5400.00"
+      },
+      {
+        "date": null,
+        "date_string": "mm/dd/yyyy",
+        "description": "Payment - Insurance",
+        "amount": 3000.0,
+        "amount_string": "3000.00"
+      },
+      {
+        "date": null,
+        "date_string": "mm/dd/yyyy",
+        "description": "Payment - Electricity",
+        "amount": 1500.0,
+        "amount_string": "1500.00"
+      }
+    ],
+    "file_size": 2137970,
+    "status": "pending_review"
   }
 }

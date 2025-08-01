@@ -459,3 +459,68 @@ INFO:     127.0.0.1:57635 - "GET /api/stripe/subscription-status HTTP/1.1" 403 F
 INFO:     127.0.0.1:57635 - "GET /api/auth/check HTTP/1.1" 404 Not Found
 INFO:     127.0.0.1:57793 - "GET /api/check-limit HTTP/1.1" 200 OK
 INFO:     127.0.0.1:57793 - "GET /api/user/statements HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:49422 - "OPTIONS /api/convert HTTP/1.1" 200 OK
+/opt/anaconda3/lib/python3.12/site-packages/camelot/parsers/base.py:238: UserWarning: No tables found in table area (381.91999999999996, 496.20830300000006, 494.7166383685, 635.6429279423576)
+  cols, rows, v_s, h_s = self._generate_columns_and_rows(bbox, user_cols)
+Trying Camelot for table extraction...
+[CAMELOT DEBUG 01:05:09] Starting Camelot extraction for: /Users/MAC/chrome/bank-statement-converter-unified/uploads/a309d232-b220-41c4-90ef-37b08e4e4838.pdf
+[CAMELOT DEBUG 01:05:09] Trying Camelot with method: lattice
+[CAMELOT DEBUG 01:05:09] Found 0 tables with lattice method
+[CAMELOT DEBUG 01:05:09] Trying Camelot with method: stream
+[CAMELOT DEBUG 01:05:09] Found 1 tables with stream method
+[CAMELOT DEBUG 01:05:09] Processing table 1/1
+[CAMELOT DEBUG 01:05:09] Table shape: (6, 1)
+[CAMELOT DEBUG 01:05:09] Too few cells: ['Opening Balance:']
+[CAMELOT DEBUG 01:05:09] Filtered out: Total Credit Amount:...
+[CAMELOT DEBUG 01:05:09] Filtered out: Total Debit Amount:...
+[CAMELOT DEBUG 01:05:09] Too few cells: ['Closing Balance:']
+[CAMELOT DEBUG 01:05:09] Too few cells: ['Account Type:']
+[CAMELOT DEBUG 01:05:09] Too few cells: ['Number of Transactions:']
+[CAMELOT DEBUG 01:05:09] Total transactions extracted: 0
+Trying accurate column parser...
+Extracted 5 transactions using accurate column parser
+Using OCR-first approach for maximum accuracy
+Processing with OCR (this may take a moment)...
+Using advanced OCR parser for maximum accuracy...
+Trying standard OCR parser...
+Parsing was incomplete for /Users/MAC/chrome/bank-statement-converter-unified/uploads/a309d232-b220-41c4-90ef-37b08e4e4838.pdf, saving for improvement...
+Failed PDF saved to: failed_pdfs/20250802_010514_f53dd0c9_a309d232-b220-41c4-90ef-37b08e4e4838.pdf
+INFO:     127.0.0.1:49422 - "POST /api/convert HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49497 - "GET /api/statement/4/download HTTP/1.1" 200 OK
+Detected Westpac PDF format, using dedicated parser
+Could not find transaction table header
+Trying Camelot for table extraction...
+[CAMELOT DEBUG 01:05:39] Starting Camelot extraction for: /Users/MAC/chrome/bank-statement-converter-unified/uploads/ed647772-078f-4988-bbfb-4e0b8107af68.pdf
+[CAMELOT DEBUG 01:05:39] Trying Camelot with method: lattice
+[CAMELOT DEBUG 01:05:40] Found 0 tables with lattice method
+[CAMELOT DEBUG 01:05:40] Trying Camelot with method: stream
+[CAMELOT DEBUG 01:05:40] Found 2 tables with stream method
+[CAMELOT DEBUG 01:05:40] Processing table 1/2
+[CAMELOT DEBUG 01:05:40] Table shape: (12, 3)
+[CAMELOT DEBUG 01:05:40] Too few cells: ['Mr JOHN CITIZEN', '', '']
+[CAMELOT DEBUG 01:05:40] Too few cells: ['1/15 ETHEL ST', '', '']
+[CAMELOT DEBUG 01:05:40] Filtered out: Account Number 3469-54282...
+[CAMELOT DEBUG 01:05:40] No amount found: ['', 'Branch Name', 'Colins Place']
+[CAMELOT DEBUG 01:05:40] No amount found: ['', 'Branch Addresd', 'Colins Place Branch']
+[CAMELOT DEBUG 01:05:40] Too few cells: ['', '', 'Ground']
+[CAMELOT DEBUG 01:05:40] Too few cells: ['', '', '55 Colins Street']
+[CAMELOT DEBUG 01:05:40] Too few cells: ['', '', 'Melbourne 3000']
+[CAMELOT DEBUG 01:05:40] No amount found: ['', 'Account Name', 'JOHN CITIZEN']
+[CAMELOT DEBUG 01:05:40] Processing table 2/2
+[CAMELOT DEBUG 01:05:40] Table shape: (7, 2)
+[CAMELOT DEBUG 01:05:40] Too few cells: ['Your Statement overview', '']
+[CAMELOT DEBUG 01:05:40] Filtered out: Total payments +$102,136.02...
+[CAMELOT DEBUG 01:05:40] Filtered out: Total withdrawals -$45,000.00...
+[CAMELOT DEBUG 01:05:40] Filtered out: Total interests -$2,331.25...
+[CAMELOT DEBUG 01:05:40] Filtered out: Total ban/service charges -$64.19...
+[CAMELOT DEBUG 01:05:40] Total transactions extracted: 0
+Trying accurate column parser...
+Trying fixed column parser for money in/out layout...
+Using OCR-first approach for maximum accuracy
+Processing with OCR (this may take a moment)...
+Using advanced OCR parser for maximum accuracy...
+Trying standard OCR parser...
+No transactions found, trying summary statement parser...
+Extracted 4 summary items as transactions
+INFO:     127.0.0.1:49663 - "POST /api/convert HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49498 - "GET /api/statement/5/download HTTP/1.1" 200 OK
