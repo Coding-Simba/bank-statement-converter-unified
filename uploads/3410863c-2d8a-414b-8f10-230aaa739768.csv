@@ -1,0 +1,14 @@
+Date,Description,Amount,Balance
+"2025-02-01","Card payment - High St Petrol Station",-24.50,-24.50
+"2025-02-01","Direct debit - Green Mobile Phone Bill",-20.00,-44.50
+"2025-02-03","Cash Withdrawal - YourBank, Anytown",-30.00,-74.50
+"2025-02-04","YourJob BiWeekly Payment",2575.00,2500.50
+"2025-02-11","Direct Deposit - YourBank, Anytown High",300.00,2800.50
+"2025-02-16","Cash Withdrawal - RandomBank, Randomford,",-50.00,2750.50
+"2025-02-17","Card payment - High St Petrol Station",-40.00,2710.50
+"2025-02-17","Direct Debit - Home Insurance",-78.34,2632.16
+"2025-02-18","YourJob BiWeekly Payment",2575.00,5207.16
+"2025-02-18","Randomford's Deli",-15.00,5192.16
+"2025-02-24","Anytown's Jewelers",-150.00,5042.16
+"2025-02-24","Direct Deposit",25.00,5067.16
+"2025-02-28","Monthly Apartment Rent",-987.33,4079.83

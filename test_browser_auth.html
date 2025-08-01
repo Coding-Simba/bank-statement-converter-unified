@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Cookie Authentication</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        pre { background: #f5f5f5; padding: 10px; overflow: auto; }
+    </style>
+</head>
+<body>
+    <h1>Cookie Authentication Test</h1>
+    
+    <div id="status" class="status info">Initializing...</div>
+    
+    <h2>Test Controls</h2>
+    <button onclick="testCSRF()">1. Get CSRF Token</button>
+    <button onclick="testLogin()">2. Test Login</button>
+    <button onclick="testAuthCheck()">3. Check Auth Status</button>
+    <button onclick="testProtectedAPI()">4. Test Protected API</button>
+    <button onclick="testRefresh()">5. Refresh Token</button>
+    <button onclick="testLogout()">6. Logout</button>
+    
+    <h2>Console Output</h2>
+    <pre id="console"></pre>
+    
+    <script>
+        const API_BASE = 'https://bankcsvconverter.com';
+        let csrfToken = null;
+        
+        function log(message, type = 'info') {
+            const consoleEl = document.getElementById('console');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleEl.textContent += `[${timestamp}] ${message}\n`;
+            
+            const status = document.getElementById('status');
+            status.className = `status ${type}`;
+            status.textContent = message;
+        }
+        
+        async function testCSRF() {
+            log('Getting CSRF token...');
+            try {
+                const response = await fetch(`${API_BASE}/api/v2/auth/csrf`, {
+                    credentials: 'include'
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    csrfToken = data.csrf_token;
+                    log(`✓ Got CSRF token: ${csrfToken.substring(0, 10)}...`, 'success');
+                    
+                    // Check cookies
+                    log('Checking cookies (open DevTools > Application > Cookies)');
+                } else {
+                    log(`✗ CSRF request failed: ${response.status}`, 'error');
+                }
+            } catch (error) {
+                log(`✗ CSRF error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testLogin() {
+            if (!csrfToken) {
+                log('⚠️ Get CSRF token first!', 'error');
+                return;
+            }
+            
+            const email = prompt('Enter email:', 'test@example.com');
+            const password = prompt('Enter password:', 'test123');
+            
+            if (!email || !password) return;
+            
+            log('Attempting login...');
+            try {
+                const response = await fetch(`${API_BASE}/api/v2/auth/login`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': csrfToken
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    log(`✓ Login successful! User: ${data.user.email}`, 'success');
+                    log(`Account type: ${data.user.account_type}`);
+                    log('Check cookies - should see access_token and refresh_token');
+                } else {
+                    log(`✗ Login failed: ${data.detail}`, 'error');
+                }
+            } catch (error) {
+                log(`✗ Login error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testAuthCheck() {
+            log('Checking authentication status...');
+            try {
+                const response = await fetch(`${API_BASE}/api/v2/auth/check`, {
+                    credentials: 'include'
+                });
+                
+                const data = await response.json();
+                
+                if (data.authenticated) {
+                    log(`✓ Authenticated as: ${data.user.email}`, 'success');
+                    log(`Account: ${data.user.account_type}, Daily limit: ${data.user.daily_limit}`);
+                } else {
+                    log('✗ Not authenticated', 'error');
+                }
+            } catch (error) {
+                log(`✗ Auth check error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testProtectedAPI() {
+            log('Testing protected API endpoint...');
+            try {
+                const response = await fetch(`${API_BASE}/api/user`, {
+                    credentials: 'include',
+                    headers: {
+                        'X-CSRF-Token': csrfToken
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log(`✓ Protected API access successful!`, 'success');
+                    log(`Response: ${JSON.stringify(data, null, 2)}`);
+                } else {
+                    log(`✗ Protected API failed: ${response.status}`, 'error');
+                }
+            } catch (error) {
+                log(`✗ Protected API error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testRefresh() {
+            if (!csrfToken) {
+                log('⚠️ Get CSRF token first!', 'error');
+                return;
+            }
+            
+            log('Testing token refresh...');
+            try {
+                const response = await fetch(`${API_BASE}/api/v2/auth/refresh`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'X-CSRF-Token': csrfToken
+                    }
+                });
+                
+                if (response.ok) {
+                    log('✓ Token refresh successful!', 'success');
+                    log('New cookies have been set');
+                } else {
+                    log(`✗ Refresh failed: ${response.status}`, 'error');
+                }
+            } catch (error) {
+                log(`✗ Refresh error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testLogout() {
+            if (!csrfToken) {
+                log('⚠️ Get CSRF token first!', 'error');
+                return;
+            }
+            
+            log('Logging out...');
+            try {
+                const response = await fetch(`${API_BASE}/api/v2/auth/logout`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'X-CSRF-Token': csrfToken
+                    }
+                });
+                
+                if (response.ok) {
+                    log('✓ Logout successful!', 'success');
+                    log('Cookies should be cleared');
+                } else {
+                    log(`✗ Logout failed: ${response.status}`, 'error');
+                }
+            } catch (error) {
+                log(`✗ Logout error: ${error.message}`, 'error');
+            }
+        }
+        
+        // Auto-initialize
+        window.onload = () => {
+            log('Test page ready. Click buttons in order to test cookie auth.');
+        };
+    </script>
+</body>
+</html>

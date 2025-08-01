@@ -15,19 +15,22 @@ from utils.auth import (
     decode_token
 )
 from jwt.exceptions import InvalidTokenError
+from api.sessions import create_session
 
 router = APIRouter(prefix="/api/auth", tags=["authentication"])
 
 # Constants
 ACCESS_TOKEN_EXPIRE_MINUTES = 15
-REFRESH_TOKEN_EXPIRE_DAYS = 7
-COOKIE_DOMAIN = None  # Will be set based on environment
+REFRESH_TOKEN_EXPIRE_HOURS = 24  # Default without remember me
+REFRESH_TOKEN_EXPIRE_DAYS = 90  # With remember me
+COOKIE_DOMAIN = ".bankcsvconverter.com"  # Cross-subdomain support
 
 
 # Pydantic models
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
+    remember_me: bool = False
 
 
 class UserRegister(BaseModel):
@@ -48,7 +51,7 @@ class UserData(BaseModel):
     daily_limit: int
 
 
-def set_auth_cookies(response: Response, access_token: str, refresh_token: str, production: bool = True):
+def set_auth_cookies(response: Response, access_token: str, refresh_token: str, remember_me: bool = False, production: bool = True):
     """Set authentication cookies with proper security settings."""
     # Access token cookie
     response.set_cookie(
@@ -59,19 +62,20 @@ def set_auth_cookies(response: Response, access_token: str, refresh_token: str, 
         samesite="lax",
         max_age=ACCESS_TOKEN_EXPIRE_MINUTES * 60,
         path="/",
-        domain=COOKIE_DOMAIN
+        domain=COOKIE_DOMAIN if production else None
     )
     
     # Refresh token cookie (only sent to refresh endpoint)
+    refresh_max_age = (REFRESH_TOKEN_EXPIRE_DAYS * 24 * 60 * 60) if remember_me else (REFRESH_TOKEN_EXPIRE_HOURS * 60 * 60)
     response.set_cookie(
         key="refresh_token",
         value=refresh_token,
         httponly=True,
         secure=production,
         samesite="lax",
-        max_age=REFRESH_TOKEN_EXPIRE_DAYS * 24 * 60 * 60,
+        max_age=refresh_max_age,
         path="/api/auth/refresh",
-        domain=COOKIE_DOMAIN
+        domain=COOKIE_DOMAIN if production else None
     )
 
 
@@ -218,22 +222,37 @@ async def login(
     user.refresh_token_version = 1  # Reset version on new login
     db.commit()
     
-    # Create tokens
+    # Create session tracking
+    session_id = str(uuid.uuid4())
+    user_agent = request.headers.get("User-Agent", "Unknown")
+    client_ip = request.client.host if request.client else "Unknown"
+    
+    create_session(
+        user_id=user.id,
+        session_id=session_id,
+        user_agent=user_agent,
+        ip_address=client_ip,
+        is_remember_me=user_credentials.remember_me,
+        db=db
+    )
+    
+    # Create tokens with session ID
     access_token = create_access_token(
-        data={"sub": user.id, "email": user.email}
+        data={"sub": user.id, "email": user.email, "session_id": session_id}
     )
     refresh_token = create_refresh_token(
         data={
             "sub": user.id,
             "email": user.email,
             "family": user.refresh_token_family,
-            "version": user.refresh_token_version
+            "version": user.refresh_token_version,
+            "session_id": session_id
         }
     )
     
-    # Set cookies
+    # Set cookies with remember me
     is_production = request.url.hostname == "bankcsvconverter.com"
-    set_auth_cookies(response, access_token, refresh_token, production=is_production)
+    set_auth_cookies(response, access_token, refresh_token, remember_me=user_credentials.remember_me, production=is_production)
     
     # Return user data (no tokens)
     return {
