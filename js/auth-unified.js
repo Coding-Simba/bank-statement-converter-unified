@@ -94,7 +94,7 @@
         
         async getCsrfToken() {
             try {
-                const response = await fetch(`${API_BASE}/v2/api/auth/csrf`, {
+                const response = await fetch(`${API_BASE}/api/auth/csrf`, {
                     credentials: 'include'
                 });
                 
@@ -110,7 +110,7 @@
         
         async checkAuth() {
             try {
-                const response = await fetch(`${API_BASE}/v2/api/auth/check`, {
+                const response = await fetch(`${API_BASE}/api/auth/check`, {
                     credentials: 'include'
                 });
                 
@@ -133,7 +133,7 @@
         
         async login(email, password, rememberMe = false) {
             try {
-                const response = await fetch(`${API_BASE}/v2/api/auth/login`, {
+                const response = await fetch(`${API_BASE}/api/auth/login`, {
                     method: 'POST',
                     credentials: 'include',
                     headers: {
@@ -167,7 +167,7 @@
         
         async register(email, password, fullName, companyName = null) {
             try {
-                const response = await fetch(`${API_BASE}/v2/api/auth/register`, {
+                const response = await fetch(`${API_BASE}/api/auth/register`, {
                     method: 'POST',
                     credentials: 'include',
                     headers: {
@@ -209,7 +209,7 @@
         
         async logout() {
             try {
-                await fetch(`${API_BASE}/v2/api/auth/logout`, {
+                await fetch(`${API_BASE}/api/auth/logout`, {
                     method: 'POST',
                     credentials: 'include',
                     headers: {
@@ -250,7 +250,7 @@
         
         async refreshToken() {
             try {
-                const response = await fetch(`${API_BASE}/v2/api/auth/refresh`, {
+                const response = await fetch(`${API_BASE}/api/auth/refresh`, {
                     method: 'POST',
                     credentials: 'include',
                     headers: {
