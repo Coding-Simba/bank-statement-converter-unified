@@ -1053,26 +1053,57 @@
     const annualPrices = document.querySelectorAll('.annual-price');
     const periodElements = document.querySelectorAll('.period');
     
-    pricingToggle.addEventListener('click', () => {
-      pricingToggle.classList.toggle('active');
-      const isYearly = pricingToggle.classList.contains('active');
+    // Function to update pricing display
+    function updatePricingDisplay(isYearly) {
+      // Update toggle visual state
+      if (isYearly) {
+        pricingToggle.classList.add('active');
+      } else {
+        pricingToggle.classList.remove('active');
+      }
       
+      // Update labels
       monthlyLabel.classList.toggle('active', !isYearly);
       yearlyLabel.classList.toggle('active', isYearly);
       
+      // Update prices
       priceElements.forEach(el => {
         const monthly = el.getAttribute('data-monthly');
         const yearly = el.getAttribute('data-yearly');
         el.textContent = isYearly ? yearly : monthly;
       });
       
+      // Update annual price display
       annualPrices.forEach(el => {
         el.style.display = isYearly ? 'block' : 'none';
       });
       
+      // Period text stays the same for both
       periodElements.forEach(el => {
-        el.textContent = isYearly ? '/month' : '/month';
+        el.textContent = '/month';
       });
+      
+      // Update buy button text to reflect pricing
+      const buyButtons = document.querySelectorAll('.pricing-cta.primary');
+      buyButtons.forEach((button, index) => {
+        // Keep button text simple
+        button.textContent = 'Buy';
+      });
+    }
+    
+    // Handle toggle click
+    pricingToggle.addEventListener('click', () => {
+      const isCurrentlyYearly = pricingToggle.classList.contains('active');
+      updatePricingDisplay(!isCurrentlyYearly);
+    });
+    
+    // Also allow clicking on labels
+    monthlyLabel.addEventListener('click', () => {
+      updatePricingDisplay(false);
+    });
+    
+    yearlyLabel.addEventListener('click', () => {
+      updatePricingDisplay(true);
     });
     
     // FAQ Accordion
