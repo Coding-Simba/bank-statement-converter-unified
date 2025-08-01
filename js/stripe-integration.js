@@ -21,10 +21,10 @@ const STRIPE_API_BASE = (() => {
 // Initialize Stripe integration
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Stripe integration initializing...');
-    console.log('BankAuth available:', typeof window.BankAuth !== 'undefined');
+    console.log('UnifiedAuth available:', typeof window.UnifiedAuth !== 'undefined');
     
     // Check if user is authenticated
-    const isAuthenticated = window.BankAuth && window.BankAuth.TokenManager.isAuthenticated();
+    const isAuthenticated = window.UnifiedAuth && window.UnifiedAuth.isAuthenticated();
     console.log('User authenticated:', isAuthenticated);
     
     // Get all pricing buttons
