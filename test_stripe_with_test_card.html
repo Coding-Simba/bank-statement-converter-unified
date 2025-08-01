@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Test Card Payment Flow</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 1000px; margin: 0 auto; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .button { padding: 10px 20px; background: #0066ff; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .button:hover { background: #0052cc; }
+        .result { margin: 10px 0; padding: 10px; background: #f5f5f5; border-radius: 5px; }
+        .error { background: #fee; color: red; }
+        .success { background: #efe; color: green; }
+        .warning { background: #fef; color: orange; }
+        .info { background: #eff; color: blue; }
+        .checkout-frame { width: 100%; height: 600px; border: 1px solid #ccc; border-radius: 8px; }
+        .test-card-info { background: #e6f3ff; padding: 15px; border-radius: 8px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>🔒 Stripe Payment Integration Test with Test Card</h1>
+    <p>This page tests the complete Stripe payment flow using the test card number: <strong>4242 4242 4242 4242</strong></p>
+    
+    <div class="test-card-info">
+        <h3>🃏 Test Card Information</h3>
+        <ul>
+            <li><strong>Card Number:</strong> 4242 4242 4242 4242</li>
+            <li><strong>Expiry:</strong> Any future date (e.g., 12/34)</li>
+            <li><strong>CVC:</strong> Any 3-digit number (e.g., 123)</li>
+            <li><strong>ZIP:</strong> Any 5-digit number (e.g., 12345)</li>
+        </ul>
+    </div>
+    
+    <div class="test-section">
+        <h2>Step 1: Authentication Test</h2>
+        <button class="button" onclick="testLogin()">Test Login with Demo Account</button>
+        <div id="auth-result" class="result info">Click button to test authentication</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Step 2: Pricing Plans Test</h2>
+        <div style="display: flex; gap: 20px; margin: 20px 0;">
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px; flex: 1;">
+                <h3>🎯 Starter Plan</h3>
+                <p><strong>$30/month</strong> (or $24/month yearly)</p>
+                <button class="button" onclick="testCheckout('starter', 'monthly')">Test Monthly Checkout</button>
+                <button class="button" onclick="testCheckout('starter', 'yearly')">Test Yearly Checkout</button>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px; flex: 1;">
+                <h3>🚀 Professional Plan</h3>
+                <p><strong>$60/month</strong> (or $48/month yearly)</p>
+                <button class="button" onclick="testCheckout('professional', 'monthly')">Test Monthly Checkout</button>
+                <button class="button" onclick="testCheckout('professional', 'yearly')">Test Yearly Checkout</button>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px; flex: 1;">
+                <h3>🏢 Business Plan</h3>
+                <p><strong>$99/month</strong> (or $79/month yearly)</p>
+                <button class="button" onclick="testCheckout('business', 'monthly')">Test Monthly Checkout</button>
+                <button class="button" onclick="testCheckout('business', 'yearly')">Test Yearly Checkout</button>
+            </div>
+        </div>
+        <div id="checkout-result" class="result info">Click any checkout button to test</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Step 3: Subscription Management Test</h2>
+        <button class="button" onclick="testSubscriptionStatus()">Check Subscription Status</button>
+        <button class="button" onclick="testCustomerPortal()">Test Customer Portal</button>
+        <div id="subscription-result" class="result info">Click buttons to test subscription features</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Step 4: Complete Payment Test Instructions</h2>
+        <div class="warning">
+            <h3>⚠️ Important: How to Complete the Payment Test</h3>
+            <ol>
+                <li>Click one of the checkout buttons above</li>
+                <li>You'll be redirected to Stripe Checkout</li>
+                <li>Use the test card: <strong>4242 4242 4242 4242</strong></li>
+                <li>Enter any future expiry date (e.g., 12/34)</li>
+                <li>Enter any 3-digit CVC (e.g., 123)</li>
+                <li>Enter any ZIP code (e.g., 12345)</li>
+                <li>Complete the payment</li>
+                <li>You should be redirected back to the dashboard</li>
+            </ol>
+        </div>
+        <div id="payment-result" class="result info">Follow the instructions above to test payment</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Step 5: Test Results Summary</h2>
+        <div id="summary-result" class="result">
+            <h3>Test Status:</h3>
+            <ul id="test-summary">
+                <li>🔄 Tests will appear here as you run them</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE = 'https://bankcsvconverter.com';
+        const STRIPE_API_BASE = `${API_BASE}/api/stripe`;
+        let testResults = {};
+        let authData = null;
+        
+        function log(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            element.className = `result ${type}`;
+            element.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+            console.log(`[${type.toUpperCase()}] ${message}`);
+        }
+        
+        function updateSummary() {
+            const summaryList = document.getElementById('test-summary');
+            summaryList.innerHTML = '';
+            Object.entries(testResults).forEach(([test, result]) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span style="color: ${result.success ? 'green' : 'red'}">${test}: ${result.success ? '✅ PASS' : '❌ FAIL'}</span> - ${result.message}`;
+                summaryList.appendChild(li);
+            });
+        }
+        
+        async function getCsrfToken() {
+            try {
+                const response = await fetch(`${API_BASE}/v2/api/auth/csrf`, {
+                    credentials: 'include'
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    return data.csrf_token;
+                }
+            } catch (error) {
+                console.error('Failed to get CSRF token:', error);
+            }
+            return null;
+        }
+        
+        async function testLogin() {
+            log('auth-result', 'Testing authentication...', 'info');
+            
+            try {
+                // Get CSRF token first
+                const csrfToken = await getCsrfToken();
+                if (!csrfToken) {
+                    throw new Error('Failed to get CSRF token');
+                }
+                
+                // Try to login with our test user or create a new one
+                const testEmail = 'teststripe@example.com';
+                const testPassword = 'TestPassword123';
+                
+                const loginResponse = await fetch(`${API_BASE}/v2/api/auth/login`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': csrfToken
+                    },
+                    body: JSON.stringify({
+                        email: testEmail,
+                        password: testPassword,
+                        remember_me: true
+                    })
+                });
+                
+                if (loginResponse.ok) {
+                    authData = await loginResponse.json();
+                    authData.csrfToken = csrfToken;
+                    log('auth-result', `✅ Login successful! User: ${authData.user.email}`, 'success');
+                    testResults['Authentication'] = { success: true, message: 'Login successful' };
+                } else {
+                    const errorData = await loginResponse.json();
+                    log('auth-result', `❌ Login failed: ${errorData.detail}. You may need to create this test user first.`, 'error');
+                    testResults['Authentication'] = { success: false, message: 'Login failed' };
+                }
+                
+                updateSummary();
+                
+            } catch (error) {
+                log('auth-result', `❌ Authentication test failed: ${error.message}`, 'error');
+                testResults['Authentication'] = { success: false, message: error.message };
+                updateSummary();
+            }
+        }
+        
+        async function testCheckout(plan, billingPeriod) {
+            log('checkout-result', `Testing ${plan} ${billingPeriod} checkout...`, 'info');
+            
+            if (!authData) {
+                log('checkout-result', '❌ Please login first before testing checkout', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${STRIPE_API_BASE}/create-checkout-session`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': authData.csrfToken
+                    },
+                    body: JSON.stringify({
+                        plan: plan,
+                        billing_period: billingPeriod
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log('checkout-result', `✅ Checkout session created! Redirecting to Stripe...`, 'success');
+                    testResults[`Checkout ${plan} ${billingPeriod}`] = { success: true, message: 'Session created' };
+                    
+                    // Show instructions before redirect
+                    alert(`🎉 Checkout session created successfully!\\n\\nYou will now be redirected to Stripe Checkout.\\n\\nUse test card: 4242 4242 4242 4242\\nExpiry: 12/34\\nCVC: 123\\nZIP: 12345`);
+                    
+                    // Redirect to Stripe Checkout
+                    window.location.href = data.checkout_url;
+                    
+                } else {
+                    const errorData = await response.json();
+                    log('checkout-result', `❌ Checkout failed: ${errorData.detail}`, 'error');
+                    testResults[`Checkout ${plan} ${billingPeriod}`] = { success: false, message: errorData.detail };
+                }
+                
+                updateSummary();
+                
+            } catch (error) {
+                log('checkout-result', `❌ Checkout test failed: ${error.message}`, 'error');
+                testResults[`Checkout ${plan} ${billingPeriod}`] = { success: false, message: error.message };
+                updateSummary();
+            }
+        }
+        
+        async function testSubscriptionStatus() {
+            log('subscription-result', 'Checking subscription status...', 'info');
+            
+            if (!authData) {
+                log('subscription-result', '❌ Please login first', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${STRIPE_API_BASE}/subscription-status`, {
+                    credentials: 'include',
+                    headers: {
+                        'X-CSRF-Token': authData.csrfToken
+                    }
+                });
+                
+                if (response.ok) {
+                    const status = await response.json();
+                    log('subscription-result', 
+                        `✅ Subscription Status: ${status.plan} plan - ${status.pages_used}/${status.pages_limit} pages used`, 
+                        'success');
+                    testResults['Subscription Status'] = { success: true, message: `${status.plan} plan active` };
+                } else {
+                    const errorData = await response.json();
+                    log('subscription-result', `❌ Status check failed: ${errorData.detail}`, 'error');
+                    testResults['Subscription Status'] = { success: false, message: errorData.detail };
+                }
+                
+                updateSummary();
+                
+            } catch (error) {
+                log('subscription-result', `❌ Status check failed: ${error.message}`, 'error');
+                testResults['Subscription Status'] = { success: false, message: error.message };
+                updateSummary();
+            }
+        }
+        
+        async function testCustomerPortal() {
+            log('subscription-result', 'Testing customer portal...', 'info');
+            
+            if (!authData) {
+                log('subscription-result', '❌ Please login first', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${STRIPE_API_BASE}/customer-portal`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': authData.csrfToken
+                    },
+                    body: JSON.stringify({
+                        return_url: '/dashboard.html'
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log('subscription-result', `✅ Customer portal session created!`, 'success');
+                    testResults['Customer Portal'] = { success: true, message: 'Portal session created' };
+                    
+                    // Open portal in new tab
+                    window.open(data.portal_url, '_blank');
+                    
+                } else {
+                    const errorData = await response.json();
+                    if (errorData.detail.includes('configuration')) {
+                        log('subscription-result', `⚠️ Customer portal needs configuration in Stripe dashboard`, 'warning');
+                        testResults['Customer Portal'] = { success: false, message: 'Needs Stripe configuration' };
+                    } else {
+                        log('subscription-result', `❌ Portal test failed: ${errorData.detail}`, 'error');
+                        testResults['Customer Portal'] = { success: false, message: errorData.detail };
+                    }
+                }
+                
+                updateSummary();
+                
+            } catch (error) {
+                log('subscription-result', `❌ Portal test failed: ${error.message}`, 'error');
+                testResults['Customer Portal'] = { success: false, message: error.message };
+                updateSummary();
+            }
+        }
+        
+        // Handle successful payment return
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sessionId = urlParams.get('session_id');
+            
+            if (sessionId) {
+                log('payment-result', 
+                    `🎉 Payment completed successfully! Session ID: ${sessionId}`, 
+                    'success');
+                testResults['Payment Completion'] = { success: true, message: 'Payment successful' };
+                updateSummary();
+            }
+        });
+    </script>
+</body>
+</html>

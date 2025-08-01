@@ -1,0 +1,176 @@
+{
+  "testCommands": {
+    "1_registration": [
+      {
+        "tool": "navigate_to",
+        "params": {
+          "url": "https://bankcsvconverter.com/signup.html"
+        }
+      },
+      {
+        "tool": "screenshot",
+        "params": {
+          "name": "signup-page"
+        }
+      },
+      {
+        "tool": "type",
+        "params": {
+          "selector": "#fullName",
+          "text": "Test User"
+        }
+      },
+      {
+        "tool": "type",
+        "params": {
+          "selector": "#email",
+          "text": "test-20250801-[TIMESTAMP]@example.com"
+        }
+      },
+      {
+        "tool": "type",
+        "params": {
+          "selector": "#password",
+          "text": "TestPass123!"
+        }
+      },
+      {
+        "tool": "click",
+        "params": {
+          "selector": "#terms"
+        }
+      },
+      {
+        "tool": "click",
+        "params": {
+          "selector": "button[type='submit']"
+        }
+      },
+      {
+        "tool": "wait",
+        "params": {
+          "seconds": 3
+        }
+      },
+      {
+        "tool": "screenshot",
+        "params": {
+          "name": "after-registration"
+        }
+      }
+    ],
+    "2_cross_tab_persistence": [
+      {
+        "tool": "open_new_tab",
+        "params": {}
+      },
+      {
+        "tool": "navigate_to",
+        "params": {
+          "url": "https://bankcsvconverter.com/dashboard.html"
+        }
+      },
+      {
+        "tool": "screenshot",
+        "params": {
+          "name": "dashboard-auth-check"
+        }
+      },
+      {
+        "tool": "open_new_tab",
+        "params": {}
+      },
+      {
+        "tool": "navigate_to",
+        "params": {
+          "url": "https://bankcsvconverter.com/convert-pdf.html"
+        }
+      },
+      {
+        "tool": "screenshot",
+        "params": {
+          "name": "convert-pdf-auth-check"
+        }
+      },
+      {
+        "tool": "open_new_tab",
+        "params": {}
+      },
+      {
+        "tool": "navigate_to",
+        "params": {
+          "url": "https://bankcsvconverter.com/analyze-transactions.html"
+        }
+      },
+      {
+        "tool": "screenshot",
+        "params": {
+          "name": "analyze-auth-check"
+        }
+      }
+    ],
+    "3_cross_tab_logout": [
+      {
+        "tool": "switch_to_tab",
+        "params": {
+          "index": 0
+        }
+      },
+      {
+        "tool": "click",
+        "params": {
+          "selector": ".logout-btn, a[href='/logout']"
+        }
+      },
+      {
+        "tool": "wait",
+        "params": {
+          "seconds": 3
+        }
+      },
+      {
+        "tool": "switch_to_tab",
+        "params": {
+          "index": 1
+        }
+      },
+      {
+        "tool": "screenshot",
+        "params": {
+          "name": "tab1-after-logout"
+        }
+      },
+      {
+        "tool": "switch_to_tab",
+        "params": {
+          "index": 2
+        }
+      },
+      {
+        "tool": "screenshot",
+        "params": {
+          "name": "tab2-after-logout"
+        }
+      }
+    ],
+    "4_cookie_check": [
+      {
+        "tool": "execute_script",
+        "params": {
+          "script": "return document.cookie"
+        }
+      },
+      {
+        "tool": "get_cookies",
+        "params": {
+          "url": "https://bankcsvconverter.com"
+        }
+      }
+    ]
+  },
+  "notes": {
+    "timestamp": "Replace [TIMESTAMP] with actual timestamp like 20250801-143000",
+    "tools": "These are example Chrome MCP tool names - use actual tool names from your MCP server",
+    "selectors": "CSS selectors may need adjustment based on actual page structure"
+  }
+}

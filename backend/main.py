@@ -10,6 +10,7 @@ import asyncio
 
 # Import routers
 from api.auth import router as auth_router
+from api.auth_cookie import router as auth_cookie_router
 from api.statements import router as statements_router
 from api.feedback import router as feedback_router
 from api.oauth import router as oauth_router
@@ -18,6 +19,7 @@ from api.analyze_transactions import router as analyze_transactions_router
 from api.stripe_payments import router as stripe_router
 from models.database import init_db, engine, Base
 from utils.cleanup import cleanup_expired_statements
+from middleware.csrf_middleware import CSRFMiddleware
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -68,6 +70,9 @@ app.add_middleware(
     max_age=3600,
 )
 
+# Add CSRF protection middleware
+app.add_middleware(CSRFMiddleware)
+
 
 async def periodic_cleanup():
     """Periodically clean up expired statements."""
@@ -82,7 +87,8 @@ async def periodic_cleanup():
 
 
 # Include routers
-app.include_router(auth_router)
+app.include_router(auth_router)  # Legacy JWT auth at /api/auth
+app.include_router(auth_cookie_router, prefix="/v2")  # Cookie auth at /v2/api/auth
 app.include_router(oauth_router)
 app.include_router(statements_router)
 app.include_router(feedback_router)

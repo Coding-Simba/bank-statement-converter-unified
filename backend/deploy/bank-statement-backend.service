@@ -1,0 +1,22 @@
+[Unit]
+Description=Bank Statement Converter Backend API
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/bank-statement-converter/backend
+Environment="PATH=/home/ubuntu/bank-statement-converter/backend/venv/bin"
+ExecStart=/home/ubuntu/bank-statement-converter/backend/venv/bin/python main.py
+Restart=always
+RestartSec=10
+
+# Environment variables
+EnvironmentFile=/home/ubuntu/bank-statement-converter/backend/.env
+
+# Logging
+StandardOutput=append:/var/log/bank-statement-backend.log
+StandardError=append:/var/log/bank-statement-backend-error.log
+
+[Install]
+WantedBy=multi-user.target

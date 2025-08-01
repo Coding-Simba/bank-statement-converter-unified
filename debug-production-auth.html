@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Auth Debug</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .test-section {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            background: #f5f5f5;
+        }
+        .success { color: green; }
+        .error { color: red; }
+        .warning { color: orange; }
+        .info { color: blue; }
+        pre {
+            background: #f0f0f0;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="/js/auth-unified.js"></script>
+</head>
+<body>
+    <h1>Production Authentication Debug Tool</h1>
+    
+    <div class="test-section">
+        <h2>1. Check Script Loading</h2>
+        <button onclick="checkScriptLoading()">Check Scripts</button>
+        <div id="script-results"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Check API Endpoints</h2>
+        <button onclick="checkAPIEndpoints()">Test APIs</button>
+        <div id="api-results"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Check Cookies</h2>
+        <button onclick="checkCookies()">Check Cookies</button>
+        <div id="cookie-results"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Test Registration</h2>
+        <input type="email" id="test-email" placeholder="test@example.com">
+        <input type="password" id="test-password" placeholder="password">
+        <button onclick="testRegistration()">Test Register</button>
+        <div id="register-results"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>5. Check Auth State</h2>
+        <button onclick="checkAuthState()">Check Auth</button>
+        <div id="auth-results"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>6. Console Errors</h2>
+        <button onclick="captureConsoleErrors()">Start Capturing</button>
+        <div id="console-errors"></div>
+    </div>
+
+    <script>
+        const API_BASE = window.location.protocol + '//' + window.location.hostname;
+        let consoleErrors = [];
+
+        // Capture console errors
+        window.addEventListener('error', (e) => {
+            consoleErrors.push({
+                type: 'error',
+                message: e.message,
+                filename: e.filename,
+                line: e.lineno,
+                col: e.colno,
+                time: new Date().toISOString()
+            });
+            updateConsoleErrors();
+        });
+
+        window.addEventListener('unhandledrejection', (e) => {
+            consoleErrors.push({
+                type: 'promise rejection',
+                reason: e.reason,
+                time: new Date().toISOString()
+            });
+            updateConsoleErrors();
+        });
+
+        function log(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            const div = document.createElement('div');
+            div.className = type;
+            div.innerHTML = `[${new Date().toLocaleTimeString()}] ${message}`;
+            element.appendChild(div);
+        }
+
+        async function checkScriptLoading() {
+            const results = document.getElementById('script-results');
+            results.innerHTML = '';
+            
+            // Check if auth-unified.js exists
+            try {
+                const response = await fetch('/js/auth-unified.js');
+                if (response.ok) {
+                    log('script-results', '✓ auth-unified.js found', 'success');
+                    
+                    // Check if it's loaded on this page
+                    const scripts = Array.from(document.scripts);
+                    const authScript = scripts.find(s => s.src.includes('auth-unified.js'));
+                    if (authScript) {
+                        log('script-results', '✓ auth-unified.js is loaded on this page', 'success');
+                    } else {
+                        log('script-results', '✗ auth-unified.js is NOT loaded on this page', 'error');
+                    }
+                    
+                    // Check if UnifiedAuth is available
+                    if (typeof window.UnifiedAuth !== 'undefined') {
+                        log('script-results', '✓ UnifiedAuth object is available', 'success');
+                    } else {
+                        log('script-results', '✗ UnifiedAuth object is NOT available', 'error');
+                    }
+                } else {
+                    log('script-results', `✗ auth-unified.js not found (${response.status})`, 'error');
+                }
+            } catch (e) {
+                log('script-results', `✗ Error checking auth-unified.js: ${e.message}`, 'error');
+            }
+
+            // Check for old auth scripts
+            const oldScripts = ['auth.js', 'auth-persistent.js', 'auth-global.js'];
+            for (const script of oldScripts) {
+                try {
+                    const response = await fetch(`/js/${script}`);
+                    if (response.ok) {
+                        log('script-results', `⚠️  Old script ${script} still exists`, 'warning');
+                    }
+                } catch (e) {
+                    // Good, old script doesn't exist
+                }
+            }
+        }
+
+        async function checkAPIEndpoints() {
+            const results = document.getElementById('api-results');
+            results.innerHTML = '';
+            
+            const endpoints = [
+                { url: '/v2/api/auth/csrf', method: 'GET' },
+                { url: '/v2/api/auth/check', method: 'GET' },
+                { url: '/v2/api/health', method: 'GET' }
+            ];
+
+            for (const endpoint of endpoints) {
+                try {
+                    const response = await fetch(API_BASE + endpoint.url, {
+                        method: endpoint.method,
+                        credentials: 'include',
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    const responseText = await response.text();
+                    let data;
+                    try {
+                        data = JSON.parse(responseText);
+                    } catch {
+                        data = responseText;
+                    }
+                    
+                    if (response.ok) {
+                        log('api-results', `✓ ${endpoint.url} - ${response.status}`, 'success');
+                        log('api-results', `<pre>${JSON.stringify(data, null, 2)}</pre>`, 'info');
+                    } else {
+                        log('api-results', `✗ ${endpoint.url} - ${response.status}`, 'error');
+                        log('api-results', `<pre>${JSON.stringify(data, null, 2)}</pre>`, 'error');
+                    }
+                } catch (e) {
+                    log('api-results', `✗ ${endpoint.url} - ${e.message}`, 'error');
+                }
+            }
+        }
+
+        function checkCookies() {
+            const results = document.getElementById('cookie-results');
+            results.innerHTML = '';
+            
+            log('cookie-results', '<strong>Document.cookie:</strong>', 'info');
+            log('cookie-results', `<pre>${document.cookie || '(empty)'}</pre>`, 'info');
+            
+            // Parse cookies
+            const cookies = document.cookie.split(';').reduce((acc, cookie) => {
+                const [key, value] = cookie.trim().split('=');
+                if (key) acc[key] = value;
+                return acc;
+            }, {});
+            
+            log('cookie-results', '<strong>Parsed cookies:</strong>', 'info');
+            log('cookie-results', `<pre>${JSON.stringify(cookies, null, 2)}</pre>`, 'info');
+            
+            // Check for auth cookies
+            if (cookies.access_token || cookies.refresh_token) {
+                log('cookie-results', '⚠️  Auth cookies visible to JavaScript (should be HttpOnly)', 'warning');
+            } else {
+                log('cookie-results', '✓ Auth cookies not visible (good if HttpOnly)', 'success');
+            }
+        }
+
+        async function testRegistration() {
+            const results = document.getElementById('register-results');
+            results.innerHTML = '';
+            
+            const email = document.getElementById('test-email').value;
+            const password = document.getElementById('test-password').value;
+            
+            if (!email || !password) {
+                log('register-results', 'Please enter email and password', 'error');
+                return;
+            }
+            
+            try {
+                // Get CSRF token first
+                log('register-results', 'Getting CSRF token...', 'info');
+                const csrfResponse = await fetch(API_BASE + '/v2/api/auth/csrf', {
+                    credentials: 'include'
+                });
+                const csrfData = await csrfResponse.json();
+                log('register-results', `CSRF Token: ${csrfData.csrf_token}`, 'info');
+                
+                // Try registration
+                log('register-results', 'Attempting registration...', 'info');
+                const response = await fetch(API_BASE + '/v2/api/auth/register', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': csrfData.csrf_token
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                        full_name: 'Test User'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    log('register-results', '✓ Registration successful', 'success');
+                    log('register-results', `<pre>${JSON.stringify(data, null, 2)}</pre>`, 'success');
+                    
+                    // Check cookies after registration
+                    setTimeout(() => {
+                        log('register-results', 'Checking cookies after registration...', 'info');
+                        checkCookies();
+                    }, 1000);
+                } else {
+                    log('register-results', `✗ Registration failed: ${response.status}`, 'error');
+                    log('register-results', `<pre>${JSON.stringify(data, null, 2)}</pre>`, 'error');
+                }
+            } catch (e) {
+                log('register-results', `✗ Registration error: ${e.message}`, 'error');
+            }
+        }
+
+        async function checkAuthState() {
+            const results = document.getElementById('auth-results');
+            results.innerHTML = '';
+            
+            // Check if UnifiedAuth exists
+            if (typeof window.UnifiedAuth !== 'undefined') {
+                log('auth-results', '✓ UnifiedAuth is available', 'success');
+                
+                const user = window.UnifiedAuth.getUser();
+                const isAuth = window.UnifiedAuth.isAuthenticated();
+                
+                log('auth-results', `Authenticated: ${isAuth}`, isAuth ? 'success' : 'warning');
+                log('auth-results', `User: <pre>${JSON.stringify(user, null, 2)}</pre>`, 'info');
+            } else {
+                log('auth-results', '✗ UnifiedAuth not available', 'error');
+                log('auth-results', 'Loading auth-unified.js...', 'info');
+                
+                // Try to load it
+                const script = document.createElement('script');
+                script.src = '/js/auth-unified.js';
+                script.onload = () => {
+                    log('auth-results', '✓ auth-unified.js loaded', 'success');
+                    setTimeout(() => checkAuthState(), 1000);
+                };
+                script.onerror = () => {
+                    log('auth-results', '✗ Failed to load auth-unified.js', 'error');
+                };
+                document.head.appendChild(script);
+            }
+            
+            // Also check via API
+            try {
+                const response = await fetch(API_BASE + '/v2/api/auth/check', {
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                log('auth-results', `API Auth Check: ${response.status}`, response.ok ? 'success' : 'warning');
+                log('auth-results', `<pre>${JSON.stringify(data, null, 2)}</pre>`, 'info');
+            } catch (e) {
+                log('auth-results', `API Auth Check Error: ${e.message}`, 'error');
+            }
+        }
+
+        function updateConsoleErrors() {
+            const element = document.getElementById('console-errors');
+            element.innerHTML = '<strong>Console Errors:</strong>';
+            if (consoleErrors.length === 0) {
+                element.innerHTML += '<div class="success">No errors captured</div>';
+            } else {
+                consoleErrors.forEach(error => {
+                    element.innerHTML += `<div class="error"><pre>${JSON.stringify(error, null, 2)}</pre></div>`;
+                });
+            }
+        }
+
+        function captureConsoleErrors() {
+            consoleErrors = [];
+            updateConsoleErrors();
+            log('console-errors', 'Started capturing console errors...', 'info');
+        }
+
+        // Initial load
+        window.addEventListener('DOMContentLoaded', () => {
+            log('console-errors', 'Debug tool loaded. Click buttons to run tests.', 'info');
+        });
+    </script>
+</body>
+</html>

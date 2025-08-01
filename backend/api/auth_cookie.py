@@ -51,18 +51,26 @@ class UserData(BaseModel):
     daily_limit: int
 
 
-def set_auth_cookies(response: Response, access_token: str, refresh_token: str, remember_me: bool = False, production: bool = True):
+def set_auth_cookies(response: Response, access_token: str, refresh_token: str, remember_me: bool = False, request: Optional[Request] = None):
     """Set authentication cookies with proper security settings."""
+    # Detect if we're in production based on request
+    is_production = True  # Default to secure
+    if request:
+        # Check if HTTPS or if domain contains bankcsvconverter.com
+        is_production = (request.url.scheme == "https" or 
+                        "bankcsvconverter.com" in str(request.url.hostname) or
+                        request.url.hostname not in ["localhost", "127.0.0.1"])
+    
     # Access token cookie
     response.set_cookie(
         key="access_token",
         value=access_token,
         httponly=True,
-        secure=production,  # HTTPS only in production
+        secure=is_production,  # HTTPS only in production
         samesite="lax",
         max_age=ACCESS_TOKEN_EXPIRE_MINUTES * 60,
         path="/",
-        domain=COOKIE_DOMAIN if production else None
+        domain=COOKIE_DOMAIN if is_production else None
     )
     
     # Refresh token cookie (only sent to refresh endpoint)
@@ -71,18 +79,18 @@ def set_auth_cookies(response: Response, access_token: str, refresh_token: str, 
         key="refresh_token",
         value=refresh_token,
         httponly=True,
-        secure=production,
+        secure=is_production,
         samesite="lax",
         max_age=refresh_max_age,
-        path="/v2/api/auth/refresh",
-        domain=COOKIE_DOMAIN if production else None
+        path="/api/auth/refresh",
+        domain=COOKIE_DOMAIN if is_production else None
     )
 
 
 def clear_auth_cookies(response: Response):
     """Clear all authentication cookies."""
     response.delete_cookie(key="access_token", path="/", domain=COOKIE_DOMAIN)
-    response.delete_cookie(key="refresh_token", path="/v2/api/auth/refresh", domain=COOKIE_DOMAIN)
+    response.delete_cookie(key="refresh_token", path="/api/auth/refresh", domain=COOKIE_DOMAIN)
     response.delete_cookie(key="csrf_token", path="/", domain=COOKIE_DOMAIN)
 
 
@@ -109,6 +117,7 @@ async def get_csrf_token(response: Response):
 @router.post("/register")
 async def register(
     response: Response,
+    request: Request,
     user_data: UserRegister,
     db: Session = Depends(get_db)
 ):
@@ -170,8 +179,7 @@ async def register(
     )
     
     # Set cookies
-    is_production = "bankcsvconverter.com" in str(user_data.email)  # Simple check
-    set_auth_cookies(response, access_token, refresh_token, production=is_production)
+    set_auth_cookies(response, access_token, refresh_token, request=request)
     
     # Return user data (no tokens)
     return {
@@ -251,8 +259,7 @@ async def login(
     )
     
     # Set cookies with remember me
-    is_production = request.url.hostname == "bankcsvconverter.com"
-    set_auth_cookies(response, access_token, refresh_token, remember_me=user_credentials.remember_me, production=is_production)
+    set_auth_cookies(response, access_token, refresh_token, remember_me=user_credentials.remember_me, request=request)
     
     # Return user data (no tokens)
     return {
@@ -341,8 +348,7 @@ async def refresh_token(
         )
         
         # Set new cookies
-        is_production = request.url.hostname == "bankcsvconverter.com"
-        set_auth_cookies(response, new_access_token, new_refresh_token, production=is_production)
+        set_auth_cookies(response, new_access_token, new_refresh_token, request=request)
         
         return {"message": "Token refreshed successfully"}
         

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Integration Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .button { padding: 10px 20px; background: #0066ff; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .button:hover { background: #0052cc; }
+        .result { margin: 10px 0; padding: 10px; background: #f5f5f5; border-radius: 5px; }
+        .error { background: #fee; color: red; }
+        .success { background: #efe; color: green; }
+        .loading { background: #fef; color: orange; }
+    </style>
+</head>
+<body>
+    <h1>Stripe Integration Test</h1>
+    
+    <div class="test-section">
+        <h2>1. Backend Connectivity Test</h2>
+        <button class="button" onclick="testBackendConnectivity()">Test Backend Connection</button>
+        <div id="backend-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. Authentication Test</h2>
+        <button class="button" onclick="testAuth()">Check Auth Status</button>
+        <button class="button" onclick="loginTest()">Test Login</button>
+        <div id="auth-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. Stripe Endpoint Tests</h2>
+        <button class="button" onclick="testSubscriptionStatus()">Test Subscription Status</button>
+        <button class="button" onclick="testCheckoutCreation('starter')">Test Checkout (Starter)</button>
+        <button class="button" onclick="testCheckoutCreation('professional')">Test Checkout (Professional)</button>
+        <div id="stripe-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. Frontend Button Simulation</h2>
+        <p>Simulate clicking pricing buttons:</p>
+        <button class="button" onclick="simulatePricingButton('starter', 'monthly')">Starter Monthly</button>
+        <button class="button" onclick="simulatePricingButton('professional', 'yearly')">Professional Yearly</button>
+        <button class="button" onclick="simulatePricingButton('business', 'monthly')">Business Monthly</button>
+        <div id="button-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>5. Test Results Summary</h2>
+        <div id="summary-result" class="result">
+            <h3>Test Status:</h3>
+            <ul id="test-summary"></ul>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE = (() => {
+            const hostname = window.location.hostname;
+            if (hostname === 'localhost' || hostname === '127.0.0.1') {
+                return 'http://localhost:5000';
+            }
+            return `${window.location.protocol}//${hostname}`;
+        })();
+        
+        const STRIPE_API_BASE = `${API_BASE}/api/stripe`;
+        let testResults = {};
+        
+        function log(elementId, message, type = 'loading') {
+            const element = document.getElementById(elementId);
+            element.className = `result ${type}`;
+            element.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+            console.log(`[${type.toUpperCase()}] ${message}`);
+        }
+        
+        function updateSummary() {
+            const summaryList = document.getElementById('test-summary');
+            summaryList.innerHTML = '';
+            Object.entries(testResults).forEach(([test, result]) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span style="color: ${result.success ? 'green' : 'red'}">${test}: ${result.success ? '✅ PASS' : '❌ FAIL'}</span> - ${result.message}`;
+                summaryList.appendChild(li);
+            });
+        }
+        
+        async function testBackendConnectivity() {
+            log('backend-result', 'Testing backend connectivity...', 'loading');
+            try {
+                const response = await fetch(`${API_BASE}/health`, { 
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log('backend-result', `Backend connected successfully: ${JSON.stringify(data)}`, 'success');
+                    testResults['Backend Connection'] = { success: true, message: 'Connected' };
+                } else {
+                    log('backend-result', `Backend responded with status: ${response.status}`, 'error');
+                    testResults['Backend Connection'] = { success: false, message: `HTTP ${response.status}` };
+                }
+            } catch (error) {
+                log('backend-result', `Backend connection failed: ${error.message}`, 'error');
+                testResults['Backend Connection'] = { success: false, message: error.message };
+            }
+            updateSummary();
+        }
+        
+        async function testAuth() {
+            log('auth-result', 'Checking authentication status...', 'loading');
+            try {
+                // Check if auth scripts are loaded
+                const hasUnifiedAuth = typeof window.UnifiedAuth !== 'undefined';
+                const hasBankAuth = typeof window.BankAuth !== 'undefined';
+                
+                let authStatus = 'No authentication system detected';
+                let isAuthenticated = false;
+                
+                if (hasUnifiedAuth && window.UnifiedAuth.isAuthenticated) {
+                    isAuthenticated = window.UnifiedAuth.isAuthenticated();
+                    authStatus = `UnifiedAuth detected - Authenticated: ${isAuthenticated}`;
+                } else if (hasBankAuth && window.BankAuth.TokenManager) {
+                    isAuthenticated = window.BankAuth.TokenManager.isAuthenticated();
+                    authStatus = `BankAuth detected - Authenticated: ${isAuthenticated}`;
+                }
+                
+                log('auth-result', authStatus, isAuthenticated ? 'success' : 'error');
+                testResults['Authentication'] = { success: true, message: authStatus };
+                
+            } catch (error) {
+                log('auth-result', `Auth check failed: ${error.message}`, 'error');
+                testResults['Authentication'] = { success: false, message: error.message };
+            }
+            updateSummary();
+        }
+        
+        async function loginTest() {
+            log('auth-result', 'Attempting test login...', 'loading');
+            try {
+                const response = await fetch(`${API_BASE}/api/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: 'test@test.com',
+                        password: 'wrongpassword'
+                    })
+                });
+                
+                const data = await response.json();
+                if (response.status === 401) {
+                    log('auth-result', 'Login endpoint working (expected 401 for wrong credentials)', 'success');
+                    testResults['Login Endpoint'] = { success: true, message: 'Endpoint accessible' };
+                } else {
+                    log('auth-result', `Unexpected login response: ${response.status} - ${JSON.stringify(data)}`, 'error');
+                    testResults['Login Endpoint'] = { success: false, message: `Status ${response.status}` };
+                }
+            } catch (error) {
+                log('auth-result', `Login test failed: ${error.message}`, 'error');
+                testResults['Login Endpoint'] = { success: false, message: error.message };
+            }
+            updateSummary();
+        }
+        
+        async function testSubscriptionStatus() {
+            log('stripe-result', 'Testing subscription status endpoint...', 'loading');
+            try {
+                const response = await fetch(`${STRIPE_API_BASE}/subscription-status`, {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                const data = await response.json();
+                if (response.status === 401) {
+                    log('stripe-result', 'Subscription endpoint working (expected 401 without auth)', 'success');
+                    testResults['Subscription Status'] = { success: true, message: 'Endpoint accessible, requires auth' };
+                } else {
+                    log('stripe-result', `Unexpected subscription response: ${response.status} - ${JSON.stringify(data)}`, 'error');
+                    testResults['Subscription Status'] = { success: false, message: `Status ${response.status}` };
+                }
+            } catch (error) {
+                log('stripe-result', `Subscription test failed: ${error.message}`, 'error');
+                testResults['Subscription Status'] = { success: false, message: error.message };
+            }
+            updateSummary();
+        }
+        
+        async function testCheckoutCreation(plan) {
+            log('stripe-result', `Testing checkout creation for ${plan} plan...`, 'loading');
+            try {
+                const response = await fetch(`${STRIPE_API_BASE}/create-checkout-session`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        plan: plan,
+                        billing_period: 'monthly'
+                    })
+                });
+                
+                const data = await response.json();
+                if (response.status === 401) {
+                    log('stripe-result', `Checkout endpoint working for ${plan} (expected 401 without auth)`, 'success');
+                    testResults[`Checkout ${plan}`] = { success: true, message: 'Endpoint accessible, requires auth' };
+                } else {
+                    log('stripe-result', `Unexpected checkout response for ${plan}: ${response.status} - ${JSON.stringify(data)}`, 'error');
+                    testResults[`Checkout ${plan}`] = { success: false, message: `Status ${response.status}` };
+                }
+            } catch (error) {
+                log('stripe-result', `Checkout test failed for ${plan}: ${error.message}`, 'error');
+                testResults[`Checkout ${plan}`] = { success: false, message: error.message };
+            }
+            updateSummary();
+        }
+        
+        async function simulatePricingButton(plan, billingPeriod) {
+            log('button-result', `Simulating ${plan} ${billingPeriod} button click...`, 'loading');
+            try {
+                // Simulate the actual pricing page button logic
+                const isAuthenticated = false; // Simulate unauthenticated user
+                
+                if (!isAuthenticated) {
+                    const redirectUrl = `/signup.html?plan=${plan}&redirect=/pricing.html`;
+                    log('button-result', `Would redirect unauthenticated user to: ${redirectUrl}`, 'success');
+                    testResults[`Button ${plan}`] = { success: true, message: 'Redirect logic working' };
+                } else {
+                    // If authenticated, would try to create checkout session
+                    log('button-result', `Would create checkout session for authenticated user: ${plan} (${billingPeriod})`, 'success');
+                    testResults[`Button ${plan}`] = { success: true, message: 'Button logic working' };
+                }
+                
+            } catch (error) {
+                log('button-result', `Button simulation failed for ${plan}: ${error.message}`, 'error');
+                testResults[`Button ${plan}`] = { success: false, message: error.message };
+            }
+            updateSummary();
+        }
+        
+        // Load auth scripts dynamically for testing
+        function loadAuthScripts() {
+            const scripts = [
+                '/js/api-config.js',
+                '/js/auth-unified.js',
+                '/js/stripe-integration.js'
+            ];
+            
+            scripts.forEach(src => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onerror = () => console.log(`Failed to load: ${src}`);
+                script.onload = () => console.log(`Loaded: ${src}`);
+                document.head.appendChild(script);
+            });
+        }
+        
+        // Auto-load scripts and run initial tests
+        window.addEventListener('DOMContentLoaded', () => {
+            loadAuthScripts();
+            setTimeout(() => {
+                testBackendConnectivity();
+                testAuth();
+                testSubscriptionStatus();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

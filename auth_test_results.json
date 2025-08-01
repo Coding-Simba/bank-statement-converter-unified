@@ -1,0 +1,34 @@
+{
+  "csrf_generation": {
+    "status": "PASS",
+    "token": "Uxu2NVW0geGvbuAKKq9E"
+  },
+  "email_validation": {
+    "status": "FAIL",
+    "error": "HTTP 422"
+  },
+  "signup": {
+    "status": "PASS",
+    "user_id": 26,
+    "email": "test_auth_1754059645@example.com",
+    "cookies_set": true
+  },
+  "auth_persistence": {
+    "status": "PASS",
+    "authenticated": true,
+    "email": "test_auth_1754059645@example.com"
+  },
+  "logout": {
+    "status": "FAIL",
+    "error": "Still authenticated"
+  },
+  "login": {
+    "status": "PASS",
+    "email": "test_auth_1754059645@example.com",
+    "cookies_set": true
+  },
+  "remember_me": {
+    "status": "PASS",
+    "refresh_cookie_found": true
+  }
+}

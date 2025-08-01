@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Auth Redirect Test</title>
+    <script src="/js/auth-unified.js"></script>
+</head>
+<body>
+    <h1>Auth Redirect Test</h1>
+    <div id="status">Loading...</div>
+    <script>
+        window.addEventListener('DOMContentLoaded', async () => {
+            const status = document.getElementById('status');
+            
+            // Wait for auth to initialize
+            setTimeout(async () => {
+                if (window.UnifiedAuth) {
+                    const isAuth = window.UnifiedAuth.isAuthenticated();
+                    const user = window.UnifiedAuth.getUser();
+                    
+                    status.innerHTML = `
+                        <p>UnifiedAuth loaded: ✓</p>
+                        <p>Authenticated: ${isAuth ? '✓' : '✗'}</p>
+                        <p>User: ${user ? user.email : 'None'}</p>
+                        <p>No redirect occurred - you're still on this page!</p>
+                        <br>
+                        <a href="/dashboard">Test /dashboard link</a><br>
+                        <a href="/dashboard-modern.html">Test /dashboard-modern.html link</a>
+                    `;
+                } else {
+                    status.innerHTML = 'UnifiedAuth not loaded!';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

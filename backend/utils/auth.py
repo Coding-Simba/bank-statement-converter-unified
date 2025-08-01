@@ -11,8 +11,8 @@ import os
 # Configuration
 SECRET_KEY = os.environ.get("SECRET_KEY", secrets.token_urlsafe(32))
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 24 hours
-REFRESH_TOKEN_EXPIRE_DAYS = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = 15  # 15 minutes (secure short-lived tokens)
+REFRESH_TOKEN_EXPIRE_DAYS = 90  # 90 days for remember me
 
 # Password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")

@@ -1,26 +1,16 @@
 // Dashboard functionality for Bank Statement Converter
 
-// Use the existing getApiBase from auth.js or API_CONFIG
+// Configure API endpoints to match backend routes
 const API_BASE = (() => {
-    // Check if getApiBase already exists from auth.js
-    if (typeof getApiBase !== 'undefined') {
-        return getApiBase() + '/api';
-    }
-    // Otherwise use API_CONFIG
-    if (window.API_CONFIG) {
-        return window.API_CONFIG.getBaseUrl() + '/api';
-    }
-    // Fallback
     const hostname = window.location.hostname;
-    if (hostname === 'localhost' || hostname === '127.0.0.1') {
-        return 'http://localhost:5000/api';
-    }
-    return `${window.location.protocol}//${hostname}/api`;
+    const isLocal = hostname === 'localhost' || hostname === '127.0.0.1';
+    const base = isLocal ? 'http://localhost:5000' : `${window.location.protocol}//${hostname}`;
+    return `${base}/api`;
 })();
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Check authentication
-    if (!window.BankAuth.TokenManager.isAuthenticated()) {
+    if (!window.UnifiedAuth || !window.UnifiedAuth.isAuthenticated()) {
         window.location.href = '/';
         return;
     }
@@ -36,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadUserProfile() {
     try {
-        const user = await window.BankAuth.AuthAPI.getProfile();
+        const user = window.UnifiedAuth.getUser();
         
         // Update basic info
         document.getElementById('userEmail').textContent = user.email;
@@ -50,11 +40,8 @@ async function loadUserProfile() {
         });
         
         // Load subscription status
-        const subscriptionResponse = await fetch(`${API_BASE}/stripe/subscription-status`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${window.BankAuth.TokenManager.getAccessToken()}`
-            }
+        const subscriptionResponse = await window.UnifiedAuth.makeAuthenticatedRequest(`${API_BASE}/stripe/subscription-status`, {
+            method: 'GET'
         });
         
         if (subscriptionResponse.ok) {
@@ -144,7 +131,8 @@ async function loadUsageStatistics() {
 }
 
 async function loadDailyUsage() {
-    const limitData = await window.BankAuth.StatementAPI.checkLimit();
+    const response = await window.UnifiedAuth.makeAuthenticatedRequest(`${API_BASE}/check-limit`);
+    const limitData = await response.json();
     
     // Update statistics
     document.getElementById('todayConversions').textContent = limitData.daily_used;
@@ -172,7 +160,8 @@ async function loadRecentConversions() {
     const container = document.getElementById('conversionsContainer');
     
     try {
-        const statements = await window.BankAuth.StatementAPI.getUserStatements();
+        const response = await window.UnifiedAuth.makeAuthenticatedRequest(`${API_BASE}/user/statements`);
+        const statements = await response.json();
         
         if (!statements || statements.length === 0) {
             container.innerHTML = `
@@ -283,7 +272,14 @@ function createStatementRow(statement) {
 
 async function handleDownload(statementId) {
     try {
-        await window.BankAuth.StatementAPI.downloadStatement(statementId);
+        const response = await window.UnifiedAuth.makeAuthenticatedRequest(`${API_BASE}/statement/${statementId}/download`);
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = statement.output_filename || 'statement.csv';
+        a.click();
+        URL.revokeObjectURL(url);
         UINotification.show('Statement downloaded successfully', 'success');
     } catch (error) {
         console.error('Download failed:', error);
@@ -304,11 +300,10 @@ function handleUpgrade() {
 
 async function openCustomerPortal() {
     try {
-        const response = await fetch(`${API_BASE}/stripe/customer-portal`, {
+        const response = await window.UnifiedAuth.makeAuthenticatedRequest(`${API_BASE}/stripe/customer-portal`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${window.BankAuth.TokenManager.getAccessToken()}`
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 return_url: '/dashboard.html'

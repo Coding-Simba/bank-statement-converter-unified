@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Tab Authentication Synchronization Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .test-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .test-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-unknown {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .status-success {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .status-error {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .status-warning {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .test-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 5px;
+            transition: all 0.2s ease;
+        }
+        
+        .test-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .test-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .test-button.danger {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+        
+        .test-button.success {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+        }
+        
+        .logs-container {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .logs-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .logs-area {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .log-entry {
+            margin-bottom: 8px;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .log-timestamp {
+            color: #95a5a6;
+            font-size: 11px;
+        }
+        
+        .log-message {
+            margin-left: 10px;
+        }
+        
+        .tab-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .tab-link {
+            display: block;
+            background: rgba(255,255,255,0.9);
+            color: #2c3e50;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .tab-link:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .metric-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .instructions {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .instructions h3 {
+            margin-bottom: 15px;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        
+        .progress-fill {
+            background: #27ae60;
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔄 Cross-Tab Auth Sync Test</h1>
+            <p>Comprehensive testing of authentication synchronization across browser tabs</p>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 Test Instructions</h3>
+            <ol>
+                <li>Run the automated test suite to check browser compatibility</li>
+                <li>Open multiple tabs using the "Quick Tab Links" below</li>
+                <li>Login in one tab and verify other tabs detect the login</li>
+                <li>Logout in any tab and confirm all tabs synchronize</li>
+                <li>Monitor the timing and reliability metrics</li>
+            </ol>
+        </div>
+        
+        <div class="test-grid">
+            <div class="test-card">
+                <h3>🤖 Automated Testing</h3>
+                <p>Run comprehensive automated tests to verify synchronization functionality.</p>
+                <div style="margin: 15px 0;">
+                    <button class="test-button" onclick="runAutomatedTests()">
+                        Run Full Test Suite
+                    </button>
+                    <button class="test-button" onclick="testBrowserCompat()">
+                        Browser Compatibility
+                    </button>
+                </div>
+                <div id="testProgress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar"></div>
+                    </div>
+                    <div id="testStatus">Ready to test</div>
+                </div>
+            </div>
+            
+            <div class="test-card">
+                <h3>🔐 Authentication Control</h3>
+                <p>Login and logout to test cross-tab synchronization.</p>
+                <div style="margin: 15px 0;">
+                    <button class="test-button success" onclick="quickLogin()">
+                        Quick Login
+                    </button>
+                    <button class="test-button danger" onclick="performLogout()">
+                        Logout
+                    </button>
+                    <button class="test-button" onclick="checkAuthStatus()">
+                        Check Status
+                    </button>
+                </div>
+                <div id="authStatus">
+                    <span class="status-badge status-unknown">Unknown</span>
+                    <span id="authDetails">Checking...</span>
+                </div>
+            </div>
+            
+            <div class="test-card">
+                <h3>📊 Real-time Monitoring</h3>
+                <p>Monitor authentication events and synchronization timing.</p>
+                <div style="margin: 15px 0;">
+                    <button class="test-button" onclick="startMonitoring()" id="monitorBtn">
+                        Start Monitoring
+                    </button>
+                    <button class="test-button" onclick="stopMonitoring()">
+                        Stop Monitoring
+                    </button>
+                    <button class="test-button" onclick="clearLogs()">
+                        Clear Logs
+                    </button>
+                </div>
+                <div id="monitoringStatus">
+                    <span class="status-badge status-unknown">Stopped</span>
+                </div>
+            </div>
+            
+            <div class="test-card">
+                <h3>🌐 Browser Support</h3>
+                <p id="browserInfo">Loading browser information...</p>
+                <div style="margin: 15px 0;">
+                    <div>BroadcastChannel: <span id="bcSupport" class="status-badge status-unknown">Unknown</span></div>
+                    <div>Storage Events: <span id="storageSupport" class="status-badge status-unknown">Unknown</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value" id="loginSyncTime">--</div>
+                <div class="metric-label">Avg Login Sync (ms)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="logoutSyncTime">--</div>
+                <div class="metric-label">Avg Logout Sync (ms)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="eventsDetected">0</div>
+                <div class="metric-label">Events Detected</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="syncReliability">--</div>
+                <div class="metric-label">Sync Reliability</div>
+            </div>
+        </div>
+        
+        <div class="logs-container">
+            <div class="logs-header">
+                <h3>📜 Test Logs</h3>
+                <div>
+                    <button class="test-button" onclick="exportLogs()">Export Logs</button>
+                    <button class="test-button" onclick="clearLogs()">Clear</button>
+                </div>
+            </div>
+            <div class="logs-area" id="logsArea">
+                <div class="log-entry">
+                    <span class="log-timestamp">[System]</span>
+                    <span class="log-message">Cross-tab authentication test page loaded</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-card">
+            <h3>🔗 Quick Tab Links</h3>
+            <p>Open these pages in separate tabs to test cross-tab synchronization:</p>
+            <div class="tab-links">
+                <a href="/dashboard.html" target="_blank" class="tab-link">📊 Dashboard</a>
+                <a href="/index.html" target="_blank" class="tab-link">🏠 Convert PDF</a>
+                <a href="/pricing.html" target="_blank" class="tab-link">💰 Pricing</a>
+                <a href="/settings.html" target="_blank" class="tab-link">⚙️ Settings</a>
+                <a href="/test_cross_tab_logout.html" target="_blank" class="tab-link">🧪 Test Page</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load the auth script and test suite -->
+    <script src="/js/auth-unified.js"></script>
+    <script src="/test_cross_tab_auth_sync.js"></script>
+    <script>
+        // Global test state
+        let tester = null;
+        let monitoringInterval = null;
+        let testMetrics = {
+            loginSyncTimes: [],
+            logoutSyncTimes: [],
+            eventsDetected: 0,
+            testsRun: 0,
+            testsSucceeded: 0
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', async () => {
+            log('Cross-tab authentication test page loaded');
+            
+            // Initialize tester
+            tester = new CrossTabAuthTester();
+            
+            // Check browser compatibility
+            await updateBrowserInfo();
+            
+            // Initial auth check
+            setTimeout(checkAuthStatus, 1000);
+            
+            // Set up cross-tab event listeners
+            setupEventListeners();
+        });
+
+        async function updateBrowserInfo() {
+            const browserInfo = {
+                userAgent: navigator.userAgent,
+                vendor: navigator.vendor,
+                platform: navigator.platform
+            };
+            
+            document.getElementById('browserInfo').textContent = 
+                `${browserInfo.vendor} on ${browserInfo.platform}`;
+            
+            // Check BroadcastChannel support
+            const bcSupported = typeof BroadcastChannel !== 'undefined';
+            const bcElement = document.getElementById('bcSupport');
+            bcElement.textContent = bcSupported ? 'Supported' : 'Not Supported';
+            bcElement.className = `status-badge ${bcSupported ? 'status-success' : 'status-error'}`;
+            
+            // Check Storage events support
+            const storageSupported = 'onstorage' in window;
+            const storageElement = document.getElementById('storageSupport');
+            storageElement.textContent = storageSupported ? 'Supported' : 'Not Supported';
+            storageElement.className = `status-badge ${storageSupported ? 'status-success' : 'status-error'}`;
+        }
+
+        function setupEventListeners() {
+            // Listen for auth state changes
+            window.addEventListener('authStateChanged', (event) => {
+                testMetrics.eventsDetected++;
+                updateMetrics();
+                log(`Auth state changed: ${event.detail.authenticated ? 'Logged in' : 'Logged out'}`, 'info');
+            });
+            
+            // Listen for storage events
+            window.addEventListener('storage', (event) => {
+                if (event.key === 'user' || event.key === 'auth-logout-event') {
+                    testMetrics.eventsDetected++;
+                    updateMetrics();
+                    log(`Storage event: ${event.key}`, 'info');
+                }
+            });
+            
+            // Listen for BroadcastChannel events
+            if (typeof BroadcastChannel !== 'undefined') {
+                const authChannel = new BroadcastChannel('auth-channel');
+                authChannel.onmessage = (event) => {
+                    testMetrics.eventsDetected++;
+                    updateMetrics();
+                    log(`BroadcastChannel event: ${JSON.stringify(event.data)}`, 'info');
+                };
+            }
+        }
+
+        async function runAutomatedTests() {
+            if (!tester) {
+                log('Test suite not initialized', 'error');
+                return;
+            }
+            
+            updateProgress(0, 'Starting automated tests...');
+            
+            try {
+                // Run the full test suite with progress updates
+                const tests = [
+                    { name: 'Browser Compatibility', fn: () => tester.testBrowserCompatibility(), weight: 10 },
+                    { name: 'BroadcastChannel', fn: () => tester.testBroadcastChannelImplementation(), weight: 15 },
+                    { name: 'localStorage Events', fn: () => tester.testLocalStorageEventHandling(), weight: 15 },
+                    { name: 'Login Sync', fn: () => tester.testLoginSynchronization(), weight: 25 },
+                    { name: 'Logout Sync', fn: () => tester.testLogoutSynchronization(), weight: 25 },
+                    { name: 'Race Conditions', fn: () => tester.testRaceConditions(), weight: 10 }
+                ];
+                
+                let completed = 0;
+                const totalWeight = tests.reduce((sum, test) => sum + test.weight, 0);
+                
+                for (const test of tests) {
+                    updateProgress((completed / totalWeight) * 100, `Running: ${test.name}`);
+                    await test.fn();
+                    completed += test.weight;
+                    updateProgress((completed / totalWeight) * 100, `Completed: ${test.name}`);
+                }
+                
+                updateProgress(100, 'All tests completed');
+                
+                // Generate and display report
+                const report = tester.generateReport();
+                log('Automated test suite completed successfully', 'success');
+                
+                // Update metrics from report
+                if (report.performance.averageLoginSync) {
+                    testMetrics.loginSyncTimes.push(report.performance.averageLoginSync);
+                }
+                if (report.performance.averageLogoutSync) {
+                    testMetrics.logoutSyncTimes.push(report.performance.averageLogoutSync);
+                }
+                
+                updateMetrics();
+                
+            } catch (error) {
+                log(`Automated tests failed: ${error.message}`, 'error');
+                updateProgress(0, 'Tests failed');
+            }
+        }
+
+        async function testBrowserCompat() {
+            if (!tester) return;
+            
+            updateProgress(50, 'Testing browser compatibility...');
+            await tester.testBrowserCompatibility();
+            await updateBrowserInfo();
+            updateProgress(100, 'Browser compatibility check completed');
+            setTimeout(() => updateProgress(0, 'Ready'), 2000);
+        }
+
+        async function quickLogin() {
+            const startTime = Date.now();
+            log('Attempting quick login...', 'info');
+            
+            try {
+                if (window.UnifiedAuth) {
+                    const result = await window.UnifiedAuth.login(
+                        'test-20250801-134232@example.com',
+                        'TestPassword123!',
+                        false
+                    );
+                    
+                    if (result.success) {
+                        const syncTime = Date.now() - startTime;
+                        testMetrics.loginSyncTimes.push(syncTime);
+                        updateMetrics();
+                        log(`Login successful in ${syncTime}ms`, 'success');
+                        updateAuthUI(true, result.user);
+                    } else {
+                        log(`Login failed: ${result.error}`, 'error');
+                    }
+                } else {
+                    log('UnifiedAuth not available', 'error');
+                }
+            } catch (error) {
+                log(`Login error: ${error.message}`, 'error');
+            }
+        }
+
+        async function performLogout() {
+            const startTime = Date.now();
+            log('Performing logout...', 'warning');
+            
+            try {
+                if (window.UnifiedAuth) {
+                    await window.UnifiedAuth.logout();
+                    const syncTime = Date.now() - startTime;
+                    testMetrics.logoutSyncTimes.push(syncTime);
+                    updateMetrics();
+                    log(`Logout completed in ${syncTime}ms`, 'success');
+                    updateAuthUI(false);
+                } else {
+                    log('UnifiedAuth not available', 'error');
+                }
+            } catch (error) {
+                log(`Logout error: ${error.message}`, 'error');
+            }
+        }
+
+        async function checkAuthStatus() {
+            log('Checking authentication status...', 'info');
+            
+            try {
+                if (window.UnifiedAuth) {
+                    await window.UnifiedAuth.checkAuth();
+                    const isAuth = window.UnifiedAuth.isAuthenticated();
+                    const user = window.UnifiedAuth.getUser();
+                    
+                    updateAuthUI(isAuth, user);
+                    log(`Auth status: ${isAuth ? 'Authenticated' : 'Not authenticated'}`, 'info');
+                } else {
+                    log('UnifiedAuth not available', 'error');
+                }
+            } catch (error) {
+                log(`Auth check error: ${error.message}`, 'error');
+            }
+        }
+
+        function updateAuthUI(isAuthenticated, user = null) {
+            const statusElement = document.getElementById('authStatus');
+            const detailsElement = document.getElementById('authDetails');
+            
+            if (isAuthenticated && user) {
+                statusElement.innerHTML = '<span class="status-badge status-success">Authenticated</span>';
+                detailsElement.textContent = user.email;
+            } else {
+                statusElement.innerHTML = '<span class="status-badge status-error">Not Authenticated</span>';
+                detailsElement.textContent = 'Please login';
+            }
+        }
+
+        function startMonitoring() {
+            if (monitoringInterval) {
+                log('Monitoring already active', 'warning');
+                return;
+            }
+            
+            log('Starting real-time monitoring...', 'info');
+            document.getElementById('monitoringStatus').innerHTML = 
+                '<span class="status-badge status-success">Active</span>';
+            
+            monitoringInterval = setInterval(async () => {
+                await checkAuthStatus();
+            }, 2000);
+            
+            document.getElementById('monitorBtn').textContent = 'Monitoring Active';
+            document.getElementById('monitorBtn').disabled = true;
+        }
+
+        function stopMonitoring() {
+            if (monitoringInterval) {
+                clearInterval(monitoringInterval);
+                monitoringInterval = null;
+                log('Monitoring stopped', 'info');
+                
+                document.getElementById('monitoringStatus').innerHTML = 
+                    '<span class="status-badge status-unknown">Stopped</span>';
+                
+                document.getElementById('monitorBtn').textContent = 'Start Monitoring';
+                document.getElementById('monitorBtn').disabled = false;
+            }
+        }
+
+        function updateProgress(percent, message) {
+            document.getElementById('progressBar').style.width = `${percent}%`;
+            document.getElementById('testStatus').textContent = message;
+        }
+
+        function updateMetrics() {
+            const avgLogin = testMetrics.loginSyncTimes.length > 0 
+                ? Math.round(testMetrics.loginSyncTimes.reduce((a, b) => a + b) / testMetrics.loginSyncTimes.length)
+                : '--';
+            
+            const avgLogout = testMetrics.logoutSyncTimes.length > 0
+                ? Math.round(testMetrics.logoutSyncTimes.reduce((a, b) => a + b) / testMetrics.logoutSyncTimes.length)
+                : '--';
+            
+            const reliability = testMetrics.testsRun > 0
+                ? Math.round((testMetrics.testsSucceeded / testMetrics.testsRun) * 100)
+                : '--';
+            
+            document.getElementById('loginSyncTime').textContent = avgLogin;
+            document.getElementById('logoutSyncTime').textContent = avgLogout;
+            document.getElementById('eventsDetected').textContent = testMetrics.eventsDetected;
+            document.getElementById('syncReliability').textContent = reliability + (reliability !== '--' ? '%' : '');
+        }
+
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logsArea = document.getElementById('logsArea');
+            
+            const colors = {
+                info: '#3498db',
+                success: '#27ae60',
+                warning: '#f39c12',
+                error: '#e74c3c'
+            };
+            
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            logEntry.innerHTML = `
+                <span class="log-timestamp">[${timestamp}]</span>
+                <span class="log-message" style="color: ${colors[type] || colors.info}">${message}</span>
+            `;
+            
+            logsArea.appendChild(logEntry);
+            logsArea.scrollTop = logsArea.scrollHeight;
+        }
+
+        function clearLogs() {
+            document.getElementById('logsArea').innerHTML = '';
+            log('Logs cleared');
+        }
+
+        function exportLogs() {
+            const logs = Array.from(document.querySelectorAll('.log-entry')).map(entry => entry.textContent);
+            const blob = new Blob([logs.join('\n')], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `cross-tab-auth-test-${new Date().toISOString().slice(0, 10)}.txt`;
+            a.click();
+            
+            URL.revokeObjectURL(url);
+            log('Logs exported successfully', 'success');
+        }
+    </script>
+</body>
+</html>

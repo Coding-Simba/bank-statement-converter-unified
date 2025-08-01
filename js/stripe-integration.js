@@ -74,11 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('API URL:', `${STRIPE_API_BASE}/create-checkout-session`);
                     
                     // Create checkout session
-                    const response = await fetch(`${STRIPE_API_BASE}/create-checkout-session`, {
+                    const response = await window.UnifiedAuth.makeAuthenticatedRequest(`${STRIPE_API_BASE}/create-checkout-session`, {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${window.BankAuth.TokenManager.getAccessToken()}`
+                            'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(payload)
                     });
@@ -114,11 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // Check current subscription status
 async function checkSubscriptionStatus() {
     try {
-        const response = await fetch(`${STRIPE_API_BASE}/subscription-status`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${window.BankAuth.TokenManager.getAccessToken()}`
-            }
+        const response = await window.UnifiedAuth.makeAuthenticatedRequest(`${STRIPE_API_BASE}/subscription-status`, {
+            method: 'GET'
         });
         
         if (response.ok) {
@@ -171,11 +167,10 @@ function displayManageSubscriptionButton(status) {
             button.disabled = true;
             
             try {
-                const response = await fetch(`${STRIPE_API_BASE}/customer-portal`, {
+                const response = await window.UnifiedAuth.makeAuthenticatedRequest(`${STRIPE_API_BASE}/customer-portal`, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${window.BankAuth.TokenManager.getAccessToken()}`
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
                         return_url: '/dashboard.html'
