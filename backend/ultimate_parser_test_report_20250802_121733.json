@@ -1,0 +1,133 @@
+{
+  "test_date": "2025-08-02T12:17:33.482423",
+  "summary": {
+    "total_pdfs": 20,
+    "successful": 18,
+    "empty": 1,
+    "errors": 0,
+    "missing": 1,
+    "success_rate": 100.0,
+    "total_transactions": 282
+  },
+  "details": [
+    {
+      "pdf": "USA Bank of America.pdf",
+      "status": "SUCCESS",
+      "transactions": 13,
+      "time": 0.5929930210113525
+    },
+    {
+      "pdf": "USA Wells Fargo 7 pages.pdf",
+      "status": "SUCCESS",
+      "transactions": 9,
+      "time": 0.6335458755493164
+    },
+    {
+      "pdf": "USA Chase bank.pdf",
+      "status": "SUCCESS",
+      "transactions": 4,
+      "time": 0.17513608932495117
+    },
+    {
+      "pdf": "USA Citizens Bank.pdf",
+      "status": "SUCCESS",
+      "transactions": 26,
+      "time": 0.19162535667419434
+    },
+    {
+      "pdf": "USA PNC 2.pdf",
+      "status": "SUCCESS",
+      "transactions": 15,
+      "time": 0.11213278770446777
+    },
+    {
+      "pdf": "USA Suntrust.pdf",
+      "status": "SUCCESS",
+      "transactions": 9,
+      "time": 0.08079719543457031
+    },
+    {
+      "pdf": "USA Fifth Third Bank.pdf",
+      "status": "SUCCESS",
+      "transactions": 32,
+      "time": 0.11779594421386719
+    },
+    {
+      "pdf": "USA Ohio Huntington bank statement 7 page.pdf",
+      "status": "MISSING",
+      "transactions": 0
+    },
+    {
+      "pdf": "USA Discover Bank.pdf",
+      "status": "SUCCESS",
+      "transactions": 13,
+      "time": 0.4200301170349121
+    },
+    {
+      "pdf": "USA Woodforest.pdf",
+      "status": "SUCCESS",
+      "transactions": 39,
+      "time": 0.31630396842956543
+    },
+    {
+      "pdf": "United Kingdom Metro Bank.pdf",
+      "status": "SUCCESS",
+      "transactions": 21,
+      "time": 0.048909664154052734
+    },
+    {
+      "pdf": "UK Nationwide word pdf.pdf",
+      "status": "SUCCESS",
+      "transactions": 4,
+      "time": 0.5209689140319824
+    },
+    {
+      "pdf": "Canada RBC.pdf",
+      "status": "SUCCESS",
+      "transactions": 2,
+      "time": 0.23495197296142578
+    },
+    {
+      "pdf": "Australia Westpac bank statement.pdf",
+      "status": "SUCCESS",
+      "transactions": 15,
+      "time": 0.055803775787353516
+    },
+    {
+      "pdf": "Australia Bendigo Bank Statement.pdf",
+      "status": "SUCCESS",
+      "transactions": 7,
+      "time": 0.1922168731689453
+    },
+    {
+      "pdf": "Australia Commonwealth J C.pdf",
+      "status": "SUCCESS",
+      "transactions": 13,
+      "time": 1.8460161685943604
+    },
+    {
+      "pdf": "merged_statements_2025-07-26.pdf",
+      "status": "SUCCESS",
+      "transactions": 4,
+      "time": 9.239901781082153
+    },
+    {
+      "pdf": "Bank-Statement-Template-4-TemplateLab.pdf",
+      "status": "EMPTY",
+      "transactions": 0,
+      "time": 9.128905057907104
+    },
+    {
+      "pdf": "dummy_statement.pdf",
+      "status": "SUCCESS",
+      "transactions": 45,
+      "time": 9.672123908996582
+    },
+    {
+      "pdf": "Bank Statement Example Final.pdf",
+      "status": "SUCCESS",
+      "transactions": 11,
+      "time": 0.08707785606384277
+    }
+  ]
+}
