@@ -125,6 +125,14 @@ try:
 except ImportError as e:
     print(f"User settings simple module error: {e}")
 
+# Login sessions tracking
+try:
+    from api.login_sessions import router as login_sessions_router
+    app.include_router(login_sessions_router)
+    print("Login sessions endpoints loaded successfully")
+except ImportError as e:
+    print(f"Login sessions module error: {e}")
+
 
 @app.get("/")
 async def root():

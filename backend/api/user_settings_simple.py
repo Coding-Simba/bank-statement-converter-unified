@@ -292,16 +292,194 @@ async def get_login_sessions(
     }
 
 
-# Simple 2FA status (without actual implementation)
+# Import 2FA utilities
+try:
+    from utils.two_factor_simple import (
+        generate_secret, generate_qr_placeholder, verify_token,
+        generate_backup_codes, hash_backup_code, verify_backup_code,
+        format_secret_for_display, generate_provisioning_uri
+    )
+    TWO_FA_AVAILABLE = True
+except ImportError:
+    TWO_FA_AVAILABLE = False
+    print("2FA utilities not available")
+
+
+# 2FA endpoints
 @router.get("/2fa/status")
 async def get_2fa_status(
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
 ):
     """Get 2FA status."""
+    backup_codes_count = 0
+    if hasattr(current_user, 'two_factor_backup_codes') and current_user.two_factor_backup_codes:
+        try:
+            codes = json.loads(current_user.two_factor_backup_codes)
+            backup_codes_count = len(codes)
+        except:
+            pass
+    
     return {
         "enabled": getattr(current_user, 'two_factor_enabled', False),
-        "backup_codes_remaining": 0
+        "backup_codes_remaining": backup_codes_count
     }
+
+
+@router.post("/2fa/enable")
+async def enable_2fa(
+    password: str,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Enable two-factor authentication."""
+    if not TWO_FA_AVAILABLE:
+        raise HTTPException(
+            status_code=status.HTTP_501_NOT_IMPLEMENTED,
+            detail="2FA is not available"
+        )
+    
+    # Verify password
+    if not verify_password(password, current_user.password_hash):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password is incorrect"
+        )
+    
+    if getattr(current_user, 'two_factor_enabled', False):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Two-factor authentication is already enabled"
+        )
+    
+    # Generate secret and backup codes
+    secret = generate_secret()
+    backup_codes = generate_backup_codes()
+    
+    # Store temporarily (not enabled until verified)
+    if hasattr(current_user, 'two_factor_secret'):
+        current_user.two_factor_secret = secret
+    
+    # Store hashed backup codes
+    hashed_codes = [hash_backup_code(code) for code in backup_codes]
+    if hasattr(current_user, 'two_factor_backup_codes'):
+        current_user.two_factor_backup_codes = json.dumps(hashed_codes)
+    
+    db.commit()
+    
+    # Generate QR placeholder and provisioning URI
+    qr_code = generate_qr_placeholder(current_user.email, secret)
+    provisioning_uri = generate_provisioning_uri(current_user.email, secret)
+    
+    return {
+        "secret": format_secret_for_display(secret),
+        "qr_code": qr_code,
+        "provisioning_uri": provisioning_uri,
+        "backup_codes": backup_codes,
+        "message": "Enter the secret in your authenticator app and verify with a token"
+    }
+
+
+@router.post("/2fa/verify")
+async def verify_2fa_setup(
+    token: str,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Verify 2FA setup with initial token."""
+    if not TWO_FA_AVAILABLE:
+        raise HTTPException(
+            status_code=status.HTTP_501_NOT_IMPLEMENTED,
+            detail="2FA is not available"
+        )
+    
+    if getattr(current_user, 'two_factor_enabled', False):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Two-factor authentication is already enabled"
+        )
+    
+    secret = getattr(current_user, 'two_factor_secret', None)
+    if not secret:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Please enable 2FA first"
+        )
+    
+    # Verify token
+    if not verify_token(secret, token):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid verification code"
+        )
+    
+    # Enable 2FA
+    if hasattr(current_user, 'two_factor_enabled'):
+        current_user.two_factor_enabled = True
+    
+    db.commit()
+    
+    return {"message": "Two-factor authentication enabled successfully"}
+
+
+@router.post("/2fa/disable")
+async def disable_2fa(
+    password: str,
+    token: str,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Disable two-factor authentication."""
+    if not getattr(current_user, 'two_factor_enabled', False):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Two-factor authentication is not enabled"
+        )
+    
+    # Verify password
+    if not verify_password(password, current_user.password_hash):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password is incorrect"
+        )
+    
+    # Verify 2FA token or backup code
+    secret = getattr(current_user, 'two_factor_secret', None)
+    if TWO_FA_AVAILABLE and secret:
+        # Try regular token first
+        token_valid = verify_token(secret, token)
+        
+        if not token_valid:
+            # Try backup code
+            backup_codes = []
+            if hasattr(current_user, 'two_factor_backup_codes') and current_user.two_factor_backup_codes:
+                try:
+                    backup_codes = json.loads(current_user.two_factor_backup_codes)
+                except:
+                    pass
+            
+            is_valid, matched_hash = verify_backup_code(token, backup_codes)
+            if not is_valid:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="Invalid verification code"
+                )
+            
+            # Remove used backup code
+            backup_codes.remove(matched_hash)
+            current_user.two_factor_backup_codes = json.dumps(backup_codes)
+    
+    # Disable 2FA
+    if hasattr(current_user, 'two_factor_enabled'):
+        current_user.two_factor_enabled = False
+    if hasattr(current_user, 'two_factor_secret'):
+        current_user.two_factor_secret = None
+    if hasattr(current_user, 'two_factor_backup_codes'):
+        current_user.two_factor_backup_codes = None
+    
+    db.commit()
+    
+    return {"message": "Two-factor authentication disabled successfully"}
 
 
 # Settings summary endpoint

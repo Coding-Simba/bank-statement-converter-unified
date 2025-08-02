@@ -30,6 +30,7 @@ async function initializeSettings() {
         setupPanelNavigation();
         setupFormHandlers();
         setupModalHandlers();
+        setupPreferencesAutoSave();
         
         // Load initial data
         await loadAllSettings();
@@ -409,11 +410,18 @@ async function handleNotificationUpdate(e) {
 // Handle preferences update
 async function handlePreferencesUpdate(e) {
     e.preventDefault();
+    await savePreferences();
+}
+
+// Save preferences (used by auto-save and manual save)
+async function savePreferences(showMessage = true) {
+    const submitBtn = document.querySelector('#preferencesForm button[type="submit"]');
+    const originalText = submitBtn ? submitBtn.innerHTML : '';
     
-    const submitBtn = e.target.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
-    submitBtn.disabled = true;
+    if (submitBtn && showMessage) {
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+        submitBtn.disabled = true;
+    }
     
     try {
         const preferences = {
@@ -424,22 +432,62 @@ async function handlePreferencesUpdate(e) {
             analytics: getValue('analytics', true)
         };
         
-        // Store locally for now (until backend endpoint exists)
+        // Store locally immediately
         localStorage.setItem('conversion_preferences', JSON.stringify(preferences));
-        showNotification('Preferences saved', 'success');
         
-        // TODO: Send to backend when endpoint is available
-        // const response = await makeAuthRequest('/api/user/preferences', {
-        //     method: 'PUT',
-        //     body: JSON.stringify(preferences)
-        // });
+        // Try to save to backend
+        try {
+            const response = await makeAuthRequest('/api/user/preferences', {
+                method: 'PUT',
+                body: JSON.stringify(preferences)
+            });
+            
+            if (response.ok && showMessage) {
+                showNotification('Preferences saved', 'success');
+            }
+        } catch (error) {
+            // Silently fail for auto-save
+            if (showMessage) {
+                console.error('Failed to save to backend:', error);
+            }
+        }
         
     } catch (error) {
-        console.error('Preferences update error:', error);
-        showNotification('An error occurred while saving preferences', 'error');
+        console.error('Preferences save error:', error);
+        if (showMessage) {
+            showNotification('An error occurred while saving preferences', 'error');
+        }
     } finally {
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
+        if (submitBtn) {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    }
+}
+
+// Setup auto-save for preferences
+function setupPreferencesAutoSave() {
+    // Debounce function to avoid too many saves
+    let saveTimeout;
+    const autoSave = () => {
+        clearTimeout(saveTimeout);
+        saveTimeout = setTimeout(() => {
+            savePreferences(false); // Don't show notification for auto-save
+        }, 1000); // Save 1 second after user stops changing
+    };
+    
+    // Watch for changes in preferences form
+    const preferencesForm = document.getElementById('preferencesForm');
+    if (preferencesForm) {
+        // Select dropdowns
+        preferencesForm.querySelectorAll('select').forEach(select => {
+            select.addEventListener('change', autoSave);
+        });
+        
+        // Checkboxes
+        preferencesForm.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', autoSave);
+        });
     }
 }
 
@@ -485,8 +533,8 @@ async function show2FAEnableModal() {
 function show2FASetupModal(data) {
     // Create modal HTML
     const modalHtml = `
-        <div class="modal" id="2faSetupModal" style="display: block;">
-            <div class="modal-content" style="max-width: 500px;">
+        <div class="modal" id="2faSetupModal" style="display: flex;">
+            <div class="modal-content" style="max-width: 600px;">
                 <div class="modal-header">
                     <h3>Setup Two-Factor Authentication</h3>
                     <button class="modal-close" onclick="closeModal('2faSetupModal')">
@@ -494,28 +542,80 @@ function show2FASetupModal(data) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="text-center mb-3">
-                        <p>Scan this QR code with your authenticator app:</p>
-                        <img src="${data.qr_code}" alt="2FA QR Code" style="max-width: 200px;">
-                    </div>
-                    <div class="mb-3">
-                        <p>Or enter this code manually:</p>
-                        <code class="d-block text-center p-2 bg-light">${data.secret}</code>
-                    </div>
-                    <div class="mb-3">
-                        <p><strong>Backup codes:</strong> Save these codes in a safe place</p>
-                        <div class="backup-codes">
-                            ${data.backup_codes.map(code => `<code>${code}</code>`).join(' ')}
+                    <div class="twofa-setup-steps">
+                        <div class="setup-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Install an Authenticator App</h4>
+                                <p>If you don't have one, download:</p>
+                                <ul>
+                                    <li>Google Authenticator</li>
+                                    <li>Microsoft Authenticator</li>
+                                    <li>Authy</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <label>Enter verification code from your app:</label>
-                        <input type="text" id="2faVerifyCode" class="form-control" placeholder="000000">
+                        
+                        <div class="setup-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Add Account to Your App</h4>
+                                <div class="setup-options">
+                                    <div class="option-qr">
+                                        <p>Scan this QR code:</p>
+                                        <div class="qr-container">
+                                            <img src="${data.qr_code}" alt="2FA QR Code">
+                                        </div>
+                                    </div>
+                                    <div class="option-manual">
+                                        <p>Or enter manually:</p>
+                                        <div class="manual-entry">
+                                            <label>Account:</label>
+                                            <code>BankCSV</code>
+                                            <label>Key:</label>
+                                            <code class="secret-key">${data.secret}</code>
+                                            <button class="btn-copy" onclick="copyToClipboard('${data.secret.replace(/ /g, '')}')">
+                                                <i class="fas fa-copy"></i> Copy
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="setup-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Save Backup Codes</h4>
+                                <p>Store these codes safely. You can use them if you lose access to your authenticator app:</p>
+                                <div class="backup-codes">
+                                    ${data.backup_codes.map(code => `<code>${code}</code>`).join('')}
+                                </div>
+                                <button class="btn btn-secondary btn-sm" onclick="downloadBackupCodes(${JSON.stringify(data.backup_codes)})">
+                                    <i class="fas fa-download"></i> Download Codes
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="setup-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Verify Setup</h4>
+                                <p>Enter the 6-digit code from your authenticator app:</p>
+                                <div class="verify-input">
+                                    <input type="text" id="2faVerifyCode" class="form-control code-input" 
+                                           placeholder="000000" maxlength="6" autocomplete="off">
+                                    <div class="code-timer" id="codeTimer"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" onclick="closeModal('2faSetupModal')">Cancel</button>
-                    <button class="btn btn-primary" onclick="verify2FASetup()">Verify & Enable</button>
+                    <button class="btn btn-primary" onclick="verify2FASetup()" id="verify2FABtn">
+                        <i class="fas fa-shield-alt"></i> Verify & Enable 2FA
+                    </button>
                 </div>
             </div>
         </div>
@@ -523,6 +623,74 @@ function show2FASetupModal(data) {
     
     // Add modal to page
     document.body.insertAdjacentHTML('beforeend', modalHtml);
+    
+    // Focus on input
+    setTimeout(() => {
+        document.getElementById('2faVerifyCode').focus();
+    }, 100);
+    
+    // Start timer
+    update2FATimer();
+}
+
+// Update 2FA timer
+function update2FATimer() {
+    const timerEl = document.getElementById('codeTimer');
+    if (!timerEl) return;
+    
+    const updateTimer = () => {
+        const seconds = 30 - (Math.floor(Date.now() / 1000) % 30);
+        timerEl.textContent = `Code refreshes in ${seconds}s`;
+        
+        if (seconds <= 5) {
+            timerEl.style.color = '#ef4444';
+        } else {
+            timerEl.style.color = '#6b7280';
+        }
+    };
+    
+    updateTimer();
+    const interval = setInterval(() => {
+        if (!document.getElementById('codeTimer')) {
+            clearInterval(interval);
+            return;
+        }
+        updateTimer();
+    }, 1000);
+}
+
+// Copy to clipboard
+window.copyToClipboard = function(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        showNotification('Copied to clipboard', 'success');
+    }).catch(() => {
+        showNotification('Failed to copy', 'error');
+    });
+}
+
+// Download backup codes
+window.downloadBackupCodes = function(codes) {
+    const content = `BankCSV Two-Factor Authentication Backup Codes
+Generated: ${new Date().toISOString()}
+
+IMPORTANT: Store these codes in a safe place.
+Each code can only be used once.
+
+${codes.join('\n')}
+
+If you lose access to your authenticator app, you can use one of these codes to sign in.`;
+    
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'bankcsv-2fa-backup-codes.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    showNotification('Backup codes downloaded', 'success');
 }
 
 // Verify 2FA setup
@@ -698,25 +866,143 @@ async function loadLoginHistory() {
     const historyContainer = document.getElementById('loginHistory');
     if (!historyContainer) return;
     
-    // For now, show placeholder
-    historyContainer.innerHTML = `
-        <div class="login-item">
-            <div class="login-info">
-                <div class="login-location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Current Session</span>
+    try {
+        const response = await makeAuthRequest('/api/user/sessions?limit=5');
+        if (response.ok) {
+            const data = await response.json();
+            
+            if (data.sessions && data.sessions.length > 0) {
+                historyContainer.innerHTML = data.sessions.map(session => {
+                    const deviceIcon = session.device_type === 'mobile' ? 'fa-mobile-alt' : 
+                                     session.device_type === 'tablet' ? 'fa-tablet-alt' : 'fa-desktop';
+                    
+                    const loginTime = new Date(session.created_at);
+                    const timeAgo = getTimeAgo(loginTime);
+                    
+                    return `
+                        <div class="login-item ${session.is_current ? 'current-session' : ''}">
+                            <div class="login-info">
+                                <div class="login-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>${session.location || session.ip_address}</span>
+                                </div>
+                                <div class="login-details">
+                                    <span class="login-browser">${session.browser} on ${session.os}</span>
+                                    <span class="login-time">
+                                        <i class="fas fa-clock"></i>
+                                        ${session.is_active ? (session.is_current ? 'Active now' : 'Active ' + timeAgo) : 'Logged out ' + timeAgo}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="login-device">
+                                <i class="fas ${deviceIcon}"></i>
+                                ${session.is_current ? '<span class="current-badge">Current</span>' : ''}
+                                ${session.is_active && !session.is_current ? 
+                                    `<button class="btn-terminate" onclick="terminateSession('${session.session_id}')">
+                                        <i class="fas fa-times"></i>
+                                    </button>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                // Add terminate all button if multiple active sessions
+                if (data.active_sessions > 1) {
+                    historyContainer.innerHTML += `
+                        <div class="login-actions">
+                            <button class="btn btn-secondary btn-sm" onclick="terminateAllSessions()">
+                                <i class="fas fa-sign-out-alt"></i> Sign out all other sessions
+                            </button>
+                        </div>
+                    `;
+                }
+            } else {
+                historyContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-history"></i>
+                        <p>No login history available</p>
+                    </div>
+                `;
+            }
+        }
+    } catch (error) {
+        console.error('Failed to load login history:', error);
+        // Show fallback
+        historyContainer.innerHTML = `
+            <div class="login-item">
+                <div class="login-info">
+                    <div class="login-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Current Session</span>
+                    </div>
+                    <div class="login-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Active now</span>
+                    </div>
                 </div>
-                <div class="login-time">
-                    <i class="fas fa-clock"></i>
-                    <span>Active now</span>
+                <div class="login-device">
+                    <i class="fas fa-desktop"></i>
+                    <span>${navigator.userAgent.includes('Mobile') ? 'Mobile' : 'Desktop'}</span>
                 </div>
             </div>
-            <div class="login-device">
-                <i class="fas fa-desktop"></i>
-                <span>${navigator.userAgent.includes('Mobile') ? 'Mobile' : 'Desktop'}</span>
-            </div>
-        </div>
-    `;
+        `;
+    }
+}
+
+// Get time ago string
+function getTimeAgo(date) {
+    const seconds = Math.floor((new Date() - date) / 1000);
+    
+    if (seconds < 60) return 'just now';
+    if (seconds < 3600) return Math.floor(seconds / 60) + ' minutes ago';
+    if (seconds < 86400) return Math.floor(seconds / 3600) + ' hours ago';
+    if (seconds < 604800) return Math.floor(seconds / 86400) + ' days ago';
+    
+    return date.toLocaleDateString();
+}
+
+// Terminate a session
+window.terminateSession = async function(sessionId) {
+    if (!confirm('Are you sure you want to end this session?')) return;
+    
+    try {
+        const response = await makeAuthRequest(`/api/user/sessions/${sessionId}/terminate`, {
+            method: 'POST'
+        });
+        
+        if (response.ok) {
+            showNotification('Session terminated', 'success');
+            await loadLoginHistory();
+        } else {
+            showNotification('Failed to terminate session', 'error');
+        }
+    } catch (error) {
+        console.error('Terminate session error:', error);
+        showNotification('An error occurred', 'error');
+    }
+}
+
+// Terminate all other sessions
+window.terminateAllSessions = async function() {
+    if (!confirm('Are you sure you want to sign out all other sessions?')) return;
+    
+    try {
+        const response = await makeAuthRequest('/api/user/sessions/terminate-all', {
+            method: 'POST',
+            body: JSON.stringify({ except_current: true })
+        });
+        
+        if (response.ok) {
+            const result = await response.json();
+            showNotification(result.message, 'success');
+            await loadLoginHistory();
+        } else {
+            showNotification('Failed to terminate sessions', 'error');
+        }
+    } catch (error) {
+        console.error('Terminate all sessions error:', error);
+        showNotification('An error occurred', 'error');
+    }
 }
 
 // Update plan display
@@ -1056,19 +1342,145 @@ style.textContent = `
 }
 
 /* 2FA styles */
+.twofa-setup-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.setup-step {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: #f9fafb;
+    border-radius: 8px;
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h4 {
+    margin: 0 0 8px 0;
+    color: #111827;
+}
+
+.setup-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+.option-qr,
+.option-manual {
+    padding: 16px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.qr-container {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.qr-container img {
+    max-width: 180px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.manual-entry {
+    margin-top: 12px;
+}
+
+.manual-entry label {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 8px;
+}
+
+.manual-entry code {
+    display: block;
+    padding: 8px;
+    background: #f3f4f6;
+    border-radius: 4px;
+    font-family: monospace;
+    margin-bottom: 8px;
+}
+
+.secret-key {
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.btn-copy {
+    background: none;
+    border: 1px solid #d1d5db;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-copy:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+}
+
 .backup-codes {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-    margin-top: 8px;
+    margin: 16px 0;
+    padding: 16px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
 }
 
 .backup-codes code {
-    padding: 4px 8px;
+    padding: 8px 12px;
     background: #f3f4f6;
     border-radius: 4px;
     font-family: monospace;
     font-size: 14px;
+    text-align: center;
+}
+
+.verify-input {
+    margin-top: 12px;
+}
+
+.code-input {
+    font-size: 24px;
+    letter-spacing: 8px;
+    text-align: center;
+    font-family: monospace;
+    padding: 12px;
+}
+
+.code-timer {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
 }
 
 /* Login history */
@@ -1080,28 +1492,99 @@ style.textContent = `
     justify-content: space-between;
     align-items: center;
     margin-bottom: 12px;
+    transition: all 0.2s ease;
+}
+
+.login-item:hover {
+    border-color: #d1d5db;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.login-item.current-session {
+    border-color: #3b82f6;
+    background: #eff6ff;
 }
 
 .login-info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
 }
 
-.login-location,
-.login-time {
+.login-location {
     display: flex;
     align-items: center;
     gap: 8px;
+    font-weight: 500;
+    color: #111827;
+}
+
+.login-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.login-browser {
     font-size: 14px;
     color: #6b7280;
+}
+
+.login-time {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #9ca3af;
 }
 
 .login-device {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     color: #374151;
+}
+
+.current-badge {
+    padding: 2px 8px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.btn-terminate {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.btn-terminate:hover {
+    background: #fee2e2;
+}
+
+.login-actions {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 32px;
+    color: #6b7280;
+}
+
+.empty-state i {
+    font-size: 48px;
+    color: #d1d5db;
+    margin-bottom: 12px;
 }
 
 /* Usage progress */

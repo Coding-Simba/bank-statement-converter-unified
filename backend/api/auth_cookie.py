@@ -25,6 +25,9 @@ REFRESH_TOKEN_EXPIRE_HOURS = 24  # Default without remember me
 REFRESH_TOKEN_EXPIRE_DAYS = 90  # With remember me
 COOKIE_DOMAIN = ".bankcsvconverter.com"  # Cross-subdomain support
 
+# Session tracking
+current_session_id = None
+
 
 # Pydantic models
 class UserLogin(BaseModel):
