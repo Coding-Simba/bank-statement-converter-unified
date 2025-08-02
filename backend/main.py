@@ -21,7 +21,7 @@ from api.feedback import router as feedback_router
 from api.oauth import router as oauth_router
 from api.split_statement import router as split_statement_router
 from api.analyze_transactions import router as analyze_transactions_router
-from api.stripe_payments import router as stripe_router
+from api.stripe_payments_simple import router as stripe_router
 # from api.user_statistics import router as user_statistics_router  # Module not found
 # from api.statements_recent import router as statements_recent_router  # Module not found
 # from api.statement_delete import router as statement_delete_router  # Module not found
