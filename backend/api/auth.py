@@ -93,9 +93,9 @@ async def register(user_data: UserRegister, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_user)
     
-    # Create tokens
-    access_token = create_access_token(data={"sub": new_user.id, "email": new_user.email})
-    refresh_token = create_refresh_token(data={"sub": new_user.id, "email": new_user.email})
+    # Create tokens (sub must be a string for JWT)
+    access_token = create_access_token(data={"sub": str(new_user.id), "email": new_user.email})
+    refresh_token = create_refresh_token(data={"sub": str(new_user.id), "email": new_user.email})
     
     # Prepare user response
     user_response = UserResponse(
@@ -137,9 +137,9 @@ async def login(user_credentials: UserLogin, db: Session = Depends(get_db)):
     user.reset_daily_limit_if_needed()
     db.commit()
     
-    # Create tokens
-    access_token = create_access_token(data={"sub": user.id, "email": user.email})
-    refresh_token = create_refresh_token(data={"sub": user.id, "email": user.email})
+    # Create tokens (sub must be a string for JWT)
+    access_token = create_access_token(data={"sub": str(user.id), "email": user.email})
+    refresh_token = create_refresh_token(data={"sub": str(user.id), "email": user.email})
     
     # Prepare user response
     user_response = UserResponse(
@@ -204,8 +204,8 @@ async def refresh_token(refresh_token: str, db: Session = Depends(get_db)):
                 detail="Invalid refresh token"
             )
         
-        # Create new access token
-        access_token = create_access_token(data={"sub": user.id, "email": user.email})
+        # Create new access token (sub must be a string for JWT)
+        access_token = create_access_token(data={"sub": str(user.id), "email": user.email})
         
         return {
             "access_token": access_token,

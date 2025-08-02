@@ -15,7 +15,7 @@ from utils.auth import (
     decode_token
 )
 from jwt.exceptions import InvalidTokenError
-from api.sessions import create_session
+# from api.sessions import create_session  # TODO: Implement sessions module
 
 router = APIRouter(prefix="/api/auth", tags=["authentication"])
 
@@ -235,14 +235,15 @@ async def login(
     user_agent = request.headers.get("User-Agent", "Unknown")
     client_ip = request.client.host if request.client else "Unknown"
     
-    create_session(
-        user_id=user.id,
-        session_id=session_id,
-        user_agent=user_agent,
-        ip_address=client_ip,
-        is_remember_me=user_credentials.remember_me,
-        db=db
-    )
+    # TODO: Re-enable when sessions module is implemented
+    # create_session(
+    #     user_id=user.id,
+    #     session_id=session_id,
+    #     user_agent=user_agent,
+    #     ip_address=client_ip,
+    #     is_remember_me=user_credentials.remember_me,
+    #     db=db
+    # )
     
     # Create tokens with session ID
     access_token = create_access_token(
@@ -426,6 +427,51 @@ async def get_current_user_cookie(request: Request, db: Session = Depends(get_db
             )
         
         return user
+        
+    except (InvalidTokenError, ValueError):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid token"
+        )
+
+
+@router.get("/me")
+async def get_current_user_info(request: Request, db: Session = Depends(get_db)):
+    """Get current user info from cookie (no CSRF required for GET)."""
+    
+    # Get access token from cookie
+    access_token = request.cookies.get("access_token")
+    if not access_token:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Not authenticated"
+        )
+    
+    try:
+        # Decode token
+        payload = decode_token(access_token)
+        user_id = payload.get("sub")
+        
+        # Get user
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user or not user.is_active:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid user"
+            )
+        
+        return {
+            "user": UserData(
+                id=user.id,
+                email=user.email,
+                full_name=user.full_name,
+                company_name=user.company_name,
+                account_type=user.account_type,
+                created_at=user.created_at,
+                daily_generations=user.daily_generations,
+                daily_limit=user.get_daily_limit()
+            )
+        }
         
     except (InvalidTokenError, ValueError):
         raise HTTPException(

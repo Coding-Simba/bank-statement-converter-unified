@@ -8,11 +8,18 @@ from passlib.hash import bcrypt
 import secrets
 import os
 
-# Configuration
-SECRET_KEY = os.environ.get("SECRET_KEY", secrets.token_urlsafe(32))
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 15  # 15 minutes (secure short-lived tokens)
-REFRESH_TOKEN_EXPIRE_DAYS = 90  # 90 days for remember me
+# Import JWT configuration from single source
+from config.jwt_config import (
+    JWT_SECRET_KEY as SECRET_KEY,
+    JWT_ALGORITHM as ALGORITHM,
+    ACCESS_TOKEN_EXPIRE_MINUTES,
+    REFRESH_TOKEN_EXPIRE_DAYS
+)
+
+# Debug logging
+import logging
+logger = logging.getLogger(__name__)
+logger.info(f"Auth module using SECRET_KEY: {SECRET_KEY[:20]}... (truncated)")
 
 # Password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -38,6 +45,7 @@ def create_access_token(data: Dict[str, Any], expires_delta: Optional[timedelta]
         expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     
     to_encode.update({"exp": expire, "type": "access"})
+    logger.info(f"Creating token with SECRET_KEY: {SECRET_KEY[:20]}... for user: {data.get('sub')}")
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
@@ -54,11 +62,15 @@ def create_refresh_token(data: Dict[str, Any]) -> str:
 def decode_token(token: str) -> Dict[str, Any]:
     """Decode and validate a JWT token."""
     try:
+        logger.info(f"Decoding token with SECRET_KEY: {SECRET_KEY[:20]}...")
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        logger.info(f"Token decoded successfully for user: {payload.get('sub')}")
         return payload
     except jwt.ExpiredSignatureError:
+        logger.error("Token has expired")
         raise ValueError("Token has expired")
-    except jwt.InvalidTokenError:
+    except jwt.InvalidTokenError as e:
+        logger.error(f"Invalid token: {str(e)}")
         raise ValueError("Invalid token")
 
 

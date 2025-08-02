@@ -124,7 +124,7 @@ async def check_generation_limit(
         )
 
 
-@router.post("/convert", response_model=StatementResponse)
+@router.post("/convert")
 async def convert_statement(
     request: Request,
     file: UploadFile = File(...),
@@ -302,7 +302,7 @@ async def convert_statement(
     db.commit()
     db.refresh(statement)
     
-    return StatementResponse(
+    response = StatementResponse(
         id=statement.id,
         filename=statement.filename,
         original_filename=statement.original_filename,
@@ -310,6 +310,12 @@ async def convert_statement(
         expires_at=statement.expires_at,
         file_size=statement.file_size
     )
+    
+    # Add results_url to response
+    response_dict = response.dict()
+    response_dict["results_url"] = f"/results/{statement.id}"
+    
+    return response_dict
 
 
 @router.get("/user/statements", response_model=List[StatementResponse])
@@ -340,6 +346,145 @@ async def get_user_statements(
         )
         for stmt in statements
     ]
+
+
+@router.get("/statement/{statement_id}/transactions")
+async def get_statement_transactions(
+    statement_id: int,
+    request: Request,
+    page: int = 1,
+    per_page: int = 50,
+    db: Session = Depends(get_db)
+):
+    """Get paginated transactions for a statement with metadata."""
+    user, session_id = get_user_or_session(request)
+    
+    # Get statement
+    statement = db.query(Statement).filter(Statement.id == statement_id).first()
+    
+    if not statement:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Statement not found"
+        )
+    
+    # Check access permissions (same logic as download)
+    if user and statement.user_id != user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Access denied"
+        )
+    elif not user:
+        from datetime import datetime, timedelta
+        if statement.created_at < datetime.utcnow() - timedelta(minutes=5):
+            if statement.session_id != session_id:
+                raise HTTPException(
+                    status_code=status.HTTP_403_FORBIDDEN,
+                    detail="Access denied"
+                )
+    
+    # Check if expired
+    if statement.is_expired():
+        raise HTTPException(
+            status_code=status.HTTP_410_GONE,
+            detail="Statement has expired and is no longer available"
+        )
+    
+    # Get original PDF path
+    pdf_path = statement.file_path.replace('.csv', '.pdf')
+    if not os.path.exists(pdf_path):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Original PDF not found"
+        )
+    
+    # Re-parse PDF to get transactions
+    from universal_parser import parse_universal_pdf
+    try:
+        all_transactions = parse_universal_pdf(pdf_path)
+        
+        # Sort by date
+        all_transactions = sorted(all_transactions, key=lambda x: x.get('date') or datetime.min)
+        
+        # Calculate statistics
+        if all_transactions:
+            dates = [t['date'] for t in all_transactions if t.get('date')]
+            date_range = {
+                "start": min(dates).strftime('%Y-%m-%d') if dates else None,
+                "end": max(dates).strftime('%Y-%m-%d') if dates else None
+            }
+            
+            # Try to detect bank from PDF text
+            import PyPDF2
+            bank_name = "Unknown Bank"
+            try:
+                with open(pdf_path, 'rb') as file:
+                    reader = PyPDF2.PdfReader(file)
+                    if reader.pages:
+                        first_page_text = reader.pages[0].extract_text().lower()
+                        # Simple bank detection
+                        banks = {
+                            'chase': 'Chase Bank',
+                            'bank of america': 'Bank of America',
+                            'wells fargo': 'Wells Fargo',
+                            'citibank': 'Citibank',
+                            'pnc': 'PNC Bank',
+                            'huntington': 'Huntington Bank',
+                            'fifth third': 'Fifth Third Bank',
+                            'commonwealth': 'Commonwealth Bank',
+                            'bendigo': 'Bendigo Bank',
+                            'rabobank': 'Rabobank'
+                        }
+                        for key, value in banks.items():
+                            if key in first_page_text:
+                                bank_name = value
+                                break
+            except:
+                pass
+        else:
+            date_range = {"start": None, "end": None}
+            bank_name = "Unknown Bank"
+        
+        # Pagination
+        total_count = len(all_transactions)
+        total_pages = (total_count + per_page - 1) // per_page
+        start_idx = (page - 1) * per_page
+        end_idx = start_idx + per_page
+        
+        # Get page of transactions
+        page_transactions = all_transactions[start_idx:end_idx]
+        
+        # Format transactions for JSON response
+        formatted_transactions = []
+        for trans in page_transactions:
+            formatted_transactions.append({
+                "date": trans['date'].strftime('%Y-%m-%d') if trans.get('date') else "N/A",
+                "description": trans.get('description', 'Unknown'),
+                "amount": float(trans.get('amount', 0)),
+                "balance": float(trans.get('balance', 0))
+            })
+        
+        return {
+            "transactions": formatted_transactions,
+            "total_count": total_count,
+            "statistics": {
+                "bank_name": bank_name,
+                "date_range": date_range,
+                "total_transactions": total_count,
+                "original_filename": statement.original_filename
+            },
+            "pagination": {
+                "page": page,
+                "per_page": per_page,
+                "total_pages": total_pages
+            }
+        }
+        
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to parse transactions: {str(e)}"
+        )
 
 
 @router.get("/statement/{statement_id}/download")
@@ -397,3 +542,144 @@ async def download_statement(
         filename=f"converted_{statement.original_filename.replace('.pdf', '.csv')}",
         media_type="text/csv"
     )
+
+
+@router.get("/statement/{statement_id}/download/markdown")
+async def download_statement_markdown(
+    statement_id: int,
+    request: Request,
+    db: Session = Depends(get_db)
+):
+    """Download statement as markdown with statistics header."""
+    user, session_id = get_user_or_session(request)
+    
+    # Get statement
+    statement = db.query(Statement).filter(Statement.id == statement_id).first()
+    
+    if not statement:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Statement not found"
+        )
+    
+    # Check access permissions (same as other endpoints)
+    if user and statement.user_id != user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Access denied"
+        )
+    elif not user:
+        from datetime import datetime, timedelta
+        if statement.created_at < datetime.utcnow() - timedelta(minutes=5):
+            if statement.session_id != session_id:
+                raise HTTPException(
+                    status_code=status.HTTP_403_FORBIDDEN,
+                    detail="Access denied"
+                )
+    
+    # Check if expired
+    if statement.is_expired():
+        raise HTTPException(
+            status_code=status.HTTP_410_GONE,
+            detail="Statement has expired and is no longer available"
+        )
+    
+    # Get original PDF path
+    pdf_path = statement.file_path.replace('.csv', '.pdf')
+    if not os.path.exists(pdf_path):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Original PDF not found"
+        )
+    
+    # Re-parse PDF to get all transactions
+    from universal_parser import parse_universal_pdf
+    try:
+        all_transactions = parse_universal_pdf(pdf_path)
+        all_transactions = sorted(all_transactions, key=lambda x: x.get('date') or datetime.min)
+        
+        # Calculate statistics
+        if all_transactions:
+            dates = [t['date'] for t in all_transactions if t.get('date')]
+            date_range = {
+                "start": min(dates).strftime('%Y-%m-%d') if dates else "N/A",
+                "end": max(dates).strftime('%Y-%m-%d') if dates else "N/A"
+            }
+            
+            # Detect bank
+            import PyPDF2
+            bank_name = "Unknown Bank"
+            try:
+                with open(pdf_path, 'rb') as file:
+                    reader = PyPDF2.PdfReader(file)
+                    if reader.pages:
+                        first_page_text = reader.pages[0].extract_text().lower()
+                        banks = {
+                            'chase': 'Chase Bank',
+                            'bank of america': 'Bank of America',
+                            'wells fargo': 'Wells Fargo',
+                            'citibank': 'Citibank',
+                            'pnc': 'PNC Bank',
+                            'huntington': 'Huntington Bank',
+                            'fifth third': 'Fifth Third Bank',
+                            'commonwealth': 'Commonwealth Bank',
+                            'bendigo': 'Bendigo Bank',
+                            'rabobank': 'Rabobank'
+                        }
+                        for key, value in banks.items():
+                            if key in first_page_text:
+                                bank_name = value
+                                break
+            except:
+                pass
+        else:
+            date_range = {"start": "N/A", "end": "N/A"}
+            bank_name = "Unknown Bank"
+        
+        # Generate markdown content
+        markdown_content = f"""# Bank Statement Export
+
+## Statement Information
+- **Bank:** {bank_name}
+- **Original File:** {statement.original_filename}
+- **Date Range:** {date_range['start']} to {date_range['end']}
+- **Total Transactions:** {len(all_transactions)}
+- **Exported:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+
+## Transactions
+
+| Date | Description | Amount | Balance |
+|------|-------------|--------|---------|
+"""
+        
+        # Add transactions
+        balance = 0.0
+        for trans in all_transactions:
+            date_str = trans['date'].strftime('%Y-%m-%d') if trans.get('date') else "N/A"
+            desc = trans.get('description', 'Unknown').replace('|', '\\|')  # Escape pipes
+            amount = trans.get('amount', 0.0)
+            balance += amount
+            
+            markdown_content += f"| {date_str} | {desc} | ${amount:,.2f} | ${balance:,.2f} |\n"
+        
+        markdown_content += f"\n---\n*Generated by BankCSV Converter*"
+        
+        # Save to temporary file
+        import tempfile
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=False, encoding='utf-8') as tmp_file:
+            tmp_file.write(markdown_content)
+            tmp_path = tmp_file.name
+        
+        from fastapi.responses import FileResponse
+        return FileResponse(
+            path=tmp_path,
+            filename=f"{statement.original_filename.replace('.pdf', '')}_bank_statement.md",
+            media_type="text/markdown",
+            headers={"Content-Disposition": f"attachment; filename={statement.original_filename.replace('.pdf', '')}_bank_statement.md"}
+        )
+        
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to generate markdown: {str(e)}"
+        )

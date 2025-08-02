@@ -48,8 +48,24 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Security(securi
     token = credentials.credentials
     
     try:
+        # Debug logging
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"Attempting to validate token: {token[:20]}...")
+        
         payload = decode_token(token)
         user_id = payload.get("sub")
+        logger.info(f"Token validated successfully for user_id: {user_id}")
+        
+        # Convert user_id to int if it's a string
+        if isinstance(user_id, str):
+            try:
+                user_id = int(user_id)
+            except ValueError:
+                raise HTTPException(
+                    status_code=status.HTTP_401_UNAUTHORIZED,
+                    detail="Invalid user ID in token"
+                )
         
         if not user_id:
             raise HTTPException(
@@ -68,10 +84,13 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Security(securi
             )
         
         return user
+    except HTTPException:
+        raise
     except Exception as e:
+        logger.error(f"Token validation error: {str(e)}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Could not validate credentials"
+            detail=f"Could not validate credentials: {str(e)}"
         )
 
 

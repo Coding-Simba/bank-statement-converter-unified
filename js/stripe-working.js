@@ -96,9 +96,8 @@ function setupPricingButtons() {
                         'Authorization': `Bearer ${token}`
                     },
                     body: JSON.stringify({
-                        price_id: priceId,
-                        success_url: `${window.location.origin}/pricing.html?payment=success`,
-                        cancel_url: `${window.location.origin}/pricing.html?payment=cancelled`
+                        plan: plan,
+                        billing_period: billingPeriod
                     })
                 });
                 

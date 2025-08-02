@@ -20,6 +20,9 @@ class CSRFMiddleware(BaseHTTPMiddleware):
             "/openapi.json",
             "/api/auth/csrf",  # CSRF token endpoint itself
             "/v2/api/auth/csrf",  # v2 CSRF token endpoint
+            "/v2/api/auth/login",  # v2 login endpoint
+            "/v2/api/auth/register",  # v2 register endpoint  
+            "/v2/api/auth/me",  # v2 auth check endpoint
             "/api/auth/login",  # Temporarily exclude login
             "/api/auth/register",  # Temporarily exclude register
             "/api/convert"  # Temporarily exclude PDF conversion

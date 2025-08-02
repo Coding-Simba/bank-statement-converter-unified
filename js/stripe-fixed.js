@@ -64,13 +64,21 @@ function setupPricingButtons() {
             e.preventDefault();
             console.log(`Buy button clicked for plan: ${plan}`);
             
-            // Check authentication
-            const isAuth = window.UnifiedAuth && 
+            // Check authentication - fallback to localStorage if UnifiedAuth is not ready
+            const isAuth = (window.UnifiedAuth && 
                           window.UnifiedAuth.isAuthenticated && 
-                          window.UnifiedAuth.isAuthenticated();
+                          window.UnifiedAuth.isAuthenticated()) ||
+                          localStorage.getItem('access_token') !== null;
             
             if (!isAuth) {
                 console.log('User not authenticated, redirecting to signup...');
+                // Check if we're already coming from signup/login to prevent loops
+                const referrer = document.referrer;
+                if (referrer.includes('/signup.html') || referrer.includes('/login.html')) {
+                    console.error('Redirect loop detected! Not redirecting again.');
+                    alert('Authentication issue detected. Please try logging in again.');
+                    return;
+                }
                 window.location.href = `/signup.html?plan=${plan}&redirect=/pricing.html`;
                 return;
             }
@@ -106,25 +114,25 @@ function setupPricingButtons() {
 async function createCheckoutSession(plan, billingPeriod) {
     console.log('Creating checkout session:', { plan, billingPeriod });
     
-    // Check if makeAuthenticatedRequest exists
-    if (!window.UnifiedAuth || !window.UnifiedAuth.makeAuthenticatedRequest) {
-        throw new Error('Authentication system not ready. Please refresh the page.');
+    // Get access token
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+        throw new Error('Not authenticated. Please log in.');
     }
     
     try {
-        const response = await window.UnifiedAuth.makeAuthenticatedRequest(
-            `${STRIPE_API_BASE}/create-checkout-session`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    plan: plan,
-                    billing_period: billingPeriod
-                })
-            }
-        );
+        const response = await fetch(`${STRIPE_API_BASE}/create-checkout-session`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
+            body: JSON.stringify({
+                plan: plan,
+                billing_period: billingPeriod
+            })
+        });
         
         if (!response.ok) {
             let errorMessage = 'Failed to create checkout session';

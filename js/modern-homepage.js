@@ -81,10 +81,23 @@
     }
 
     function handleFiles(files) {
-        ([...files]).forEach(processFile);
+        // Reset processed statements
+        window.processedStatements = [];
+        
+        // Handle multiple files
+        const fileArray = [...files];
+        if (fileArray.length > 1) {
+            // Store pending files
+            window.pendingFiles = fileArray.slice(1);
+            // Process first file
+            processFile(fileArray[0]);
+        } else {
+            // Single file
+            processFile(fileArray[0]);
+        }
     }
 
-    function processFile(file) {
+    async function processFile(file) {
         // Validate file type
         const validTypes = ['application/pdf', 'image/jpeg', 'image/png', 'image/jpg'];
         if (!validTypes.includes(file.type)) {
@@ -102,11 +115,47 @@
         // Show processing state
         showProcessingState(file);
 
-        // Simulate file upload and conversion
-        setTimeout(() => {
-            // In production, this would be an actual API call
-            showSuccessState(file);
-        }, 2000);
+        try {
+            // Create FormData
+            const formData = new FormData();
+            formData.append('file', file);
+
+            // Call API to convert
+            const response = await fetch(API_CONFIG.getUrl('/api/convert'), {
+                method: 'POST',
+                body: formData,
+                credentials: 'include'
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.detail || 'Conversion failed');
+            }
+
+            const result = await response.json();
+            
+            // Store processed files for multi-file support
+            if (!window.processedStatements) {
+                window.processedStatements = [];
+            }
+            window.processedStatements.push(result);
+
+            // If there are more files to process, wait for all
+            // Otherwise redirect immediately
+            if (window.pendingFiles && window.pendingFiles.length > 0) {
+                // Process next file
+                const nextFile = window.pendingFiles.shift();
+                processFile(nextFile);
+            } else {
+                // All files processed, redirect to results
+                redirectToResults();
+            }
+
+        } catch (error) {
+            console.error('Conversion error:', error);
+            resetUploadBox();
+            showNotification(error.message || 'Conversion failed. Please try again.', 'error');
+        }
     }
 
     function showProcessingState(file) {
@@ -179,6 +228,21 @@
         const originalContent = uploadBox.getAttribute('data-original-content');
         uploadBox.innerHTML = originalContent;
         setupFileUpload(); // Re-initialize event listeners
+    }
+
+    function redirectToResults() {
+        if (!window.processedStatements || window.processedStatements.length === 0) {
+            return;
+        }
+
+        // Single file - use simple URL
+        if (window.processedStatements.length === 1) {
+            window.location.href = window.processedStatements[0].results_url;
+        } else {
+            // Multiple files - use query parameter
+            const ids = window.processedStatements.map(s => s.id).join(',');
+            window.location.href = `/results?ids=${ids}`;
+        }
     }
 
     // Download functionality

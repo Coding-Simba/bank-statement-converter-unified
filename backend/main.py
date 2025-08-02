@@ -1,5 +1,9 @@
 """Main FastAPI application for the bank statement converter backend."""
 
+# Load environment variables first, before any other imports
+from dotenv import load_dotenv
+load_dotenv()
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -11,17 +15,17 @@ import asyncio
 # Import routers
 from api.auth import router as auth_router
 from api.auth_cookie import router as auth_cookie_router
-from api.auth_verify import router as auth_verify_router
+# from api.auth_verify import router as auth_verify_router  # Module not found
 from api.statements import router as statements_router
 from api.feedback import router as feedback_router
 from api.oauth import router as oauth_router
 from api.split_statement import router as split_statement_router
 from api.analyze_transactions import router as analyze_transactions_router
 from api.stripe_payments import router as stripe_router
-from api.user_statistics import router as user_statistics_router
-from api.statements_recent import router as statements_recent_router
-from api.statement_delete import router as statement_delete_router
-from api.user_export import router as user_export_router
+# from api.user_statistics import router as user_statistics_router  # Module not found
+# from api.statements_recent import router as statements_recent_router  # Module not found
+# from api.statement_delete import router as statement_delete_router  # Module not found
+# from api.user_export import router as user_export_router  # Module not found
 # from api.user_settings import router as user_settings_router  # Commented out - requires aiosmtplib
 from models.database import init_db, engine, Base
 from utils.cleanup import cleanup_expired_statements
@@ -95,17 +99,17 @@ async def periodic_cleanup():
 # Include routers
 app.include_router(auth_router)  # Legacy JWT auth at /api/auth
 app.include_router(auth_cookie_router, prefix="/v2")  # Cookie auth at /v2/api/auth
-app.include_router(auth_verify_router)  # Auth verification endpoints
+# app.include_router(auth_verify_router)  # Auth verification endpoints - module not found
 app.include_router(oauth_router)
 app.include_router(statements_router)
 app.include_router(feedback_router)
 app.include_router(split_statement_router)
 app.include_router(analyze_transactions_router)
 app.include_router(stripe_router)
-app.include_router(user_statistics_router)  # User statistics endpoints
-app.include_router(statements_recent_router)  # Recent statements endpoints
-app.include_router(statement_delete_router)  # Statement deletion endpoints
-app.include_router(user_export_router)  # User data export endpoints
+# app.include_router(user_statistics_router)  # User statistics endpoints - module not found
+# app.include_router(statements_recent_router)  # Recent statements endpoints - module not found
+# app.include_router(statement_delete_router)  # Statement deletion endpoints - module not found
+# app.include_router(user_export_router)  # User data export endpoints - module not found
 # app.include_router(user_settings_router, prefix="/v2")  # User settings endpoints - requires aiosmtplib
 
 

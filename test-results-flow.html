@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Results Overview Flow</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .result {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .error {
+            background: #ffebee;
+            color: #c62828;
+        }
+        .success {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Results Overview Flow</h1>
+    
+    <div class="test-section">
+        <h2>1. Upload PDF and Get Results URL</h2>
+        <input type="file" id="pdfFile" accept=".pdf">
+        <button onclick="testUpload()">Test Upload</button>
+        <div id="uploadResult" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. View Results Page</h2>
+        <input type="text" id="statementId" placeholder="Enter statement ID">
+        <button onclick="viewResults()">View Results</button>
+        <div id="viewResult" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Test Transactions API</h2>
+        <input type="text" id="transStatementId" placeholder="Enter statement ID">
+        <button onclick="testTransactions()">Test Transactions API</button>
+        <div id="transResult" class="result"></div>
+    </div>
+
+    <script>
+        async function testUpload() {
+            const fileInput = document.getElementById('pdfFile');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                showResult('uploadResult', 'Please select a PDF file', 'error');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                showResult('uploadResult', 'Uploading...', '');
+                
+                const response = await fetch('http://localhost:5000/api/convert', {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'include'
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResult('uploadResult', 
+                        `Success!\nStatement ID: ${data.id}\nResults URL: ${data.results_url || 'NOT FOUND'}\n\nFull response:\n${JSON.stringify(data, null, 2)}`, 
+                        'success'
+                    );
+                    
+                    // Auto-fill statement ID
+                    document.getElementById('statementId').value = data.id;
+                    document.getElementById('transStatementId').value = data.id;
+                } else {
+                    showResult('uploadResult', `Error: ${JSON.stringify(data)}`, 'error');
+                }
+            } catch (error) {
+                showResult('uploadResult', `Error: ${error.message}`, 'error');
+            }
+        }
+
+        function viewResults() {
+            const statementId = document.getElementById('statementId').value;
+            if (!statementId) {
+                showResult('viewResult', 'Please enter a statement ID', 'error');
+                return;
+            }
+
+            const resultsUrl = `/results/${statementId}`;
+            showResult('viewResult', 
+                `Results URL: ${resultsUrl}\n\nClick here to open: <a href="${resultsUrl}" target="_blank">${resultsUrl}</a>`, 
+                'success'
+            );
+        }
+
+        async function testTransactions() {
+            const statementId = document.getElementById('transStatementId').value;
+            if (!statementId) {
+                showResult('transResult', 'Please enter a statement ID', 'error');
+                return;
+            }
+
+            try {
+                showResult('transResult', 'Fetching transactions...', '');
+                
+                const response = await fetch(`http://localhost:5000/api/statement/${statementId}/transactions?page=1&per_page=10`, {
+                    credentials: 'include'
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResult('transResult', 
+                        `Success!\n\nStatistics:\n${JSON.stringify(data.statistics, null, 2)}\n\nTransactions (${data.transactions.length} shown):\n${JSON.stringify(data.transactions, null, 2)}`, 
+                        'success'
+                    );
+                } else {
+                    showResult('transResult', `Error: ${JSON.stringify(data)}`, 'error');
+                }
+            } catch (error) {
+                showResult('transResult', `Error: ${error.message}`, 'error');
+            }
+        }
+
+        function showResult(elementId, message, className) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = message;
+            element.className = 'result ' + className;
+        }
+    </script>
+</body>
+</html>

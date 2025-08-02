@@ -144,6 +144,16 @@ except ImportError:
     CAMELOT_PARSER_AVAILABLE = False
     print("Camelot parser not available")
 try:
+    from parsers.huntington_parser import parse as parse_huntington
+    HUNTINGTON_PARSER_AVAILABLE = True
+except ImportError:
+    HUNTINGTON_PARSER_AVAILABLE = False
+try:
+    from parsers.bendigo_parser import parse as parse_bendigo
+    BENDIGO_PARSER_AVAILABLE = True
+except ImportError:
+    BENDIGO_PARSER_AVAILABLE = False
+try:
     from failed_pdf_manager import FailedPDFManager
     FAILED_PDF_MANAGER_AVAILABLE = True
 except ImportError:
@@ -582,6 +592,20 @@ def parse_universal_pdf(pdf_path):
                     print("Detected Wells Fargo PDF format, using NEW dedicated parser")
                     parser = WellsFargoParser()
                     transactions = parser.extract_transactions(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Huntington Bank format
+                if HUNTINGTON_PARSER_AVAILABLE and ('huntington' in first_page.lower() or 'huntington national bank' in first_page.lower()):
+                    print("Detected Huntington Bank PDF format, using dedicated parser")
+                    transactions = parse_huntington(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Bendigo Bank format
+                if BENDIGO_PARSER_AVAILABLE and ('bendigo' in first_page.lower() or 'bendigobank.com.au' in first_page.lower()):
+                    print("Detected Bendigo Bank PDF format, using dedicated parser")
+                    transactions = parse_bendigo(pdf_path)
                     if transactions:
                         return transactions
                 
