@@ -1,14 +1,19 @@
-/* Blog Image Fix CSS */
+/* Blog Image Fix CSS - Scoped to blog pages only */
 
-/* Constrain all images to their containers */
-img {
+/* Blog-specific image constraints */
+.blog-page img,
+.blog-content img,
+.blog-card img,
+.blog-image img,
+.featured-image img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
 /* Fix SVG sizing issues */
-svg {
+.blog-page svg,
+.blog-content svg {
     max-width: 100%;
     height: auto;
 }
@@ -60,21 +65,22 @@ svg {
     overflow: hidden;
 }
 
-/* Fix any absolute positioned images */
-img[style*="position: absolute"],
-img[style*="position:absolute"] {
+/* Fix any absolute positioned images within blog content */
+.blog-content img[style*="position: absolute"],
+.blog-content img[style*="position:absolute"] {
     position: relative !important;
 }
 
-/* Prevent images from being too large on any page */
-body img {
+/* Prevent images from being too large on blog pages */
+.blog-page img,
+.blog-content img {
     max-width: 100% !important;
     height: auto !important;
 }
 
-/* Fix for any images that might be using viewport units */
-img[style*="vw"],
-img[style*="vh"] {
+/* Fix for any images that might be using viewport units in blog */
+.blog-content img[style*="vw"],
+.blog-content img[style*="vh"] {
     max-width: 100% !important;
     max-height: 80vh !important;
     width: auto !important;
