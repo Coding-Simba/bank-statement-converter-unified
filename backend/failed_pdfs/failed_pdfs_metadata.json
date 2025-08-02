@@ -78,5 +78,91 @@
     "sample_transactions": [],
     "file_size": 1486,
     "status": "pending_review"
+  },
+  "5ff983d556da4c1f92a4f8ec229de24c4719b42b4b813b958013d39383f6cdd5": {
+    "original_name": "dbc40fea-b93d-411a-a19e-0bc0ab6bb1f8.pdf",
+    "saved_name": "20250802_110623_5ff983d5_dbc40fea-b93d-411a-a19e-0bc0ab6bb1f8.pdf",
+    "saved_path": "failed_pdfs/20250802_110623_5ff983d5_dbc40fea-b93d-411a-a19e-0bc0ab6bb1f8.pdf",
+    "timestamp": "20250802_110623",
+    "date_saved": "2025-08-02T11:06:23.102496",
+    "transactions_found": 0,
+    "valid_transactions": 0,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [],
+    "file_size": 1532,
+    "status": "pending_review"
+  },
+  "fede37400a50a3f34465236514f711d6c0344b7fef680e099195f2bb5f78d2d4": {
+    "original_name": "0abc4a89-b616-453b-92bd-6b970b25aac7.pdf",
+    "saved_name": "20250802_111933_fede3740_0abc4a89-b616-453b-92bd-6b970b25aac7.pdf",
+    "saved_path": "failed_pdfs/20250802_111933_fede3740_0abc4a89-b616-453b-92bd-6b970b25aac7.pdf",
+    "timestamp": "20250802_111933",
+    "date_saved": "2025-08-02T11:19:33.655215",
+    "transactions_found": 17,
+    "valid_transactions": 17,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [
+      {
+        "date": null,
+        "date_string": "mm/dd/yyyy",
+        "description": "Fast Payment       Amazon",
+        "amount": -132.3,
+        "amount_string": "132.30"
+      },
+      {
+        "date": null,
+        "date_string": "mm/dd/yyyy",
+        "description": "BACS               eBAY Trading Co.",
+        "amount": -515.22,
+        "amount_string": "515.22"
+      },
+      {
+        "date": null,
+        "date_string": "mm/dd/yyyy",
+        "description": "Fast Payment       Morrisons Petrol",
+        "amount": -80.0,
+        "amount_string": "80.00"
+      }
+    ],
+    "file_size": 2411891,
+    "status": "pending_review"
+  },
+  "470c2117d107e6ea0b508966df46a3d27a36c6266f0c2807c458a56d2ce534c6": {
+    "original_name": "dbdc25b3-925d-4a2b-b859-d818ace079ee.pdf",
+    "saved_name": "20250802_112907_470c2117_dbdc25b3-925d-4a2b-b859-d818ace079ee.pdf",
+    "saved_path": "failed_pdfs/20250802_112907_470c2117_dbdc25b3-925d-4a2b-b859-d818ace079ee.pdf",
+    "timestamp": "20250802_112907",
+    "date_saved": "2025-08-02T11:29:07.521184",
+    "transactions_found": 17,
+    "valid_transactions": 17,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [
+      {
+        "date": null,
+        "date_string": "mm/dd/yyyy",
+        "description": "Fast Payment       Amazon",
+        "amount": -132.3,
+        "amount_string": "132.30"
+      },
+      {
+        "date": null,
+        "date_string": "mm/dd/yyyy",
+        "description": "BACS               eBAY Trading Co.",
+        "amount": -515.22,
+        "amount_string": "515.22"
+      },
+      {
+        "date": null,
+        "date_string": "mm/dd/yyyy",
+        "description": "Fast Payment       Morrisons Petrol",
+        "amount": -80.0,
+        "amount_string": "80.00"
+      }
+    ],
+    "file_size": 4552181,
+    "status": "pending_review"
   }
 }

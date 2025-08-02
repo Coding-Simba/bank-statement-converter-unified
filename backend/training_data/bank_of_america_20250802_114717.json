@@ -1,0 +1,263 @@
+{
+  "pdf_path": "/Users/MAC/Desktop/pdfs/1/USA Bank of America.pdf",
+  "parsed_at": "2025-08-02T11:47:17.102278",
+  "statement": {
+    "bank": "bank_of_america",
+    "account": "3550",
+    "period": {
+      "start": "2022-02-01T00:00:00",
+      "end": "2025-02-08T00:00:00"
+    },
+    "transactions": [
+      {
+        "date": "2022-02-01T00:00:00",
+        "description": "Zelle  Transfer  Conf#  580341df4;  WILLIAMS,  MYKEL",
+        "amount": 300.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-01T00:00:00",
+        "description": "Zelle Transfer Conf# 13fb912cc; WILLIAMS, MYKEL",
+        "amount": 150.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-01T00:00:00",
+        "description": "01/31 #000284935 PMNT RCVD Cash App*Cash Out  San Francisco CA",
+        "amount": 127.06,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-01T00:00:00",
+        "description": "Zelle Transfer Conf# 59edc634e; WILLIAMS, MYKEL",
+        "amount": 120.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-01T00:00:00",
+        "description": "02/01 #000315426 PMNT RCVD Cash App*Cash Out  San Francisco CA",
+        "amount": 98.5,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-01T00:00:00",
+        "description": "Zelle  Transfer Conf#  2961317bc; WILLIAMS,  MYKEL",
+        "amount": 40.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-01T00:00:00",
+        "description": "02/01 #000389821 PMNT RCVD Cash App*Cash Out  San Francisco CA",
+        "amount": 19.7,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-04T00:00:00",
+        "description": "BKOFAMERICA ATM 02/04 #000003175 DEPOSIT EASTLAND          INDEPENDENCE  MO",
+        "amount": 500.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-05T00:00:00",
+        "description": "BKOFAMERICA ATM 02/05 #000003384 DEPOSIT EASTLAND          INDEPENDENCE  MO",
+        "amount": 500.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-08T00:00:00",
+        "description": "BKOFAMERICA ATM 02/05 #000007054 DEPOSIT WATKINS CROSSING    KANSAS CITY    MO",
+        "amount": 2000.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-08T00:00:00",
+        "description": "Zelle  Transfer  Conf# 0ccd96946; WILLIAMS, MYKEL",
+        "amount": 100.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-09T00:00:00",
+        "description": "BKOFAMERICA ATM 02/09 #000002722 DEPOSIT EASTLAND          INDEPENDENCE  MO",
+        "amount": 4950.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-10T00:00:00",
+        "description": "RETURN OF POSTED CHECK / ITEM (RECEIVED ON 02-09)",
+        "amount": 5000.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-10T00:00:00",
+        "description": "BKOFAMERICA ATM 02/10 #000008144 DEPOSIT CLAIRBORNE          OLATHE    KS",
+        "amount": 2640.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-12T00:00:00",
+        "description": "Counter Credit",
+        "amount": 900.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-12T00:00:00",
+        "description": "BKOFAMERICA ATM 02/12 #000003561 DEPOSIT RAYTOWN SOUTH       RAYTOWN    MO",
+        "amount": 405.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-18T00:00:00",
+        "description": "BKOFAMERICA ATM 02/18 #000004623 DEPOSIT EASTLAND          INDEPENDENCE  MO",
+        "amount": 500.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-22T00:00:00",
+        "description": "BKOFAMERICA ATM 02/22 #000002502 DEPOSIT COLLEGE          OVERLAND PARK KS",
+        "amount": 240.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-23T00:00:00",
+        "description": "BKOFAMERICA ATM 02/23 #000006235 DEPOSIT EASTLAND          INDEPENDENCE  MO",
+        "amount": 3110.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-25T00:00:00",
+        "description": "Counter Credit",
+        "amount": 500.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2022-02-25T00:00:00",
+        "description": "02/25 #000380007 PMNT RCVD Cash App*Cash Out  San Francisco CA",
+        "amount": 162.52,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-02-01T00:00:00",
+        "description": "",
+        "amount": -691.91,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-02-02T00:00:00",
+        "description": "",
+        "amount": -34.01,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-02-03T00:00:00",
+        "description": "",
+        "amount": -7.01,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-02-04T00:00:00",
+        "description": "",
+        "amount": -243.44,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-02-05T00:00:00",
+        "description": "",
+        "amount": -698.44,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-02-08T00:00:00",
+        "description": "",
+        "amount": 526.41,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      }
+    ],
+    "currency": "USD",
+    "summary": {
+      "total_credits": 22889.19,
+      "total_debits": 1674.81,
+      "transaction_count": 27
+    }
+  }
+}

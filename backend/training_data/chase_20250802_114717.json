@@ -1,0 +1,200 @@
+{
+  "pdf_path": "/Users/MAC/Desktop/pdfs/1/USA Chase bank.pdf",
+  "parsed_at": "2025-08-02T11:47:17.101894",
+  "statement": {
+    "bank": "chase",
+    "account": "00000988081483",
+    "period": {
+      "start": "2025-07-02T00:00:00",
+      "end": "2025-07-30T00:00:00"
+    },
+    "transactions": [
+      {
+        "date": "2025-07-02T00:00:00",
+        "description": "",
+        "amount": 17120.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-02T00:00:00",
+        "description": "",
+        "amount": -98727.4,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-08T00:00:00",
+        "description": "",
+        "amount": -97030.35,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-09T00:00:00",
+        "description": "",
+        "amount": 24610.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-09T00:00:00",
+        "description": "",
+        "amount": -121640.35,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-11T00:00:00",
+        "description": "Online Payment XXXXX To Vendor",
+        "amount": 8928.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-11T00:00:00",
+        "description": "Online Payment XXXXX To Vendor",
+        "amount": 2960.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-11T00:00:00",
+        "description": "",
+        "amount": -109752.35,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-14T00:00:00",
+        "description": "",
+        "amount": 11424.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-14T00:00:00",
+        "description": "",
+        "amount": -108280.36,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-15T00:00:00",
+        "description": "",
+        "amount": 1349.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-16T00:00:00",
+        "description": "",
+        "amount": -121053.36,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-21T00:00:00",
+        "description": "",
+        "amount": 5000.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-21T00:00:00",
+        "description": "",
+        "amount": 3120.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-23T00:00:00",
+        "description": "",
+        "amount": 33138.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-25T00:00:00",
+        "description": "Online Payment XXXXX To Vendor",
+        "amount": 250.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-28T00:00:00",
+        "description": "",
+        "amount": 18114.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-30T00:00:00",
+        "description": "",
+        "amount": 6908.63,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-30T00:00:00",
+        "description": "",
+        "amount": 5100.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-07-30T00:00:00",
+        "description": "ADP TX/Fincl Svc ADP",
+        "amount": 2887.68,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      }
+    ],
+    "currency": "USD",
+    "summary": {
+      "total_credits": 140909.31,
+      "total_debits": 656484.17,
+      "transaction_count": 20
+    }
+  }
+}

@@ -1,0 +1,4 @@
+Date,Description,Amount,Balance
+"2024-01-01","Test Transaction 1",-50.00,-50.00
+"2024-01-02","Test Transaction 2",100.00,50.00
+"2024-01-03","Test Transaction 3",-25.50,24.50

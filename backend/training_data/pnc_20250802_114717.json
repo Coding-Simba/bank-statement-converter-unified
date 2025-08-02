@@ -1,0 +1,29 @@
+{
+  "pdf_path": "/Users/MAC/Desktop/pdfs/1/USA PNC 2.pdf",
+  "parsed_at": "2025-08-02T11:47:17.099790",
+  "statement": {
+    "bank": "pnc",
+    "account": null,
+    "period": {
+      "start": "2025-01-22T00:00:00",
+      "end": "2025-01-22T00:00:00"
+    },
+    "transactions": [
+      {
+        "date": "2025-01-22T00:00:00",
+        "description": "",
+        "amount": -4267.93,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      }
+    ],
+    "currency": "USD",
+    "summary": {
+      "total_credits": 0,
+      "total_debits": 4267.93,
+      "transaction_count": 1
+    }
+  }
+}

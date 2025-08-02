@@ -1,0 +1,413 @@
+{
+  "test_date": "2025-08-02T11:47:17.107296",
+  "summary": {
+    "total_pdfs_tested": 20,
+    "successful": 9,
+    "failed": 11,
+    "missing": 1,
+    "total_transactions": 162,
+    "average_parse_time": 4.370248789473685
+  },
+  "individual_results": [
+    {
+      "pdf": "Australia Westpac bank statement.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/Australia Westpac bank statement.pdf",
+      "exists": true,
+      "success": true,
+      "parse_time": 0.645821,
+      "transaction_count": 15,
+      "date_range": {
+        "start": "2022-02-14",
+        "end": "2022-12-02"
+      },
+      "amount_summary": {
+        "total_debits": 0,
+        "total_credits": 9496.94,
+        "average_amount": 633.1293333333334
+      },
+      "sample_transactions": [
+        {
+          "date": "2022-02-14",
+          "description": "TRANSFER (Internet Banking) Account Replenishment ",
+          "amount": 808.0
+        },
+        {
+          "date": "2022-02-14",
+          "description": "Cash Out Order JOHN CITIZEN 000308536",
+          "amount": 808.0
+        },
+        {
+          "date": "2022-02-17",
+          "description": "TRANSFER (Internet Banking) Account Replenishment ",
+          "amount": 1112.7
+        }
+      ]
+    },
+    {
+      "pdf": "Australia Bendigo Bank Statement.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/Australia Bendigo Bank Statement.pdf",
+      "exists": true,
+      "success": false,
+      "parse_time": 1.341074,
+      "transaction_count": 0,
+      "error": "No transactions found"
+    },
+    {
+      "pdf": "Canada RBC.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/Canada RBC.pdf",
+      "exists": true,
+      "success": false,
+      "parse_time": 10.739363,
+      "transaction_count": 0,
+      "error": "No transactions found"
+    },
+    {
+      "pdf": "United Kingdom Metro Bank.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/United Kingdom Metro Bank.pdf",
+      "exists": true,
+      "success": false,
+      "parse_time": 4.063538,
+      "transaction_count": 0,
+      "error": "No transactions found"
+    },
+    {
+      "pdf": "UK Nationwide word pdf.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/UK Nationwide word pdf.pdf",
+      "exists": true,
+      "success": true,
+      "parse_time": 5.789735,
+      "transaction_count": 11,
+      "date_range": {
+        "start": "1000-08-02",
+        "end": "3000-08-02"
+      },
+      "amount_summary": {
+        "total_debits": -7000.0,
+        "total_credits": 180.59,
+        "average_amount": -619.9463636363636
+      },
+      "sample_transactions": [
+        {
+          "date": "1000-08-02",
+          "description": "PAYPAL *VIRGIN BET 35314369001 GB 3869",
+          "amount": -1000.0
+        },
+        {
+          "date": "1000-08-02",
+          "description": "Onisac LTD 18665964764 GB",
+          "amount": -1000.0
+        },
+        {
+          "date": "2000-08-02",
+          "description": "PAYPAL *VIRGIN BET 35314369001 GB 3869",
+          "amount": -2000.0
+        }
+      ]
+    },
+    {
+      "pdf": "USA Woodforest.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Woodforest.pdf",
+      "exists": true,
+      "success": true,
+      "parse_time": 1.905056,
+      "transaction_count": 47,
+      "date_range": {
+        "start": "2025-02-01",
+        "end": "2025-04-30"
+      },
+      "amount_summary": {
+        "total_debits": -627.39,
+        "total_credits": 680.28,
+        "average_amount": 1.125319148936171
+      },
+      "sample_transactions": [
+        {
+          "date": "2025-02-01",
+          "description": "249.53 \nPOS DB MCDONALD'S M5906 KETTERING OH 00000",
+          "amount": 5.48
+        },
+        {
+          "date": "2025-02-01",
+          "description": "",
+          "amount": -2.01
+        },
+        {
+          "date": "2025-02-01",
+          "description": "",
+          "amount": -205.01
+        }
+      ]
+    },
+    {
+      "pdf": "USA PNC 2.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA PNC 2.pdf",
+      "exists": true,
+      "success": true,
+      "parse_time": 2.278743,
+      "transaction_count": 1,
+      "date_range": {
+        "start": "2025-01-22",
+        "end": "2025-01-22"
+      },
+      "amount_summary": {
+        "total_debits": -4267.93,
+        "total_credits": 0,
+        "average_amount": -4267.93
+      },
+      "sample_transactions": [
+        {
+          "date": "2025-01-22",
+          "description": "",
+          "amount": -4267.93
+        }
+      ]
+    },
+    {
+      "pdf": "USA Citizens Bank.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Citizens Bank.pdf",
+      "exists": true,
+      "success": true,
+      "parse_time": 4.346525,
+      "transaction_count": 27,
+      "date_range": {
+        "start": "2025-01-01",
+        "end": "2025-12-01"
+      },
+      "amount_summary": {
+        "total_debits": 0,
+        "total_credits": 2944.8,
+        "average_amount": 109.06666666666668
+      },
+      "sample_transactions": [
+        {
+          "date": "2025-01-01",
+          "description": "3299 Dbt Purchase - 246378 Turo Inc.* Trip Ochttps",
+          "amount": 283.98
+        },
+        {
+          "date": "2025-01-01",
+          "description": "Purchase - 267414 Cash App*tootie 8774174551 CA 32",
+          "amount": 70.0
+        },
+        {
+          "date": "2025-01-01",
+          "description": "297414 Cash App*jordon Ma8774174551 CA 3299 Dbt Pu",
+          "amount": 40.0
+        }
+      ]
+    },
+    {
+      "pdf": "USA Fifth Third Bank.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Fifth Third Bank.pdf",
+      "exists": true,
+      "success": true,
+      "parse_time": 0.542285,
+      "transaction_count": 5,
+      "date_range": {
+        "start": "2025-01-03",
+        "end": "2025-01-09"
+      },
+      "amount_summary": {
+        "total_debits": 0,
+        "total_credits": 58.05,
+        "average_amount": 11.61
+      },
+      "sample_transactions": [
+        {
+          "date": "2025-01-03",
+          "description": "DEBIT",
+          "amount": 33.5
+        },
+        {
+          "date": "2025-01-05",
+          "description": "DEBIT CARD PURCVHASE AT MCDONALD\u2019S F17058, MARIETT",
+          "amount": 6.35
+        },
+        {
+          "date": "2025-01-05",
+          "description": "DEBIT CARD PURCHASE AT WAFFLE HOUSE 2168,  MARIETT",
+          "amount": 12.82
+        }
+      ]
+    },
+    {
+      "pdf": "USA Suntrust.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Suntrust.pdf",
+      "exists": true,
+      "success": true,
+      "parse_time": 0.509857,
+      "transaction_count": 9,
+      "date_range": {
+        "start": "2022-04-04",
+        "end": "2022-04-29"
+      },
+      "amount_summary": {
+        "total_debits": 0,
+        "total_credits": 3898.57,
+        "average_amount": 433.1744444444445
+      },
+      "sample_transactions": [
+        {
+          "date": "2022-04-04",
+          "description": "Petron - C5 Station",
+          "amount": 223.26
+        },
+        {
+          "date": "2022-04-09",
+          "description": "South Star Drug",
+          "amount": 313.39
+        },
+        {
+          "date": "2022-04-11",
+          "description": "Rosewood Condominum",
+          "amount": 582.96
+        }
+      ]
+    },
+    {
+      "pdf": "USA Ohio Huntington bank statement 7 page.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Ohio Huntington bank statement 7 page.pdf",
+      "exists": false,
+      "error": "File not found"
+    },
+    {
+      "pdf": "USA Chase bank.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Chase bank.pdf",
+      "exists": true,
+      "success": true,
+      "parse_time": 1.884295,
+      "transaction_count": 20,
+      "date_range": {
+        "start": "2025-07-02",
+        "end": "2025-07-30"
+      },
+      "amount_summary": {
+        "total_debits": -656484.17,
+        "total_credits": 140909.31,
+        "average_amount": -25778.743
+      },
+      "sample_transactions": [
+        {
+          "date": "2025-07-02",
+          "description": "",
+          "amount": 17120.0
+        },
+        {
+          "date": "2025-07-02",
+          "description": "",
+          "amount": -98727.4
+        },
+        {
+          "date": "2025-07-08",
+          "description": "",
+          "amount": -97030.35
+        }
+      ]
+    },
+    {
+      "pdf": "USA Discover Bank.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Discover Bank.pdf",
+      "exists": true,
+      "success": false,
+      "parse_time": 4.418652,
+      "transaction_count": 0,
+      "error": "No transactions found"
+    },
+    {
+      "pdf": "USA Wells Fargo 7 pages.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Wells Fargo 7 pages.pdf",
+      "exists": true,
+      "success": false,
+      "parse_time": 4.209261,
+      "transaction_count": 0,
+      "error": "No transactions found"
+    },
+    {
+      "pdf": "USA Bank of America.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/USA Bank of America.pdf",
+      "exists": true,
+      "success": true,
+      "parse_time": 5.404692,
+      "transaction_count": 27,
+      "date_range": {
+        "start": "2022-02-01",
+        "end": "2025-02-08"
+      },
+      "amount_summary": {
+        "total_debits": -1674.81,
+        "total_credits": 22889.19,
+        "average_amount": 785.7177777777778
+      },
+      "sample_transactions": [
+        {
+          "date": "2022-02-01",
+          "description": "Zelle  Transfer  Conf#  580341df4;  WILLIAMS,  MYK",
+          "amount": 300.0
+        },
+        {
+          "date": "2022-02-01",
+          "description": "Zelle Transfer Conf# 13fb912cc; WILLIAMS, MYKEL",
+          "amount": 150.0
+        },
+        {
+          "date": "2022-02-01",
+          "description": "01/31 #000284935 PMNT RCVD Cash App*Cash Out  San ",
+          "amount": 127.06
+        }
+      ]
+    },
+    {
+      "pdf": "Australia Commonwealth J C.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/1/Australia Commonwealth J C.pdf",
+      "exists": true,
+      "success": false,
+      "parse_time": 14.779038,
+      "transaction_count": 0,
+      "error": "No transactions found"
+    },
+    {
+      "pdf": "merged_statements_2025-07-26.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/merged_statements_2025-07-26.pdf",
+      "exists": true,
+      "success": false,
+      "parse_time": 7.494342,
+      "transaction_count": 0,
+      "error": "No transactions found"
+    },
+    {
+      "pdf": "Bank-Statement-Template-4-TemplateLab.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/Bank-Statement-Template-4-TemplateLab.pdf",
+      "exists": true,
+      "success": false,
+      "parse_time": 4.379747,
+      "transaction_count": 0,
+      "error": "No transactions found"
+    },
+    {
+      "pdf": "dummy_statement.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/dummy_statement.pdf",
+      "exists": true,
+      "success": false,
+      "parse_time": 5.603404,
+      "transaction_count": 0,
+      "error": "No transactions found"
+    },
+    {
+      "pdf": "Bank Statement Example Final.pdf",
+      "path": "/Users/MAC/Desktop/pdfs/Bank Statement Example Final.pdf",
+      "exists": true,
+      "success": false,
+      "parse_time": 2.699299,
+      "transaction_count": 0,
+      "error": "No transactions found"
+    }
+  ],
+  "parallel_processing": {
+    "total_pdfs": 19,
+    "successful": 9,
+    "failed": 10,
+    "total_transactions": 162,
+    "processing_time": 22.99589,
+    "pdfs_per_second": 0.8262346010526229
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "pdf_path": "/Users/MAC/Desktop/pdfs/1/UK Nationwide word pdf.pdf",
+  "parsed_at": "2025-08-02T11:47:17.099074",
+  "statement": {
+    "bank": "nationwide",
+    "account": null,
+    "period": {
+      "start": "1000-08-02T00:00:00",
+      "end": "3000-08-02T00:00:00"
+    },
+    "transactions": [
+      {
+        "date": "1000-08-02T00:00:00",
+        "description": "PAYPAL *VIRGIN BET 35314369001 GB 3869",
+        "amount": -1000.0,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "1000-08-02T00:00:00",
+        "description": "Onisac LTD 18665964764 GB",
+        "amount": -1000.0,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2000-08-02T00:00:00",
+        "description": "PAYPAL *VIRGIN BET 35314369001 GB 3869",
+        "amount": -2000.0,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-08-03T00:00:00",
+        "description": "Contactless Payment",
+        "amount": 3.9,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-08-22T00:00:00",
+        "description": "PAYPAL *UBER BV 35314369001",
+        "amount": 22.51,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-08-23T00:00:00",
+        "description": "PAYPAL *UBER BV 35314369001",
+        "amount": 23.39,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-08-25T00:00:00",
+        "description": "PAYPAL *UBER BV 35314369001",
+        "amount": 25.99,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-08-26T00:00:00",
+        "description": "PAYPAL *UBER BV 35314369001",
+        "amount": 26.14,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2025-08-28T00:00:00",
+        "description": "NATIONAL LOTTERY INTE WATFORD",
+        "amount": 28.0,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "2050-08-02T00:00:00",
+        "description": "EASTERN STORES CHINESE S PORTSMO",
+        "amount": 50.66,
+        "balance": null,
+        "type": "credit",
+        "reference": null,
+        "category": null
+      },
+      {
+        "date": "3000-08-02T00:00:00",
+        "description": "PAYPAL *VIRGIN BET 35314369001 GB 3869",
+        "amount": -3000.0,
+        "balance": null,
+        "type": "debit",
+        "reference": null,
+        "category": null
+      }
+    ],
+    "currency": "USD",
+    "summary": {
+      "total_credits": 180.59,
+      "total_debits": 7000.0,
+      "transaction_count": 11
+    }
+  }
+}
