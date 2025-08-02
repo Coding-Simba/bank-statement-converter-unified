@@ -789,9 +789,16 @@
         </p>
 </div>
 </section>
-<!-- New Simple Pricing Toggle -->
-<div id="newPricingToggle">
-    <!-- Toggle buttons will be inserted here by JavaScript -->
+<!-- Pricing Toggle -->
+<div class="pricing-toggle">
+  <span class="toggle-label active" id="monthlyLabel">Monthly</span>
+  <div class="toggle-switch" id="pricingToggle">
+    <div class="toggle-slider"></div>
+  </div>
+  <span class="toggle-label" id="yearlyLabel">
+    Yearly
+    <span class="save-badge">Save 20%</span>
+  </span>
 </div>
 <!-- Pricing Cards -->
 <section class="container">
@@ -1076,7 +1083,42 @@
       menuToggle.classList.toggle('active');
     });
     
-    // Old toggle code removed - new simple toggle handles everything
+    // Pricing Toggle
+    const pricingToggle = document.getElementById('pricingToggle');
+    const monthlyLabel = document.getElementById('monthlyLabel');
+    const yearlyLabel = document.getElementById('yearlyLabel');
+    const priceElements = document.querySelectorAll('.price-value');
+    const annualPrices = document.querySelectorAll('.annual-price');
+    const periodElements = document.querySelectorAll('.period');
+    
+    if (pricingToggle) {
+      pricingToggle.addEventListener('click', () => {
+        pricingToggle.classList.toggle('active');
+        const isYearly = pricingToggle.classList.contains('active');
+        
+        monthlyLabel.classList.toggle('active', !isYearly);
+        yearlyLabel.classList.toggle('active', isYearly);
+        
+        priceElements.forEach(el => {
+          const monthly = el.getAttribute('data-monthly');
+          const yearly = el.getAttribute('data-yearly');
+          el.textContent = isYearly ? yearly : monthly;
+        });
+        
+        annualPrices.forEach(el => {
+          el.style.display = isYearly ? 'block' : 'none';
+        });
+        
+        periodElements.forEach(el => {
+          el.textContent = isYearly ? '/year' : '/month';
+        });
+        
+        // Dispatch event for Stripe integration
+        window.dispatchEvent(new CustomEvent('pricingToggleChanged', {
+          detail: { isYearly }
+        }));
+      });
+    }
     
     // FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');
@@ -1140,7 +1182,5 @@
 <script src="/js/auth-cookie.js"></script>
 <!-- Cookie-based Stripe Integration -->
 <script src="/js/stripe-cookie.js"></script>
-<!-- Fixed Pricing Toggle -->
-<script src="/js/pricing-toggle-fixed.js"></script>
 </body>
 </html>
