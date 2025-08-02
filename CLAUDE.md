@@ -38,13 +38,28 @@ Bank statement PDF to CSV converter with web interface. Deployed on AWS Lightsai
 - SSH Key: `/Users/MAC/Downloads/bank-statement-converter.pem`
 - User: ubuntu
 
-## Git Workflow
+## Git Workflow & System Health
 ```bash
+# BEFORE making any changes:
+./check-backend-health.sh  # ALWAYS verify system is working first!
+
 # After EVERY change:
 git add -A
 git commit -m "Description of change"
 git push origin main  # MANDATORY - Never skip the push!
+
+# After deployment or major changes:
+./check-backend-health.sh  # Verify nothing broke
 ```
+
+**CRITICAL**: Always run `./check-backend-health.sh` before making changes to catch issues early. This prevents the frustrating cycle of fixing one thing and breaking another.
+
+## Common Breaking Points to Watch
+1. **Authentication**: Login/logout can break when modifying auth-related files
+2. **Stripe Integration**: Payment flow is sensitive to auth changes
+3. **Backend Syntax**: Even small syntax errors crash the entire backend
+4. **CSS Conflicts**: Global CSS rules can break unrelated pages
+5. **Database Models**: Relationship changes can cause 500 errors
 
 ## Debug Approach
 1. Re-implement Camelot with debugging
