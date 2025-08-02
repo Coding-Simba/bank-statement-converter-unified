@@ -4,9 +4,10 @@
 Bank statement PDF to CSV converter with web interface. Deployed on AWS Lightsail with Cloudflare.
 
 ## Important Guidelines
-- **COMMIT AFTER EVERY CODE CHANGE** - No matter how small
+- **COMMIT AND PUSH AFTER EVERY CODE CHANGE** - No matter how small
 - Always test PDF parsing locally before deploying
 - Keep track of all changes to prevent regression
+- **ALWAYS GIT PUSH** - Push to remote repository after each commit
 
 ## Current Issues (2025-01-26)
 1. ~~PDF parser extracting headers as transactions~~ - FIXED with Camelot filtering
@@ -42,7 +43,7 @@ Bank statement PDF to CSV converter with web interface. Deployed on AWS Lightsai
 # After EVERY change:
 git add -A
 git commit -m "Description of change"
-git push origin main
+git push origin main  # MANDATORY - Never skip the push!
 ```
 
 ## Debug Approach
