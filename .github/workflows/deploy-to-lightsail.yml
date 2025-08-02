@@ -61,20 +61,32 @@ jobs:
           cp -r backend/* ${{ env.DEPLOY_PATH }}/backend/
           
           # Copy frontend files  
-          cp -r *.html css js ${{ env.DEPLOY_PATH }}/frontend/ 2>/dev/null || true
+          cp -r *.html ${{ env.DEPLOY_PATH }}/frontend/ 2>/dev/null || true
+          cp -r css ${{ env.DEPLOY_PATH }}/frontend/ 2>/dev/null || true
+          cp -r js ${{ env.DEPLOY_PATH }}/frontend/ 2>/dev/null || true
           
           # Activate virtual environment and install dependencies
-          cd ${{ env.DEPLOY_PATH }}
-          source venv/bin/activate
-          pip install -r backend/requirements-fastapi.txt
-          pip install -r requirements-ocr.txt 2>/dev/null || true
+          cd ${{ env.DEPLOY_PATH }}/backend
+          if [ -f "venv/bin/activate" ]; then
+            source venv/bin/activate
+          elif [ -f "../venv/bin/activate" ]; then
+            source ../venv/bin/activate
+          fi
+          
+          # Install requirements
+          if [ -f "requirements.txt" ]; then
+            pip install -r requirements.txt --quiet
+          fi
+          if [ -f "requirements-fastapi.txt" ]; then
+            pip install -r requirements-fastapi.txt --quiet
+          fi
           
           # Run database migrations if needed
           cd backend
           python -c "from models.database import engine, Base; Base.metadata.create_all(bind=engine)" || true
           
           # Restart services
-          sudo systemctl restart bankconverter
+          sudo systemctl restart bankcsv-backend
           sudo systemctl restart nginx
           
           # Cleanup
@@ -82,11 +94,11 @@ jobs:
           
           # Check if service is running
           sleep 5
-          if sudo systemctl is-active --quiet bankconverter; then
+          if sudo systemctl is-active --quiet bankcsv-backend; then
             echo "✅ Deployment successful!"
           else
-            echo "❌ Service failed to start. Rolling back..."
-            # Rollback logic here if needed
+            echo "❌ Service failed to start"
+            sudo systemctl status bankcsv-backend
             exit 1
           fi
         EOF
@@ -94,7 +106,7 @@ jobs:
     - name: Health check
       run: |
         sleep 10
-        response=$(curl -s -o /dev/null -w "%{http_code}" http://${{ secrets.LIGHTSAIL_HOST }}/api/health || echo "000")
+        response=$(curl -s -o /dev/null -w "%{http_code}" http://${{ secrets.LIGHTSAIL_HOST }}/health || echo "000")
         if [ "$response" = "200" ]; then
           echo "✅ Health check passed!"
         else

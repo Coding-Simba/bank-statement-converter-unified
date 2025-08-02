@@ -34,13 +34,13 @@ jobs:
         fi
         
         echo "🔄 Rolling back to: $BACKUP_DIR"
-        sudo systemctl stop bankconverter
+        sudo systemctl stop bankcsv-backend
         rm -rf /home/ubuntu/bank-statement-converter
         mv $BACKUP_DIR /home/ubuntu/bank-statement-converter
-        sudo systemctl start bankconverter
+        sudo systemctl start bankcsv-backend
         
         sleep 3
-        if sudo systemctl is-active --quiet bankconverter; then
+        if sudo systemctl is-active --quiet bankcsv-backend; then
           echo "✅ Rollback successful"
         else
           echo "❌ Rollback failed - service not running"
@@ -88,13 +88,21 @@ jobs:
           
           # Deploy files
           cp -r backend/* ${{ env.DEPLOY_PATH }}/backend/
-          cp -r *.html css js ${{ env.DEPLOY_PATH }}/frontend/ 2>/dev/null || true
+          cp -r *.html ${{ env.DEPLOY_PATH }}/frontend/ 2>/dev/null || true
+          cp -r css ${{ env.DEPLOY_PATH }}/frontend/ 2>/dev/null || true
+          cp -r js ${{ env.DEPLOY_PATH }}/frontend/ 2>/dev/null || true
           
           # Update dependencies
-          cd ${{ env.DEPLOY_PATH }}
+          cd ${{ env.DEPLOY_PATH }}/backend
           if [ -f "venv/bin/activate" ]; then
             source venv/bin/activate
-            pip install -r backend/requirements-fastapi.txt --quiet
+          elif [ -f "../venv/bin/activate" ]; then
+            source ../venv/bin/activate
+          fi
+          
+          # Install requirements
+          if [ -f "requirements.txt" ]; then
+            pip install -r requirements.txt --quiet
           fi
           
           # Test configuration before restart
@@ -102,11 +110,11 @@ jobs:
           python -c "from main import app; print('✅ App imports successful')"
           
           # Restart service
-          sudo systemctl restart bankconverter
+          sudo systemctl restart bankcsv-backend
           
           # Wait and check
           sleep 5
-          if ! sudo systemctl is-active --quiet bankconverter; then
+          if ! sudo systemctl is-active --quiet bankcsv-backend; then
             echo "❌ Service failed to start after deployment"
             echo "🔄 Initiating automatic rollback..."
             /tmp/rollback.sh
