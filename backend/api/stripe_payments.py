@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 load_dotenv()
 from models.database import get_db, User, Subscription, Plan, UsageLog, Payment
 from middleware.auth_middleware import get_current_user
+from api.auth_cookie import get_current_user_cookie
 from pydantic import BaseModel
 
 # Configure logging
@@ -66,21 +67,38 @@ class CreateCheckoutSessionRequest(BaseModel):
 class CreateCustomerPortalRequest(BaseModel):
     return_url: str = "/"
 
+async def get_current_user_any_auth(
+    request: Request,
+    db: Session = Depends(get_db)
+) -> User:
+    """Get current user from either JWT Bearer token or cookie."""
+    # First try cookie auth
+    try:
+        return await get_current_user_cookie(request, db)
+    except:
+        pass
+    
+    # Fall back to JWT auth
+    return await get_current_user(request, db)
+
 @router.post("/create-checkout-session")
 async def create_checkout_session(
-    request: CreateCheckoutSessionRequest,
-    current_user: User = Depends(get_current_user),
+    checkout_request: CreateCheckoutSessionRequest,
+    request: Request,
     db: Session = Depends(get_db)
 ):
     """Create a Stripe checkout session for subscription."""
     try:
-        if request.plan not in PLANS or request.plan == "free":
+        # Get current user using flexible auth
+        current_user = await get_current_user_any_auth(request, db)
+        
+        if checkout_request.plan not in PLANS or checkout_request.plan == "free":
             raise HTTPException(status_code=400, detail="Invalid plan selected")
         
-        plan_info = PLANS[request.plan]
+        plan_info = PLANS[checkout_request.plan]
         
         # Select the appropriate price ID based on billing period
-        if request.billing_period == "yearly":
+        if checkout_request.billing_period == "yearly":
             price_id = plan_info.get("price_yearly_id")
         else:
             price_id = plan_info.get("price_id")

@@ -165,13 +165,13 @@ async def register(
     db.commit()
     db.refresh(new_user)
     
-    # Create tokens
+    # Create tokens (sub must be a string for JWT)
     access_token = create_access_token(
-        data={"sub": new_user.id, "email": new_user.email}
+        data={"sub": str(new_user.id), "email": new_user.email}
     )
     refresh_token = create_refresh_token(
         data={
-            "sub": new_user.id, 
+            "sub": str(new_user.id), 
             "email": new_user.email,
             "family": refresh_token_family,
             "version": 1
@@ -245,13 +245,13 @@ async def login(
     #     db=db
     # )
     
-    # Create tokens with session ID
+    # Create tokens with session ID (sub must be a string for JWT)
     access_token = create_access_token(
-        data={"sub": user.id, "email": user.email, "session_id": session_id}
+        data={"sub": str(user.id), "email": user.email, "session_id": session_id}
     )
     refresh_token = create_refresh_token(
         data={
-            "sub": user.id,
+            "sub": str(user.id),
             "email": user.email,
             "family": user.refresh_token_family,
             "version": user.refresh_token_version,
@@ -335,13 +335,13 @@ async def refresh_token(
         user.refresh_token_version = token_version + 1
         db.commit()
         
-        # Create new tokens
+        # Create new tokens (sub must be a string for JWT)
         new_access_token = create_access_token(
-            data={"sub": user.id, "email": user.email}
+            data={"sub": str(user.id), "email": user.email}
         )
         new_refresh_token = create_refresh_token(
             data={
-                "sub": user.id,
+                "sub": str(user.id),
                 "email": user.email,
                 "family": user.refresh_token_family,
                 "version": user.refresh_token_version
