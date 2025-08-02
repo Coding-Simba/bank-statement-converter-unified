@@ -18,3 +18,21 @@
 
 ### Status
 ✅ Login page working correctly
+
+## 2025-08-02 - Nginx V2 Routing Fix
+
+### Issue
+- Login showing "An unexpected error occurred"
+- V2 API endpoints (/v2/api/auth/*) not routed by nginx
+- Health endpoint returning HTML instead of JSON
+
+### Fix
+1. Fixed nginx configuration to route /v2/ and /health endpoints
+2. Removed duplicate proxy_pass directives
+3. Deployed clean nginx configuration
+
+### Files Updated
+- `/etc/nginx/sites-enabled/bank-converter` - Complete rewrite with proper routing
+
+### Status
+✅ All API endpoints working (Cloudflare may show 521 temporarily)
