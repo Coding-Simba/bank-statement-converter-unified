@@ -1,0 +1,139 @@
+{
+  "test_date": "2025-08-02T12:21:08.204688",
+  "server_url": "http://localhost:5001",
+  "summary": {
+    "total_pdfs": 21,
+    "successful": 0,
+    "not_found": 0,
+    "errors": 21,
+    "total_transactions": 0
+  },
+  "results": [
+    {
+      "pdf": "Canada Scotiabank.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.005563974380493164
+    },
+    {
+      "pdf": "Australia NAB.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.003145933151245117
+    },
+    {
+      "pdf": "UK Santander.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.006234169006347656
+    },
+    {
+      "pdf": "Monzo Bank st. word.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.007944107055664062
+    },
+    {
+      "pdf": "UK Monese Bank Statement.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.010357856750488281
+    },
+    {
+      "pdf": "UK Lloyds Bank.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.012381792068481445
+    },
+    {
+      "pdf": "Walmart Money Card Bank Statement 3 page.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.009801149368286133
+    },
+    {
+      "pdf": "USA Green Dot Bank Statement 3 page.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.01261591911315918
+    },
+    {
+      "pdf": "USA Citizens Bank.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.007447957992553711
+    },
+    {
+      "pdf": "USA Fifth Third Bank.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.010016918182373047
+    },
+    {
+      "pdf": "USA Suntrust.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.00801396369934082
+    },
+    {
+      "pdf": "USA Ohio Huntington bank statement 7  page.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.012233972549438477
+    },
+    {
+      "pdf": "USA Chase bank.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.010247945785522461
+    },
+    {
+      "pdf": "USA Discover Bank.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.010834932327270508
+    },
+    {
+      "pdf": "USA Wells Fargo 7 pages.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.010320901870727539
+    },
+    {
+      "pdf": "USA Bank of America.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.007779121398925781
+    },
+    {
+      "pdf": "Australia Commonwealth J C.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.010285139083862305
+    },
+    {
+      "pdf": "merged_statements_2025-07-26.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.005513906478881836
+    },
+    {
+      "pdf": "Bank-Statement-Template-4-TemplateLab.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.008689165115356445
+    },
+    {
+      "pdf": "dummy_statement.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.00943303108215332
+    },
+    {
+      "pdf": "Bank Statement Example Final.pdf",
+      "status": "HTTP_ERROR",
+      "error": "HTTP 500: {\"detail\":\"An unexpected error occurred\",\"type\":\"HTTPException\"}",
+      "time": 0.007279872894287109
+    }
+  ]
+}

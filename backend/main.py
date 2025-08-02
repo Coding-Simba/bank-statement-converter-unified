@@ -109,8 +109,21 @@ app.include_router(stripe_router)
 # app.include_router(user_statistics_router)  # User statistics endpoints - module not found
 # app.include_router(statements_recent_router)  # Recent statements endpoints - module not found
 # app.include_router(statement_delete_router)  # Statement deletion endpoints - module not found
-# app.include_router(user_export_router)  # User data export endpoints - module not found
-# app.include_router(user_settings_router, prefix="/v2")  # User settings endpoints - requires aiosmtplib
+
+# User data export
+try:
+    from api.user_export import router as user_export_router
+    app.include_router(user_export_router)
+except ImportError as e:
+    print(f"User export module error: {e}")
+
+# User settings - simplified version without email
+try:
+    from api.user_settings_simple import router as user_settings_simple_router
+    app.include_router(user_settings_simple_router)
+    print("User settings endpoints loaded successfully")
+except ImportError as e:
+    print(f"User settings simple module error: {e}")
 
 
 @app.get("/")

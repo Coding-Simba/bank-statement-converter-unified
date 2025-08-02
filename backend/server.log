@@ -1,318 +1,515 @@
-INFO:     Will watch for changes in these directories: ['/Users/MAC/chrome/bank-statement-converter-unified/backend']
-INFO:     Uvicorn running on http://127.0.0.1:5000 (Press CTRL+C to quit)
-INFO:     Started reloader process [19435] using WatchFiles
-INFO:     Started server process [19450]
+INFO:     Started server process [34566]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'universal_parser_failsafe.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [19450]
+INFO:     Uvicorn running on http://0.0.0.0:5001 (Press CTRL+C to quit)
 JWT Config loaded with SECRET_KEY: your-secret-key-here... (first 20 chars)
 Starting up...
-Shutting down...
-INFO:     Started server process [19646]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'api/statements.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [19646]
-JWT Config loaded with SECRET_KEY: your-secret-key-here... (first 20 chars)
-Starting up...
-Shutting down...
-INFO:     Started server process [19696]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-JWT Config loaded with SECRET_KEY: your-secret-key-here... (first 20 chars)
-Starting up...
-INFO:     127.0.0.1:49966 - "GET /docs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:50100 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
-INFO:     127.0.0.1:50100 - "GET /v2/api/auth/me HTTP/1.1" 401 Unauthorized
-INFO:     127.0.0.1:51450 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:51450 - "GET /api/auth/check HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:51450 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51450 - "GET /v2/api/auth/me HTTP/1.1" 401 Unauthorized
-INFO:     127.0.0.1:51450 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51450 - "GET /v2/api/auth/me HTTP/1.1" 401 Unauthorized
-INFO:     127.0.0.1:51491 - "OPTIONS /v2/api/auth/login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51450 - "POST /v2/api/auth/login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51450 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51450 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51450 - "GET /v2/api/auth/me HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51450 - "GET /api/auth/csrf HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:51450 - "GET /api/auth/check HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:51450 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51450 - "GET /v2/api/auth/me HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51450 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51450 - "GET /v2/api/auth/me HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51761 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51761 - "GET /v2/api/auth/me HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51910 - "OPTIONS /api/convert HTTP/1.1" 200 OK
-Using failsafe parser
-Starting failsafe PDF parsing: /Users/MAC/chrome/bank-statement-converter-unified/uploads/d856610a-b11f-46af-a6be-d277fd6f4eb8.pdf
-Attempting quick text extraction...
-Error in quick_text_extraction: signal only works in main thread of the main interpreter
-Attempting minimal extraction...
-Error in minimal_extraction: signal only works in main thread of the main interpreter
-Returning 0 unique transactions
-INFO:     127.0.0.1:51910 - "POST /api/convert HTTP/1.1" 200 OK
-Using failsafe parser
-Starting failsafe PDF parsing: /Users/MAC/chrome/bank-statement-converter-unified/uploads/109c867c-e832-46bd-a0ca-901c1db96102.pdf
-Attempting quick text extraction...
-Error in quick_text_extraction: signal only works in main thread of the main interpreter
-Attempting minimal extraction...
-Error in minimal_extraction: signal only works in main thread of the main interpreter
-Returning 0 unique transactions
-INFO:     127.0.0.1:51936 - "POST /api/convert HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52052 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52052 - "GET /v2/api/auth/me HTTP/1.1" 200 OK
-Using failsafe parser
-Starting failsafe PDF parsing: /Users/MAC/chrome/bank-statement-converter-unified/uploads/02e4e886-7aeb-48c8-8c60-df1ecce53e45.pdf
-Attempting quick text extraction...
-Error in quick_text_extraction: signal only works in main thread of the main interpreter
-Attempting minimal extraction...
-Error in minimal_extraction: signal only works in main thread of the main interpreter
-Returning 0 unique transactions
-INFO:     127.0.0.1:52071 - "POST /api/convert HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52071 - "GET /api/statement/9/download HTTP/1.1" 200 OK
-Using failsafe parser
-Starting failsafe PDF parsing: /Users/MAC/chrome/bank-statement-converter-unified/uploads/401ea435-177d-4fdc-b7d2-b68ba9e2662b.pdf
-Attempting quick text extraction...
-Error in quick_text_extraction: signal only works in main thread of the main interpreter
-Attempting minimal extraction...
-Error in minimal_extraction: signal only works in main thread of the main interpreter
-Returning 0 unique transactions
-INFO:     127.0.0.1:52115 - "POST /api/convert HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52115 - "GET /api/statement/10/download HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52128 - "GET /api/statement/10/download HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'universal_parser_simple.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [19696]
-Shutting down...
-INFO:     Started server process [20667]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'api/statements.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [20667]
-JWT Config loaded with SECRET_KEY: your-secret-key-here... (first 20 chars)
-Starting up...
-Shutting down...
-INFO:     Started server process [20696]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-JWT Config loaded with SECRET_KEY: your-secret-key-here... (first 20 chars)
-Starting up...
-Using simple thread-safe parser
-Starting simple PDF parsing: /Users/MAC/chrome/bank-statement-converter-unified/uploads/57b1f938-138e-480b-aa54-b7d156c72b3b.pdf
-Attempting quick text extraction...
-Attempting minimal extraction...
-Minimal extraction found 1 transactions
-Returning 1 unique transactions
-INFO:     127.0.0.1:52768 - "POST /api/convert HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52768 - "GET /api/statement/11/download HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'api/statements.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [20696]
-Shutting down...
-INFO:     Started server process [20818]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'api/statements.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [20818]
-JWT Config loaded with SECRET_KEY: your-secret-key-here... (first 20 chars)
-Starting up...
-Shutting down...
-INFO:     Started server process [20998]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'universal_parser_safe.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [20998]
-JWT Config loaded with SECRET_KEY: your-secret-key-here... (first 20 chars)
-Starting up...
-Shutting down...
-INFO:     Started server process [21031]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-Failed to import jpype dependencies. Fallback to subprocess.
-No module named 'jpype'
-/opt/anaconda3/lib/python3.12/site-packages/camelot/parsers/base.py:238: UserWarning: No tables found in table area (90.0, 627.516, 344.1320000000001, 819.516)
-  cols, rows, v_s, h_s = self._generate_columns_and_rows(bbox, user_cols)
-JWT Config loaded with SECRET_KEY: your-secret-key-here... (first 20 chars)
-Starting up...
-Trying Camelot for table extraction...
-[CAMELOT DEBUG 11:06:20] Starting Camelot extraction for: /Users/MAC/chrome/bank-statement-converter-unified/uploads/dbc40fea-b93d-411a-a19e-0bc0ab6bb1f8.pdf
-[CAMELOT DEBUG 11:06:20] Trying Camelot with method: lattice
-[CAMELOT DEBUG 11:06:21] Found 0 tables with lattice method
-[CAMELOT DEBUG 11:06:21] Trying Camelot with method: stream
-[CAMELOT DEBUG 11:06:21] Found 1 tables with stream method
-[CAMELOT DEBUG 11:06:21] Processing table 1/1
-[CAMELOT DEBUG 11:06:21] Table shape: (5, 1)
-[CAMELOT DEBUG 11:06:21] Too few cells: ['Standard Bank Statement - Page 1']
-[CAMELOT DEBUG 11:06:21] Filtered out: Date        Description                Amount...
-[CAMELOT DEBUG 11:06:21] Too few cells: ['2024-01-01  Test Transaction 1         -50.00']
-[CAMELOT DEBUG 11:06:21] Too few cells: ['2024-01-02  Test Transaction 2         100.00']
-[CAMELOT DEBUG 11:06:21] Too few cells: ['2024-01-03  Test Transaction 3         -25.50']
-[CAMELOT DEBUG 11:06:21] Total transactions extracted: 0
-Trying accurate column parser...
-Trying fixed column parser for money in/out layout...
-Using OCR-first approach for maximum accuracy
-Processing with OCR (this may take a moment)...
-Using advanced OCR parser for maximum accuracy...
-Trying standard OCR parser...
-No transactions found, trying summary statement parser...
-Parsing was incomplete for /Users/MAC/chrome/bank-statement-converter-unified/uploads/dbc40fea-b93d-411a-a19e-0bc0ab6bb1f8.pdf, saving for improvement...
-Failed PDF saved to: failed_pdfs/20250802_110623_5ff983d5_dbc40fea-b93d-411a-a19e-0bc0ab6bb1f8.pdf
-INFO:     127.0.0.1:53375 - "POST /api/convert HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'camelot_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [21031]
-Shutting down...
-INFO:     Started server process [21378]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'camelot_parser.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [21378]
-JWT Config loaded with SECRET_KEY: your-secret-key-here... (first 20 chars)
-Starting up...
-Shutting down...
-INFO:     Started server process [21451]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-Failed to import jpype dependencies. Fallback to subprocess.
-No module named 'jpype'
-/opt/anaconda3/lib/python3.12/site-packages/camelot/parsers/base.py:238: UserWarning: No tables found in table area (90.0, 627.516, 344.1320000000001, 819.516)
-  cols, rows, v_s, h_s = self._generate_columns_and_rows(bbox, user_cols)
-JWT Config loaded with SECRET_KEY: your-secret-key-here... (first 20 chars)
-Starting up...
-Trying Camelot for table extraction...
-[CAMELOT DEBUG 11:08:05] Starting Camelot extraction for: /Users/MAC/chrome/bank-statement-converter-unified/uploads/40573d11-2b08-456d-8dbd-8535ef34af24.pdf
-[CAMELOT DEBUG 11:08:05] Trying Camelot with method: lattice
-[CAMELOT DEBUG 11:08:05] Found 0 tables with lattice method
-[CAMELOT DEBUG 11:08:05] Trying Camelot with method: stream
-[CAMELOT DEBUG 11:08:05] Found 1 tables with stream method
-[CAMELOT DEBUG 11:08:05] Processing table 1/1
-[CAMELOT DEBUG 11:08:05] Table shape: (5, 1)
-[CAMELOT DEBUG 11:08:05] Too few cells: ['Standard Bank Statement - Page 1']
-[CAMELOT DEBUG 11:08:05] Filtered out: Date        Description                Amount...
-[CAMELOT DEBUG 11:08:05] Row appears to be a transaction: 2024-01-01  Test Transaction 1         -50.00
-[CAMELOT DEBUG 11:08:05] Valid transaction: {'date': datetime.datetime(2024, 1, 1, 0, 0), 'date_string': '2024-01-01', 'description': 'Test Transaction 1', 'amount': -50.0, 'amount_string': '-50.00'}
-[CAMELOT DEBUG 11:08:05] Row appears to be a transaction: 2024-01-02  Test Transaction 2         100.00
-[CAMELOT DEBUG 11:08:05] Valid transaction: {'date': datetime.datetime(2024, 1, 2, 0, 0), 'date_string': '2024-01-02', 'description': 'Test Transaction 2', 'amount': 100.0, 'amount_string': '100.00'}
-[CAMELOT DEBUG 11:08:05] Row appears to be a transaction: 2024-01-03  Test Transaction 3         -25.50
-[CAMELOT DEBUG 11:08:05] Valid transaction: {'date': datetime.datetime(2024, 1, 3, 0, 0), 'date_string': '2024-01-03', 'description': 'Test Transaction 3', 'amount': -25.5, 'amount_string': '-25.50'}
-[CAMELOT DEBUG 11:08:05] Found 3 transactions with stream method
-[CAMELOT DEBUG 11:08:05] Total transactions extracted: 3
-Extracted 3 transactions using Camelot
-Using OCR-first approach for maximum accuracy
-Processing with OCR (this may take a moment)...
-Using advanced OCR parser for maximum accuracy...
-Trying standard OCR parser...
-INFO:     127.0.0.1:54051 - "POST /api/convert HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54163 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54163 - "GET /v2/api/auth/me HTTP/1.1" 200 OK
-/opt/anaconda3/lib/python3.12/site-packages/camelot/parsers/base.py:238: UserWarning: No tables found in table area (348.79999999999995, 563.2883029999999, 441.44081973475, 694.3724583293296)
-  cols, rows, v_s, h_s = self._generate_columns_and_rows(bbox, user_cols)
-Trying Camelot for table extraction...
-[CAMELOT DEBUG 11:08:30] Starting Camelot extraction for: /Users/MAC/chrome/bank-statement-converter-unified/uploads/03e4528c-6bf8-4aed-8a11-9dab8237f2f6.pdf
-[CAMELOT DEBUG 11:08:30] Trying Camelot with method: lattice
-[CAMELOT DEBUG 11:08:31] Found 2 tables with lattice method
-[CAMELOT DEBUG 11:08:31] Processing table 1/2
-[CAMELOT DEBUG 11:08:31] Table shape: (3, 1)
-[CAMELOT DEBUG 11:08:31] Filtered out: Payment / 
-Finance 
-Previous 
-Purchases and 
-Installment 
-Late Payment 
-Card Type
-Credits and 
-Charg...
-[CAMELOT DEBUG 11:08:31] Filtered out: ...
-[CAMELOT DEBUG 11:08:31] Filtered out: Past Due Amount
-Unbilled Installment Amount
-Unbilld Loan Amount
-Total Outstanding Balance...
-[CAMELOT DEBUG 11:08:31] Processing table 2/2
-[CAMELOT DEBUG 11:08:31] Table shape: (3, 1)
-[CAMELOT DEBUG 11:08:31] Too few cells: ['Description\nDate\nAmount']
-[CAMELOT DEBUG 11:08:31] Filtered out: ...
-[CAMELOT DEBUG 11:08:31] Too few cells: ['REMINDER']
-[CAMELOT DEBUG 11:08:31] Trying Camelot with method: stream
-[CAMELOT DEBUG 11:08:31] Found 1 tables with stream method
-[CAMELOT DEBUG 11:08:31] Processing table 1/1
-[CAMELOT DEBUG 11:08:31] Table shape: (6, 1)
-[CAMELOT DEBUG 11:08:31] Too few cells: ['Customer Number:']
-[CAMELOT DEBUG 11:08:31] Too few cells: ['Branch Name:']
-[CAMELOT DEBUG 11:08:31] Too few cells: ['Statement Date:']
-[CAMELOT DEBUG 11:08:31] Too few cells: ['Payment Due Date:']
-[CAMELOT DEBUG 11:08:31] Too few cells: ['Credit Limit:']
-[CAMELOT DEBUG 11:08:31] Filtered out: Total Amount Due:...
-[CAMELOT DEBUG 11:08:31] Total transactions extracted: 0
-Trying accurate column parser...
-Trying fixed column parser for money in/out layout...
-Extracted 9 transactions using pdftotext
-Using OCR-first approach for maximum accuracy
-Processing with OCR (this may take a moment)...
-Using advanced OCR parser for maximum accuracy...
-Trying standard OCR parser...
-Parsing was incomplete for /Users/MAC/chrome/bank-statement-converter-unified/uploads/03e4528c-6bf8-4aed-8a11-9dab8237f2f6.pdf, saving for improvement...
-INFO:     127.0.0.1:54264 - "POST /api/convert HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54264 - "GET /api/statement/14/download HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54895 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54895 - "GET /v2/api/auth/me HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57758 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57758 - "GET /v2/api/auth/me HTTP/1.1" 401 Unauthorized
-INFO:     127.0.0.1:57758 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57758 - "GET /v2/api/auth/me HTTP/1.1" 401 Unauthorized
-Trying Camelot for table extraction...
-[CAMELOT DEBUG 11:19:31] Starting Camelot extraction for: /Users/MAC/chrome/bank-statement-converter-unified/uploads/0abc4a89-b616-453b-92bd-6b970b25aac7.pdf
-[CAMELOT DEBUG 11:19:31] Trying Camelot with method: lattice
-[CAMELOT DEBUG 11:19:32] Found 1 tables with lattice method
-[CAMELOT DEBUG 11:19:32] Processing table 1/1
-[CAMELOT DEBUG 11:19:32] Table shape: (4, 1)
-[CAMELOT DEBUG 11:19:32] Too few cells: ['Account Activity']
-[CAMELOT DEBUG 11:19:32] Too few cells: ['Detail\nDate\nPayment Type\nPaid In\nPaid Out\nBalance']
-[CAMELOT DEBUG 11:19:32] Filtered out: ...
-[CAMELOT DEBUG 11:19:32] Too few cells: ['Note:']
-[CAMELOT DEBUG 11:19:32] Trying Camelot with method: stream
-[CAMELOT DEBUG 11:19:32] Found 1 tables with stream method
-[CAMELOT DEBUG 11:19:32] Processing table 1/1
-[CAMELOT DEBUG 11:19:32] Table shape: (6, 6)
-[CAMELOT DEBUG 11:19:32] Filtered out: Your Account Statement...
-[CAMELOT DEBUG 11:19:32] Filtered out: Issue Date:...
-[CAMELOT DEBUG 11:19:32] Filtered out: Period:...
-[CAMELOT DEBUG 11:19:32] Too few cells: ['Account Activity', '', '', '', '', '']
-[CAMELOT DEBUG 11:19:32] No amount found: ['Date', 'Payment Type', 'Detail', 'Paid In', 'Paid Out', 'Balance']
-[CAMELOT DEBUG 11:19:32] Too few cells: ['Note:', '', '', '', '', '']
-[CAMELOT DEBUG 11:19:32] Total transactions extracted: 0
-Trying accurate column parser...
-Found Paid In/Out format - Paid In: 59, Paid Out: 72
-Extracted 17 transactions using accurate column parser
-Using OCR-first approach for maximum accuracy
-Processing with OCR (this may take a moment)...
-Using advanced OCR parser for maximum accuracy...
-Parsing was incomplete for /Users/MAC/chrome/bank-statement-converter-unified/uploads/0abc4a89-b616-453b-92bd-6b970b25aac7.pdf, saving for improvement...
-Failed PDF saved to: failed_pdfs/20250802_111933_fede3740_0abc4a89-b616-453b-92bd-6b970b25aac7.pdf
-INFO:     127.0.0.1:57801 - "POST /api/convert HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57801 - "GET /api/statement/15/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62686 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62749 - "GET /health HTTP/1.1" 200 OK
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62751 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62753 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62755 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62757 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62759 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62761 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62763 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62765 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62767 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62773 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62775 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62777 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62779 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62781 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62783 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62785 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62787 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62789 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62795 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62797 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+WARNING:middleware.csrf_middleware:CSRF token missing for POST /api/parse
+INFO:     127.0.0.1:62799 - "POST /api/parse HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/anaconda3/lib/python3.12/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/MAC/chrome/bank-statement-converter-unified/backend/middleware/csrf_middleware.py", line 54, in dispatch
+    raise HTTPException(
+fastapi.exceptions.HTTPException
+INFO:     127.0.0.1:62908 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62908 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62910 - "GET /favicon.ico HTTP/1.1" 404 Not Found
