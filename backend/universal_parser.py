@@ -105,6 +105,11 @@ try:
 except ImportError:
     WALMART_PARSER_AVAILABLE = False
 try:
+    from huntington_parser import parse_huntington
+    HUNTINGTON_PARSER_AVAILABLE = True
+except ImportError:
+    HUNTINGTON_PARSER_AVAILABLE = False
+try:
     from advanced_ocr_parser import parse_scanned_pdf_advanced
     ADVANCED_OCR_AVAILABLE = True
 except ImportError:
@@ -593,6 +598,13 @@ def parse_universal_pdf(pdf_path):
                 if WALMART_PARSER_AVAILABLE and 'moneycard' in first_page.lower() and 'transaction date' in first_page.lower():
                     print("Detected Walmart Money Card PDF format, using dedicated parser")
                     transactions = parse_walmart(pdf_path)
+                    if transactions:
+                        return transactions
+                
+                # Check for Huntington Bank format
+                if HUNTINGTON_PARSER_AVAILABLE and ('huntington' in first_page.lower() or 'huntington national bank' in first_page.lower()):
+                    print("Detected Huntington Bank PDF format, using dedicated parser")
+                    transactions = parse_huntington(pdf_path)
                     if transactions:
                         return transactions
     except Exception as e:
