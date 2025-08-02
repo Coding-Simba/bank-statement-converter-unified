@@ -120,12 +120,19 @@
             const formData = new FormData();
             formData.append('file', file);
 
+            // Add timeout for long conversions
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 second timeout
+
             // Call API to convert
             const response = await fetch(API_CONFIG.getUrl('/api/convert'), {
                 method: 'POST',
                 body: formData,
-                credentials: 'include'
+                credentials: 'include',
+                signal: controller.signal
             });
+
+            clearTimeout(timeoutId);
 
             if (!response.ok) {
                 const error = await response.json();
@@ -154,7 +161,12 @@
         } catch (error) {
             console.error('Conversion error:', error);
             resetUploadBox();
-            showNotification(error.message || 'Conversion failed. Please try again.', 'error');
+            
+            if (error.name === 'AbortError') {
+                showNotification('Conversion timed out. Please try with a smaller file.', 'error');
+            } else {
+                showNotification(error.message || 'Conversion failed. Please try again.', 'error');
+            }
         }
     }
 
@@ -176,10 +188,16 @@
         // Animate progress bar
         const progressFill = uploadBox.querySelector('.progress-fill');
         let progress = 0;
+        const progressText = uploadBox.querySelector('p');
         const interval = setInterval(() => {
             progress += 10;
             progressFill.style.width = progress + '%';
-            if (progress >= 90) {
+            
+            // Update status text
+            if (progress >= 60 && progress < 90) {
+                progressText.textContent = 'Extracting transactions...';
+            } else if (progress >= 90) {
+                progressText.textContent = 'Finalizing conversion...';
                 clearInterval(interval);
             }
         }, 180);
