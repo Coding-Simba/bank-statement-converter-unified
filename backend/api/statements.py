@@ -222,7 +222,7 @@ async def convert_statement(
     csv_filename = f"{file_id}.csv"
     csv_path = UPLOAD_DIR / csv_filename
     
-    # Import the universal parser
+    # Import the original universal parser
     from universal_parser import parse_universal_pdf
     
     try:
@@ -230,6 +230,7 @@ async def convert_statement(
         # Note: The universal parser now automatically saves failed PDFs
         # if parsing was incomplete or unsuccessful
         transactions = parse_universal_pdf(str(file_path))
+        print(f"Universal parser returned {len(transactions) if transactions else 0} transactions")
         
         if transactions:
             # Convert to CSV
@@ -313,7 +314,7 @@ async def convert_statement(
     
     # Add results_url to response
     response_dict = response.dict()
-    response_dict["results_url"] = f"/results/{statement.id}"
+    response_dict["results_url"] = f"/results-overview.html?id={statement.id}"
     
     return response_dict
 

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test PDF Upload with Timeout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .upload-section {
+            border: 2px dashed #007bff;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #status {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 4px;
+            display: none;
+        }
+        .info { background: #d1ecf1; color: #0c5460; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #007bff;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test PDF Upload with Timeout Protection</h1>
+    
+    <div class="upload-section">
+        <h2>Upload PDF File</h2>
+        <input type="file" id="fileInput" accept=".pdf">
+        <br>
+        <button onclick="uploadPDF()">Upload and Convert</button>
+    </div>
+    
+    <div id="status"></div>
+    
+    <script>
+        let startTime;
+        
+        function updateStatus(message, className = 'info') {
+            const status = document.getElementById('status');
+            status.className = className;
+            status.style.display = 'block';
+            status.innerHTML = message;
+        }
+        
+        async function uploadPDF() {
+            const fileInput = document.getElementById('fileInput');
+            if (!fileInput.files[0]) {
+                updateStatus('Please select a PDF file', 'error');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            startTime = Date.now();
+            updateStatus(`<div class="spinner"></div> Uploading ${file.name}...`);
+            
+            try {
+                // Create abort controller with 60 second timeout
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 60000);
+                
+                const response = await fetch('http://localhost:5000/api/convert', {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'include',
+                    signal: controller.signal
+                });
+                
+                clearTimeout(timeoutId);
+                const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+                
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.detail || 'Upload failed');
+                }
+                
+                const data = await response.json();
+                
+                updateStatus(`
+                    <h3>✅ Success!</h3>
+                    <p>Conversion completed in ${elapsed} seconds</p>
+                    <p>Statement ID: ${data.id}</p>
+                    <p>Results URL: <a href="http://localhost:8000${data.results_url}" target="_blank">${data.results_url}</a></p>
+                    <h4>Full Response:</h4>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `, 'success');
+                
+            } catch (error) {
+                const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+                
+                if (error.name === 'AbortError') {
+                    updateStatus(`
+                        <h3>⏱️ Timeout</h3>
+                        <p>Request timed out after ${elapsed} seconds</p>
+                        <p>The PDF may be too complex or the parser may have hung.</p>
+                    `, 'error');
+                } else {
+                    updateStatus(`
+                        <h3>❌ Error</h3>
+                        <p>Failed after ${elapsed} seconds</p>
+                        <p>${error.message}</p>
+                    `, 'error');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

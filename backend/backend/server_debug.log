@@ -1,0 +1,4 @@
+INFO:     Will watch for changes in these directories: ['/Users/MAC/chrome/bank-statement-converter-unified/backend/backend']
+INFO:     Uvicorn running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:     Started reloader process [23858] using WatchFiles
+ERROR:    Error loading ASGI app. Could not import module "main".

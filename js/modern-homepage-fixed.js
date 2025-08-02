@@ -327,8 +327,13 @@
             // Store the statement ID for download
             uploadBox.setAttribute('data-statement-id', result.id);
             
-            // Show success state
-            await showSuccessState(file);
+            // Redirect to results page if URL is provided
+            if (result.results_url) {
+                window.location.href = result.results_url;
+            } else {
+                // Fallback to showing success state
+                await showSuccessState(file);
+            }
             
         } catch (error) {
             console.error('Upload error:', error);

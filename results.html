@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Bank Statement Converter</title>
+    <script>
+        // Redirect to results-overview.html with the statement ID
+        const path = window.location.pathname;
+        const match = path.match(/\/results\/(\d+)/);
+        if (match) {
+            const statementId = match[1];
+            window.location.href = `/results-overview.html?id=${statementId}`;
+        } else {
+            window.location.href = '/results-overview.html';
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to results...</p>
+</body>
+</html>
