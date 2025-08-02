@@ -43,7 +43,7 @@ class LoginSession(Base):
     failed_attempts = Column(Integer, default=0)
     
     # Relationships
-    user = relationship("User", back_populates="login_sessions")
+    user = relationship("User")
     
     # Indexes for performance
     __table_args__ = (
