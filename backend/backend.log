@@ -1,2 +1,62 @@
-INFO:     Will watch for changes in these directories: ['/Users/MAC/chrome/bank-statement-converter-unified/backend']
-ERROR:    [Errno 48] Address already in use
+INFO:     Started server process [15478]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+Failed to import jpype dependencies. Fallback to subprocess.
+No module named 'jpype'
+/opt/anaconda3/lib/python3.12/site-packages/camelot/parsers/base.py:238: UserWarning: No tables found in table area (0, 0, 612.0, 792.0)
+  cols, rows, v_s, h_s = self._generate_columns_and_rows(bbox, user_cols)
+JWT Config loaded with SECRET_KEY: your-secret-key-here... (first 20 chars)
+Starting up...
+Trying Camelot for table extraction...
+[CAMELOT DEBUG 10:39:35] Starting Camelot extraction for: /Users/MAC/chrome/bank-statement-converter-unified/uploads/1e9318c8-d9c7-4886-ab57-b28e8e8d7268.pdf
+[CAMELOT DEBUG 10:39:35] Trying Camelot with method: lattice
+[CAMELOT DEBUG 10:39:36] Found 0 tables with lattice method
+[CAMELOT DEBUG 10:39:36] Trying Camelot with method: stream
+[CAMELOT DEBUG 10:39:36] Found 1 tables with stream method
+[CAMELOT DEBUG 10:39:36] Processing table 1/1
+[CAMELOT DEBUG 10:39:36] Table shape: (4, 1)
+[CAMELOT DEBUG 10:39:36] Too few cells: ['Bank Statement']
+[CAMELOT DEBUG 10:39:36] Too few cells: ['Date: 2024-01-01']
+[CAMELOT DEBUG 10:39:36] Filtered out: Transaction: Test Purchase...
+[CAMELOT DEBUG 10:39:36] Too few cells: ['Amount: -50.00']
+[CAMELOT DEBUG 10:39:36] Total transactions extracted: 0
+Trying accurate column parser...
+Trying fixed column parser for money in/out layout...
+Using OCR-first approach for maximum accuracy
+Minimal text extracted, likely a scanned/image PDF
+Processing with OCR (this may take a moment)...
+Using advanced OCR parser for maximum accuracy...
+Trying standard OCR parser...
+No transactions found, trying summary statement parser...
+Parsing was incomplete for /Users/MAC/chrome/bank-statement-converter-unified/uploads/1e9318c8-d9c7-4886-ab57-b28e8e8d7268.pdf, saving for improvement...
+Failed PDF saved to: failed_pdfs/20250802_103938_3adee066_1e9318c8-d9c7-4886-ab57-b28e8e8d7268.pdf
+INFO:     127.0.0.1:60372 - "POST /api/convert HTTP/1.1" 200 OK
+/opt/anaconda3/lib/python3.12/site-packages/camelot/parsers/base.py:238: UserWarning: No tables found in table area (0, 0, 612.0, 792.0)
+  cols, rows, v_s, h_s = self._generate_columns_and_rows(bbox, user_cols)
+Trying Camelot for table extraction...
+[CAMELOT DEBUG 10:39:57] Starting Camelot extraction for: /Users/MAC/chrome/bank-statement-converter-unified/uploads/1e9318c8-d9c7-4886-ab57-b28e8e8d7268.pdf
+[CAMELOT DEBUG 10:39:57] Trying Camelot with method: lattice
+[CAMELOT DEBUG 10:39:57] Found 0 tables with lattice method
+[CAMELOT DEBUG 10:39:57] Trying Camelot with method: stream
+[CAMELOT DEBUG 10:39:57] Found 1 tables with stream method
+[CAMELOT DEBUG 10:39:57] Processing table 1/1
+[CAMELOT DEBUG 10:39:57] Table shape: (4, 1)
+[CAMELOT DEBUG 10:39:57] Too few cells: ['Bank Statement']
+[CAMELOT DEBUG 10:39:57] Too few cells: ['Date: 2024-01-01']
+[CAMELOT DEBUG 10:39:57] Filtered out: Transaction: Test Purchase...
+[CAMELOT DEBUG 10:39:57] Too few cells: ['Amount: -50.00']
+[CAMELOT DEBUG 10:39:57] Total transactions extracted: 0
+Trying accurate column parser...
+Trying fixed column parser for money in/out layout...
+Using OCR-first approach for maximum accuracy
+Minimal text extracted, likely a scanned/image PDF
+Processing with OCR (this may take a moment)...
+Using advanced OCR parser for maximum accuracy...
+Trying standard OCR parser...
+No transactions found, trying summary statement parser...
+Parsing was incomplete for /Users/MAC/chrome/bank-statement-converter-unified/uploads/1e9318c8-d9c7-4886-ab57-b28e8e8d7268.pdf, saving for improvement...
+INFO:     127.0.0.1:60514 - "GET /api/statement/6/transactions?page=1&per_page=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60652 - "GET /v2/api/auth/csrf HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60654 - "OPTIONS /v2/api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60652 - "GET /v2/api/auth/me HTTP/1.1" 401 Unauthorized

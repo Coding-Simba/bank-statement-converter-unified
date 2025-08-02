@@ -64,5 +64,19 @@
     ],
     "file_size": 2137970,
     "status": "pending_review"
+  },
+  "3adee0664e92806a7bf7b9ceb192918370fbffd31d0120202129154436f1936c": {
+    "original_name": "1e9318c8-d9c7-4886-ab57-b28e8e8d7268.pdf",
+    "saved_name": "20250802_103938_3adee066_1e9318c8-d9c7-4886-ab57-b28e8e8d7268.pdf",
+    "saved_path": "failed_pdfs/20250802_103938_3adee066_1e9318c8-d9c7-4886-ab57-b28e8e8d7268.pdf",
+    "timestamp": "20250802_103938",
+    "date_saved": "2025-08-02T10:39:38.103810",
+    "transactions_found": 0,
+    "valid_transactions": 0,
+    "transactions_with_dates": 0,
+    "error_info": null,
+    "sample_transactions": [],
+    "file_size": 1486,
+    "status": "pending_review"
   }
 }
